@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**ETERUS** - A premium dual-tone landing page for a technology agency featuring advanced animations with Three.js, GSAP, and WebGL effects. This is a vanilla JavaScript project without build tools or package management.
+**ETERUS** - A premium landing page for a technology agency featuring pastel color palette and advanced animations with Three.js, GSAP, and WebGL effects. This is a vanilla JavaScript project without build tools or package management.
 
 ## Technology Stack
 
@@ -26,21 +26,26 @@ meu-site/
 
 ## Design System
 
-### Strict Dual-Tone Color Palette
-- **Primary**: Black (#000000)
-- **Secondary**: Cyan (#00D4FF)
-- **Variations**: 20%, 40%, 60%, 80% opacity only
-- **CRITICAL**: No third colors allowed - maintain strict dual-tone aesthetic
+### Paleta de Cores Pastel Premium
+- **Base**: Charcoal (#2C3E50) - Fundo principal
+- **Neutro**: Platinum (#F5F2ED) - Textos e elementos claros
+- **Accent 1**: Sage Green (#A8D5BA) - Verde suave pastel
+- **Accent 2**: Rose Dust (#D4A5A5) - Rosa empoeirado pastel
+- **Accent 3**: Lavender (#B8B9D3) - Lavanda pastel
+- **Accent 4**: Teal (#7FA8A8) - Verde-azulado
+- **Accent 5**: Peach (#F0D8C8) - Pêssego suave
+- **Accent 6**: Silver (#C0C5CE) - Prata acinzentado
+- **Variações**: Todas as cores têm versões com 20%, 40%, 60%, 80% de opacidade
 
 ### Typography
 - **Primary**: Space Grotesk (headings and titles)
 - **Secondary**: Inter (body text and UI)
 
 ### Visual Style
-- Futuristic and minimalist design
-- Glassmorphism effects
-- Extreme contrast for visual hierarchy
-- WCAG AAA contrast ratio (21:1)
+- Premium design with sophisticated pastel aesthetics
+- Glassmorphism effects with soft colors
+- Balanced contrast with harmonious palette
+- Smooth animations and premium interactions
 
 ## Development Commands
 
@@ -98,7 +103,7 @@ Access at `http://localhost:8000`
 ### Adding New Sections
 1. Add HTML structure to `index.html`
 2. Add GSAP animations in `main.js`
-3. Maintain dual-tone color scheme
+3. Maintain pastel color palette from defined colors
 4. Test scroll animations
 5. Verify mobile responsiveness
 
@@ -117,14 +122,21 @@ gsap.from('.element', {
 ```
 
 ### Changing Colors
-Only modify opacity of black and cyan:
+Use the predefined Tailwind color palette:
 ```css
-/* Acceptable */
-bg-black/20        /* Black at 20% opacity */
-text-[#00D4FF]/80  /* Cyan at 80% opacity */
+/* Acceptable - using pastel palette colors */
+bg-eterus-charcoal      /* Main background */
+text-eterus-platinum    /* Light text */
+bg-eterus-sage          /* Pastel green */
+text-eterus-rose        /* Pastel rose */
+border-eterus-lavender  /* Lavender border */
+
+/* With opacity */
+bg-eterus-sage-20       /* Sage with 20% opacity */
+text-eterus-rose-80     /* Rose with 80% opacity */
 
 /* NOT acceptable */
-bg-blue-500        /* Third color - breaks design system */
+bg-blue-500             /* Colors outside defined palette */
 ```
 
 ## Testing
@@ -162,7 +174,7 @@ bg-blue-500        /* Third color - breaks design system */
 - **Inline Tailwind Config**: Tailwind configuration is in `index.html` head section
 - **WebGL Fallback**: Ensure graceful degradation if WebGL is unavailable
 - **Mobile Performance**: Test particle count on lower-end devices
-- **Dual-Tone Strict**: Never introduce third colors under any circumstances
+- **Paleta Pastel Estrita**: Use apenas as cores definidas na paleta pastel premium
 
 ## Common Tasks
 

@@ -4,18 +4,23 @@ Uma landing page sofisticada para agência de tecnologia com design dual-tone e 
 
 ## 🎨 Características do Design
 
-### Paleta de Cores Dual-Tone
-- **Cor Primária**: Preto (#000000)
-- **Cor Secundária**: Ciano (#00D4FF)
-- **Variações**: Opacidades de 20%, 40%, 60%, 80%
-- **Proibido**: Qualquer terceira cor
+### Paleta de Cores Pastel Premium
+- **Base**: Charcoal (#2C3E50) - Fundo principal escuro e sofisticado
+- **Neutro**: Platinum (#F5F2ED) - Textos e elementos de destaque
+- **Accent 1**: Sage Green (#A8D5BA) - Verde suave pastel
+- **Accent 2**: Rose Dust (#D4A5A5) - Rosa empoeirado pastel
+- **Accent 3**: Lavender (#B8B9D3) - Lavanda pastel
+- **Accent 4**: Teal (#7FA8A8) - Verde-azulado
+- **Accent 5**: Peach (#F0D8C8) - Pêssego suave
+- **Accent 6**: Silver (#C0C5CE) - Prata acinzentado
+- **Variações**: Todas as cores com opacidades de 20%, 40%, 60%, 80%
 
 ### Estilo Visual
-- Design futurista e minimalista
-- Efeitos de glassmorphism
-- Animações fluidas e interações sofisticadas
-- Tipografia Space Grotesk + Inter
-- Contraste extremo para hierarquia visual
+- Design premium com estética pastel sofisticada
+- Efeitos de glassmorphism com cores suaves
+- Animações fluidas e interações premium
+- Tipografia Space Grotesk (títulos) + Inter (corpo)
+- Paleta harmoniosa com contraste balanceado
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -125,10 +130,22 @@ npx serve .
 ## 🎨 Customização
 
 ### Cores
-Edite as variáveis CSS no arquivo HTML:
-```css
---color-primary: #000000;
---color-secondary: #00D4FF;
+Edite a configuração do Tailwind no `index.html` (seção `<script>`):
+```javascript
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'eterus-charcoal': '#2C3E50',
+        'eterus-platinum': '#F5F2ED',
+        'eterus-sage': '#A8D5BA',
+        'eterus-rose': '#D4A5A5',
+        'eterus-lavender': '#B8B9D3',
+        // ... outras cores pastel
+      }
+    }
+  }
+}
 ```
 
 ### Animações

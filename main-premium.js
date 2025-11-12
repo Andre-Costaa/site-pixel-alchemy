@@ -284,6 +284,64 @@ class EterusPremiumHero {
     }
 }
 
+// About Metrics Animator
+class AboutMetricsAnimator {
+    constructor() {
+        this.metrics = Array.from(document.querySelectorAll('[data-metric-target]'));
+        if (!this.metrics.length) return;
+
+        this.handleIntersect = this.handleIntersect.bind(this);
+
+        this.observer = new IntersectionObserver(this.handleIntersect, {
+            threshold: 0.5,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        this.metrics.forEach(metric => {
+            const prefix = metric.dataset.metricPrefix || '';
+            const suffix = metric.dataset.metricSuffix || '';
+            metric.textContent = `${prefix}0${suffix}`;
+            this.observer.observe(metric);
+        });
+    }
+
+    handleIntersect(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                this.animateMetric(entry.target);
+                this.observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    animateMetric(element) {
+        if (element.dataset.metricAnimating === 'true') return;
+        element.dataset.metricAnimating = 'true';
+
+        const target = parseFloat(element.dataset.metricTarget || '0');
+        const start = parseFloat(element.dataset.metricStart || '0');
+        const prefix = element.dataset.metricPrefix || '';
+        const suffix = element.dataset.metricSuffix || '';
+        const duration = parseInt(element.dataset.metricDuration || '1600', 10);
+        const decimals = parseInt(element.dataset.metricDecimals || '0', 10);
+
+        const startTime = performance.now();
+
+        const step = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const value = start + (target - start) * progress;
+            element.textContent = `${prefix}${value.toFixed(decimals)}${suffix}`;
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                element.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+            }
+        };
+
+        requestAnimationFrame(step);
+    }
+}
+
 // Scroll Progress Bar Manager
 class ScrollProgressBar {
     constructor() {
@@ -404,6 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (canvas) {
         new EterusPremiumHero(canvas);
     }
+
+    // Initialize about metrics animation
+    new AboutMetricsAnimator();
 });
 
 // Trigger initial animations on window load

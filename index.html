@@ -14,7 +14,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Core Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
@@ -63,8 +63,6 @@
         }
     </script>
     
-    <!-- Grain Texture Removido - Paleta Pastel Limpa -->
-    
     <style>
         * {
             margin: 0;
@@ -77,74 +75,6 @@
             background: #2C3E50;
             color: #F5F2ED;
             overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Grain Texture Overlay Melhorado */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('grain.gif');
-            background-repeat: repeat;
-            background-size: 150px 150px; /* Reduzido para mais definição */
-            opacity: 0.08; /* Aumentado para mais visibilidade */
-            mix-blend-mode: multiply; /* Multiply para mais contraste */
-            pointer-events: none;
-            z-index: 1;
-            transition: opacity 0.3s ease;
-            animation: grainMove 20s linear infinite; /* Animação sutil */
-        }
-        
-        @keyframes grainMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 150px 150px; }
-        }
-        
-        /* Classe para desabilitar grain via JavaScript */
-        body.no-grain::before {
-            opacity: 0;
-        }
-        
-        /* Garante que o conteúdo fique acima do grain */
-        body > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Canvas e elementos especiais acima do grain */
-        canvas, .splash-screen, .scroll-progress {
-            z-index: 10 !important;
-        }
-        
-        /* Grain seletivo para elementos específicos */
-        .grain-enhanced {
-            position: relative;
-        }
-        
-        .grain-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('grain.gif');
-            background-repeat: repeat;
-            background-size: 100px 100px;
-            opacity: 0.12;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: 1;
-            border-radius: inherit;
-        }
-        
-        /* Override para usar CSS procedural quando ativado */
-        body.procedural-grain::before {
-            display: none; /* Esconde o GIF quando usar CSS */
         }
 
         /* Splash Screen Styles */
@@ -487,123 +417,99 @@
                 opacity: 0;
             }
         }
+
+        .about-metrics-panel {
+            background: linear-gradient(165deg, rgba(168, 213, 186, 0.18), rgba(44, 62, 80, 0.92));
+            border: 1px solid rgba(168, 213, 186, 0.35);
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(44, 62, 80, 0.45);
+        }
+
+        .about-metrics-panel::before,
+        .about-metrics-panel::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+
+        .about-metrics-panel::before {
+            width: 45%;
+            height: 45%;
+            top: -10%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(168, 213, 186, 0.35), transparent 70%);
+            animation: panelGlow 8s ease-in-out infinite alternate;
+        }
+
+        .about-metrics-panel::after {
+            width: 55%;
+            height: 55%;
+            bottom: -20%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(184, 185, 211, 0.45), transparent 70%);
+        }
+
+        @keyframes panelGlow {
+            0% {
+                transform: translateY(-10%);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(10%);
+                opacity: 0.8;
+            }
+        }
+
+        .about-metric-card {
+            position: relative;
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 213, 186, 0.25);
+            background: rgba(44, 62, 80, 0.55);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 20px 45px rgba(12, 20, 30, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+
+        .about-metric-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(168, 213, 186, 0.35), rgba(212, 165, 165, 0.2));
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .about-metric-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(168, 213, 186, 0.5);
+            background: rgba(44, 62, 80, 0.8);
+        }
+
+        .about-metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .about-metric-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 237, 0.65);
+        }
+
+        .about-metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 600;
+            color: #F5F2ED;
+            margin-top: 8px;
+        }
     </style>
-    
-    <!-- Grain Control Script -->
-    <script>
-        // Aplica configurações melhoradas do grain dinamicamente
-        document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-            
-            // Inicializa grain procedural se configurado
-            if (GRAIN_CONFIG.useCSS) {
-                initProceduralGrain();
-                body.classList.add('procedural-grain');
-            }
-            
-            // Aplica configurações do grain
-            if (!GRAIN_CONFIG.enabled) {
-                body.classList.add('no-grain');
-            }
-            
-            // Adiciona grain seletivo a cards específicos para mais impacto
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.classList.add('grain-enhanced');
-            });
-            
-            // Adiciona controle via teclado (Alt + G para toggle)
-            document.addEventListener('keydown', (e) => {
-                if (e.altKey && e.key === 'g') {
-                    body.classList.toggle('no-grain');
-                    const isEnabled = !body.classList.contains('no-grain');
-                    console.log(`Grain texture ${isEnabled ? 'enabled' : 'disabled'}`);
-                }
-                
-                // Controles de intensidade com setas
-                if (e.altKey && e.key === 'ArrowUp') {
-                    const currentOpacity = parseFloat(getComputedStyle(body).getPropertyValue('--grain-opacity') || 0.08);
-                    const newOpacity = Math.min(0.2, currentOpacity + 0.01);
-                    body.style.setProperty('--grain-opacity', newOpacity);
-                    document.getElementById('intensityDisplay').textContent = `${(newOpacity * 100).toFixed(0)}%`;
-                    console.log(`Grain intensity: ${(newOpacity * 100).toFixed(0)}%`);
-                }
-                if (e.altKey && e.key === 'ArrowDown') {
-                    const currentOpacity = parseFloat(getComputedStyle(body).getPropertyValue('--grain-opacity') || 0.08);
-                    const newOpacity = Math.max(0.01, currentOpacity - 0.01);
-                    body.style.setProperty('--grain-opacity', newOpacity);
-                    document.getElementById('intensityDisplay').textContent = `${(newOpacity * 100).toFixed(0)}%`;
-                    console.log(`Grain intensity: ${(newOpacity * 100).toFixed(0)}%`);
-                }
-                
-                // Toggle entre GIF e CSS procedural
-                if (e.altKey && e.key === 'c') {
-                    GRAIN_CONFIG.useCSS = !GRAIN_CONFIG.useCSS;
-                    location.reload(); // Recarrega para aplicar mudança
-                }
-            });
-            
-            // Adiciona controle visual melhorado
-            const grainControl = document.createElement('div');
-            grainControl.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: rgba(44, 62, 80, 0.95);
-                color: #F5F2ED;
-                padding: 15px 20px;
-                border-radius: 25px;
-                font-size: 12px;
-                z-index: 1000;
-                cursor: pointer;
-                border: 2px solid rgba(168, 213, 186, 0.4);
-                transition: all 0.3s ease;
-                backdrop-filter: blur(15px);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                min-width: 220px;
-            `;
-            grainControl.innerHTML = `
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <span style="display: flex; align-items: center; gap: 8px;">
-                            <span>🌾</span>
-                            <strong id="grainStatus">Grain: ${GRAIN_CONFIG.enabled ? 'ON' : 'OFF'}</strong>
-                        </span>
-                        <span style="opacity: 0.7; font-size: 10px;">Alt+G</span>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <span style="opacity: 0.7; font-size: 10px;">Alt+↑↓</span>
-                        <span id="intensityDisplay" style="opacity: 0.9; font-weight: bold;">${(GRAIN_CONFIG.opacity * 100).toFixed(0)}%</span>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: center; opacity: 0.6; font-size: 9px;">
-                        ${GRAIN_CONFIG.useCSS ? '🎨 CSS' : '🖼️ GIF'} (Alt+C)
-                    </div>
-                </div>
-            `;
-            
-            grainControl.addEventListener('click', () => {
-                body.classList.toggle('no-grain');
-                const isEnabled = !body.classList.contains('no-grain');
-                document.getElementById('grainStatus').textContent = `Grain: ${isEnabled ? 'ON' : 'OFF'}`;
-            });
-            
-            grainControl.addEventListener('mouseenter', () => {
-                grainControl.style.background = 'rgba(168, 213, 186, 0.95)';
-                grainControl.style.color = '#2C3E50';
-                grainControl.style.borderColor = 'rgba(44, 62, 80, 0.8)';
-                grainControl.style.transform = 'translateY(-2px)';
-            });
-            
-            grainControl.addEventListener('mouseleave', () => {
-                grainControl.style.background = 'rgba(44, 62, 80, 0.95)';
-                grainControl.style.color = '#F5F2ED';
-                grainControl.style.borderColor = 'rgba(168, 213, 186, 0.4)';
-                grainControl.style.transform = 'translateY(0)';
-            });
-            
-            document.body.appendChild(grainControl);
-        });
-    </script>
 </head>
 <body>
     <!-- Splash Screen -->
@@ -866,42 +772,45 @@
                     <p class="text-lg sm:text-xl opacity-80 mb-8 text-eterus-platinum">
                         Na Eterus, não criamos apenas websites ou aplicativos. Criamos experiências digitais que transcendem o ordinário e estabelecem novos padrões de excelência.
                     </p>
-                    <p class="text-base sm:text-lg opacity-60 mb-8 text-eterus-platinum">
+                    <p class="text-base sm:text-lg opacity-60 text-eterus-platinum">
                         Nossa equipe de especialistas combina criatividade inovadora com tecnologia de vanguarda para entregar soluções que não apenas atendem, mas superam as expectativas mais exigentes.
                     </p>
-                    
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="text-center">
-                            <div class="text-4xl font-display font-bold text-eterus-sage mb-2">500+</div>
-                            <div class="text-sm opacity-60 text-eterus-platinum">Projetos Entregues</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-display font-bold text-eterus-rose mb-2">98%</div>
-                            <div class="text-sm opacity-60 text-eterus-platinum">Satisfação</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-display font-bold text-eterus-lavender mb-2">5+</div>
-                            <div class="text-sm opacity-60 text-eterus-platinum">Anos de Excelência</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-display font-bold text-eterus-teal mb-2">24/7</div>
-                            <div class="text-sm opacity-60 text-eterus-platinum">Suporte Premium</div>
-                        </div>
+                    <div class="flex flex-wrap gap-4 mt-10">
+                        <span class="glass-effect px-5 py-2 rounded-full text-sm text-eterus-platinum opacity-80">Processos Proprietários</span>
+                        <span class="glass-effect px-5 py-2 rounded-full text-sm text-eterus-platinum opacity-80">Design Orientado a Dados</span>
+                        <span class="glass-effect px-5 py-2 rounded-full text-sm text-eterus-platinum opacity-80">Entrega Premium</span>
                     </div>
                 </div>
                 
                 <div class="section-reveal">
                     <div class="relative">
-                        <div class="w-full h-96 bg-gradient-to-br from-eterus-sage-20 to-eterus-charcoal-40 rounded-2xl overflow-hidden relative">
-                            <!-- Canvas para animação 3D -->
-                            <canvas id="aboutCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                        <div class="about-metrics-panel p-6 sm:p-8 lg:p-10">
+                            <div class="relative z-10 mb-10">
+                                <p class="text-xs tracking-[0.4em] uppercase text-eterus-sage opacity-70">Indicadores</p>
+                                <h3 class="text-2xl font-display font-semibold text-eterus-platinum mt-2">Impacto Mensurável</h3>
+                                <p class="text-sm text-eterus-platinum opacity-70 mt-2 max-w-xs">Métricas que comprovam nossa entrega consistente de excelência.</p>
+                            </div>
                             
-                            <!-- Elementos decorativos adicionais -->
-                            <div class="absolute top-4 right-4 w-8 h-8 bg-eterus-sage rounded-full glow-effect animate-pulse" style="animation-delay: 0.5s;"></div>
-                            <div class="absolute bottom-4 left-4 w-6 h-6 bg-eterus-rose-60 rounded-full glow-effect animate-pulse" style="animation-delay: 1s;"></div>
-                            <div class="absolute top-1/2 left-8 w-4 h-4 bg-eterus-lavender-40 rounded-full glow-effect animate-pulse" style="animation-delay: 1.5s;"></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative z-10">
+                                <div class="about-metric-card">
+                                    <div class="about-metric-label">Projetos Entregues</div>
+                                    <div class="about-metric-value" data-metric-target="500" data-metric-suffix="+">0</div>
+                                </div>
+                                <div class="about-metric-card">
+                                    <div class="about-metric-label">Satisfação</div>
+                                    <div class="about-metric-value" data-metric-target="98" data-metric-suffix="%">0</div>
+                                </div>
+                                <div class="about-metric-card">
+                                    <div class="about-metric-label">Anos de Excelência</div>
+                                    <div class="about-metric-value" data-metric-target="5" data-metric-suffix="+">0</div>
+                                </div>
+                                <div class="about-metric-card">
+                                    <div class="about-metric-label">Suporte Premium</div>
+                                    <div class="about-metric-value" data-metric-target="24" data-metric-suffix="/7">0</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-eterus-sage-20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-eterus-sage-20 rounded-full blur-2xl opacity-80"></div>
                     </div>
                 </div>
             </div>
