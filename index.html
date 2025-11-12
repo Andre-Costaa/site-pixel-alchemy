@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eterus - Agência de Tecnologia Premium | Branding & Soluções Exclusivas</title>
+    <meta name="description" content="Eterus - Agência de tecnologia especializada em branding premium e soluções digitais exclusivas para negócios de alto padrão.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Premium Hero Animation (NEW) -->
+    <script src="main-premium.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eterus-charcoal': '#2C3E50',
+                        'eterus-platinum': '#F5F2ED',
+                        'eterus-sage': '#A8D5BA',
+                        'eterus-sage-80': 'rgba(168, 213, 186, 0.8)',
+                        'eterus-sage-60': 'rgba(168, 213, 186, 0.6)',
+                        'eterus-sage-40': 'rgba(168, 213, 186, 0.4)',
+                        'eterus-sage-20': 'rgba(168, 213, 186, 0.2)',
+                        'eterus-rose': '#D4A5A5',
+                        'eterus-rose-80': 'rgba(212, 165, 165, 0.8)',
+                        'eterus-rose-60': 'rgba(212, 165, 165, 0.6)',
+                        'eterus-rose-40': 'rgba(212, 165, 165, 0.4)',
+                        'eterus-rose-20': 'rgba(212, 165, 165, 0.2)',
+                        'eterus-lavender': '#B8B9D3',
+                        'eterus-lavender-80': 'rgba(184, 185, 211, 0.8)',
+                        'eterus-lavender-60': 'rgba(184, 185, 211, 0.6)',
+                        'eterus-lavender-40': 'rgba(184, 185, 211, 0.4)',
+                        'eterus-lavender-20': 'rgba(184, 185, 211, 0.2)',
+                        'eterus-teal': '#7FA8A8',
+                        'eterus-peach': '#F0D8C8',
+                        'eterus-silver': '#C0C5CE',
+                        'eterus-charcoal-80': 'rgba(44, 62, 80, 0.8)',
+                        'eterus-charcoal-60': 'rgba(44, 62, 80, 0.6)',
+                        'eterus-charcoal-40': 'rgba(44, 62, 80, 0.4)',
+                        'eterus-charcoal-20': 'rgba(44, 62, 80, 0.2)'
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Grain Texture Removido - Paleta Pastel Limpa -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2C3E50;
+            color: #F5F2ED;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Grain Texture Overlay Melhorado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('grain.gif');
+            background-repeat: repeat;
+            background-size: 150px 150px; /* Reduzido para mais definição */
+            opacity: 0.08; /* Aumentado para mais visibilidade */
+            mix-blend-mode: multiply; /* Multiply para mais contraste */
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+            animation: grainMove 20s linear infinite; /* Animação sutil */
+        }
+        
+        @keyframes grainMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 150px 150px; }
+        }
+        
+        /* Classe para desabilitar grain via JavaScript */
+        body.no-grain::before {
+            opacity: 0;
+        }
+        
+        /* Garante que o conteúdo fique acima do grain */
+        body > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Canvas e elementos especiais acima do grain */
+        canvas, .splash-screen, .scroll-progress {
+            z-index: 10 !important;
+        }
+        
+        /* Grain seletivo para elementos específicos */
+        .grain-enhanced {
+            position: relative;
+        }
+        
+        .grain-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('grain.gif');
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            opacity: 0.12;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: inherit;
+        }
+        
+        /* Override para usar CSS procedural quando ativado */
+        body.procedural-grain::before {
+            display: none; /* Esconde o GIF quando usar CSS */
+        }
+
+        /* Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2C3E50;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #F5F2ED;
+            letter-spacing: 0.2em;
+            opacity: 0;
+            animation: logoReveal 1.5s ease forwards;
+            position: relative;
+        }
+
+        @keyframes logoReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+                filter: blur(10px);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .splash-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #A8D5BA, transparent);
+            animation: lineExpand 1s ease 0.5s forwards;
+        }
+
+        @keyframes lineExpand {
+            to {
+                width: 120%;
+            }
+        }
+
+        .splash-loader {
+            margin-top: 60px;
+            width: 300px;
+            opacity: 0;
+            animation: loaderReveal 0.5s ease 1s forwards;
+        }
+
+        @keyframes loaderReveal {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .loader-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(168, 213, 186, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #A8D5BA, #B8B9D3);
+            width: 0;
+            border-radius: 10px;
+            position: relative;
+            animation: loadProgress 2.5s ease forwards;
+            box-shadow: 0 0 20px rgba(168, 213, 186, 0.6);
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0; }
+            20% { width: 15%; }
+            40% { width: 40%; }
+            60% { width: 70%; }
+            80% { width: 90%; }
+            100% { width: 100%; }
+        }
+
+        .loader-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+            animation: shimmer 1s ease infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                transform: translateX(300px);
+            }
+        }
+
+        .loader-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #F5F2ED;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .loader-percentage {
+            font-weight: 600;
+            color: #A8D5BA;
+            margin-left: 8px;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #A8D5BA, #B8B9D3);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(168, 213, 186, 0.5);
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-btn {
+            position: relative;
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        .magnetic-btn-inner {
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .magnetic-btn:active {
+            transform: scale(0.96) !important;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(168, 213, 186, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Button Hover Glow */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(184, 185, 211, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-glow:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(168, 213, 186, 0.2);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 8px rgba(168, 213, 186, 0.2);
+        }
+        
+        .glass-effect {
+            background: rgba(44, 62, 80, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 213, 186, 0.15);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(45deg, #2C3E50, #A8D5BA);
+            padding: 1px;
+        }
+        
+        .gradient-border > div {
+            background: #2C3E50;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 15px rgba(168, 213, 186, 0.2); }
+            to { box-shadow: 0 0 25px rgba(168, 213, 186, 0.4); }
+        }
+        
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(44, 62, 80, 0.8);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 213, 186, 0.15);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(168, 213, 186, 0.15);
+            border-color: rgba(168, 213, 186, 0.3);
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #A8D5BA, transparent);
+            transform: translateY(-50%);
+        }
+        
+        .process-step:last-child::before {
+            display: none;
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #A8D5BA;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-particle 15s linear infinite;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+    
+    <!-- Grain Control Script -->
+    <script>
+        // Aplica configurações melhoradas do grain dinamicamente
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            
+            // Inicializa grain procedural se configurado
+            if (GRAIN_CONFIG.useCSS) {
+                initProceduralGrain();
+                body.classList.add('procedural-grain');
+            }
+            
+            // Aplica configurações do grain
+            if (!GRAIN_CONFIG.enabled) {
+                body.classList.add('no-grain');
+            }
+            
+            // Adiciona grain seletivo a cards específicos para mais impacto
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.classList.add('grain-enhanced');
+            });
+            
+            // Adiciona controle via teclado (Alt + G para toggle)
+            document.addEventListener('keydown', (e) => {
+                if (e.altKey && e.key === 'g') {
+                    body.classList.toggle('no-grain');
+                    const isEnabled = !body.classList.contains('no-grain');
+                    console.log(`Grain texture ${isEnabled ? 'enabled' : 'disabled'}`);
+                }
+                
+                // Controles de intensidade com setas
+                if (e.altKey && e.key === 'ArrowUp') {
+                    const currentOpacity = parseFloat(getComputedStyle(body).getPropertyValue('--grain-opacity') || 0.08);
+                    const newOpacity = Math.min(0.2, currentOpacity + 0.01);
+                    body.style.setProperty('--grain-opacity', newOpacity);
+                    document.getElementById('intensityDisplay').textContent = `${(newOpacity * 100).toFixed(0)}%`;
+                    console.log(`Grain intensity: ${(newOpacity * 100).toFixed(0)}%`);
+                }
+                if (e.altKey && e.key === 'ArrowDown') {
+                    const currentOpacity = parseFloat(getComputedStyle(body).getPropertyValue('--grain-opacity') || 0.08);
+                    const newOpacity = Math.max(0.01, currentOpacity - 0.01);
+                    body.style.setProperty('--grain-opacity', newOpacity);
+                    document.getElementById('intensityDisplay').textContent = `${(newOpacity * 100).toFixed(0)}%`;
+                    console.log(`Grain intensity: ${(newOpacity * 100).toFixed(0)}%`);
+                }
+                
+                // Toggle entre GIF e CSS procedural
+                if (e.altKey && e.key === 'c') {
+                    GRAIN_CONFIG.useCSS = !GRAIN_CONFIG.useCSS;
+                    location.reload(); // Recarrega para aplicar mudança
+                }
+            });
+            
+            // Adiciona controle visual melhorado
+            const grainControl = document.createElement('div');
+            grainControl.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(44, 62, 80, 0.95);
+                color: #F5F2ED;
+                padding: 15px 20px;
+                border-radius: 25px;
+                font-size: 12px;
+                z-index: 1000;
+                cursor: pointer;
+                border: 2px solid rgba(168, 213, 186, 0.4);
+                transition: all 0.3s ease;
+                backdrop-filter: blur(15px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                min-width: 220px;
+            `;
+            grainControl.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span>🌾</span>
+                            <strong id="grainStatus">Grain: ${GRAIN_CONFIG.enabled ? 'ON' : 'OFF'}</strong>
+                        </span>
+                        <span style="opacity: 0.7; font-size: 10px;">Alt+G</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="opacity: 0.7; font-size: 10px;">Alt+↑↓</span>
+                        <span id="intensityDisplay" style="opacity: 0.9; font-weight: bold;">${(GRAIN_CONFIG.opacity * 100).toFixed(0)}%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; opacity: 0.6; font-size: 9px;">
+                        ${GRAIN_CONFIG.useCSS ? '🎨 CSS' : '🖼️ GIF'} (Alt+C)
+                    </div>
+                </div>
+            `;
+            
+            grainControl.addEventListener('click', () => {
+                body.classList.toggle('no-grain');
+                const isEnabled = !body.classList.contains('no-grain');
+                document.getElementById('grainStatus').textContent = `Grain: ${isEnabled ? 'ON' : 'OFF'}`;
+            });
+            
+            grainControl.addEventListener('mouseenter', () => {
+                grainControl.style.background = 'rgba(168, 213, 186, 0.95)';
+                grainControl.style.color = '#2C3E50';
+                grainControl.style.borderColor = 'rgba(44, 62, 80, 0.8)';
+                grainControl.style.transform = 'translateY(-2px)';
+            });
+            
+            grainControl.addEventListener('mouseleave', () => {
+                grainControl.style.background = 'rgba(44, 62, 80, 0.95)';
+                grainControl.style.color = '#F5F2ED';
+                grainControl.style.borderColor = 'rgba(168, 213, 186, 0.4)';
+                grainControl.style.transform = 'translateY(0)';
+            });
+            
+            document.body.appendChild(grainControl);
+        });
+    </script>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo" id="splashLogo">ETERUS</div>
+        <div class="splash-loader">
+            <div class="loader-bar">
+                <div class="loader-progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader-text">
+                Preparando experiência<span class="loader-percentage" id="loaderPercentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-display font-bold text-2xl text-glow">
+                    ETERUS
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-eterus-sage transition-colors duration-300">Início</a>
+                    <a href="#services" class="hover:text-eterus-sage transition-colors duration-300">Serviços</a>
+                    <a href="#process" class="hover:text-eterus-sage transition-colors duration-300">Processo</a>
+                    <a href="#about" class="hover:text-eterus-sage transition-colors duration-300">Sobre</a>
+                    <a href="#contact" class="hover:text-eterus-sage transition-colors duration-300">Contato</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="hidden md:block glass-effect px-6 py-2 rounded-full glow-effect animate-pulse-glow hover:bg-eterus-sage hover:text-eterus-charcoal transition-all duration-300 magnetic-btn btn-glow">
+                        <span class="font-medium magnetic-btn-inner">Iniciar Projeto</span>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden text-eterus-sage">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="hover:text-eterus-sage transition-colors duration-300">Início</a>
+                    <a href="#services" class="hover:text-eterus-sage transition-colors duration-300">Serviços</a>
+                    <a href="#process" class="hover:text-eterus-sage transition-colors duration-300">Processo</a>
+                    <a href="#about" class="hover:text-eterus-sage transition-colors duration-300">Sobre</a>
+                    <a href="#contact" class="hover:text-eterus-sage transition-colors duration-300">Contato</a>
+                    <button class="glass-effect px-6 py-2 rounded-full glow-effect hover:bg-eterus-sage hover:text-eterus-charcoal transition-all duration-300 text-center">
+                        <span class="font-medium">Iniciar Projeto</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <canvas class="hero-canvas" id="heroCanvas" data-cursor-text="Clique para explodir"></canvas>
+
+        <div class="relative z-10 text-center max-w-6xl mx-auto px-6">
+            <div class="animate-float">
+                <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-6 text-glow text-eterus-platinum">
+                    ETERUS
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 font-light opacity-80 max-w-3xl mx-auto text-eterus-platinum">
+                    Transformamos visões em realidades digitais extraordinárias.
+                    Branding premium e tecnologia de ponta para negócios que exigem excelência.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12">
+                <button class="gradient-border rounded-full overflow-hidden group magnetic-btn btn-glow">
+                    <div class="px-8 py-4 rounded-full transition-all duration-300 group-hover:bg-eterus-sage group-hover:text-eterus-charcoal magnetic-btn-inner">
+                        <span class="font-semibold text-lg">Explorar Soluções</span>
+                    </div>
+                </button>
+
+                <button class="glass-effect px-8 py-4 rounded-full hover:bg-eterus-sage hover:text-eterus-charcoal transition-all duration-300 magnetic-btn btn-glow">
+                    <span class="font-semibold text-lg magnetic-btn-inner">Ver Portfólio</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Interactive Hint -->
+        <div class="absolute top-8 right-8 z-20 hidden md:flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <div class="w-10 h-10 border-2 border-eterus-sage rounded-full flex items-center justify-center animate-pulse">
+                <svg class="w-5 h-5 text-eterus-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                </svg>
+            </div>
+            <span class="text-sm font-medium text-eterus-sage">Clique para transformar • Arraste para rotacionar</span>
+        </div>
+
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-32 relative">
+        <div class="floating-particles" id="serviceParticles"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 section-reveal">
+                <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-glow text-eterus-platinum">
+                    Serviços Exclusivos
+                </h2>
+                <p class="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-eterus-platinum">
+                    Cada projeto é uma obra-prima única, desenvolvida com precisão técnica e visão artística
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-sage rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">Identidade Visual</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Branding completo que captura a essência única do seu negócio, criando uma identidade memorável e impactante.</p>
+                    <div class="flex items-center text-eterus-sage">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-rose rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">Web Design Premium</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Sites imersivos com tecnologia de ponta, animações fluidas e experiências que encantam e convertem.</p>
+                    <div class="flex items-center text-eterus-rose">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-lavender rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">Aplicativos Mobile</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Apps nativos e progressivos com design intuitivo e performance excepcional para iOS e Android.</p>
+                    <div class="flex items-center text-eterus-lavender">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-teal rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">E-commerce Elite</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Lojas virtuais sofisticadas com conversão otimizada e experiência de compra incomparável.</p>
+                    <div class="flex items-center text-eterus-teal">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-peach rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">Consultoria Digital</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Estratégias personalizadas para transformação digital e crescimento sustentável no mercado.</p>
+                    <div class="flex items-center text-eterus-peach">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="service-card glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="w-16 h-16 bg-eterus-silver rounded-lg flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-eterus-charcoal rounded"></div>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-4 text-eterus-platinum">Manutenção Premium</h3>
+                    <p class="opacity-80 mb-6 text-eterus-platinum">Suporte contínuo e otimização constante para garantir performance máxima e segurança absoluta.</p>
+                    <div class="flex items-center text-eterus-silver">
+                        <span class="text-sm font-medium">Saiba Mais</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section id="process" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-glow text-eterus-platinum">
+                    Nosso Processo
+                </h2>
+                <p class="text-lg sm:text-xl opacity-80 max-w-3xl mx-auto text-eterus-platinum">
+                    Metodologia refinada que garante resultados excepcionais em cada etapa do projeto
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-step text-center section-reveal">
+                    <div class="w-24 h-24 bg-eterus-sage rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
+                        <span class="font-display font-bold text-2xl text-eterus-charcoal">01</span>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-eterus-platinum">Descoberta</h3>
+                    <p class="opacity-80 text-eterus-platinum">Análise profunda do negócio, objetivos e público-alvo para criar a estratégia perfeita.</p>
+                </div>
+                
+                <div class="process-step text-center section-reveal">
+                    <div class="w-24 h-24 bg-eterus-rose rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
+                        <span class="font-display font-bold text-2xl text-eterus-charcoal">02</span>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-eterus-platinum">Estratégia</h3>
+                    <p class="opacity-80 text-eterus-platinum">Desenvolvimento do conceito criativo e arquitetura da solução com foco em resultados.</p>
+                </div>
+                
+                <div class="process-step text-center section-reveal">
+                    <div class="w-24 h-24 bg-eterus-lavender rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
+                        <span class="font-display font-bold text-2xl text-eterus-charcoal">03</span>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-eterus-platinum">Criação</h3>
+                    <p class="opacity-80 text-eterus-platinum">Execução meticulosa com design excepcional, tecnologia de ponta e atenção aos detalhes.</p>
+                </div>
+                
+                <div class="process-step text-center section-reveal">
+                    <div class="w-24 h-24 bg-eterus-teal rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
+                        <span class="font-display font-bold text-2xl text-eterus-charcoal">04</span>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-4 text-eterus-platinum">Lançamento</h3>
+                    <p class="opacity-80 text-eterus-platinum">Implantação cuidadosa com monitoramento contínuo e otimização para máximo desempenho.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="section-reveal">
+                    <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-8 text-glow text-eterus-platinum">
+                        Excelência em Cada Pixel
+                    </h2>
+                    <p class="text-lg sm:text-xl opacity-80 mb-8 text-eterus-platinum">
+                        Na Eterus, não criamos apenas websites ou aplicativos. Criamos experiências digitais que transcendem o ordinário e estabelecem novos padrões de excelência.
+                    </p>
+                    <p class="text-base sm:text-lg opacity-60 mb-8 text-eterus-platinum">
+                        Nossa equipe de especialistas combina criatividade inovadora com tecnologia de vanguarda para entregar soluções que não apenas atendem, mas superam as expectativas mais exigentes.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-display font-bold text-eterus-sage mb-2">500+</div>
+                            <div class="text-sm opacity-60 text-eterus-platinum">Projetos Entregues</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-display font-bold text-eterus-rose mb-2">98%</div>
+                            <div class="text-sm opacity-60 text-eterus-platinum">Satisfação</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-display font-bold text-eterus-lavender mb-2">5+</div>
+                            <div class="text-sm opacity-60 text-eterus-platinum">Anos de Excelência</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-display font-bold text-eterus-teal mb-2">24/7</div>
+                            <div class="text-sm opacity-60 text-eterus-platinum">Suporte Premium</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-reveal">
+                    <div class="relative">
+                        <div class="w-full h-96 bg-gradient-to-br from-eterus-sage-20 to-eterus-charcoal-40 rounded-2xl overflow-hidden relative">
+                            <!-- Canvas para animação 3D -->
+                            <canvas id="aboutCanvas" class="absolute inset-0 w-full h-full"></canvas>
+                            
+                            <!-- Elementos decorativos adicionais -->
+                            <div class="absolute top-4 right-4 w-8 h-8 bg-eterus-sage rounded-full glow-effect animate-pulse" style="animation-delay: 0.5s;"></div>
+                            <div class="absolute bottom-4 left-4 w-6 h-6 bg-eterus-rose-60 rounded-full glow-effect animate-pulse" style="animation-delay: 1s;"></div>
+                            <div class="absolute top-1/2 left-8 w-4 h-4 bg-eterus-lavender-40 rounded-full glow-effect animate-pulse" style="animation-delay: 1.5s;"></div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-eterus-sage-20 rounded-full blur-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-glow text-eterus-platinum">
+                    Inicie seu Projeto
+                </h2>
+                <p class="text-lg sm:text-xl opacity-80 text-eterus-platinum">
+                    Pronto para transformar sua visão em realidade? Vamos criar algo extraordinário juntos.
+                </p>
+            </div>
+            
+            <div class="glass-effect rounded-3xl p-12 section-reveal">
+                <form class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-eterus-platinum">Nome Completo</label>
+                            <input type="text" class="w-full bg-eterus-charcoal-40 border border-eterus-sage-20 rounded-lg px-4 py-3 focus:border-eterus-sage focus:outline-none transition-colors text-eterus-platinum">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-eterus-platinum">Email</label>
+                            <input type="email" class="w-full bg-eterus-charcoal-40 border border-eterus-sage-20 rounded-lg px-4 py-3 focus:border-eterus-sage focus:outline-none transition-colors text-eterus-platinum">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-eterus-platinum">Empresa</label>
+                        <input type="text" class="w-full bg-eterus-charcoal-40 border border-eterus-sage-20 rounded-lg px-4 py-3 focus:border-eterus-sage focus:outline-none transition-colors text-eterus-platinum">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-eterus-platinum">Tipo de Projeto</label>
+                        <select class="w-full bg-eterus-charcoal-40 border border-eterus-sage-20 rounded-lg px-4 py-3 focus:border-eterus-sage focus:outline-none transition-colors text-eterus-platinum">
+                            <option>Identidade Visual</option>
+                            <option>Web Design Premium</option>
+                            <option>Aplicativo Mobile</option>
+                            <option>E-commerce Elite</option>
+                            <option>Consultoria Digital</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-eterus-platinum">Descrição do Projeto</label>
+                        <textarea rows="6" class="w-full bg-eterus-charcoal-40 border border-eterus-sage-20 rounded-lg px-4 py-3 focus:border-eterus-sage focus:outline-none transition-colors resize-none text-eterus-platinum"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="gradient-border rounded-full overflow-hidden group">
+                            <div class="px-12 py-4 rounded-full transition-all duration-300 group-hover:bg-eterus-sage group-hover:text-eterus-charcoal">
+                                <span class="font-semibold text-lg">Enviar Proposta</span>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 border-t border-eterus-sage-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="font-display font-bold text-3xl mb-8 text-glow text-eterus-platinum">
+                ETERUS
+            </div>
+            <p class="text-sm opacity-60 mb-8 text-eterus-platinum">
+                © 2024 Eterus. Todos os direitos reservados.<br>
+                Criando o futuro digital, um pixel perfeito por vez.
+            </p>
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="opacity-60 hover:opacity-100 hover:text-eterus-sage transition-all duration-300">LinkedIn</a>
+                <a href="#" class="opacity-60 hover:opacity-100 hover:text-eterus-rose transition-all duration-300">Behance</a>
+                <a href="#" class="opacity-60 hover:opacity-100 hover:text-eterus-lavender transition-all duration-300">Dribbble</a>
+                <a href="#" class="opacity-60 hover:opacity-100 hover:text-eterus-teal transition-all duration-300">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- OLD SYSTEM (Commented out - keeping for reference) -->
+    <!-- <script src="main.js"></script> -->
+
+    <!-- NEW: Premium system loaded in <head> with defer -->
+</body>
+</html>
