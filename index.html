@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eterus - Agência de Tecnologia Premium | Branding & Soluções Exclusivas</title>
-    <meta name="description" content="Eterus - Agência de tecnologia especializada em branding premium e soluções digitais exclusivas para negócios de alto padrão.">
+    <title>Eterus | Agência de Tecnologia Premium - Branding & Soluções Digitais</title>
+    <meta name="description" content="Transformamos sua visão em realidade digital. Especialistas em branding premium, web design e soluções tecnológicas para negócios de alto padrão.">
+    <meta name="keywords" content="agência de tecnologia, branding premium, web design, desenvolvimento de apps, e-commerce, consultoria digital">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eterus - Agência de Tecnologia Premium">
+    <meta property="og:description" content="Transformamos visões em realidades digitais extraordinárias com branding premium e tecnologia de ponta.">
+    <meta property="og:image" content="https://eterus.com.br/images/og-image.jpg">
+    <meta property="og:url" content="https://eterus.com.br">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eterus - Agência de Tecnologia Premium">
+    <meta name="twitter:description" content="Transformamos visões em realidades digitais extraordinárias.">
+    <meta name="twitter:image" content="https://eterus.com.br/images/twitter-card.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://eterus.com.br">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Eterus - Agência de Tecnologia Premium",
+        "description": "Agência especializada em branding premium e soluções digitais exclusivas",
+        "url": "https://eterus.com.br",
+        "telephone": "+55-11-9999-9999",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+        },
+        "sameAs": [
+            "https://instagram.com/eterus",
+            "https://linkedin.com/company/eterus"
+        ]
+    }
+    </script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,11 +109,91 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* Design System Variables */
+            --primary-50: #F0FDF4;
+            --primary-100: #DCFCE7;
+            --primary-200: #BBF7D0;
+            --primary-300: #86EFAC;
+            --primary-400: #4ADE80;
+            --primary-500: #22C55E;
+            --primary-600: #16A34A;
+            --primary-700: #15803D;
+            --primary-800: #166534;
+            --primary-900: #14532D;
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+
+            /* Border radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+            --transition-slow: 350ms ease;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #2C3E50;
             color: #F5F2ED;
             overflow-x: hidden;
+        }
+
+        /* Accessibility - Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Skip Links */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #A8D5BA;
+            color: #2C3E50;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10001;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* Splash Screen Styles */
@@ -512,6 +631,13 @@
     </style>
 </head>
 <body>
+    <!-- Skip Links for Accessibility -->
+    <div class="skip-links sr-only">
+        <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+        <a href="#navbar" class="skip-link">Pular para navegação</a>
+        <a href="#contact" class="skip-link">Pular para contato</a>
+    </div>
+
     <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <div class="splash-logo" id="splashLogo">ETERUS</div>
@@ -573,18 +699,23 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <canvas class="hero-canvas" id="heroCanvas" data-cursor-text="Clique para explodir"></canvas>
 
-        <div class="relative z-10 text-center max-w-6xl mx-auto px-6 flex items-center justify-center min-h-screen">
+        <div class="relative z-10 text-center max-w-5xl mx-auto px-6 flex items-center justify-center min-h-screen">
             <div class="animate-float">
-                <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-8xl lg:text-9xl mb-6 text-glow text-eterus-platinum">
-                    ETERUS
+                <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 text-glow text-eterus-platinum leading-tight">
+                    <span class="block">Desenvolvimento Web</span>
+                    <span class="block text-eterus-sage">que Converte</span>
                 </h1>
-                <p class="text-lg sm:text-xl md:text-2xl font-light opacity-80 max-w-3xl mx-auto text-eterus-platinum">
-                    Transformamos visões em realidades digitais extraordinárias.
-                    Branding premium e tecnologia de ponta para negócios que exigem excelência.
+                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light opacity-90 max-w-4xl mx-auto text-eterus-platinum mb-12 leading-relaxed px-4">
+                    Criamos sites personalizados para negócios que querem crescer sua autoridade no mundo digital.
                 </p>
+
+                <!-- CTA Principal -->
+                <a href="#contact" class="glass-effect px-8 py-3 rounded-full glow-effect animate-pulse-glow hover:bg-eterus-sage hover:text-eterus-charcoal transition-all duration-300 font-semibold text-base inline-block">
+                    Quero Meu Site
+                </a>
             </div>
         </div>
-        
+
         <!-- Interactive Hint -->
         <div class="absolute top-8 right-8 z-20 hidden md:flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
             <div class="w-10 h-10 border-2 border-eterus-sage rounded-full flex items-center justify-center animate-pulse">
@@ -802,7 +933,161 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-glow text-eterus-platinum">
+                    O Que Nossos Clientes Dizem
+                </h2>
+                <p class="text-lg sm:text-xl opacity-80 text-eterus-platinum">
+                    Depoimentos reais de parceiros satisfeitos
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <blockquote class="glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-eterus-sage text-2xl">★★★★★</span>
+                    </div>
+                    <p class="text-eterus-platinum opacity-90 mb-6 italic">
+                        "A Eterus transformou completamente nossa identidade digital. O resultado superou todas as expectativas. A equipe é extremamente profissional e criativa."
+                    </p>
+                    <footer class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-eterus-sage flex items-center justify-center font-display font-bold text-eterus-charcoal">
+                            JS
+                        </div>
+                        <div>
+                            <cite class="font-semibold text-eterus-platinum not-italic">João Silva</cite>
+                            <p class="text-sm opacity-70">CEO, TechCorp</p>
+                        </div>
+                    </footer>
+                </blockquote>
+
+                <!-- Testimonial 2 -->
+                <blockquote class="glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-eterus-rose text-2xl">★★★★★</span>
+                    </div>
+                    <p class="text-eterus-platinum opacity-90 mb-6 italic">
+                        "Trabalhar com a Eterus foi uma experiência incrível. Eles entenderam nossa visão e criaram algo além do que imaginávamos. Altamente recomendados!"
+                    </p>
+                    <footer class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-eterus-rose flex items-center justify-center font-display font-bold text-eterus-charcoal">
+                            MA
+                        </div>
+                        <div>
+                            <cite class="font-semibold text-eterus-platinum not-italic">Maria Oliveira</cite>
+                            <p class="text-sm opacity-70">Fundadora, Studio Creative</p>
+                        </div>
+                    </footer>
+                </blockquote>
+
+                <!-- Testimonial 3 -->
+                <blockquote class="glass-effect p-8 rounded-2xl section-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-eterus-lavender text-2xl">★★★★★</span>
+                    </div>
+                    <p class="text-eterus-platinum opacity-90 mb-6 italic">
+                        "Excepcional! O site que criaram para nós não só é lindo, mas também performático e fácil de gerenciar. Nosso tráfego aumentou 150% em 3 meses."
+                    </p>
+                    <footer class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-eterus-lavender flex items-center justify-center font-display font-bold text-eterus-charcoal">
+                            PC
+                        </div>
+                        <div>
+                            <cite class="font-semibold text-eterus-platinum not-italic">Pedro Costa</cite>
+                            <p class="text-sm opacity-70">Diretor, E-commerce Plus</p>
+                        </div>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h2 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl mb-6 text-glow text-eterus-platinum">
+                    Perguntas Frequentes
+                </h2>
+                <p class="text-lg sm:text-xl opacity-80 text-eterus-platinum">
+                    Tudo que você precisa saber sobre nossos serviços
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <details class="glass-effect rounded-2xl overflow-hidden section-reveal group">
+                    <summary class="cursor-pointer p-6 font-display font-semibold text-lg text-eterus-platinum hover:bg-eterus-charcoal-40 transition-colors flex justify-between items-center">
+                        Qual o prazo médio de entrega de um projeto?
+                        <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-eterus-platinum opacity-80">
+                        <p>Os prazos variam conforme a complexidade do projeto. Um site institucional padrão leva de 4-6 semanas, enquanto projetos complexos de e-commerce podem levar 8-12 semanas. Sempre trabalhamos com cronogramas detalhados e transparentes.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="glass-effect rounded-2xl overflow-hidden section-reveal group">
+                    <summary class="cursor-pointer p-6 font-display font-semibold text-lg text-eterus-platinum hover:bg-eterus-charcoal-40 transition-colors flex justify-between items-center">
+                        Vocês oferecem suporte após o lançamento?
+                        <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-eterus-platinum opacity-80">
+                        <p>Sim! Oferecemos pacotes de manutenção premium com suporte 24/7, atualizações regulares, monitoramento de performance e otimizações contínuas. Nosso compromisso é garantir que seu projeto continue excepcional.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="glass-effect rounded-2xl overflow-hidden section-reveal group">
+                    <summary class="cursor-pointer p-6 font-display font-semibold text-lg text-eterus-platinum hover:bg-eterus-charcoal-40 transition-colors flex justify-between items-center">
+                        Como funciona o processo de desenvolvimento?
+                        <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-eterus-platinum opacity-80">
+                        <p>Seguimos um processo estruturado em 4 etapas: Descoberta (análise e pesquisa), Estratégia (conceito e planejamento), Criação (design e desenvolvimento) e Lançamento (implementação e otimização). Você participa ativamente em todas as fases.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="glass-effect rounded-2xl overflow-hidden section-reveal group">
+                    <summary class="cursor-pointer p-6 font-display font-semibold text-lg text-eterus-platinum hover:bg-eterus-charcoal-40 transition-colors flex justify-between items-center">
+                        Qual é o investimento necessário?
+                        <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-eterus-platinum opacity-80">
+                        <p>Cada projeto é único e personalizado. Os valores variam de acordo com o escopo, complexidade e funcionalidades desejadas. Entre em contato para receber uma proposta detalhada e personalizada para seu projeto.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 5 -->
+                <details class="glass-effect rounded-2xl overflow-hidden section-reveal group">
+                    <summary class="cursor-pointer p-6 font-display font-semibold text-lg text-eterus-platinum hover:bg-eterus-charcoal-40 transition-colors flex justify-between items-center">
+                        Trabalham com empresas de qualquer porte?
+                        <svg class="w-6 h-6 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-6 text-eterus-platinum opacity-80">
+                        <p>Sim! Atendemos desde startups inovadoras até grandes corporações. O que importa é o compromisso com a excelência e a busca por soluções digitais de alto padrão. Cada cliente recebe atenção premium, independente do porte.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-32 relative">
         <div class="max-w-4xl mx-auto px-6">
@@ -879,5 +1164,8 @@
     <!-- <script src="main.js"></script> -->
 
     <!-- NEW: Premium system loaded in <head> with defer -->
+
+    <!-- Optimizations & UX Enhancements -->
+    <script src="optimizations.js" defer></script>
 </body>
 </html>
