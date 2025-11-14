@@ -357,11 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
     KeyboardNavigation.init();
     PerformanceMonitor.init();
 
-    console.log('✨ Eterus Optimizations loaded successfully');
+    console.log('✨ Pixel Alchemy Optimizations loaded successfully');
 });
 
 // Expose modules globally if needed
-window.EterusOptimizations = {
+window.PixelAlchemyOptimizations = {
     MobileOptimizer,
     PortfolioFilter,
     ScrollReveal,

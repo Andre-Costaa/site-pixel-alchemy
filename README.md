@@ -1,4 +1,4 @@
-# ETERUS - Landing Page Premium
+# PIXEL ALCHEMY - Landing Page Premium
 
 Uma landing page sofisticada para agência de tecnologia com design dual-tone e animações avançadas.
 
@@ -195,4 +195,4 @@ Para suporte técnico ou dúvidas sobre implementação:
 
 ---
 
-**Criado com ❤️ por Eterus - Transformando visões em realidades digitais extraordinárias**
+**Criado com ❤️ por Pixel Alchemy - Transformando visões em realidades digitais extraordinárias**

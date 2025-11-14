@@ -1,4 +1,4 @@
-// ETERUS - Premium Hero Animation
+// PIXEL ALCHEMY - Premium Hero Animation
 // Refatoração completa: Elegância, Interatividade e Performance
 
 // Splash Screen Manager
@@ -7,7 +7,7 @@ class SplashScreenManager {
         this.splashScreen = document.getElementById('splashScreen');
         this.loaderPercentage = document.getElementById('loaderPercentage');
         this.loaderProgress = document.getElementById('loaderProgress');
-        this.hasVisited = sessionStorage.getItem('eterusVisited');
+        this.hasVisited = sessionStorage.getItem('pixelAlchemyVisited');
 
         this.init();
     }
@@ -38,7 +38,7 @@ class SplashScreenManager {
     hideSplash(delay) {
         setTimeout(() => {
             this.splashScreen.classList.add('hidden');
-            sessionStorage.setItem('eterusVisited', 'true');
+            sessionStorage.setItem('pixelAlchemyVisited', 'true');
 
             // Remove from DOM after transition
             setTimeout(() => {

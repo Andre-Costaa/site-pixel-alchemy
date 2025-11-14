@@ -1,4 +1,4 @@
-# 🚀 ETERUS - Roadmap de Implementação
+# 🚀 PIXEL ALCHEMY - Roadmap de Implementação
 
 ## Status Atual: SPRINT 2 em Progresso
 
@@ -888,8 +888,8 @@ function updateHero3DTheme(theme) {
 #### A. Manifest.json
 ```json
 {
-  "name": "Eterus - Agência de Tecnologia Premium",
-  "short_name": "Eterus",
+  "name": "Pixel Alchemy - Agência de Tecnologia Premium",
+  "short_name": "Pixel Alchemy",
   "description": "Branding e tecnologia de ponta",
   "start_url": "/",
   "display": "standalone",

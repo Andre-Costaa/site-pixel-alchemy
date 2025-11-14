@@ -24,8 +24,8 @@
 ```json
 {
   "@type": "ProfessionalService",
-  "name": "Eterus - Agência de Tecnologia Premium",
-  "url": "https://eterus.com.br",
+  "name": "Pixel Alchemy - Agência de Tecnologia Premium",
+  "url": "https://pixelalchemy.com.br",
   "telephone": "+55-11-9999-9999",
   "address": {...}
 }

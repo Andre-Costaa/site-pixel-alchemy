@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**ETERUS** - A premium landing page for a technology agency featuring pastel color palette and advanced animations with Three.js, GSAP, and WebGL effects. This is a vanilla JavaScript project without build tools or package management.
+**PIXEL ALCHEMY** - A premium landing page for a technology agency featuring pastel color palette and advanced animations with Three.js, GSAP, and WebGL effects. This is a vanilla JavaScript project without build tools or package management.
 
 ## Technology Stack
 

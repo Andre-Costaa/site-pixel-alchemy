@@ -1,4 +1,4 @@
-// Eterus - Main JavaScript File
+// Pixel Alchemy - Main JavaScript File
 // Advanced animations and interactions for premium tech agency website
 
 const FEATURE_FLAGS = {
@@ -11,7 +11,7 @@ class SplashScreen {
     constructor() {
         this.splashScreen = document.getElementById('splashScreen');
         this.loaderPercentage = document.getElementById('loaderPercentage');
-        this.hasVisited = sessionStorage.getItem('eterusVisited');
+        this.hasVisited = sessionStorage.getItem('pixelAlchemyVisited');
 
         this.init();
     }
@@ -39,7 +39,7 @@ class SplashScreen {
     hideSplash() {
         setTimeout(() => {
             this.splashScreen.classList.add('hidden');
-            sessionStorage.setItem('eterusVisited', 'true');
+            sessionStorage.setItem('pixelAlchemyVisited', 'true');
 
             // Remove from DOM after transition
             setTimeout(() => {
@@ -210,7 +210,7 @@ class EterusAnimations {
         this.hero3D.stateDurations = [7000, 6000, 7000]; // milliseconds per state
         this.hero3D.lastTimestamp = performance.now();
 
-        // Crystal geometry - unique ETERUS signature shape
+        // Crystal geometry - unique PIXEL ALCHEMY signature shape
         const crystalGeometry = new THREE.IcosahedronGeometry(8, 2);
         this.hero3D.crystalGeometry = crystalGeometry;
 

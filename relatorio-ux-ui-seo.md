@@ -1,4 +1,4 @@
-# 🚀 Relatório de Otimização UX/UI e SEO - Eterus
+# 🚀 Relatório de Otimização UX/UI e SEO - Pixel Alchemy
 
 ## 📋 Guia para o Agente Implementador
 
@@ -87,34 +87,34 @@ git checkout -b feature/otimizacoes-ux-ui-seo
 <!-- Adicionar em index.html -->
 <head>
     <!-- Meta tags existentes + melhorias -->
-    <title>Eterus | Agência de Tecnologia Premium - Branding & Soluções Digitais</title>
+    <title>Pixel Alchemy | Agência de Tecnologia Premium - Branding & Soluções Digitais</title>
     <meta name="description" content="Transformamos sua visão em realidade digital. Especialistas em branding premium, web design e soluções tecnológicas para negócios de alto padrão.">
     <meta name="keywords" content="agência de tecnologia, branding premium, web design, desenvolvimento de apps, e-commerce, consultoria digital">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Eterus - Agência de Tecnologia Premium">
+    <meta property="og:title" content="Pixel Alchemy - Agência de Tecnologia Premium">
     <meta property="og:description" content="Transformamos visões em realidades digitais extraordinárias com branding premium e tecnologia de ponta.">
-    <meta property="og:image" content="https://eterus.com.br/images/og-image.jpg">
-    <meta property="og:url" content="https://eterus.com.br">
+    <meta property="og:image" content="https://pixelalchemy.com.br/images/og-image.jpg">
+    <meta property="og:url" content="https://pixelalchemy.com.br">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Eterus - Agência de Tecnologia Premium">
+    <meta name="twitter:title" content="Pixel Alchemy - Agência de Tecnologia Premium">
     <meta name="twitter:description" content="Transformamos visões em realidades digitais extraordinárias.">
-    <meta name="twitter:image" content="https://eterus.com.br/images/twitter-card.jpg">
-    
+    <meta name="twitter:image" content="https://pixelalchemy.com.br/images/twitter-card.jpg">
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://eterus.com.br">
+    <link rel="canonical" href="https://pixelalchemy.com.br">
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-        "name": "Eterus - Agência de Tecnologia Premium",
+        "name": "Pixel Alchemy - Agência de Tecnologia Premium",
         "description": "Agência especializada em branding premium e soluções digitais exclusivas",
-        "url": "https://eterus.com.br",
+        "url": "https://pixelalchemy.com.br",
         "telephone": "+55-11-9999-9999",
         "address": {
             "@type": "PostalAddress",
@@ -123,8 +123,8 @@ git checkout -b feature/otimizacoes-ux-ui-seo
             "addressCountry": "BR"
         },
         "sameAs": [
-            "https://instagram.com/eterus",
-            "https://linkedin.com/company/eterus"
+            "https://instagram.com/pixelalchemy",
+            "https://linkedin.com/company/pixelalchemy"
         ]
     }
     </script>
@@ -135,9 +135,9 @@ git checkout -b feature/otimizacoes-ux-ui-seo
 ```html
 <!-- Corrigir hierarquia semântica -->
 <section id="home" class="hero-section">
-    <h1 class="visually-hidden">Eterus - Agência de Tecnologia Premium</h1>
+    <h1 class="visually-hidden">Pixel Alchemy - Agência de Tecnologia Premium</h1>
     <div class="hero-title">
-        <span class="title-main" aria-hidden="true">ETERUS</span>
+        <span class="title-main" aria-hidden="true">PIXEL ALCHEMY</span>
     </div>
     <p class="hero-description">Transformamos visões em realidades digitais extraordinárias.</p>
 </section>
@@ -160,7 +160,7 @@ git checkout -b feature/otimizacoes-ux-ui-seo
 <img 
     src="placeholder-blur.jpg" 
     data-src="service-identity.jpg" 
-    alt="Serviço de Identidade Visual - Branding Premium da Eterus"
+    alt="Serviço de Identidade Visual - Branding Premium da Pixel Alchemy"
     class="lazy-load"
     loading="lazy"
     width="400" 
@@ -171,7 +171,7 @@ git checkout -b feature/otimizacoes-ux-ui-seo
 <picture>
     <source srcset="hero-image.webp" type="image/webp">
     <source srcset="hero-image.avif" type="image/avif">
-    <img src="hero-image.jpg" alt="Hero Eterus - Agência de Tecnologia Premium">
+    <img src="hero-image.jpg" alt="Hero Pixel Alchemy - Agência de Tecnologia Premium">
 </picture>
 ```
 
@@ -181,7 +181,7 @@ git checkout -b feature/otimizacoes-ux-ui-seo
 ```html
 <!-- Expandir menu principal -->
 <nav class="navbar">
-    <div class="nav-brand">ETERUS</div>
+    <div class="nav-brand">PIXEL ALCHEMY</div>
     
     <ul class="nav-menu">
         <li><a href="#home">Início</a></li>
@@ -279,7 +279,7 @@ git checkout -b feature/otimizacoes-ux-ui-seo
     --primary-800: #166534;
     --primary-900: #14532D;
     
-    /* Cores pastel Eterus */
+    /* Cores pastel Pixel Alchemy */
     --sage: #A8D5BA;
     --rose: #D4A5A5;
     --lavender: #B8B9D3;
@@ -497,7 +497,7 @@ new LazyLoader();
         <div class="testimonials-carousel">
             <blockquote class="testimonial">
                 <div class="testimonial-content">
-                    <p>"A Eterus transformou completamente nossa identidade digital. O resultado superou todas as expectativas."</p>
+                    <p>"A Pixel Alchemy transformou completamente nossa identidade digital. O resultado superou todas as expectativas."</p>
                 </div>
                 <footer class="testimonial-footer">
                     <div class="client-avatar">
@@ -841,14 +841,14 @@ meu-site/
 
 ## 🎯 CONCLUSÃO
 
-Este relatório apresenta um plano completo de otimização para o site Eterus, focado em:
+Este relatório apresenta um plano completo de otimização para o site Pixel Alchemy, focado em:
 
 1. **SEO Técnico:** Fundações sólidas para ranking orgânico
 2. **UX/UI Moderno:** Experiência premium que reflete a qualidade da marca
 3. **Performance:** Velocidade e otimização para todos os dispositivos
 4. **Conteúdo Estratégico:** Informações que convertem visitantes em clientes
 
-A implementação dessas melhorias posicionará o Eterus como referência no setor de agências digitais, com uma presença online que combina elegância visual com eficácia comercial.
+A implementação dessas melhorias posicionará a Pixel Alchemy como referência no setor de agências digitais, com uma presença online que combina elegância visual com eficácia comercial.
 
 **Próximos passos recomendados:**
 1. Criar branch de desenvolvimento
