@@ -6,6 +6,14 @@ const FEATURE_FLAGS = {
     refractivePortal: true,
 };
 
+const COLOR_PALETTE = {
+    sage: 0xA8D5BA,
+    lavender: 0xB8B9D3,
+    blush: 0xD4A5A5,
+    glacier: 0x9FB8F2,
+    midnight: 0x1A2233
+};
+
 // Scroll Progress Bar
 class ScrollProgressBar {
     constructor() {
@@ -173,7 +181,7 @@ class EterusAnimations {
 
         // Enhanced materials for premium look
         const wireframeMaterial = new THREE.MeshBasicMaterial({
-            color: 0xA8D5BA,
+            color: COLOR_PALETTE.glacier,
             wireframe: true,
             transparent: true,
             opacity: 0,
@@ -185,7 +193,7 @@ class EterusAnimations {
 
         // Solid inner core for depth (frosted glass effect)
         const coreMaterial = new THREE.MeshBasicMaterial({
-            color: 0xA8D5BA,
+            color: COLOR_PALETTE.sage,
             transparent: true,
             opacity: 0,
             side: THREE.BackSide
@@ -196,7 +204,7 @@ class EterusAnimations {
 
         // Glow outline layer
         const glowMaterial = new THREE.MeshBasicMaterial({
-            color: 0xB8B9D3,
+            color: COLOR_PALETTE.lavender,
             wireframe: true,
             transparent: true,
             opacity: 0
@@ -212,7 +220,7 @@ class EterusAnimations {
         // Particle system with target positions for crystallization
         const particlesGeometry = new THREE.BufferGeometry();
         const isMobile = window.innerWidth < 768;
-        const particlesCount = isMobile ? 1000 : 2000;
+        const particlesCount = isMobile ? 800 : 1400;
         this.hero3D.particlesCount = particlesCount;
 
         const posArray = new Float32Array(particlesCount * 3);
@@ -256,9 +264,9 @@ class EterusAnimations {
 
         const particlesMaterial = new THREE.PointsMaterial({
             size: 0.1,
-            color: 0xA8D5BA,
+            color: COLOR_PALETTE.sage,
             transparent: true,
-            opacity: 0.6,
+            opacity: 0.55,
             blending: THREE.AdditiveBlending,
             sizeAttenuation: true
         });
@@ -270,7 +278,7 @@ class EterusAnimations {
         scene.add(this.hero3D.particles);
 
         // Connection lines between particles (constellation effect)
-        const maxConnections = 5;
+        const maxConnections = 4;
         const maxConnectionsTotal = particlesCount * maxConnections;
         const connectionPositions = new Float32Array(maxConnectionsTotal * 2 * 3);
 
@@ -278,7 +286,7 @@ class EterusAnimations {
         connectionsGeometry.setAttribute('position', new THREE.BufferAttribute(connectionPositions, 3));
 
         const connectionsMaterial = new THREE.LineBasicMaterial({
-            color: 0xA8D5BA,
+            color: COLOR_PALETTE.glacier,
             transparent: true,
             opacity: 0,
             blending: THREE.AdditiveBlending
@@ -294,7 +302,7 @@ class EterusAnimations {
         for (let i = 0; i < 5; i++) {
             const orbitGeometry = new THREE.OctahedronGeometry(1.5, 0);
             const orbitMaterial = new THREE.MeshBasicMaterial({
-                color: 0xD4A5A5,
+                color: COLOR_PALETTE.blush,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.6
@@ -550,10 +558,10 @@ class EterusAnimations {
     }
 
     crystallizationEase(t) {
-        // Custom easing: starts slow (organic), ends sharp (geometric)
+        // Smooth cubic ease in/out for organic feel
         return t < 0.5
-            ? 2 * t * t
-            : -1 + (4 - 2 * t) * t;
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
     updateHero3D() {
@@ -582,18 +590,19 @@ class EterusAnimations {
         }
 
         // Calculate progress within current state (0 to 1)
-        const stateProgressNormalized = this.hero3D.stateProgress / currentDuration;
+        const stateProgressNormalized = Math.min(1, this.hero3D.stateProgress / currentDuration);
+        const easedStateProgress = this.crystallizationEase(stateProgressNormalized);
 
         // Update based on current state
         switch(this.hero3D.currentState) {
             case this.hero3D.states.VISION:
-                this.updateVisionState(stateProgressNormalized);
+                this.updateVisionState(stateProgressNormalized, easedStateProgress);
                 break;
             case this.hero3D.states.REFINEMENT:
-                this.updateRefinementState(stateProgressNormalized);
+                this.updateRefinementState(stateProgressNormalized, easedStateProgress);
                 break;
             case this.hero3D.states.EXCELLENCE:
-                this.updateExcellenceState(stateProgressNormalized);
+                this.updateExcellenceState(stateProgressNormalized, easedStateProgress);
                 break;
         }
 
@@ -610,8 +619,9 @@ class EterusAnimations {
                 Math.max(0, Math.min(1, this.mouse.x / window.innerWidth)),
                 Math.max(0, Math.min(1, this.mouse.y / window.innerHeight))
             );
-            const glowBoost = this.hero3D.currentState === this.hero3D.states.EXCELLENCE ? 1.15 : 0.85;
-            portalUniforms.uGlowIntensity.value = glowBoost;
+            const mouseEnergy = 1 - Math.min(1, Math.abs(mouseInfluenceX) + Math.abs(mouseInfluenceY));
+            const stateGlow = this.hero3D.currentState === this.hero3D.states.EXCELLENCE ? 1.1 : 0.85;
+            portalUniforms.uGlowIntensity.value = stateGlow * (0.7 + mouseEnergy * 0.6);
         }
 
         this.hero3D.targetRotationX += mouseInfluenceY * 0.001 * parallaxStrength;
@@ -660,6 +670,10 @@ class EterusAnimations {
             });
         }
 
+        // Gentle particle size breathing for organic feel
+        const particleBreath = 0.085 + Math.sin(currentTime * 0.0015 + easedStateProgress * Math.PI) * 0.015;
+        this.hero3D.particles.material.size = Math.max(0.06, particleBreath);
+
         // Animate orbiting meshes
         orbitMeshes.forEach(mesh => {
             mesh.userData.angle += mesh.userData.speed;
@@ -681,7 +695,7 @@ class EterusAnimations {
 
     // === STATE UPDATE METHODS ===
 
-    updateVisionState(progress) {
+    updateVisionState(progress, easedProgress = progress) {
         const particles = this.hero3D.particles.geometry.attributes.position;
         const positions = particles.array;
         const velocities = this.hero3D.particleVelocities;
@@ -729,7 +743,7 @@ class EterusAnimations {
         this.hero3D.coreMesh.material.opacity = 0;
 
         // Show particles with varied opacity
-        this.hero3D.particles.material.opacity = 0.4 + Math.sin(progress * Math.PI * 2) * 0.2;
+        this.hero3D.particles.material.opacity = 0.35 + Math.sin(progress * Math.PI * 2) * 0.18;
 
         // Hide pulse rings
         this.hero3D.pulseRings.forEach(ring => {
@@ -737,14 +751,14 @@ class EterusAnimations {
         });
     }
 
-    updateRefinementState(progress) {
+    updateRefinementState(progress, easedProgress) {
         const particles = this.hero3D.particles.geometry.attributes.position;
         const positions = particles.array;
         const targets = this.hero3D.particleTargets;
         const velocities = this.hero3D.particleVelocities;
 
         // Custom easing for organic-to-geometric transition
-        const ease = this.crystallizationEase(progress);
+        const ease = typeof easedProgress === 'number' ? easedProgress : this.crystallizationEase(progress);
 
         // Move particles toward crystal vertex positions
         for (let i = 0; i < positions.length; i += 3) {
@@ -770,29 +784,30 @@ class EterusAnimations {
         this.hero3D.coreMesh.material.opacity = ease * 0.15;
         this.hero3D.glowMesh.material.opacity = ease * 0.7;
 
-        // Color transition from sage to lavender
-        const startColor = new THREE.Color(0xA8D5BA);
-        const endColor = new THREE.Color(0xB8B9D3);
+        // Color transition with depth: sage → lavender with blush accent on particles
+        const startColor = new THREE.Color(COLOR_PALETTE.sage);
+        const endColor = new THREE.Color(COLOR_PALETTE.lavender);
         const currentColor = new THREE.Color().lerpColors(startColor, endColor, ease);
 
-        this.hero3D.mainMesh.material.color = currentColor;
-        this.hero3D.particles.material.color = currentColor;
-        this.hero3D.connections.material.color = currentColor;
+        this.hero3D.mainMesh.material.color = new THREE.Color().lerpColors(currentColor, new THREE.Color(COLOR_PALETTE.glacier), 0.3);
+        this.hero3D.particles.material.color = new THREE.Color().lerpColors(currentColor, new THREE.Color(COLOR_PALETTE.blush), 0.25);
+        this.hero3D.connections.material.color = new THREE.Color().lerpColors(currentColor, new THREE.Color(COLOR_PALETTE.glacier), 0.5);
 
         // Particle opacity transitions
-        this.hero3D.particles.material.opacity = 0.6 - (ease * 0.4);
+        this.hero3D.particles.material.opacity = 0.55 - (ease * 0.3);
 
         // Update connection lines with increasing structure
         this.updateConnectionLines(ease);
 
-        // Energy pulse effect
-        this.updateEnergyPulse(progress);
+        // Energy pulse effect sync with easing
+        this.updateEnergyPulse(ease);
     }
 
-    updateExcellenceState(progress) {
+    updateExcellenceState(progress, easedProgress = progress) {
         const particles = this.hero3D.particles.geometry.attributes.position;
         const positions = particles.array;
         const targets = this.hero3D.particleTargets;
+        const eased = easedProgress;
 
         // Keep particles locked to crystal vertices
         for (let i = 0; i < positions.length; i += 3) {
@@ -808,26 +823,27 @@ class EterusAnimations {
         this.hero3D.coreMesh.material.opacity = 0.15;
 
         // Breathing glow effect
-        const glowPulse = 0.6 + Math.sin(progress * Math.PI * 4) * 0.2;
+        const glowPulse = 0.6 + Math.sin(eased * Math.PI * 4) * 0.2;
         this.hero3D.glowMesh.material.opacity = glowPulse;
 
-        // Maintain lavender color
-        const lavenderColor = new THREE.Color(0xB8B9D3);
+        // Maintain lavender color with blush accent on glow
+        const lavenderColor = new THREE.Color(COLOR_PALETTE.lavender);
+        const blushColor = new THREE.Color(COLOR_PALETTE.blush);
         this.hero3D.mainMesh.material.color = lavenderColor;
-        this.hero3D.glowMesh.material.color = lavenderColor;
+        this.hero3D.glowMesh.material.color = new THREE.Color().lerpColors(lavenderColor, blushColor, 0.35);
 
         // Hide particles
-        this.hero3D.particles.material.opacity = 0.2;
+        this.hero3D.particles.material.opacity = 0.18;
 
         // Hide connections
         this.hero3D.connections.material.opacity = 0;
 
         // Camera subtle push in
-        const zoomAmount = progress * 2;
+        const zoomAmount = eased * 2;
         this.hero3D.camera.position.z = this.hero3D.baseCameraZ - zoomAmount;
 
         // Vertex highlights (subtle pulsing)
-        this.updateVertexHighlights(progress);
+        this.updateVertexHighlights(eased);
 
         // Hide pulse rings
         this.hero3D.pulseRings.forEach(ring => {
@@ -874,25 +890,28 @@ class EterusAnimations {
         this.hero3D.connections.geometry.attributes.position.needsUpdate = true;
 
         // Opacity based on state (VISION has visible connections, REFINEMENT increases)
-        const baseOpacity = this.hero3D.currentState === this.hero3D.states.VISION ? 0.3 : 0.3 * structureFactor;
-        this.hero3D.connections.material.opacity = baseOpacity;
+        const baseOpacity = this.hero3D.currentState === this.hero3D.states.VISION ? 0.22 : 0.28 * structureFactor;
+        const sinusoidal = 0.15 + Math.abs(Math.sin(this.hero3D.stateProgress * 0.0025)) * 0.25;
+        this.hero3D.connections.material.opacity = Math.min(0.6, baseOpacity + sinusoidal);
     }
 
     updateEnergyPulse(progress) {
-        // Energy pulse rings expanding from center
+        // Energy pulse rings expanding from center with staggered rhythm
         this.hero3D.pulseRings.forEach((ring, index) => {
-            const delay = index * 0.2;
+            const delay = index * 0.18;
             const adjustedProgress = (progress + delay) % 1;
 
+            const eased = this.crystallizationEase(adjustedProgress);
+
             // Scale expands
-            const scale = 1 + adjustedProgress * 10;
+            const scale = 1 + eased * 9;
             ring.scale.set(scale, scale, scale);
 
             // Fade out as it expands
-            ring.material.opacity = Math.max(0, 0.5 - adjustedProgress);
+            ring.material.opacity = Math.max(0, 0.55 - eased * 0.9);
 
             // Rotate for visual interest
-            ring.rotation.z += 0.01;
+            ring.rotation.z += 0.012;
         });
     }
 
