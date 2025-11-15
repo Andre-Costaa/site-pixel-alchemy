@@ -563,6 +563,9 @@ class EterusAnimations {
         const portalUniforms = this.hero3D.portalUniforms;
         const portalFlares = this.hero3D.portalFlares;
 
+        // Detect mobile
+        const isMobile = window.innerWidth < 768;
+
         // Update state progress based on time
         const currentTime = performance.now();
         const deltaTime = currentTime - this.hero3D.lastTimestamp;
@@ -666,10 +669,12 @@ class EterusAnimations {
             mesh.rotation.y += 0.02;
         });
 
-        // Scroll influence on camera
-        const scrollInfluence = this.scrollY * 0.001;
-        camera.position.y = scrollInfluence * 5;
-        mainMesh.position.y = -scrollInfluence * 2;
+        // Scroll influence on camera (desktop only)
+        if (!isMobile) {
+            const scrollInfluence = this.scrollY * 0.001;
+            camera.position.y = scrollInfluence * 5;
+            mainMesh.position.y = -scrollInfluence * 2;
+        }
 
         renderer.render(scene, camera);
     }
@@ -909,7 +914,7 @@ class EterusAnimations {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -917,17 +922,24 @@ class EterusAnimations {
                 }
             });
         }, observerOptions);
-        
+
         // Observe all sections with reveal animation
         document.querySelectorAll('.section-reveal').forEach(el => {
             observer.observe(el);
         });
-        
-        // Update scroll position
+
+        // Update scroll position with passive event listener for better performance
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            this.scrollY = window.scrollY;
-            this.updateNavbar();
-        });
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.scrollY = window.scrollY;
+                    this.updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     }
     
     setupParticleSystem() {
@@ -1184,17 +1196,23 @@ class ParallaxEffects {
         this.layers = document.querySelectorAll('[data-parallax]');
         this.setupParallax();
     }
-    
+
     setupParallax() {
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            
-            this.layers.forEach(layer => {
-                const speed = parseFloat(layer.dataset.parallax) || 0.5;
-                const yPos = -(scrollY * speed);
-                layer.style.transform = `translateY(${yPos}px)`;
-            });
-        });
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    this.layers.forEach(layer => {
+                        const speed = parseFloat(layer.dataset.parallax) || 0.5;
+                        const yPos = -(scrollY * speed);
+                        layer.style.transform = `translateY(${yPos}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     }
 }
 
