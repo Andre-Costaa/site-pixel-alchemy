@@ -57,6 +57,10 @@ class EterusPremiumHero {
         this.networkBaseScale = 1;
         this.currentBreathScale = 1;
         this.lastTimestamp = performance.now();
+        this.isScrolling = false;
+        this.scrollTimeout = null;
+        this.isMobile = window.innerWidth < 768;
+        this.frameCounter = 0;
         this.init();
     }
 
@@ -173,8 +177,40 @@ class EterusPremiumHero {
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.isMobile = window.innerWidth < 768;
             this.updateNetworkBaseScale();
         });
+
+        // Scroll detection for mobile optimization
+        window.addEventListener('scroll', () => {
+            // Hide canvas when scrolled past hero section
+            const heroSection = document.getElementById('home');
+            if (heroSection) {
+                const heroBottom = heroSection.offsetHeight;
+                const scrollTop = window.scrollY;
+
+                if (scrollTop > heroBottom) {
+                    this.canvas.style.opacity = '0';
+                } else {
+                    const opacity = Math.max(0, 1 - (scrollTop / heroBottom) * 0.5);
+                    this.canvas.style.opacity = opacity.toString();
+                }
+            }
+
+            if (this.isMobile) {
+                this.isScrolling = true;
+
+                // Clear previous timeout
+                if (this.scrollTimeout) {
+                    clearTimeout(this.scrollTimeout);
+                }
+
+                // Set timeout to detect when scrolling stops
+                this.scrollTimeout = setTimeout(() => {
+                    this.isScrolling = false;
+                }, 150);
+            }
+        }, { passive: true });
     }
 
     updateParticleAttraction() {
@@ -274,10 +310,26 @@ class EterusPremiumHero {
 
         requestAnimationFrame(() => this.animate());
 
+        // Always update breathing and rotation for smooth appearance
         this.updateBreathingEffect(deltaTime);
         this.updateAutoRotation(deltaTime);
+
+        // Mobile optimization: skip expensive updates during scroll
+        if (this.isMobile && this.isScrolling) {
+            // During scroll on mobile, only render without heavy updates
+            this.renderer.render(this.scene, this.camera);
+            return;
+        }
+
+        // Update particles (moderate cost)
         this.updateParticleAttraction();
-        this.updateConnectionLines();
+
+        // Update connection lines (expensive) - throttle on mobile
+        this.frameCounter++;
+        const updateInterval = this.isMobile ? 3 : 1; // Update every 3rd frame on mobile
+        if (this.frameCounter % updateInterval === 0) {
+            this.updateConnectionLines();
+        }
 
         // Render
         this.renderer.render(this.scene, this.camera);
