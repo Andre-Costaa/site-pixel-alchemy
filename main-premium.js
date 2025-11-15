@@ -97,7 +97,7 @@ class EterusPremiumHero {
 
     createParticleSystem() {
         const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 800 : 1500;
+        const particleCount = isMobile ? 600 : 1500;
 
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);

@@ -147,24 +147,13 @@ const SmoothScroll = {
     }
 };
 
-// Mobile Menu Toggle
+// Mobile Menu Toggle - REMOVED (handled by main-premium.js NavbarManager)
+// Avoid duplicate event listeners that cause conflicts
 const MobileMenu = {
     init() {
-        this.menuBtn = document.getElementById('mobileMenuBtn');
-        this.menu = document.getElementById('mobileMenu');
-
-        if (!this.menuBtn || !this.menu) return;
-
-        this.menuBtn.addEventListener('click', () => {
-            this.menu.classList.toggle('hidden');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!this.menuBtn.contains(e.target) && !this.menu.contains(e.target)) {
-                this.menu.classList.add('hidden');
-            }
-        });
+        // Functionality moved to main-premium.js NavbarManager
+        // to avoid duplicate event listeners
+        console.log('Mobile menu handled by NavbarManager in main-premium.js');
     }
 };
 
