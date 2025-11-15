@@ -1,6 +1,33 @@
 // PIXEL ALCHEMY - Premium Hero Animation
 // Refatoração completa: Elegância, Interatividade e Performance
 
+// Maintain a stable viewport unit so the hero canvas height does not jump on mobile
+function initViewportUnit() {
+    const applyViewportUnit = () => {
+        const viewport = window.visualViewport;
+        const height = viewport ? viewport.height : window.innerHeight;
+        document.documentElement.style.setProperty('--app-vh', `${height * 0.01}px`);
+    };
+
+    let scheduled = false;
+    const scheduleUpdate = () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => {
+            scheduled = false;
+            applyViewportUnit();
+        });
+    };
+
+    applyViewportUnit();
+    window.addEventListener('resize', scheduleUpdate);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', scheduleUpdate);
+    }
+}
+
+initViewportUnit();
+
 // Splash Screen Manager
 class SplashScreenManager {
     constructor() {
@@ -61,6 +88,10 @@ class EterusPremiumHero {
         this.scrollTimeout = null;
         this.isMobile = window.innerWidth < 768;
         this.frameCounter = 0;
+        this.viewportWidth = window.innerWidth;
+        this.viewportHeight = window.innerHeight;
+        this.resizeRaf = null;
+        this.handleResize = this.handleResize.bind(this);
         this.init();
     }
 
@@ -173,13 +204,7 @@ class EterusPremiumHero {
 
     setupInteractions() {
         // Window resize
-        window.addEventListener('resize', () => {
-            this.camera.aspect = window.innerWidth / window.innerHeight;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize(window.innerWidth, window.innerHeight);
-            this.isMobile = window.innerWidth < 768;
-            this.updateNetworkBaseScale();
-        });
+        window.addEventListener('resize', this.handleResize);
 
         // Scroll detection for mobile optimization
         window.addEventListener('scroll', () => {
@@ -211,6 +236,41 @@ class EterusPremiumHero {
                 }, 150);
             }
         }, { passive: true });
+    }
+
+    handleResize() {
+        if (this.resizeRaf) {
+            cancelAnimationFrame(this.resizeRaf);
+        }
+
+        this.resizeRaf = requestAnimationFrame(() => {
+            this.resizeRaf = null;
+
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+            const widthDelta = Math.abs(newWidth - this.viewportWidth);
+            const heightDelta = Math.abs(newHeight - this.viewportHeight);
+
+            const widthChanged = widthDelta > 1;
+            const heightChanged = heightDelta > 1;
+            const ignoreMobileHeight = this.isMobile && !widthChanged && heightDelta < 120;
+
+            if (!widthChanged && (!heightChanged || ignoreMobileHeight)) {
+                return;
+            }
+
+            const targetHeight = (!ignoreMobileHeight && heightChanged) ? newHeight : this.viewportHeight;
+
+            this.viewportWidth = newWidth;
+            this.viewportHeight = targetHeight;
+
+            this.camera.aspect = newWidth / targetHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(newWidth, targetHeight);
+            this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            this.isMobile = newWidth < 768;
+            this.updateNetworkBaseScale();
+        });
     }
 
     updateParticleAttraction() {
@@ -314,19 +374,16 @@ class EterusPremiumHero {
         this.updateBreathingEffect(deltaTime);
         this.updateAutoRotation(deltaTime);
 
-        // Mobile optimization: skip expensive updates during scroll
-        if (this.isMobile && this.isScrolling) {
-            // During scroll on mobile, only render without heavy updates
-            this.renderer.render(this.scene, this.camera);
-            return;
+        this.frameCounter++;
+        const skippingHeavyWork = this.isMobile && this.isScrolling;
+
+        // Update particles less frequently while the user scrolls on mobile
+        if (!skippingHeavyWork || this.frameCounter % 2 === 0) {
+            this.updateParticleAttraction();
         }
 
-        // Update particles (moderate cost)
-        this.updateParticleAttraction();
-
-        // Update connection lines (expensive) - throttle on mobile
-        this.frameCounter++;
-        const updateInterval = this.isMobile ? 3 : 1; // Update every 3rd frame on mobile
+        // Update connection lines (expensive) - adjust throttle when skipping work
+        const updateInterval = this.isMobile ? (skippingHeavyWork ? 6 : 3) : 1;
         if (this.frameCounter % updateInterval === 0) {
             this.updateConnectionLines();
         }
