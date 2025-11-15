@@ -6,49 +6,6 @@ const FEATURE_FLAGS = {
     refractivePortal: true,
 };
 
-// Splash Screen Controller
-class SplashScreen {
-    constructor() {
-        this.splashScreen = document.getElementById('splashScreen');
-        this.loaderPercentage = document.getElementById('loaderPercentage');
-        this.hasVisited = sessionStorage.getItem('pixelAlchemyVisited');
-
-        this.init();
-    }
-
-    init() {
-        // Skip splash if user already visited in this session
-        if (this.hasVisited) {
-            this.splashScreen.classList.add('hidden');
-            return;
-        }
-
-        // Animate loading percentage
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                this.hideSplash();
-            }
-            this.loaderPercentage.textContent = Math.floor(progress) + '%';
-        }, 100);
-    }
-
-    hideSplash() {
-        setTimeout(() => {
-            this.splashScreen.classList.add('hidden');
-            sessionStorage.setItem('pixelAlchemyVisited', 'true');
-
-            // Remove from DOM after transition
-            setTimeout(() => {
-                this.splashScreen.remove();
-            }, 800);
-        }, 500);
-    }
-}
-
 // Scroll Progress Bar
 class ScrollProgressBar {
     constructor() {
@@ -1286,9 +1243,6 @@ class TypewriterEffect {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize splash screen
-    const splash = new SplashScreen();
-
     // Initialize scroll progress bar
     const scrollProgress = new ScrollProgressBar();
 
