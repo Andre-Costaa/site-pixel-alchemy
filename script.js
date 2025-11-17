@@ -6,13 +6,24 @@ const nav = document.getElementById('nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
+let navScrollTicking = false;
+let lastNavScrollY = 0;
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
+    lastNavScrollY = window.scrollY;
+
+    if (!navScrollTicking) {
+        window.requestAnimationFrame(() => {
+            if (lastNavScrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            navScrollTicking = false;
+        });
+        navScrollTicking = true;
     }
-});
+}, { passive: true });
 
 // Mobile Menu Toggle
 navToggle.addEventListener('click', () => {
