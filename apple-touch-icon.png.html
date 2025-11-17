@@ -1,0 +1,75 @@
+<!-- Esta é uma página HTML que gera um PNG para apple-touch-icon -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerar Apple Touch Icon</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        canvas { border: 1px solid #ccc; margin: 20px 0; }
+        .download { background: #e07856; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Apple Touch Icon Generator</h1>
+    <p>Clique no botão abaixo para baixar o apple-touch-icon.png</p>
+    
+    <canvas id="canvas" width="180" height="180"></canvas>
+    <br>
+    <a href="#" class="download" id="download">Baixar PNG</a>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background
+        const gradient = ctx.createLinearGradient(0, 0, 180, 180);
+        gradient.addColorStop(0, '#1a1f2e');
+        gradient.addColorStop(1, '#2a2f3e');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 180, 180);
+        
+        // Pixel grid
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        const pixelSize = 12;
+        const startX = 45;
+        const startY = 45;
+        const gap = 6;
+        
+        // Draw grid pixels
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (i === 1 && j === 1) continue; // Skip center for golden pixel
+                const x = startX + i * (pixelSize + gap);
+                const y = startY + j * (pixelSize + gap);
+                ctx.fillRect(x, y, pixelSize, pixelSize);
+            }
+        }
+        
+        // Golden center pixel
+        const centerX = startX + pixelSize + gap;
+        const centerY = startY + pixelSize + gap;
+        const goldenGradient = ctx.createLinearGradient(centerX, centerY, centerX + pixelSize, centerY + pixelSize);
+        goldenGradient.addColorStop(0, '#e07856');
+        goldenGradient.addColorStop(0.5, '#ed9d7f');
+        goldenGradient.addColorStop(1, '#c4a68a');
+        
+        ctx.fillStyle = goldenGradient;
+        ctx.fillRect(centerX, centerY, pixelSize, pixelSize);
+        
+        // Rounded corners
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.beginPath();
+        ctx.roundRect(0, 0, 180, 180, 20);
+        ctx.fill();
+        
+        // Download functionality
+        document.getElementById('download').addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = document.createElement('a');
+            link.download = 'apple-touch-icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    </script>
+</body>
+</html>

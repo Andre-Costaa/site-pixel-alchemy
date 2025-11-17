@@ -16,9 +16,17 @@ window.addEventListener('scroll', () => {
 
 // Mobile Menu Toggle
 navToggle.addEventListener('click', () => {
+    const isActive = navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    document.body.style.overflow = isActive ? 'hidden' : '';
+
+    // Avoid breaking the fixed menu layout: transforms on the nav create a containing block
+    // that clips the mobile menu. Force the nav to stay untransformed while the menu is open.
+    if (isActive) {
+        nav.style.transform = 'none';
+    } else {
+        nav.style.transform = '';
+    }
 });
 
 // Close mobile menu when clicking on a link
@@ -404,6 +412,20 @@ let currentScrollY = 0;
 let scrollTicking = false;
 
 function updateNavVisibility() {
+    // Disable auto-hide transform on small screens to avoid clipping the mobile menu
+    if (window.innerWidth <= 768) {
+        nav.style.transform = 'translateY(0)';
+        scrollTicking = false;
+        return;
+    }
+
+    // Keep nav pinned when the mobile menu is open to prevent clipping
+    if (navMenu.classList.contains('active')) {
+        nav.style.transform = 'none';
+        scrollTicking = false;
+        return;
+    }
+
     currentScrollY = window.scrollY;
 
     if (currentScrollY > 100) {
