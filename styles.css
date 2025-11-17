@@ -399,8 +399,17 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--border-radius-blob);
     filter: blur(30px);
     opacity: 0.3;
-    animation: blob-float 20s ease-in-out infinite;
     pointer-events: none;
+    display: none; /* Ocultar no mobile por padrão */
+    animation: none; /* Desabilitar animação no mobile para economizar recursos */
+}
+
+/* Mostrar todas as blobs no desktop com animações */
+@media (min-width: 1024px) {
+    .blob {
+        display: block;
+        animation: blob-float 20s ease-in-out infinite;
+    }
 }
 
 .blob-1 {
@@ -410,6 +419,8 @@ h1, h2, h3, h4, h5, h6 {
     top: -100px;
     left: -100px;
     animation-delay: 0s;
+    display: block; /* Exceção: blob-1 aparece no mobile também */
+    animation: blob-float 20s ease-in-out infinite; /* Animação ativa no mobile */
 }
 
 .blob-2 {
