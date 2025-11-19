@@ -529,3 +529,38 @@ console.log(
     '%c💼 Interessado em trabalhar conosco? Entre em contato!',
     'font-size: 12px; color: #1a1f2e;'
 );
+
+/* ============================================
+   Cookie Consent Logic
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const declineBtn = document.getElementById('declineCookies');
+
+    // Check if user has already made a choice
+    const hasConsented = localStorage.getItem('cookieConsent');
+
+    if (!hasConsented) {
+        // Show popup after a short delay
+        setTimeout(() => {
+            cookieConsent.classList.add('show');
+        }, 1000);
+    }
+
+    // Accept Cookies
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'true');
+        cookieConsent.classList.remove('show');
+        
+        // Optional: Initialize analytics here if needed
+        // initAnalytics();
+    });
+
+    // Decline Cookies
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'false');
+        cookieConsent.classList.remove('show');
+    });
+});
