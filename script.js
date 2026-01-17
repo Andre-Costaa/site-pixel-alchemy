@@ -171,11 +171,23 @@ if (contactForm) {
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
 
-        // Here you would typically send the data to your backend
-        console.log('Form submitted:', data);
+        // Format WhatsApp message
+        const message = `Olá, meu nome é ${data.name}, estou interessado em saber mais em como posso avançar o meu projeto com vocês.
 
-        // Show success message (you can customize this)
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+Telefone: ${data.phone}
+Serviço de interesse: ${data.service}
+
+Sobre meu projeto:
+${data.message}`;
+
+        // WhatsApp number
+        const whatsappNumber = '5516996184439';
+
+        // Create WhatsApp link
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        // Open WhatsApp in new tab
+        window.open(whatsappLink, '_blank');
 
         // Reset form
         contactForm.reset();
