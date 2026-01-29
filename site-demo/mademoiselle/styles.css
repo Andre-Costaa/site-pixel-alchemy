@@ -1,0 +1,344 @@
+/* ============================================
+   Mademoiselle Studio de Beleza - Custom Styles
+   ============================================ */
+
+/* ===== Variables ===== */
+:root {
+    --color-gold: #d4a574;
+    --color-gold-light: #f5d28b;
+    --color-gold-dark: #b8860b;
+    --color-rose: #f8a5a5;
+    --color-champagne: #f5f0e8;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Smooth Scroll ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Navigation Scroll Effect ===== */
+#navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#navbar.scrolled .nav-link {
+    color: #374151;
+}
+
+#navbar.scrolled .nav-link:hover {
+    color: var(--color-gold-dark);
+}
+
+#navbar.scrolled .font-serif {
+    color: #1f2937;
+}
+
+/* ===== Hero Animations ===== */
+.hero-subtitle {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.hero-title {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.hero-tagline {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.hero-desc {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.hero-cta {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Scroll Reveal Animations ===== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-up.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animations for grid items */
+.service-card:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4) { transition-delay: 0.1s; }
+.service-card:nth-child(5) { transition-delay: 0.2s; }
+.service-card:nth-child(6) { transition-delay: 0.3s; }
+
+.gallery-item:nth-child(1) { transition-delay: 0.05s; }
+.gallery-item:nth-child(2) { transition-delay: 0.1s; }
+.gallery-item:nth-child(3) { transition-delay: 0.15s; }
+.gallery-item:nth-child(4) { transition-delay: 0.2s; }
+.gallery-item:nth-child(5) { transition-delay: 0.05s; }
+.gallery-item:nth-child(6) { transition-delay: 0.1s; }
+.gallery-item:nth-child(7) { transition-delay: 0.15s; }
+.gallery-item:nth-child(8) { transition-delay: 0.2s; }
+
+.testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+.testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+.testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* ===== Service Card Hover Effects ===== */
+.service-card {
+    transition: var(--transition-smooth);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ===== Gallery Hover Effects ===== */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover::before {
+    transform: translateX(100%);
+}
+
+/* ===== Testimonial Card Hover ===== */
+.testimonial-card {
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== WhatsApp Button Pulse Animation ===== */
+.whatsapp-btn {
+    animation: pulse-green 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    animation: none;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+}
+
+.whatsapp-btn:hover .whatsapp-tooltip {
+    opacity: 1;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+/* ===== Stat Counter Animation ===== */
+.stat-item span:first-child {
+    display: inline-block;
+}
+
+/* ===== Mobile Menu Animation ===== */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+#mobile-menu.active {
+    max-height: 400px;
+    opacity: 1;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dark);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+    background: var(--color-gold);
+    color: white;
+}
+
+/* ===== Image Loading Effect ===== */
+img {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+img[loading] {
+    opacity: 0;
+}
+
+/* ===== Link Hover Underline Effect ===== */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* ===== Button Shine Effect ===== */
+.hero-cta a {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-cta a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero-cta a:hover::before {
+    left: 100%;
+}
+
+/* ===== Footer Link Hover ===== */
+footer a {
+    transition: color 0.3s ease;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px;
+    }
+    
+    .whatsapp-btn i {
+        font-size: 24px;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== Decorative Elements ===== */
+.section-decoration {
+    position: absolute;
+    pointer-events: none;
+}
+
+.gold-accent {
+    color: var(--color-gold);
+}
+
+/* ===== Loading State ===== */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
