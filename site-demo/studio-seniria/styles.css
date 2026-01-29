@@ -1,0 +1,380 @@
+/* ==========================================
+   Studio Seniria Rodrigues - Custom Styles
+   ========================================== */
+
+/* ===== CSS Variables ===== */
+:root {
+    --gold-primary: #F59E0B;
+    --gold-light: #FCD34D;
+    --gold-dark: #B45309;
+    --champagne: #F5EFE6;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Smooth Scroll ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Selection Color ===== */
+::selection {
+    background-color: #FCD34D;
+    color: #78350F;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5EFE6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #F59E0B;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #D97706;
+}
+
+/* ===== Navbar Styles ===== */
+#navbar {
+    background: transparent;
+}
+
+#navbar.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Navigation Link Hover Effect ===== */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #FCD34D;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* ===== Hero Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ===== Shimmer Text Effect ===== */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+}
+
+/* ===== Gentle Bounce ===== */
+@keyframes bounceGentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+}
+
+/* ===== Floating Particles ===== */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(252, 211, 77, 0.6);
+    border-radius: 50%;
+    animation: float 15s infinite;
+    box-shadow: 0 0 10px rgba(252, 211, 77, 0.8);
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    top: 60%;
+    animation-delay: 2s;
+    animation-duration: 15s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(3) {
+    left: 70%;
+    top: 30%;
+    animation-delay: 4s;
+    animation-duration: 18s;
+}
+
+.particle:nth-child(4) {
+    left: 85%;
+    top: 70%;
+    animation-delay: 1s;
+    animation-duration: 14s;
+    width: 8px;
+    height: 8px;
+}
+
+.particle:nth-child(5) {
+    left: 50%;
+    top: 80%;
+    animation-delay: 3s;
+    animation-duration: 16s;
+    width: 5px;
+    height: 5px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* ===== WhatsApp Float Button ===== */
+.whatsapp-float {
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.whatsapp-float:hover::before {
+    opacity: 1;
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ===== Service Cards Hover ===== */
+.service-card {
+    transition: var(--transition-smooth);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card:hover .service-icon {
+    background: #F59E0B;
+    color: white;
+}
+
+/* ===== Gallery Item Hover ===== */
+.gallery-item {
+    overflow: hidden;
+}
+
+.gallery-item img {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ===== Testimonial Cards ===== */
+.testimonial-card {
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: #F59E0B;
+    opacity: 0.1;
+    line-height: 1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Reveal on Scroll Animation ===== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Lightbox ===== */
+#lightbox {
+    transition: opacity 0.3s ease;
+}
+
+#lightbox.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#lightbox:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ===== Button Glow Effect ===== */
+.btn-glow {
+    position: relative;
+}
+
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #F59E0B, #FCD34D, #F59E0B);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::after {
+    opacity: 0.6;
+}
+
+/* ===== Mobile Menu Animation ===== */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#mobile-menu.active {
+    max-height: 400px;
+}
+
+/* ===== Image Loading Placeholder ===== */
+img {
+    background: linear-gradient(90deg, #F5EFE6 25%, #EBDEC8 50%, #F5EFE6 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+img[src] {
+    animation: none;
+    background: none;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ===== Focus Styles for Accessibility ===== */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #F59E0B;
+    outline-offset: 2px;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .whatsapp-float,
+    nav,
+    #lightbox {
+        display: none !important;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
