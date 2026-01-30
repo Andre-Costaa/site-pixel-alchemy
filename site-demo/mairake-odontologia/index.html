@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mairake Odontologia | Excelência em Odontologia em Ribeirão Preto</title>
+    <meta name="description" content="Mairake Odontologia - Atendimento odontológico especializado em Ribeirão Preto. Implantes, estética, ortodontia e muito mais com profissionais de excelência.">
+    <meta name="keywords" content="odontologia, dentista, implantes, estética dental, ortodontia, Ribeirão Preto, clareamento, próteses">
+    <meta name="author" content="Mairake Odontologia">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mairake Odontologia">
+    <meta property="og:description" content="Odontologia especializada com atendimento de excelência em Ribeirão Preto.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+        ============================================ */
+        :root {
+            --primary-dark: #0a1628;
+            --primary-blue: #1e3a5f;
+            --accent-teal: #0d9488;
+            --accent-coral: #f97316;
+            --accent-gold: #d4a574;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #94a3b8;
+            --gradient-teal: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            --gradient-dark: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+        }
+
+        #navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        #navbar.scrolled .nav-logo {
+            color: var(--primary-dark);
+        }
+
+        #navbar.scrolled .nav-link {
+            color: var(--text-dark);
+        }
+
+        #navbar.scrolled .nav-link:hover {
+            color: var(--accent-teal);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--accent-teal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.75rem;
+            background: var(--accent-teal);
+            color: var(--white) !important;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #navbar.scrolled .mobile-menu-btn {
+            color: var(--text-dark);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-dark);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80') center/cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.92) 0%, rgba(30, 58, 95, 0.85) 100%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(13, 148, 136, 0.2);
+            border: 1px solid rgba(13, 148, 136, 0.4);
+            border-radius: var(--radius-full);
+            color: var(--accent-teal);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-title span {
+            color: var(--accent-teal);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-teal);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-coral);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+        }
+
+        .hero-scroll i {
+            animation: scrollBounce 2s infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           SECTIONS COMMON
+        ============================================ */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-teal);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            color: var(--accent-teal);
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ============================================
+           PROBLEM/SOLUTION SECTION
+        ============================================ */
+        #problem-solution {
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .ps-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ps-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-teal);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .ps-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ps-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ps-card.problem {
+            border-left: 4px solid var(--accent-coral);
+        }
+
+        .ps-card.problem::before {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+        }
+
+        .ps-card.solution {
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        .ps-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .ps-card.problem .ps-icon {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--accent-coral);
+        }
+
+        .ps-card.solution .ps-icon {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-teal);
+        }
+
+        .ps-icon i {
+            font-size: 1.5rem;
+        }
+
+        .ps-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .ps-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+        ============================================ */
+        #services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.9) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-teal);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--accent-coral);
+            gap: 1rem;
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+        ============================================ */
+        #testimonials {
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>') center/100px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-quote {
+            color: var(--accent-teal);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-teal);
+        }
+
+        .testimonial-info h4 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        .testimonial-stars {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           DIFFERENTIALS SECTION
+        ============================================ */
+        #differentials {
+            background: var(--light-bg);
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .differential-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+        }
+
+        .differential-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .differential-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .differential-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: var(--gradient-teal);
+            opacity: 0.2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        .differential-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .differential-card p {
+            color: var(--text-medium);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+        ============================================ */
+        #contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-medium);
+            font-size: 1.0625rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(13, 148, 136, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-teal);
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            color: var(--text-medium);
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.125rem;
+            background: var(--accent-teal);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.0625rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--accent-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo span {
+            color: var(--accent-teal);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-teal);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        /* ============================================
+           WHATSAPP BUTTON
+        ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .whatsapp-btn {
+            width: 64px;
+            height: 64px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-tooltip {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+        ============================================ */
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .whatsapp-float {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .whatsapp-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Mairake<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link">Início</a></li>
+                <li><a href="#problem-solution" class="nav-link">Sobre</a></li>
+                <li><a href="#services" class="nav-link">Serviços</a></li>
+                <li><a href="#testimonials" class="nav-link">Depoimentos</a></li>
+                <li><a href="#differentials" class="nav-link">Diferenciais</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#hero" onclick="closeMobileMenu()">Início</a>
+            <a href="#problem-solution" onclick="closeMobileMenu()">Sobre</a>
+            <a href="#services" onclick="closeMobileMenu()">Serviços</a>
+            <a href="#testimonials" onclick="closeMobileMenu()">Depoimentos</a>
+            <a href="#differentials" onclick="closeMobileMenu()">Diferenciais</a>
+            <a href="#contact" onclick="closeMobileMenu()">Agendar Consulta</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+            <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%;"></div>
+            <div class="particle" style="width: 15px; height: 15px; top: 60%; left: 20%; animation-delay: -5s;"></div>
+            <div class="particle" style="width: 25px; height: 25px; top: 40%; left: 70%; animation-delay: -10s;"></div>
+            <div class="particle" style="width: 18px; height: 18px; top: 80%; left: 80%; animation-delay: -7s;"></div>
+            <div class="particle" style="width: 22px; height: 22px; top: 30%; left: 50%; animation-delay: -3s;"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                Excelência em Odontologia
+            </div>
+            <h1 class="hero-title">Seu Sorriso<br><span>Merece o Melhor</span></h1>
+            <p class="hero-subtitle">
+                Odontologia especializada com atendimento de excelência em Ribeirão Preto.
+                Tecnologia avançada e profissionais dedicados ao seu sorriso.
+            </p>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/5516996404770" target="_blank" class="btn-primary">
+                    <i class="fab fa-whatsapp"></i>
+                    Agendar Consulta
+                </a>
+                <a href="#services" class="btn-secondary">
+                    <i class="fas fa-tooth"></i>
+                    Nossos Serviços
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Role para baixo</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section id="problem-solution">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-badge">Por Que Escolher a Mairake</span>
+                <h2 class="section-title">Sua Saúde Dental é Nossa <span>Prioridade</span></h2>
+                <p class="section-desc">Entendemos os desafios que você enfrenta e oferecemos soluções personalizadas</p>
+            </div>
+            <div class="problem-solution-grid">
+                <div class="ps-card problem reveal reveal-delay-1">
+                    <div class="ps-icon">
+                        <i class="fas fa-frown"></i>
+                    </div>
+                    <h3>O Problema</h3>
+                    <p>Dores constantes, dificuldade para mastigar, constrangimento ao sorrir e a busca interminável por um profissional que realmente entenda suas necessidades.</p>
+                </div>
+                <div class="ps-card solution reveal reveal-delay-2">
+                    <div class="ps-icon">
+                        <i class="fas fa-smile-beam"></i>
+                    </div>
+                    <h3>Nossa Solução</h3>
+                    <p>Atendimento personalizado com tecnologia de ponta, profissionais especializados e um plano de tratamento exclusivo para você recuperar a confiança e qualidade de vida.</p>
+                </div>
+                <div class="ps-card solution reveal reveal-delay-3">
+                    <div class="ps-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Compromisso</h3>
+                    <p>Investimos constantemente em tecnologia e capacitação para oferecer tratamentos modernos, seguros e com resultados duradouros que transformam vidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-badge">Nossos Serviços</span>
+                <h2 class="section-title">Tratamentos <span>Especializados</span></h2>
+                <p class="section-desc">Oferecemos uma gama completa de tratamentos odontológicos para você e sua família</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Implantes Dentários">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-screw"></i>
+                        </div>
+                        <h3>Implantes Dentários</h3>
+                        <p>Recupere a função mastigatória e a estética do seu sorriso com implantes de alta qualidade e durabilidade.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de saber mais sobre implantes dentários." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Estética Dental">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Estética Dental</h3>
+                        <p>Facetas, lentes de contato dental e clareamento para um sorriso harmonioso e radiante.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de saber mais sobre estética dental." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Ortodontia">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-teeth-open"></i>
+                        </div>
+                        <h3>Ortodontia</h3>
+                        <p>Aparelhos fixos, autoligados e invisíveis para alinhar seus dentes com conforto e eficiência.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de saber mais sobre ortodontia." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Próteses">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Próteses Dentárias</h3>
+                        <p>Coroas, pontes e próteses totais com materiais de última geração e acabamento natural.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de saber mais sobre próteses dentárias." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1579526933962-84c90e241e5b?w=600&q=80" alt="Clareamento">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Clareamento</h3>
+                        <p>Técnicas modernas de clareamento a laser e caseiro para um sorriso mais branco e brilhante.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de saber mais sobre clareamento." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=600&q=80" alt="Clínica Geral">
+                        <div class="service-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Clínica Geral</h3>
+                        <p>Restaurações, limpeza, tratamento de canal e prevenção para toda a família.</p>
+                        <a href="https://wa.me/5516996404770?text=Olá! Gostaria de agendar uma consulta de clínica geral." target="_blank" class="service-link">
+                            Saiba mais <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="testimonials-bg"></div>
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-badge" style="background: rgba(13, 148, 136, 0.2); color: #14b8a6;">Depoimentos</span>
+                <h2 class="section-title" style="color: white;">O Que Nossos <span>Pacientes Dizem</span></h2>
+                <p class="section-desc" style="color: rgba(255, 255, 255, 0.8);">Histórias reais de transformação e satisfação</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        Excelente atendimento! Fiz meus implantes na Mairake e superou todas as minhas expectativas.
+                        A Dra. e sua equipe são muito profissionais e atenciosos. Recomendo de olhos fechados!
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Maria Silva" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Maria Silva</h4>
+                            <p>Paciente há 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        Finalmente encontrei uma clínica de confiança! Fiz tratamento de canal e coroa dental
+                        com muito cuidado e sem dor. Ambiente limpo, moderno e equipe muito simpática.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="João Santos" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>João Santos</h4>
+                            <p>Paciente há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        Meus filhos amam ir ao dentista agora! O atendimento infantil é impecável,
+                        muito paciência e carinho. O clareamento também ficou maravilhoso, muito obrigada!
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Ana Paula" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Ana Paula</h4>
+                            <p>Paciente há 5 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section id="differentials">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-badge">Nossos Diferenciais</span>
+                <h2 class="section-title">Por Que Escolher a <span>Mairake</span></h2>
+                <p class="section-desc">Compromisso com a excelência e seu bem-estar</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-card reveal">
+                    <div class="differential-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Equipamentos modernos e digitais para diagnósticos precisos e tratamentos mais eficientes.</p>
+                </div>
+                <div class="differential-card reveal reveal-delay-1">
+                    <div class="differential-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais altamente qualificados e em constante atualização técnica.</p>
+                </div>
+                <div class="differential-card reveal reveal-delay-2">
+                    <div class="differential-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Atendimento Humanizado</h3>
+                    <p>Foco no seu conforto e bem-estar durante todo o tratamento.</p>
+                </div>
+                <div class="differential-card reveal">
+                    <div class="differential-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Esterilização Rigorosa</h3>
+                    <p>Protocolos estritos de biossegurança para sua total segurança.</p>
+                </div>
+                <div class="differential-card reveal reveal-delay-1">
+                    <div class="differential-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horário Flexível</h3>
+                    <p>Atendimentos em horários convenientes, inclusive aos sábados.</p>
+                </div>
+                <div class="differential-card reveal reveal-delay-2">
+                    <div class="differential-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Facilidades de Pagamento</h3>
+                    <p>Diversas formas de pagamento e parcelamentos para você realizar seu tratamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Agende Sua Consulta</h3>
+                    <p>
+                        Entre em contato conosco para agendar sua avaliação gratuita. Nossa equipe está pronta
+                        para atender você e proporcionar o sorriso que você sempre sonhou.
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Endereço</h4>
+                                <p>Av. Prof. João Fiúsa, 1901 - Sala 607<br>Jardim São Luiz, Ribeirão Preto - SP</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>WhatsApp</h4>
+                                <p>(16) 99640-4770</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 19h<br>Sábado: 8h às 13h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal reveal-delay-1">
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tratamento de Interesse</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="implantes">Implantes</option>
+                                <option value="estetica">Estética Dental</option>
+                                <option value="ortodontia">Ortodontia</option>
+                                <option value="proteses">Próteses</option>
+                                <option value="clareamento">Clareamento</option>
+                                <option value="clinica-geral">Clínica Geral</option>
+                                <option value="avaliacao">Avaliação Geral</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem (opcional)</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre suas necessidades..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Mairake<span>.</span></div>
+                    <p>
+                        Odontologia especializada com atendimento de excelência em Ribeirão Preto.
+                        Seu sorriso é nossa prioridade.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#services">Implantes</a></li>
+                        <li><a href="#services">Estética</a></li>
+                        <li><a href="#services">Ortodontia</a></li>
+                        <li><a href="#services">Clareamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jardim São Luiz, Ribeirão Preto</li>
+                        <li><i class="fab fa-whatsapp"></i> (16) 99640-4770</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mairake Odontologia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/5516996404770" target="_blank" class="whatsapp-btn" aria-label="Fale conosco no WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <span class="whatsapp-tooltip">Agende sua consulta!</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message') || 'Sem mensagem adicional';
+
+            // Create WhatsApp message
+            const whatsappMessage = encodeURIComponent(
+                `Olá! Meu nome é ${name}.\n` +
+                `Telefone: ${phone}\n` +
+                `Tratamento de interesse: ${service}\n` +
+                `Mensagem: ${message}`
+            );
+
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/5516996404770?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            form.reset();
+
+            // Show success message
+            alert('Mensagem enviada! Redirecionando para o WhatsApp...');
+        }
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 0) {
+                value = '(' + value;
+                if (value.length > 3) {
+                    value = value.slice(0, 3) + ') ' + value.slice(3);
+                }
+                if (value.length > 10) {
+                    value = value.slice(0, 10) + '-' + value.slice(10);
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+
+</body>
+</html>
