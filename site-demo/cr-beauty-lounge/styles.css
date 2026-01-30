@@ -1,0 +1,171 @@
+/* ============================================
+   CR BEAUTY LOUNGE - ESTILOS CSS
+   Paleta: Rose Gold #C71585, Charcoal #212121
+   ============================================ */
+
+/* ===== CSS Reset & Base Styles ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --rosegold: #C71585;
+  --rosegold-light: #DA70D6;
+  --rosegold-dark: #993366;
+  --charcoal: #212121;
+  --charcoal-light: #424242;
+  --charcoal-dark: #0D0D0D;
+  --white: #FFFFFF;
+  --cream: #FFF0F5;
+  --gray: #6B7280;
+  --gray-light: #E5E7EB;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+  --shadow-rosegold: 0 4px 20px rgba(199, 21, 133, 0.3);
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--charcoal-dark);
+  background-color: var(--white);
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--rosegold), var(--rosegold-dark));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--rosegold-light), var(--rosegold));
+}
+
+/* ===== Selection Color ===== */
+::selection {
+  background-color: var(--rosegold);
+  color: var(--white);
+}
+
+::-moz-selection {
+  background-color: var(--rosegold);
+  color: var(--white);
+}
+
+/* ===== Keyframes ===== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(199, 21, 133, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(199, 21, 133, 0.2);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Animation Classes ===== */
+.fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.fade-in-up-delay-1 {
+  animation: fade-in-up 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-2 {
+  animation: fade-in-up 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-3 {
+  animation: fade-in-up 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* ===== WhatsApp Button Floating ===== */
+.whatsapp-button {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.whatsapp-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.whatsapp-button.pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.whatsapp-button:hover {
+  animation: none;
+}
+
+/* ===== Intersection Observer Animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
