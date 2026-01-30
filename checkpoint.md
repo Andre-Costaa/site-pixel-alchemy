@@ -35,16 +35,16 @@ Ao finalizar cada site:
 
 ## Status Geral
 - **Total de Sites**: 47
-- **Concluídos**: 1
+- **Concluídos**: 2
 - **Em Progresso**: 0
-- **Pendentes**: 46
+- **Pendentes**: 45
 
 ## Lista de Sites
 
 | ID | Nome do Cliente | Status | Pasta do Demo | URL do Demo | Observações |
 |----|-----------------|--------|---------------|-------------|-------------|
 | US-001 | Mairake Odontologia | ✅ Concluído | `mairake-odontologia` | pixelalchemy.com.br/site-demo/mairake-odontologia | Site completo com design moderno |
-| US-002 | Prime Instituto Oral | ⏳ Pendente | `prime-instituto-oral` | | |
+| US-002 | Prime Instituto Oral | ✅ Concluído | `prime-instituto-oral` | pixelalchemy.com.br/site-demo/prime-instituto-oral | Odontopediatria e Ortodontia - Design "Soft Architectural" com cores coral/teal/mustard |
 | US-003 | Dra. Laura Sanches | ⏳ Pendente | `dra-laura-sanches` | | |
 | US-004 | Dra. Caroline Honorato Parice | ⏳ Pendente | `dra-caroline-honorato-parice` | | |
 | US-005 | Dra. Ana Carolina Orlanda Junqueira Defina | ⏳ Pendente | `dra-ana-carolina-orlanda` | | |
