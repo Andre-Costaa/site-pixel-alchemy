@@ -361,13 +361,18 @@ Inclua uma entrada com:
 
 ### REV-043 - Bocardo Odontologia
 - **ID da revisão**: REV-043
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-043
 - **Nome do cliente**: Bocardo Odontologia
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/bocardo-odontologia/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Por que escolher a Bocardo?" (problem-solution), "Nossos Serviços" (services), "Depoimentos" (testimonials), "Nossos Diferenciais" (differentiators) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Medo e ansiedade do dentista", "Tratamentos desconfortáveis", etc.), soluções ("Atendimento humanizado e acolhedor", "Tecnologia de ponta indolor", etc.), cards de serviços ("Estética Dental", "Implantes Dentários", "Ortodontia", "Protetor e Reabilitação", "Dentística", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem classes CSS (`fade-in`, `fade-in-left`, `fade-in-right`, `scale-in`) que definem `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1214-1256), mas a classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in`, `fade-in-left`, `fade-in-right` e `scale-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
-- **Evidências**: Screenshots em `.playwright-mcp/rev043-bocardo-1440-full.png`, `.playwright-mcp/rev043-bocardo-1024-full.png`, `.playwright-mcp/rev043-bocardo-768-full.png` e `.playwright-mcp/rev043-bocardo-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Por que escolher a Bocardo?" (problem-solution), "Nossos Serviços" (services), "Depoimentos" (testimonials), "Nossos Diferenciais" (differentiators) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Medo e ansiedade do dentista", "Tratamentos desconfortáveis", etc.), soluções ("Atendimento humanizado e acolhedor", "Tecnologia de ponta indolor", etc.), cards de serviços ("Estética Dental", "Implantes Dentários", "Ortodontia", "Protetor e Reabilitação", "Dentística", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem classes CSS (`fade-in`, `fade-in-left`, `fade-in-right`, `scale-in`) que definem `opacity: 0` e `transform: translateY(40px)` no CSS, mas a classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Refatorado o sistema de animações para usar progressive enhancement:
+  - Modificado o CSS para que `.fade-in`, `.fade-in-left`, `.fade-in-right` e `.scale-in` tenham `opacity: 1` e `transform: none` por padrão
+  - Adicionada classe `.js-enabled` ao body quando JavaScript carrega
+  - Animações agora são aplicadas via classe `.animated` adicionada pelo Intersection Observer
+  - Elementos são sempre visíveis; animações são um bônus quando entram no viewport
+  - Garantido que todo o conteúdo seja visível imediatamente ao carregar a página, mesmo sem JavaScript
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
 ### REV-038 - Dra Letícia Araújo
 - **ID da revisão**: REV-038
@@ -415,9 +420,16 @@ Inclua uma entrada com:
 - **Nome do cliente**: Clínica Uniê
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-unie/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A story US-044 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/clinica-unie' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-044 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/clinica-unie/index.html
-  - Diretório /site-demo/clinica-unie não existe localmente
-  - `ls site-demo/ | grep unie` não retorna resultados
+- **Problema**: ~~O site não existe. A story US-044 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/clinica-unie' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para Clínica Uniê em Ribeirão Preto:
+  - Design elegante com paleta de cores navy profundo, dourado/terracota e cream
+  - Tipografia: Playfair Display (serif elegante) + Inter (moderno)
+  - Seções completas: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - 6 serviços odontológicos: Implantes, Ortodontia, Estética, Odontopediatria, Próteses, Endodontia
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional com máscara de telefone
+  - Totalmente responsivo para mobile
+  - CTAs claros para agendamento
+  - Informações da clínica: Av. Leais Paulista, 864 - Jardim Irajá, Ribeirão Preto - SP
+  - Telefone: (16) 3234-6832
+- **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
