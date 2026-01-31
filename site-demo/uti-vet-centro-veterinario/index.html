@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTI VET - Centro Veterinário | Terapia Intensiva em Ribeirão Preto</title>
+    <meta name="description" content="Centro veterinário especializado em terapia intensiva e cuidados críticos 24h em Ribeirão Preto. Equipamento de ponta e equipe especializada.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0066CC;
+            --color-primary-dark: #004A94;
+            --color-primary-light: #E6F0FF;
+            --color-secondary: #00B894;
+            --color-secondary-dark: #00967B;
+            --color-alert: #FF6B6B;
+            --color-alert-dark: #EE5A52;
+            --color-warning: #FFA502;
+            --color-dark: #1A1D23;
+            --color-dark-blue: #0F172A;
+            --color-gray: #64748B;
+            --color-gray-light: #E2E8F0;
+            --color-white: #FFFFFF;
+            --color-ice: #F8FAFC;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+            --border-radius-sm: 6px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+            --shadow-glow: 0 0 40px rgba(0, 102, 204, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-ice);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ECG Heartbeat Animation */
+        .ecg-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .ecg-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            animation: ecg-pulse 2s linear infinite;
+        }
+
+        @keyframes ecg-pulse {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+
+        /* Heartbeat Monitor Effect */
+        .heartbeat {
+            position: relative;
+        }
+
+        .heartbeat::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+            animation: heartbeat-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Vital Signs Animation */
+        .vital-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+            border-radius: 2px;
+            animation: vital-move 2s ease-in-out infinite;
+        }
+
+        @keyframes vital-move {
+            0%, 100% { transform: scaleX(0.6); }
+            50% { transform: scaleX(1); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-base);
+            border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        .nav.scrolled {
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-xs) 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .nav-logo-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-text-main {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo-text-sub {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: var(--spacing-xs) 0;
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem 1.5rem;
+            background: var(--color-alert);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-alert-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .nav-cta svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            animation: ring-animation 1.5s ease-in-out infinite;
+        }
+
+        @keyframes ring-animation {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(-10deg); }
+            20%, 40% { transform: rotate(10deg); }
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-dark);
+            transition: var(--transition-fast);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--spacing-xxl) + var(--spacing-lg)) var(--spacing-md) var(--spacing-xxl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-ice) 50%, #E8F5E9 100%);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            background-image:
+                linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .hero-bg-blur {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+        }
+
+        .hero-bg-blur-1 {
+            top: -200px;
+            right: -100px;
+            background: var(--color-primary);
+        }
+
+        .hero-bg-blur-2 {
+            bottom: -200px;
+            left: -100px;
+            background: var(--color-secondary);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fade-up 0.8s ease forwards;
+        }
+
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(0, 102, 204, 0.1);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-alert);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-dark-blue);
+        }
+
+        .hero-title-highlight {
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .hero-title-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            width: 100%;
+            height: 0.15em;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            opacity: 0.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-base);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .btn-primary svg {
+            animation: ring-animation 1.5s ease-in-out infinite;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-dark);
+            border: 2px solid var(--color-gray-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-gray-light);
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fade-left 0.8s ease 0.2s forwards;
+        }
+
+        @keyframes fade-left {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            padding: var(--spacing-lg);
+            color: white;
+        }
+
+        .hero-overlay-vital {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-overlay-vital-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .hero-overlay-vital-bar {
+            width: 60px;
+            height: 3px;
+            background: var(--color-secondary);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .hero-overlay-vital-bar-inner {
+            height: 100%;
+            background: var(--color-alert);
+            animation: vital-bar-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes vital-bar-pulse {
+            0%, 100% { width: 60%; }
+            50% { width: 90%; }
+        }
+
+        .hero-overlay-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .hero-icu-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--color-alert);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .hero-icu-badge svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: white;
+        }
+
+        .problem-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-label-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-alert);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-dark-blue);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .problem-card {
+            padding: var(--spacing-lg);
+            background: var(--color-ice);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition-base);
+            border: 1px solid var(--color-gray-light);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-md);
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .problem-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-alert);
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-dark-blue);
+        }
+
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+
+        .solution-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .solution-card:hover {
+            border-color: transparent;
+        }
+
+        .solution-card .problem-icon {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .solution-card .problem-icon svg {
+            fill: white;
+        }
+
+        .solution-card h3 {
+            color: white;
+        }
+
+        .solution-card p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .solution-features {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .solution-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .solution-feature svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-secondary);
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-ice);
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+            border: 1px solid var(--color-gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-primary-light), rgba(0, 184, 148, 0.1));
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-primary);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .service-card:hover .service-icon svg {
+            fill: white;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-dark-blue);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .service-equipment {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-equipment-item {
+            padding: 0.35rem 0.75rem;
+            background: var(--color-ice);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-gray);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: var(--color-ice);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            position: relative;
+        }
+
+        .testimonial-quotes {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.1;
+        }
+
+        .testimonial-quotes svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-dark-blue);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-warning);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-dark-blue);
+        }
+
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+        }
+
+        /* Differentiators Section */
+        .differentiators {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-dark-blue), var(--color-dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .differentiators::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 102, 204, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 102, 204, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .differentiators-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .differentiators .section-label {
+            color: var(--color-secondary);
+        }
+
+        .differentiators .section-title {
+            color: white;
+        }
+
+        .differentiators .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .differentiator-item {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .differentiator-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto var(--spacing-md);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .differentiator-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-secondary);
+        }
+
+        .differentiator-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, white, var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .differentiator-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-ice);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-dark-blue);
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary-light);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--color-primary);
+        }
+
+        .contact-item-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--color-dark-blue);
+        }
+
+        .contact-item-content p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin: 0;
+        }
+
+        .contact-item-content a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item-content a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-wrapper {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-dark-blue);
+        }
+
+        .contact-form-wrapper p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .form-submit svg {
+            animation: ring-animation 1.5s ease-in-out infinite;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-dark-blue);
+            color: white;
+            padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand .footer-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-brand .footer-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .footer-brand .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-primary);
+        }
+
+        .footer-social a svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* Scroll Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .differentiators-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: var(--spacing-xl) var(--spacing-md);
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: var(--transition-base);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .solution-features {
+                justify-content: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .differentiators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-text-main">UTI VET</span>
+                    <span class="nav-logo-text-sub">Centro Veterinário</span>
+                </div>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="tel:+551634434505" class="nav-cta">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    (16) 3443-4505
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-bg-pattern"></div>
+            <div class="hero-bg-blur hero-bg-blur-1"></div>
+            <div class="hero-bg-blur hero-bg-blur-2"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Terapia Intensiva 24 Horas
+                </div>
+                <h1 class="hero-title">
+                    Cuidados <span class="hero-title-highlight">Críticos</span> que Salvam Vidas
+                </h1>
+                <p class="hero-subtitle">
+                    Centro veterinário especializado em terapia intensiva e cuidados críticos. Equipamento médico de ponta e equipe especializada disponível 24 horas para seu pet.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:+551634434505" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        Emergência 24h
+                    </a>
+                    <a href="#contato" class="btn btn-secondary">Agendar Avaliação</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">24/7</span>
+                        <span class="hero-stat-label">Atendimento</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">15+</span>
+                        <span class="hero-stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">10k+</span>
+                        <span class="hero-stat-label">Vidas Salvas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=800&h=800&fit=crop" alt="Veterinário em terapia intensiva cuidando de animal" class="hero-image">
+                    <div class="hero-icu-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        UTI Veterinária
+                    </div>
+                    <div class="hero-overlay">
+                        <div class="hero-overlay-vital">
+                            <span class="hero-overlay-vital-label">Status do Paciente</span>
+                            <div class="hero-overlay-vital-bar">
+                                <div class="hero-overlay-vital-bar-inner"></div>
+                            </div>
+                        </div>
+                        <div class="hero-overlay-title">Monitoramento Contínuo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem">
+        <div class="problem-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <span class="section-label-dot"></span>
+                    Por Que a UTI VET
+                </div>
+                <h2 class="section-title">Quando Cada Segundo Conta</h2>
+                <p class="section-subtitle">Em situações críticas, seu pet precisa de especialistas equipados para salvar vidas.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card wow-fade-up">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </div>
+                    <h3>Falta de Estrutura</h3>
+                    <p>Clinicas sem equipamento adequado podem não conseguir diagnosticar e tratar casos graves.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                    </div>
+                    <h3>Tempo Perdido</h3>
+                    <p>Em emergências, minutos podem fazer a diferença entre a vida e a morte do seu pet.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="200">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3>Sem Especialistas</h3>
+                    <p>Casos complexos necessitam de veterinários especializados em terapia intensiva.</p>
+                </div>
+                <div class="problem-card solution-card wow-fade-up" data-delay="300">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <div>
+                        <h3>UTI VET - A Solução Completa</h3>
+                        <p>Centro veterinário especializado com estrutura de terapia intensiva completa, equipamento médico hospitalar e equipe especializada disponível 24 horas.</p>
+                        <div class="solution-features">
+                            <div class="solution-feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                UTI 24h
+                            </div>
+                            <div class="solution-feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                Monitoramento
+                            </div>
+                            <div class="solution-feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                Equipamento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="services-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <span class="section-label-dot"></span>
+                    Especialidades
+                </div>
+                <h2 class="section-title">Tratamento Intensivo Completo</h2>
+                <p class="section-subtitle">Serviços especializados para casos críticos que exigem atenção constante.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+                    </div>
+                    <h3>Terapia Intensiva</h3>
+                    <p>Unidade de terapia intensiva veterinária com monitoramento contínuo 24 horas por dia.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Monitor Cardíaco</span>
+                        <span class="service-equipment-item">Oxímetro</span>
+                        <span class="service-equipment-item">Capnógrafo</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3>Emergência 24h</h3>
+                    <p>Atendimento de emergência pronto para receber casos críticos a qualquer momento.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Trauma</span>
+                        <span class="service-equipment-item">Cirurgia Emergência</span>
+                        <span class="service-equipment-item">Reanimação</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z"/></svg>
+                    </div>
+                    <h3>Exames Diagnósticos</h3>
+                    <p>Laboratório e imagem completos para diagnóstico rápido e preciso em situações críticas.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Raio-X Digital</span>
+                        <span class="service-equipment-item">Ultrassom</span>
+                        <span class="service-equipment-item">Bioquímica</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Internação</h3>
+                    <p>Internação veterinária com enfermagem 24h e monitoramento constante dos sinais vitais.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Enfermaria</span>
+                        <span class="service-equipment-item">Isolamento</span>
+                        <span class="service-equipment-item">Cuidados</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg>
+                    </div>
+                    <h3>Cirurgias</h3>
+                    <p>Centro cirúrgico equipado para procedimentos de alta complexidade.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Soft Tissue</span>
+                        <span class="service-equipment-item">Ortopedia</span>
+                        <span class="service-equipment-item">Neurologia</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3>Especialistas</h3>
+                    <p>Equipe multidisciplinar com especialistas em diversas áreas da medicina veterinária.</p>
+                    <div class="service-equipment">
+                        <span class="service-equipment-item">Cardiologia</span>
+                        <span class="service-equipment-item">Neurologia</span>
+                        <span class="service-equipment-item">Oncologia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <span class="section-label-dot"></span>
+                    Depoimentos
+                </div>
+                <h2 class="section-title">Histórias de Recuperação</h2>
+                <p class="section-subtitle">Veja o que dizem os tutores que passaram pela UTI VET.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up">
+                    <div class="testimonial-quotes">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Meu cachorro teve uma insuficiência renal aguda e a UTI VET salvou sua vida. Ficou internado por 5 dias com monitoramento 24h. A equipe é incrível e o equipamento de primeira. Eternamente grata!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PL</div>
+                        <div class="testimonial-info">
+                            <h4>Patrícia Lima</h4>
+                            <p>Tutora do Cachorro Thor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-quotes">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Após uma cirurgia de emergência à noite, minha gata precisou de UTI. Chegamos na UTI VET e foram super rápidos e eficientes. Ela se recuperou lindamente. Recomendo muito!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FM</div>
+                        <div class="testimonial-info">
+                            <h4>Fernando Martins</h4>
+                            <p>Tutor da Gata Luna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-quotes">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Profissionalismo impecável! Desde a recepção até a equipe médica. Meu pet ficou internado e recebia atualizações diárias. Estrutura de hospital veterinário de verdade."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <h4>Renata Santos</h4>
+                            <p>Tutora do Cachorro Bob</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiators Section -->
+    <section class="differentiators" id="diferenciais">
+        <div class="differentiators-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <span class="section-label-dot"></span>
+                    Diferenciais
+                </div>
+                <h2 class="section-title">Por Que Escolher a UTI VET</h2>
+                <p class="section-subtitle">Infraestrutura hospitalar e experiência em casos críticos.</p>
+            </div>
+            <div class="differentiators-grid">
+                <div class="differentiator-item wow-fade-up">
+                    <div class="differentiator-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <div class="differentiator-number">24/7</div>
+                    <div class="differentiator-label">Atendimento</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="100">
+                    <div class="differentiator-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <div class="differentiator-number">15+</div>
+                    <div class="differentiator-label">Anos de Experiência</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="200">
+                    <div class="differentiator-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+                    </div>
+                    <div class="differentiator-number">10k+</div>
+                    <div class="differentiator-label">Pacientes Atendidos</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="300">
+                    <div class="differentiator-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="differentiator-number">100%</div>
+                    <div class="differentiator-label">Dedicação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Em caso de emergência, ligue imediatamente. Para consultas e agendamentos, preencha o formulário ou entre em contato pelos canais abaixo.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+551634434505">(16) 3443-4505</a></p>
+                            <p style="font-size: 0.8rem; color: var(--color-alert);">Emergência 24 horas</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Endereço</h4>
+                            <p>R. Henrique Dumont, 530 - Jardim Paulista</p>
+                            <p>Ribeirão Preto - SP, 14090-200</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Horário</h4>
+                            <p>Segunda a Domingo: 24 horas</p>
+                            <p style="font-size: 0.8rem; color: var(--color-alert);">Atendimento ininterrupto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <h3>Entre em Contato</h3>
+                <p>Preencha o formulário e entraremos em contato o mais rápido possível.</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Seu Nome</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service">Serviço Desejado</label>
+                        <select id="service" name="service" class="form-select" required>
+                            <option value="">Selecione o serviço</option>
+                            <option value="emergencia">Emergência 24h</option>
+                            <option value="uti">Terapia Intensiva</option>
+                            <option value="internacao">Internação</option>
+                            <option value="cirurgia">Cirurgia</option>
+                            <option value="exames">Exames</option>
+                            <option value="consulta">Consulta</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Mensagem</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Descreva brevemente a situação do seu pet..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                        </div>
+                        <span class="footer-logo-text">UTI VET</span>
+                    </div>
+                    <p>Centro veterinário especializado em terapia intensiva e cuidados críticos. Estrutura hospitalar completa com atendimento 24 horas em Ribeirão Preto.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <div class="footer-links">
+                        <a href="#home">Início</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <div class="footer-links">
+                        <a href="#servicos">Terapia Intensiva</a>
+                        <a href="#servicos">Emergência 24h</a>
+                        <a href="#servicos">Internação</a>
+                        <a href="#servicos">Exames</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 UTI VET - Centro Veterinário. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            // Create WhatsApp message
+            const whatsappNumber = '551634434505';
+            const whatsappMessage = encodeURIComponent(
+                `Olá! Meu nome é ${name}.\n` +
+                `Telefone: ${phone}\n` +
+                `Serviço desejado: ${service}\n` +
+                `Mensagem: ${message || 'Gostaria de mais informações.'}`
+            );
+
+            // Open WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Animate numbers on scroll
+        const animateNumbers = () => {
+            const numbers = document.querySelectorAll('.differentiator-number');
+            numbers.forEach(num => {
+                const text = num.textContent;
+                const hasPlus = text.includes('+');
+                const hasSlash = text.includes('/');
+                const hasPercent = text.includes('%');
+
+                let target = parseInt(text.replace(/\D/g, ''));
+                let suffix = '';
+
+                if (hasSlash) {
+                    // Handle "24/7" case
+                    num.textContent = text;
+                    return;
+                }
+                if (hasPlus) suffix = '+';
+                if (hasPercent) suffix = '%';
+
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        num.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = Math.floor(current) + suffix;
+                    }
+                }, 30);
+            });
+        };
+
+        const differentiatorsSection = document.querySelector('.differentiators');
+        const numbersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    numbersObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (differentiatorsSection) {
+            numbersObserver.observe(differentiatorsSection);
+        }
+    </script>
+</body>
+</html>
