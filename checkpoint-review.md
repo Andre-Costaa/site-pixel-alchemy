@@ -332,9 +332,9 @@ Inclua uma entrada com:
 - **Nome do cliente**: Clínica Livhera
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-livhera/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A imagem do serviço "Restauração Estética" não está carregando corretamente. O card exibe um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.
-- **Correção sugerida**: Substituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash. Sugestão: usar uma imagem similar às dos outros cards de serviços odontológicos, como `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80` ou outra imagem relacionada a restaurações dentárias.
-- **Evidências**: Screenshots em `.playwright-mcp/clinica-livhera-1440-tratamentos.png` e `.playwright-mcp/clinica-livhera-1024-cards.png` - notar que o card "Restauração Estética" exibe um fundo azul escuro em vez da imagem, enquanto os outros cards mostram as imagens corretamente.
+- **Problema**: ~~A imagem do serviço "Restauração Estética" não estava carregando corretamente. O card exibia um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80` no arquivo `site-demo/clinica-livhera/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-036 - Clínica Doctor Oral
 - **ID da revisão**: REV-036
