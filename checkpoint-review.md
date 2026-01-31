@@ -66,9 +66,9 @@ Inclua uma entrada com:
 - **Nome do cliente**: Dra. Laura Sanches
 - **URL do demo**: /site-demo/dra-laura-sanches/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A imagem do hero mostra um dentista homem, mas o site é para "Dra. Laura Sanches" (uma mulher). Isso cria uma inconsistência entre o conteúdo visual e o nome da profissional.
-- **Correção sugerida**: Substituir a imagem do hero por uma foto de uma dentista mulher. Sugestão: usar uma imagem de uma profissional feminina em consultório odontológico.
-- **Evidências**: Screenshot em `.playwright-mcp/dra-laura-sanches-final-1440.png` - notar que a imagem no hero mostra um homem de jaleco branco, não uma mulher.
+- **Problema**: ~~A imagem do hero mostra um dentista homem, mas o site é para "Dra. Laura Sanches" (uma mulher). Isso cria uma inconsistência entre o conteúdo visual e o nome da profissional.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem do hero de `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=750&fit=crop&crop=faces` (homem) para `https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=750&fit=crop&crop=faces` (mulher/médica) no arquivo `site-demo/dra-laura-sanches/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis e bem formatadas. Hero com imagem feminina consistente com o nome "Dra. Laura Sanches". Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
 ### REV-011 - Dra. Andrea Leal
 - **ID da revisão**: REV-011
