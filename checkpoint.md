@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 26/45 (57.8%)
+- **Concluídas**: 27/45 (60.0%)
 - **Em Andamento**: 0
-- **Pendentes**: 19
+- **Pendentes**: 18
 
 ## URLs dos Demos
 
@@ -38,18 +38,18 @@
 | US-024 | **Veterinary Clinic and Pet Shop São Bernardo** | **pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo** |
 | US-025 | **Bicho Chic Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/bicho-chic-clinica-veterinaria-24h** |
 | US-026 | **Toca do Mastim Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h** |
+| US-027 | **Hemocentro Heróis Vet** | **pixelalchemy.com.br/site-demo/hemocentro-herois-vet** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-026 - Toca do Mastim Clínica Veterinária 24h
+- **Último Site**: US-027 - Hemocentro Heróis Vet
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h
+- **URL**: pixelalchemy.com.br/site-demo/hemocentro-herois-vet
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-027 | Hemocentro Heróis Vet | Pendente |
 | US-028 | Di Gato Medicina Felina | Pendente |
 | US-029 | Dog Days 24h | Pendente |
 | US-030 | BMvet Zona Oeste | Pendente |
