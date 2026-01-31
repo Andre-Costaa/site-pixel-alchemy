@@ -101,13 +101,13 @@ Inclua uma entrada com:
 
 ### REV-013 - Dra. Miriam Baldin
 - **ID da revisão**: REV-013
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-013
 - **Nome do cliente**: Dra. Miriam Baldin
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-miriam-baldin/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Por Que Escolher a Dra. Miriam" (problem-solution), "Tratamentos Especializados" (services), "Depoimentos" (testimonials), "Diferenciais" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e Desconforto", "Sorriso Inseguro", "Tratamentos Complexos"), solução ("Solução Completa"), cards de serviços ("Clareamento Dental", "Implantes Dentários", "Ortodontia", "Facetas de Porcelana", "Restaurações Estéticas", "Limpeza e Prevenção"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `fade-in` que define `opacity: 0`, mas a classe `visible` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML.
-- **Evidências**: Screenshots em `.playwright-mcp/rev013-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Por Que Escolher a Dra. Miriam" (problem-solution), "Tratamentos Especializados" (services), "Depoimentos" (testimonials), "Diferenciais" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e Desconforto", "Sorriso Inseguro", "Tratamentos Complexos"), solução ("Solução Completa"), cards de serviços ("Clareamento Dental", "Implantes Dentários", "Ortodontia", "Facetas de Porcelana", "Restaurações Estéticas", "Limpeza e Prevenção"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `fade-in` que define `opacity: 0`, mas a classe `visible` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Adicionado script JavaScript crítico no `<head>` do documento que executa imediatamente e adiciona a classe `visible` a todos os elementos com classe `fade-in`. O script roda múltiplas vezes (imediatamente, no DOMContentLoaded, no load do window, e após timeouts de 50ms, 100ms e 500ms) para garantir que todos os elementos sejam visíveis independentemente do momento de renderização. Também adicionada classe `.no-js` como fallback no CSS.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-015 - Laura Bullamah Stoll
 - **ID da revisão**: REV-015
