@@ -15,6 +15,95 @@ after each iteration and included in agent prompts for context.
 **Status:** Completed
 
 **Notes:**
-S | ✅ Aprovado | Sem erros críticos |\n\n### Screenshots Capturados\n- `mairake-1440px-final.png` - Desktop\n- `mairake-1024px-final.png` - Tablet landscape\n- `mairake-768px-final.png` - Tablet portrait\n- `mairake-480px-final.png` - Mobile\n\n### Notas\n- Site utiliza animações de scroll via Intersection Observer (classe `.reveal`)\n- Todas as imagens são carregadas do Unsplash via CDN\n- Favicon retorna 404 (não crítico)\n- Formulário integrado com WhatsApp\n\n**Status Final: APROVADO** ✅\n\n
+S | ✅ Aprovado | Sem erros críticos |\n\n### Screenshots Capturados
+- `mairake-1440px-final.png` - Desktop
+- `mairake-1024px-final.png` - Tablet landscape
+- `mairake-768px-final.png` - Tablet portrait
+- `mairake-480px-final.png` - Mobile
+
+### Notas
+- Site utiliza animações de scroll via Intersection Observer (classe `.reveal`)
+- Todas as imagens são carregadas do Unsplash via CDN
+- Favicon retorna 404 (não crítico)
+- Formulário integrado com WhatsApp
+
+**Status Final: APROVADO** ✅
+
+---
+
+## ✓ Iteration 2 - REV-002: Revisão Playwright - Prime Instituto Oral
+*2026-01-31T02:20:15.378Z (419s)*
+
+**Status:** Completed
+
+**Notes:**
+.png` - Formulário de contato\n- `prime-instituto-oral-servicos-anchor.png` - Seção serviços\n\n### Observações
+- Site utiliza animações de scroll via Intersection Observer (21 elementos `.reveal`)
+- Design "Soft Architectural" com cores coral/teal/mustard
+- Todas as imagens carregam corretamente do Unsplash
+- Favicon retorna 404 (não crítico)
+- Formulário completo com todos os campos necessários
+
+**Commit criado:** `2f76d60 feat: REV-002 - Revisão Playwright - Prime Instituto Oral`
+
+---
+
+## ✓ Iteration 3 - REV-003: Revisão Playwright - Dra. Laura Sanches
+*2026-01-31T02:28:49.382Z (513s)*
+
+**Status:** Completed
+
+**Notes:**
+ut 480px | ✅ Sem quebras |
+| Carregamento de imagens | ✅ Funcionando |
+| Navegação/âncoras | ✅ Funcionando |
+| CTAs | ✅ Funcionando |
+| Formulário | ✅ Funcionando |
+| Console JS | ✅ Sem erros |
+
+### Correção Necessária
+Substituir a imagem do hero (`https://images.unsplash.com/photo-1606811841689-23dfddce3e95`) por uma foto de uma dentista mulher para manter consistência com o nome "Dra. Laura Sanches".
+
+O registro foi adicionado ao `checkpoint-review.md` e o commit foi realizado.
+
+---
+
+## ✓ Iteration 4 - REV-004: Revisão Playwright - Dra. Caroline Honorato Parice
+*2026-01-31*
+
+**Status:** Completed
+
+**Notes:**
+| Critério | Status |
+|----------|--------|
+| Layout 1440px | ✅ Sem quebras |
+| Layout 1024px | ✅ Sem quebras |
+| Layout 768px | ✅ Sem quebras |
+| Layout 480px | ✅ Sem quebras |
+| Carregamento de imagens | ✅ Funcionando |
+| Navegação/âncoras | ✅ Funcionando |
+| CTAs | ✅ Funcionando |
+| Formulário | ✅ Funcionando |
+| Console JS | ✅ Sem erros |
+
+### Screenshots Capturados
+- `dra-caroline-1440px-hero.png` - Desktop hero
+- `dra-caroline-1440px-servicos.png` - Desktop serviços
+- `dra-caroline-1440px-depoimentos.png` - Desktop depoimentos
+- `dra-caroline-1440px-contato-form.png` - Desktop contato
+- `dra-caroline-1024px-hero.png` - Tablet landscape
+- `dra-caroline-768px-hero.png` - Tablet portrait
+- `dra-caroline-480px-hero.png` - Mobile
+
+### Observações
+- Site utiliza animações de scroll via Intersection Observer (classe `.animate-on-scroll`)
+- Design "Premium Endodontia" com cores lavanda/teal/coral
+- Imagem do hero carrega corretamente do Unsplash
+- Favicon retorna 404 (não crítico)
+- Formulário completo com validação e mensagem de sucesso
+- Carousel de depoimentos funcional com navegação
+- Menu mobile funcional
+
+**Status Final: APROVADO** ✅
 
 ---
