@@ -331,3 +331,12 @@ ução**: Retorna erro 404 (NOT_FOUND)\n- **Diretório local**: `site-demo/sorri
 ições |\n| Navegação interna/âncoras | ✅ Funcionando (Início, Serviços, Depoimentos, Diferenciais, Contato) |\n| CTAs | ✅ Funcionando |\n| Formulário | ✅ Funcionando corretamente |\n| Console de erros | ✅ Apenas favicon 404 (não crítico) |\n\n### Correção Sugerida\n\nSubstituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash.\n\n### Registro\n\nProblema documentado no `checkpoint-review.md` com descrição detalhada e correção sugerida.\n\n
 
 ---
+## ✓ Iteration 25 - REV-032: Revisão Playwright - Sempre Sorrindo Implantes (São Sebastião)
+*2026-01-31T06:02:01.445Z (356s)*
+
+**Status:** Completed
+
+**Notes:**
+se e mensagem aceitando entrada\n  - Dropdown de serviços com opções corretas\n  - Sem erros visíveis de validação ou JavaScript\n\n- [x] **Console do navegador**:\n  - Apenas erro 404 de favicon.ico (não crítico)\n  - Sem erros de JavaScript ou recursos bloqueados\n\n### Observações\n\nO site está funcional e pronto para entrega ao cliente. Todas as seções (Hero, Por Que Escolher, Serviços, Depoimentos, Diferenciais, Contato) estão visíveis e bem formatadas em todos os breakpoints testados.\n\n
+
+---
