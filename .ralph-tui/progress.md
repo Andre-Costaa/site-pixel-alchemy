@@ -340,3 +340,21 @@ ições |\n| Navegação interna/âncoras | ✅ Funcionando (Início, Serviços,
 se e mensagem aceitando entrada\n  - Dropdown de serviços com opções corretas\n  - Sem erros visíveis de validação ou JavaScript\n\n- [x] **Console do navegador**:\n  - Apenas erro 404 de favicon.ico (não crítico)\n  - Sem erros de JavaScript ou recursos bloqueados\n\n### Observações\n\nO site está funcional e pronto para entrega ao cliente. Todas as seções (Hero, Por Que Escolher, Serviços, Depoimentos, Diferenciais, Contato) estão visíveis e bem formatadas em todos os breakpoints testados.\n\n
 
 ---
+## ✓ Iteration 26 - REV-033: Revisão Playwright - Reabilitação Oral
+*2026-01-31T06:06:30.207Z (268s)*
+
+**Status:** Completed
+
+**Notes:**
+eis: Hero, Transforme Seu Sorriso, Nossos Serviços, Depoimentos, Por Que Escolher Nós, Contato e Footer\n- Imagens carregando corretamente (6 cards de serviços, hero, depoimentos)\n- Navegação interna/âncoras funcionando (Início, Serviços, Depoimentos, Contato)\n- Formulário de contato operacional (todos os campos preenchidos sem erros)\n- Console limpo de erros críticos (apenas favicon.ico 404 - não crítico)\n\nNão foram encontrados problemas que necessitem registro no checkpoint-review.md.\n\n
+
+---
+## ✓ Iteration 27 - REV-034: Revisão Playwright - S.O.S ODONTOLÓGICO
+*2026-01-31T06:09:39.437Z (188s)*
+
+**Status:** Completed
+
+**Notes:**
+Responsivo:** Todos os breakpoints testados (1440px, 1024px, 768px, 480px) - OK\n- **Imagens:** Background do hero carregando corretamente da Unsplash - OK\n- **Navegação:** Âncoras internas (#inicio, #servicos, #contato) funcionando - OK\n- **Formulário:** Envio validado com sucesso, alerta de confirmação exibido - OK\n- **Console:** Apenas erro 404 no favicon.ico (não crítico) - OK\n\n### Resultado:\nSite aprovado para entrega ao cliente. Nenhuma issue crítica encontrada durante a revisão.\n\n
+
+---
