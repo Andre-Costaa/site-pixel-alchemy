@@ -162,3 +162,13 @@ Inclua uma entrada com:
 - **Problema**: As estatísticas do hero ("10+ Anos de Experiência", "5000+ Sorrisos Transformados", "100% Satisfação") estão sobrepondo o texto de descrição no hero em breakpoints menores (768px e 480px). O layout não está responsivo adequadamente, causando sobreposição entre as estatísticas e o parágrafo de descrição do serviço.
 - **Correção sugerida**: Ajustar o CSS do hero para que as estatísticas se reposicionem abaixo do texto de descrição em telas menores, ou reduzir o tamanho das estatísticas, ou adicionar um `clear: both` ou `display: block` adequado para evitar a sobreposição. Verificar as media queries para breakpoints 768px e 480px.
 - **Evidências**: Screenshots em `.playwright-mcp/edu-gomes-768-top.png` e `.playwright-mcp/edu-gomes-480-top.png` - notar que os números "10+", "5000+" e "100%" estão sobrepondo o texto "Clínico Geral, Implantes, Lentes Dentais, Ortodontia e Endodontia..."
+
+### REV-020 - Carvalho Odontologia
+- **ID da revisão**: REV-020
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Carvalho Odontologia
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/carvalho-odontologia/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Você Sabe Que Merece" (problem-solution), "Nossos Serviços" (services), "O Que Nossos Pacientes Dizem" (testimonials), "Números que Inspiram Confiança" (stats) e "Entre em Contato" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Se Envergonha de Sorrir", "Dor e Desconforto", "Medo do Dentista", "Autoestima Baixa"), solução ("Nós Temos a Solução"), cards de serviços ("Implantes Dentários", "Estética Dental", "Ortodontia", "Próteses Dentárias", "Periodontia", "Clínica Geral"), depoimentos, estatísticas e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/carvalho-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
