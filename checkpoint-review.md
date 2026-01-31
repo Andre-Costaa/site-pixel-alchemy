@@ -164,13 +164,19 @@ Inclua uma entrada com:
 
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-014
 - **Nome do cliente**: Edu Gomes Odontologia
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/edu-gomes-odontologia/index.html
 - **Breakpoint(s) afetado(s)**: 768px, 480px
-- **Problema**: As estatísticas do hero ("10+ Anos de Experiência", "5000+ Sorrisos Transformados", "100% Satisfação") estão sobrepondo o texto de descrição no hero em breakpoints menores (768px e 480px). O layout não está responsivo adequadamente, causando sobreposição entre as estatísticas e o parágrafo de descrição do serviço.
-- **Correção sugerida**: Ajustar o CSS do hero para que as estatísticas se reposicionem abaixo do texto de descrição em telas menores, ou reduzir o tamanho das estatísticas, ou adicionar um `clear: both` ou `display: block` adequado para evitar a sobreposição. Verificar as media queries para breakpoints 768px e 480px.
-- **Evidências**: Screenshots em `.playwright-mcp/edu-gomes-768-top.png` e `.playwright-mcp/edu-gomes-480-top.png` - notar que os números "10+", "5000+" e "100%" estão sobrepondo o texto "Clínico Geral, Implantes, Lentes Dentais, Ortodontia e Endodontia..."
+- **Problema**: ~~As estatísticas do hero ("10+ Anos de Experiência", "5000+ Sorrisos Transformados", "100% Satisfação") estavam sobrepondo o texto de descrição no hero em breakpoints menores (768px e 480px). O layout não estava responsivo adequadamente, causando sobreposição entre as estatísticas e o parágrafo de descrição do serviço.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Modificado o CSS do hero para corrigir o layout responsivo:
+  - Alterada a posição das estatísticas de `position: absolute` para `position: relative` com `margin-top: 3rem`
+  - Adicionado `flex-direction: column` ao hero em telas menores (breakpoint 968px)
+  - Configurado `order: 2` para a imagem e `order: 3` para as estatísticas, garantindo que fiquem abaixo do conteúdo principal
+  - Ajustado o alinhamento central e largura máxima do conteúdo para 100% em mobile
+  - Estatísticas agora são exibidas verticalmente (`flex-direction: column`) e centralizadas em telas menores
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
+- **Evidências**: Screenshots de validação em `.playwright-mcp/mobile-test-3.png`, `.playwright-mcp/tablet-test.png` - estatísticas agora aparecem corretamente abaixo do conteúdo sem sobreposição.
 
 ### REV-020 - Carvalho Odontologia
 - **ID da revisão**: REV-020
