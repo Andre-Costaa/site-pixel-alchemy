@@ -792,8 +792,8 @@
         }
 
         .contact-info {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .contact-info h2 {
@@ -861,8 +861,8 @@
             border-radius: 30px;
             padding: 45px;
             box-shadow: 0 20px 60px var(--shadow-strong);
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .contact-form-wrapper h3 {
@@ -1038,14 +1038,19 @@
             50% { box-shadow: 0 5px 35px rgba(37, 211, 102, 0.6); }
         }
 
-        /* Scroll animations */
+        /* Scroll animations - elementos visíveis por padrão */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s ease;
         }
 
-        .reveal.active {
+        .reveal.animate {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .reveal.animate.active {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1675,49 +1680,50 @@
         });
 
         // Intersection Observer for Scroll Animations
-        const revealElements = document.querySelectorAll('.reveal');
+        // Verificar se o usuário prefere animações reduzidas
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+        if (!prefersReducedMotion) {
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+            revealElements.forEach(el => {
+                el.classList.add('animate');
+                revealObserver.observe(el);
+            });
 
-        // Animate contact section elements
+            // Fallback: garantir visibilidade após 3 segundos
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    el.classList.add('active');
+                });
+            }, 3000);
+        }
+
+        // Animate contact section elements - já visíveis por padrão no CSS
+        // As animações são aplicadas apenas como melhoria visual, não bloqueiam o conteúdo
         const contactInfo = document.querySelector('.contact-info');
         const contactForm = document.querySelector('.contact-form-wrapper');
 
-        const contactObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target === contactInfo) {
-                        contactInfo.style.opacity = '1';
-                        contactInfo.style.transform = 'translateY(0)';
-                    }
-                    if (entry.target === contactForm) {
-                        contactForm.style.opacity = '1';
-                        contactForm.style.transform = 'translateY(0)';
-                    }
-                }
-            });
-        }, { threshold: 0.2 });
-
-        if (contactInfo) contactObserver.observe(contactInfo);
-        if (contactForm) contactObserver.observe(contactForm);
-
-        // Add transition styles dynamically
+        // Garantir que elementos de contato estejam visíveis
         if (contactInfo) {
-            contactInfo.style.transition = 'all 0.8s ease';
+            contactInfo.style.opacity = '1';
+            contactInfo.style.transform = 'translateY(0)';
         }
         if (contactForm) {
-            contactForm.style.transition = 'all 0.8s ease 0.2s';
+            contactForm.style.opacity = '1';
+            contactForm.style.transform = 'translateY(0)';
         }
 
         // Phone Mask
@@ -1741,9 +1747,9 @@
         });
 
         // Form Submission
-        const contactForm = document.getElementById('contactForm');
+        const contactFormEl = document.getElementById('contactForm');
 
-        contactForm.addEventListener('submit', (e) => {
+        contactFormEl.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const formData = {
@@ -1761,7 +1767,7 @@
             window.open(whatsappUrl, '_blank');
 
             // Reset form
-            contactForm.reset();
+            contactFormEl.reset();
 
             // Show success message
             alert('Mensagem enviada com sucesso! Em instantes você será redirecionado para o WhatsApp.');
