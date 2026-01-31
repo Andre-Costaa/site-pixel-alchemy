@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo Orto | Ortodontia Especializada em Ribeirão Preto</title>
-    <meta name="description" content="Grupo Orto - Ortodontia especializada em Ribeirão Preto. Aparelhos auto-ligados, autoligados, estéticos e invisíveis. Transforme seu sorriso com os especialistas.">
+    <meta name="description" content="Grupo Orto - Ortodontia especializada em Ribeirão Preto. Aparelhos auto-ligados, estéticos e invisíveis. Transforme seu sorriso com os especialistas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -146,16 +146,31 @@
             margin: 0 auto;
         }
 
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
+        /* ============================================
+           ANIMATIONS - FIXED: Elements visible by default
+        ============================================ */
+        .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .scroll-reveal.revealed {
+        .animate-on-scroll.animate-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-on-scroll.animated {
             opacity: 1;
             transform: translateY(0);
         }
+
+        .animate-delay-1 { transition-delay: 0.1s; }
+        .animate-delay-2 { transition-delay: 0.2s; }
+        .animate-delay-3 { transition-delay: 0.3s; }
+        .animate-delay-4 { transition-delay: 0.4s; }
+        .animate-delay-5 { transition-delay: 0.5s; }
+        .animate-delay-6 { transition-delay: 0.6s; }
 
         /* ============================================
            NAVIGATION
@@ -1325,7 +1340,7 @@
                 flex-direction: column;
                 padding: var(--spacing-lg);
                 gap: var(--spacing-md);
-                transform: translateY(-100%);
+                transform: translateY(-150%);
                 opacity: 0;
                 pointer-events: none;
                 transition: all var(--transition-normal);
@@ -1382,6 +1397,24 @@
                 text-align: center;
             }
         }
+
+        /* ============================================
+           ACCESSIBILITY - Reduced Motion
+        ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .animate-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1396,12 +1429,12 @@
                 </div>
                 <span class="nav-logo-text">Grupo<span>Orto</span></span>
             </a>
-            <div class="nav-toggle">
+            <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="nav-menu">
+            <div class="nav-menu" id="navMenu">
                 <a href="#inicio" class="nav-link">Início</a>
                 <a href="#servicos" class="nav-link">Serviços</a>
                 <a href="#depoimentos" class="nav-link">Depoimentos</a>
@@ -1426,7 +1459,7 @@
             <div class="hero-line hero-line-3"></div>
         </div>
         <div class="container hero-container">
-            <div class="hero-content scroll-reveal">
+            <div class="hero-content animate-on-scroll">
                 <div class="hero-badge">
                     <span class="hero-badge-dot"></span>
                     Ortodontia Especializada
@@ -1466,7 +1499,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-image scroll-reveal">
+            <div class="hero-image animate-on-scroll animate-delay-2">
                 <div class="hero-image-frame">
                     <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Paciente com sorriso bonito">
                     <div class="corner-bracket corner-bracket-tl"></div>
@@ -1501,14 +1534,14 @@
     </section>
 
     <!-- Problem / Solution Section -->
-    <section class="section problem-solution">
+    <section class="section problem-solution" id="problema">
         <div class="container">
-            <div class="section-title scroll-reveal">
+            <div class="section-title animate-on-scroll">
                 <h2>Por que Escolher a Ortodontia?</h2>
                 <p>Um sorriso alinhado vai muito além da estética</p>
             </div>
             <div class="ps-container">
-                <div class="ps-problems scroll-reveal">
+                <div class="ps-problems animate-on-scroll animate-delay-1">
                     <div class="ps-title ps-title-problems">
                         <div class="ps-icon ps-icon-problems">
                             <svg viewBox="0 0 24 24">
@@ -1552,12 +1585,12 @@
                         </li>
                     </ul>
                 </div>
-                <div class="ps-arrow">
+                <div class="ps-arrow animate-on-scroll animate-delay-2">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
                     </svg>
                 </div>
-                <div class="ps-solution scroll-reveal">
+                <div class="ps-solution animate-on-scroll animate-delay-3">
                     <div class="ps-title ps-title-solution">
                         <div class="ps-icon ps-icon-solution">
                             <svg viewBox="0 0 24 24">
@@ -1608,12 +1641,12 @@
     <!-- Services Section -->
     <section class="section services" id="servicos">
         <div class="container">
-            <div class="section-title scroll-reveal">
+            <div class="section-title animate-on-scroll">
                 <h2>Nossos Tratamentos</h2>
                 <p>Soluções ortodônticas modernas para todas as idades</p>
             </div>
             <div class="services-grid">
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-1">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Aparelho Auto-ligado">
                         <div class="service-icon">
@@ -1624,10 +1657,10 @@
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Aparelhos Auto-ligados</h3>
-                        <p class="service-description">Tecnologia moderna com menor atrito, treatment mais rápido e confortável.</p>
+                        <p class="service-description">Tecnologia moderna com menor atrito, tratamento mais rápido e confortável.</p>
                     </div>
                 </div>
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-2">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Aparelhos Estéticos">
                         <div class="service-icon">
@@ -1638,24 +1671,24 @@
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Aparelhos Estéticos</h3>
-                        <p class="service-description">Bráquetes transparentes ou porcelana para um treatment discreto e elegante.</p>
+                        <p class="service-description">Bráquetes transparentes ou porcelana para um tratamento discreto e elegante.</p>
                     </div>
                 </div>
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-3">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Alinhadores Invisíveis">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24">
-                                <path d="M12 2C9.5 2 7.5 4 7.5 6.5V9H6 C4.9 9 4 9.9 4 11v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-1.5V6.5C16.5 4 14.5 2 12 2z"/>
+                                <path d="M12 2C9.5 2 7.5 4 7.5 6.5V9H6C4.9 9 4 9.9 4 11v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-1.5V6.5C16.5 4 14.5 2 12 2z"/>
                             </svg>
                         </div>
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">Alinhadores Invisíveis</h3>
-                        <p class="service-description">Placas transparentes removíveis para treatment quase invisível.</p>
+                        <p class="service-description">Placas transparentes removíveis para tratamento quase invisível.</p>
                     </div>
                 </div>
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-4">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Ortodontia Preventiva">
                         <div class="service-icon">
@@ -1669,7 +1702,7 @@
                         <p class="service-description">Tratamento precoce para crianças, corrigindo problemas antes que se agravem.</p>
                     </div>
                 </div>
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-5">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1573148195900-7845dcb9b858?w=600&q=80" alt="Ortodontia Adulto">
                         <div class="service-icon">
@@ -1683,7 +1716,7 @@
                         <p class="service-description">Nunca é tarde para transformar seu sorriso. Opções discretas disponíveis.</p>
                     </div>
                 </div>
-                <div class="service-card scroll-reveal">
+                <div class="service-card animate-on-scroll animate-delay-6">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Manutenção e Contenção">
                         <div class="service-icon">
@@ -1704,19 +1737,19 @@
     <!-- Testimonials Section -->
     <section class="section testimonials" id="depoimentos">
         <div class="container">
-            <div class="section-title scroll-reveal">
+            <div class="section-title animate-on-scroll">
                 <h2 style="color: var(--white);">Depoimentos</h2>
                 <p style="color: var(--gray);">O que nossos pacientes dizem</p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card animate-on-scroll animate-delay-1">
                     <div class="testimonial-quote">
                         <svg viewBox="0 0 24 24">
                             <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                         </svg>
                     </div>
                     <p class="testimonial-text">
-                        "Excelente profissional! Meu treatment foi super tranquilo e o resultado ficou incrível. Recomendo de olhos fechados!"
+                        "Excelente profissional! Meu tratamento foi super tranquilo e o resultado ficou incrível. Recomendo de olhos fechados!"
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">MC</div>
@@ -1732,14 +1765,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card animate-on-scroll animate-delay-2">
                     <div class="testimonial-quote">
                         <svg viewBox="0 0 24 24">
                             <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                         </svg>
                     </div>
                     <p class="testimonial-text">
-                        "Fiz meu treatment de aparelhos invisíveis e ninguém percebia que estava usando treatment. Muito práticos e eficientes!"
+                        "Fiz meu tratamento de aparelhos invisíveis e ninguém percebia que estava usando. Muito práticos e eficientes!"
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">RO</div>
@@ -1755,14 +1788,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card animate-on-scroll animate-delay-3">
                     <div class="testimonial-quote">
                         <svg viewBox="0 0 24 24">
                             <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                         </svg>
                     </div>
                     <p class="testimonial-text">
-                        "Trazi minha filha de 10 anos para treatment preventivo. Equipe super atenciosa e profissional. Ótimo ambiente!"
+                        "Levei minha filha de 10 anos para tratamento preventivo. Equipe super atenciosa e profissional. Ótimo ambiente!"
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AF</div>
@@ -1785,21 +1818,21 @@
     <!-- Differentials Section -->
     <section class="section differentials" id="diferenciais">
         <div class="container">
-            <div class="section-title scroll-reveal">
+            <div class="section-title animate-on-scroll">
                 <h2>Diferenciais</h2>
                 <p>Por que escolher o Grupo Orto</p>
             </div>
             <div class="differentials-grid">
-                <div class="differential-card scroll-reveal">
+                <div class="differential-card animate-on-scroll animate-delay-1">
                     <div class="differential-icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
                     <h3 class="differential-title">Especialistas</h3>
-                    <p class="differential-description">Equipe exclusiva de ortodontistas com years de experiência</p>
+                    <p class="differential-description">Equipe exclusiva de ortodontistas com anos de experiência</p>
                 </div>
-                <div class="differential-card scroll-reveal">
+                <div class="differential-card animate-on-scroll animate-delay-2">
                     <div class="differential-icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
@@ -1808,7 +1841,7 @@
                     <h3 class="differential-title">Tecnologia</h3>
                     <p class="differential-description">Equipamentos de última geração para tratamento preciso</p>
                 </div>
-                <div class="differential-card scroll-reveal">
+                <div class="differential-card animate-on-scroll animate-delay-3">
                     <div class="differential-icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
@@ -1817,7 +1850,7 @@
                     <h3 class="differential-title">Pontualidade</h3>
                     <p class="differential-description">Respeito ao seu tempo com agendamentos precisos</p>
                 </div>
-                <div class="differential-card scroll-reveal">
+                <div class="differential-card animate-on-scroll animate-delay-4">
                     <div class="differential-icon">
                         <svg viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -1834,7 +1867,7 @@
     <section class="section contact" id="contato">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-info scroll-reveal">
+                <div class="contact-info animate-on-scroll">
                     <h2 class="contact-title">Transforme seu Sorriso Hoje</h2>
                     <p class="contact-description">
                         Agende sua avaliação ortodôntica gratuita e descubra a melhor opção para seu sorriso.
@@ -1875,7 +1908,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-container scroll-reveal">
+                <div class="contact-form-container animate-on-scroll animate-delay-2">
                     <h3 class="contact-form-title">Agende sua Avaliação</h3>
                     <p class="contact-form-subtitle">Preencha o formulário e entraremos em contato</p>
                     <form class="contact-form" id="contactForm">
@@ -1912,7 +1945,7 @@
                     <div class="footer-logo">
                         <div class="footer-logo-icon">
                             <svg viewBox="0 0 24 24">
-                                <path d="M12 2C9.5 2 7.5 4 7.5 6.5V9H6 C4.9 9 4 9.9 4 11v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-1.5V6.5C16.5 4 14.5 2 12 2z"/>
+                                <path d="M12 2C9.5 2 7.5 4 7.5 6.5V9H6C4.9 9 4 9.9 4 11v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-1.5V6.5C16.5 4 14.5 2 12 2z"/>
                             </svg>
                         </div>
                         <span class="footer-logo-text">GrupoOrto</span>
@@ -1981,8 +2014,8 @@
     <!-- JavaScript -->
     <script>
         // Mobile Navigation Toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
 
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -2005,22 +2038,24 @@
             }
         });
 
-        // Intersection Observer for scroll animations
+        // Intersection Observer for scroll animations - FIXED
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
+            rootMargin: '0px 0px -50px 0px',
             threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
 
