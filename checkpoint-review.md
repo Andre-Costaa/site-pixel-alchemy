@@ -165,13 +165,19 @@ Inclua uma entrada com:
 
 ### REV-019 - Dra. Camila Zanirato
 - **ID da revisão**: REV-019
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-019
 - **Nome do cliente**: Dra. Camila Zanirato
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-camila-zanirato/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Transforme Seu Sorriso" (problem-solution), "Nossos Serviços" (services), "O Que Dizem Nossos Pacientes" (testimonials), "Por Que Escolher a Dra. Camila?" (features) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir", "Dores de dente constantes", etc.), soluções ("Sorriso confiante e bonito", "Tratamentos sem dor", etc.), cards de serviços ("Clínico Geral", "Estética Dental", "Clareamento", "Implantes", "Ortodontia", "Próteses"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
-- **Evidências**: Screenshots em `.playwright-mcp/rev019-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Transforme Seu Sorriso" (problem-solution), "Nossos Serviços" (services), "O Que Dizem Nossos Pacientes" (testimonials), "Por Que Escolher a Dra. Camila?" (features) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir", "Dores de dente constantes", etc.), soluções ("Sorriso confiante e bonito", "Tratamentos sem dor", etc.), cards de serviços ("Clínico Geral", "Estética Dental", "Clareamento", "Implantes", "Ortodontia", "Próteses"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)`, mas a classe `active` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Refatorado o sistema de animações para garantir visibilidade por padrão:
+  - Modificado o CSS para que `.reveal` tenha `opacity: 1` e `transform: translateY(0)` por padrão
+  - Adicionada classe `.animate` que o JavaScript aplica aos elementos para controlar quando as animações devem ocorrer
+  - JavaScript agora adiciona classe `active` aos elementos visíveis imediatamente no carregamento da página
+  - Melhorado o Intersection Observer com `unobserve` após animar para performance
+  - Adicionado fallback com `setTimeout` de 3 segundos para garantir visibilidade
+  - Corrigido erro JavaScript de variável `contactForm` duplicada renomeando para `contactFormEl`
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
