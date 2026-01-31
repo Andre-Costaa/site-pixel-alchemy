@@ -132,9 +132,13 @@
            ANIMATION CLASSES
         ======================================== */
         .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-hidden {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .animate-on-scroll.animated {
@@ -142,11 +146,11 @@
             transform: translateY(0);
         }
 
-        .animate-delay-1 { transition-delay: 0.1s; }
-        .animate-delay-2 { transition-delay: 0.2s; }
-        .animate-delay-3 { transition-delay: 0.3s; }
-        .animate-delay-4 { transition-delay: 0.4s; }
-        .animate-delay-5 { transition-delay: 0.5s; }
+        .animate-delay-1 { }
+        .animate-delay-2 { }
+        .animate-delay-3 { }
+        .animate-delay-4 { }
+        .animate-delay-5 { }
 
         /* ========================================
            HEADER / NAVIGATION
@@ -1546,6 +1550,7 @@
     </style>
 </head>
 <body>
+    <script>document.body.classList.add('js-enabled');</script>
     <!-- Header -->
     <header class="header" id="header">
         <div class="header__inner">
@@ -2150,13 +2155,14 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
+                    entry.target.classList.remove('animate-hidden');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        // Animation system disabled - all content visible by default
+        // Elements with .animate-on-scroll are now always visible
 
         // ========================================
         // TESTIMONIALS CAROUSEL
