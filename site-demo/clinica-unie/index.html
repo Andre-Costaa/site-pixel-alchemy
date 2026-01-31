@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Uniê | Odontologia de Excelência em Ribeirão Preto</title>
+    <meta name="description" content="Clínica Uniê - Odontologia de excelência em Ribeirão Preto. Implantes, ortodontia, estética e muito mais. Agende sua consulta.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a365d;
+            --color-primary-light: #2c5282;
+            --color-secondary: #d4a574;
+            --color-secondary-light: #e8c9a8;
+            --color-accent: #c9a227;
+            --color-bg: #faf9f7;
+            --color-bg-alt: #f5f3f0;
+            --color-text: #2d3748;
+            --color-text-light: #718096;
+            --color-white: #ffffff;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(20px);
+            transition: var(--transition-base);
+        }
+
+        .nav.scrolled {
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: var(--transition-base);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-primary);
+            margin: 5px 0;
+            transition: var(--transition-base);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 165, 116, 0.15);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-title span {
+            color: var(--color-secondary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-base);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--color-primary);
+            transition: var(--transition-base);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 200px 200px 100px 100px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 1s ease 0.4s forwards;
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: var(--color-white);
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: floatIn 0.8s ease 0.8s forwards, float 4s ease-in-out infinite 1.6s;
+        }
+
+        .hero-float-card.card-1 {
+            top: 10%;
+            left: -10%;
+        }
+
+        .hero-float-card.card-2 {
+            bottom: 20%;
+            right: -5%;
+            animation-delay: 1s, 1.8s;
+        }
+
+        .float-card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .float-card-content h4 {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .float-card-content p {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 6rem 2rem;
+            background: var(--color-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .problem-card {
+            background: var(--color-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition-base);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .problem-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .problem-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .solution-banner {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            color: var(--color-white);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .solution-banner.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .solution-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-content p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .solution-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .solution-feature::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .solution-image {
+            position: relative;
+        }
+
+        .solution-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--color-bg-alt);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition-base);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-link {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-fast);
+        }
+
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 6rem;
+            color: var(--color-secondary);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-text {
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .author-info h4 {
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .author-info p {
+            color: var(--color-text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Differentials Section */
+        .differentials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+        }
+
+        .differentials .section-title {
+            color: var(--color-white);
+        }
+
+        .differentials .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .differential-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-base);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .differential-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .differential-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .differential-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .differential-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .differential-item p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            color: var(--color-text-light);
+        }
+
+        .contact-hours {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .contact-hours h4 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .hours-item span:last-child {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .contact-form-container {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form-container h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-container > p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-bg-alt);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            background: var(--color-bg);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background: var(--color-white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .btn-submit:hover {
+            background: var(--color-primary-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand h3 span {
+            color: var(--color-secondary);
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            max-width: 300px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--color-white);
+            transition: var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            .hero-subtitle {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image {
+                height: 400px;
+                max-width: 350px;
+            }
+
+            .hero-float-card {
+                display: none;
+            }
+
+            .problems-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .differentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solution-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .problems-grid,
+            .services-grid,
+            .testimonials-grid,
+            .differentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-banner {
+                padding: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-white);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu-links a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-family: var(--font-display);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-primary);
+        }
+
+        /* Utility Classes */
+        .wow {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Form Success Message */
+        .form-success {
+            background: #48bb78;
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .form-success.show {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Uniê<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problema">O Problema</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="#contato" class="nav-cta">Agendar Consulta</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        <ul class="mobile-menu-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#problema">O Problema</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Excelência em Odontologia</div>
+                <h1 class="hero-title">Seu sorriso é a nossa <span>obra-prima</span></h1>
+                <p class="hero-subtitle">Na Clínica Uniê, combinamos tecnologia de ponta com um atendimento humanizado para transformar sua experiência odontológica em Ribeirão Preto.</p>
+                <div class="hero-cta-group">
+                    <a href="#contato" class="btn-primary">
+                        Agendar Consulta
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#servicos" class="btn-secondary">Conhecer Serviços</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Anos de Experiência</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Sorrisos Transformados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Clientes Satisfeitos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=800&fit=crop" alt="Dentista atendendo paciente na Clínica Uniê" class="hero-image">
+                    <div class="hero-float-card card-1">
+                        <div class="float-card-icon">🏆</div>
+                        <div class="float-card-content">
+                            <h4>Reconhecimento</h4>
+                            <p>Top 10 Ribeirão Preto</p>
+                        </div>
+                    </div>
+                    <div class="hero-float-card card-2">
+                        <div class="float-card-icon">⭐</div>
+                        <div class="float-card-content">
+                            <h4>Avaliação</h4>
+                            <p>4.9/5 Estrelas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Entendendo Você</span>
+                <h2 class="section-title">O que te impede de sorrir?</h2>
+                <p class="section-subtitle">Muitas pessoas sofrem em silêncio com problemas dentários que afetam sua autoestima e qualidade de vida.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card wow">
+                    <div class="problem-icon">😔</div>
+                    <h3>Vergonha do Sorriso</h3>
+                    <p>Dentes desalinhados, manchados ou faltantes que fazem você esconder o sorriso nas fotos e conversas.</p>
+                </div>
+                <div class="problem-card wow">
+                    <div class="problem-icon">😰</div>
+                    <h3>Medo de Dentista</h3>
+                    <p>Experiências traumáticas no passado que criaram ansiedade e evitação de tratamentos necessários.</p>
+                </div>
+                <div class="problem-card wow">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Falta de Tempo</h3>
+                    <p>Rotina corrida que dificulta conciliar trabalho, família e cuidados com a saúde bucal.</p>
+                </div>
+            </div>
+            <div class="solution-banner wow">
+                <div class="solution-content">
+                    <h3>A solução está na Clínica Uniê</h3>
+                    <p>Desenvolvemos um método exclusivo que prioriza seu conforto, respeita seu tempo e entrega resultados extraordinários.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">Atendimento sem dor e sem stress</div>
+                        <div class="solution-feature">Tecnologia que acelera resultados</div>
+                        <div class="solution-feature">Horários flexíveis para sua rotina</div>
+                        <div class="solution-feature">Planos de tratamento personalizados</div>
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop" alt="Tecnologia odontológica moderna">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Nossos Serviços</span>
+                <h2 class="section-title">Cuidado completo para seu sorriso</h2>
+                <p class="section-subtitle">Oferecemos todas as especialidades odontológicas em um único lugar, com equipamentos de última geração.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow">
+                    <div class="service-image">🦷</div>
+                    <div class="service-content">
+                        <h3>Implantes Dentários</h3>
+                        <p>Recupere sua mastigação e autoestima com implantes de titânio de alta durabilidade e aparência natural.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card wow">
+                    <div class="service-image">✨</div>
+                    <div class="service-content">
+                        <h3>Ortodontia</h3>
+                        <p>Alinhe seus dentes com aparelhos estéticos e Invisalign. Resultados mais rápidos e confortáveis.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card wow">
+                    <div class="service-image">💎</div>
+                    <div class="service-content">
+                        <h3>Estética Dental</h3>
+                        <p>Facetas de porcelana, clareamento e remodelagem. O sorriso dos sonhos em poucas consultas.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card wow">
+                    <div class="service-image">👶</div>
+                    <div class="service-content">
+                        <h3>Odontopediatria</h3>
+                        <p>Cuidado especializado para os pequenos, com abordagem lúdica que transforma a ida ao dentista em diversão.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card wow">
+                    <div class="service-image">🔧</div>
+                    <div class="service-content">
+                        <h3>Próteses Dentárias</h3>
+                        <p>Próteses fixas e removíveis com tecnologia CAD/CAM para máxima precisão e conforto.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card wow">
+                    <div class="service-image">🦷</div>
+                    <div class="service-content">
+                        <h3>Endodontia</h3>
+                        <p>Tratamento de canal moderno e indolor, com microscópio operatório para máxima precisão.</p>
+                        <a href="#contato" class="service-link">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-subtitle">Histórias reais de transformação e sorrisos recuperados.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Depois de anos escondendo meu sorriso, finalmente me sinto confiante para sorrir em fotos. O atendimento foi incrível do início ao fim!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>Maria Clara S.</h4>
+                            <p>Implante e Lentes de Contato</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Minha filha de 6 anos adora vir aqui! A equipe é super atenciosa e conseguiu tirar todo o medo que ela tinha de dentista."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RF</div>
+                        <div class="author-info">
+                            <h4>Rafael F.</h4>
+                            <p>Pai de paciente pediátrico</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Fiz meu tratamento de canal e nem senti dor. A tecnologia que eles usam faz toda diferença. Recomendo de olhos fechados!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AP</div>
+                        <div class="author-info">
+                            <h4>Ana Paula M.</h4>
+                            <p>Endodontia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="differentials" id="diferenciais">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Por que nos escolher</span>
+                <h2 class="section-title">Diferenciais que fazem a diferença</h2>
+                <p class="section-subtitle">Investimos no que há de melhor para oferecer uma experiência odontológica única.</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-item wow">
+                    <div class="differential-icon">🔬</div>
+                    <h3>Tecnologia Avançada</h3>
+                    <p>Scanner intraoral, radiografia digital 3D e equipamentos de última geração para diagnóstico preciso.</p>
+                </div>
+                <div class="differential-item wow">
+                    <div class="differential-icon">👨‍⚕️</div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Dentistas com pós-graduação e constante atualização nas melhores técnicas do mundo.</p>
+                </div>
+                <div class="differential-item wow">
+                    <div class="differential-icon">🏥</div>
+                    <h3>Infraestrutura Premium</h3>
+                    <p>Consultórios modernos, esterilização rigorosa e ambiente acolhedor para seu conforto.</p>
+                </div>
+                <div class="differential-item wow">
+                    <div class="differential-icon">💳</div>
+                    <h3>Facilidade de Pagamento</h3>
+                    <p>Parcelamos em até 24x no cartão e aceitamos diversos convênios odontológicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Vamos cuidar do seu sorriso?</h3>
+                <p>Entre em contato e agende sua avaliação gratuita. Estamos prontos para recebê-lo.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-content">
+                            <h4>Endereço</h4>
+                            <p>Av. Leais Paulista, 864<br>Jardim Irajá, Ribeirão Preto - SP</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-content">
+                            <h4>Telefone</h4>
+                            <p>(16) 3234-6832</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>contato@clinicaunie.com.br</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-hours">
+                    <h4>Horário de Funcionamento</h4>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span>Segunda a Sexta</span>
+                            <span>08:00 - 18:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sábado</span>
+                            <span>08:00 - 12:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <div class="form-success" id="formSuccess">
+                    Mensagem enviada com sucesso! Entraremos em contato em breve.
+                </div>
+                <h3>Agende sua consulta</h3>
+                <p>Preencha o formulário abaixo e retornaremos em até 24 horas.</p>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(16) 99999-9999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Serviço de interesse</label>
+                        <select id="service" name="service" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="implantes">Implantes Dentários</option>
+                            <option value="ortodontia">Ortodontia</option>
+                            <option value="estetica">Estética Dental</option>
+                            <option value="pediatria">Odontopediatria</option>
+                            <option value="proteses">Próteses</option>
+                            <option value="endodontia">Endodontia</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem (opcional)</label>
+                        <textarea id="message" name="message" placeholder="Conte-nos um pouco sobre o que você precisa..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Uniê<span>.</span></h3>
+                    <p>Transformando sorrisos e vidas em Ribeirão Preto há mais de 15 anos. Sua saúde bucal em boas mãos.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="Facebook">FB</a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">WA</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Implantes</a></li>
+                        <li><a href="#servicos">Ortodontia</a></li>
+                        <li><a href="#servicos">Estética</a></li>
+                        <li><a href="#servicos">Pediatria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Úteis</h4>
+                    <ul class="footer-links">
+                        <li><a href="#problema">Sobre Nós</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul class="footer-links">
+                        <li>Av. Leais Paulista, 864</li>
+                        <li>Jardim Irajá, Ribeirão Preto - SP</li>
+                        <li>(16) 3234-6832</li>
+                        <li>contato@clinicaunie.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Clínica Uniê. Todos os direitos reservados.</p>
+                <p>Desenvolvido com ❤️ em Ribeirão Preto</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all wow elements
+        document.querySelectorAll('.wow, .problem-card, .solution-banner, .service-card, .testimonial-card, .differential-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 7) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+            } else if (value.length > 2) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            }
+
+            e.target.value = value;
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Show success message
+            formSuccess.classList.add('show');
+
+            // Reset form
+            contactForm.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+            }, 5000);
+        });
+
+        // Add animation delay for staggered elements
+        document.querySelectorAll('.problem-card, .service-card, .testimonial-card, .differential-item').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>

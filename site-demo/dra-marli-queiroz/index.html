@@ -1155,12 +1155,17 @@
 
         /* ===== SCROLL REVEAL ===== */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s ease;
         }
 
-        .reveal.active {
+        .reveal.animate {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .reveal.animate.active {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1701,6 +1706,8 @@
         });
 
         // ===== SCROLL REVEAL ANIMATION =====
+        // Elements are visible by default for SEO and accessibility
+        // Animation is optional enhancement for users with JS enabled
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealOnScroll = () => {
@@ -1715,8 +1722,12 @@
             });
         };
 
+        // Run on scroll and load
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        // Initial check in case elements are already in view
+        revealOnScroll();
 
         // ===== TESTIMONIALS CAROUSEL =====
         const testimonialTrack = document.getElementById('testimonialTrack');

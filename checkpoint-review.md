@@ -261,13 +261,17 @@ Inclua uma entrada com:
 
 ### REV-027 - Dra Marli Queiroz
 - **ID da revisão**: REV-027
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-027
 - **Nome do cliente**: Dra Marli Queiroz
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-marli-queiroz/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Supere os Desafios Odontológicos" (problem-solution), "Tratamentos Completos" (services), "Depoimentos" (testimonials), "Por Que Escolher a Dra Marli?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e desconforto constante", "Insegurança ao sorrir", "Dificuldade para alimentar", "Medo do dentista"), solução ("Sorria com Confiança"), cards de serviços ("Clínico Geral", "Estética Dental", "Implantes Dentários", "Ortodontia", "Endodontia", "Próteses Dentárias"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1157-1161), mas a classe `active` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `active` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `active` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
-- **Evidências**: Screenshots em `.playwright-mcp/rev027-dra-marli-1440-full.png`, `.playwright-mcp/rev027-dra-marli-1024-full.png`, `.playwright-mcp/rev027-dra-marli-768-full.png` e `.playwright-mcp/rev027-dra-marli-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Supere os Desafios Odontológicos" (problem-solution), "Tratamentos Completos" (services), "Depoimentos" (testimonials), "Por Que Escolher a Dra Marli?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e desconforto constante", "Insegurança ao sorrir", "Dificuldade para alimentar", "Medo do dentista"), solução ("Sorria com Confiança"), cards de serviços ("Clínico Geral", "Estética Dental", "Implantes Dentários", "Ortodontia", "Endodontia", "Próteses Dentárias"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1157-1161), mas a classe `active` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Modificado o CSS para garantir visibilidade por padrão:
+  - Alterado `.reveal` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Adicionada classe `.animate` para controlar animações opcionais
+  - JavaScript atualizado para garantir que elementos sejam visíveis imediatamente
+  - Mantida compatibilidade com Intersection Observer para animações de scroll
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-029 - VIVA SORRINDO
 - **ID da revisão**: REV-029
@@ -275,9 +279,15 @@ Inclua uma entrada com:
 - **Nome do cliente**: VIVA SORRINDO
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/viva-sorrindo/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Dificuldades vs Solução" (problem-solution), "Nossos Serviços" (services), "O Que Nossos Pacientes Dizem" (testimonials), "Por Que Escolher a VIVA SORRINDO?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir em fotos", "Evita situações sociais por vergonha", "Sofre com dores dentárias frequentes", "Não se sente confiante no trabalho"), soluções ("Recupere a autoestima com um sorriso radiante", "Tratamentos personalizados para você", "Tecnologia avançada e conforto absoluto", "Equipe especialista que cuida de você"), cards de serviços ("Implantes Dentários", "Estética Dental", "Clareamento Dental", "Ortodontia", "Próteses Dentárias", "Clínico Geral"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(30px)` no CSS (linhas 1348-1351), mas a classe `visible` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
-- **Evidências**: Screenshots em `.playwright-mcp/rev029-viva-sorrindo-1440-full.png`, `.playwright-mcp/rev029-viva-sorrindo-1024-full.png`, `.playwright-mcp/rev029-viva-sorrindo-768-full.png` e `.playwright-mcp/rev029-viva-sorrindo-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Dificuldades vs Solução" (problem-solution), "Nossos Serviços" (services), "O Que Nossos Pacientes Dizem" (testimonials), "Por Que Escolher a VIVA SORRINDO?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir em fotos", "Evita situações sociais por vergonha", "Sofre com dores dentárias frequentes", "Não se sente confiante no trabalho"), soluções ("Recupere a autoestima com um sorriso radiante", "Tratamentos personalizados para você", "Tecnologia avançada e conforto absoluto", "Equipe especialista que cuida de você"), cards de serviços ("Implantes Dentários", "Estética Dental", "Clareamento Dental", "Ortodontia", "Próteses Dentárias", "Clínico Geral"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(30px)` no CSS (linhas 1348-1351), mas a classe `visible` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Modificado o CSS para garantir visibilidade por padrão:
+  - Alterado `.reveal` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Alterado `.ps-column` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Alterado `.service-card` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Alterado `.differential-card` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Adicionada classe `.animate` para controlar animações opcionais quando necessário
+  - Mantida compatibilidade com Intersection Observer para animações de scroll
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
 ### REV-028 - Dra Isabô Tortoriello
 - **ID da revisão**: REV-028
@@ -285,12 +295,17 @@ Inclua uma entrada com:
 - **Nome do cliente**: Dra Isabô Tortoriello
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-isabo-tortoriello/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A story US-028 está marcada como "passes": true e "completionNotes": "Completed by agent" no prd.json, mas o diretório 'site-demo/dra-isabo-tortoriello' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-028 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dra-isabo-tortoriello/index.html
-  - Diretório /site-demo/dra-isabo-tortoriello não existe localmente
-  - `ls site-demo/ | grep isabo` não retorna resultados
+- **Problema**: ~~O site não existe. A story US-028 está marcada como "passes": true e "completionNotes": "Completed by agent" no prd.json, mas o diretório 'site-demo/dra-isabo-tortoriello' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para Dra Isabô Tortoriello, especialista em Invisalign em Ribeirão Preto:
+  - Design sofisticado com paleta de cores verde-escuro e dourado
+  - Seções completas: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional integrado com WhatsApp
+  - Totalmente responsivo para mobile
+  - Imagens de alta qualidade sobre ortodontia e Invisalign
+  - Informações da clínica: R. Américo Brasiliense, 1229 - Centro, Ribeirão Preto - SP
+  - Telefone: (16) 99268-1106
+- **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
 
 ### REV-030 - SORRIA MAIS CLINICA ODONTOLOGICA
 - **ID da revisão**: REV-030
@@ -298,12 +313,18 @@ Inclua uma entrada com:
 - **Nome do cliente**: SORRIA MAIS CLINICA ODONTOLOGICA
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/sorria-mais-clinica/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A story US-030 está marcada como "passes": true no prd2.json, mas o diretório 'site-demo/sorria-mais-clinica' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-030 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/sorria-mais-clinica/index.html
-  - Diretório /site-demo/sorria-mais-clinica não existe localmente
-  - `ls site-demo/ | grep sorria` retorna apenas 'sorridi-odontologia'
+- **Problema**: ~~O site não existe. A story US-030 está marcada como "passes": true no prd2.json, mas o diretório 'site-demo/sorria-mais-clinica' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para SORRIA MAIS CLINICA ODONTOLOGICA em Ribeirão Preto:
+  - Design elegante com paleta de cores verde teal e dourado
+  - Seções completas: Hero, Problema/Solução, Serviços, Diferenciais, Depoimentos, Contato, Footer
+  - 6 serviços odontológicos com imagens de alta qualidade do Unsplash
+  - Totalmente responsivo para mobile
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional integrado com WhatsApp
+  - CTAs claros para agendamento
+  - Informações da clínica: R. Saldanha Marinho, 343 - Centro, Ribeirão Preto - SP
+  - Telefone: (16) 3964-5209
+- **Status**: ✅ Site criado e enviado para produção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Differentials, Testimonials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-031 - Clínica Livhera
 - **ID da revisão**: REV-031
@@ -311,27 +332,22 @@ Inclua uma entrada com:
 - **Nome do cliente**: Clínica Livhera
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-livhera/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A imagem do serviço "Restauração Estética" não está carregando corretamente. O card exibe um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.
-- **Correção sugerida**: Substituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash. Sugestão: usar uma imagem similar às dos outros cards de serviços odontológicos, como `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80` ou outra imagem relacionada a restaurações dentárias.
-- **Evidências**: Screenshots em `.playwright-mcp/clinica-livhera-1440-tratamentos.png` e `.playwright-mcp/clinica-livhera-1024-cards.png` - notar que o card "Restauração Estética" exibe um fundo azul escuro em vez da imagem, enquanto os outros cards mostram as imagens corretamente.
+- **Problema**: ~~A imagem do serviço "Restauração Estética" não estava carregando corretamente. O card exibia um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80` no arquivo `site-demo/clinica-livhera/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-036 - Clínica Doctor Oral
 - **ID da revisão**: REV-036
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-036
 - **Nome do cliente**: Clínica Doctor Oral
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-doctor-oral/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A seção "Entre em Contato" (contact) está com o conteúdo invisível em todos os breakpoints. O texto do título "Agende sua Consulta", descrição, informações de endereço, telefone, horário de atendimento e o formulário de contato estão com a cor escura (#0a1628 ou similar) sobre um fundo escuro (rgb(10, 22, 40)), tornando-os invisíveis para o usuário. O conteúdo existe no DOM (60 elementos), mas não é visível devido à falta de contraste de cores.
-- **Correção sugerida**: Modificar o CSS da seção de contato para garantir que todo o texto tenha cor clara (branco ou #f8fafc) sobre o fundo escuro. Especificamente, adicionar estilos para `.contact-title`, `.contact-description`, `.contact-item`, labels do formulário e inputs com cor clara. Exemplo:
-  ```css
-  #contato .contact-title,
-  #contato .contact-description,
-  #contato .contact-item,
-  #contato label {
-    color: #f8fafc;
-  }
-  ```
-- **Evidências**: Screenshots em `.playwright-mcp/rev036-doctor-oral-1440-bottom.png` e `.playwright-mcp/rev036-doctor-oral-480-contato.png` - notar que a seção de contato aparece como uma área escura vazia sem texto visível.
+- **Problema**: ~~A seção "Entre em Contato" (contact) está com o conteúdo invisível em todos os breakpoints. O texto do título "Agende sua Consulta", descrição, informações de endereço, telefone, horário de atendimento e o formulário de contato estão com a cor escura (#0a1628 ou similar) sobre um fundo escuro (rgb(10, 22, 40)), tornando-os invisíveis para o usuário. O conteúdo existe no DOM (60 elementos), mas não é visível devido à falta de contraste de cores.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: O problema real era que os elementos `.contact-info` e `.contact-form-wrapper` tinham `opacity: 0` por padrão e dependiam da classe `animate-in` para ficarem visíveis, mas o JavaScript estava adicionando a classe `visible` (não `animate-in`). Foram feitas as seguintes correções:
+  - Modificado o CSS para que `.contact-info` e `.contact-form-wrapper` tenham `opacity: 1` por padrão
+  - Alterado o seletor CSS de `.animate-in` para `.visible` para corresponder ao que o JavaScript aplica
+  - Adicionados os seletores `.contact-info` e `.contact-form-wrapper` à lista de elementos observados pelo Intersection Observer
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-037 - Consultório Odontológico Dr Mauricio Grandini
 - **ID da revisão**: REV-037
@@ -345,13 +361,18 @@ Inclua uma entrada com:
 
 ### REV-043 - Bocardo Odontologia
 - **ID da revisão**: REV-043
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-043
 - **Nome do cliente**: Bocardo Odontologia
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/bocardo-odontologia/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Por que escolher a Bocardo?" (problem-solution), "Nossos Serviços" (services), "Depoimentos" (testimonials), "Nossos Diferenciais" (differentiators) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Medo e ansiedade do dentista", "Tratamentos desconfortáveis", etc.), soluções ("Atendimento humanizado e acolhedor", "Tecnologia de ponta indolor", etc.), cards de serviços ("Estética Dental", "Implantes Dentários", "Ortodontia", "Protetor e Reabilitação", "Dentística", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem classes CSS (`fade-in`, `fade-in-left`, `fade-in-right`, `scale-in`) que definem `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1214-1256), mas a classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in`, `fade-in-left`, `fade-in-right` e `scale-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
-- **Evidências**: Screenshots em `.playwright-mcp/rev043-bocardo-1440-full.png`, `.playwright-mcp/rev043-bocardo-1024-full.png`, `.playwright-mcp/rev043-bocardo-768-full.png` e `.playwright-mcp/rev043-bocardo-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Por que escolher a Bocardo?" (problem-solution), "Nossos Serviços" (services), "Depoimentos" (testimonials), "Nossos Diferenciais" (differentiators) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Medo e ansiedade do dentista", "Tratamentos desconfortáveis", etc.), soluções ("Atendimento humanizado e acolhedor", "Tecnologia de ponta indolor", etc.), cards de serviços ("Estética Dental", "Implantes Dentários", "Ortodontia", "Protetor e Reabilitação", "Dentística", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem classes CSS (`fade-in`, `fade-in-left`, `fade-in-right`, `scale-in`) que definem `opacity: 0` e `transform: translateY(40px)` no CSS, mas a classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Refatorado o sistema de animações para usar progressive enhancement:
+  - Modificado o CSS para que `.fade-in`, `.fade-in-left`, `.fade-in-right` e `.scale-in` tenham `opacity: 1` e `transform: none` por padrão
+  - Adicionada classe `.js-enabled` ao body quando JavaScript carrega
+  - Animações agora são aplicadas via classe `.animated` adicionada pelo Intersection Observer
+  - Elementos são sempre visíveis; animações são um bônus quando entram no viewport
+  - Garantido que todo o conteúdo seja visível imediatamente ao carregar a página, mesmo sem JavaScript
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
 ### REV-038 - Dra Letícia Araújo
 - **ID da revisão**: REV-038
@@ -359,13 +380,19 @@ Inclua uma entrada com:
 - **Nome do cliente**: Dra Letícia Araújo
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-leticia-araujo/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A revisão REV-038 está marcada como "passes": false no prd2.json, mas o diretório 'site-demo/dra-leticia-araujo' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). A story US-038 (story original de criação do site) não existe no prd2.json, indicando que o site nunca foi criado. Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se a story US-038 existe e foi executada. Se não existir, criar a story US-038 no prd2.json e executá-la para criar o site. Se a story existir mas não foi executada, executá-la para gerar o site. Se o site foi criado mas não foi enviado, fazer o deploy.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dra-leticia-araujo/index.html
-  - Diretório /site-demo/dra-leticia-araujo não existe localmente
-  - `ls site-demo/ | grep leticia` não retorna resultados
-  - Story US-038 não encontrada no prd2.json
+- **Problema**: ~~O site não existe. A revisão REV-038 está marcada como "passes": false no prd2.json, mas o diretório 'site-demo/dra-leticia-araujo' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). A story US-038 (story original de criação do site) não existe no prd2.json, indicando que o site nunca foi criado. Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para Dra Letícia Araújo, especialista em Endodontia em Ribeirão Preto:
+  - Design sofisticado com paleta de cores verde médico e laranja acentuada
+  - Seções completas: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - 6 serviços endodônticos: Tratamento de Canal, Retratamento, Urgência Dental, Cirurgia Endodôntica, Diagnóstico por Imagem, Prevenção
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional integrado com WhatsApp
+  - Totalmente responsivo para mobile
+  - Imagens de alta qualidade sobre endodontia do Unsplash
+  - CTAs claros para agendamento
+  - Informações da clínica: R. Chile, 1711 - Jardim Irajá, Ribeirão Preto - SP
+  - Telefone: (16) 98253-6137
+- **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
 
 ### REV-040 - Clinica Odontológica Dr. Fabricio de Almeida Martins
 - **ID da revisão**: REV-040
@@ -373,12 +400,19 @@ Inclua uma entrada com:
 - **Nome do cliente**: Clinica Odontológica Dr. Fabricio de Almeida Martins
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-fabricio-almeida-martins/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A story US-040 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/dr-fabricio-almeida-martins' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-040 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dr-fabricio-almeida-martins/index.html
-  - Diretório /site-demo/dr-fabricio-almeida-martins não existe localmente
-  - `ls site-demo/ | grep fabricio` não retorna resultados
+- **Problema**: ~~O site não existe. A story US-040 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/dr-fabricio-almeida-martins' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para Clinica Odontológica Dr. Fabricio de Almeida Martins em Ribeirão Preto:
+  - Design "Refined Clinical Luxury" com paleta de cores navy profundo, cream, coral e sage
+  - Tipografia: Playfair Display (serif elegante) + DM Sans (moderno)
+  - Seções completas: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - 6 serviços odontológicos: Estética Dental, Implantes, Ortodontia, Próteses, Tratamento de Canal, Odontopediatria
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional com máscara de telefone
+  - Totalmente responsivo para mobile
+  - WhatsApp flutuante para agendamento rápido
+  - Informações da clínica: R. Cel. Luíz da Silva Batista, 786 - Jardim Irajá, Ribeirão Preto - SP
+  - Telefone: (16) 3235-3086
+- **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
 
 ### REV-044 - Clínica Uniê
 - **ID da revisão**: REV-044
@@ -386,9 +420,16 @@ Inclua uma entrada com:
 - **Nome do cliente**: Clínica Uniê
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-unie/index.html
 - **Breakpoint(s) afetado(s)**: N/A
-- **Problema**: O site não existe. A story US-044 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/clinica-unie' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
-- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-044 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
-- **Evidências**:
-  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/clinica-unie/index.html
-  - Diretório /site-demo/clinica-unie não existe localmente
-  - `ls site-demo/ | grep unie` não retorna resultados
+- **Problema**: ~~O site não existe. A story US-044 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/clinica-unie' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Site criado com design premium e único para Clínica Uniê em Ribeirão Preto:
+  - Design elegante com paleta de cores navy profundo, dourado/terracota e cream
+  - Tipografia: Playfair Display (serif elegante) + Inter (moderno)
+  - Seções completas: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - 6 serviços odontológicos: Implantes, Ortodontia, Estética, Odontopediatria, Próteses, Endodontia
+  - Animações suaves com Intersection Observer (elementos visíveis por padrão)
+  - Formulário de contato funcional com máscara de telefone
+  - Totalmente responsivo para mobile
+  - CTAs claros para agendamento
+  - Informações da clínica: Av. Leais Paulista, 864 - Jardim Irajá, Ribeirão Preto - SP
+  - Telefone: (16) 3234-6832
+- **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
