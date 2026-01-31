@@ -173,6 +173,16 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
 - **Evidências**: Screenshots em `.playwright-mcp/carvalho-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
 
+### REV-022 - Grupo Orto
+- **ID da revisão**: REV-022
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Grupo Orto
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/grupo-orto/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Por que Escolher a Ortodontia?" (problem-solution), "Nossos Tratamentos" (services), "Depoimentos" (testimonials), "Diferenciais" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("Dificuldade na higienização dos dentes", "Problemas de mastigação e fala", "Desgaste irregular dos dentes", "Insegurança ao sorrir"), soluções ("Sorriso harmonioso e confiante", "Melhora na saúde bucal geral", "Correta função mastigatória", "Autoestima elevada"), cards de serviços ("Aparelhos Auto-ligados", "Aparelhos Estéticos", "Alinhadores Invisíveis", "Ortodontia Preventiva", "Ortodontia para Adultos", "Manutenção e Contenção"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/rev022-grupo-orto-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-021 - Tooth Clinic
 - **ID da revisão**: REV-021
 - **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
