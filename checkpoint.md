@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 23/45 (51.1%)
+- **Concluídas**: 24/45 (53.3%)
 - **Em Andamento**: 0
-- **Pendentes**: 22
+- **Pendentes**: 21
 
 ## URLs dos Demos
 
@@ -35,18 +35,18 @@
 | US-021 | **Pets in** | **pixelalchemy.com.br/site-demo/pets-in** |
 | US-022 | **Snoopy Veterinary Clinic** | **pixelalchemy.com.br/site-demo/snoopy-veterinary-clinic** |
 | US-023 | **Vetta Hospital Veterinário** | **pixelalchemy.com.br/site-demo/vetta-hospital-veterinario** |
+| US-024 | **Veterinary Clinic and Pet Shop São Bernardo** | **pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-023 - Vetta Hospital Veterinário
+- **Último Site**: US-024 - Veterinary Clinic and Pet Shop São Bernardo
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/vetta-hospital-veterinario
+- **URL**: pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-024 | Veterinary Clinic Pet Shop São Bernardo | Pendente |
 | US-025 | Bicho Chic 24h | Pendente |
 | US-026 | Toca do Mastim 24h | Pendente |
 | US-027 | Hemocentro Heróis Vet | Pendente |
