@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Semeghini - Salão de Beleza em Ribeirão Preto</title>
+    <meta name="description" content="Studio Semeghini: salão de beleza no Jardim Palma Travassos, Ribeirão Preto. Atendimento familiar e acolhedor para você.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush: #f5e6e8;
+            --champagne: #f4e4c1;
+            --verde-floresta: #228b22;
+            --verde-floresta-escuro: #1a6b1a;
+            --branco-cremoso: #fffaf9;
+            --texto-escuro: #2d2d2d;
+            --texto-suave: #5a5a5a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            background-color: var(--blush);
+            color: var(--texto-escuro);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--texto-escuro);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 250, 249, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--verde-floresta);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--champagne);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--verde-floresta);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--texto-escuro);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--branco-cremoso) 100%);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            padding-left: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--texto-escuro);
+        }
+
+        .hero h1 span {
+            color: var(--verde-floresta);
+            font-style: italic;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--texto-suave);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--verde-floresta);
+            color: var(--branco-cremoso);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--verde-floresta-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(3px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 200px 200px 0 0;
+            box-shadow: 20px 20px 0 var(--champagne);
+        }
+
+        .flower-bloom {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            bottom: 50px;
+            right: -50px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .flower-bloom svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .petal {
+            fill: var(--champagne);
+            opacity: 0;
+            transform-origin: center center;
+            animation: bloom 2s ease-out forwards;
+        }
+
+        .petal:nth-child(1) { animation-delay: 0s; }
+        .petal:nth-child(2) { animation-delay: 0.2s; }
+        .petal:nth-child(3) { animation-delay: 0.4s; }
+        .petal:nth-child(4) { animation-delay: 0.6s; }
+        .petal:nth-child(5) { animation-delay: 0.8s; }
+        .petal:nth-child(6) { animation-delay: 1s; }
+
+        @keyframes bloom {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(var(--rotation));
+            }
+        }
+
+        /* Floating elements */
+        .floating-leaf {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-leaf:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-leaf:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-leaf:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Section styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--texto-escuro);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--texto-suave);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-line {
+            width: 80px;
+            height: 3px;
+            background: var(--champagne);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* História Section */
+        .historia {
+            background: var(--branco-cremoso);
+        }
+
+        .historia-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .historia-image {
+            position: relative;
+        }
+
+        .historia-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 15px 15px 0 var(--blush);
+        }
+
+        .historia-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--champagne);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .historia-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--verde-floresta);
+        }
+
+        .historia-text p {
+            margin-bottom: 1.5rem;
+            color: var(--texto-suave);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--texto-escuro);
+        }
+
+        .feature-list svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--verde-floresta);
+            flex-shrink: 0;
+        }
+
+        /* Serviços Section */
+        .servicos {
+            background: linear-gradient(180deg, var(--blush) 0%, var(--branco-cremoso) 100%);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .servico-card {
+            background: var(--branco-cremoso);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(244, 228, 193, 0.3);
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--champagne);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .servico-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .servico-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .servico-card:hover .servico-icon {
+            transform: rotateY(180deg);
+        }
+
+        .servico-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--verde-floresta);
+        }
+
+        .servico-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--texto-escuro);
+        }
+
+        .servico-card p {
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .servico-price {
+            display: inline-block;
+            background: var(--verde-floresta);
+            color: var(--branco-cremoso);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Depoimentos Section */
+        .depoimentos {
+            background: var(--branco-cremoso);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .depoimento-card {
+            background: var(--blush);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .depoimento-quote {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            opacity: 0.2;
+        }
+
+        .depoimento-quote svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--verde-floresta);
+        }
+
+        .depoimento-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--texto-escuro);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .depoimento-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .depoimento-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--champagne);
+        }
+
+        .depoimento-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--texto-escuro);
+        }
+
+        .depoimento-role {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+        }
+
+        /* Contato Section */
+        .contato {
+            background: linear-gradient(135deg, var(--verde-floresta) 0%, var(--verde-floresta-escuro) 100%);
+            color: var(--branco-cremoso);
+        }
+
+        .contato-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contato-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--branco-cremoso);
+        }
+
+        .contato-info p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contato-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--champagne);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .contato-item-text strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .contato-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--champagne);
+            box-shadow: 0 0 0 3px rgba(244, 228, 193, 0.3);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--champagne);
+            color: var(--texto-escuro);
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #e5d4a8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--texto-escuro);
+            color: var(--branco-cremoso);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--champagne);
+        }
+
+        .footer-text {
+            color: rgba(255, 250, 249, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-left: 0;
+                order: 2;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                height: 400px;
+                order: 1;
+            }
+
+            .historia-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--branco-cremoso);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .servicos-grid,
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Studio Semeghini</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#historia">História</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-leaf">
+            <svg viewBox="0 0 24 24">
+                <path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,13,15,7,17,8Z"/>
+            </svg>
+        </div>
+        <div class="floating-leaf">
+            <svg viewBox="0 0 24 24">
+                <path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,13,15,7,17,8Z"/>
+            </svg>
+        </div>
+        <div class="floating-leaf">
+            <svg viewBox="0 0 24 24">
+                <path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.22,6.22,0,0,0,1.75,3.75C7,13,15,7,17,8Z"/>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Onde cada fio conta sua <span>história</span></h1>
+                    <p class="hero-tagline">Transformamos seu cabelo em uma obra de arte, com carinho e expertise</p>
+                    <a href="#contato" class="cta-button">
+                        Agende seu horário
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Mulher com cabelo bem cuidado no salão">
+                    <div class="flower-bloom">
+                        <svg viewBox="0 0 100 100">
+                            <ellipse class="petal" cx="50" cy="30" rx="20" ry="30" style="--rotation: 0deg;"/>
+                            <ellipse class="petal" cx="70" cy="50" rx="20" ry="30" style="--rotation: 60deg;"/>
+                            <ellipse class="petal" cx="50" cy="70" rx="20" ry="30" style="--rotation: 120deg;"/>
+                            <ellipse class="petal" cx="30" cy="50" rx="20" ry="30" style="--rotation: 180deg;"/>
+                            <ellipse class="petal" cx="65" cy="35" rx="18" ry="25" style="--rotation: 30deg;"/>
+                            <ellipse class="petal" cx="35" cy="65" rx="18" ry="25" style="--rotation: 150deg;"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- História Section -->
+    <section class="historia" id="historia">
+        <div class="container">
+            <div class="historia-content">
+                <div class="historia-image reveal-left">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Ambiente acolhedor do salão">
+                </div>
+                <div class="historia-text reveal-right">
+                    <h3>Mais que um salão, sua segunda casa</h3>
+                    <p>Fundada no coração do Jardim Palma Travassos, o Studio Semeghini nasceu do sonho de criar um espaço onde beleza e bem-estar se encontram. Somos parte da comunidade há anos, vendo gerações crescerem enquanto transformamos cabelos e elevamos autoestimas.</p>
+                    <p>Nossa missão vai além da estética: oferecemos um atendimento familiar e acolhedor, onde cada cliente é tratado com a atenção e o carinho que merece. Aqui, você não é apenas mais um cliente — você é parte da nossa família.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Atendimento personalizado para toda família
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Profissionais experientes e atualizados
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Produtos de alta qualidade
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Ambiente confortável e relaxante
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Nossos Serviços</h2>
+                <div class="section-line"></div>
+                <p>Cuidados completos para realçar sua beleza natural com técnicas modernas e produtos premium</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <h3>Corte e Penteado</h3>
+                    <p>Cortes modernos e clássicos, penteados para ocasiões especiais e finalização perfeita</p>
+                    <span class="servico-price">A partir de R$ 80</span>
+                </div>
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+                        </svg>
+                    </div>
+                    <h3>Coloração</h3>
+                    <p>Mechas, balayage, tintura e correção de cor com produtos que protegem seus fios</p>
+                    <span class="servico-price">A partir de R$ 150</span>
+                </div>
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </div>
+                    <h3>Tratamentos</h3>
+                    <p>Hidratação, nutrição, reconstrução e cauterização para cabelos saudáveis</p>
+                    <span class="servico-price">A partir de R$ 120</span>
+                </div>
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22 14.86 20.57 16.29 22 18.43 19.86 19.86 21.29 21.29 19.86l-1.43-1.43L22 16.29z"/>
+                        </svg>
+                    </div>
+                    <h3>Progressiva</h3>
+                    <p>Alisamentos suaves com efeito natural e duradouro para cabelos lisos e brilhantes</p>
+                    <span class="servico-price">A partir de R$ 250</span>
+                </div>
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Manicure e Pedicure</h3>
+                    <p>Unhas impecáveis com esmaltação, alongamento e cuidados completos</p>
+                    <span class="servico-price">A partir de R$ 50</span>
+                </div>
+                <div class="servico-card reveal">
+                    <div class="servico-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/>
+                        </svg>
+                    </div>
+                    <h3>Noivas</h3>
+                    <p>Pacote completo para noivas: cabelo, maquiagem e penteado perfeito</p>
+                    <span class="servico-price">A partir de R$ 500</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section class="depoimentos" id="depoimentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>O que dizem nossas clientes</h2>
+                <div class="section-line"></div>
+                <p>Histórias reais de quem confia sua beleza ao Studio Semeghini</p>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card reveal">
+                    <div class="depoimento-quote">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                        </svg>
+                    </div>
+                    <p class="depoimento-text">"Sou cliente há mais de 10 anos e nunca me decepcionei. O atendimento é sempre impecável, com aquele carinho que faz toda diferença. Minha filha também já é cliente!"</p>
+                    <div class="depoimento-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Maria Silva" class="depoimento-avatar">
+                        <div>
+                            <div class="depoimento-name">Maria Silva</div>
+                            <div class="depoimento-role">Cliente há 10 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card reveal">
+                    <div class="depoimento-quote">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                        </svg>
+                    </div>
+                    <p class="depoimento-text">"Fiz minha progressiva aqui e ficou perfeita! Meus cabelos ficaram lisos, brilhantes e com movimento. As profissionais realmente entendem o que cada cabelo precisa."</p>
+                    <div class="depoimento-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Ana Carolina" class="depoimento-avatar">
+                        <div>
+                            <div class="depoimento-name">Ana Carolina</div>
+                            <div class="depoimento-role">Cliente há 3 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-card reveal">
+                    <div class="depoimento-quote">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                        </svg>
+                    </div>
+                    <p class="depoimento-text">"No meu casamento, fui tratada como uma princesa. O penteado ficou exatamente como eu sonhei, e a equipe foi super atenciosa com todas as minhas dúvidas."</p>
+                    <div class="depoimento-author">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Fernanda Lima" class="depoimento-avatar">
+                        <div>
+                            <div class="depoimento-name">Fernanda Lima</div>
+                            <div class="depoimento-role">Cliente há 5 anos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section class="contato" id="contato">
+        <div class="container">
+            <div class="contato-content">
+                <div class="contato-info reveal-left">
+                    <h3>Agende seu horário</h3>
+                    <p>Entre em contato conosco para agendar seu horário ou tirar suas dúvidas. Estamos sempre prontos para receber você!</p>
+                    
+                    <div class="contato-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <div class="contato-item-text">
+                            <strong>Endereço</strong>
+                            R. Ondibecte Silveira, 328<br>
+                            Jardim Palma Travassos, Ribeirão Preto - SP<br>
+                            CEP: 14091-140
+                        </div>
+                    </div>
+                    
+                    <div class="contato-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <div class="contato-item-text">
+                            <strong>Telefone</strong>
+                            (16) 99715-6040
+                        </div>
+                    </div>
+                    
+                    <div class="contato-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        <div class="contato-item-text">
+                            <strong>Horário de Funcionamento</strong>
+                            Terça a Sexta: 9h às 19h<br>
+                            Sábado: 8h às 17h
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/5516997156040?text=Olá! Gostaria de agendar um horário no Studio Semeghini." class="whatsapp-button" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Chamar no WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contato-form reveal-right">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço desejado</label>
+                            <input type="text" id="service" name="service" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Studio Semeghini</div>
+            <p class="footer-text">© 2025 Studio Semeghini. Todos os direitos reservados.</p>
+            <p class="footer-text">Transformando cabelos, elevando autoestima.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for reveal animations
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Olá! Meu nome é ${name}.%0A%0ATelefone: ${phone}%0AServiço desejado: ${service}%0A%0AMensagem: ${message}`;
+            
+            window.open(`https://wa.me/5516997156040?text=${whatsappMessage}`, '_blank');
+            
+            contactForm.reset();
+        });
+
+        // Parallax effect on flower bloom
+        const flowerBloom = document.querySelector('.flower-bloom');
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!flowerBloom) return;
+            
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            
+            flowerBloom.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
