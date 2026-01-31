@@ -222,3 +222,16 @@ Inclua uma entrada com:
 - **Problema**: As seções "Supere os Desafios Odontológicos" (problem-solution), "Tratamentos Completos" (services), "Depoimentos" (testimonials), "Por Que Escolher a Dra Marli?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e desconforto constante", "Insegurança ao sorrir", "Dificuldade para alimentar", "Medo do dentista"), solução ("Sorria com Confiança"), cards de serviços ("Clínico Geral", "Estética Dental", "Implantes Dentários", "Ortodontia", "Endodontia", "Próteses Dentárias"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1157-1161), mas a classe `active` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
 - **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `active` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `active` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
 - **Evidências**: Screenshots em `.playwright-mcp/rev027-dra-marli-1440-full.png`, `.playwright-mcp/rev027-dra-marli-1024-full.png`, `.playwright-mcp/rev027-dra-marli-768-full.png` e `.playwright-mcp/rev027-dra-marli-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
+### REV-028 - Dra Isabô Tortoriello
+- **ID da revisão**: REV-028
+- **ID do PRD original**: US-028
+- **Nome do cliente**: Dra Isabô Tortoriello
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-isabo-tortoriello/index.html
+- **Breakpoint(s) afetado(s)**: N/A
+- **Problema**: O site não existe. A story US-028 está marcada como "passes": true e "completionNotes": "Completed by agent" no prd.json, mas o diretório 'site-demo/dra-isabo-tortoriello' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
+- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-028 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
+- **Evidências**:
+  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dra-isabo-tortoriello/index.html
+  - Diretório /site-demo/dra-isabo-tortoriello não existe localmente
+  - `ls site-demo/ | grep isabo` não retorna resultados
