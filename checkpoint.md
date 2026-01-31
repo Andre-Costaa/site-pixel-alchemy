@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 28/45 (62.2%)
+- **Concluídas**: 30/45 (66.7%)
 - **Em Andamento**: 0
-- **Pendentes**: 17
+- **Pendentes**: 15
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-023)
+### Sites Concluídos (US-001 a US-030)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -41,18 +41,18 @@
 | US-027 | **Hemocentro Heróis Vet** | **pixelalchemy.com.br/site-demo/hemocentro-herois-vet** |
 | US-028 | **Di Gato Medicina Felina** | **pixelalchemy.com.br/site-demo/di-gato-medicina-felina** |
 | US-029 | **Dog Days - Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h** |
+| US-030 | **BMvet 24 Horas - Zona Oeste** | **pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-029 - Dog Days - Clínica Veterinária 24h
+- **Último Site**: US-030 - BMvet 24 Horas - Zona Oeste
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h
+- **URL**: pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-030 | BMvet Zona Oeste | Pendente |
 | US-031 | Endoscopia Vet. Matheus Nascimento | Pendente |
 | US-032 | Vídeo Pet Endoscopia | Pendente |
 | US-033 | Pet Work | Pendente |
