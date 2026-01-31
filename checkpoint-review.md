@@ -268,3 +268,21 @@ Inclua uma entrada com:
 - **Problema**: A imagem do serviço "Restauração Estética" não está carregando corretamente. O card exibe um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.
 - **Correção sugerida**: Substituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash. Sugestão: usar uma imagem similar às dos outros cards de serviços odontológicos, como `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80` ou outra imagem relacionada a restaurações dentárias.
 - **Evidências**: Screenshots em `.playwright-mcp/clinica-livhera-1440-tratamentos.png` e `.playwright-mcp/clinica-livhera-1024-cards.png` - notar que o card "Restauração Estética" exibe um fundo azul escuro em vez da imagem, enquanto os outros cards mostram as imagens corretamente.
+
+### REV-036 - Clínica Doctor Oral
+- **ID da revisão**: REV-036
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Clínica Doctor Oral
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-doctor-oral/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: A seção "Entre em Contato" (contact) está com o conteúdo invisível em todos os breakpoints. O texto do título "Agende sua Consulta", descrição, informações de endereço, telefone, horário de atendimento e o formulário de contato estão com a cor escura (#0a1628 ou similar) sobre um fundo escuro (rgb(10, 22, 40)), tornando-os invisíveis para o usuário. O conteúdo existe no DOM (60 elementos), mas não é visível devido à falta de contraste de cores.
+- **Correção sugerida**: Modificar o CSS da seção de contato para garantir que todo o texto tenha cor clara (branco ou #f8fafc) sobre o fundo escuro. Especificamente, adicionar estilos para `.contact-title`, `.contact-description`, `.contact-item`, labels do formulário e inputs com cor clara. Exemplo:
+  ```css
+  #contato .contact-title,
+  #contato .contact-description,
+  #contato .contact-item,
+  #contato label {
+    color: #f8fafc;
+  }
+  ```
+- **Evidências**: Screenshots em `.playwright-mcp/rev036-doctor-oral-1440-bottom.png` e `.playwright-mcp/rev036-doctor-oral-480-contato.png` - notar que a seção de contato aparece como uma área escura vazia sem texto visível.
