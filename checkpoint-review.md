@@ -149,13 +149,19 @@ Inclua uma entrada com:
 
 ### REV-018 - Mônica Z. Bordoni Odontologia
 - **ID da revisão**: REV-018
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-018
 - **Nome do cliente**: Mônica Z. Bordoni Odontologia
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/monica-bordoni-odontologia/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Por que escolher a endodontia especializada?" (problem-solution), "Tratamentos especializados" (services), "Depoimentos" (testimonials), "Por que escolher a Dra. Mônica?" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("O Problema": Dor intensa, Sensibilidade, Inchaço, Risco de perda), soluções ("A Solução": Tecnologia de ponta, Procedimento confortável, Recuperação rápida, Dente preservado), cards de serviços ("Tratamento de Canal", "Retratamento de Canal", "Cirurgia Peraapical", "Localização de Canal", "Obturação de Canal", "Avaliação e Diagnóstico"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
-- **Evidências**: Screenshots em `.playwright-mcp/rev018-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Por que escolher a endodontia especializada?" (problem-solution), "Tratamentos especializados" (services), "Depoimentos" (testimonials), "Por que escolher a Dra. Mônica?" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("O Problema": Dor intensa, Sensibilidade, Inchaço, Risco de perda), soluções ("A Solução": Tecnologia de ponta, Procedimento confortável, Recuperação rápida, Dente preservado), cards de serviços ("Tratamento de Canal", "Retratamento de Canal", "Cirurgia Peraapical", "Localização de Canal", "Obturação de Canal", "Avaliação e Diagnóstico"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)`, mas a classe `active` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Refatorado o sistema de animações para garantir visibilidade por padrão:
+  - Modificado o CSS para que `.reveal` tenha `opacity: 1` por padrão
+  - Adicionada classe `.js-loaded` que o JavaScript adiciona ao body para controlar quando as animações devem ocorrer
+  - JavaScript agora adiciona classe `active` aos elementos visíveis imediatamente no carregamento da página
+  - Melhorado o Intersection Observer com `threshold: 0.05` e `rootMargin: '0px 0px -20px 0px'` para maior sensibilidade
+  - Adicionada função `triggerVisibleAnimations()` que verifica elementos no viewport e aplica a classe `active` imediatamente
+  - Adicionado fallback `.no-js` para garantir visibilidade quando JavaScript está desabilitado
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-019 - Dra. Camila Zanirato
 - **ID da revisão**: REV-019
