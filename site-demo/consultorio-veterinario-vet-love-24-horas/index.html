@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Love 24 Horas | Consultório Veterinário em Ribeirão Preto</title>
+    <meta name="description" content="Emergência veterinária 24 horas em Ribeirão Preto. Cuidado especializado para seu pet, dia e noite.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #D94F3C;
+            --color-primary-dark: #B83828;
+            --color-secondary: #2D5C4B;
+            --color-secondary-dark: #1E3F33;
+            --color-cream: #FDF8F3;
+            --color-sand: #F5EDE4;
+            --color-charcoal: #1A1A1A;
+            --color-gray: #6B6B6B;
+            --color-light-gray: #E8E8E8;
+            --color-white: #FFFFFF;
+            --color-heart: #FF6B6B;
+            --color-accent: #F4A261;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-pulse: 50%;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ECG Line Animation */
+        .ecg-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            animation: ecg-move 3s linear infinite;
+        }
+
+        @keyframes ecg-move {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Heartbeat Pulse */
+        .pulse-ring {
+            position: absolute;
+            border-radius: var(--border-radius-pulse);
+            border: 2px solid var(--color-heart);
+            animation: pulse-expand 2s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse-expand {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-base);
+        }
+
+        .nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-heart));
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+            z-index: 1;
+        }
+
+        .nav-logo-icon .pulse-ring {
+            width: 44px;
+            height: 44px;
+            inset: 0;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            line-height: 1.1;
+        }
+
+        .nav-logo-text span {
+            color: var(--color-primary);
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-charcoal);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            animation: ring-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes ring-pulse {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(-15deg); }
+            20%, 40% { transform: rotate(15deg); }
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-charcoal);
+            margin: 5px 0;
+            transition: var(--transition-fast);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--spacing-xxl) + var(--spacing-lg)) var(--spacing-md) var(--spacing-xxl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(217, 79, 60, 0.08) 0%, transparent 70%);
+            border-radius: var(--border-radius-pulse);
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(45, 92, 75, 0.06) 0%, transparent 70%);
+            border-radius: var(--border-radius-pulse);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fade-up 0.8s ease forwards;
+        }
+
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(217, 79, 60, 0.1);
+            border-radius: var(--border-radius-pulse);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-title .highlight {
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(217, 79, 60, 0.2);
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(217, 79, 60, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(217, 79, 60, 0.4);
+        }
+
+        .btn-primary svg {
+            animation: ring-pulse 1.5s ease-in-out infinite;
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-charcoal);
+            border: 2px solid var(--color-light-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-charcoal);
+            transform: translateY(-3px);
+        }
+
+        .hero-features {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-light-gray);
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+
+        .hero-feature svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-secondary);
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fade-left 0.8s ease 0.2s forwards;
+        }
+
+        @keyframes fade-left {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            right: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .hero-overlay-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .hero-overlay-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            z-index: 1;
+        }
+
+        .hero-overlay-icon .pulse-ring {
+            width: 56px;
+            height: 56px;
+            border-color: var(--color-secondary);
+        }
+
+        .hero-overlay-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-overlay-content p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+
+        .hero-badge-24h {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(217, 79, 60, 0.4);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-white);
+        }
+
+        .problem-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-label svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .problem-card {
+            padding: var(--spacing-lg);
+            background: var(--color-cream);
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-heart));
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .problem-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .problem-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--spacing-md);
+            background: rgba(217, 79, 60, 0.1);
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .problem-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-primary);
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+        }
+
+        .solution-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+            color: white;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .solution-card::before {
+            background: linear-gradient(90deg, var(--color-accent), var(--color-heart));
+        }
+
+        .solution-card .problem-icon {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .solution-card .problem-icon svg {
+            fill: white;
+        }
+
+        .solution-card h3 {
+            color: white;
+        }
+
+        .solution-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .solution-check {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .solution-check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .solution-check-item svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-cream);
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-heart));
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(217, 79, 60, 0.1), rgba(45, 92, 75, 0.1));
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .service-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--color-primary);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+        }
+
+        .service-card:hover .service-icon svg {
+            fill: white;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-tag {
+            padding: 0.35rem 0.75rem;
+            background: var(--color-sand);
+            border-radius: var(--border-radius-pulse);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-white);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-heart));
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-quote svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-accent);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius-pulse);
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+        }
+
+        /* Differentiators Section */
+        .differentiators {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-charcoal), #2a2a2a);
+            color: white;
+        }
+
+        .differentiators-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .differentiators .section-label {
+            color: var(--color-accent);
+        }
+
+        .differentiators .section-title {
+            color: white;
+        }
+
+        .differentiators .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .differentiator-item {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .differentiator-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-heart));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .differentiator-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background: var(--color-cream);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            font-size: 1.05rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(217, 79, 60, 0.1);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--color-primary);
+        }
+
+        .contact-item-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+            margin: 0;
+        }
+
+        .contact-item-content a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item-content a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-form-wrapper p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-light-gray);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .form-submit:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(217, 79, 60, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-charcoal);
+            color: white;
+            padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-heart));
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-brand .footer-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .footer-brand .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-column h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-pulse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-primary);
+        }
+
+        .footer-social a svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* Scroll Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .differentiators-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-xl) var(--spacing-md);
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: var(--transition-base);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .solution-check {
+                justify-content: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .hero-overlay {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .differentiators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <div class="pulse-ring"></div>
+                </div>
+                <div class="nav-logo-text">Vet Love<span>24 Horas</span></div>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="tel:+5516982671112" class="nav-cta">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    (16) 98267-1112
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="ecg-line"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Emergência 24 Horas
+                </div>
+                <h1 class="hero-title">
+                    Seu Pet Merece Cuidado <span class="highlight">Dia e Noite</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Consultório veterinário especializado em emergências 24 horas em Ribeirão Preto. Equipe preparada para atender seu pet com amor e profissionalismo a qualquer hora.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:+5516982671112" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        Ligar Agora
+                    </a>
+                    <a href="#contato" class="btn btn-secondary">Agendar Consulta</a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
+                        Equipe Qualificada
+                    </div>
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        Atendimento Rápido
+                    </div>
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        Cuidado com Amor
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=800&fit=crop" alt="Veterinária cuidando de gato" class="hero-image">
+                    <div class="hero-badge-24h">24H</div>
+                    <div class="hero-overlay">
+                        <div class="hero-overlay-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <div class="pulse-ring"></div>
+                        </div>
+                        <div class="hero-overlay-content">
+                            <h4>Pronto Atendimento</h4>
+                            <p>Emergências não esperam. Nós também não.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem">
+        <div class="problem-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    Por Que Escolher a Vet Love
+                </div>
+                <h2 class="section-title">Cuidado que Faz a Diferença</h2>
+                <p class="section-subtitle">Entendemos as angústias de ter um pet em emergência. Estamos aqui para ajudar.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card wow-fade-up">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </div>
+                    <h3>Clinicas Fechadas</h3>
+                    <p>Muitas clínicas fecham cedo e deixam seu pet sem atendimento quando mais precisa.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                    </div>
+                    <h3>Espera Demorada</h3>
+                    <p>Em emergências, cada minuto conta. Esperas longas podem ser prejudiciais.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="200">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3>Falta de Especialistas</h3>
+                    <p>Nem sempre há profissionais disponíveis para casos complexos fora do horário comercial.</p>
+                </div>
+                <div class="problem-card solution-card wow-fade-up" data-delay="300">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Solução Vet Love 24 Horas</h3>
+                        <p>Atendimento veterinário especializado disponível 24 horas por dia, 7 dias por semana, com equipe completa e equipamentos modernos.</p>
+                        <div class="solution-check">
+                            <div class="solution-check-item">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                24/7
+                            </div>
+                            <div class="solution-check-item">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                Equipe Completa
+                            </div>
+                            <div class="solution-check-item">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                Equipamento Moderno
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="services-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11z"/><path d="M12 13l-5.5 9h11z"/></svg>
+                    Nossos Serviços
+                </div>
+                <h2 class="section-title">Cuidado Completo para seu Pet</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de serviços veterinários para garantir a saúde e felicidade do seu amigo.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/></svg>
+                    </div>
+                    <h3>Emergência 24h</h3>
+                    <p>Atendimento de emergência disponível 24 horas por dia, incluindo finais de semana e feriados.</p>
+                    <div class="service-features">
+                        <span class="service-tag">Cirurgias</span>
+                        <span class="service-tag">Trauma</span>
+                        <span class="service-tag">UTI</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3>Consultas</h3>
+                    <p>Consultas clínicas completas com exames físicos detalhados e orientações preventivas.</p>
+                    <div class="service-features">
+                        <span class="service-tag">Check-up</span>
+                        <span class="service-tag">Vacinas</span>
+                        <span class="service-tag">Prevenção</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z"/></svg>
+                    </div>
+                    <h3>Exames Laboratoriais</h3>
+                    <p>Laboratório completo para análises clínicas rápidas e precisas.</p>
+                    <div class="service-features">
+                        <span class="service-tag">Hemograma</span>
+                        <span class="service-tag">Bioquímica</span>
+                        <span class="service-tag">Urina</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg>
+                    </div>
+                    <h3>Imagem</h3>
+                    <p>Exames de imagem modernos para diagnóstico preciso e rápido.</p>
+                    <div class="service-features">
+                        <span class="service-tag">Raio-X</span>
+                        <span class="service-tag">Ultrassom</span>
+                        <span class="service-tag">ECG</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h3>Cirurgias</h3>
+                    <p>Procedimentos cirúrgicos com equipe especializada e equipamentos de última geração.</p>
+                    <div class="service-features">
+                        <span class="service-tag">Soft Tissue</span>
+                        <span class="service-tag">Ortopedia</span>
+                        <span class="service-tag">Oftalmo</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Internação</h3>
+                    <p>Unidade de terapia intensiva e internação 24h com monitoramento contínuo.</p>
+                    <div class="service-features">
+                        <span class="service-tag">UTI 24h</span>
+                        <span class="service-tag">Monitoramento</span>
+                        <span class="service-tag">Cuidados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    Depoimentos
+                </div>
+                <h2 class="section-title">O Que Dizem Sobre Nós</h2>
+                <p class="section-subtitle">Histórias reais de tutores que confiaram na Vet Love 24 Horas.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Meu gato teve uma emergência à noite e a equipe da Vet Love salvou sua vida. Atendimento incrível, cheio de cuidado e profissionalismo. Eternamente grata!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MA</div>
+                        <div class="testimonial-info">
+                            <h4>Maria Aparecida</h4>
+                            <p>Tutora do Gato Lupu</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Excelente atendimento! Levei meu cachorro com intoxicação e foram super rápidos e eficientes. O veterinário explicou tudo com calma e paciência. Recomendo muito!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <h4>Roberto Santos</h4>
+                            <p>Tutor do Cachorro Max</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Amei o atendimento desde a recepção até o médico veterinário. Minha cadela precisou de cirurgia de emergência e tudo foi feito com muito carinho e competência."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CF</div>
+                        <div class="testimonial-info">
+                            <h4>Carla Fernandes</h4>
+                            <p>Tutora da Cachorra Bella</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiators Section -->
+    <section class="differentiators" id="diferenciais">
+        <div class="differentiators-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    Números que Falam
+                </div>
+                <h2 class="section-title">Diferenciais Vet Love</h2>
+                <p class="section-subtitle">Nossa experiência e compromisso com a saúde animal.</p>
+            </div>
+            <div class="differentiators-grid">
+                <div class="differentiator-item wow-fade-up">
+                    <div class="differentiator-number">24+</div>
+                    <div class="differentiator-label">Horas por Dia</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="100">
+                    <div class="differentiator-number">5k+</div>
+                    <div class="differentiator-label">Pets Atendidos</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="200">
+                    <div class="differentiator-number">8</div>
+                    <div class="differentiator-label">Anos de Experiência</div>
+                </div>
+                <div class="differentiator-item wow-fade-up" data-delay="300">
+                    <div class="differentiator-number">100%</div>
+                    <div class="differentiator-label">Dedicação ao Pet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para atender seu pet a qualquer momento. Ligue agora ou agende uma consulta.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5516982671112">(16) 98267-1112</a></p>
+                            <p style="font-size: 0.85rem; color: var(--color-primary);">Disponível 24 horas</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Endereço</h4>
+                            <p>R. Ayrton Roxo, 57 - Alto da Boa Vista</p>
+                            <p>Ribeirão Preto - SP, 14025-270</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Horário</h4>
+                            <p>Segunda a Domingo: 24 horas</p>
+                            <p style="font-size: 0.85rem; color: var(--color-primary);">Não fechamos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <h3>Agende uma Consulta</h3>
+                <p>Preencha o formulário e entraremos em contato o mais rápido possível.</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Seu Nome</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service">Serviço Desejado</label>
+                        <select id="service" name="service" class="form-select" required>
+                            <option value="">Selecione o serviço</option>
+                            <option value="consulta">Consulta de Rotina</option>
+                            <option value="emergencia">Emergência 24h</option>
+                            <option value="cirurgia">Cirurgia</option>
+                            <option value="exames">Exames Laboratoriais</option>
+                            <option value="imagem">Exames de Imagem</option>
+                            <option value="internacao">Internação</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Mensagem</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Descreva brevemente a situação do seu pet..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                        <span class="footer-logo-text">Vet Love 24 Horas</span>
+                    </div>
+                    <p>Consultório veterinário especializado em emergências 24 horas em Ribeirão Preto. Cuidado, amor e dedicação para seu pet a qualquer hora.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <div class="footer-links">
+                        <a href="#home">Início</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <div class="footer-links">
+                        <a href="#servicos">Emergência 24h</a>
+                        <a href="#servicos">Consultas</a>
+                        <a href="#servicos">Cirurgias</a>
+                        <a href="#servicos">Exames</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vet Love 24 Horas. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            // Create WhatsApp message
+            const whatsappNumber = '5516982671112';
+            const whatsappMessage = encodeURIComponent(
+                `Olá! Meu nome é ${name}.\n` +
+                `Telefone: ${phone}\n` +
+                `Serviço desejado: ${service}\n` +
+                `Mensagem: ${message || 'Gostaria de agendar uma consulta.'}`
+            );
+
+            // Open WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Animate numbers on scroll
+        const animateNumbers = () => {
+            const numbers = document.querySelectorAll('.differentiator-number');
+            numbers.forEach(num => {
+                const target = parseInt(num.textContent.replace(/\D/g, ''));
+                const suffix = num.textContent.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        num.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = Math.floor(current) + suffix;
+                    }
+                }, 30);
+            });
+        };
+
+        const differentiatorsSection = document.querySelector('.differentiators');
+        const numbersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    numbersObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (differentiatorsSection) {
+            numbersObserver.observe(differentiatorsSection);
+        }
+    </script>
+</body>
+</html>
