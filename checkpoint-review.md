@@ -261,13 +261,17 @@ Inclua uma entrada com:
 
 ### REV-027 - Dra Marli Queiroz
 - **ID da revisão**: REV-027
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-027
 - **Nome do cliente**: Dra Marli Queiroz
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-marli-queiroz/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Supere os Desafios Odontológicos" (problem-solution), "Tratamentos Completos" (services), "Depoimentos" (testimonials), "Por Que Escolher a Dra Marli?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e desconforto constante", "Insegurança ao sorrir", "Dificuldade para alimentar", "Medo do dentista"), solução ("Sorria com Confiança"), cards de serviços ("Clínico Geral", "Estética Dental", "Implantes Dentários", "Ortodontia", "Endodontia", "Próteses Dentárias"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1157-1161), mas a classe `active` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `active` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `active` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
-- **Evidências**: Screenshots em `.playwright-mcp/rev027-dra-marli-1440-full.png`, `.playwright-mcp/rev027-dra-marli-1024-full.png`, `.playwright-mcp/rev027-dra-marli-768-full.png` e `.playwright-mcp/rev027-dra-marli-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Supere os Desafios Odontológicos" (problem-solution), "Tratamentos Completos" (services), "Depoimentos" (testimonials), "Por Que Escolher a Dra Marli?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e desconforto constante", "Insegurança ao sorrir", "Dificuldade para alimentar", "Medo do dentista"), solução ("Sorria com Confiança"), cards de serviços ("Clínico Geral", "Estética Dental", "Implantes Dentários", "Ortodontia", "Endodontia", "Próteses Dentárias"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1157-1161), mas a classe `active` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Modificado o CSS para garantir visibilidade por padrão:
+  - Alterado `.reveal` para ter `opacity: 1` e `transform: translateY(0)` por padrão
+  - Adicionada classe `.animate` para controlar animações opcionais
+  - JavaScript atualizado para garantir que elementos sejam visíveis imediatamente
+  - Mantida compatibilidade com Intersection Observer para animações de scroll
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-029 - VIVA SORRINDO
 - **ID da revisão**: REV-029
