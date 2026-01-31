@@ -256,3 +256,78 @@ O site utiliza a classe CSS `scroll-reveal` que define `opacity: 0` inicialmente
 tos, Contato) |\n| CTAs | ✅ Funcionando |\n| Formulário | ✅ Funcionando corretamente (redireciona para WhatsApp) |\n| Console de erros | ✅ Apenas favicon 404 (não crítico) |\n\n### Detalhes\n- **URL revisado**: https://pixelalchemy.com.br/site-demo/odonto-centro/index.html\n- **Screenshots**: `.playwright-mcp/odonto-centro-*-revealed.png`\n- **Problemas encontrados**: Nenhum\n- **Ação necessária**: Nenhuma - site aprovado para entrega ao cliente\n\nO site está pronto para entrega ao cliente.\n\n
 
 ---
+## ✓ Iteration 17 - REV-024: Revisão Playwright - DenTal Clínica Odontológica
+*2026-01-31T05:05:59.800Z (332s)*
+
+**Status:** Completed
+
+**Notes:**
+- Revisão Playwright - DenTal Clínica Odontológica\n 7 files changed, 679 insertions(+), 20 deletions(-)\n create mode 100644 .ralph-tui/iterations/iteration-014-REV-021.log\n create mode 100644 .ralph-tui/iterations/iteration-015-REV-022.log\n create mode 100644 .ralph-tui/iterations/iteration-016-REV-023.log","stderr":"","interrupted":false,"isImage":false}}
+{"type":"assistant","message":{"id":"msg_fOeLIruLiqB3RGfJorTwO5VA","type":"message","role":"assistant","content":[{"type":"text","text":"
+
+---
+## ✓ Iteration 18 - REV-025: Revisão Playwright - Dra Renata Plaça
+*2026-01-31T05:19:25.870Z (805s)*
+
+**Status:** Completed
+
+**Notes:**
+x)\n- Todas as seções visíveis e bem formatadas (hero, problem-solution, services, testimonials, features, contact, footer)\n- Navegação por âncoras funcionando corretamente\n- CTAs direcionando para WhatsApp corretamente\n- Formulário de contato operacional (envia para WhatsApp)\n- Console limpo de erros críticos (apenas favicon 404 - não crítico)\n\n**Ação necessária:**\nCorrigir a URL da imagem quebrada no arquivo `site-demo/dra-renata-placa/index.html` para o card \"Próteses Dentárias\".\n\n
+
+---
+## ✓ Iteration 19 - REV-026: Revisão Playwright - Sempre Sorrindo Implantes Dentários
+*2026-01-31T05:22:26.771Z (180s)*
+
+**Status:** Completed
+
+**Notes:**
+nciona Corretamente\n- Hero section (visível e bem formatado)\n- Navegação por âncoras\n- Carregamento de imagens\n- Formulário (quando visível)\n- Console sem erros críticos\n\n### Evidências\nScreenshots salvos em:\n- `.playwright-mcp/rev026-1440-full.png`\n- `.playwright-mcp/rev026-1024-full.png`\n- `.playwright-mcp/rev026-768-full.png`\n- `.playwright-mcp/rev026-480-full.png`\n\n### Registro\nO problema foi registrado no `checkpoint-review.md` com descrição detalhada e correção sugerida.\n\n
+
+---
+## ✓ Iteration 20 - REV-027: Revisão Playwright - Dra Marli Queiroz
+*2026-01-31T05:26:34.848Z (247s)*
+
+**Status:** Completed
+
+**Notes:**
+Navegação interna | ✅ Âncoras funcionam |\n| Formulário | ✅ Estrutura presente |\n| Console | ✅ Apenas erro de favicon (não crítico) |\n\n### Evidências\n\nScreenshots salvos em:\n- `.playwright-mcp/rev027-dra-marli-1440-full.png`\n- `.playwright-mcp/rev027-dra-marli-1024-full.png`\n- `.playwright-mcp/rev027-dra-marli-768-full.png`\n- `.playwright-mcp/rev027-dra-marli-480-full.png`\n\n### Registro\n\nProblema documentado no `checkpoint-review.md` com descrição detalhada e correção sugerida.\n\n
+
+---
+## ✓ Iteration 21 - REV-028: Revisão Playwright - Dra Isabô Tortoriello
+*2026-01-31T05:28:11.894Z (96s)*
+
+**Status:** Completed
+
+**Notes:**
+le changed, 13 insertions(+)","is_error":false}]},"parent_tool_use_id":null,"session_id":"2d7d0641-7a3e-4147-ae64-fe275da400f1","uuid":"4776c9f0-41bc-4067-a901-8d1cc957d74f","tool_use_result":{"stdout":"[main 7352725] feat: REV-028 - Revisão Playwright - Dra Isabô Tortoriello\n 1 file changed, 13 insertions(+)","stderr":"","interrupted":false,"isImage":false}}
+{"type":"assistant","message":{"id":"msg_nyrWPyO84BbFlmsRGsmgVsO5","type":"message","role":"assistant","content":[{"type":"text","text":"
+
+---
+## ✓ Iteration 22 - REV-029: Revisão Playwright - VIVA SORRINDO
+*2026-01-31T05:31:23.009Z (190s)*
+
+**Status:** Completed
+
+**Notes:**
+O\n 1 file changed, 10 insertions(+)","is_error":false}]},"parent_tool_use_id":null,"session_id":"b8c47684-66d4-42a4-9cad-e9f7c048edd6","uuid":"a1fd90d2-ccb1-48ca-8414-62c0df541b66","tool_use_result":{"stdout":"[main 5434eab] feat: REV-029 - Revisão Playwright - VIVA SORRINDO\n 1 file changed, 10 insertions(+)","stderr":"","interrupted":false,"isImage":false}}
+{"type":"assistant","message":{"id":"msg_WUvMY4jqXPzezsqUjwlRaTPt","type":"message","role":"assistant","content":[{"type":"text","text":"
+
+---
+## ✓ Iteration 23 - REV-030: Revisão Playwright - SORRIA MAIS CLINICA ODONTOLOGICA
+*2026-01-31T05:33:11.219Z (107s)*
+
+**Status:** Completed
+
+**Notes:**
+ução**: Retorna erro 404 (NOT_FOUND)\n- **Diretório local**: `site-demo/sorria-mais-clinica` não encontrado\n- **prd2.json**: Story US-030 marcada como \"passes\": true, mas o site não foi criado/deployado\n\n### Registro\n\nA reprovação foi registrada no `checkpoint-review.md` com:\n- Descrição detalhada do problema\n- Evidências do erro 404\n- Correção sugerida (criar/deployar o site)\n\n### Commit Realizado\n\n```\nfeat: REV-030 - Revisão Playwright - SORRIA MAIS CLINICA ODONTOLOGICA\n```\n\n
+
+---
+## ✓ Iteration 24 - REV-031: Revisão Playwright - Clínica Livhera
+*2026-01-31T05:56:04.264Z (1372s)*
+
+**Status:** Completed
+
+**Notes:**
+ições |\n| Navegação interna/âncoras | ✅ Funcionando (Início, Serviços, Depoimentos, Diferenciais, Contato) |\n| CTAs | ✅ Funcionando |\n| Formulário | ✅ Funcionando corretamente |\n| Console de erros | ✅ Apenas favicon 404 (não crítico) |\n\n### Correção Sugerida\n\nSubstituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash.\n\n### Registro\n\nProblema documentado no `checkpoint-review.md` com descrição detalhada e correção sugerida.\n\n
+
+---
