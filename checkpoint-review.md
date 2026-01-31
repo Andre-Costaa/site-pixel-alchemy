@@ -286,3 +286,13 @@ Inclua uma entrada com:
   }
   ```
 - **Evidências**: Screenshots em `.playwright-mcp/rev036-doctor-oral-1440-bottom.png` e `.playwright-mcp/rev036-doctor-oral-480-contato.png` - notar que a seção de contato aparece como uma área escura vazia sem texto visível.
+
+### REV-037 - Consultório Odontológico Dr Mauricio Grandini
+- **ID da revisão**: REV-037
+- **ID do PRD original**: US-037
+- **Nome do cliente**: Consultório Odontológico Dr Mauricio Grandini
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-mauricio-grandini/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: ~~A imagem do serviço "Limpeza e Prevenção" não estava carregando (404 Not Found) devido a uma URL do Unsplash inválida (`photo-1599451913777-5f3680cfff21`). O card exibia o texto alternativo ou ícone de imagem quebrada em vez da imagem do serviço.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1599451913777-5f3680cfff21?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80` no arquivo `site-demo/dr-mauricio-grandini/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis e bem formatadas. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.

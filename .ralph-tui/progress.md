@@ -358,3 +358,21 @@ eis: Hero, Transforme Seu Sorriso, Nossos Serviços, Depoimentos, Por Que Escolh
 Responsivo:** Todos os breakpoints testados (1440px, 1024px, 768px, 480px) - OK\n- **Imagens:** Background do hero carregando corretamente da Unsplash - OK\n- **Navegação:** Âncoras internas (#inicio, #servicos, #contato) funcionando - OK\n- **Formulário:** Envio validado com sucesso, alerta de confirmação exibido - OK\n- **Console:** Apenas erro 404 no favicon.ico (não crítico) - OK\n\n### Resultado:\nSite aprovado para entrega ao cliente. Nenhuma issue crítica encontrada durante a revisão.\n\n
 
 ---
+## ✓ Iteration 28 - REV-035: Revisão Playwright - Centro de Clareamento Dental
+*2026-01-31T06:13:25.668Z (225s)*
+
+**Status:** Completed
+
+**Notes:**
+conteúdo abaixo da dobra fica invisível.\n\n### Itens Validados com Sucesso\n- Imagens carregando corretamente (sem placeholders quebrados)\n- Navegação por âncoras funcionando (#inicio, #servicos, #depoimentos, #contato)\n- Formulário de contato validado e funcionando\n- Console limpo (apenas erro de favicon.ico não crítico)\n\n### Correção Sugerida\nModificar o CSS para que elementos com classes de animação tenham `opacity: 1` por padrão, ou adicionar a classe `visible` por padrão no HTML.\n\n
+
+---
+## ✓ Iteration 29 - REV-036: Revisão Playwright - Clínica Doctor Oral
+*2026-01-31T06:26:57.936Z (811s)*
+
+**Status:** Completed
+
+**Notes:**
+oblemas (hero, serviços, depoimentos)\n- Navegação interna/âncoras funcionando (#inicio, #servicos, #depoimentos, #diferenciais, #contato)\n- CTAs direcionando corretamente para a seção de contato\n- Console limpo (apenas erro 404 de favicon.ico não crítico)\n- Menu mobile (hamburger) visível em 768px e 480px\n\n**Registro:** Problema documentado no `checkpoint-review.md` com descrição detalhada e correção sugerida (adicionar estilos CSS para tornar o texto branco/claro na seção de contato).\n\n
+
+---
