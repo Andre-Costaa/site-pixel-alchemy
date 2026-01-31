@@ -544,3 +544,24 @@ Inclua uma entrada com:
   - Informações da clínica: R. Cerqueira César, 1710 - Jardim Sumare, Ribeirão Preto - SP, 14025-120
   - Telefone: (16) 3623-5347
 - **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
+
+---
+
+### US-009 - Clínica Veterinária Filhos de Pelo 24h
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-veterinaria-filhos-de-pelo-24h/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: 6caf7af
+- **Descrição**: Site completo para Clínica Veterinária Filhos de Pelo 24h em Ribeirão Preto. Design "Warm & Trustworthy Organic" com:
+  - Tipografia distintiva: Outfit (display friendly) + DM Sans (body legível)
+  - Paleta de cores: Coral (#FF6B5B) primary com amber (#FFB347) accent, sage (#7CB987) e cream backgrounds
+  - Logo customizado SVG com rosto de pet (cachorro/gato estilizado)
+  - Animações: Floating organic blobs (3), pulse no badge 24h, ring no phone, float cards, scroll-triggered animations
+  - Seções: Hero, Problema/Solução, Serviços (6 cards), Depoimentos (3), Diferenciais (4 items), Contato, Footer
+  - Formulário de contato funcional com máscara de telefone
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - Apenas SVG icons (sem emojis)
+  - Imagens de alta qualidade do Unsplash sobre emergência veterinária
+  - Informações: Av. Independência, 815 - Vila Seixas, Ribeirão Preto - SP, 14020-010
+  - Telefone: (16) 99218-8558
+  - Ênfase em atendimento 24h/emergências
