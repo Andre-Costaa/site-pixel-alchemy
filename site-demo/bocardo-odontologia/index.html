@@ -1188,7 +1188,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Animations */
+        /* Animations - Elements visible by default */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1211,48 +1211,85 @@
             }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
+        /* Animation classes - elements always visible by default */
+        .fade-in,
+        .fade-in-left,
+        .fade-in-right,
         .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: none;
         }
 
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
+        /* Progressive enhancement: Smooth animations when elements scroll into view */
+        /* Elements are always visible - animations are a bonus, not a requirement */
+        .js-enabled .fade-in,
+        .js-enabled .fade-in-left,
+        .js-enabled .fade-in-right,
+        .js-enabled .scale-in {
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Optional: Add subtle entrance animation when scrolling into view */
+        /* This doesn't hide elements - just adds a subtle effect when they enter viewport */
+        .js-enabled .fade-in.animated {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .js-enabled .fade-in-left.animated {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .js-enabled .fade-in-right.animated {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .js-enabled .scale-in.animated {
+            animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Mobile Menu */
@@ -1441,6 +1478,25 @@
                 padding: 30px;
             }
         }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .fade-in,
+            .fade-in-left,
+            .fade-in-right,
+            .scale-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1448,7 +1504,7 @@
     <header id="header">
         <nav>
             <a href="#" class="logo">
-                <div class="logo-icon">✦</div>
+                <div class="logo-icon">&#10022;</div>
                 Bocardo
             </a>
             <ul class="nav-links">
@@ -1468,7 +1524,7 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">&#215;</button>
         <a href="#inicio" onclick="toggleMobileMenu()">Início</a>
         <a href="#servicos" onclick="toggleMobileMenu()">Serviços</a>
         <a href="#depoimentos" onclick="toggleMobileMenu()">Depoimentos</a>
@@ -1489,7 +1545,7 @@
                 <div class="hero-cta-group">
                     <a href="#contato" class="btn-primary">
                         <span>Agendar Consulta</span>
-                        <span>→</span>
+                        <span>&#8594;</span>
                     </a>
                     <a href="#servicos" class="btn-secondary">
                         <span>Conhecer Serviços</span>
@@ -1501,12 +1557,12 @@
                     <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Consultório odontológico moderno">
                 </div>
                 <div class="hero-float-card experience">
-                    <div class="float-card-icon">⭐</div>
-                    <div class="float-card-value">+15</div>
+                    <div class="float-card-icon">&#11088;</div>
+                    <div class="float-card-value">+20</div>
                     <div class="float-card-label">Anos de Experiência</div>
                 </div>
                 <div class="hero-float-card rating">
-                    <div class="float-rating-stars">★★★★★</div>
+                    <div class="float-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <div class="float-card-value">4.9</div>
                     <div class="float-card-label">Avaliação dos Pacientes</div>
                 </div>
@@ -1524,7 +1580,7 @@
             </div>
             <div class="problem-solution-grid">
                 <div class="problem-card fade-in-left">
-                    <div class="card-icon">😟</div>
+                    <div class="card-icon">&#128543;</div>
                     <h3>O Desafio</h3>
                     <ul class="problem-list">
                         <li>Medo e ansiedade do dentista</li>
@@ -1535,7 +1591,7 @@
                     </ul>
                 </div>
                 <div class="solution-card fade-in-right">
-                    <div class="card-icon">😊</div>
+                    <div class="card-icon">&#128522;</div>
                     <h3>Nossa Solução</h3>
                     <ul class="solution-list">
                         <li>Atendimento humanizado e acolhedor</li>
@@ -1559,40 +1615,40 @@
             </div>
             <div class="services-grid">
                 <div class="service-card scale-in">
-                    <div class="service-icon">✨</div>
+                    <div class="service-icon">&#10024;</div>
                     <h3>Estética Dental</h3>
                     <p>Facetas, laminados e clareamento para um sorriso brilhante e harmonioso que realça sua beleza natural.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
                 <div class="service-card scale-in">
-                    <div class="service-icon">🦷</div>
+                    <div class="service-icon">&#129463;</div>
                     <h3>Implantes Dentários</h3>
                     <p>Recupere a função e estética com implantes de alta qualidade e materiais biocompatíveis.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
                 <div class="service-card scale-in">
-                    <div class="service-icon">⚖️</div>
+                    <div class="service-icon">&#9878;</div>
                     <h3>Ortodontia</h3>
                     <p>Alinhadores transparentes e aparelhos convencionais para corrigir a posição dos dentes.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
                 <div class="service-card scale-in">
-                    <div class="service-icon">👨‍⚕️</div>
-                    <h3>Protetor e Reabilitação</h3>
+                    <div class="service-icon">&#128104;&#8205;&#9877;</div>
+                    <h3>Prótese e Reabilitação</h3>
                     <p>Próteses fixas e removíveis, coroas e pontes para restaurar sua mastigação completa.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
                 <div class="service-card scale-in">
-                    <div class="service-icon">🔧</div>
+                    <div class="service-icon">&#128295;</div>
                     <h3>Dentística</h3>
                     <p>Restaurações estéticas em resina e porcelana com acabamento invisível e duradouro.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
                 <div class="service-card scale-in">
-                    <div class="service-icon">🌿</div>
+                    <div class="service-icon">&#127807;</div>
                     <h3>Periodontia</h3>
                     <p>Tratamento de gengivas e prevenção de doenças periodontais para saúde bucal total.</p>
-                    <a href="#contato" class="service-link">Saiba mais →</a>
+                    <a href="#contato" class="service-link">Saiba mais &#8594;</a>
                 </div>
             </div>
         </div>
@@ -1608,8 +1664,8 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card scale-in">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Excelente atendimento! O Dr. Bocardo é muito profissional e atencioso. Fiz meu implante e o resultado ficou perfeito. Super recomendo!"</p>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"Excelente atendimento! A equipe da Bocardo é muito profissional e atenciosa. Fiz meu implante e o resultado ficou perfeito. Super recomendo!"</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">MC</div>
                         <div class="testimonial-info">
@@ -1619,8 +1675,8 @@
                     </div>
                 </div>
                 <div class="testimonial-card scale-in">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Sempre tive medo de dentista, mas na Bocardo Odontologia me sinto tranquila. O atendimento é humanizado e os procedimentos são indolores."</p>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"Sempre tive medo de dentista, mas na Bocardo Odontologia me sinto tranquilo. O atendimento é humanizado e os procedimentos são indolores."</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">RF</div>
                         <div class="testimonial-info">
@@ -1630,7 +1686,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card scale-in">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <p class="testimonial-text">"Fiz o clareamento e estou muito feliz com o resultado. O sorriso ficou branquíssimo e natural. A equipe é maravilhosa!"</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AS</div>
@@ -1654,18 +1710,18 @@
             </div>
             <div class="differentiators-grid">
                 <div class="differentiator-item scale-in">
-                    <div class="differentiator-number">15+</div>
+                    <div class="differentiator-number">20+</div>
                     <h3>Anos de Experiência</h3>
                     <p>Tradição e expertise em tratamentos odontológicos de alta complexidade.</p>
                 </div>
                 <div class="differentiator-item scale-in">
-                    <div class="differentiator-number">5k+</div>
+                    <div class="differentiator-number">10k+</div>
                     <h3>Pacientes Atendidos</h3>
                     <p>Milhares de sorrisos transformados com satisfação garantida.</p>
                 </div>
                 <div class="differentiator-item scale-in">
-                    <div class="differentiator-number">4.9</div>
-                    <h3>Avaliação Média</h3>
+                    <div class="differentiator-number">99%</div>
+                    <h3>Satisfação dos Pacientes</h3>
                     <p>Altíssimo índice de satisfação e recomendação dos pacientes.</p>
                 </div>
                 <div class="differentiator-item scale-in">
@@ -1682,27 +1738,27 @@
         <div class="contact-container">
             <div class="contact-info fade-in-left">
                 <h3>Agende Sua Consulta</h3>
-                <p>Entre em contato para marcar uma avaliação gratuita. Nossa equipe está pronta para receber você com o melhor atendimento.</p>
+                <p>Entre em contato para marcar uma avaliação. Nossa equipe está pronta para receber você com o melhor atendimento.</p>
                 <div class="contact-details">
                     <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-icon">&#128205;</div>
                         <div class="contact-item-text">
                             <h4>Endereço</h4>
                             <p>Av. Leais Paulista, 940<br>Jardim Irajá, Ribeirão Preto - SP</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-icon">&#128222;</div>
                         <div class="contact-item-text">
                             <h4>Telefone</h4>
                             <p><a href="tel:+551636231148">(16) 3623-1148</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-icon">⏰</div>
+                        <div class="contact-item-icon">&#9200;</div>
                         <div class="contact-item-text">
                             <h4>Horário de Atendimento</h4>
-                            <p>Segunda a Sexta: 8h às 19h<br>Sábado: 8h às 13h</p>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
                         </div>
                     </div>
                 </div>
@@ -1742,7 +1798,7 @@
                     <button type="submit" class="submit-btn">Enviar Mensagem</button>
                 </form>
                 <div class="form-success" id="formSuccess">
-                    <div class="form-success-icon">✓</div>
+                    <div class="form-success-icon">&#10003;</div>
                     <h4>Mensagem Enviada!</h4>
                     <p>Entraremos em contato em breve para agendar sua consulta.</p>
                 </div>
@@ -1755,14 +1811,14 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="#" class="logo">
-                    <div class="logo-icon">✦</div>
+                    <div class="logo-icon">&#10022;</div>
                     Bocardo
                 </a>
-                <p>Há mais de 15 anos transformando sorrisos em Ribeirão Preto com excelência, tecnologia e atendimento humanizado.</p>
+                <p>Há mais de 20 anos transformando sorrisos em Ribeirão Preto com excelência, tecnologia e atendimento humanizado.</p>
                 <div class="footer-social">
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📱</a>
+                    <a href="#" class="social-link">&#128247;</a>
+                    <a href="#" class="social-link">&#128220;</a>
+                    <a href="#" class="social-link">&#128241;</a>
                 </div>
             </div>
             <div class="footer-links">
@@ -1788,28 +1844,31 @@
             <div class="footer-contact">
                 <h4>Contato</h4>
                 <div class="footer-contact-item">
-                    <span>📍 Av. Leais Paulista, 940</span>
+                    <span>&#128205; Av. Leais Paulista, 940</span>
                 </div>
                 <div class="footer-contact-item">
-                    <span>📞 (16) 3623-1148</span>
+                    <span>&#128222; (16) 3623-1148</span>
                 </div>
                 <div class="footer-contact-item">
-                    <span>✦ Jardim Irajá, Ribeirão Preto - SP</span>
+                    <span>&#10022; Jardim Irajá, Ribeirão Preto - SP</span>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Bocardo Odontologia. Todos os direitos reservados.</p>
-            <p>Desenvolvido com ❤️ por <a href="#">Pixel Alchemy</a></p>
+            <p>&#169; 2025 Bocardo Odontologia. Todos os direitos reservados.</p>
+            <p>Desenvolvido por <a href="#">Pixel Alchemy</a></p>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
     <a href="https://wa.me/551636231148" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-        💬
+        &#128172;
     </a>
 
     <script>
+        // Add js-enabled class to body for progressive enhancement
+        document.body.classList.add('js-enabled');
+
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -1827,7 +1886,8 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // Intersection Observer for animations
+        // Intersection Observer for animations - PROGRESSIVE ENHANCEMENT
+        // Elements are always visible. Animations are a bonus when scrolling into view.
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1836,12 +1896,14 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all animated elements
+        // Observe elements for entrance animations
+        // This adds subtle animations when elements scroll into view
         document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
             observer.observe(el);
         });
