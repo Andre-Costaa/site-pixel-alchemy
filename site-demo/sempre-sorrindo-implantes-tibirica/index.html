@@ -4,46 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sempre Sorrindo Implantes Dentários | Ribeirão Preto</title>
-    <meta name="description" content="Sempre Sorrindo Implantes Dentários em Ribeirão Preto. Especialistas em implantes dentários, transformando sorrisos e recuperando sua confiança.">
+    <meta name="description" content="Implantes dentários de alta qualidade em Ribeirão Preto. Recupere seu sorriso com naturalidade e durabilidade. Agende sua consulta na R. Tibiriçá, 576.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
-            --color-primary: #C9A227;
-            --color-primary-light: #E8C947;
-            --color-primary-dark: #A6861F;
-            --color-secondary: #1A2A4A;
-            --color-secondary-light: #2A3A5A;
-            --color-cream: #FAF7F2;
-            --color-cream-dark: #F0EBE3;
-            --color-white: #FFFFFF;
-            --color-text: #2D3436;
-            --color-text-light: #636E72;
-            --color-error: #E74C3C;
-            --color-success: #27AE60;
-
-            --font-display: 'Cormorant Garamond', serif;
+            --color-primary: #1a5f5f;
+            --color-primary-dark: #134a4a;
+            --color-primary-light: #2d8a8a;
+            --color-secondary: #d4a574;
+            --color-secondary-light: #e8c9a8;
+            --color-accent: #f5f0e8;
+            --color-white: #ffffff;
+            --color-dark: #1a1a1a;
+            --color-gray: #666666;
+            --color-light-gray: #f8f8f8;
+            --font-display: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
-
-            --shadow-sm: 0 2px 8px rgba(26, 42, 74, 0.08);
-            --shadow-md: 0 4px 16px rgba(26, 42, 74, 0.12);
-            --shadow-lg: 0 8px 32px rgba(26, 42, 74, 0.16);
-            --shadow-xl: 0 16px 48px rgba(26, 42, 74, 0.2);
-
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-full: 9999px;
-
-            --transition-fast: 150ms ease;
-            --transition-base: 300ms ease;
-            --transition-slow: 500ms ease;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
         }
 
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -55,108 +39,65 @@
 
         body {
             font-family: var(--font-body);
-            font-size: 16px;
+            color: var(--color-dark);
             line-height: 1.6;
-            color: var(--color-text);
-            background: var(--color-cream);
             overflow-x: hidden;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button {
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--color-secondary);
-        }
-
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-        h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
-
-        p {
-            font-size: 1.0625rem;
-            line-height: 1.7;
-            color: var(--color-text-light);
-        }
-
-        /* ===== CONTAINER ===== */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
+        /* Navigation */
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(250, 247, 242, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-            transition: var(--transition-base);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-base);
         }
 
-        .header.scrolled {
-            box-shadow: var(--shadow-md);
+        .nav.hidden {
+            transform: translateY(-100%);
         }
 
-        .header__inner {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 80px;
+            align-items: center;
         }
 
-        .header__logo {
+        .logo {
             font-family: var(--font-display);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--color-secondary);
-        }
-
-        .header__logo-accent {
             color: var(--color-primary);
+            text-decoration: none;
         }
 
-        .header__nav {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .header__nav-link {
-            font-size: 0.875rem;
-            font-weight: 500;
+        .logo span {
             color: var(--color-secondary);
-            position: relative;
-            transition: var(--transition-fast);
         }
 
-        .header__nav-link::after {
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -4px;
@@ -164,1271 +105,844 @@
             width: 0;
             height: 2px;
             background: var(--color-primary);
-            transition: var(--transition-base);
+            transition: width var(--transition-fast);
         }
 
-        .header__nav-link:hover {
+        .nav-links a:hover {
             color: var(--color-primary);
         }
 
-        .header__nav-link:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        .header__cta {
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        @media (min-width: 768px) {
-            .header__cta {
-                display: flex;
-            }
-        }
-
-        .header__mobile-toggle {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            padding: 8px;
-        }
-
-        .header__mobile-toggle span {
-            width: 24px;
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
             height: 2px;
-            background: var(--color-secondary);
-            transition: var(--transition-base);
+            background: var(--color-dark);
+            margin: 5px 0;
+            transition: all var(--transition-fast);
         }
 
-        .header__mobile-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .header__mobile-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .header__mobile-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        @media (min-width: 1024px) {
-            .header__mobile-toggle {
-                display: none;
-            }
-        }
-
-        /* Mobile Navigation */
-        .header__mobile-nav {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--color-cream);
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            transform: translateX(100%);
-            transition: var(--transition-base);
-        }
-
-        .header__mobile-nav.active {
-            transform: translateX(0);
-        }
-
-        .header__mobile-nav a {
-            font-size: 1.5rem;
-            font-family: var(--font-display);
-            color: var(--color-secondary);
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 32px;
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: var(--radius-full);
-            transition: var(--transition-base);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn--primary {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: var(--color-white);
-            box-shadow: 0 4px 16px rgba(201, 162, 39, 0.4);
-        }
-
-        .btn--primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(201, 162, 39, 0.5);
-        }
-
-        .btn--secondary {
-            background: var(--color-secondary);
-            color: var(--color-white);
-        }
-
-        .btn--secondary:hover {
-            background: var(--color-secondary-light);
-            transform: translateY(-2px);
-        }
-
-        .btn--outline {
-            border: 2px solid var(--color-secondary);
-            color: var(--color-secondary);
-        }
-
-        .btn--outline:hover {
-            background: var(--color-secondary);
-            color: var(--color-white);
-        }
-
-        .btn--large {
-            padding: 18px 40px;
-            font-size: 1rem;
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* Hero Section */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 50%, #e8f4f4 100%);
+            position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
 
-        .hero__bg {
+        .hero::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
-        }
-
-        .hero__circles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-        }
-
-        .hero__circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .hero__circle--1 {
+            top: -10%;
+            right: -5%;
             width: 600px;
             height: 600px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            top: -200px;
-            right: -100px;
+            background: radial-gradient(circle, rgba(26, 95, 95, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(26, 95, 95, 0.1);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(212, 165, 116, 0.4);
+            z-index: -1;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: 0 10px 30px rgba(26, 95, 95, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(26, 95, 95, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: var(--color-white);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-float-card.card-1 {
+            top: 10%;
+            right: -20px;
             animation-delay: 0s;
         }
 
-        .hero__circle--2 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -7s;
+        .hero-float-card.card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation-delay: 1.5s;
         }
 
-        .hero__circle--3 {
-            width: 250px;
-            height: 250px;
-            background: var(--color-primary);
-            top: 50%;
-            left: 10%;
-            animation-delay: -14s;
+        .hero-float-card-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(26, 95, 95, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+        }
+
+        .hero-float-card-text {
+            font-size: 0.85rem;
+        }
+
+        .hero-float-card-text strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--color-primary);
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(30px, -30px) scale(1.05);
-            }
-            50% {
-                transform: translate(-20px, 20px) scale(0.95);
-            }
-            75% {
-                transform: translate(20px, 30px) scale(1.02);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .hero__inner {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero__content {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero__content.animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(201, 162, 39, 0.15);
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-
-        .hero__badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--color-primary);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .hero__title {
-            margin-bottom: 24px;
-        }
-
-        .hero__title-accent {
-            color: var(--color-primary);
-            display: block;
-        }
-
-        .hero__description {
-            margin-bottom: 32px;
-            font-size: 1.125rem;
-        }
-
-        .hero__actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .hero__image {
-            position: relative;
-            opacity: 0;
-            transform: translateX(30px);
-        }
-
-        .hero__image.animate {
-            animation: fadeInRight 0.8s ease 0.2s forwards;
-        }
-
-        @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero__image-main {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .hero__image-main img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .hero__image-decor {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            bottom: -40px;
-            left: -40px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: 50%;
-            opacity: 0.2;
-            filter: blur(40px);
-        }
-
-        .hero__stat-card {
-            position: absolute;
-            bottom: 40px;
-            right: -30px;
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 6rem 2rem;
             background: var(--color-white);
-            padding: 20px 24px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 16px;
         }
 
-        .hero__stat-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero__stat-content {
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(26, 95, 95, 0.1);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .problem-card {
+            background: var(--color-light-gray);
+            padding: 2rem;
+            border-radius: 20px;
             text-align: center;
         }
 
-        .hero__stat-number {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-secondary);
-            line-height: 1;
-        }
-
-        .hero__stat-label {
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 1024px) {
-            .hero__inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero__image {
-                order: -1;
-            }
-
-            .hero__circle--1,
-            .hero__circle--2 {
-                width: 300px;
-                height: 300px;
-            }
-
-            .hero__circle--3 {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero__actions {
-                flex-direction: column;
-            }
-
-            .hero__stat-card {
-                right: 0;
-                bottom: 20px;
-            }
-        }
-
-        /* ===== PROBLEM SECTION ===== */
-        .problem {
-            padding: 100px 0;
+        .problem-icon {
+            width: 70px;
+            height: 70px;
             background: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .problem__inner {
+        .problem-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-primary);
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-dark);
+        }
+
+        .problem-card p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+        }
+
+        .solution-highlight {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: 30px;
+            padding: 4rem;
+            color: var(--color-white);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 4rem;
             align-items: center;
         }
 
-        .problem__image {
-            position: relative;
-        }
-
-        .problem__image-main {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .problem__image-main img {
-            width: 100%;
-            height: auto;
-        }
-
-        .problem__image-badge {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .problem__image-badge-number {
+        .solution-content h2 {
             font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: 1;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .problem__image-badge-label {
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .solution-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
 
-        .problem__content {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition-slow);
-        }
-
-        .problem__content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .problem__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .problem__title {
-            margin-bottom: 24px;
-        }
-
-        .problem__description {
-            margin-bottom: 32px;
-        }
-
-        .problem__list {
-            list-style: none;
+        .solution-features {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 1rem;
         }
 
-        .problem__list-item {
+        .solution-feature {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .problem__list-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(201, 162, 39, 0.2);
+        .solution-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
         }
 
-        .problem__list-icon svg {
-            width: 12px;
-            height: 12px;
-            stroke: var(--color-primary-dark);
+        .solution-image {
+            position: relative;
         }
 
-        @media (max-width: 1024px) {
-            .problem__inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .problem__image {
-                order: -1;
-            }
+        .solution-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== SOLUTION SECTION ===== */
-        .solution {
-            padding: 100px 0;
-            background: var(--color-secondary);
-            color: var(--color-white);
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--color-accent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all var(--transition-base);
             position: relative;
             overflow: hidden;
         }
 
-        .solution::before {
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
         }
 
-        .solution__inner {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .solution__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .solution__title {
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(26, 95, 95, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-primary);
+            transition: color var(--transition-base);
+        }
+
+        .service-card:hover .service-icon svg {
             color: var(--color-white);
-            margin-bottom: 24px;
         }
 
-        .solution__description {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.125rem;
-            margin-bottom: 40px;
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
         }
 
-        .solution__cards {
+        .service-card p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap var(--transition-fast);
+        }
+
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 60px;
+            gap: 2rem;
         }
 
-        .solution__card {
+        .testimonial-card {
+            background: var(--color-light-gray);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.1;
+        }
+
+        .testimonial-quote svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-secondary);
+            fill: var(--color-secondary);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            color: var(--color-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info span {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+        }
+
+        /* Features/Diferenciais Section */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+        }
+
+        .features .section-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+        }
+
+        .features .section-title {
+            color: var(--color-white);
+        }
+
+        .features .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 32px 24px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition-base);
-            opacity: 0;
-            transform: translateY(30px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-base);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .solution__card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .solution__card:hover {
+        .feature-card:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateY(-5px);
         }
 
-        .solution__card-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-        }
-
-        .solution__card-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--color-white);
-            margin-bottom: 12px;
-        }
-
-        .solution__card-text {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.9375rem;
-        }
-
-        @media (max-width: 768px) {
-            .solution__cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== SERVICES SECTION ===== */
-        .services {
-            padding: 100px 0;
-            background: var(--color-cream);
-        }
-
-        .services__header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .services__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .services__title {
-            margin-bottom: 16px;
-        }
-
-        .services__description {
-            margin-bottom: 0;
-        }
-
-        .services__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .services__card {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .services__card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .services__card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .services__card-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .services__card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-slow);
-        }
-
-        .services__card:hover .services__card-image img {
-            transform: scale(1.1);
-        }
-
-        .services__card-content {
-            padding: 24px;
-        }
-
-        .services__card-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: -48px auto 16px;
-            box-shadow: var(--shadow-md);
-            font-size: 1.25rem;
-        }
-
-        .services__card-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .services__card-text {
-            text-align: center;
-            font-size: 0.9375rem;
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 1024px) {
-            .services__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .services__grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== TESTIMONIALS SECTION ===== */
-        .testimonials {
-            padding: 100px 0;
-            background: var(--color-white);
-        }
-
-        .testimonials__header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .testimonials__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .testimonials__title {
-            margin-bottom: 16px;
-        }
-
-        .testimonials__carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonials__track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 20px 0;
-        }
-
-        .testimonials__track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .testimonials__item {
-            flex: 0 0 100%;
-            scroll-snap-align: center;
-            padding: 0 20px;
-        }
-
-        .testimonials__card {
-            background: var(--color-cream);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            text-align: center;
-            position: relative;
-        }
-
-        .testimonials__card-quote {
-            position: absolute;
-            top: 24px;
-            left: 32px;
-            font-family: var(--font-display);
-            font-size: 4rem;
-            color: var(--color-primary);
-            opacity: 0.2;
-            line-height: 1;
-        }
-
-        .testimonials__card-text {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--color-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .testimonials__card-author {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .testimonials__card-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 12px;
-            border: 3px solid var(--color-primary);
-        }
-
-        .testimonials__card-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonials__card-name {
-            font-weight: 600;
-            color: var(--color-secondary);
-        }
-
-        .testimonials__card-role {
-            font-size: 0.875rem;
-            color: var(--color-text-light);
-        }
-
-        .testimonials__card-stars {
-            display: flex;
-            gap: 4px;
-            justify-content: center;
-            margin-top: 8px;
-            color: var(--color-primary);
-        }
-
-        .testimonials__nav {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 32px;
-        }
-
-        .testimonials__nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--color-cream-dark);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .testimonials__nav-dot.active {
-            background: var(--color-primary);
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 640px) {
-            .testimonials__card {
-                padding: 32px 24px;
-            }
-
-            .testimonials__card-text {
-                font-size: 1.0625rem;
-            }
-        }
-
-        /* ===== DIFFERENTIALS SECTION ===== */
-        .differentials {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
-            color: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .differentials::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .differentials__inner {
-            position: relative;
-            z-index: 2;
-        }
-
-        .differentials__header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .differentials__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .differentials__title {
-            color: var(--color-white);
-            margin-bottom: 16px;
-        }
-
-        .differentials__description {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .differentials__grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .differentials__item {
-            display: flex;
-            gap: 20px;
-            padding: 24px;
+        .feature-icon {
+            width: 70px;
+            height: 70px;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition-base);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .differentials__item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .differentials__item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-        }
-
-        .differentials__item-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.5rem;
-        }
-
-        .differentials__item-content {
-            flex: 1;
-        }
-
-        .differentials__item-title {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-            color: var(--color-white);
-            margin-bottom: 8px;
-        }
-
-        .differentials__item-text {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.9375rem;
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .differentials__grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            padding: 100px 0;
-            background: var(--color-cream);
-        }
-
-        .contact__inner {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-        }
-
-        .contact__info {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: var(--transition-slow);
-        }
-
-        .contact__info.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .contact__label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-        }
-
-        .contact__title {
-            margin-bottom: 24px;
-        }
-
-        .contact__description {
-            margin-bottom: 40px;
-        }
-
-        .contact__details {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .contact__detail {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .contact__detail-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.25rem;
+            margin: 0 auto 1.5rem;
         }
 
-        .contact__detail-content {
-            flex: 1;
-        }
-
-        .contact__detail-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .contact__detail-value {
-            font-weight: 500;
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
             color: var(--color-secondary);
         }
 
-        .contact__detail-link {
-            color: var(--color-secondary);
-            transition: var(--transition-fast);
-        }
-
-        .contact__detail-link:hover {
-            color: var(--color-primary);
-        }
-
-        .contact__form-wrapper {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: var(--transition-slow);
-        }
-
-        .contact__form-wrapper.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .contact__form {
-            background: var(--color-white);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .contact__form-title {
+        .feature-card h3 {
             font-family: var(--font-display);
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
         }
 
-        .contact__form-subtitle {
-            font-size: 0.875rem;
-            color: var(--color-text-light);
-            margin-bottom: 32px;
+        .feature-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        .contact__form-group {
-            margin-bottom: 20px;
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--color-accent);
         }
 
-        .contact__form-label {
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        .contact-info > p {
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+        }
+
+        .contact-item-content h4 {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .contact-hours {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-hours h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        .contact-hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .contact-hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
             display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-secondary);
-            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
         }
 
-        .contact__form-input,
-        .contact__form-textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--color-cream-dark);
-            border-radius: var(--radius-sm);
+            padding: 1rem;
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
             font-family: var(--font-body);
             font-size: 1rem;
-            color: var(--color-text);
-            transition: var(--transition-fast);
+            transition: border-color var(--transition-fast);
+            background: var(--color-white);
         }
 
-        .contact__form-input:focus,
-        .contact__form-textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--color-primary);
         }
 
-        .contact__form-textarea {
+        .form-group textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-        .contact__form-button {
+        .form-submit {
             width: 100%;
-        }
-
-        .contact__form-success {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .contact__form-success.active {
-            display: block;
-        }
-
-        .contact__form-success-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--color-success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-        }
-
-        .contact__form-success-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-            margin-bottom: 12px;
-        }
-
-        @media (max-width: 1024px) {
-            .contact__inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact__info,
-            .contact__form-wrapper {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .contact__form {
-                padding: 32px 24px;
-            }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--color-secondary);
+            padding: 1rem 2rem;
+            background: var(--color-primary);
             color: var(--color-white);
-            padding: 60px 0 30px;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
         }
 
-        .footer__inner {
+        .form-submit:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer__brand {
-            max-width: 350px;
+        .footer-brand .logo {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            display: inline-block;
         }
 
-        .footer__logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
 
-        .footer__logo-accent {
-            color: var(--color-primary);
-        }
-
-        .footer__tagline {
-            color: rgba(255, 255, 255, 0.75);
-            margin-bottom: 24px;
-        }
-
-        .footer__social {
+        .footer-social {
             display: flex;
-            gap: 16px;
+            gap: 1rem;
         }
 
-        .footer__social-link {
+        .footer-social a {
             width: 40px;
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
@@ -1436,837 +950,844 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-fast);
+            transition: all var(--transition-fast);
         }
 
-        .footer__social-link:hover {
+        .footer-social a:hover {
             background: var(--color-primary);
+            transform: translateY(-3px);
         }
 
-        .footer__column-title {
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-white);
+        }
+
+        .footer-column h4 {
             font-family: var(--font-display);
-            font-size: 1.125rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .footer__links {
+        .footer-column ul {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
         }
 
-        .footer__link {
-            color: rgba(255, 255, 255, 0.75);
-            transition: var(--transition-fast);
+        .footer-column li {
+            margin-bottom: 0.75rem;
         }
 
-        .footer__link:hover {
-            color: var(--color-primary);
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
         }
 
-        .footer__bottom {
-            padding-top: 30px;
+        .footer-column a:hover {
+            color: var(--color-white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.875rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-white);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            transform: translateX(100%);
+            transition: transform var(--transition-base);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solution-highlight {
+                grid-template-columns: 1fr;
+                padding: 3rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .footer__inner {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-float-card {
+                display: none;
+            }
+
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid,
+            .features-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
         }
 
-        /* ===== FLOATING WHATSAPP ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: var(--transition-base);
-            animation: whatsappPulse 2s ease-in-out infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes whatsappPulse {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
-            50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6);
+
+            html {
+                scroll-behavior: auto;
             }
         }
 
-        @media (max-width: 640px) {
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-            }
+        /* Scroll animations - elements visible by default */
+        .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* ===== UTILITY CLASSES ===== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .text-center { text-align: center; }
-        .text-left { text-align: left; }
-        .text-right { text-align: right; }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header__inner">
-                <a href="#" class="header__logo">
-                    Sempre<span class="header__logo-accent">Sorrindo</span>
-                </a>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Sempre<span>Sorrindo</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#solucao">Solução</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-                <nav class="header__nav">
-                    <a href="#problema" class="header__nav-link">O Problema</a>
-                    <a href="#solucao" class="header__nav-link">A Solução</a>
-                    <a href="#servicos" class="header__nav-link">Serviços</a>
-                    <a href="#depoimentos" class="header__nav-link">Depoimentos</a>
-                    <a href="#contato" class="header__nav-link">Contato</a>
-                </nav>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#solucao">Solução</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Agendar Consulta</a></li>
+        </ul>
+    </div>
 
-                <div class="header__cta">
-                    <a href="tel:+551636324525" class="btn btn--primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    +15 Anos de Experiência
+                </div>
+                <h1 class="hero-title">Recupere Seu Sorriso com <span>Implantes Dentários</span></h1>
+                <p class="hero-description">Tecnologia de ponta e equipe especializada para devolver sua autoestima. Implantes com naturalidade, durabilidade e conforto em Ribeirão Preto.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary">
+                        Agende sua Consulta
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
-                        (16) 3632-4525
                     </a>
+                    <a href="#servicos" class="btn btn-secondary">Conheça Nossos Serviços</a>
                 </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=600&fit=crop" alt="Implantes Dentários - Sorriso Perfeito">
+                <div class="hero-float-card card-1">
+                    <div class="hero-float-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="hero-float-card-text">
+                        <strong>98%</strong>
+                        Taxa de Sucesso
+                    </div>
+                </div>
+                <div class="hero-float-card card-2">
+                    <div class="hero-float-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <div class="hero-float-card-text">
+                        <strong>+5000</strong>
+                        Implantes Realizados
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <button class="header__mobile-toggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution" id="solucao">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">O Problema</span>
+                <h2 class="section-title">A Falta de Dentes Afeta Sua Vida</h2>
+                <p class="section-subtitle">Viver sem dentes ou com próteses mal adaptadas traz consequências que vão além da estética</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 15s1.5-2 4-2 4 2 4 2M9 9h.01M15 9h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Insegurança Social</h3>
+                    <p>Evitar sorrisos e fotos por vergonha dos dentes afeta relacionamentos pessoais e profissionais.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+                        </svg>
+                    </div>
+                    <h3>Dificuldade para Comer</h3>
+                    <p>Restrições alimentares afetam a nutrição e o prazer de compartilhar refeições em família.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                    </div>
+                    <h3>Perda Óssea</h3>
+                    <p>A ausência de dentes causa reabsorção óssea, alterando o formato do rosto com o tempo.</p>
+                </div>
+            </div>
+
+            <div class="solution-highlight">
+                <div class="solution-content">
+                    <h2>A Solução Definitiva</h2>
+                    <p>Os implantes dentários modernos oferecem uma solução permanente que restaura não apenas seus dentes, mas sua qualidade de vida.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <div class="solution-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Naturalidade Total</span>
+                        </div>
+                        <div class="solution-feature">
+                            <div class="solution-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Durabilidade Excepcional</span>
+                        </div>
+                        <div class="solution-feature">
+                            <div class="solution-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Recuperação da Autoestima</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=500&fit=crop" alt="Tratamento de Implantes Dentários">
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="header__mobile-nav">
-            <a href="#problema">O Problema</a>
-            <a href="#solucao">A Solução</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#contato">Contato</a>
-            <a href="tel:+551636324525" class="btn btn--primary">Ligar Agora</a>
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Nossos Serviços</span>
+                <h2 class="section-title">Soluções Completas em Implantes</h2>
+                <p class="section-subtitle">Oferecemos todas as especialidades em implante dentário para atender suas necessidades específicas</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5Z"/>
+                            <path d="M12 18v4"/>
+                        </svg>
+                    </div>
+                    <h3>Implante Unitário</h3>
+                    <p>Reposição de um único dente com coroa sobre implante, preservando os dentes vizinhos.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5Z"/>
+                            <path d="M7 18h10"/>
+                            <path d="M9 22h6"/>
+                        </svg>
+                    </div>
+                    <h3>Prótese Protocolo</h3>
+                    <p>Reabilitação completa do sorriso com apenas 4 ou 6 implantes por arcada.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Overdenture</h3>
+                    <p>Prótese removível sobre implantes, oferecendo estabilidade e facilidade de higienização.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Enxerto Ósseo</h3>
+                    <p>Reconstrução da estrutura óssea para garantir a base ideal para os implantes.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Elevação de Seio</h3>
+                    <p>Procedimento para aumentar a quantidade de osso na região de molares superiores.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m4.22-10.22l4.24-4.24M6.34 6.34L2.1 2.1m18.8 18.8l-4.24-4.24M6.34 17.66l-4.24 4.24M23 12h-6m-6 0H1m20.24-4.24l-4.24 4.24M6.34 6.34l-4.24-4.24"/>
+                        </svg>
+                    </div>
+                    <h3>Manutenção</h3>
+                    <p>Acompanhamento e cuidados de rotina para garantir a longevidade dos seus implantes.</p>
+                    <a href="#contato" class="service-link">Saiba mais →</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero__bg"></div>
-            <div class="hero__circles">
-                <div class="hero__circle hero__circle--1"></div>
-                <div class="hero__circle hero__circle--2"></div>
-                <div class="hero__circle hero__circle--3"></div>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Pacientes Dizem</h2>
+                <p class="section-subtitle">Histórias reais de transformação e recuperação do sorriso</p>
             </div>
 
-            <div class="container">
-                <div class="hero__inner">
-                    <div class="hero__content">
-                        <span class="hero__badge">
-                            <span class="hero__badge-dot"></span>
-                            Especialistas em Implantes
-                        </span>
-                        <h1 class="hero__title">
-                            Recupere Seu Sorriso,
-                            <span class="hero__title-accent">Recupere Sua Vida</span>
-                        </h1>
-                        <p class="hero__description">
-                            Implantes dentários de alta qualidade que transformam vidas. Sorria, mastigue e fale com confiança novamente. Tecnologia avançada e cuidado personalizado em Ribeirão Preto.
-                        </p>
-                        <div class="hero__actions">
-                            <a href="#contato" class="btn btn--primary btn--large">Agende uma Avaliação</a>
-                            <a href="#servicos" class="btn btn--outline btn--large">Conheça os Serviços</a>
-                        </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
                     </div>
-
-                    <div class="hero__image">
-                        <div class="hero__image-main">
-                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Paciente sorrindo com confiança após tratamento de implante dentário" loading="lazy">
-                        </div>
-                        <div class="hero__image-decor"></div>
-                        <div class="hero__stat-card">
-                            <div class="hero__stat-icon">?</div>
-                            <div class="hero__stat-content">
-                                <div class="hero__stat-number">5000+</div>
-                                <div class="hero__stat-label">Sorrisos Restaurados</div>
-                            </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Depois de anos escondendo meu sorriso, finalmente posso rir sem preocupação. O atendimento foi excepcional do início ao fim."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <h4>Maria Clara Santos</h4>
+                            <span>Implante Protocolo Superior</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Problem Section -->
-        <section id="problema" class="problem">
-            <div class="container">
-                <div class="problem__inner">
-                    <div class="problem__image">
-                        <div class="problem__image-main">
-                            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80" alt="Consultório odontológico moderno e equipado" loading="lazy">
-                        </div>
-                        <div class="problem__image-badge">
-                            <span class="problem__image-badge-number">15+</span>
-                            <span class="problem__image-badge-label">Anos de Experiência</span>
-                        </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
                     </div>
-
-                    <div class="problem__content">
-                        <span class="problem__label">O Desafio</span>
-                        <h2 class="problem__title">Viver Sem Dentes Afecta Mais Do Que Você Imagina</h2>
-                        <p class="problem__description">
-                            A perda dental vai muito além da estética. Impacta sua saúde, autoestima e qualidade de vida. Simples atividades como comer, falar e sorrir se tornam desafios diários.
-                        </p>
-                        <ul class="problem__list">
-                            <li class="problem__list-item">
-                                <span class="problem__list-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                                <span>Dificuldade para mastigar alimentos</span>
-                            </li>
-                            <li class="problem__list-item">
-                                <span class="problem__list-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                                <span>Insegurança ao sorrir e falar</span>
-                            </li>
-                            <li class="problem__list-item">
-                                <span class="problem__list-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                                <span>Perda óssea e alterações faciais</span>
-                            </li>
-                            <li class="problem__list-item">
-                                <span class="problem__list-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round">
-                                        <path d="M20 6L9 17l-5-5"/>
-                                    </svg>
-                                </span>
-                                <span>Impacto na saúde digestiva</span>
-                            </li>
-                        </ul>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Profissionais extremamente qualificados. Meu implante ficou perfeito, parece um dente natural. Recomendo a todos!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div class="testimonial-info">
+                            <h4>João Roberto Lima</h4>
+                            <span>Implante Unitário</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Solution Section -->
-        <section id="solucao" class="solution">
-            <div class="container">
-                <div class="solution__inner">
-                    <span class="solution__label">A Solução Definitiva</span>
-                    <h2 class="solution__title">Implantes Dentários: Transforme Seu Sorriso</h2>
-                    <p class="solution__description">
-                        Os implantes dentários são a solução mais próxima dos dentes naturais. Com tecnologia avançada e materiais de alta qualidade, você recupera a função e a estética do seu sorriso.
-                    </p>
-                </div>
-
-                <div class="solution__cards">
-                    <div class="solution__card">
-                        <div class="solution__card-icon">?</div>
-                        <h3 class="solution__card-title">Naturalidade Total</h3>
-                        <p class="solution__card-text">Implantes que se integram perfeitamente ao osso, proporcionando aparência e sensação de dentes naturais.</p>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
                     </div>
-
-                    <div class="solution__card">
-                        <div class="solution__card-icon">?</div>
-                        <h3 class="solution__card-title">Durabilidade Excepcional</h3>
-                        <p class="solution__card-text">Com os devidos cuidados, os implantes podem durar a vida toda, um investimento para sempre.</p>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-
-                    <div class="solution__card">
-                        <div class="solution__card-icon">?</div>
-                        <h3 class="solution__card-title">Recuperação da Autoestima</h3>
-                        <p class="solution__card-text">Volte a sorrir com confiança, comer o que quiser e viver sem limitações.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="servicos" class="services">
-            <div class="container">
-                <div class="services__header">
-                    <span class="services__label">Nossos Serviços</span>
-                    <h2 class="services__title">Tratamentos Personalizados para Você</h2>
-                    <p class="services__description">
-                        Oferecemos uma gama completa de tratamentos com implantes para atender suas necessidades específicas.
-                    </p>
-                </div>
-
-                <div class="services__grid">
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Implante unitário" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Implante Unitário</h3>
-                            <p class="services__card-text">Substituição de um dente ausente com implante e coroa protética, integrando-se perfeitamente aos dentes vizinhos.</p>
-                        </div>
-                    </div>
-
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80" alt="Prótese sobre implantes" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Prótese Protocolo</h3>
-                            <p class="services__card-text">Reabilitação total da arcada com poucos implantes, ideal para quem perdeu todos os dentes.</p>
-                        </div>
-                    </div>
-
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1599313965847-7adeb8e3d9e0?w=600&q=80" alt="Prótese overdenture" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Overdenture</h3>
-                            <p class="services__card-text">Prótese removível retida por implantes, oferecendo mais estabilidade e conforto que a prótese convencional.</p>
-                        </div>
-                    </div>
-
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Enxerto ósseo" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Enxerto Ósseo</h3>
-                            <p class="services__card-text">Reconstrução óssea para casos de atrofia, possibilitando a colocação de implantes mesmo em situações complexas.</p>
-                        </div>
-                    </div>
-
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Elevação de seio maxilar" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Elevação de Seio</h3>
-                            <p class="services__card-text">Técnica para ganho de altura óssea na região posterior da maxila, permitindo instalação de implantes mais longos.</p>
-                        </div>
-                    </div>
-
-                    <div class="services__card">
-                        <div class="services__card-image">
-                            <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&q=80" alt="Manutenção de implantes" loading="lazy">
-                        </div>
-                        <div class="services__card-content">
-                            <div class="services__card-icon">?</div>
-                            <h3 class="services__card-title">Manutenção</h3>
-                            <p class="services__card-text">Acompanhamento regular e orientações para garantir a longevidade dos seus implantes.</p>
+                    <p class="testimonial-text">"Minha mãe fez o protocolo e a transformação foi incrível. A equipe foi muito atenciosa com ela, que tem 72 anos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AF</div>
+                        <div class="testimonial-info">
+                            <h4>Ana Fernanda Costa</h4>
+                            <span>Prótese Protocolo</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Testimonials Section -->
-        <section id="depoimentos" class="testimonials">
-            <div class="container">
-                <div class="testimonials__header">
-                    <span class="testimonials__label">Depoimentos</span>
-                    <h2 class="testimonials__title">Histórias de Transformação</h2>
-                    <p class="testimonials__description">
-                        Veja o que nossos pacientes dizem sobre a experiência de recuperar o sorriso conosco.
-                    </p>
+    <!-- Features/Diferenciais Section -->
+    <section class="features" id="diferenciais">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Por Que Nos Escolher</span>
+                <h2 class="section-title">Nossos Diferenciais</h2>
+                <p class="section-subtitle">Compromisso com excelência em cada detalhe do seu tratamento</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Tecnologia Avançada</h3>
+                    <p>Equipamentos de última geração para diagnóstico preciso e tratamento eficiente</p>
                 </div>
 
-                <div class="testimonials__carousel">
-                    <div class="testimonials__track" id="testimonialsTrack">
-                        <div class="testimonials__item">
-                            <div class="testimonials__card">
-                                <span class="testimonials__card-quote">"</span>
-                                <p class="testimonials__card-text">
-                                    "Há 10 anos não sorria em fotos. Hoje, após o tratamento com implantes, recuperei minha autoestima. A equipe da Sempre Sorrindo é incrível!"
-                                </p>
-                                <div class="testimonials__card-author">
-                                    <div class="testimonials__card-avatar">
-                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Maria Helena Silva">
-                                    </div>
-                                    <span class="testimonials__card-name">Maria Helena Silva</span>
-                                    <span class="testimonials__card-role">Paciente há 2 anos</span>
-                                    <div class="testimonials__card-stars">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="testimonials__item">
-                            <div class="testimonials__card">
-                                <span class="testimonials__card-quote">"</span>
-                                <p class="testimonials__card-text">
-                                    "O processo foi muito mais tranquilo do que imaginei. Hoje como de tudo, sem dor nem desconforto. Recomendo para todos!"
-                                </p>
-                                <div class="testimonials__card-author">
-                                    <div class="testimonials__card-avatar">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Roberto Carlos Oliveira">
-                                    </div>
-                                    <span class="testimonials__card-name">Roberto Carlos Oliveira</span>
-                                    <span class="testimonials__card-role">Paciente há 3 anos</span>
-                                    <div class="testimonials__card-stars">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="testimonials__item">
-                            <div class="testimonials__card">
-                                <span class="testimonials__card-quote">"</span>
-                                <p class="testimonials__card-text">
-                                    "Perdi meus dentes jovem e sofri muito. Com os implantes, recuperei não apenas os dentes, mas minha qualidade de vida. Gratidão eterna!"
-                                </p>
-                                <div class="testimonials__card-author">
-                                    <div class="testimonials__card-avatar">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="Ana Paula Ferreira">
-                                    </div>
-                                    <span class="testimonials__card-name">Ana Paula Ferreira</span>
-                                    <span class="testimonials__card-role">Paciente há 1 ano</span>
-                                    <div class="testimonials__card-stars">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
                     </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Cirurgiões-dentistas com formação específica em implantodontia</p>
+                </div>
 
-                    <div class="testimonials__nav" id="testimonialsNav"></div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>15+ Anos de Experiência</h3>
+                    <p>Mais de 5.000 implantes realizados com taxa de sucesso de 98%</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Garantia de Qualidade</h3>
+                    <p>Implantes com garantia e acompanhamento pós-operatório incluso</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Differentials Section -->
-        <section class="differentials">
-            <div class="container">
-                <div class="differentials__inner">
-                    <div class="differentials__header">
-                        <span class="differentials__label">Por Que Nos Escolher</span>
-                        <h2 class="differentials__title">Diferenciais Que Fazem a Diferença</h2>
-                        <p class="differentials__description">
-                            Compromisso com excelência, tecnologia e cuidado humanizado em cada etapa do tratamento.
-                        </p>
-                    </div>
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Entre em Contato</span>
+                    <h2>Agende Sua Consulta</h2>
+                    <p>Entre em contato conosco e dê o primeiro passo para recuperar seu sorriso. Nossa equipe está pronta para atendê-lo.</p>
 
-                    <div class="differentials__grid">
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Tecnologia de Ponta</h3>
-                                <p class="differentials__item-text">Equipamentos modernos para procedimentos mais precisos, rápidos e confortáveis.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Endereço</h4>
+                                <p>R. Tibiriçá, 576 - Centro<br>Ribeirão Preto - SP</p>
                             </div>
                         </div>
 
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Equipe Especializada</h3>
-                                <p class="differentials__item-text">Profissionais com anos de experiência em implantodontia e reabilitação oral.</p>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Telefone</h4>
+                                <p>(16) 3632-4525</p>
                             </div>
                         </div>
 
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Material de Qualidade</h3>
-                                <p class="differentials__item-text">Utilizamos apenas implantes certificadas de fabricantes renomados mundialmente.</p>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
                             </div>
-                        </div>
-
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Financiamento</h3>
-                                <p class="differentials__item-text">Opções de parcelamento facilitado para tornar o tratamento acessível.</p>
-                            </div>
-                        </div>
-
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Ambiente Acolhedor</h3>
-                                <p class="differentials__item-text">Consultório projetado para sua comodidade, com estacionamento conveniente.</p>
-                            </div>
-                        </div>
-
-                        <div class="differentials__item">
-                            <div class="differentials__item-icon">?</div>
-                            <div class="differentials__item-content">
-                                <h3 class="differentials__item-title">Acompanhamento Completo</h3>
-                                <p class="differentials__item-text">Suporte total antes, durante e após o tratamento para sua tranquilidade.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contato" class="contact">
-            <div class="container">
-                <div class="contact__inner">
-                    <div class="contact__info">
-                        <span class="contact__label">Contato</span>
-                        <h2 class="contact__title">Agende Sua Avaliação Gratuita</h2>
-                        <p class="contact__description">
-                            Entre em contato para agendar uma consulta ou tire suas dúvidas. Estamos prontos para ajudá-lo a recuperar seu sorriso.
-                        </p>
-
-                        <div class="contact__details">
-                            <div class="contact__detail">
-                                <div class="contact__detail-icon">?</div>
-                                <div class="contact__detail-content">
-                                    <span class="contact__detail-label">Endereço</span>
-                                    <span class="contact__detail-value">R. Tibiriçá, 576 - Centro<br>Ribeirão Preto - SP</span>
-                                </div>
-                            </div>
-
-                            <div class="contact__detail">
-                                <div class="contact__detail-icon">?</div>
-                                <div class="contact__detail-content">
-                                    <span class="contact__detail-label">Telefone</span>
-                                    <a href="tel:+551636324525" class="contact__detail-link contact__detail-value">(16) 3632-4525</a>
-                                </div>
-                            </div>
-
-                            <div class="contact__detail">
-                                <div class="contact__detail-icon">?</div>
-                                <div class="contact__detail-content">
-                                    <span class="contact__detail-label">Horário</span>
-                                    <span class="contact__detail-value">Segunda a Sexta: 8h às 18h<br>Sábados: 8h às 12h</span>
-                                </div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p>contato@sempresorrindo.com.br</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="contact__form-wrapper">
-                        <div class="contact__form">
-                            <h3 class="contact__form-title">Envie uma Mensagem</h3>
-                            <p class="contact__form-subtitle">Respondemos em até 24 horas úteis</p>
-
-                            <form id="contactForm">
-                                <div class="contact__form-group">
-                                    <label for="name" class="contact__form-label">Nome Completo *</label>
-                                    <input type="text" id="name" name="name" class="contact__form-input" required placeholder="Digite seu nome">
-                                </div>
-
-                                <div class="contact__form-group">
-                                    <label for="phone" class="contact__form-label">Telefone *</label>
-                                    <input type="tel" id="phone" name="phone" class="contact__form-input" required placeholder="(00) 00000-0000">
-                                </div>
-
-                                <div class="contact__form-group">
-                                    <label for="email" class="contact__form-label">E-mail</label>
-                                    <input type="email" id="email" name="email" class="contact__form-input" placeholder="seu@email.com">
-                                </div>
-
-                                <div class="contact__form-group">
-                                    <label for="message" class="contact__form-label">Mensagem *</label>
-                                    <textarea id="message" name="message" class="contact__form-textarea" required placeholder="Descreva brevemente sua necessidade"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn--primary contact__form-button">
-                                    Enviar Mensagem
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-                                    </svg>
-                                </button>
-                            </form>
-
-                            <div class="contact__form-success" id="formSuccess">
-                                <div class="contact__form-success-icon">?</div>
-                                <h4 class="contact__form-success-title">Mensagem Enviada!</h4>
-                                <p>Entraremos em contato em breve.</p>
-                                <button type="button" class="btn btn--primary" id="resetForm" style="margin-top: 20px;">Enviar Nova Mensagem</button>
-                            </div>
+                    <div class="contact-hours">
+                        <h4>Horário de Funcionamento</h4>
+                        <div class="contact-hours-row">
+                            <span>Segunda - Sexta</span>
+                            <span>08:00 - 18:00</span>
+                        </div>
+                        <div class="contact-hours-row">
+                            <span>Sábado</span>
+                            <span>08:00 - 12:00</span>
+                        </div>
+                        <div class="contact-hours-row">
+                            <span>Domingo</span>
+                            <span>Fechado</span>
                         </div>
                     </div>
                 </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Digite seu email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(16) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="implante-unitario">Implante Unitário</option>
+                                <option value="protese-protocolo">Prótese Protocolo</option>
+                                <option value="overdenture">Overdenture</option>
+                                <option value="enxerto-osseo">Enxerto Ósseo</option>
+                                <option value="elevacao-seio">Elevação de Seio</option>
+                                <option value="manutencao">Manutenção</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos um pouco sobre sua necessidade"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Solicitar Agendamento</button>
+                    </form>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__inner">
-                <div class="footer__brand">
-                    <div class="footer__logo">
-                        Sempre<span class="footer__logo-accent">Sorrindo</span>
-                    </div>
-                    <p class="footer__tagline">
-                        Transformando vidas através de sorrisos saudáveis e confiantes. Sua satisfação é nossa maior conquista.
-                    </p>
-                    <div class="footer__social">
-                        <a href="#" class="footer__social-link" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="footer__social-link" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="footer__social-link" aria-label="WhatsApp">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer__column">
-                    <h4 class="footer__column-title">Links Rápidos</h4>
-                    <ul class="footer__links">
-                        <li><a href="#problema" class="footer__link">O Problema</a></li>
-                        <li><a href="#solucao" class="footer__link">A Solução</a></li>
-                        <li><a href="#servicos" class="footer__link">Serviços</a></li>
-                        <li><a href="#depoimentos" class="footer__link">Depoimentos</a></li>
-                        <li><a href="#contato" class="footer__link">Contato</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__column">
-                    <h4 class="footer__column-title">Contato</h4>
-                    <ul class="footer__links">
-                        <li><a href="tel:+551636324525" class="footer__link">(16) 3632-4525</a></li>
-                        <li class="footer__link">R. Tibiriçá, 576</li>
-                        <li class="footer__link">Centro - Ribeirão Preto/SP</li>
-                    </ul>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">Sempre<span>Sorrindo</span></a>
+                <p>Transformando sorrisos e recuperando autoestima através de implantes dentários de alta qualidade em Ribeirão Preto.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.85l.42-4z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="footer__bottom">
-                <p>&copy; 2024 Sempre Sorrindo Implantes Dentários. Todos os direitos reservados.</p>
+            <div class="footer-column">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#solucao">Solução</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                </ul>
             </div>
+
+            <div class="footer-column">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#servicos">Implante Unitário</a></li>
+                    <li><a href="#servicos">Prótese Protocolo</a></li>
+                    <li><a href="#servicos">Overdenture</a></li>
+                    <li><a href="#servicos">Enxerto Ósseo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="#contato">R. Tibiriçá, 576 - Centro</a></li>
+                    <li><a href="tel:+551636324525">(16) 3632-4525</a></li>
+                    <li><a href="mailto:contato@sempresorrindo.com.br">contato@sempresorrindo.com.br</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Sempre Sorrindo Implantes Dentários. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Pixel Alchemy</p>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/551636324525" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contato via WhatsApp">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-    </a>
-
     <script>
-        // ===== HEADER SCROLL EFFECT =====
-        const header = document.querySelector('.header');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('active', menuOpen);
+            mobileMenuBtn.style.transform = menuOpen ? 'rotate(90deg)' : 'rotate(0)';
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.style.transform = 'rotate(0)';
+            });
+        });
+
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
         let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
 
             if (currentScroll > 100) {
-                header.classList.add('scrolled');
+                if (currentScroll > lastScroll) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
             } else {
-                header.classList.remove('scrolled');
+                nav.classList.remove('hidden');
             }
 
             lastScroll = currentScroll;
         });
 
-        // ===== MOBILE NAVIGATION =====
-        const mobileToggle = document.querySelector('.header__mobile-toggle');
-        const mobileNav = document.querySelector('.header__mobile-nav');
-        const mobileLinks = document.querySelectorAll('.header__mobile-nav a');
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        const animatedElements = document.querySelectorAll(
-            '.problem__content, .solution__card, .services__card, .differentials__item, .contact__info, .contact__form-wrapper'
-        );
-
-        animatedElements.forEach(el => observer.observe(el));
-
-        // ===== HERO ANIMATION ON LOAD =====
-        window.addEventListener('load', () => {
-            document.querySelector('.hero__content').classList.add('animate');
-            document.querySelector('.hero__image').classList.add('animate');
-        });
-
-        // ===== TESTIMONIALS CAROUSEL =====
-        const testimonialsTrack = document.getElementById('testimonialsTrack');
-        const testimonialsNav = document.getElementById('testimonialsNav');
-        const testimonialsItems = document.querySelectorAll('.testimonials__item');
-
-        // Create navigation dots
-        testimonialsItems.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'testimonials__nav-dot' + (index === 0 ? ' active' : '');
-            dot.addEventListener('click', () => goToTestimonial(index));
-            testimonialsNav.appendChild(dot);
-        });
-
-        const navDots = document.querySelectorAll('.testimonials__nav-dot');
-
-        function goToTestimonial(index) {
-            testimonialsTrack.scrollTo({
-                left: testimonialsItems[index].offsetLeft - testimonialsTrack.offsetLeft,
-                behavior: 'smooth'
-            });
-        }
-
-        testimonialsTrack.addEventListener('scroll', () => {
-            const scrollLeft = testimonialsTrack.scrollLeft;
-            const itemWidth = testimonialsItems[0].offsetWidth;
-
-            navDots.forEach((dot, index) => {
-                if (scrollLeft >= index * itemWidth - itemWidth / 2 &&
-                    scrollLeft < (index + 1) * itemWidth - itemWidth / 2) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
 
-        // Auto-advance testimonials
-        let currentTestimonial = 0;
-        setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonialsItems.length;
-            goToTestimonial(currentTestimonial);
-        }, 6000);
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Obrigado pelo interesse! Em breve entraremos em contato para confirmar seu agendamento.');
+            contactForm.reset();
+        });
 
-        // ===== PHONE MASK =====
+        // Phone mask
         const phoneInput = document.getElementById('phone');
-
         phoneInput.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
 
-            if (value.length > 11) {
-                value = value.slice(0, 11);
-            }
-
-            if (value.length > 6) {
-                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
-            } else if (value.length > 2) {
+            if (value.length > 2) {
                 value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-            } else if (value.length > 0) {
-                value = `(${value}`;
+            }
+            if (value.length > 10) {
+                value = `${value.slice(0, 10)}-${value.slice(10)}`;
             }
 
             e.target.value = value;
-        });
-
-        // ===== CONTACT FORM =====
-        const contactForm = document.getElementById('contactForm');
-        const formSuccess = document.getElementById('formSuccess');
-        const resetFormBtn = document.getElementById('resetForm');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-
-            setTimeout(() => {
-                contactForm.style.display = 'none';
-                formSuccess.classList.add('active');
-            }, 1500);
-        });
-
-        resetFormBtn.addEventListener('click', () => {
-            formSuccess.classList.remove('active');
-            contactForm.style.display = 'block';
-            contactForm.reset();
-            contactForm.querySelector('button[type="submit"]').disabled = false;
-            contactForm.querySelector('button[type="submit"]').innerHTML = `
-                Enviar Mensagem
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-                </svg>
-            `;
-        });
-
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
         });
     </script>
 </body>
