@@ -1081,11 +1081,16 @@
             }
         }
 
-        /* Scroll Animation Classes */
+        /* Scroll Animation Classes - Fixed: Elements visible by default */
         .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animate-hidden {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
         }
 
         .animate-on-scroll.animated {
@@ -1687,7 +1692,7 @@
             });
         });
 
-        // Intersection Observer for scroll animations
+        // Intersection Observer for scroll animations - Fixed: Elements visible by default
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1697,12 +1702,27 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
+                    entry.target.classList.remove('animate-hidden');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
+        // Add animate-hidden class and observe elements
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.classList.add('animate-hidden');
             observer.observe(el);
+        });
+
+        // Fallback: Ensure elements in viewport are visible immediately
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('animated');
+                    el.classList.remove('animate-hidden');
+                }
+            });
         });
 
         // Contact form handling
