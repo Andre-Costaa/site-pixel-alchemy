@@ -44,11 +44,11 @@ Inclua uma entrada com:
 - **ID da revisão**: REV-005
 - **ID do PRD original**: US-033
 - **Nome do cliente**: Dra. Ana Carolina Orlanda Junqueira Defina
-- **URL do demo**: /site-demo/dra-ana-carolina-orlanda/index.html
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-ana-carolina-orlanda/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "A Experiência que Você Merece" (problem-solution), "Tratamentos que Transformam" (services), "Depoimentos", "Diferenciais" e "Contato" estão com conteúdo invisível (opacity: 0) devido à classe CSS `animate-on-scroll`. Os elementos só ficam visíveis quando a classe `animated` é adicionada via JavaScript/Intersection Observer, mas isso não está acontecendo corretamente na carga inicial da página. Isso resulta em áreas em branco onde deveria haver conteúdo.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, adicionar uma classe `animated` por padrão no HTML ou garantir que o Intersection Observer dispare imediatamente para elementos visíveis.
-- **Evidências**: Screenshots em `.playwright-mcp/dra-ana-carolina-*.png` - notar as áreas em branco nas seções intermediárias da página.
+- **Problema**: ~~As seções "A Experiência que Você Merece" (problem-solution), "Tratamentos que Transformam" (services), "Depoimentos", "Diferenciais" e "Contato" estão com conteúdo invisível (opacity: 0) devido à classe CSS `animate-on-scroll`. Os elementos só ficam visíveis quando a classe `animated` é adicionada via JavaScript/Intersection Observer, mas isso não está acontecendo corretamente na carga inicial da página. Isso resulta em áreas em branco onde deveria haver conteúdo.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Modificado o CSS para que elementos com `.animate-on-scroll` tenham `opacity: 1` por padrão. A classe `.animate-hidden` também foi ajustada para manter visibilidade. O JavaScript de inicialização de animações foi comentado, garantindo que todo o conteúdo seja visível imediatamente ao carregar a página.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
 ### REV-008 - Dr. Felipe Anderson Sousa Nunes
 - **ID da revisão**: REV-008
