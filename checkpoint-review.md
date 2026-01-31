@@ -113,6 +113,16 @@ Inclua uma entrada com:
   - Diretório /site-demo/laura-bullamah-stoll não existe localmente
   - `ls site-demo/ | grep laura` retorna apenas 'dra-laura-sanches'
 
+### REV-016 - Dr. Ritchelle Henrique
+- **ID da revisão**: REV-016
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Dr. Ritchelle Henrique
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-ritchelle-henrique/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Por que escolher a Dra. Ritchelle" (problem-solution), "Nossos Tratamentos" (services), "Depoimentos Reais" (testimonials), "Nossos Diferenciais" (features) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("O Desafio Diário"), soluções ("A Solução Definitiva"), cards de serviços ("Implantes Dentários", "Facetas de Porcelana", "Clareamento Dental", "Próteses Dentárias", "Ortodontia Estética", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Em uma carga inicial, todo o conteúdo abaixo da dobra fica invisível.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
+- **Evidências**: Screenshots em `.playwright-mcp/rev016-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
 - **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
