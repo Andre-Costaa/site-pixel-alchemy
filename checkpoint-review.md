@@ -505,6 +505,26 @@ Inclua uma entrada com:
 
 ---
 
+### US-008 - Nucleon Veterinary Diagnostics
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/nucleon-veterinary-diagnostics/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: f43b490
+- **Descrição**: Site completo para Nucleon Veterinary Diagnostics em Ribeirão Preto. Design "Tech Precision Diagnostics" com:
+  - Tipografia: Space Grotesk (display técnico) + Inter (body legível)
+  - Paleta de cores: Navy profundo (#0A2540) primary com accent turquoise (#00D4AA) e azul technology (#0066CC)
+  - Animações: Blob flutuantes no hero, parallax effects, Intersection Observer animations
+  - Seções: Hero, Problema/Solução, Serviços (6 cards), Diferenciais (6 items numerados), Depoimentos (3), Contato, Footer
+  - Formulário de contato funcional com máscara de telefone
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - Apenas SVG icons (sem emojis)
+  - Imagens de alta qualidade do Unsplash sobre diagnóstico veterinário
+  - Informações: Av. Sen. César Vergueiro, 923 - Jardim Sao Luiz, Ribeirão Preto - SP, 14020-500
+  - Telefone: (16) 3916-1182
+  - Ênfase em diagnóstico veterinário de alta precisão e tecnologia
+
+---
+
 ### REV-001 - Animed 24H Veterinary Clinic and Animal Aesthetics
 - **ID da revisão**: REV-001
 - **ID do PRD original**: US-001
