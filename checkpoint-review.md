@@ -258,3 +258,13 @@ Inclua uma entrada com:
   - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/sorria-mais-clinica/index.html
   - Diretório /site-demo/sorria-mais-clinica não existe localmente
   - `ls site-demo/ | grep sorria` retorna apenas 'sorridi-odontologia'
+
+### REV-031 - Clínica Livhera
+- **ID da revisão**: REV-031
+- **ID do PRD original**: US-031
+- **Nome do cliente**: Clínica Livhera
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-livhera/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: A imagem do serviço "Restauração Estética" não está carregando corretamente. O card exibe um placeholder azul escuro em vez da imagem do serviço. A requisição de rede para a imagem `https://images.unsplash.com/photo-1583947581924-8661fc80873e?w=600&q=80` não retornou status code, indicando possível erro 404 ou problema de carregamento.
+- **Correção sugerida**: Substituir a URL da imagem quebrada no arquivo `site-demo/clinica-livhera/index.html` por uma URL válida do Unsplash. Sugestão: usar uma imagem similar às dos outros cards de serviços odontológicos, como `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80` ou outra imagem relacionada a restaurações dentárias.
+- **Evidências**: Screenshots em `.playwright-mcp/clinica-livhera-1440-tratamentos.png` e `.playwright-mcp/clinica-livhera-1024-cards.png` - notar que o card "Restauração Estética" exibe um fundo azul escuro em vez da imagem, enquanto os outros cards mostram as imagens corretamente.
