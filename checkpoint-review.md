@@ -13,6 +13,24 @@ Registrar apenas reprovações encontradas durante a revisão com Playwright dos
 
 ## Progresso Geral
 
+### US-006 - GAZETO - Clínica Veterinária
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/gazeto-clinica-veterinaria/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: ac7ec50
+- **Descrição**: Site completo para GAZETO - Clínica Veterinária em Ribeirão Preto. Design premiado "Serenity Vet" com:
+  - Tipografia distintiva: Cormorant Garamond (serif elegante) + Nunito (friendly sans-serif)
+  - Paleta de cores: Sage green (#4A7C59) com warm coral (#E8917A) accent e cream backgrounds
+  - Animações: Floating organic blobs, smooth transitions, hover effects
+  - Seções: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - Formulário que redireciona para WhatsApp
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - SVG icons (sem emojis)
+  - Informações: R. Cel. Luíz da Silva Batista, 711 - Jardim Irajá, Ribeirão Preto - SP, 14020-570
+  - Telefone: (16) 99740-0711
+
+---
+
 ### US-004 - Clínica Veterinária Soer
 - **Status**: ✅ COMPLETO
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-veterinaria-soer/index.html
