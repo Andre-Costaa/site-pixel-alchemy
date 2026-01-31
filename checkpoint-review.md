@@ -7,6 +7,7 @@ Registrar apenas reprovações encontradas durante a revisão com Playwright dos
 - Adicionar conteúdo SOMENTE quando o site não passar na revisão.
 - Descrever claramente o problema, o impacto e a correção necessária.
 - Se o site estiver aprovado, não registrar nada aqui.
+- Revisar apenas a página do story (index.html do demo); não navegar nem validar home, termos de uso, política de privacidade ou outras páginas.
 
 ## Como registrar uma reprovação
 Inclua uma entrada com:
@@ -58,4 +59,3 @@ Inclua uma entrada com:
 - **Problema**: A imagem do hero mostra um dentista homem, mas o site é para "Dra. Laura Sanches" (uma mulher). Isso cria uma inconsistência entre o conteúdo visual e o nome da profissional.
 - **Correção sugerida**: Substituir a imagem do hero por uma foto de uma dentista mulher. Sugestão: usar uma imagem de uma profissional feminina em consultório odontológico.
 - **Evidências**: Screenshot em `.playwright-mcp/dra-laura-sanches-final-1440.png` - notar que a imagem no hero mostra um homem de jaleco branco, não uma mulher.
-
