@@ -20,6 +20,25 @@ Inclua uma entrada com:
 
 ## Registros de reprovação
 
+### REV-006 - Hikari Odontologia
+- **ID da revisão**: REV-006
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Hikari Odontologia
+- **URL do demo**: http://localhost:9000/index.html
+- **Breakpoint(s) afetado(s)**: Todas as páginas secundárias
+- **Problema**: ~~Erro JavaScript "Cannot read properties of null (reading 'addEventListener')" ocorre nas páginas de Política de Privacidade e Termos de Uso. O código em script.js:565 tenta adicionar event listeners aos botões de cookie (acceptBtn e declineBtn), mas esses elementos não existem nas páginas secundárias, causando um erro que pode afetar outras funcionalidades JavaScript.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Adicionada verificação de existência dos elementos antes de adicionar os event listeners em script.js:
+  ```javascript
+  if (acceptBtn && cookieConsent) {
+      acceptBtn.addEventListener('click', () => { ... });
+  }
+  if (declineBtn && cookieConsent) {
+      declineBtn.addEventListener('click', () => { ... });
+  }
+  ```
+  Também adicionada verificação para cookieConsent antes de mostrar o banner: `if (!hasConsented && cookieConsent)`
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Imagens carregando corretamente. Navegação e CTAs funcionando. Console limpo de erros críticos (apenas warning de apple-touch-icon.png não crítico).
+
 ### REV-005 - Dra. Ana Carolina Orlanda Junqueira Defina
 - **ID da revisão**: REV-005
 - **ID do PRD original**: US-033

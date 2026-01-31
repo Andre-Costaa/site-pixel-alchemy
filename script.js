@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if user has already made a choice
     const hasConsented = localStorage.getItem('cookieConsent');
 
-    if (!hasConsented) {
+    if (!hasConsented && cookieConsent) {
         // Show popup after a short delay
         setTimeout(() => {
             cookieConsent.classList.add('show');
@@ -562,17 +562,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Accept Cookies
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'true');
-        cookieConsent.classList.remove('show');
-        
-        // Optional: Initialize analytics here if needed
-        // initAnalytics();
-    });
+    if (acceptBtn && cookieConsent) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            cookieConsent.classList.remove('show');
+
+            // Optional: Initialize analytics here if needed
+            // initAnalytics();
+        });
+    }
 
     // Decline Cookies
-    declineBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'false');
-        cookieConsent.classList.remove('show');
-    });
+    if (declineBtn && cookieConsent) {
+        declineBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'false');
+            cookieConsent.classList.remove('show');
+        });
+    }
 });
