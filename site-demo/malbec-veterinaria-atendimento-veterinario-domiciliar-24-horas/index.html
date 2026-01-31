@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALBEC VETERINÁRIA | Atendimento Domiciliar 24 Horas em Ribeirão Preto</title>
+    <meta name="description" content="Atendimento veterinário domiciliar 24 horas em Ribeirão Preto. Emergências, consultas e cuidados para seu pet no conforto de casa. Ligue agora: (16) 98180-0379">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           MALBEC VETERINÁRIA - Emergency Care Design
+           ============================================ */
+
+        :root {
+            /* Core Colors */
+            --color-primary: #E63946;
+            --color-primary-dark: #C1121F;
+            --color-primary-light: #FF6B6B;
+            --color-secondary: #1D3557;
+            --color-accent: #F4A261;
+            --color-cream: #FAF9F6;
+            --color-charcoal: #1A1A1A;
+            --color-gray: #6B7280;
+            --color-gray-light: #E5E7EB;
+            --color-white: #FFFFFF;
+
+            /* Typography */
+            --font-display: 'DM Serif Display', serif;
+            --font-body: 'Outfit', sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-xxl: 8rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+            --shadow-glow: 0 0 40px rgba(230, 57, 70, 0.3);
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-charcoal);
+            background: var(--color-cream);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-charcoal);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-gray);
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Section Base */
+        section {
+            padding: var(--spacing-xl) 0;
+            position: relative;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-base);
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--color-charcoal);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-charcoal);
+            transition: var(--transition-fast);
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--spacing-sm);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .emergency-banner a {
+            color: var(--color-white);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .emergency-pulse {
+            width: 12px;
+            height: 12px;
+            background: var(--color-white);
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: var(--spacing-xl);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        .hero-blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--color-primary);
+            top: -200px;
+            right: -100px;
+            animation: blob-float 20s infinite ease-in-out;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-accent);
+            bottom: -100px;
+            left: -100px;
+            animation: blob-float 15s infinite ease-in-out reverse;
+        }
+
+        @keyframes blob-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(-30px, -20px) scale(1.02); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(230, 57, 70, 0.1);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero h1 span {
+            color: var(--color-primary);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-md);
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition-base);
+            font-size: 1rem;
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-charcoal);
+            border: 2px solid var(--color-gray-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-charcoal);
+            background: var(--color-charcoal);
+            color: var(--color-white);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .hero-image-card {
+            position: absolute;
+            background: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .hero-image-card.top {
+            top: -20px;
+            left: -20px;
+        }
+
+        .hero-image-card.bottom {
+            bottom: 40px;
+            right: -40px;
+        }
+
+        .hero-image-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(230, 57, 70, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-image-card-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+        }
+
+        .hero-image-card-text strong {
+            display: block;
+            font-weight: 700;
+            color: var(--color-charcoal);
+        }
+
+        .hero-image-card-text span {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+
+        /* Pulse Line Animation */
+        .pulse-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            overflow: hidden;
+        }
+
+        .pulse-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: pulse-line 2s infinite;
+        }
+
+        @keyframes pulse-line {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .problem-card,
+        .solution-card {
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #FFF0F0 0%, #FFFFFF 100%);
+            border: 2px solid rgba(230, 57, 70, 0.1);
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #F0FFF4 0%, #FFFFFF 100%);
+            border: 2px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .problem-card .section-icon {
+            background: rgba(230, 57, 70, 0.15);
+        }
+
+        .solution-card .section-icon {
+            background: rgba(34, 197, 94, 0.15);
+        }
+
+        .section-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .problem-card .section-icon svg {
+            color: var(--color-primary);
+        }
+
+        .solution-card .section-icon svg {
+            color: #22C55E;
+        }
+
+        .problem-list,
+        .solution-list {
+            margin-top: var(--spacing-md);
+        }
+
+        .problem-list li,
+        .solution-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .problem-list li:last-child,
+        .solution-list li:last-child {
+            border-bottom: none;
+        }
+
+        .problem-list svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .solution-list svg {
+            width: 20px;
+            height: 20px;
+            color: #22C55E;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-charcoal);
+            color: var(--color-white);
+        }
+
+        .services h2,
+        .services p {
+            color: var(--color-white);
+        }
+
+        .services p {
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-white);
+        }
+
+        .service-card h3 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-card .highlight {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--color-cream);
+        }
+
+        .testimonials-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-accent);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-charcoal);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: var(--color-charcoal);
+        }
+
+        .testimonial-info span {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+
+        /* Diferenciais Section */
+        .diferenciais {
+            background: var(--color-white);
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .diferencial-item {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .diferencial-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--color-primary);
+            opacity: 0.3;
+            flex-shrink: 0;
+        }
+
+        .diferencial-content h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .diferencial-content p {
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-charcoal) 100%);
+            color: var(--color-white);
+        }
+
+        .contact h2,
+        .contact p {
+            color: var(--color-white);
+        }
+
+        .contact p {
+            opacity: 0.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(230, 57, 70, 0.2);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--color-primary-light);
+        }
+
+        .contact-info-text strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-text span,
+        .contact-info-text a {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .contact-info-text a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-form h3 {
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-charcoal);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.125rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-charcoal);
+            color: var(--color-white);
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-brand h3 {
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand h3 span {
+            color: var(--color-primary);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            max-width: 300px;
+        }
+
+        .footer-title {
+            color: var(--color-white);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Scroll Animations */
+        .wow {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-delay-1 { transition-delay: 0.1s; }
+        .wow-delay-2 { transition-delay: 0.2s; }
+        .wow-delay-3 { transition-delay: 0.3s; }
+        .wow-delay-4 { transition-delay: 0.4s; }
+        .wow-delay-5 { transition-delay: 0.5s; }
+        .wow-delay-6 { transition-delay: 0.6s; }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-white);
+            z-index: 999;
+            padding: var(--spacing-lg);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image-card {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            h1 {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <span class="emergency-pulse"></span>
+        <span>Emergência 24h? Ligue agora: </span>
+        <a href="tel:+5516981803799">(16) 98180-0379</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">MALBEC <span>VETERINÁRIA</span></a>
+            <div class="nav-menu">
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#diferenciais" class="nav-link">Diferenciais</a>
+                <a href="#contato" class="nav-cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Agendar
+                </a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <a href="#servicos">Serviços</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                        Atendimento 24 Horas
+                    </div>
+                    <h1>Cuidado Veterinário <span>Domiciliar</span> Seu Pet em Casa</h1>
+                    <p class="hero-description">Atendimento veterinário emergencial e rotina no conforto do seu lar. 24 horas por dia, 7 dias por semana, em Ribeirão Preto.</p>
+                    <div class="hero-cta">
+                        <a href="tel:+5516981803799" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            (16) 98180-0379
+                        </a>
+                        <a href="#contato" class="btn btn-secondary">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=700&fit=crop" alt="Veterinária cuidando de cachorro em casa">
+                    </div>
+                    <div class="hero-image-card top">
+                        <div class="hero-image-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="hero-image-card-text">
+                            <strong>24h Atendimento</strong>
+                            <span>Emergências</span>
+                        </div>
+                    </div>
+                    <div class="hero-image-card bottom">
+                        <div class="hero-image-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <div class="hero-image-card-text">
+                            <strong>Cuidado Premium</strong>
+                            <span>Seu pet merece</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pulse-line"></div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution" id="problema">
+        <div class="container">
+            <div class="wow">
+                <h2>Por Que Escolher <span>Atendimento Domiciliar?</span></h2>
+            </div>
+            <div class="problem-solution-grid">
+                <div class="problem-card wow wow-delay-1">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>O Desafio</h3>
+                    <p>Levar seu pet à clínica em momentos de crise pode ser estressante para você e para ele.</p>
+                    <ul class="problem-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Trânsito e deslocamento em emergências</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Estresse do animal em ambiente clínico</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Dificuldade de transporte em horários noturnos</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Filas de espera em momentos críticos</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-card wow wow-delay-2">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>A Solução MALBEC</h3>
+                    <p>Levamos o cuidado veterinário até você, com excelência e rapidez quando seu pet mais precisa.</p>
+                    <ul class="solution-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Veterinário no conforto do seu lar</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Menos estresse para seu animal</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Atendimento 24h, inclusive feriados</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Equipamento portátil completo</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="wow" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2>Nossos <span>Serviços</span></h2>
+                <p>Cuidado veterinário completo no domicílio, com equipamentos modernos e profissionais experientes.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Emergências 24h</h3>
+                    <p>Atendimento rápido para casos urgentes como intoxicações, traumas e complicações agudas.</p>
+                    <span class="highlight">Tempo médio: 30-45 min</span>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Consultas Domiciliares</h3>
+                    <p>Avaliação clínica completa no conforto do lar, ideal para pets estressados com clínicas.</p>
+                    <span class="highlight">Agendamento flexível</span>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                    </div>
+                    <h3>Cirurgias de Pequeno Porte</h3>
+                    <p>Procedimentos cirúrgicos simples realizados em domicílio com total segurança.</p>
+                    <span class="highlight">Anestesia monitorada</span>
+                </div>
+                <div class="service-card wow wow-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/>
+                            <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/>
+                            <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/>
+                        </svg>
+                    </div>
+                    <h3>Terapias e Medicamentos</h3>
+                    <p>Administração de medicamentos, fluidoterapia e tratamentos pós-cirúrgicos.</p>
+                    <span class="highlight">Acompanhamento contínuo</span>
+                </div>
+                <div class="service-card wow wow-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Eutanásia Domiciliar</h3>
+                    <p>Despedida humanizada e respeitosa no ambiente familiar, com todo o carinho necessário.</p>
+                    <span class="highlight">Momento delicado</span>
+                </div>
+                <div class="service-card wow wow-delay-6">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+                            <path d="M3 12v6c0 .552.448 1 1 1h16c.552 0 1-.448 1-1v-6"/>
+                        </svg>
+                    </div>
+                    <h3>Exames Laboratoriais</h3>
+                    <p>Coleta de amostras para análises clínicas com entrega rápida de resultados.</p>
+                    <span class="highlight">Parceria laboratorial</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-intro wow">
+                <h2>O Que Nossos <span>Tutores Dizem</span></h2>
+                <p>Histórias reais de quem confiou a saúde do seu pet à MALBEC VETERINÁRIA.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow wow-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Meu gatinho teve uma crise às 2h da manhã. A MALBEC chegou em 30 minutos e salvou sua vida. Gratidão eterna!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <strong>Marina Costa</strong>
+                            <span>Mãe do Thor (gato)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A Dra. é incrível! Meu cachorro tem pânico de veterinário, mas em casa ficou super tranquilo. Recomendo muito!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div class="testimonial-info">
+                            <strong>Ricardo Ferreira</strong>
+                            <span>Pai do Bob (cachorro)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Serviço impecável da consulta ao acompanhamento pós-cirúrgico. Meu pet teve o melhor cuidado possível."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AS</div>
+                        <div class="testimonial-info">
+                            <strong>Ana Silva</strong>
+                            <span>Mãe da Luna (cachorra)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais Section -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="container">
+            <div class="wow" style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-lg);">
+                <h2>Por Que a <span>MALBEC?</span></h2>
+                <p>Diferenciais que fazem da MALBEC VETERINÁRIA a escolha certa para seu pet.</p>
+            </div>
+            <div class="diferenciais-grid">
+                <div class="diferencial-item wow wow-delay-1">
+                    <span class="diferencial-number">01</span>
+                    <div class="diferencial-content">
+                        <h3>Veterinários Experientes</h3>
+                        <p>Equipe com anos de experiência em atendimento domiciliar e emergências veterinárias, pronta para qualquer situação.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item wow wow-delay-2">
+                    <span class="diferencial-number">02</span>
+                    <div class="diferencial-content">
+                        <h3>Equipamento Completo</h3>
+                        <p>Levamos todo o necessário: ultrassom portátil, microscópio, monitor cardíaco e muito mais para atendimento completo.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item wow wow-delay-3">
+                    <span class="diferencial-number">03</span>
+                    <div class="diferencial-content">
+                        <h3>Disponibilidade Real 24h</h3>
+                        <p>Não somos terceirizados. Atendemos pessoalmente todas as chamadas, incluindo madrugadas, domingos e feriados.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item wow wow-delay-4">
+                    <span class="diferencial-number">04</span>
+                    <div class="diferencial-content">
+                        <h3>Carinho e Humanização</h3>
+                        <p>Tratamos cada pet como se fosse nosso, com atenção individualizada e todo o carinho que ele merece.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item wow wow-delay-5">
+                    <span class="diferencial-number">05</span>
+                    <div class="diferencial-content">
+                        <h3>Transparência Total</h3>
+                        <p>Valores claros, sem surpresas. Você sabe exatamente o que está pagando antes do início do atendimento.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item wow wow-delay-6">
+                    <span class="diferencial-number">06</span>
+                    <div class="diferencial-content">
+                        <h3>Ribeirão Preto e Região</h3>
+                        <p>Atendemos em toda Ribeirão Preto e região, com deslocamento rápido e equipe sempre próxima.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="wow">
+                    <h2>Fale <span>Conosco</span></h2>
+                    <p style="margin-bottom: var(--spacing-md);">Emergência, dúvidas ou agendamento? Estamos aqui para ajudar você e seu pet 24 horas por dia.</p>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <strong>Telefone / WhatsApp</strong>
+                                <a href="tel:+5516981803799">(16) 98180-0379</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <strong>Endereço</strong>
+                                <span>R. Magda Perona Frossard, 710<br>Nova Aliança, Ribeirão Preto - SP<br>CEP: 14026-596</span>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <strong>Horário de Atendimento</strong>
+                                <span>Segunda a Segunda<br>24 horas por dia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="tel:+5516981803799" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Ligar Agora - Emergência 24h
+                    </a>
+                </div>
+
+                <div class="contact-form wow wow-delay-2">
+                    <form id="contactForm">
+                        <h3>Agende uma Consulta</h3>
+                        <div class="form-group">
+                            <label class="form-label" for="name">Seu Nome</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Tipo de Atendimento</label>
+                            <select id="service" name="service" class="form-select" required>
+                                <option value="">Selecione...</option>
+                                <option value="emergencia">Emergência 24h</option>
+                                <option value="consulta">Consulta Domiciliar</option>
+                                <option value="cirurgia">Cirurgia de Pequeno Porte</option>
+                                <option value="terapia">Terapia/Medicamentos</option>
+                                <option value="eutanasia">Eutanásia Domiciliar</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Descreva brevemente o que seu pet precisa..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Enviar Solicitação
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>MALBEC <span>VETERINÁRIA</span></h3>
+                    <p>Atendimento veterinário domiciliar 24 horas em Ribeirão Preto e região. Cuidado, carinho e excelência para seu pet.</p>
+                </div>
+                <div>
+                    <p class="footer-title">Links Rápidos</p>
+                    <div class="footer-links">
+                        <a href="#home">Início</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-title">Contato</p>
+                    <div class="footer-links">
+                        <a href="tel:+5516981803799">(16) 98180-0379</a>
+                        <a href="#">contato@malbecveterinaria.com.br</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MALBEC VETERINÁRIA. Todos os direitos reservados. Atendimento 24h em Ribeirão Preto - SP</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // MALBEC VETERINÁRIA - JavaScript
+        // ============================================
+
+        (function() {
+            'use strict';
+
+            // Navigation scroll effect
+            const nav = document.getElementById('nav');
+            let lastScrollY = 0;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                lastScrollY = window.scrollY;
+            });
+
+            // Mobile menu toggle
+            const navToggle = document.getElementById('navToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileClose = document.getElementById('mobileClose');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+
+            navToggle.addEventListener('click', toggleMobileMenu);
+            mobileClose.addEventListener('click', toggleMobileMenu);
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = nav.offsetHeight + 50;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll-triggered animations (WoW)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.wow').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    service: formData.get('service'),
+                    message: formData.get('message')
+                };
+
+                // Create WhatsApp message
+                const whatsappNumber = '5516981803799';
+                const whatsappMessage = encodeURIComponent(
+                    `Olá! Meu nome é ${data.name}.\n` +
+                    `Telefone: ${data.phone}\n` +
+                    `Tipo de atendimento: ${data.service}\n` +
+                    `Mensagem: ${data.message || 'Gostaria de agendar uma consulta.'}`
+                );
+
+                // Open WhatsApp with the message
+                window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+
+                // Reset form
+                contactForm.reset();
+            });
+
+            // Dynamic phone links on all CTAs
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Analytics tracking could go here
+                    console.log('Phone call initiated');
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
