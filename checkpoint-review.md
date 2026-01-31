@@ -296,3 +296,17 @@ Inclua uma entrada com:
 - **Problema**: ~~A imagem do serviço "Limpeza e Prevenção" não estava carregando (404 Not Found) devido a uma URL do Unsplash inválida (`photo-1599451913777-5f3680cfff21`). O card exibia o texto alternativo ou ícone de imagem quebrada em vez da imagem do serviço.~~ ✅ **CORRIGIDO**
 - **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1599451913777-5f3680cfff21?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80` no arquivo `site-demo/dr-mauricio-grandini/index.html`.
 - **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis e bem formatadas. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
+
+### REV-038 - Dra Letícia Araújo
+- **ID da revisão**: REV-038
+- **ID do PRD original**: US-038
+- **Nome do cliente**: Dra Letícia Araújo
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-leticia-araujo/index.html
+- **Breakpoint(s) afetado(s)**: N/A
+- **Problema**: O site não existe. A revisão REV-038 está marcada como "passes": false no prd2.json, mas o diretório 'site-demo/dra-leticia-araujo' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). A story US-038 (story original de criação do site) não existe no prd2.json, indicando que o site nunca foi criado. Não é possível realizar a revisão Playwright sem o site estar disponível.
+- **Correção sugerida**: Verificar se a story US-038 existe e foi executada. Se não existir, criar a story US-038 no prd2.json e executá-la para criar o site. Se a story existir mas não foi executada, executá-la para gerar o site. Se o site foi criado mas não foi enviado, fazer o deploy.
+- **Evidências**:
+  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dra-leticia-araujo/index.html
+  - Diretório /site-demo/dra-leticia-araujo não existe localmente
+  - `ls site-demo/ | grep leticia` não retorna resultados
+  - Story US-038 não encontrada no prd2.json
