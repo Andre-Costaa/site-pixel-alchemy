@@ -223,6 +223,16 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `active` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `active` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
 - **Evidências**: Screenshots em `.playwright-mcp/rev027-dra-marli-1440-full.png`, `.playwright-mcp/rev027-dra-marli-1024-full.png`, `.playwright-mcp/rev027-dra-marli-768-full.png` e `.playwright-mcp/rev027-dra-marli-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
 
+### REV-029 - VIVA SORRINDO
+- **ID da revisão**: REV-029
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: VIVA SORRINDO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/viva-sorrindo/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Dificuldades vs Solução" (problem-solution), "Nossos Serviços" (services), "O Que Nossos Pacientes Dizem" (testimonials), "Por Que Escolher a VIVA SORRINDO?" (differentials) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir em fotos", "Evita situações sociais por vergonha", "Sofre com dores dentárias frequentes", "Não se sente confiante no trabalho"), soluções ("Recupere a autoestima com um sorriso radiante", "Tratamentos personalizados para você", "Tecnologia avançada e conforto absoluto", "Equipe especialista que cuida de você"), cards de serviços ("Implantes Dentários", "Estética Dental", "Clareamento Dental", "Ortodontia", "Próteses Dentárias", "Clínico Geral"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `reveal` que define `opacity: 0` e `transform: translateY(30px)` no CSS (linhas 1348-1351), mas a classe `visible` que deveria ser adicionada via JavaScript/Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `reveal` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
+- **Evidências**: Screenshots em `.playwright-mcp/rev029-viva-sorrindo-1440-full.png`, `.playwright-mcp/rev029-viva-sorrindo-1024-full.png`, `.playwright-mcp/rev029-viva-sorrindo-768-full.png` e `.playwright-mcp/rev029-viva-sorrindo-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-028 - Dra Isabô Tortoriello
 - **ID da revisão**: REV-028
 - **ID do PRD original**: US-028
