@@ -1350,6 +1350,12 @@
             transform: translateY(0);
         }
 
+        /* Ensure elements are visible if JS fails or on initial load */
+        .fade-in-up.no-js {
+            opacity: 1;
+            transform: none;
+        }
+
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
         .stagger-3 { transition-delay: 0.3s; }
@@ -2169,7 +2175,7 @@
         // Intersection Observer for animations
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
+            rootMargin: '0px 0px -50px 0px',
             threshold: 0.1
         };
 
@@ -2177,13 +2183,30 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
+        // Observe all fade-in-up elements
         document.querySelectorAll('.fade-in-up').forEach(el => {
             observer.observe(el);
         });
+
+        // Fallback: Make elements visible after a short delay if JS is working
+        // This ensures elements don't stay invisible if observer fails
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                if (!el.classList.contains('visible')) {
+                    // Check if element is in viewport
+                    const rect = el.getBoundingClientRect();
+                    const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isInViewport) {
+                        el.classList.add('visible');
+                    }
+                }
+            });
+        }, 500);
 
         // Testimonials Slider
         const testimonialTrack = document.getElementById('testimonialTrack');
