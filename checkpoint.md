@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 27/45 (60.0%)
+- **Concluídas**: 28/45 (62.2%)
 - **Em Andamento**: 0
-- **Pendentes**: 18
+- **Pendentes**: 17
 
 ## URLs dos Demos
 
@@ -39,19 +39,19 @@
 | US-025 | **Bicho Chic Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/bicho-chic-clinica-veterinaria-24h** |
 | US-026 | **Toca do Mastim Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h** |
 | US-027 | **Hemocentro Heróis Vet** | **pixelalchemy.com.br/site-demo/hemocentro-herois-vet** |
+| US-028 | **Di Gato Medicina Felina** | **pixelalchemy.com.br/site-demo/di-gato-medicina-felina** |
+| US-029 | **Dog Days - Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-027 - Hemocentro Heróis Vet
+- **Último Site**: US-029 - Dog Days - Clínica Veterinária 24h
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/hemocentro-herois-vet
+- **URL**: pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-028 | Di Gato Medicina Felina | Pendente |
-| US-029 | Dog Days 24h | Pendente |
 | US-030 | BMvet Zona Oeste | Pendente |
 | US-031 | Endoscopia Vet. Matheus Nascimento | Pendente |
 | US-032 | Vídeo Pet Endoscopia | Pendente |
