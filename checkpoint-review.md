@@ -237,13 +237,13 @@ Inclua uma entrada com:
 
 ### REV-025 - Dra Renata Plaça
 - **ID da revisão**: REV-025
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-025
 - **Nome do cliente**: Dra Renata Plaça
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-renata-placa/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A imagem do serviço "Próteses Dentárias" não está carregando. O card exibe o texto alternativo "Próteses" em vez da imagem do serviço, indicando que a URL da imagem está quebrada ou retornando 404.
-- **Correção sugerida**: Verificar e substituir a URL da imagem quebrada no arquivo `site-demo/dra-renata-placa/index.html` por uma URL válida do Unsplash ou outra fonte confiável. Sugestão: usar uma imagem similar às dos outros cards de serviços odontológicos.
-- **Evidências**: Screenshots em `.playwright-mcp/dra-renata-1440-servicos.png` e `.playwright-mcp/dra-renata-1024-servicos.png` - notar que o card "Próteses Dentárias" exibe o texto "Próteses" em vez da imagem, enquanto os outros cards mostram as imagens corretamente.
+- **Problema**: ~~A imagem do serviço "Próteses Dentárias" não estava carregando. O card exibia o texto alternativo "Próteses" em vez da imagem do serviço, indicando que a URL da imagem estava quebrada ou retornando 404.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1583947581924-8c2e1f8e5bf7?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1629909615184-74f495363b67?w=600&q=80` no arquivo `site-demo/dra-renata-placa/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-026 - Sempre Sorrindo Implantes Dentários
 - **ID da revisão**: REV-026
