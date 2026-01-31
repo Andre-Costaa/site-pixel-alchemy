@@ -58,6 +58,62 @@ Site aprovado para entrega ao cliente. Layout responsivo funcionando corretament
 
 ---
 
+## REV-041 - Dra Patricia Schiavinato Ortodontia
+
+**URL Revisado:** https://pixelalchemy.com.br/site-demo/dra-patricia-schiavinato/index.html
+
+**Data da Revisão:** 2026-01-31
+
+**Status:** ✅ APROVADO
+
+**passes:** true
+
+### Checklist de Validação
+
+#### Layout e Responsividade
+- [x] 1440px - Desktop large
+- [x] 1024px - Desktop
+- [x] 768px - Tablet
+- [x] 480px - Mobile
+
+#### Imagens e Mídias
+- [x] Todas as imagens carregam corretamente
+- [x] Sem placeholders quebrados
+- [x] Sem imagens faltantes
+
+#### Navegação
+- [x] Âncoras internas funcionam
+- [x] CTAs não abrem páginas externas (exceto WhatsApp conforme esperado)
+
+#### Formulários e Interações
+- [x] Formulário funciona sem erros
+- [x] Interações visuais ok
+
+#### Console
+- [x] Sem erros críticos de JS
+- [x] Sem recursos bloqueados
+
+### Issues Encontradas
+
+Nenhuma issue crítica encontrada.
+
+**Observação menor:** Erro 404 no favicon.ico (não crítico, não afeta a experiência do usuário).
+
+**Comportamento esperado:** As animações de entrada (fade-up, fade-in, scale-in) só são acionadas quando o usuário faz scroll. Isso é um comportamento intencional do design - os elementos começam com `opacity: 0` e ganham visibilidade conforme o usuário navega pela página. Após o scroll, todas as seções são exibidas corretamente.
+
+### Notas
+
+Site aprovado para entrega ao cliente. Layout responsivo funcionando corretamente em todos os breakpoints testados (1440px, 1024px, 768px, 480px). Formulário de contato validado e funcionando. Navegação por âncoras operacional. Todas as imagens carregando corretamente da Unsplash. Animações de scroll funcionam conforme esperado - elementos ficam visíveis após o usuário fazer scroll pela página.
+
+Evidências disponíveis em:
+- `.playwright-mcp/rev041-1440-full.png`
+- `.playwright-mcp/rev041-1024-full.png`
+- `.playwright-mcp/rev041-768-full.png`
+- `.playwright-mcp/rev041-480-full.png`
+- `.playwright-mcp/rev041-1440-after-scroll.png`
+
+---
+
 ## REV-035 - Centro de Clareamento Dental
 
 **URL Revisado:** https://pixelalchemy.com.br/site-demo/centro-clareamento-dental/index.html
