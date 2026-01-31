@@ -11,6 +11,71 @@ Cada revisão deve registrar:
 
 ---
 
+## REV-042 - Sorridi Odontologia
+
+**URL Revisado:** https://pixelalchemy.com.br/site-demo/sorridi-odontologia/index.html
+
+**Data da Revisão:** 2026-01-31
+
+**Status:** ❌ REPROVADO
+
+**passes:** false
+
+### Checklist de Validação
+
+#### Layout e Responsividade
+- [ ] 1440px - Desktop large
+- [ ] 1024px - Desktop
+- [ ] 768px - Tablet
+- [ ] 480px - Mobile
+
+#### Imagens e Mídias
+- [x] Todas as imagens carregam corretamente
+- [x] Sem placeholders quebrados
+- [x] Sem imagens faltantes
+
+#### Navegação
+- [x] Âncoras internas funcionam
+- [x] CTAs não abrem páginas externas (exceto WhatsApp conforme esperado)
+
+#### Formulários e Interações
+- [x] Formulário funciona sem erros
+- [x] Interações visuais ok
+
+#### Console
+- [x] Sem erros críticos de JS
+- [x] Sem recursos bloqueados
+
+### Issues Encontradas
+
+**CRÍTICO:** As seções entre o hero e o footer estão completamente vazias/invisíveis em todos os breakpoints testados (1440px, 1024px, 768px, 480px) na carga inicial da página.
+
+**Seções afetadas:**
+- "Por Que Nos Escolher" (Desafios Comuns vs Nossa Solução)
+- "Nossos Serviços" (Clareamento Dental, Implantes Dentários, Ortodontia, Facetas de Porcelana, Próteses Dentárias, Limpeza e Profilaxia)
+- "Depoimentos" (Maria Clara Silva, Roberto Ferreira, Ana Santos, Patrícia Lima)
+- "Diferenciais" (Experiência Sólida, Tecnologia Avançada, Atendimento Humanizado, Estética Natural)
+- "Contato" (formulário e informações de contato)
+
+**Causa raiz:** Os elementos possuem classes CSS de animação (`fade-up`, `fade-left`, `fade-right`, `scale-in`) que definem `opacity: 0` por padrão. A classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
+
+**Correção sugerida:** Modificar o CSS para que os elementos com classes de animação tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML.
+
+### Notas
+
+Site reprovado devido à invisibilidade de todas as seções de conteúdo na carga inicial. O problema afeta a experiência do usuário de forma crítica, pois o visitante não consegue ver nenhuma informação sobre os serviços, depoimentos ou formulário de contato sem primeiro fazer scroll por toda a página.
+
+**Observação menor:** Erro 404 no favicon.ico (não crítico, não afeta a experiência do usuário).
+
+Evidências disponíveis em:
+- `.playwright-mcp/rev042-1440-full.png`
+- `.playwright-mcp/rev042-1440-after-scroll.png`
+- `.playwright-mcp/rev042-1024-full.png`
+- `.playwright-mcp/rev042-768-full.png`
+- `.playwright-mcp/rev042-480-full.png`
+
+---
+
 ## REV-034 - S.O.S ODONTOLÓGICO
 
 **URL Revisado:** https://pixelalchemy.com.br/site-demo/sos-odontologico/index.html
