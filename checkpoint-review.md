@@ -9,6 +9,19 @@ Registrar apenas reprovações encontradas durante a revisão com Playwright dos
 - Se o site estiver aprovado, não registrar nada aqui.
 - Revisar apenas a página do story (index.html do demo); não navegar nem validar home, termos de uso, política de privacidade ou outras páginas.
 
+---
+
+## Progresso Geral
+
+### US-004 - Clínica Veterinária Soer
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-veterinaria-soer/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: 1d544eb
+- **Descrição**: Site completo para Clínica Veterinária Soer em Ribeirão Preto. Design premiado com blobmorphism, animações suaves e totalmente responsivo.
+
+---
+
 ## Como registrar uma reprovação
 Inclua uma entrada com:
 - ID da revisão (REV-XXX) e ID do PRD original (US-XXX)
