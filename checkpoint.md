@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 21/45 (46.7%)
+- **Concluídas**: 22/45 (48.9%)
 - **Em Andamento**: 0
-- **Pendentes**: 24
+- **Pendentes**: 23
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-021)
+### Sites Concluídos (US-001 a US-022)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -33,17 +33,18 @@
 | US-019 | Veterinarian Dog Cat Hospital | pixelalchemy.com.br/site-demo/veterinarian-dog-cat-hospital |
 | US-020 | Pena Verde - Animais Silvestres | pixelalchemy.com.br/site-demo/clinica-veterinaria-pena-verde-animais-silvestres-e-exoticos |
 | US-021 | **Pets in** | **pixelalchemy.com.br/site-demo/pets-in** |
+| US-022 | **Snoopy Veterinary Clinic** | **pixelalchemy.com.br/site-demo/snoopy-veterinary-clinic** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-021 - Pets in
+- **Último Site**: US-022 - Snoopy Veterinary Clinic
 - **Status**: Concluído e commitado
+- **URL**: pixelalchemy.com.br/site-demo/snoopy-veterinary-clinic
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-022 | Snoopy Veterinary Clinic | Pendente |
 | US-023 | Vetta Hospital Veterinário | Pendente |
 | US-024 | Veterinary Clinic Pet Shop São Bernardo | Pendente |
 | US-025 | Bicho Chic 24h | Pendente |
