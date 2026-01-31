@@ -338,21 +338,16 @@ Inclua uma entrada com:
 
 ### REV-036 - Clínica Doctor Oral
 - **ID da revisão**: REV-036
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-036
 - **Nome do cliente**: Clínica Doctor Oral
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/clinica-doctor-oral/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A seção "Entre em Contato" (contact) está com o conteúdo invisível em todos os breakpoints. O texto do título "Agende sua Consulta", descrição, informações de endereço, telefone, horário de atendimento e o formulário de contato estão com a cor escura (#0a1628 ou similar) sobre um fundo escuro (rgb(10, 22, 40)), tornando-os invisíveis para o usuário. O conteúdo existe no DOM (60 elementos), mas não é visível devido à falta de contraste de cores.
-- **Correção sugerida**: Modificar o CSS da seção de contato para garantir que todo o texto tenha cor clara (branco ou #f8fafc) sobre o fundo escuro. Especificamente, adicionar estilos para `.contact-title`, `.contact-description`, `.contact-item`, labels do formulário e inputs com cor clara. Exemplo:
-  ```css
-  #contato .contact-title,
-  #contato .contact-description,
-  #contato .contact-item,
-  #contato label {
-    color: #f8fafc;
-  }
-  ```
-- **Evidências**: Screenshots em `.playwright-mcp/rev036-doctor-oral-1440-bottom.png` e `.playwright-mcp/rev036-doctor-oral-480-contato.png` - notar que a seção de contato aparece como uma área escura vazia sem texto visível.
+- **Problema**: ~~A seção "Entre em Contato" (contact) está com o conteúdo invisível em todos os breakpoints. O texto do título "Agende sua Consulta", descrição, informações de endereço, telefone, horário de atendimento e o formulário de contato estão com a cor escura (#0a1628 ou similar) sobre um fundo escuro (rgb(10, 22, 40)), tornando-os invisíveis para o usuário. O conteúdo existe no DOM (60 elementos), mas não é visível devido à falta de contraste de cores.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: O problema real era que os elementos `.contact-info` e `.contact-form-wrapper` tinham `opacity: 0` por padrão e dependiam da classe `animate-in` para ficarem visíveis, mas o JavaScript estava adicionando a classe `visible` (não `animate-in`). Foram feitas as seguintes correções:
+  - Modificado o CSS para que `.contact-info` e `.contact-form-wrapper` tenham `opacity: 1` por padrão
+  - Alterado o seletor CSS de `.animate-in` para `.visible` para corresponder ao que o JavaScript aplica
+  - Adicionados os seletores `.contact-info` e `.contact-form-wrapper` à lista de elementos observados pelo Intersection Observer
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-037 - Consultório Odontológico Dr Mauricio Grandini
 - **ID da revisão**: REV-037
