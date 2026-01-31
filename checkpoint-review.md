@@ -245,3 +245,16 @@ Inclua uma entrada com:
   - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dra-isabo-tortoriello/index.html
   - Diretório /site-demo/dra-isabo-tortoriello não existe localmente
   - `ls site-demo/ | grep isabo` não retorna resultados
+
+### REV-030 - SORRIA MAIS CLINICA ODONTOLOGICA
+- **ID da revisão**: REV-030
+- **ID do PRD original**: US-030
+- **Nome do cliente**: SORRIA MAIS CLINICA ODONTOLOGICA
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/sorria-mais-clinica/index.html
+- **Breakpoint(s) afetado(s)**: N/A
+- **Problema**: O site não existe. A story US-030 está marcada como "passes": true no prd2.json, mas o diretório 'site-demo/sorria-mais-clinica' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
+- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-030 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
+- **Evidências**:
+  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/sorria-mais-clinica/index.html
+  - Diretório /site-demo/sorria-mais-clinica não existe localmente
+  - `ls site-demo/ | grep sorria` retorna apenas 'sorridi-odontologia'
