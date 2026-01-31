@@ -1247,16 +1247,28 @@
             }
         }
 
-        /* Scroll animations */
+        /* Scroll animations - visible by default, enhanced when JS loads */
         .reveal {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* When JS is loaded, hide elements for animation */
+        .js-loaded .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.8s ease;
         }
 
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* No-JS fallback */
+        .no-js .reveal {
+            opacity: 1 !important;
+            transform: none !important;
         }
 
         /* Floating WhatsApp Button */
@@ -1641,6 +1653,9 @@
     </a>
 
     <script>
+        // Add js-loaded class to enable animations
+        document.body.classList.add('js-loaded');
+
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         let mouseX = 0, mouseY = 0;
@@ -1701,14 +1716,15 @@
 
         // Intersection Observer for animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1718,6 +1734,17 @@
             observer.observe(el);
         });
 
+        // Trigger animations for elements already in viewport on load
+        function triggerVisibleAnimations() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
         // Hero animations on load
         window.addEventListener('load', () => {
             document.querySelector('.hero-badge').classList.add('animate');
@@ -1725,6 +1752,9 @@
             document.querySelector('.hero-description').classList.add('animate');
             document.querySelector('.hero-cta').classList.add('animate');
             document.querySelector('.image-wrapper').classList.add('animate');
+
+            // Trigger animations for elements already visible
+            triggerVisibleAnimations();
         });
 
         // Form submission
