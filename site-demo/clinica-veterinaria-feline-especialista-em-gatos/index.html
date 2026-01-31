@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feline - Clínica Veterinária Especialista em Gatos | Ribeirão Preto</title>
+    <meta name="description" content="Clínica veterinária exclusiva para felinos em Ribeirão Preto. Cuidados especializados, ambiente livre de estresse e equipe apaixonada por gatos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+        ============================================ */
+        :root {
+            /* Colors - Warm, organic palette inspired by feline habitats */
+            --color-primary: #D4A574;
+            --color-primary-dark: #B8956A;
+            --color-primary-light: #E8C9A8;
+            --color-secondary: #7D9B84;
+            --color-secondary-dark: #5A7A63;
+            --color-accent: #C77B63;
+            --color-accent-light: #E5A08C;
+            --color-dark: #2A2926;
+            --color-dark-light: #3D3C38;
+            --color-sand: #F5F0E8;
+            --color-sand-dark: #EBE5DB;
+            --color-cream: #FAF7F2;
+            --color-white: #FFFFFF;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(42, 41, 38, 0.08);
+            --shadow-md: 0 8px 24px rgba(42, 41, 38, 0.12);
+            --shadow-lg: 0 16px 48px rgba(42, 41, 38, 0.16);
+
+            /* Container */
+            --container-max-width: 1200px;
+            --container-padding: 1.5rem;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-dark);
+            background-color: var(--color-cream);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ============================================
+           UTILITIES & ANIMATIONS
+        ============================================ */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .section {
+            padding: var(--spacing-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        .wow-scale-up {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        @keyframes cat-eye {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.85); }
+        }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 1rem var(--container-padding);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .nav-logo svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition-base);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.5rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            transition: background var(--transition-base), transform var(--transition-base);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-dark);
+            transition: all var(--transition-base);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-cream) 50%, #F0EBE3 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+
+        .hero-blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-primary-light);
+            top: 10%;
+            right: 15%;
+            animation: pulse-soft 8s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-secondary);
+            bottom: 20%;
+            left: 10%;
+            opacity: 0.3;
+            animation: pulse-soft 10s ease-in-out infinite reverse;
+        }
+
+        .hero-blob-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--color-accent-light);
+            top: 40%;
+            left: 5%;
+            opacity: 0.35;
+            animation: pulse-soft 12s ease-in-out infinite;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            padding-right: var(--spacing-lg);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-primary-light);
+            border-radius: var(--radius-xl);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-dark);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-dark-light);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--transition-base);
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+            box-shadow: 0 4px 16px rgba(199, 123, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(199, 123, 99, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border: 2px solid var(--color-sand-dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--spacing-lg);
+            background: linear-gradient(transparent, rgba(42, 41, 38, 0.8));
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--color-white);
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .hero-stat-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-card-1 {
+            top: 10%;
+            left: -30px;
+        }
+
+        .hero-card-2 {
+            bottom: 15%;
+            right: -20px;
+            animation-delay: -3s;
+        }
+
+        .hero-card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-sand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-primary);
+        }
+
+        .hero-card-content h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .hero-card-content p {
+            font-size: 0.75rem;
+            color: var(--color-dark-light);
+        }
+
+        /* ============================================
+           PROBLEM/SOLUTION SECTION
+        ============================================ */
+        .problem-solution {
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .problem-solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-sand) 0%, transparent 100%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--color-dark-light);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #FDF0F0 0%, #FFF5F5 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #F0F5F0 0%, #F5FAF5 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .problem-card .card-icon {
+            background: rgba(199, 123, 99, 0.2);
+        }
+
+        .solution-card .card-icon {
+            background: rgba(125, 155, 132, 0.2);
+        }
+
+        .card-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .problem-card .card-icon svg {
+            fill: var(--color-accent);
+        }
+
+        .solution-card .card-icon svg {
+            fill: var(--color-secondary);
+        }
+
+        .problem-card h3,
+        .solution-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .problem-card p,
+        .solution-card p {
+            color: var(--color-dark-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .problem-list,
+        .solution-list {
+            margin-top: var(--spacing-md);
+        }
+
+        .problem-list li,
+        .solution-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(42, 41, 38, 0.08);
+        }
+
+        .problem-list li:last-child,
+        .solution-list li:last-child {
+            border-bottom: none;
+        }
+
+        .problem-list svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .solution-list svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-secondary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+        ============================================ */
+        .services {
+            background: var(--color-sand);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-content p {
+            color: var(--color-dark-light);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-tag {
+            padding: 0.35rem 0.75rem;
+            background: var(--color-sand);
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-dark);
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+        ============================================ */
+        .testimonials {
+            background: var(--color-dark);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+
+        .testimonials .section-label {
+            color: var(--color-primary);
+        }
+
+        .testimonials .section-title {
+            color: var(--color-white);
+        }
+
+        .testimonials .section-description {
+            color: rgba(250, 247, 242, 0.8);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform var(--transition-base), background var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: #FFD700;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(250, 247, 242, 0.9);
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-white);
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--color-white);
+        }
+
+        .testimonial-info p {
+            font-size: 0.85rem;
+            color: rgba(250, 247, 242, 0.6);
+        }
+
+        /* ============================================
+           DIFFERENTIALS SECTION
+        ============================================ */
+        .differentials {
+            background: var(--color-cream);
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .differential-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            transition: transform var(--transition-base);
+        }
+
+        .differential-item:hover {
+            transform: translateX(8px);
+        }
+
+        .differential-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-sand);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .differential-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-primary);
+        }
+
+        .differential-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .differential-content p {
+            color: var(--color-dark-light);
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+        ============================================ */
+        .contact {
+            background: var(--color-white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .contact-info {
+            padding-right: var(--spacing-lg);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            color: var(--color-dark-light);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-sand);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--color-primary);
+        }
+
+        .contact-item-content h4 {
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            color: var(--color-dark-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-item-content a {
+            color: var(--color-primary);
+            transition: color var(--transition-fast);
+        }
+
+        .contact-item-content a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-sand);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-sand-dark);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-dark);
+            background: var(--color-white);
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            margin-top: var(--spacing-sm);
+        }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-brand .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-brand .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--color-primary);
+        }
+
+        .footer-brand p {
+            color: rgba(250, 247, 242, 0.7);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-column h4 {
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-white);
+        }
+
+        .footer-column ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-column a {
+            color: rgba(250, 247, 242, 0.7);
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-column a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(250, 247, 242, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(250, 247, 242, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(250, 247, 242, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-fast);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-primary);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-white);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+        ============================================ */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 6rem 2rem;
+                box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+                transition: right var(--transition-base);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .hero-card {
+                display: none;
+            }
+
+            .hero-image {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ============================================
+           ACCESSIBILITY - REDUCED MOTION
+        ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in,
+            .wow-scale-up {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4C14.5 4 10 8.5 10 14c0 3 1.2 5.7 3.2 7.8L10 35h6l2.5-8.5c0.5 0.1 1 0.1 1.5 0.1s1 0 1.5-0.1L24 35h6l-3.2-13.2C28.8 19.7 30 17 30 14c0-5.5-4.5-10-10-10z"/>
+                    <circle cx="17" cy="14" r="2" fill="#fff"/>
+                    <circle cx="23" cy="14" r="2" fill="#fff"/>
+                </svg>
+                Feline
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge wow-fade-up">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    Exclusivo para Felinos
+                </div>
+                <h1 class="hero-title wow-fade-up" data-delay="100">
+                    Cuidado Especializado para Seu <span>Gato</span>
+                </h1>
+                <p class="hero-subtitle wow-fade-up" data-delay="200">
+                    Clínica veterinária exclusiva para felinos em Ribeirão Preto. Ambiente livre de estresse, equipe especializada e atendimento personalizado para a saúde e felicidade do seu gatinho.
+                </p>
+                <div class="hero-actions wow-fade-up" data-delay="300">
+                    <a href="#contato" class="btn btn-primary">
+                        Agendar Consulta
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </a>
+                    <a href="#servicos" class="btn btn-secondary">
+                        Conhecer Serviços
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual wow-fade-in" data-delay="200">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1573821663912-569905455b1c?w=800&q=80" alt="Gato elegante e saudável" class="hero-image">
+                    <div class="hero-image-overlay">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">15+</div>
+                            <div class="hero-stat-text">Anos de experiência<br>exclusiva com felinos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-card hero-card-1">
+                    <div class="hero-card-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <div class="hero-card-content">
+                        <h4>Ambiente Stress-Free</h4>
+                        <p>100% livre de cães</p>
+                    </div>
+                </div>
+                <div class="hero-card hero-card-2">
+                    <div class="hero-card-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="hero-card-content">
+                        <h4>Especialistas</h4>
+                        <p>Em medicina felina</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution" id="sobre">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Por Que Uma Clínica Exclusiva?</span>
+                <h2 class="section-title">Gatos São Únicos. Seu Cuidado Também Deve Ser.</h2>
+                <p class="section-description">Entendemos as necessidades específicas dos felinos e criamos um ambiente pensado exclusivamente para eles.</p>
+            </div>
+            <div class="problem-solution-grid">
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"/>
+                        </svg>
+                    </div>
+                    <h3>O Desafio</h3>
+                    <p>Clínicas convencionais não são preparadas para atender as particularidades felinas. O resultado: estresse, medo e experiências traumáticas.</p>
+                    <ul class="problem-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Convivência com cães no mesmo espaço</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Odores e sons que estressam felinos</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Profissionais sem especialização em gatos</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Equipamentos e técnicas inadequados</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-card wow-fade-up" data-delay="200">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <h3>A Solução Feline</h3>
+                    <p>Nossa clínica foi desenhada do zero para oferecer o melhor atendimento veterinário para felinos, com foco em bem-estar e saúde integral.</p>
+                    <ul class="solution-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Ambiente 100% livre de cães</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Consultório com feromônios sintéticos calmantes</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Veterinários com residência em felinos</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span>Abordagem gentil e respeitosa</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Serviços</span>
+                <h2 class="section-title">Cuidados Completos para Seu Felino</h2>
+                <p class="section-description">Oferecemos uma gama completa de serviços veterinários especializados para garantir a saúde e o bem-estar do seu gato em todas as fases da vida.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-scale-up" data-delay="100">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&q=80" alt="Consulta veterinária">
+                    </div>
+                    <div class="service-content">
+                        <h3>Consultas Clínicas</h3>
+                        <p>Avaliação completa da saúde do seu gato com exame físico detalhado, histórico e orientações personalizadas.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Check-up</span>
+                            <span class="service-tag">Prevenção</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card wow-scale-up" data-delay="200">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&q=80" alt="Cirurgia veterinária">
+                    </div>
+                    <div class="service-content">
+                        <h3>Cirurgias Seguras</h3>
+                        <p>Procedimentos cirúrgicos com tecnologia avançada, anestesia monitorada e recuperação assistida.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Esterilização</span>
+                            <span class="service-tag">Soft Tissue</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card wow-scale-up" data-delay="300">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&q=80" alt="Exames laboratoriais">
+                    </div>
+                    <div class="service-content">
+                        <h3>Diagnóstico Laboratorial</h3>
+                        <p>Exames completos com análise in-house para resultados rápidos e precisos em hemograma, bioquímica e mais.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Hemograma</span>
+                            <span class="service-tag">Bioquímica</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card wow-scale-up" data-delay="100">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1599449812657-7a5d56e4c6c9?w=600&q=80" alt="Odontologia felina">
+                    </div>
+                    <div class="service-content">
+                        <h3>Odontologia Felina</h3>
+                        <p>Tratamento completo de saúde bucal: limpeza, extrações e tratamento de doenças periodontais.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Tártaro</span>
+                            <span class="service-tag">Gengivite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card wow-scale-up" data-delay="200">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&q=80" alt="Ultrassom veterinário">
+                    </div>
+                    <div class="service-content">
+                        <h3>Imagem Avançada</h3>
+                        <p>Ultrassonografia e radiografia digital para diagnóstico preciso de condições internas.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Ultrassom</span>
+                            <span class="service-tag">Raio-X</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card wow-scale-up" data-delay="300">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?w=600&q=80" alt="Hotelzinho para gatos">
+                    </div>
+                    <div class="service-content">
+                        <h3>Hotelzinho & Creche</h3>
+                        <p>Acomodação segura e confortável para seu gato enquanto você viaja, com monitorização veterinária.</p>
+                        <div class="service-features">
+                            <span class="service-tag">Diária</span>
+                            <span class="service-tag">Creche</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+                <p class="section-description">A satisfação dos tutores e o bem-estar dos gatinhos são nosso maior reconhecimento.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-scale-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A Dra. Marcela é incrível! Meu gato Mingau sempre odiava veterinário, mas aqui ele ficou tranquilo. O ambiente é realmente pensado para eles. Recomendo muito!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AC</div>
+                        <div class="testimonial-info">
+                            <h4>Ana Carolina Silva</h4>
+                            <p>Tutora do Mingau</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-scale-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Finalmente uma clínica que entende gatos! Fiz a castração da Luna e o cuidado foi exceptional. Ela se recuperou super rápido e a equipe foi atenciosa do início ao fim."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div class="testimonial-info">
+                            <h4>Roberto Ferreira</h4>
+                            <p>Tutor da Luna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-scale-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-5.18 3.25L8 14.14 3 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O hotelzinho é maravilhoso! Viajamos e deixamos os três gatos lá. Recebemos fotos e atualizações diárias. Eles voltaram felizes e relaxados. Confiança total!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PM</div>
+                        <div class="testimonial-info">
+                            <h4>Patrícia Mendes</h4>
+                            <p>Tutora de Thor, Loki e Freya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="section differentials" id="diferenciais">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Diferenciais</span>
+                <h2 class="section-title">Por Que Escolher a Feline?</h2>
+                <p class="section-description">Somos referência em medicina felina na região de Ribeirão Preto, combinando expertise técnico com amor pelos animais.</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-item wow-fade-up" data-delay="100">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Certificação Cat Friendly</h3>
+                        <p>Nossa clínica possui certificação internacional que atesta nosso compromisso com o bem-estar felino e práticas gentis.</p>
+                    </div>
+                </div>
+                <div class="differential-item wow-fade-up" data-delay="200">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Equipe Especializada</h3>
+                        <p>Veterinários com residência e pós-graduação exclusiva em medicina felina, constantemente atualizados.</p>
+                    </div>
+                </div>
+                <div class="differential-item wow-fade-up" data-delay="300">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Protocolos de Segurança</h3>
+                        <p>Equipamentos modernos e protocolos rigorosos para garantir procedimentos seguros e bem-estar durante toda a visita.</p>
+                    </div>
+                </div>
+                <div class="differential-item wow-fade-up" data-delay="400">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16l-3.22-3.22V9h1.5v5.18l2.77 2.77-.05.05z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Atendimento Humanizado</h3>
+                        <p>Respeitamos o tempo de cada paciente, com consultas sem pressa e abordagem individualizada para cada gato.</p>
+                    </div>
+                </div>
+                <div class="differential-item wow-fade-up" data-delay="500">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Comunicação Transparente</h3>
+                        <p>Explicamos tudo com clareza, tiramos dúvidas e mantemos você informado sobre cada etapa do tratamento.</p>
+                    </div>
+                </div>
+                <div class="differential-item wow-fade-up" data-delay="600">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                    <div class="differential-content">
+                        <h3>Amor pelos Gatos</h3>
+                        <p>Mais que profissionais, somos apaixonados por felinos. Cada gatinho que atende é tratado como se fosse nosso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende uma Consulta</h2>
+                <p class="section-description">Entre em contato para agendar uma visita ou tirar suas dúvidas. Seu gatinho merece o melhor cuidado!</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info wow-fade-up" data-delay="100">
+                    <h3>Visite Nossa Clínica</h3>
+                    <p>Estamos localizados no centro de Ribeirão Preto, com fácil acesso e estacionamento próximo. Venha conhecer nosso espaço cat-friendly!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Endereço</h4>
+                                <p>Av. Independência, 698 - Centro<br>Ribeirão Preto - SP, 14010-210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Telefone</h4>
+                                <p><a href="tel:+551636329819">(16) 3632-9819</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 19h<br>Sábado: 8h às 14h</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p><a href="mailto:contato@feline.com.br">contato@feline.com.br</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" data-delay="200">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Seu Nome *</label>
+                            <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Seu Email *</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service">
+                                <option value="">Selecione uma opção</option>
+                                <option value="consulta">Consulta Clínica</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="exames">Exames Laboratoriais</option>
+                                <option value="odontologia">Odontologia</option>
+                                <option value="imagem">Imagem (Ultrassom/Raio-X)</option>
+                                <option value="hotelzinho">Hotelzinho/Creche</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="catName">Nome do Gato</label>
+                            <input type="text" id="catName" name="catName" placeholder="Nome do seu felino">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre o que você precisa..."></textarea>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                                Enviar Mensagem
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4C14.5 4 10 8.5 10 14c0 3 1.2 5.7 3.2 7.8L10 35h6l2.5-8.5c0.5 0.1 1 0.1 1.5 0.1s1 0 1.5-0.1L24 35h6l-3.2-13.2C28.8 19.7 30 17 30 14c0-5.5-4.5-10-10-10z"/>
+                            <circle cx="17" cy="14" r="2" fill="#fff"/>
+                            <circle cx="23" cy="14" r="2" fill="#fff"/>
+                        </svg>
+                        Feline
+                    </div>
+                    <p>Clínica veterinária exclusiva para felinos em Ribeirão Preto. Cuidado especializado, ambiente stress-free e muito amor pelos gatos.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Consultas</a></li>
+                        <li><a href="#servicos">Cirurgias</a></li>
+                        <li><a href="#servicos">Exames</a></li>
+                        <li><a href="#servicos">Hotelzinho</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+551636329819">(16) 3632-9819</a></li>
+                        <li><a href="mailto:contato@feline.com.br">contato@feline.com.br</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Feline - Clínica Veterinária Especialista em Gatos. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m5.6 14c-.23.65-1.12 1.2-1.55 1.26-.42.06-.77.12-2.63-.57-1.97-.74-4.09-2.86-4.24-3.07-.15-.21-1.23-1.64-1.23-3.13 0-1.48.77-2.22 1.05-2.52.27-.3.6-.38.8-.38.2 0 .4.01.57.06.17.05.4.13.58.53.2.43.67 1.65.73 1.77.06.12.1.27.02.42-.08.15-.12.25-.24.38-.12.13-.26.29-.37.39-.12.11-.25.23-.11.46.14.23.62 1.02 1.34 1.66.92.82 1.7 1.08 1.94 1.19.24.11.38.1.52-.07.14-.17.6-.7.77-.94.16-.24.33-.2.56-.11.23.08 1.45.68 1.7.81.25.12.42.18.48.27.06.1.06.58-.17 1.23z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        let lastScroll = 0;
+
+        // Hide/show nav on scroll
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // INTERSECTION OBSERVER - WOW ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in, .wow-scale-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // FORM HANDLING
+        // ============================================
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // Here you would normally send the data to your backend
+            console.log('Form submitted:', data);
+
+            // Show success message
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // ============================================
+        // DYNAMIC FORM MASKS
+        // ============================================
+        const phoneInput = document.getElementById('phone');
+
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+
+            if (value.length > 6) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+            } else if (value.length > 2) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+
+            e.target.value = value;
+        });
+
+        // ============================================
+        // PREFERS REDUCED MOTION
+        // ============================================
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.wow-fade-up, .wow-fade-in, .wow-scale-up').forEach(el => {
+                el.classList.add('visible');
+            });
+        }
+    </script>
+</body>
+</html>
