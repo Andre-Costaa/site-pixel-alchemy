@@ -310,3 +310,16 @@ Inclua uma entrada com:
   - Diretório /site-demo/dra-leticia-araujo não existe localmente
   - `ls site-demo/ | grep leticia` não retorna resultados
   - Story US-038 não encontrada no prd2.json
+
+### REV-040 - Clinica Odontológica Dr. Fabricio de Almeida Martins
+- **ID da revisão**: REV-040
+- **ID do PRD original**: US-040
+- **Nome do cliente**: Clinica Odontológica Dr. Fabricio de Almeida Martins
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-fabricio-almeida-martins/index.html
+- **Breakpoint(s) afetado(s)**: N/A
+- **Problema**: O site não existe. A story US-040 está marcada como "passes": true no prd.json, mas o diretório 'site-demo/dr-fabricio-almeida-martins' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
+- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-040 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
+- **Evidências**:
+  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/dr-fabricio-almeida-martins/index.html
+  - Diretório /site-demo/dr-fabricio-almeida-martins não existe localmente
+  - `ls site-demo/ | grep fabricio` não retorna resultados
