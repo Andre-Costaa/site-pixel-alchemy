@@ -69,3 +69,13 @@ Inclua uma entrada com:
 - **Problema**: A imagem do hero mostra um dentista homem, mas o site é para "Dra. Laura Sanches" (uma mulher). Isso cria uma inconsistência entre o conteúdo visual e o nome da profissional.
 - **Correção sugerida**: Substituir a imagem do hero por uma foto de uma dentista mulher. Sugestão: usar uma imagem de uma profissional feminina em consultório odontológico.
 - **Evidências**: Screenshot em `.playwright-mcp/dra-laura-sanches-final-1440.png` - notar que a imagem no hero mostra um homem de jaleco branco, não uma mulher.
+
+### REV-011 - Dra. Andrea Leal
+- **ID da revisão**: REV-011
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Dra. Andrea Leal
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-andrea-leal/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Superando Desafios Odontológicos" (problem-solution), "Tratamentos Personalizados" (services), "Depoimentos", "Diferenciais" e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("Dor e Desconforto", "Insegurança ao Sorrir", "Tratamentos Complexos"), soluções ("Alívio Imediato", "Sorriso Transformador", "Abordagem Integrada"), cards de serviços ("Implantes Dentários", "Ortodontia", "Clareamento Dental", "Facetas de Porcelana", "Restaurações Estéticas", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/rev011-andrea-leal-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
