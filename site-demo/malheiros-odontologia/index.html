@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malheiros Odontologia | Excelência em Odontologia em Ribeirão Preto</title>
+    <meta name="description" content="Malheiros Odontologia - Excelência em odontologia em Ribeirão Preto. Tratamentos estéticos, implantes, clareamento e muito mais.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+           CSS RESET & BASE
+        ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color Palette */
+            --forest-dark: #1B4D3E;
+            --forest-medium: #2A6B54;
+            --forest-light: #3A8B6E;
+            --copper-primary: #C9885A;
+            --copper-light: #D9A078;
+            --copper-dark: #A86B3E;
+            --cream: #FAF7F2;
+            --cream-dark: #F0EBE0;
+            --charcoal: #1A1A1A;
+            --charcoal-light: #2A2A2A;
+            --white: #FFFFFF;
+            --gray-light: #E8E4DC;
+            --gray-medium: #9A9590;
+            --gray-dark: #5A5550;
+
+            /* Typography */
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+
+            /* Spacing */
+            --section-padding: 100px 0;
+            --container-max: 1280px;
+
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           UTILITIES
+        ======================================== */
+        .container {
+            width: 90%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .text-center { text-align: center; }
+        .text-copper { color: var(--copper-primary); }
+        .text-forest { color: var(--forest-dark); }
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--copper-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--copper-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--copper-primary), var(--copper-light));
+            color: var(--white) !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition-smooth) !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 136, 90, 0.4);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition-smooth);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-image:
+                radial-gradient(circle at 20% 50%, var(--copper-primary) 1px, transparent 1px),
+                radial-gradient(circle at 80% 50%, var(--forest-light) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: patternMove 30s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(180deg, transparent 0%, var(--cream) 100%);
+            clip-path: polygon(0 60%, 25% 40%, 50% 55%, 75% 35%, 100% 50%, 100% 100%, 0 100%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 136, 90, 0.2);
+            border: 1px solid var(--copper-primary);
+            color: var(--copper-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--copper-primary), var(--copper-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-medium);
+            margin-bottom: 35px;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--copper-light));
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(201, 136, 90, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 2px solid var(--gray-medium);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--copper-primary);
+            color: var(--copper-light);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 20px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            animation: floatGentle 6s ease-in-out infinite;
+        }
+
+        .stat-card:nth-child(2) { animation-delay: 1s; }
+        .stat-card:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes floatGentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--copper-light);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-medium);
+            margin-top: 5px;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-image-decoration {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--forest-light));
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            bottom: 40px;
+            left: -50px;
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: floatGentle 5s ease-in-out infinite;
+        }
+
+        .hero-floating-card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .hero-floating-card-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+        }
+
+        .hero-floating-card-content p {
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+
+        /* ========================================
+           PROBLEM/SOLUTION SECTION
+        ======================================== */
+        .problem-solution {
+            background: var(--cream);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(201, 136, 90, 0.15);
+            color: var(--copper-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .problem-cards, .solution-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .problem-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #E85A5A;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .problem-card:hover {
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .problem-card-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(232, 90, 90, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E85A5A;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+        }
+
+        .arrow-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-connector-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--forest-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest-medium));
+            padding: 30px;
+            border-radius: 15px;
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+        }
+
+        .solution-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 40px rgba(27, 77, 62, 0.3);
+        }
+
+        .solution-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--copper-light);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .solution-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .solution-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .solution-feature {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ========================================
+           SERVICES SECTION
+        ======================================== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-card-image img {
+            transform: scale(1.1);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(27, 77, 62, 0.8) 100%);
+        }
+
+        .service-card-icon {
+            position: absolute;
+            bottom: -25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--copper-light));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(201, 136, 90, 0.4);
+        }
+
+        .service-card-content {
+            padding: 35px 25px 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--copper-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card-link:hover {
+            gap: 12px;
+            color: var(--copper-primary);
+        }
+
+        /* ========================================
+           TESTIMONIALS SECTION
+        ======================================== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--forest-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.03;
+            background-image:
+                radial-gradient(circle at 25% 25%, var(--white) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, var(--copper-primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .testimonials .section-title,
+        .testimonials .section-subtitle {
+            color: var(--white);
+        }
+
+        .testimonials .section-tag {
+            background: rgba(201, 136, 90, 0.2);
+            color: var(--copper-light);
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 20px;
+        }
+
+        .testimonial-content {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--copper-primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            color: var(--cream);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--copper-primary), var(--forest-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 3px;
+        }
+
+        .testimonial-stars {
+            color: var(--copper-primary);
+            font-size: 0.95rem;
+        }
+
+        .testimonials-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-dot.active {
+            background: var(--copper-primary);
+            transform: scale(1.2);
+        }
+
+        /* ========================================
+           DIFFERENTIALS SECTION
+        ======================================== */
+        .differentials {
+            background: var(--cream);
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .differential-card {
+            text-align: center;
+            padding: 35px 25px;
+            background: var(--white);
+            border-radius: 15px;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .differential-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .differential-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(201, 136, 90, 0.15), rgba(58, 139, 110, 0.15));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .differential-card:hover .differential-icon {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, var(--copper-primary), var(--forest-light));
+        }
+
+        .differential-card:hover .differential-icon {
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .differential-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .differential-card p {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        /* ========================================
+           CONTACT SECTION
+        ======================================== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.05rem;
+            color: var(--gray-dark);
+            margin-bottom: 35px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(201, 136, 90, 0.15), rgba(58, 139, 110, 0.15));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 5px;
+        }
+
+        .contact-item-content p {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            margin-bottom: 0;
+        }
+
+        .contact-item-content a {
+            color: var(--copper-dark);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item-content a:hover {
+            color: var(--copper-primary);
+        }
+
+        .contact-form-wrapper {
+            background: var(--cream);
+            padding: 45px;
+            border-radius: 20px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-light);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--charcoal);
+            background: var(--white);
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--copper-primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--copper-primary), var(--forest-light));
+            color: var(--white);
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 136, 90, 0.3);
+        }
+
+        /* ========================================
+           FOOTER
+        ========================================
+        */
+        .footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand p {
+            color: var(--gray-medium);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            background: var(--copper-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-column ul a:hover {
+            color: var(--copper-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           FLOATING WHATSAPP BUTTON
+        ======================================== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6); }
+        }
+
+        /* ========================================
+           ANIMATION CLASSES
+        ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+                margin-bottom: 40px;
+            }
+
+            .hero-floating-card {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -30px;
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-connector {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+
+            .arrow-connector-icon {
+                transform: rotate(-90deg);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .differentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--charcoal);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                transform: translateX(100%);
+                transition: var(--transition-smooth);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .problem-solution-grid {
+                gap: 30px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-form-wrapper {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Form Success Message */
+        .form-success {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-icon">M</span>
+                Malheiros Odontologia
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-pattern"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Excelência em Odontologia</span>
+                <h1 class="hero-title">Seu sorriso merece <span>cuidado premium</span></h1>
+                <p class="hero-subtitle">Tratamentos odontológicos de alta qualidade com tecnologia de ponta e atendimento personalizado em Ribeirão Preto.</p>
+                <div class="hero-cta-group">
+                    <a href="#contato" class="btn-primary">Agendar Consulta</a>
+                    <a href="#servicos" class="btn-secondary">Conhecer Serviços</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Anos de Experiência</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8K+</div>
+                        <div class="stat-label">Sorrisos Transformados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Avaliação Google</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Consultório Odontológico Moderno">
+                </div>
+                <div class="hero-image-decoration"></div>
+                <div class="hero-floating-card">
+                    <div class="hero-floating-card-icon">✓</div>
+                    <div class="hero-floating-card-content">
+                        <h4>Atendimento Premium</h4>
+                        <p>Tecnologia de ponta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave"></div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Por que nos escolher</span>
+                <h2 class="section-title">Transforme seu sorriso com confiança</h2>
+                <p class="section-subtitle">Entendemos as dificuldades em encontrar um dentista confiável. Aqui está a solução.</p>
+            </div>
+            <div class="problem-solution-grid">
+                <div class="problem-cards">
+                    <div class="problem-card reveal">
+                        <div class="problem-card-icon">✕</div>
+                        <h3>Dentes amarelados</h3>
+                        <p>O sorriso manchado afeta sua autoestima e confiança social.</p>
+                    </div>
+                    <div class="problem-card reveal">
+                        <div class="problem-card-icon">✕</div>
+                        <h3>Medo do dentista</h3>
+                        <p>Experiências traumáticas anteriores geram ansiedade.</p>
+                    </div>
+                    <div class="problem-card reveal">
+                        <div class="problem-card-icon">✕</div>
+                        <h3>Tratamentos caros</h3>
+                        <p>Preços abusivos afastam o cuidado dental necessário.</p>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-connector-icon">→</div>
+                </div>
+                <div class="solution-cards">
+                    <div class="solution-card reveal">
+                        <div class="solution-card-icon">✓</div>
+                        <h3>Sorriso Brilhante</h3>
+                        <p>Clareamento profissional com resultados visíveis em poucas sessões.</p>
+                        <div class="solution-features">
+                            <span class="solution-feature">✓ Tecnologia LED</span>
+                            <span class="solution-feature">✓ Sem sensibilidade</span>
+                            <span class="solution-feature">✓ Duração anos</span>
+                            <span class="solution-feature">✓ Garantia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Nossos Serviços</span>
+                <h2 class="section-title">Tratamentos especializados</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de tratamentos odontológicos para todas as suas necessidades.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Clareamento Dental">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">✨</div>
+                    <div class="service-card-content">
+                        <h3>Clareamento Dental</h3>
+                        <p>Sorria com confiança. Clareamento profissional com tecnologia avançada.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Implantes Dentários">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">🦷</div>
+                    <div class="service-card-content">
+                        <h3>Implantes Dentários</h3>
+                        <p>Recupere a função e estética com implantes de alta qualidade.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Ortodontia">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">😁</div>
+                    <div class="service-card-content">
+                        <h3>Ortodontia</h3>
+                        <p>Alinhadores invisíveis e aparelhos modernos para um sorriso perfeito.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Facetas de Porcelana">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">💎</div>
+                    <div class="service-card-content">
+                        <h3>Facetas de Porcelana</h3>
+                        <p>Transforme o formato e cor dos dentes com resultados naturais.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&q=80" alt="Próteses Dentárias">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">🔧</div>
+                    <div class="service-card-content">
+                        <h3>Próteses Dentárias</h3>
+                        <p>Próteses personalizadas que recuperam a estética e função.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-image">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=600&q=80" alt="Limpeza e Prevenção">
+                        <div class="service-card-overlay"></div>
+                    </div>
+                    <div class="service-card-icon">🫧</div>
+                    <div class="service-card-content">
+                        <h3>Limpeza e Prevenção</h3>
+                        <p>Profilaxia completa para manter a saúde bucal em dia.</p>
+                        <a href="#contato" class="service-card-link">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="testimonials-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-subtitle">Histórias reais de transformação e satisfação.</p>
+            </div>
+            <div class="testimonials-carousel">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <span class="testimonial-quote">"</span>
+                            <p class="testimonial-text">Excelente atendimento! O Dr. Malheiros é muito profissional e atencioso. Fiz um clareamento que superou minhas expectativas. Recomendo a todos!</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">MC</div>
+                                <div class="testimonial-info">
+                                    <h4>Maria Clara Santos</h4>
+                                    <div class="testimonial-stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <span class="testimonial-quote">"</span>
+                            <p class="testimonial-text">Havia anos que não ia ao dentista por medo. A equipe da Malheiros Odontologia me deixou super tranquila. O tratamento foi indolor e o resultado impecável.</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">RF</div>
+                                <div class="testimonial-info">
+                                    <h4>Roberto Ferreira</h4>
+                                    <div class="testimonial-stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <span class="testimonial-quote">"</span>
+                            <p class="testimonial-text">Fiz meus implantes e foi a melhor decisão! O processo foi tranquilo e a recuperação super rápida. Hoje sorrio sem constrangimento. Gratidão eterna!</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">AL</div>
+                                <div class="testimonial-info">
+                                    <h4>Ana Luiza Mendes</h4>
+                                    <div class="testimonial-stars">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-dots">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="section differentials" id="diferenciais">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Nossos Diferenciais</span>
+                <h2 class="section-title">Por que escolher a Malheiros Odontologia</h2>
+                <p class="section-subtitle">Compromisso com a excelência em cada detalhe do seu tratamento.</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-card reveal">
+                    <div class="differential-icon">🏆</div>
+                    <h3>Excelência</h3>
+                    <p>Mais de 15 anos de experiência em tratamentos de alta complexidade.</p>
+                </div>
+                <div class="differential-card reveal">
+                    <div class="differential-icon">🔬</div>
+                    <h3>Tecnologia</h3>
+                    <p>Equipamentos modernos para diagnósticos precisos e tratamentos eficazes.</p>
+                </div>
+                <div class="differential-card reveal">
+                    <div class="differential-icon">💚</div>
+                    <h3>Carinho</h3>
+                    <p>Atendimento humanizado que prioriza seu conforto e bem-estar.</p>
+                </div>
+                <div class="differential-card reveal">
+                    <div class="differential-icon">📍</div>
+                    <h3>Localização</h3>
+                    <p>Consultório no coração de Ribeirão Preto com fácil acesso e estacionamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <span class="section-tag">Contato</span>
+                    <h3>Agende sua consulta</h3>
+                    <p>Entre em contato para marcar uma consulta ou tirar suas dúvidas. Estamos prontos para transformar seu sorriso!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📍</div>
+                            <div class="contact-item-content">
+                                <h4>Endereço</h4>
+                                <p>Sala 800 - R. Chile, 1711 - Jardim Irajá<br>Ribeirão Preto - SP</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📞</div>
+                            <div class="contact-item-content">
+                                <h4>Telefone</h4>
+                                <p><a href="tel:+551634433300">(16) 3443-3300</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">⏰</div>
+                            <div class="contact-item-content">
+                                <h4>Horário</h4>
+                                <p>Segunda a Sexta: 8h às 19h<br>Sábados: 8h às 13h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal">
+                    <form class="contact-form" id="contactForm">
+                        <h3>Solicite um retorno</h3>
+                        <div class="form-success" id="formSuccess">
+                            Mensagem enviada com sucesso! Entraremos em contato em breve.
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(16) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tratamento desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="clareamento">Clareamento Dental</option>
+                                <option value="implantes">Implantes Dentários</option>
+                                <option value="ortodontia">Ortodontia</option>
+                                <option value="facetas">Facetas de Porcelana</option>
+                                <option value="proteses">Próteses Dentárias</option>
+                                <option value="limpeza">Limpeza e Prevenção</option>
+                                <option value="outro">Outro tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre suas necessidades..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span>M</span>
+                        Malheiros Odontologia
+                    </div>
+                    <p>Excelência em odontologia em Ribeirão Preto. Transformando sorrisos com tecnologia, cuidado e dedicação há mais de 15 anos.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">👍</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Clareamento</a></li>
+                        <li><a href="#servicos">Implantes</a></li>
+                        <li><a href="#servicos">Ortodontia</a></li>
+                        <li><a href="#servicos">Facetas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>(16) 3443-3300</li>
+                        <li>R. Chile, 1711 - Sala 800</li>
+                        <li>Jardim Irajá - Ribeirão Preto</li>
+                        <li><a href="https://wa.me/551634433300">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Malheiros Odontologia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/551634433300?text=Olá! Gostaria de agendar uma consulta." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        💬
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Testimonials carousel
+        const testimonialTrack = document.querySelector('.testimonial-track');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+        const totalTestimonials = 3;
+
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+            testimonialDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToTestimonial(index));
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            goToTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 10) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+            }
+            e.target.value = value;
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+
+            // Create WhatsApp message
+            const serviceNames = {
+                'clareamento': 'Clareamento Dental',
+                'implantes': 'Implantes Dentários',
+                'ortodontia': 'Ortodontia',
+                'facetas': 'Facetas de Porcelana',
+                'proteses': 'Próteses Dentárias',
+                'limpeza': 'Limpeza e Prevenção',
+                'outro': 'Outro tratamento'
+            };
+
+            const message = `Olá! Meu nome é ${name}. Gostaria de agendar uma consulta para ${serviceNames[service] || 'um tratamento'}. Meu telefone: ${phone}.`;
+
+            // Show success message
+            formSuccess.classList.add('show');
+
+            // Open WhatsApp with the message
+            setTimeout(() => {
+                window.open(`https://wa.me/551634433300?text=${encodeURIComponent(message)}`, '_blank');
+                contactForm.reset();
+                formSuccess.classList.remove('show');
+            }, 1500);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
