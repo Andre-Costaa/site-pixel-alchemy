@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 30/45 (66.7%)
+- **Concluídas**: 32/45 (71.1%)
 - **Em Andamento**: 0
-- **Pendentes**: 15
+- **Pendentes**: 13
 
 ## URLs dos Demos
 
@@ -42,19 +42,19 @@
 | US-028 | **Di Gato Medicina Felina** | **pixelalchemy.com.br/site-demo/di-gato-medicina-felina** |
 | US-029 | **Dog Days - Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h** |
 | US-030 | **BMvet 24 Horas - Zona Oeste** | **pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste** |
+| US-031 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
+| US-032 | **Vídeo Pet Endoscopia e Vídeocirurgia** | **pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-030 - BMvet 24 Horas - Zona Oeste
+- **Último Site**: US-032 - Vídeo Pet Endoscopia e Vídeocirurgia Veterinária
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste
+- **URL**: pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-031 | Endoscopia Vet. Matheus Nascimento | Pendente |
-| US-032 | Vídeo Pet Endoscopia | Pendente |
 | US-033 | Pet Work | Pendente |
 | US-034 | Arthemia | Pendente |
 | US-035 | Mr. Dog e Cia | Pendente |
