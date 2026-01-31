@@ -50,6 +50,16 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, adicionar uma classe `animated` por padrão no HTML ou garantir que o Intersection Observer dispare imediatamente para elementos visíveis.
 - **Evidências**: Screenshots em `.playwright-mcp/dra-ana-carolina-*.png` - notar as áreas em branco nas seções intermediárias da página.
 
+### REV-008 - Dr. Felipe Anderson Sousa Nunes
+- **ID da revisão**: REV-008
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Dr. Felipe Anderson Sousa Nunes
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-felipe-anderson-nunes/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: A seção "Por que escolher o Dr. Felipe?" (problem-solution) está completamente vazia/invisível em todos os breakpoints. Os 6 cards (3 problemas: "Dentes Amarelados", "Dor ao Sorrir", "Profissionais Impessoais" e 3 soluções: "Sorriso Brilhante", "Conforto Total", "Atendimento Humanizado") não estão sendo renderizados visualmente. Apenas o texto "VS" aparece no centro da seção. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/rev008-*.png` - notar as áreas em branco na seção "Por que escolher o Dr. Felipe?" onde deveriam estar os cards de problemas e soluções.
+
 ### REV-003 - Dra. Laura Sanches
 - **ID da revisão**: REV-003
 - **ID do PRD original**: US-043
