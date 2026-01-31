@@ -133,6 +133,26 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
 - **Evidências**: Screenshots em `.playwright-mcp/review-017-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
 
+### REV-018 - Mônica Z. Bordoni Odontologia
+- **ID da revisão**: REV-018
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Mônica Z. Bordoni Odontologia
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/monica-bordoni-odontologia/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Por que escolher a endodontia especializada?" (problem-solution), "Tratamentos especializados" (services), "Depoimentos" (testimonials), "Por que escolher a Dra. Mônica?" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("O Problema": Dor intensa, Sensibilidade, Inchaço, Risco de perda), soluções ("A Solução": Tecnologia de ponta, Procedimento confortável, Recuperação rápida, Dente preservado), cards de serviços ("Tratamento de Canal", "Retratamento de Canal", "Cirurgia Peraapical", "Localização de Canal", "Obturação de Canal", "Avaliação e Diagnóstico"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/rev018-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
+### REV-019 - Dra. Camila Zanirato
+- **ID da revisão**: REV-019
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Dra. Camila Zanirato
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-camila-zanirato/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Transforme Seu Sorriso" (problem-solution), "Nossos Serviços" (services), "O Que Dizem Nossos Pacientes" (testimonials), "Por Que Escolher a Dra. Camila?" (features) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Sente-se inseguro ao sorrir", "Dores de dente constantes", etc.), soluções ("Sorriso confiante e bonito", "Tratamentos sem dor", etc.), cards de serviços ("Clínico Geral", "Estética Dental", "Clareamento", "Implantes", "Ortodontia", "Próteses"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/rev019-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
 - **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
