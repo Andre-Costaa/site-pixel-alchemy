@@ -172,3 +172,13 @@ Inclua uma entrada com:
 - **Problema**: As seções "Você Sabe Que Merece" (problem-solution), "Nossos Serviços" (services), "O Que Nossos Pacientes Dizem" (testimonials), "Números que Inspiram Confiança" (stats) e "Entre em Contato" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Se Envergonha de Sorrir", "Dor e Desconforto", "Medo do Dentista", "Autoestima Baixa"), solução ("Nós Temos a Solução"), cards de serviços ("Implantes Dentários", "Estética Dental", "Ortodontia", "Próteses Dentárias", "Periodontia", "Clínica Geral"), depoimentos, estatísticas e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
 - **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
 - **Evidências**: Screenshots em `.playwright-mcp/carvalho-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
+### REV-021 - Tooth Clinic
+- **ID da revisão**: REV-021
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Tooth Clinic
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/tooth-clinic/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: ~~A imagem do serviço "Próteses Dentais" não estava carregando (404 Not Found) devido a uma URL do Unsplash inválida. A imagem exibia o texto alternativo "Próteses" em vez da imagem do serviço.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1575685608721-4f75981aaa28?w=400&h=250&fit=crop` por uma URL válida `https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=250&fit=crop` no arquivo `site-demo/tooth-clinic/index.html`.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis e bem formatadas. Imagens carregando corretamente. Navegação e CTAs funcionando. Console limpo de erros críticos.

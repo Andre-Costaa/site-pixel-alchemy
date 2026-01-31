@@ -157,3 +157,39 @@ Revisão Playwright completa do site do Dr. Felipe Garcia. **REPROVADO** - Probl
 
 Modificar o CSS para que elementos com `animate-on-scroll` tenham `opacity: 1` por padrão, garantindo visibilidade do conteúdo mesmo antes da animação ser ativada.
 
+## ✓ Iteration 10 - REV-017: Revisão Playwright - Dr. Felipe Garcia
+*2026-01-31T04:14:10.152Z (301s)*
+
+**Status:** Completed
+
+**Notes:**
+|\n| CTAs | ✅ Funcionando |\n| Formulário | ✅ Funcionando |\n| Console JS | ✅ Apenas favicon 404 (não crítico) |\n\n### Artefatos Gerados\n- Screenshots: `.playwright-mcp/review-017-*.png`\n- Registro de reprovação: `checkpoint-review.md`\n- Progresso: `.ralph-tui/progress.md`\n- Atualização: `prd2.json`\n\n### Correção Sugerida\nModificar o CSS para que elementos com `animate-on-scroll` tenham `opacity: 1` por padrão, garantindo visibilidade do conteúdo mesmo antes da animação ser ativada.\n\n
+
+---
+## ✓ Iteration 11 - REV-018: Revisão Playwright - Mônica Z. Bordoni Odontologia
+*2026-01-31T04:16:17.248Z (126s)*
+
+**Status:** Completed
+
+**Notes:**
+Os elementos possuem a classe CSS `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.\n\n**Console:**\nApenas erro 404 no favicon.ico (não crítico).\n\n**Evidências:**\nScreenshots salvos em `.playwright-mcp/rev018-*.png` mostrando as áreas em branco.\n\n**Registro:**\nProblema documentado no `checkpoint-review.md` com descrição detalhada e correção sugerida.\n\n
+
+---
+## ✓ Iteration 12 - REV-019: Revisão Playwright - Dra. Camila Zanirato
+*2026-01-31T04:19:47.113Z (209s)*
+
+**Status:** Completed
+
+**Notes:**
+r âncoras funcionando\n- ✅ Formulário funcional (envia dados via GET)\n- ✅ Hero e footer visíveis\n- ✅ Layout responsivo (estrutura existe, apenas invisível)\n\n### Evidências:\n- Screenshots salvos em `.playwright-mcp/rev019-*.png`\n- Registro detalhado adicionado ao `checkpoint-review.md`\n\n### Correção Sugerida:\nModificar o CSS para que elementos com `animate-on-scroll` tenham `opacity: 1` por padrão, ou garantir que o Intersection Observer dispare imediatamente para elementos visíveis.\n\n
+
+---
+## ✓ Iteration 13 - REV-020: Revisão Playwright - Carvalho Odontologia
+*2026-01-31T04:22:40.859Z (173s)*
+
+**Status:** Completed
+
+**Notes:**
+ria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.\n\n### O que Funciona\n- Navegação por âncoras (Início, Serviços, Depoimentos, Contato)\n- Formulário de contato (submissão e mensagem de sucesso)\n- Console do navegador limpo (apenas erro 404 no favicon.ico - não crítico)\n- Hero e footer renderizam corretamente\n\n### Registro\nReprovação registrada em `checkpoint-review.md` com descrição detalhada do problema e correção sugerida.\n\n
+
+---
