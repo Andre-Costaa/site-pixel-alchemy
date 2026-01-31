@@ -447,6 +447,25 @@ Inclua uma entrada com:
   - Telefone: (16) 3234-6832
 - **Status**: ✅ Site criado e enviado para produção. Aguardando revisão Playwright para validação final.
 
+### US-005 - MALBEC VETERINÁRIA
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/malbec-veterinaria-atendimento-veterinario-domiciliar-24-horas/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: dcefae0
+- **Descrição**: Site completo para MALBEC VETERINÁRIA - Atendimento Veterinário Domiciliar 24 Horas. Design premiado "Emergency Care Warmth" com:
+  - Tipografia distintiva: DM Serif Display + Outfit
+  - Paleta de cores: terracota emergency (#E63946) com charcoal e cream
+  - Animações: pulse line, blobs flutuantes, scroll-triggered animations
+  - Seções: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - Banner de emergência fixo com pulse animation
+  - Formulário que redireciona para WhatsApp
+  - Totalmente responsivo
+  - SVG icons (sem emojis)
+  - Informações: R. Magda Perona Frossard, 710 - Nova Aliança, Ribeirão Preto - SP, 14026-596
+  - Telefone: (16) 98180-0379
+
+---
+
 ### REV-001 - Animed 24H Veterinary Clinic and Animal Aesthetics
 - **ID da revisão**: REV-001
 - **ID do PRD original**: US-001
