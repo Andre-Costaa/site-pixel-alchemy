@@ -297,6 +297,16 @@ Inclua uma entrada com:
 - **Correção aplicada**: Substituída a URL da imagem quebrada `https://images.unsplash.com/photo-1599451913777-5f3680cfff21?w=600&q=80` por uma URL válida `https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80` no arquivo `site-demo/dr-mauricio-grandini/index.html`.
 - **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis e bem formatadas. Navegação e CTAs funcionando. Formulário operacional. Console limpo de erros críticos.
 
+### REV-043 - Bocardo Odontologia
+- **ID da revisão**: REV-043
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Bocardo Odontologia
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/bocardo-odontologia/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "Por que escolher a Bocardo?" (problem-solution), "Nossos Serviços" (services), "Depoimentos" (testimonials), "Nossos Diferenciais" (differentiators) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Medo e ansiedade do dentista", "Tratamentos desconfortáveis", etc.), soluções ("Atendimento humanizado e acolhedor", "Tecnologia de ponta indolor", etc.), cards de serviços ("Estética Dental", "Implantes Dentários", "Ortodontia", "Protetor e Reabilitação", "Dentística", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente na carga inicial da página. Isso ocorre porque os elementos possuem classes CSS (`fade-in`, `fade-in-left`, `fade-in-right`, `scale-in`) que definem `opacity: 0` e `transform: translateY(40px)` no CSS (linhas 1214-1256), mas a classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in`, `fade-in-left`, `fade-in-right` e `scale-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
+- **Evidências**: Screenshots em `.playwright-mcp/rev043-bocardo-1440-full.png`, `.playwright-mcp/rev043-bocardo-1024-full.png`, `.playwright-mcp/rev043-bocardo-768-full.png` e `.playwright-mcp/rev043-bocardo-480-full.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-038 - Dra Letícia Araújo
 - **ID da revisão**: REV-038
 - **ID do PRD original**: US-038
