@@ -72,13 +72,18 @@ Inclua uma entrada com:
 
 ### REV-011 - Dra. Andrea Leal
 - **ID da revisão**: REV-011
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-011
 - **Nome do cliente**: Dra. Andrea Leal
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dra-andrea-leal/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: As seções "Superando Desafios Odontológicos" (problem-solution), "Tratamentos Personalizados" (services), "Depoimentos", "Diferenciais" e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("Dor e Desconforto", "Insegurança ao Sorrir", "Tratamentos Complexos"), soluções ("Alívio Imediato", "Sorriso Transformador", "Abordagem Integrada"), cards de serviços ("Implantes Dentários", "Ortodontia", "Clareamento Dental", "Facetas de Porcelana", "Restaurações Estéticas", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
-- **Evidências**: Screenshots em `.playwright-mcp/rev011-andrea-leal-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+- **Problema**: ~~As seções "Superando Desafios Odontológicos" (problem-solution), "Tratamentos Personalizados" (services), "Depoimentos", "Diferenciais" e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("Dor e Desconforto", "Insegurança ao Sorrir", "Tratamentos Complexos"), soluções ("Alívio Imediato", "Sorriso Transformador", "Abordagem Integrada"), cards de serviços ("Implantes Dentários", "Ortodontia", "Clareamento Dental", "Facetas de Porcelana", "Restaurações Estéticas", "Periodontia"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Refatorado o sistema de animações para garantir visibilidade por padrão:
+  - Modificado o CSS para que `.animate-on-scroll` tenha `opacity: 1` por padrão
+  - Adicionada classe `.animate-hidden` que define `opacity: 0` e `transform: translateY(30px)`
+  - JavaScript agora adiciona `.animate-hidden` aos elementos e remove quando a classe `animated` é aplicada via Intersection Observer
+  - Adicionado handler no evento `load` que verifica elementos visíveis e aplica a classe `animated` imediatamente
+  - Garantido que elementos fora do viewport comecem ocultos e animem quando entrarem na tela
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-012 - Dra. Katia Miyoshi
 - **ID da revisão**: REV-012
