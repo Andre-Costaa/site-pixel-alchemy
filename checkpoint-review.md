@@ -605,3 +605,23 @@ Inclua uma entrada com:
   - Informações: R. 21 de Abril, 20 - Vila Tiberio, Ribeirão Preto - SP, 14050-460
   - Telefone: (16) 3630-4252
   - Ênfase em cuidado veterinário completo e humanizado
+
+---
+
+### US-015 - Hospital Clínico Especializado Veterinário HCEVET
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/hospital-clinico-especializado-veterinario-hcevet/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: 5a48e66
+- **Descrição**: Site completo para Hospital Clínico Especializado Veterinário HCEVET em Ribeirão Preto. Design "Medical Excellence meets Warmth" com:
+  - Tipografia premium: Playfair Display (serif elegante) + DM Sans (moderno approachable)
+  - Paleta de cores: Navy profundo (#0a1628) primary com coral accent (#e85d4c), teal healing (#2d9a8a) e cream backgrounds
+  - Animações: Gradient mesh background animado, paw prints flutuantes (4), floating cards com estatísticas, scroll-triggered animations
+  - Seções: Hero, Problema/Solução (2 cards), Serviços (6 cards), Depoimentos (3 cards), Diferenciais (6 items), Contato, Footer
+  - Formulário de contato funcional com máscara de telefone e integração WhatsApp
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - Apenas SVG icons customizados (sem emojis)
+  - Imagem de alta qualidade do Unsplash (veterinária com animal)
+  - Informações: Av. Independência, 1570 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-393
+  - Telefone: (16) 99793-7773
+  - Ênfase em hospital veterinário especializado 24h
