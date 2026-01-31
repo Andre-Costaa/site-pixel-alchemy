@@ -123,6 +123,16 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML. Outra opção é usar uma media query `prefers-reduced-motion` ou adicionar uma classe de fallback.
 - **Evidências**: Screenshots em `.playwright-mcp/rev016-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
 
+### REV-017 - Dr. Felipe Garcia
+- **ID da revisão**: REV-017
+- **ID do PRD original**: US-017
+- **Nome do cliente**: Dr. Felipe Garcia
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-felipe-garcia/index.html
+- **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
+- **Problema**: As seções "O Diferencial Dr. Felipe Garcia" (problem-solution), "Tratamentos Oferecidos" (services), "O Que Dizem Nossos Pacientes" (testimonials), "Por Que Nos Escolher" (features) e "Agende Sua Consulta" (contact) estão completamente vazias/invisíveis em todos os breakpoints. Os cards de desafios ("Dor e desconforto ao mastigar", "Insegurança ao sorrir", "Medo de procedimentos dolorosos", "Resultados insatisfatórios anteriores"), soluções ("Tratamentos indolores com tecnologia avançada", "Planos de tratamento personalizados", "Ambiente acolhedor e profissional", "Resultados naturais e duradouros"), cards de serviços ("Implantes Dentários", "Clareamento Dental", "Facetas de Porcelana", "Ortodontia", "Próteses Dentárias", "Clínico Geral"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
+- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
+- **Evidências**: Screenshots em `.playwright-mcp/review-017-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
 - **ID do PRD original**: N/A (Site Pixel Alchemy - template base)

@@ -109,3 +109,51 @@ crítico)\n- ✅ Hero renderizando corretamente\n- ✅ Footer renderizando corre
 {"type":"assistant","message":{"id":"msg_LetlyEI6cKV8iQ20BbRFK5Hg","type":"message","role":"assistant","content":[{"type":"text","text":"
 
 ---
+## ✓ Iteration 9 - REV-016: Revisão Playwright - Dr. Ritchelle Henrique
+*2026-01-31T04:09:07.939Z (209s)*
+
+**Status:** Completed
+
+**Notes:**
+s entram na viewport durante o scroll. Na carga inicial, todo o conteúdo abaixo da dobra permanece invisível.\n\n### Evidências\n\n- Screenshots salvos em `.playwright-mcp/rev016-*.png`\n- Registro detalhado adicionado ao `checkpoint-review.md`\n\n### Console\n\nApenas erro não crítico: 404 no favicon.ico\n\n### Recomendação\n\nModificar o CSS para que elementos com `animate-on-scroll` tenham `opacity: 1` por padrão, garantindo que o conteúdo seja visível mesmo antes da animação ser ativada.\n\n
+
+---
+
+---
+
+## ✓ Iteration 10 - REV-017: Revisão Playwright - Dr. Felipe Garcia
+*2026-01-31*
+
+**Status:** Completed
+
+**Summary:**
+Revisão Playwright completa do site do Dr. Felipe Garcia. **REPROVADO** - Problema crítico identificado.
+
+### Problemas Encontrados
+
+- **Conteúdo invisível**: As seções "O Diferencial Dr. Felipe Garcia", "Tratamentos Oferecidos", "O Que Dizem Nossos Pacientes", "Por Que Nos Escolher" e "Agende Sua Consulta" estão completamente vazias/invisíveis em todos os breakpoints (1440px, 1024px, 768px, 480px)
+- **Causa raiz**: A classe CSS `animate-on-scroll` define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não é aplicada corretamente na carga inicial
+
+### Itens Validados
+
+| Critério | Status |
+|----------|--------|
+| Layout (1440px) | ❌ Conteúdo invisível |
+| Layout (1024px) | ❌ Conteúdo invisível |
+| Layout (768px) | ❌ Conteúdo invisível |
+| Layout (480px) | ❌ Conteúdo invisível |
+| Carregamento de imagens | ✅ 7 imagens carregando corretamente |
+| Navegação interna/âncoras | ✅ Funcionando |
+| CTAs | ✅ Funcionando |
+| Formulário | ✅ Funcionando corretamente |
+| Console de erros | ✅ Apenas favicon 404 (não crítico) |
+
+### Evidências
+
+- Screenshots salvos em `.playwright-mcp/review-017-*.png`
+- Registro de reprovação adicionado ao `checkpoint-review.md`
+
+### Correção Sugerida
+
+Modificar o CSS para que elementos com `animate-on-scroll` tenham `opacity: 1` por padrão, garantindo visibilidade do conteúdo mesmo antes da animação ser ativada.
+
