@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 24/45 (53.3%)
+- **Concluídas**: 26/45 (57.8%)
 - **Em Andamento**: 0
-- **Pendentes**: 21
+- **Pendentes**: 19
 
 ## URLs dos Demos
 
@@ -36,19 +36,19 @@
 | US-022 | **Snoopy Veterinary Clinic** | **pixelalchemy.com.br/site-demo/snoopy-veterinary-clinic** |
 | US-023 | **Vetta Hospital Veterinário** | **pixelalchemy.com.br/site-demo/vetta-hospital-veterinario** |
 | US-024 | **Veterinary Clinic and Pet Shop São Bernardo** | **pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo** |
+| US-025 | **Bicho Chic Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/bicho-chic-clinica-veterinaria-24h** |
+| US-026 | **Toca do Mastim Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-024 - Veterinary Clinic and Pet Shop São Bernardo
+- **Último Site**: US-026 - Toca do Mastim Clínica Veterinária 24h
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo
+- **URL**: pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-025 | Bicho Chic 24h | Pendente |
-| US-026 | Toca do Mastim 24h | Pendente |
 | US-027 | Hemocentro Heróis Vet | Pendente |
 | US-028 | Di Gato Medicina Felina | Pendente |
 | US-029 | Dog Days 24h | Pendente |
