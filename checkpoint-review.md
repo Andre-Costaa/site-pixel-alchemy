@@ -99,3 +99,13 @@ Inclua uma entrada com:
 - **Problema**: As seções "Por Que Escolher a Dra. Miriam" (problem-solution), "Tratamentos Especializados" (services), "Depoimentos" (testimonials), "Diferenciais" (features) e "Contato" estão completamente vazias/invisíveis em todos os breakpoints. Os cards de problemas ("Dor e Desconforto", "Sorriso Inseguro", "Tratamentos Complexos"), solução ("Solução Completa"), cards de serviços ("Clareamento Dental", "Implantes Dentários", "Ortodontia", "Facetas de Porcelana", "Restaurações Estéticas", "Limpeza e Prevenção"), depoimentos, diferenciais e formulário de contato não estão sendo renderizados visualmente. Isso ocorre porque os elementos possuem a classe `fade-in` que define `opacity: 0`, mas a classe `visible` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial da página.
 - **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML.
 - **Evidências**: Screenshots em `.playwright-mcp/rev013-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
+
+### REV-014 - Edu Gomes Odontologia
+- **ID da revisão**: REV-014
+- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **Nome do cliente**: Edu Gomes Odontologia
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/edu-gomes-odontologia/index.html
+- **Breakpoint(s) afetado(s)**: 768px, 480px
+- **Problema**: As estatísticas do hero ("10+ Anos de Experiência", "5000+ Sorrisos Transformados", "100% Satisfação") estão sobrepondo o texto de descrição no hero em breakpoints menores (768px e 480px). O layout não está responsivo adequadamente, causando sobreposição entre as estatísticas e o parágrafo de descrição do serviço.
+- **Correção sugerida**: Ajustar o CSS do hero para que as estatísticas se reposicionem abaixo do texto de descrição em telas menores, ou reduzir o tamanho das estatísticas, ou adicionar um `clear: both` ou `display: block` adequado para evitar a sobreposição. Verificar as media queries para breakpoints 768px e 480px.
+- **Evidências**: Screenshots em `.playwright-mcp/edu-gomes-768-top.png` e `.playwright-mcp/edu-gomes-480-top.png` - notar que os números "10+", "5000+" e "100%" estão sobrepondo o texto "Clínico Geral, Implantes, Lentes Dentais, Ortodontia e Endodontia...".
