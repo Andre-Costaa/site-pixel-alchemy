@@ -585,3 +585,23 @@ Inclua uma entrada com:
   - Informações: R. Ayrton Roxo, 57 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-270
   - Telefone: (16) 98267-1112
   - Ênfase em emergência veterinária 24h
+
+---
+
+### US-014 - Univet - Veterinary Unit Integrated
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/univet-veterinary-unit-integrated/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: 70de435
+- **Descrição**: Site completo para Univet - Veterinary Unit Integrated em Ribeirão Preto. Design "Clinical Warmth" com:
+  - Tipografia elegante: Playfair Display (serif premium) + DM Sans (moderno legível)
+  - Paleta de cores: Verde floresta (#1a3a2f) primary com terracota (#e07a5f) accent e cream backgrounds
+  - Animações: Floating organic blobs (2), heartbeat pulse no badge, floating cards com estatísticas, paw print cursor trail (sutil), parallax effects, scroll-triggered animations
+  - Seções: Hero, Problema/Solução, Serviços (6 cards), Depoimentos (3 cards com avatares), Diferenciais (4 items com pulse ring), Contato, Footer
+  - Formulário de contato funcional com validação
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - Apenas SVG icons (sem emojis)
+  - Imagens de alta qualidade do Unsplash sobre veterinária
+  - Informações: R. 21 de Abril, 20 - Vila Tiberio, Ribeirão Preto - SP, 14050-460
+  - Telefone: (16) 3630-4252
+  - Ênfase em cuidado veterinário completo e humanizado
