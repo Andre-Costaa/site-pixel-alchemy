@@ -100,6 +100,19 @@ Inclua uma entrada com:
 - **Correção sugerida**: Modificar o CSS para que os elementos com `fade-in` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML.
 - **Evidências**: Screenshots em `.playwright-mcp/rev013-*.png` - notar as grandes áreas em branco entre o hero e o footer onde deveriam estar todas as seções de conteúdo.
 
+### REV-015 - Laura Bullamah Stoll
+- **ID da revisão**: REV-015
+- **ID do PRD original**: US-015
+- **Nome do cliente**: Laura Bullamah Stoll
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/laura-bullamah-stoll/index.html
+- **Breakpoint(s) afetado(s)**: N/A
+- **Problema**: O site não existe. A story US-015 está marcada como "passes": true e "completionNotes": "Completed by agent" no prd.json, mas o diretório 'site-demo/laura-bullamah-stoll' não foi encontrado localmente e o URL de produção retorna erro 404 (NOT_FOUND). Não é possível realizar a revisão Playwright sem o site estar disponível.
+- **Correção sugerida**: Verificar se o site foi realmente criado e enviado para produção. Se não foi criado, executar a story US-015 para criar o site. Se foi criado mas não foi enviado, fazer o deploy. Se o diretório foi removido acidentalmente, restaurá-lo.
+- **Evidências**:
+  - Erro 404 ao acessar https://pixelalchemy.com.br/site-demo/laura-bullamah-stoll/index.html
+  - Diretório /site-demo/laura-bullamah-stoll não existe localmente
+  - `ls site-demo/ | grep laura` retorna apenas 'dra-laura-sanches'
+
 ### REV-014 - Edu Gomes Odontologia
 - **ID da revisão**: REV-014
 - **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
@@ -108,4 +121,4 @@ Inclua uma entrada com:
 - **Breakpoint(s) afetado(s)**: 768px, 480px
 - **Problema**: As estatísticas do hero ("10+ Anos de Experiência", "5000+ Sorrisos Transformados", "100% Satisfação") estão sobrepondo o texto de descrição no hero em breakpoints menores (768px e 480px). O layout não está responsivo adequadamente, causando sobreposição entre as estatísticas e o parágrafo de descrição do serviço.
 - **Correção sugerida**: Ajustar o CSS do hero para que as estatísticas se reposicionem abaixo do texto de descrição em telas menores, ou reduzir o tamanho das estatísticas, ou adicionar um `clear: both` ou `display: block` adequado para evitar a sobreposição. Verificar as media queries para breakpoints 768px e 480px.
-- **Evidências**: Screenshots em `.playwright-mcp/edu-gomes-768-top.png` e `.playwright-mcp/edu-gomes-480-top.png` - notar que os números "10+", "5000+" e "100%" estão sobrepondo o texto "Clínico Geral, Implantes, Lentes Dentais, Ortodontia e Endodontia...".
+- **Evidências**: Screenshots em `.playwright-mcp/edu-gomes-768-top.png` e `.playwright-mcp/edu-gomes-480-top.png` - notar que os números "10+", "5000+" e "100%" estão sobrepondo o texto "Clínico Geral, Implantes, Lentes Dentais, Ortodontia e Endodontia..."
