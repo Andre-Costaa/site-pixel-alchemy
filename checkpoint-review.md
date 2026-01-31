@@ -565,3 +565,23 @@ Inclua uma entrada com:
   - Informações: Av. Independência, 815 - Vila Seixas, Ribeirão Preto - SP, 14020-010
   - Telefone: (16) 99218-8558
   - Ênfase em atendimento 24h/emergências
+
+---
+
+### US-011 - Consultório Veterinario Vet Love 24 Horas
+- **Status**: ✅ COMPLETO
+- **URL do demo**: https://pixelalchemy.com.br/site-demo/consultorio-veterinario-vet-love-24-horas/index.html
+- **Data de conclusão**: 2026-01-31
+- **Commit**: fd52ae8
+- **Descrição**: Site completo para Consultório Veterinario Vet Love 24 Horas em Ribeirão Preto. Design "Medical Heartbeat" com:
+  - Tipografia elegante: Playfair Display (serif premium) + DM Sans (moderno legível)
+  - Paleta de cores: Terracota (#D94F3C) primary com verde medicinal (#2D5C4B) e cream backgrounds (#FDF8F3)
+  - Animações únicas: Pulse ring (coração batendo), ECG line (linha cardíaca animada), heartbeat phone icon, scroll-triggered animations
+  - Seções: Hero, Problema/Solução, Serviços (6 cards com tags), Depoimentos (3 cards com avatares), Diferenciais (4 números animados), Contato, Footer
+  - Formulário de contato funcional com máscara de telefone e integração WhatsApp
+  - Totalmente responsivo (mobile, tablet, desktop)
+  - Apenas SVG icons (sem emojis)
+  - Imagem de alta qualidade do Unsplash (veterinária com gato)
+  - Informações: R. Ayrton Roxo, 57 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-270
+  - Telefone: (16) 98267-1112
+  - Ênfase em emergência veterinária 24h
