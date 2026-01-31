@@ -52,13 +52,13 @@ Inclua uma entrada com:
 
 ### REV-008 - Dr. Felipe Anderson Sousa Nunes
 - **ID da revisão**: REV-008
-- **ID do PRD original**: N/A (Site Pixel Alchemy - template base)
+- **ID do PRD original**: US-008
 - **Nome do cliente**: Dr. Felipe Anderson Sousa Nunes
 - **URL do demo**: https://pixelalchemy.com.br/site-demo/dr-felipe-anderson-nunes/index.html
 - **Breakpoint(s) afetado(s)**: Todos (1440px, 1024px, 768px, 480px)
-- **Problema**: A seção "Por que escolher o Dr. Felipe?" (problem-solution) está completamente vazia/invisível em todos os breakpoints. Os 6 cards (3 problemas: "Dentes Amarelados", "Dor ao Sorrir", "Profissionais Impessoais" e 3 soluções: "Sorriso Brilhante", "Conforto Total", "Atendimento Humanizado") não estão sendo renderizados visualmente. Apenas o texto "VS" aparece no centro da seção. Isso ocorre porque os elementos possuem a classe `animate-on-scroll` que define `opacity: 0`, mas a classe `animated` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial.
-- **Correção sugerida**: Modificar o CSS para que os elementos com `animate-on-scroll` tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `animated` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `animated` por padrão no HTML.
-- **Evidências**: Screenshots em `.playwright-mcp/rev008-*.png` - notar as áreas em branco na seção "Por que escolher o Dr. Felipe?" onde deveriam estar os cards de problemas e soluções.
+- **Problema**: ~~A seção "Por que escolher o Dr. Felipe?" (problem-solution) está completamente vazia/invisível em todos os breakpoints. Os 6 cards (3 problemas: "Dentes Amarelados", "Dor ao Sorrir", "Profissionais Impessoais" e 3 soluções: "Sorriso Brilhante", "Conforto Total", "Atendimento Humanizado") não estão sendo renderizados visualmente. Apenas o texto "VS" aparece no centro da seção. Isso ocorre porque os elementos possuem a classe `fade-in-up` que define `opacity: 0`, mas a classe `visible` que deveria ser adicionada via Intersection Observer não está sendo aplicada corretamente na carga inicial.~~ ✅ **CORRIGIDO**
+- **Correção aplicada**: Melhorado o Intersection Observer para usar `rootMargin: '0px 0px -50px 0px'` e adicionado `observer.unobserve(entry.target)` após animar. Também adicionado um fallback com `setTimeout` de 500ms que verifica se elementos no viewport ainda não têm a classe `visible` e aplica-a automaticamente. Adicionada classe `.no-js` como fallback adicional.
+- **Status**: ✅ Aprovado após correção. Layout validado em todos os breakpoints (1440px, 1024px, 768px, 480px). Todas as seções visíveis: Hero, Problem/Solution, Services, Testimonials, Differentials, Contact, Footer. Navegação e CTAs funcionando. Formulário operacional com máscara de telefone. Console limpo de erros críticos.
 
 ### REV-003 - Dra. Laura Sanches
 - **ID da revisão**: REV-003
