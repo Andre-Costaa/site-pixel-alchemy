@@ -1,9 +1,9 @@
-# Revisão Playwright - Arthemia Clínica Veterinária
+# Revisão Playwright - Mr. Dog e Cia
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/mr-dog-e-cia/index.html
 **Revisor:** Playwright Automated Testing
-**Story:** REV-034
+**Story:** REV-035
 
 ---
 
@@ -15,7 +15,7 @@
 | Layout 1024px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 768px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 480px | ✅ APROVADO | Layout responsivo funcionando |
-| Carregamento de Imagens | ✅ APROVADO | Imagens carregando corretamente |
+| Carregamento de Imagens | ✅ APROVADO | Todas as imagens carregando corretamente |
 | Navegação/Âncoras | ✅ APROVADO | Links de âncora funcionando corretamente |
 | Formulário | ✅ APROVADO | Campos preenchíveis e funcionais |
 | Console (Erros JS) | ✅ APROVADO | Apenas erro não crítico de favicon.ico |
@@ -28,15 +28,15 @@
 
 **Status:** APROVADO
 
-- Hero section: ✅ Visível com imagem de cachorro e CTA
-- Seção "Por Que Escolher a Arthemia": ✅ Visível com 3 diferenciais (Diagnóstico Preciso, Atendimento Humanizado, Horário Flexível)
-- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consulta Clínica, Cirurgias, Vacinação, Exames Laboratoriais, Banho e Tosa, Emergências)
-- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Mariana Costa, Ricardo Santos, Fernanda Lima)
-- Seção "Diferenciais": ✅ Visível com 4 diferenciais (Equipe Especializada, Tecnologia Avançada, Atendimento Rápido, Carinho em Cada Detalhe)
+- Hero section: ✅ Visível com imagem de cachorro e CTAs (Agendar Consulta, Nossos Serviços)
+- Seção "Por Que Nos Escolher": ✅ Visível com cards "O Desafio" e "Nossa Solução"
+- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consultas Clínicas, Cirurgias, Vacinação, Exames Laboratoriais, Ecografia e Raios-X, Banho e Tosa)
+- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Maria Silva, João Santos, Ana Oliveira)
+- Seção "Nossos Diferenciais": ✅ Visível com 4 diferenciais (Equipe Qualificada, Atendimento 24h, Conveniado, Amor pelos Pets)
 - Seção "Contato": ✅ Visível com formulário e informações de contato
 - Footer: ✅ Visível com links e informações
 
-**Screenshots:** `review-034-1440px-fixed.png`
+**Screenshots:** `mr-dog-e-cia-1440px.png`, `mr-dog-e-cia-1440px-footer.png`
 
 ---
 
@@ -46,7 +46,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `review-034-1024px.png`
+**Screenshots:** `mr-dog-e-cia-1024px.png`, `mr-dog-e-cia-1024px-servicos.png`, `mr-dog-e-cia-1024px-servicos2.png`
 
 ---
 
@@ -54,9 +54,12 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 **Status:** APROVADO
 
-Layout responsivo funcionando corretamente. Cards empilhados verticalmente.
+Layout responsivo funcionando corretamente:
+- Menu hambúrguer disponível
+- Cards empilhados verticalmente
+- Conteúdo adaptado para tablet
 
-**Screenshots:** `review-034-768px.png`
+**Screenshots:** `mr-dog-e-cia-768px.png`
 
 ---
 
@@ -65,12 +68,12 @@ Layout responsivo funcionando corretamente. Cards empilhados verticalmente.
 **Status:** APROVADO
 
 Layout mobile funcionando corretamente:
-- Menu hamburguer disponível
+- Menu hambúrguer disponível
 - Conteúdo empilhado verticalmente
 - Formulário adaptado para tela pequena
 - CTAs visíveis e acessíveis
 
-**Screenshots:** `review-034-480px.png`
+**Screenshots:** `mr-dog-e-cia-480px.png`, `mr-dog-e-cia-480px-servicos.png`
 
 ---
 
@@ -78,10 +81,11 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Hero background image: ✅ Carregando corretamente (Unsplash)
-- Imagem da seção "Por Que Escolher": ✅ Carregando corretamente (veterinária examinando cão)
+- Hero image: ✅ Carregando corretamente (cachorro feliz - Unsplash)
 - Ícones SVG: ✅ Todos os ícones inline renderizando
-- Total de imagens verificadas: 2 imagens principais + ícones SVG inline
+- Imagens de depoimentos: ✅ Carregando corretamente (Maria Silva, João Santos, Ana Oliveira)
+- Ícones de serviços: ✅ Todos renderizando corretamente
+- Total de imagens verificadas: 1 imagem principal + ícones SVG inline + fotos de clientes
 - Nenhuma imagem quebrada ou placeholder visível
 
 ---
@@ -92,8 +96,8 @@ Layout mobile funcionando corretamente:
 
 - Link "Início" → #inicio ✅
 - Link "Serviços" → #servicos ✅
-- Link "Diferenciais" → #diferenciais ✅
 - Link "Depoimentos" → #depoimentos ✅
+- Link "Contato" → #contato ✅
 - Link "Agendar Consulta" → #contato ✅
 - Botões CTA funcionando corretamente
 
@@ -105,12 +109,13 @@ Layout mobile funcionando corretamente:
 
 Campos testados:
 - Nome: ✅ Aceita entrada de texto
+- E-mail: ✅ Aceita formato de e-mail
 - Telefone: ✅ Aceita formato (XX) XXXXX-XXXX
-- Serviço Desejado: ✅ Dropdown com 7 opções funcionando
+- Serviço de Interesse: ✅ Dropdown com 7 opções funcionando (Consulta Clínica, Cirurgia, Vacinação, Exames Laboratoriais, Ecografia / Raios-X, Banho e Tosa, Outro)
 - Mensagem: ✅ Aceita texto livre
-- Botão Enviar: ✅ Abre WhatsApp com dados preenchidos
+- Botão Enviar: ✅ Funcional
 
-Integração funcionando: O formulário redireciona para WhatsApp com mensagem formatada contendo todos os dados informados.
+**Screenshots:** `mr-dog-e-cia-form-preenchido.png`
 
 ---
 
@@ -128,8 +133,8 @@ Integração funcionando: O formulário redireciona para WhatsApp com mensagem f
 
 **✅ SITE APROVADO - PRONTO PARA ENTREGA**
 
-A página do story Arthemia Clínica Veterinária está funcionando corretamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos de JavaScript.
+A página do story Mr. Dog e Cia está funcionando corretamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos de JavaScript.
 
 **passes=true**
 
-**Notes:** Site revisado e aprovado em todos os critérios. Layout responsivo funcionando corretamente em 1440px, 1024px, 768px e 480px. Formulário operacional com integração ao WhatsApp funcionando. Navegação interna funcionando. Nenhum erro crítico no console.
+**Notes:** Site revisado e aprovado em todos os critérios. Layout responsivo funcionando corretamente em 1440px, 1024px, 768px e 480px. Formulário operacional com todos os campos funcionando. Navegação interna funcionando. Nenhum erro crítico no console.
