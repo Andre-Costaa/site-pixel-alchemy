@@ -1,7 +1,7 @@
-# Revisão Playwright - Toca do Mastim - Clínica Veterinária 24h
+# Revisão Playwright - Hemocentro Heróis Vet
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/toca-do-mastim-clinica-veterinaria-24h/index.html
+**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/hemocentro-herois-vet/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -11,11 +11,11 @@
 | Critério | Status | Observações |
 |----------|--------|-------------|
 | Layout 1440px | ✅ APROVADO | Layout correto, sem quebras |
-| Layout 1024px | ✅ APROVADO | Layout correto, sem quebras |
-| Layout 768px | ✅ APROVADO | Layout correto, sem quebras |
-| Layout 480px | ✅ APROVADO | Layout correto, sem quebras |
+| Layout 1024px | ✅ APROVADO | Layout responsivo funcionando |
+| Layout 768px | ✅ APROVADO | Layout responsivo funcionando |
+| Layout 480px | ✅ APROVADO | Layout responsivo funcionando |
 | Carregamento de Imagens | ✅ APROVADO | Todas as imagens carregando corretamente |
-| Navegação/Âncoras | ✅ APROVADO | Links funcionando corretamente |
+| Navegação/Âncoras | ✅ APROVADO | Links de âncora funcionando corretamente |
 | Formulário | ✅ APROVADO | Campos preenchíveis e funcionais |
 | Console (Erros JS) | ✅ APROVADO | Sem erros críticos (apenas favicon 404) |
 
@@ -28,14 +28,15 @@
 **Status:** APROVADO
 
 - Hero section: ✅ Visível e funcionando
-- Seção "Por Que Nos Escolher": ✅ Visível - cards de desafio/solução aparecem corretamente
-- Seção "Nossos Serviços": ✅ Visível com 6 cards de serviços
+- Seção de Estatísticas: ✅ Visível (5000+ Transfusões, 150+ Clínicas, 24h Emergência, 98% Sucesso)
+- Seção "Por Que Escolher Heróis Vet": ✅ Visível com cards de desafio/solução
+- Seção "Nossos Serviços": ✅ Visível com 6 cards de serviços (Transfusão, Hemograma, Banco de Sangue, Tipagem, Coleta Domiciliar, Programa Doadores)
 - Seção "Depoimentos": ✅ Visível com 3 depoimentos
-- Seção "Nossos Diferenciais": ✅ Visível com 4 diferenciais
+- Seção "Diferenciais": ✅ Visível com 8 diferenciais
 - Seção "Contato": ✅ Visível com formulário e informações
 - Footer: ✅ Visível
 
-**Screenshots:** `toca-do-mastim-1440.png`
+**Screenshots:** `herois-vet-1440.png`
 
 ---
 
@@ -45,7 +46,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `toca-do-mastim-1024.png`
+**Screenshots:** `herois-vet-1024.png`
 
 ---
 
@@ -55,7 +56,7 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `toca-do-mastim-768.png`
+**Screenshots:** `herois-vet-768.png`
 
 ---
 
@@ -65,7 +66,7 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `toca-do-mastim-480.png`
+**Screenshots:** `herois-vet-480.png`
 
 ---
 
@@ -74,16 +75,17 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 **Status:** APROVADO
 
 Todas as imagens carregando corretamente:
-- ✅ Imagem do hero (veterinária com cachorro - Unsplash)
+- ✅ Imagem do hero (veterinária realizando exame - Unsplash)
 - ✅ Ícones de desafio/solução
-- ✅ Ícones de serviços (Emergências 24h, UTI Veterinária, Cirurgias, Exames Laboratoriais, Consultas, Vacinação)
+- ✅ Ícones de serviços (Transfusão, Hemograma, Banco de Sangue, Tipagem, Coleta Domiciliar, Programa Doadores)
 - ✅ Estrelas de avaliação nos depoimentos
-- ✅ Ícones de diferenciais (24 Horas, Equipe Expert, Tecnologia, Amor e Cuidado)
-- ✅ Ícones de contato (Endereço, Telefone, Horário)
+- ✅ Ícones de diferenciais (Disponibilidade 24h, Tecnologia, Especialistas, Controle, Transporte, Rede, Programa Doadores, Resultados)
+- ✅ Ícones de contato (Endereço, Telefone, Horário, Redes Sociais)
+- ✅ Logo Heróis Vet
 
 **Network Requests:**
 - Todas as imagens carregando corretamente sem erros 404
-- Todas as fontes carregando corretamente
+- Todas as fontes (Montserrat, Inter) carregando corretamente
 
 ---
 
@@ -96,9 +98,10 @@ Links de navegação testados e funcionando:
 - ✅ "Serviços" → #servicos
 - ✅ "Depoimentos" → #depoimentos
 - ✅ "Contato" → #contato
-- ✅ "Ligar Agora" (hero) → tel:+551636329896
-- ✅ "Agendar Consulta" (hero) → #contato
-- ✅ Links de telefone → tel:+551636329896
+- ✅ "Agendar Agora" (nav) → #contato
+- ✅ "Conhecer Serviços" (hero) → #servicos
+- ✅ Links de telefone → tel:+5516981724620
+- ✅ CTAs dos serviços → #contato
 
 Todos os links de âncora rolam suavemente para as seções correspondentes.
 
@@ -109,17 +112,19 @@ Todos os links de âncora rolam suavemente para as seções correspondentes.
 **Status:** APROVADO
 
 Campos testados e funcionando:
-- ✅ "Seu Nome" - Texto livre
+- ✅ "Nome Completo" - Texto livre
+- ✅ "E-mail" - Aceita formato de email
 - ✅ "Telefone" - Aceita formato (XX) XXXXX-XXXX
-- ✅ "Tipo de Atendimento" - Dropdown com 6 opções (Emergência 24h, Consulta, Cirurgia, Exames, Vacinação, Outros)
+- ✅ "Serviço Desejado" - Dropdown com 6 opções (Transfusão Sanguínea, Hemograma Completo, Tipagem Sanguínea, Coleta Domiciliar, Cadastrar Pet como Doador, Outro)
 - ✅ "Mensagem" - Texto livre multiline
 - ✅ Botão "Enviar Mensagem" - Funcional, exibe alert de confirmação
 
 **Teste realizado:**
 - Nome: "Teste Revisão"
+- E-mail: "teste@revisao.com"
 - Telefone: "(16) 99999-9999"
-- Tipo de Atendimento: "Consulta"
-- Mensagem: "Mensagem de teste para revisão do site."
+- Serviço Desejado: "Hemograma Completo"
+- Mensagem: "Mensagem de teste para revisão do site Hemocentro Heróis Vet."
 
 **Resultado:** Alert exibido: "Mensagem enviada com sucesso! Entraremos em contato em breve."
 
@@ -136,10 +141,10 @@ Campos testados e funcionando:
 
 ## Screenshots Capturados
 
-- `toca-do-mastim-1440.png` - Desktop
-- `toca-do-mastim-1024.png` - Tablet landscape
-- `toca-do-mastim-768.png` - Tablet portrait
-- `toca-do-mastim-480.png` - Mobile
+- `herois-vet-1440.png` - Desktop
+- `herois-vet-1024.png` - Tablet landscape
+- `herois-vet-768.png` - Tablet portrait
+- `herois-vet-480.png` - Mobile
 
 ---
 
@@ -147,17 +152,17 @@ Campos testados e funcionando:
 
 ✅ **REVISÃO APROVADA - PRONTO PARA ENTREGA**
 
-O site Toca do Mastim - Clínica Veterinária 24h está funcionando corretamente em todos os aspectos testados.
+O site Hemocentro Heróis Vet está funcionando corretamente em todos os aspectos testados.
 
 ### Pontos Positivos:
 
 1. ✅ Layout responsivo funcionando em todos os breakpoints (1440px, 1024px, 768px, 480px)
 2. ✅ Todas as seções visíveis e bem estruturadas
-3. ✅ Todas as imagens carregando corretamente
+3. ✅ Todas as imagens carregando corretamente (Unsplash e ícones)
 4. ✅ Navegação por âncoras funcionando corretamente
 5. ✅ Formulário completo e operacional com feedback ao usuário
 6. ✅ Sem erros críticos no console
-7. ✅ Design consistente e profissional
+7. ✅ Design consistente e profissional com identidade visual adequada para hemocentro veterinário
 
 ### Recomendação:
 
@@ -167,8 +172,6 @@ O site Toca do Mastim - Clínica Veterinária 24h está funcionando corretamente
 
 **passes=true**
 
-**Notas:** Site aprovado em todos os critérios. Layout responsivo funcionando corretamente em todos os breakpoints, imagens carregando sem erros, navegação interna operacional, formulário funcional com feedback ao usuário, e sem erros críticos no console.
-
----
+**Notas:** Site aprovado em todos os critérios. Layout responsivo funcionando corretamente em todos os breakpoints, imagens carregando sem erros (Unsplash + ícones SVG), navegação interna operacional, formulário funcional com feedback ao usuário, e sem erros críticos no console.
 
 ---
