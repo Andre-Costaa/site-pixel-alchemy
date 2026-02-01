@@ -1,9 +1,9 @@
-# Revisão Playwright - Pet Work Clínica Veterinária-Banho e Tosa e Pet Shop
+# Revisão Playwright - Arthemia Clínica Veterinária
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** http://localhost:8888/site-demo/pet-work-clinica-veterinaria-banho-e-tosa-e-pet-shop/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria/index.html
 **Revisor:** Playwright Automated Testing
-**Story:** REV-033
+**Story:** REV-034
 
 ---
 
@@ -15,7 +15,7 @@
 | Layout 1024px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 768px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 480px | ✅ APROVADO | Layout responsivo funcionando |
-| Carregamento de Imagens | ✅ APROVADO | Imagem do hero carregando corretamente |
+| Carregamento de Imagens | ✅ APROVADO | Imagens carregando corretamente |
 | Navegação/Âncoras | ✅ APROVADO | Links de âncora funcionando corretamente |
 | Formulário | ✅ APROVADO | Campos preenchíveis e funcionais |
 | Console (Erros JS) | ✅ APROVADO | Apenas erro não crítico de favicon.ico |
@@ -28,15 +28,15 @@
 
 **Status:** APROVADO
 
-- Hero section: ✅ Visível com imagem de cachorros e CTA
-- Seção "Por Que Escolher a Pet Work?": ✅ Visível com cards O Desafio/Nossa Solução
-- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consultas, Banho e Tosa, Pet Shop, Vacinas, Exames, Cirurgias)
-- Seção "Nossos Diferenciais": ✅ Visível com 4 diferenciais
-- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes
+- Hero section: ✅ Visível com imagem de cachorro e CTA
+- Seção "Por Que Escolher a Arthemia": ✅ Visível com 3 diferenciais (Diagnóstico Preciso, Atendimento Humanizado, Horário Flexível)
+- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consulta Clínica, Cirurgias, Vacinação, Exames Laboratoriais, Banho e Tosa, Emergências)
+- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Mariana Costa, Ricardo Santos, Fernanda Lima)
+- Seção "Diferenciais": ✅ Visível com 4 diferenciais (Equipe Especializada, Tecnologia Avançada, Atendimento Rápido, Carinho em Cada Detalhe)
 - Seção "Contato": ✅ Visível com formulário e informações de contato
 - Footer: ✅ Visível com links e informações
 
-**Screenshots:** `REV-033-1440px-visible.png`
+**Screenshots:** `review-034-1440px-fixed.png`
 
 ---
 
@@ -46,7 +46,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `REV-033-1024px-visible.png`
+**Screenshots:** `review-034-1024px.png`
 
 ---
 
@@ -56,7 +56,7 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 Layout responsivo funcionando corretamente. Cards empilhados verticalmente.
 
-**Screenshots:** `REV-033-768px-visible.png`
+**Screenshots:** `review-034-768px.png`
 
 ---
 
@@ -70,7 +70,7 @@ Layout mobile funcionando corretamente:
 - Formulário adaptado para tela pequena
 - CTAs visíveis e acessíveis
 
-**Screenshots:** `REV-033-480px-visible.png`
+**Screenshots:** `review-034-480px.png`
 
 ---
 
@@ -78,9 +78,10 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Hero image: ✅ Carregando corretamente (Unsplash)
+- Hero background image: ✅ Carregando corretamente (Unsplash)
+- Imagem da seção "Por Que Escolher": ✅ Carregando corretamente (veterinária examinando cão)
 - Ícones SVG: ✅ Todos os ícones inline renderizando
-- Total de imagens verificadas: 1 imagem principal + ícones SVG inline
+- Total de imagens verificadas: 2 imagens principais + ícones SVG inline
 - Nenhuma imagem quebrada ou placeholder visível
 
 ---
@@ -89,11 +90,11 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Link "Início" → #home ✅
+- Link "Início" → #inicio ✅
 - Link "Serviços" → #servicos ✅
 - Link "Diferenciais" → #diferenciais ✅
 - Link "Depoimentos" → #depoimentos ✅
-- Link "Contato" → #contato ✅
+- Link "Agendar Consulta" → #contato ✅
 - Botões CTA funcionando corretamente
 
 ---
@@ -105,11 +106,11 @@ Layout mobile funcionando corretamente:
 Campos testados:
 - Nome: ✅ Aceita entrada de texto
 - Telefone: ✅ Aceita formato (XX) XXXXX-XXXX
-- Serviço Desejado: ✅ Dropdown com opções funcionando
+- Serviço Desejado: ✅ Dropdown com 7 opções funcionando
 - Mensagem: ✅ Aceita texto livre
-- Botão Enviar: ✅ Exibe alert de confirmação
+- Botão Enviar: ✅ Abre WhatsApp com dados preenchidos
 
-Mensagem de sucesso exibida: "Obrigado, {nome}! Recebemos sua solicitação para {servico}. Entraremos em contato em breve pelo telefone informado."
+Integração funcionando: O formulário redireciona para WhatsApp com mensagem formatada contendo todos os dados informados.
 
 ---
 
@@ -127,8 +128,8 @@ Mensagem de sucesso exibida: "Obrigado, {nome}! Recebemos sua solicitação para
 
 **✅ SITE APROVADO - PRONTO PARA ENTREGA**
 
-A página do story Pet Work Clínica Veterinária está funcionando corretamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos de JavaScript.
+A página do story Arthemia Clínica Veterinária está funcionando corretamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos de JavaScript.
 
 **passes=true**
 
-**Notes:** Site revisado e aprovado em todos os critérios. Layout responsivo funcionando corretamente em 1440px, 1024px, 768px e 480px. Formulário operacional e navegação interna funcionando. Nenhum erro crítico no console.
+**Notes:** Site revisado e aprovado em todos os critérios. Layout responsivo funcionando corretamente em 1440px, 1024px, 768px e 480px. Formulário operacional com integração ao WhatsApp funcionando. Navegação interna funcionando. Nenhum erro crítico no console.
