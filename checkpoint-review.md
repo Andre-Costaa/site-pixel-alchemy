@@ -1,7 +1,7 @@
-# Revisão Playwright - Univet - Veterinary Unit Integrated
+# Revisão Playwright - Veterinary Clinic & Pet Puppies
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/univet-veterinary-unit-integrated/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/veterinary-clinic-pet-puppies/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -28,13 +28,13 @@
 **Status:** APROVADO
 
 - Layout correto sem quebras ou sobreposições
-- Hero section com imagem do cachorro e estatísticas flutuantes
+- Hero section com imagem dos cachorros e estatísticas flutuantes
 - Grid de serviços em 3 colunas bem organizado
 - Cards de depoimentos em 3 colunas
 - Formulário de contato com layout em 2 colunas
-- Footer com 4 colunas
+- Footer com 3 colunas
 
-**Screenshot:** `univet-1440-top.png`, `univet-1440-services.png`, `univet-1440-form-footer.png`
+**Screenshot:** `petpuppies-1440-top.png`, `petpuppies-1440-servicos.png`, `petpuppies-1440-depoimentos.png`, `petpuppies-1440-footer.png`
 
 ---
 
@@ -49,7 +49,7 @@
 - Formulário de contato em coluna única
 - Footer reorganizado em 2 colunas
 
-**Screenshot:** `univet-1024-top.png`, `univet-1024-services-grid.png`, `univet-1024-footer.png`
+**Screenshot:** `petpuppies-1024-top.png`, `petpuppies-1024-servicos.png`
 
 ---
 
@@ -63,9 +63,9 @@
 - Grid de serviços em coluna única
 - Cards de depoimentos empilhados verticalmente
 - Formulário de contato em coluna única com campos organizados
-- Diferenciais em coluna única
+- Footer empilhado verticalmente
 
-**Screenshot:** `univet-768-top.png`, `univet-768-services.png`, `univet-768-footer.png`
+**Screenshot:** `petpuppies-768-top.png`, `petpuppies-768-footer.png`
 
 ---
 
@@ -82,7 +82,7 @@
 - Formulário com campos em coluna única
 - Footer empilhado verticalmente
 
-**Screenshot:** `univet-480-top.png`, `univet-480-services.png`, `univet-480-footer.png`
+**Screenshot:** `petpuppies-480-top.png`, `petpuppies-480-form.png`, `petpuppies-480-footer.png`
 
 ---
 
@@ -91,18 +91,17 @@
 **Status:** APROVADO
 
 Todas as imagens carregando corretamente:
-- ✅ Logo Univet no header
-- ✅ Imagem do cachorro no hero
+- ✅ Logo Pet Puppies no header
+- ✅ Imagem dos cachorros no hero (Unsplash)
 - ✅ Ícones de problemas e soluções (checkmarks)
-- ✅ Imagens de serviços (Consultas, Cirurgias, Exames, Vacinação, Internação, Odontologia)
-- ✅ Avatares de depoimentos (Maria Silva, Ana Carolina, Carlos Eduardo)
-- ✅ Ícones de diferenciais (Estrela, Escudo, Relógio, Coração)
+- ✅ Ícones de serviços (Consultas, Exames, Cirurgias, Vacinação, Emergências, Banho & Tosa)
+- ✅ Estrelas de avaliação nos depoimentos
 - ✅ Ícones de contato (Localização, Telefone, Horário)
-- ✅ Ícones de redes sociais (Facebook, Instagram, WhatsApp)
+- ✅ Ícones de redes sociais (Instagram, Facebook, WhatsApp)
 
 **Network Requests:**
 - Todas as imagens carregando corretamente sem erros 404
-- Todas as fontes carregando corretamente
+- Todas as fontes (Fredoka, Nunito) carregando corretamente
 
 ---
 
@@ -111,13 +110,13 @@ Todas as imagens carregando corretamente:
 **Status:** APROVADO
 
 Links de navegação testados e funcionando:
-- ✅ "Início" → #inicio
+- ✅ "Início" → #home
 - ✅ "Serviços" → #servicos
-- ✅ "Diferenciais" → #diferenciais
 - ✅ "Depoimentos" → #depoimentos
-- ✅ "Agendar Consulta" → #contato
-- ✅ Telefone → tel:+551636304252
-- ✅ "Conhecer Serviços" → #servicos
+- ✅ "Diferenciais" → #diferenciais
+- ✅ "Agendar" → #contato
+- ✅ "Agendar Consulta" (hero) → #contato
+- ✅ "Nossos Serviços" (hero) → #servicos
 
 Todos os links de âncora rolam suavemente para as seções correspondentes.
 
@@ -128,17 +127,17 @@ Todos os links de âncora rolam suavemente para as seções correspondentes.
 **Status:** APROVADO
 
 Campos testados e funcionando:
-- ✅ "Nome Completo" - Texto livre
-- ✅ "Telefone" - Aceita formato (00) 00000-0000
-- ✅ "E-mail" - Aceita formato de email
-- ✅ "Serviço Desejado" - Dropdown com 7 opções (Consulta Clínica, Cirurgia, Exames Laboratoriais, Vacinação, Odontologia, Emergência, Outro)
+- ✅ "Seu Nome" - Texto livre
+- ✅ "Telefone / WhatsApp" - Aceita formato (00) 00000-0000
+- ✅ "Nome do Pet" - Texto livre
+- ✅ "Serviço Desejado" - Dropdown com 7 opções (Consulta Clínica, Vacinação, Cirurgia, Exames Laboratoriais, Banho & Tosa, Emergência, Outro)
 - ✅ "Mensagem" - Texto livre multiline
 - ✅ Botão "Agendar Consulta" - Funcional
 
 **Teste realizado:**
 - Nome: "Teste Usuario"
 - Telefone: "(16) 99999-9999"
-- E-mail: "teste@email.com"
+- Nome do Pet: "Rex"
 - Serviço: "Consulta Clínica"
 - Mensagem: "Gostaria de agendar uma consulta para meu pet."
 
@@ -154,19 +153,18 @@ Campos testados e funcionando:
 
 ## Screenshots Capturados
 
-- `univet-1440-top.png` - Desktop (Hero)
-- `univet-1440-services.png` - Desktop (Serviços)
-- `univet-1440-form-footer.png` - Desktop (Formulário e Footer)
-- `univet-1024-top.png` - Tablet landscape (Hero)
-- `univet-1024-services-grid.png` - Tablet landscape (Serviços)
-- `univet-1024-footer.png` - Tablet landscape (Footer)
-- `univet-768-top.png` - Tablet portrait (Hero)
-- `univet-768-services.png` - Tablet portrait (Serviços)
-- `univet-768-footer.png` - Tablet portrait (Footer)
-- `univet-480-top.png` - Mobile (Hero)
-- `univet-480-services.png` - Mobile (Serviços)
-- `univet-480-footer.png` - Mobile (Footer)
-- `univet-form-filled.png` - Formulário preenchido
+- `petpuppies-1440-top.png` - Desktop (Hero)
+- `petpuppies-1440-servicos.png` - Desktop (Serviços)
+- `petpuppies-1440-depoimentos.png` - Desktop (Depoimentos)
+- `petpuppies-1440-footer.png` - Desktop (Footer)
+- `petpuppies-1024-top.png` - Tablet landscape (Hero)
+- `petpuppies-1024-servicos.png` - Tablet landscape (Serviços)
+- `petpuppies-768-top.png` - Tablet portrait (Hero)
+- `petpuppies-768-footer.png` - Tablet portrait (Footer)
+- `petpuppies-480-top.png` - Mobile (Hero)
+- `petpuppies-480-form.png` - Mobile (Formulário)
+- `petpuppies-480-footer.png` - Mobile (Footer)
+- `petpuppies-form-filled.png` - Formulário preenchido
 
 ---
 
@@ -174,7 +172,7 @@ Campos testados e funcionando:
 
 ✅ **REVISÃO APROVADA - SITE PRONTO PARA ENTREGA**
 
-O site Univet - Veterinary Unit Integrated está funcionando perfeitamente em todos os breakpoints testados (1440px, 1024px, 768px e 480px). O layout é responsivo, todas as imagens carregam corretamente, a navegação funciona sem problemas e o formulário de contato está operacional.
+O site Veterinary Clinic & Pet Puppies está funcionando perfeitamente em todos os breakpoints testados (1440px, 1024px, 768px e 480px). O layout é responsivo, todas as imagens carregam corretamente, a navegação funciona sem problemas e o formulário de contato está operacional.
 
 ### Recomendação:
 
@@ -182,10 +180,10 @@ O site Univet - Veterinary Unit Integrated está funcionando perfeitamente em to
 
 ### Pontos Positivos:
 1. ✅ Layout responsivo em todos os breakpoints
-2. ✅ Design limpo e profissional
+2. ✅ Design limpo e profissional com cores vibrantes
 3. ✅ Imagens de alta qualidade carregando corretamente
 4. ✅ Navegação intuitiva com âncoras funcionando
-5. ✅ Formulário completo e funcional
+5. ✅ Formulário completo e funcional com campo para nome do pet
 6. ✅ Sem erros no console
 
 ---
