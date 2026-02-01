@@ -1,0 +1,658 @@
+/* ========================================
+   Studio Gui Poncciano - Beauty Salon
+   Custom Styles & Animations
+   ======================================== */
+
+/* CSS Variables */
+:root {
+    --color-turquoise-400: #2dd4bf;
+    --color-turquoise-500: #14B8A6;
+    --color-turquoise-600: #0d9488;
+    --color-coral-400: #fb923c;
+    --color-coral-500: #F97316;
+    --color-coral-600: #ea580c;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+    background: rgba(20, 184, 166, 0.3);
+    color: #1f2937;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #14B8A6, #F97316);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #0d9488, #ea580c);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Pulse Slow */
+@keyframes pulseSlow {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulseSlow 4s ease-in-out infinite;
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll Down Indicator */
+@keyframes scrollDown {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(8px);
+        opacity: 0;
+    }
+}
+
+.animate-scroll-down {
+    animation: scrollDown 1.5s ease-in-out infinite;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* ========================================
+   Scroll Reveal Classes
+   ======================================== */
+
+.reveal-up,
+.reveal-left,
+.reveal-right {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-up {
+    transform: translateY(40px);
+}
+
+.reveal-left {
+    transform: translateX(-50px);
+}
+
+.reveal-right {
+    transform: translateX(50px);
+}
+
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* ========================================
+   Navigation Styles
+   ======================================== */
+
+#navbar {
+    transition: all 0.4s ease;
+}
+
+#navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#navbar.scrolled .nav-link {
+    color: #374151;
+}
+
+#navbar.scrolled .nav-link:hover {
+    color: #14B8A6;
+}
+
+/* ========================================
+   Hero Parallax Effect
+   ======================================== */
+
+#hero-bg {
+    transition: transform 0.1s ease-out;
+}
+
+/* ========================================
+   Button Hover Effects
+   ======================================== */
+
+.btn-hover-lift {
+    transition: var(--transition-smooth);
+}
+
+.btn-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3);
+}
+
+/* ========================================
+   Card Hover Effects
+   ======================================== */
+
+.card-hover {
+    transition: var(--transition-smooth);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   Image Hover Zoom
+   ======================================== */
+
+.img-zoom {
+    overflow: hidden;
+}
+
+.img-zoom img {
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   Gradient Text Animation
+   ======================================== */
+
+.gradient-text-animate {
+    background-size: 200% auto;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+/* ========================================
+   Loading Skeleton
+   ======================================== */
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ========================================
+   Glassmorphism Effect
+   ======================================== */
+
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(20, 184, 166, 0.3);
+}
+
+/* ========================================
+   WhatsApp Button Pulse
+   ======================================== */
+
+#whatsapp-btn {
+    animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+    }
+}
+
+/* ========================================
+   Counter Animation Styles
+   ======================================== */
+
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   Mobile Menu Animation
+   ======================================== */
+
+#mobile-menu {
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#mobile-menu.open {
+    max-height: 300px;
+}
+
+/* ========================================
+   Focus Styles
+   ======================================== */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #14B8A6;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+    #whatsapp-btn,
+    #navbar,
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ========================================
+   Custom Utilities
+   ======================================== */
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Gradient Border */
+.gradient-border {
+    position: relative;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #14B8A6, #F97316);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: inherit;
+}
+
+/* Hover Underline Effect */
+.hover-underline {
+    position: relative;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #14B8A6, #F97316);
+    transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+    width: 100%;
+}
+
+/* ========================================
+   Decorative Elements
+   ======================================== */
+
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+.decoration-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #14B8A6;
+}
+
+/* ========================================
+   Responsive Improvements
+   ======================================== */
+
+@media (max-width: 768px) {
+    .reveal-up,
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(30px);
+    }
+}
+
+/* ========================================
+   Lightbox Styles
+   ======================================== */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* ========================================
+   Back to Top Button
+   ======================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 40;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(to top, #14B8A6, #0d9488);
+    color: white;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.4);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 30px -5px rgba(20, 184, 166, 0.5);
+}
+
+/* ========================================
+   Mobile Menu Overlay
+   ======================================== */
+
+#mobileMenu {
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobileMenu.open {
+    transform: translateX(0);
+}
+
+/* ========================================
+   Service Card Gradient Overlay
+   ======================================== */
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(249, 115, 22, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+}
+
+/* ========================================
+   Testimonial Card Hover
+   ======================================== */
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Stats Section Gradient
+   ======================================== */
+
+.stats-gradient {
+    background: linear-gradient(135deg, #14B8A6, #0d9488);
+}
+
+/* ========================================
+   CTA Section Gradient Animation
+   ======================================== */
+
+.cta-gradient {
+    background: linear-gradient(90deg, #14B8A6, #F97316, #14B8A6);
+    background-size: 200% 100%;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* ========================================
+   Footer Link Hover
+   ======================================== */
+
+footer a:hover {
+    color: #14B8A6;
+}
+
+/* ========================================
+   Icon Animation on Hover
+   ======================================== */
+
+.icon-hover {
+    transition: transform 0.3s ease;
+}
+
+.icon-hover:hover {
+    transform: scale(1.2);
+}
