@@ -1,7 +1,7 @@
-# Revisão Playwright - VFP Hospital Veterinário - Emergência 24h (Vet for Pet)
+# Revisão Playwright - Clínica Veterinária Soer
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/vfp-hospital-veterinario-emergencia-24h-vet-for-pet/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/clinica-veterinaria-soer/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -45,7 +45,7 @@
 - Cards de serviços em grid 2 colunas
 - Depoimentos em grid 1 coluna
 - Diferenciais em grid 2 colunas
-- Barra de informações (Plantão/Localização/Telefone) em 3 colunas
+- Layout empilhado
 
 **✅ 480px (Mobile)**
 - Layout totalmente empilhado
@@ -57,30 +57,34 @@
 ### 2. Carregamento de Imagens
 
 **✅ Todas as imagens carregadas corretamente:**
-- Logo VFP Vet for Pet
-- Ícones de serviços (Emergência, UTI, Cirurgias, Exames, Imagem, Clínica)
+- Logo SoerVet
+- Imagem hero (veterinária examinando cachorro)
+- Ícones de serviços (Emergências, Consultas, Cirurgias, Exames, Diagnóstico, Vacinação)
 - Ícones de diferenciais
-- Ícones de contato (telefone, localização, horário)
+- Ícones de contato (endereço, telefone, horário)
 - Estrelas de avaliação nos depoimentos
 - Avatar placeholders nos depoimentos (iniciais dos clientes)
+- Ícones de redes sociais (Instagram, Facebook, WhatsApp)
 
 ### 3. Navegação e Âncoras
 
 **✅ Links de navegação testados e funcionando:**
+- "Início" → #inicio ✓
 - "Serviços" → #servicos ✓
-- "Diferenciais" → #diferenciais ✓
 - "Depoimentos" → #depoimentos ✓
-- "Contato" → #contato ✓
-- "Emergência 24H" (CTA) → tel:+551636329305 ✓
+- "Agendar Consulta" → #contato ✓
 - "Conhecer Serviços" → #servicos ✓
+- "Saiba mais" (cards de serviços) → #contato ✓
+- Telefone → tel:+5516992204241 ✓
+- WhatsApp → https://wa.me/5516992204241 ✓
 
 ### 4. Formulário de Contato
 
 **✅ Funcionalidades testadas:**
 - Campo "Seu Nome": preenchimento OK
 - Campo "Telefone": preenchimento OK
-- Campo "E-mail": preenchimento OK
-- Campo "Serviço" (dropdown): seleção OK
+- Campo "Nome do Pet": preenchimento OK
+- Campo "Serviço Desejado" (dropdown): seleção OK
 - Campo "Mensagem": preenchimento OK
 - Botão "Enviar Mensagem": visível e clicável
 
@@ -96,19 +100,11 @@
 
 ## Screenshots Capturados
 
-1. `vfp-1440px.png` - Layout desktop
-2. `vfp-1024px.png` - Layout tablet landscape
-3. `vfp-768px.png` - Layout tablet portrait
-4. `vfp-480px.png` - Layout mobile
-5. `vfp-section2.png` - Seção "Entendemos Suas Preocupações"
-6. `vfp-section3.png` - Cards Desafio/Solução
-7. `vfp-services.png` - Seção de Serviços
-8. `vfp-testimonials.png` - Seção de Depoimentos
-9. `vfp-testimonials2.png` - Cards de Depoimentos
-10. `vfp-diferenciais.png` - Seção de Diferenciais
-11. `vfp-diferenciais2.png` - Grid de Diferenciais
-12. `vfp-contact.png` - Seção de Contato
-13. `vfp-footer.png` - Footer e formulário completo
+1. `soer-1440px.png` - Layout desktop
+2. `soer-1024px.png` - Layout tablet landscape
+3. `soer-768px.png` - Layout tablet portrait
+4. `soer-480px.png` - Layout mobile
+5. `soer-form.png` - Formulário preenchido
 
 ---
 
@@ -116,7 +112,7 @@
 
 ✅ **REVISÃO APROVADA - SITE PRONTO PARA ENTREGA**
 
-O site do VFP Hospital Veterinário - Emergência 24h (Vet for Pet) está funcionando corretamente em todos os aspectos verificados:
+O site da Clínica Veterinária Soer está funcionando corretamente em todos os aspectos verificados:
 
 - Layout responsivo em todos os breakpoints
 - Todas as imagens carregando sem erros
@@ -128,4 +124,4 @@ O site do VFP Hospital Veterinário - Emergência 24h (Vet for Pet) está funcio
 
 **passes=true**
 
-**Notas:** Site VFP Hospital Veterinário aprovado em todos os critérios de revisão. Nenhum problema crítico encontrado. O site está pronto para entrega ao cliente.
+**Notas:** Site Clínica Veterinária Soer aprovado em todos os critérios de revisão. Nenhum problema crítico encontrado. O site está pronto para entrega ao cliente.
