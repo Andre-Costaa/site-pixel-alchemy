@@ -1,9 +1,9 @@
-# Revisão Playwright - Clínica Veterinária Nova Aliança
+# Revisão Playwright - Instituto Veterinário Dr. Daleck
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/clinica-veterinaria-nova-alianca/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/instituto-veterinario-dr-daleck/index.html
 **Revisor:** Playwright Automated Testing
-**Story:** REV-039
+**Story:** REV-040
 
 ---
 
@@ -29,14 +29,14 @@
 **Status:** APROVADO
 
 - Hero section: ✅ Texto e CTAs visíveis
-- Seção "O Desafio/Nossa Solução": ✅ Visível com cards lado a lado
-- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consultas Clínicas, Cirurgias, Vacinação, Exames Laboratoriais, Emergências 24h, Banho & Tosa)
-- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Maria Clara Silva, Roberto Ferreira, Ana Luiza Costa)
-- Seção "Por Que Escolher a Nova Aliança": ✅ Visível com 4 diferenciais
+- Seção "Por Que Nos Escolher": ✅ Visível com cards lado a lado (Preocupações Comuns/Nossa Solução)
+- Seção "Nossos Serviços": ✅ Visível com 6 cards (Clínica Geral, Cirurgias, Emergências 24h, Laboratório, Vacinação, Dermatologia)
+- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Maria Silva, Carlos Oliveira, Ana Costa)
+- Seção "Nossos Diferenciais": ✅ Visível com 4 diferenciais (25+ Anos, Equipe Especializada, Emergências 24h, Amor pelos Animais)
 - Seção "Contato": ✅ Visível com formulário e informações de contato
 - Footer: ✅ Visível com links e informações
 
-**Screenshots:** `nova-alianca-1440-full.png`
+**Screenshots:** `daleck-1440-full.png`
 
 ---
 
@@ -46,7 +46,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `nova-alianca-1024-full.png`
+**Screenshots:** `daleck-1024-full.png`
 
 ---
 
@@ -59,7 +59,7 @@ Layout responsivo funcionando corretamente:
 - Cards empilhados verticalmente
 - Conteúdo adaptado para tablet
 
-**Screenshots:** `nova-alianca-768-full.png`
+**Screenshots:** `daleck-768-full.png`
 
 ---
 
@@ -73,7 +73,7 @@ Layout mobile funcionando corretamente:
 - Formulário adaptado para tela pequena
 - CTAs visíveis e acessíveis
 
-**Screenshots:** `nova-alianca-480-full.png`
+**Screenshots:** `daleck-480-full.png`
 
 ---
 
@@ -81,9 +81,10 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Hero: ✅ Imagem de cachorros carregando corretamente (800x800px)
+- Hero: ✅ Imagem de cachorros carregando corretamente
 - Ícones SVG: ✅ Todos os ícones inline renderizando corretamente
-- Avatares de depoimentos: ✅ Iniciais dos clientes renderizando (MC, RF, AL)
+- Avatares de depoimentos: ✅ Fotos dos clientes renderizando (Maria Silva, Carlos Oliveira, Ana Costa)
+- Ícones de serviços: ✅ Todos os ícones visíveis
 
 ---
 
@@ -95,7 +96,7 @@ Layout mobile funcionando corretamente:
 - Link "Serviços" → #servicos ✅
 - Link "Depoimentos" → #depoimentos ✅
 - Link "Contato" → #contato ✅
-- Link "Agendar Consulta" (hero) → WhatsApp ✅
+- Link "Agendar Consulta" (hero) → #contato ✅
 - Link "Conhecer Serviços" (hero) → #servicos ✅
 - Botões CTA funcionando corretamente
 
@@ -106,11 +107,13 @@ Layout mobile funcionando corretamente:
 **Status:** APROVADO
 
 Campos testados:
-- Nome Completo: ✅ Aceita entrada de texto
-- E-mail: ✅ Aceita formato válido
-- Serviço de Interesse: ✅ Dropdown com 7 opções funcionando (Consulta Clínica, Cirurgia, Vacinação, Exames Laboratoriais, Emergência, Banho & Tosa, Outro)
+- Seu Nome: ✅ Aceita entrada de texto
+- Telefone: ✅ Aceita formato válido
+- Serviço Desejado: ✅ Dropdown com 6 opções funcionando (Clínica Geral, Cirurgia, Vacinação, Exames Laboratoriais, Emergência, Outro)
 - Mensagem: ✅ Aceita texto livre
 - Botão Enviar Mensagem: ✅ Funcional
+
+**Screenshot:** `daleck-form-filled.png`
 
 ---
 
@@ -120,7 +123,7 @@ Campos testados:
 
 - Erros críticos de JS: ❌ Nenhum
 - Recursos bloqueados: ❌ Nenhum
-- Avisos: ⚠️ Apenas favicon.ico (404) - não crítico
+- Avisos: ❌ Nenhum
 
 ---
 
@@ -128,7 +131,7 @@ Campos testados:
 
 **✅ SITE APROVADO**
 
-A página da Clínica Veterinária Nova Aliança está funcionando perfeitamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos no console.
+A página do Instituto Veterinário Dr. Daleck está funcionando perfeitamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos no console.
 
 **passes=true**
 
