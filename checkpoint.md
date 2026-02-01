@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 37/45 (82%)
+- **Concluídas**: 38/45 (84%)
 - **Em Andamento**: 0
-- **Pendentes**: 8
+- **Pendentes**: 7
 
 ## URLs dos Demos
 
@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-020 - Clínica Veterinária Pena Verde - Animais Silvestres e Exóticos
+- **Último Site**: US-022 - Snoopy Veterinary Clinic
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/clinica-veterinaria-pena-verde-animais-silvestres-e-exoticos
-- **Design**: "Forest Wild" - Paleta verde floresta/madeira com Playfair Display + Inter fonts, ícones em formato de folha, especialização em animais silvestres e exóticos
+- **URL**: pixelalchemy.com.br/site-demo/snoopy-veterinary-clinic
+- **Design**: "Paw Prints & Heart Beats" - Paleta quente (terracota #e07a5f, amendoim #c49a6c, sálvia #81b29a), tipografia Fredoka + Quicksand, formas orgânicas de pata, design alegre e profissional
 
 ## Próximos Sites (Pendentes)
 
