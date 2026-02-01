@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 39/45 (87%)
+- **Concluídas**: 40/45 (89%)
 - **Em Andamento**: 0
-- **Pendentes**: 6
+- **Pendentes**: 5
 
 ## URLs dos Demos
 
@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-024 - Veterinary Clinic and Pet Shop São Bernardo
+- **Último Site**: US-027 - Hemocentro Heróis Vet
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo
-- **Design**: "Premium Organic" - Paleta sofisticada (verde floresta #0d4d3a, laranja terracota #e07b39, dourado #f4c857), tipografia Playfair Display + Inter, tema clínica veterinária premium 25 anos, design elegante com animações suaves e elementos flutuantes
+- **URL**: pixelalchemy.com.br/site-demo/hemocentro-herois-vet
+- **Design**: "Medical Hero" - Paleta medical/crimson (#c41e3a primary, #1e3a5f secondary, #d4a531 accent), tipografia Montserrat + Inter, tema hemocentro veterinário com gradiente hero, cards com hover effects, badges flutuantes animados, e design profissional médico
 
 ## Próximos Sites (Pendentes)
 
