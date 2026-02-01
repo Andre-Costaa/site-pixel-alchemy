@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 33/45 (73%)
+- **Concluídas**: 35/45 (78%)
 - **Em Andamento**: 0
-- **Pendentes**: 12
+- **Pendentes**: 10
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-032 e US-037)
+### Sites Concluídos (US-001 a US-034 e US-037)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -44,21 +44,21 @@
 | US-030 | **BMvet 24 Horas - Zona Oeste** | **pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste** |
 | US-031 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-vet-matheus-nascimento** |
 | US-032 | **Vídeo Pet Endoscopia e Vídeocirurgia Veterinária** | **pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria** |
+| US-033 | **Pet Work Clínica Veterinária** | **pixelalchemy.com.br/site-demo/pet-work-clinica-veterinaria-banho-e-tosa-e-pet-shop** |
+| US-034 | **Arthemia Clínica Veterinária** | **pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria** |
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 
 ## Última Atualização
-- **Data**: 2026-01-31
-- **Último Site**: US-032 - Vídeo Pet Endoscopia e Vídeocirurgia Veterinária
-- **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria
-- **Design**: "Video Medical Tech" - Paleta azul royal (#1e40af) e cyan (#06b6d4), tipografia Space Grotesk + Inter, tema endoscopia veterinária com video grid, scan-line effects, video frame UI, e estética tecnológica médica
+- **Data**: 2026-02-01
+- **Último Site**: US-034 - Arthemia Clínica Veterinária
+- **Status**: Concluído
+- **URL**: pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria
+- **Design**: "Modern Wellness" - Paleta elegante (terracota #8B3A3A primary, dourado #D4A574 accent, creme #FAF6F1 background), tipografia Playfair Display + Inter, floating paw animations, gradient overlays, card hover effects, e estética wellness premium
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-033 | Pet Work Clínica Veterinária | Pendente |
-| US-034 | Arthemia Clínica Veterinária | Pendente |
 | US-035 | Mr. Dog e Cia | Pendente |
 | US-036 | Daniela Mosna Oncologia Veterinária | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
