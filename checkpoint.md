@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-028 - Di Gato Medicina Felina
+- **Último Site**: US-029 - Dog Days - Clínica Veterinária 24h
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/di-gato-medicina-felina
-- **Design**: "Feline Elegance" - Paleta terra/accent (#2C5F5F primary teal, #D4A574 secondary sand, #E88B7A accent coral), tipografia Playfair Display + Inter, tema medicina felina com blobmorphism animado, cards com top border gradient, e estética elegante e acolhedora
+- **URL**: pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h
+- **Design**: "Urgent Care Professional" - Paleta emergency medical (#0d9488 teal primary, #f97316 orange accent, #ef4444 red alert), tipografia Space Grotesk + Inter, tema veterinária 24h com gradient hero, blobmorphism animado, heartbeat animation no CTA, e estética profissional e urgente
 
 ## Próximos Sites (Pendentes)
 
