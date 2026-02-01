@@ -1,9 +1,9 @@
-# Revisão Playwright - Laus Consultório Veterinário
+# Revisão Playwright - Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/laus-consultorio-veterinario/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/heloisa-americo-deluzzi-clinica-e-cirurgia-de-animais-silvestres/index.html
 **Revisor:** Playwright Automated Testing
-**Story:** REV-037
+**Story:** REV-038
 
 ---
 
@@ -28,15 +28,15 @@
 
 **Status:** APROVADO
 
-- Hero section: ✅ Imagem carregando corretamente (800x800)
-- Seção "Por Que Escolher a Laus": ✅ Visível com cards "Os Desafios que Enfrentamos" e "Nossa Solução"
-- Seção "Nossos Serviços": ✅ Visível com 6 cards (Consultas Clínicas, Vacinação, Cirurgias, Exames Laboratoriais, Ecografias, Emergências 24h)
-- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Maria Clara, Ana Silva, Roberto Ferreira)
-- Seção "Diferenciais": ✅ Visível com 4 diferenciais (Atendimento Humanizado, Pontualidade, Equipamentos Modernos, Equipe Qualificada)
-- Seção "Agende uma Visita": ✅ Visível com formulário e informações de contato
+- Hero section: ✅ Texto e CTAs visíveis
+- Seção "Por Que Nós": ✅ Visível com cards "O Desafio" e "Nossa Solução"
+- Seção "Nossos Serviços": ✅ Visível com 6 cards (Clínica Geral, Cirurgias Especializadas, Exames Laboratoriais, Tratamento Médico, Medicina de Aves, Orientação ao Tutor)
+- Seção "Nossos Diferenciais": ✅ Visível com 4 diferenciais (Especialização Real, Equipamentos Adequados, Paixão pelo Que Fazemos, Atendimento Humanizado)
+- Seção "Depoimentos": ✅ Visível com 3 depoimentos de clientes (Marina Costa, Ricardo Santos, Fernanda Lima)
+- Seção "Agende uma Consulta": ✅ Visível com formulário e informações de contato
 - Footer: ✅ Visível com links e informações
 
-**Screenshots:** `laus-vet-1440-hero.png`, `laus-vet-1440-servicos.png`, `laus-vet-1440-depoimentos.png`, `laus-vet-1440-footer.png`
+**Screenshots:** `heloisa-1440px.png`, `heloisa-1440px-scroll1.png`, `heloisa-1440px-scroll2.png`, `heloisa-1440px-scroll3.png`, `heloisa-1440px-scroll4.png`, `heloisa-1440px-scroll5.png`, `heloisa-1440px-scroll6.png`
 
 ---
 
@@ -46,7 +46,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `laus-vet-1024-hero.png`, `laus-vet-1024-servicos.png`
+**Screenshots:** `heloisa-1024px.png`, `heloisa-1024px-scroll1.png`
 
 ---
 
@@ -59,7 +59,7 @@ Layout responsivo funcionando corretamente:
 - Cards empilhados verticalmente
 - Conteúdo adaptado para tablet
 
-**Screenshots:** `laus-vet-768-hero.png`, `laus-vet-768-form.png`
+**Screenshots:** `heloisa-768px.png`, `heloisa-768px-scroll1.png`
 
 ---
 
@@ -73,7 +73,7 @@ Layout mobile funcionando corretamente:
 - Formulário adaptado para tela pequena
 - CTAs visíveis e acessíveis
 
-**Screenshots:** `laus-vet-480-hero.png`, `laus-vet-480-form.png`
+**Screenshots:** `heloisa-480px.png`, `heloisa-480px-scroll1.png`
 
 ---
 
@@ -81,21 +81,11 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Hero image: ✅ Carregando corretamente (800x800)
+- Hero: ✅ Elementos visuais carregando corretamente
+- Imagens de serviços: ✅ 6 imagens carregando (tucano, sala de cirurgia, cachorro, porquinhos-da-índia, arara, peixe-palhaço)
 - Ícones SVG: ✅ Todos os ícones inline renderizando corretamente
 - Ícones de serviços: ✅ Todos renderizando corretamente
-- Total de imagens verificadas: 1 imagem principal + ícones SVG inline
-
-**Imagem verificada:**
-```javascript
-{
-  src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&h=800&fit=crop&crop=faces",
-  alt: "Veterinária cuidando de cachorro com carinho",
-  naturalWidth: 800,
-  naturalHeight: 800,
-  complete: true
-}
-```
+- Avatares de depoimentos: ✅ Iniciais dos clientes renderizando (MC, RS, FL)
 
 ---
 
@@ -103,12 +93,15 @@ Layout mobile funcionando corretamente:
 
 **Status:** APROVADO
 
-- Link "Início" → #inicio ✅
 - Link "Serviços" → #servicos ✅
+- Link "Diferenciais" → #diferenciais ✅
 - Link "Depoimentos" → #depoimentos ✅
 - Link "Contato" → #contato ✅
-- Link "Agendar Consulta" → #contato ✅
+- Link "Agendar Consulta" (hero) → #contato ✅
+- Link "Conhecer Serviços" (hero) → #servicos ✅
 - Botões CTA funcionando corretamente
+
+**Screenshots:** `heloisa-nav-servicos.png`, `heloisa-nav-contato.png`
 
 ---
 
@@ -117,15 +110,13 @@ Layout mobile funcionando corretamente:
 **Status:** APROVADO
 
 Campos testados:
-- Nome Completo: ✅ Aceita entrada de texto
+- Seu Nome: ✅ Aceita entrada de texto
 - Telefone / WhatsApp: ✅ Aceita formato (XX) XXXXX-XXXX
-- E-mail: ✅ Aceita formato de e-mail
-- Nome do Pet: ✅ Aceita texto livre
-- Serviço Desejado: ✅ Dropdown com 7 opções funcionando (Consulta Clínica, Vacinação, Cirurgia, Exames Laboratoriais, Ecografia, Emergência, Outro)
+- Tipo de Animal: ✅ Dropdown com 5 opções funcionando (Ave, Réptil, Mamífero Exótico, Roedor, Outro)
 - Mensagem: ✅ Aceita texto livre
 - Botão Enviar Mensagem: ✅ Funcional
 
-**Screenshots:** `laus-vet-form-preenchido.png`
+**Screenshots:** `heloisa-form-preenchido.png`
 
 ---
 
@@ -143,7 +134,7 @@ Campos testados:
 
 **✅ SITE APROVADO**
 
-A página do story Laus Consultório Veterinário está funcionando perfeitamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos no console.
+A página do story Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres está funcionando perfeitamente em todos os breakpoints testados. Não foram encontrados problemas de layout, quebras, imagens faltantes ou erros críticos no console.
 
 **passes=true**
 
