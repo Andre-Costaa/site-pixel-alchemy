@@ -1,7 +1,7 @@
-# Revisão Playwright - Veterinary Clinic and Pet Shop São Bernardo
+# Revisão Playwright - Bicho Chic - Clínica Veterinária 24h
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/veterinary-clinic-and-pet-shop-sao-bernardo/index.html
+**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/bicho-chic-clinica-veterinaria-24h/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -14,7 +14,7 @@
 | Layout 1024px | ⚠️ REPROVADO | Conteúdo invisível devido a animações wow-fade-up |
 | Layout 768px | ⚠️ REPROVADO | Conteúdo invisível devido a animações wow-fade-up |
 | Layout 480px | ⚠️ REPROVADO | Conteúdo invisível devido a animações wow-fade-up |
-| Carregamento de Imagens | ✅ APROVADO | Todas as imagens carregando corretamente |
+| Carregamento de Imagens | ✅ APROVADO | Hero image carregando corretamente |
 | Navegação/Âncoras | ✅ APROVADO | Links funcionando corretamente |
 | Formulário | ✅ APROVADO | Campos preenchíveis e funcionais |
 | Console (Erros JS) | ✅ APROVADO | Sem erros críticos (apenas favicon 404) |
@@ -30,17 +30,17 @@
 **Problema Crítico:** O conteúdo das seções está invisível devido às animações `wow-fade-up` que não estão sendo ativadas pelo Intersection Observer no carregamento inicial.
 
 - Hero section: ✅ Visível e funcionando
-- Seção "Entendemos Suas Preocupações": ❌ Invisível (opacity: 0) - cards de problemas/soluções não aparecem
+- Seção "Por Que Bicho Chic": ❌ Invisível (opacity: 0) - cards de preocupações/soluções não aparecem
 - Seção "Nossos Serviços": ❌ Invisível (opacity: 0)
 - Seção "Depoimentos": ❌ Invisível (opacity: 0)
-- Seção "Diferenciais": ❌ Invisível (opacity: 0)
+- Seção "Nossos Diferenciais": ❌ Invisível (opacity: 0)
 - Seção "Contato": ✅ Parcialmente visível (formulário aparece)
 - Footer: ✅ Visível
 
 **Análise Técnica:**
 Os elementos com classe `.wow-fade-up` têm `opacity: 0` e `transform: translateY(40px)` definidos no CSS. A classe `.animated` deve ser adicionada via JavaScript pelo Intersection Observer quando o elemento entra no viewport, mas isso não está acontecendo no carregamento inicial.
 
-**Screenshots:** `rev-024-1440px.png` (com problema), `rev-024-after-scroll.png` (após scroll, funcionando)
+**Screenshots:** `bicho-chic-1440.png` (com problema), `bicho-chic-1440-animated.png` (após correção manual, funcionando)
 
 ---
 
@@ -50,7 +50,7 @@ Os elementos com classe `.wow-fade-up` têm `opacity: 0` e `transform: translate
 
 Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 
-**Screenshots:** `rev-024-1024px.png`
+**Screenshots:** `bicho-chic-1024.png`
 
 ---
 
@@ -60,7 +60,7 @@ Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 
 Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 
-**Screenshots:** `rev-024-768px.png`
+**Screenshots:** `bicho-chic-768.png`
 
 ---
 
@@ -70,7 +70,7 @@ Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 
 Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 
-**Screenshots:** `rev-024-480px.png`
+**Screenshots:** `bicho-chic-480.png`
 
 ---
 
@@ -79,18 +79,17 @@ Mesmo problema de animações não ativadas, resultando em conteúdo invisível.
 **Status:** APROVADO
 
 Todas as imagens carregando corretamente:
-- ✅ Logo São Bernardo no header
-- ✅ Imagem do hero (veterinária com gato - Unsplash)
-- ✅ Ícones de problemas/soluções (checkmarks)
-- ✅ Ícones de serviços (Clínica Geral, Exames Laboratoriais, Imagem Digital, Cirurgias, Vacinação, Internação 24h)
+- ✅ Imagem do hero (veterinária com pet - Unsplash)
+- ✅ Ícones de problemas/soluções
+- ✅ Ícones de serviços (Emergência 24h, Consultas, Cirurgias, Exames, Vacinação, Pet Shop)
 - ✅ Estrelas de avaliação nos depoimentos
-- ✅ Ícones de diferenciais (Atendimento 24h, Equipe Especializada, Tecnologia Avançada, Amor em Cada Detalhe, Laboratório Próprio, Centro Cirúrgico, Pet Shop Completo, 25 Anos de História)
-- ✅ Ícones de contato (Endereço, Telefone, Horário)
+- ✅ Ícones de diferenciais (24 Horas, Muito Carinho, Estrutura Completa, Equipe Experiente)
+- ✅ Ícones de contato (Endereço, Telefone, WhatsApp)
 - ✅ Ícones de redes sociais (WhatsApp, Instagram, Facebook)
 
 **Network Requests:**
 - Todas as imagens carregando corretamente sem erros 404
-- Todas as fontes carregando corretamente
+- Todas as fontes carregando corretamente (Playfair Display, Inter)
 
 ---
 
@@ -99,13 +98,14 @@ Todas as imagens carregando corretamente:
 **Status:** APROVADO
 
 Links de navegação testados e funcionando:
-- ✅ "Início" → #home
+- ✅ "Início" → #inicio
 - ✅ "Serviços" → #servicos
 - ✅ "Diferenciais" → #diferenciais
 - ✅ "Depoimentos" → #depoimentos
-- ✅ "Agendar Consulta" → #contato
-- ✅ "Nossos Serviços" (hero) → #servicos
-- ✅ Links de telefone → tel:+551636304500
+- ✅ "Contato" → #contato
+- ✅ "Agendar Agora" (hero) → https://wa.me/5516991354100
+- ✅ "Ver Serviços" (hero) → #servicos
+- ✅ Links de telefone → tel:+5516991354100
 
 Todos os links de âncora rolam suavemente para as seções correspondentes.
 
@@ -118,22 +118,17 @@ Todos os links de âncora rolam suavemente para as seções correspondentes.
 Campos testados e funcionando:
 - ✅ "Seu Nome" - Texto livre
 - ✅ "Telefone" - Aceita formato (XX) XXXXX-XXXX
-- ✅ "E-mail" - Aceita formato de email
-- ✅ "Nome do Pet" - Texto livre
-- ✅ "Serviço Desejado" - Dropdown com 7 opções (Consulta Clínica, Vacinação, Cirurgia, Exames Laboratoriais, Exames de Imagem, Emergência, Outro)
-- ✅ "Data Preferencial" - Campo de data
-- ✅ "Mensagem (opcional)" - Texto livre multiline
-- ✅ Botão "Solicitar Agendamento" - Funcional
+- ✅ "Serviço de Interesse" - Dropdown com 7 opções (Emergência 24h, Consulta de Rotina, Cirurgia, Exames, Banho e Tosa, Vacinação, Outro)
+- ✅ "Mensagem" - Texto livre multiline
+- ✅ Botão "Enviar Mensagem" - Funcional
 
 **Teste realizado:**
 - Nome: "Teste Usuario"
 - Telefone: "(16) 99999-9999"
-- Email: "teste@email.com"
-- Nome do Pet: "Rex"
-- Serviço: "Consulta Clínica"
-- Mensagem: "Mensagem de teste para validação do formulário"
+- Serviço: "Consulta de Rotina"
+- Mensagem: "Mensagem de teste para verificacao do formulario"
 
-**Screenshot:** `rev-024-form-filled.png`
+**Screenshot:** `bicho-chic-form-filled.png`
 
 ---
 
@@ -148,12 +143,14 @@ Campos testados e funcionando:
 
 ## Screenshots Capturados
 
-- `rev-024-1440px.png` - Desktop (com problema de animações)
-- `rev-024-1024px.png` - Tablet landscape
-- `rev-024-768px.png` - Tablet portrait
-- `rev-024-480px.png` - Mobile
-- `rev-024-after-scroll.png` - Desktop após scroll (funcionando)
-- `rev-024-form-filled.png` - Formulário preenchido
+- `bicho-chic-1440.png` - Desktop (com problema de animações)
+- `bicho-chic-1024.png` - Tablet landscape
+- `bicho-chic-768.png` - Tablet portrait
+- `bicho-chic-480.png` - Mobile
+- `bicho-chic-1440-animated.png` - Desktop após correção manual (funcionando)
+- `bicho-chic-nav-servicos.png` - Navegação para seção Serviços
+- `bicho-chic-contato.png` - Seção de contato
+- `bicho-chic-form-filled.png` - Formulário preenchido
 
 ---
 
@@ -232,7 +229,7 @@ if (wowElements.length > 0) {
 
 ⚠️ **REVISÃO REPROVADA - CORREÇÕES NECESSÁRIAS**
 
-O site Veterinary Clinic and Pet Shop São Bernardo possui um **problema crítico de animações** que impede a visualização do conteúdo. As seções com classe `wow-fade-up` ficam invisíveis (`opacity: 0`) porque o Intersection Observer não está adicionando a classe `animated` corretamente no carregamento inicial.
+O site Bicho Chic - Clínica Veterinária 24h possui um **problema crítico de animações** que impede a visualização do conteúdo. As seções com classe `wow-fade-up` ficam invisíveis (`opacity: 0`) porque o Intersection Observer não está adicionando a classe `animated` corretamente no carregamento inicial.
 
 ### Problemas Encontrados:
 
@@ -265,4 +262,3 @@ Após aplicar qualquer uma das correções sugeridas acima, o site estará pront
 ---
 
 ---
-
