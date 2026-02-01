@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 40/45 (89%)
+- **Concluídas**: 41/45 (91%)
 - **Em Andamento**: 0
-- **Pendentes**: 5
+- **Pendentes**: 4
 
 ## URLs dos Demos
 
@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-027 - Hemocentro Heróis Vet
+- **Último Site**: US-028 - Di Gato Medicina Felina
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/hemocentro-herois-vet
-- **Design**: "Medical Hero" - Paleta medical/crimson (#c41e3a primary, #1e3a5f secondary, #d4a531 accent), tipografia Montserrat + Inter, tema hemocentro veterinário com gradiente hero, cards com hover effects, badges flutuantes animados, e design profissional médico
+- **URL**: pixelalchemy.com.br/site-demo/di-gato-medicina-felina
+- **Design**: "Feline Elegance" - Paleta terra/accent (#2C5F5F primary teal, #D4A574 secondary sand, #E88B7A accent coral), tipografia Playfair Display + Inter, tema medicina felina com blobmorphism animado, cards com top border gradient, e estética elegante e acolhedora
 
 ## Próximos Sites (Pendentes)
 
