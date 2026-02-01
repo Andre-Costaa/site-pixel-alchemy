@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Veterinário Seres | Cuidado Completo para seu Pet em Ribeirão Preto</title>
+    <meta name="description" content="Centro Veterinário Seres - Cuidado veterinário completo e amoroso em Ribeirão Preto. Consultas, cirurgias, emergências 24h. Av. Independência, 1810 - (16) 3602-8190">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --color-teal: #2A6B7C;
+            --color-teal-dark: #1F4F5C;
+            --color-teal-light: #3D8A9E;
+            --color-sage: #7D9B84;
+            --color-sage-light: #9BB8A3;
+            --color-coral: #D4917A;
+            --color-coral-light: #E5AC9C;
+            --color-cream: #FAF8F5;
+            --color-white: #FFFFFF;
+            --color-charcoal: #2C3E50;
+            --color-gray-light: #F5F3F0;
+            --color-gray: #E0DCD5;
+
+            /* Gradients */
+            --gradient-teal: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-light) 100%);
+            --gradient-warm: linear-gradient(135deg, var(--color-coral) 0%, var(--color-coral-light) 100%);
+            --gradient-soft: linear-gradient(180deg, var(--color-cream) 0%, var(--color-white) 100%);
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-2xl: 6rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+
+            /* Typography */
+            --font-display: 'Bricolage Grotesque', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-charcoal);
+            background: var(--color-cream);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--color-teal-dark);
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-fast);
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-teal);
+            color: var(--color-white);
+            box-shadow: 0 4px 20px rgba(42, 107, 124, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(42, 107, 124, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-teal);
+            border: 2px solid var(--color-teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-teal);
+            color: var(--color-white);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-base);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-teal);
+        }
+
+        .nav-logo span {
+            color: var(--color-coral);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-charcoal);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-coral);
+            transition: width var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-teal);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: var(--spacing-2xl) 0 var(--spacing-xl);
+            background: var(--gradient-soft);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=1600&fit=crop') center/cover no-repeat;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--color-cream) 0%, transparent 30%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.5rem 1rem;
+            background: rgba(125, 155, 132, 0.2);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-sage);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero h1 span {
+            color: var(--color-coral);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--color-charcoal);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-white);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .problem-card, .solution-card {
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE8E8 100%);
+            border-left: 4px solid var(--color-coral);
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #F0F8F8 0%, #E0F0F0 100%);
+            border-left: 4px solid var(--color-teal);
+        }
+
+        .problem-card h3, .solution-card h3 {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .problem-card h3 {
+            color: var(--color-coral);
+        }
+
+        .solution-card h3 {
+            color: var(--color-teal);
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-gray-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-teal);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(42, 107, 124, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(135deg, rgba(42, 107, 124, 0.1) 0%, rgba(125, 155, 132, 0.1) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 35px;
+            height: 35px;
+            color: var(--color-teal);
+        }
+
+        .service-card h3 {
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-teal-dark);
+        }
+
+        .service-card p {
+            font-size: 0.9375rem;
+            opacity: 0.8;
+        }
+
+        /* Diferenciais Section */
+        .diferenciais {
+            padding: var(--spacing-2xl) 0;
+            background: var(--gradient-teal);
+            color: var(--color-white);
+        }
+
+        .diferenciais h2 {
+            color: var(--color-white);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .diferencial-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-md);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diferencial-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--color-white);
+        }
+
+        .diferencial-item h3 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.25rem;
+        }
+
+        .diferencial-item p {
+            opacity: 0.9;
+            font-size: 0.9375rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background: var(--color-gray-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            font-size: 4rem;
+            color: var(--color-coral);
+            opacity: 0.3;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            color: #FFC107;
+        }
+
+        .testimonial-text {
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .testimonial-info span {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-gray-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.0625rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-teal);
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            margin-bottom: 0;
+            font-size: 0.9375rem;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-teal-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--color-gray);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+            background: var(--color-white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-teal);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-teal-dark);
+            color: var(--color-white);
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-brand h3 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: opacity var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+        }
+
+        .wow-fade-up.animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .wow-fade-up[data-delay] {
+            animation-delay: var(--delay, 0ms);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-md);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform var(--transition-base);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-bg {
+                width: 100%;
+                opacity: 0.3;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .problem-solution-grid,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .testimonials-grid,
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">Centro Veterinário <span>Seres</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <span>Cuidado Veterinário de Excelência</span>
+                </div>
+                <h1>Cuidado Completo Para Quem Você <span>AMA</span></h1>
+                <p class="hero-description">No Centro Veterinário Seres, seu pet recebe atenção integral com equipamentos modernos e equipe especializada. Saúde e bem-estar em um lugar acolhedor.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary">
+                        Agendar Consulta
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#servicos" class="btn btn-secondary">Conhecer Serviços</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="problem-solution-grid">
+                <div class="problem-card wow-fade-up">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 8v4M12 16h.01"/>
+                        </svg>
+                        Preocupado com a saúde do seu pet?
+                    </h3>
+                    <p>Saber onde deixar seu pet quando ele precisa de cuidados pode ser angustiante. Você quer um lugar que ofereça não só tratamento, mas carinho e atenção especial.</p>
+                </div>
+                <div class="solution-card wow-fade-up" data-delay="100">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="M22 4L12 14.01l-3-3"/>
+                        </svg>
+                        Tranquilidade para você e seu pet
+                    </h3>
+                    <p>No Centro Veterinário Seres, combinamos tecnologia de ponta com atendimento humanizado. Sua família está em boas mãos, com profissionais que realmente amam animais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <h2>Nossos Serviços</h2>
+                <p>Cuidado completo em todas as fases da vida do seu pet</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Consultas Clínicas</h3>
+                    <p>Avaliação completa com exame físico detalhado, diagnósticos precisos e orientações personalizadas.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="8" y="8" width="8" height="12" rx="1"/>
+                            <path d="M12 4v4M12 20v2M8 6h8"/>
+                        </svg>
+                    </div>
+                    <h3>Cirurgias</h3>
+                    <p>Procedimentos cirúrgicos seguros com equipamentos modernos e anestesia monitorada.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Vacinação</h3>
+                    <p>Protocolos vacinais atualizados para proteger seu pet contra doenças preveníveis.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="10" r="7"/>
+                            <path d="M12 17v5M8 22h8"/>
+                        </svg>
+                    </div>
+                    <h3>Exames Laboratoriais</h3>
+                    <p>Análises clínicas completas com resultados rápidos e diagnósticos confiáveis.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Emergências 24h</h3>
+                    <p>Atendimento urgente disponível a qualquer hora para quando seu pet mais precisa.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="600">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C7.5 2 4 6 4 10c0 7 8 12 8 12s8-5 8-12c0-4-3.5-8-8-8z"/>
+                            <circle cx="12" cy="10" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Banho & Tosa</h3>
+                    <p>Serviços de higiene e estética com produtos hipoalergênicos e profissionais carinhosos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais Section -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="container">
+            <h2 class="wow-fade-up">Por Que Escolher Seres</h2>
+            <div class="diferenciais-grid">
+                <div class="diferencial-item wow-fade-up" data-delay="100">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Atendimento Humanizado</h3>
+                    <p>Tratamos cada pet como único, com carinho e atenção individualizada.</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="200">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais experientes e constantemente atualizados.</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="300">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Tecnologia Avançada</h3>
+                    <p>Equipamentos modernos para diagnósticos precisos.</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="400">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s-8-4-8-10V5l8-3 8 3v7c0 6-8 10-8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Instalações Modernas</h3>
+                    <p>Ambiente limpo, seguro e preparado para receber seu pet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <h2>O Que Dizem Sobre Nós</h2>
+                <p>A confiança de quem já confiou a saúde do pet a nós</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O Dr. Carlos salvou a vida do meu gatinho. O atendimento foi rápido e muito profissional. Nunca vou esquecer a dedicação deles."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MA</div>
+                        <div class="testimonial-info">
+                            <h4>Maria Aparecida</h4>
+                            <span>Mãe do Thor (gato)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Finalmente encontrei uma clínica que realmente se importa! Minha cachorra Mel precisa de cuidados constantes e eles são sempre incríveis."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <h4>Roberto Silva</h4>
+                            <span>Pai da Mel (cachorra)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A equipe do Seres trata meu coelho como se fosse da própria família. Recomendo para todos os meus amigos que têm pets!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JL</div>
+                        <div class="testimonial-info">
+                            <h4>Juliana Lima</h4>
+                            <span>Mãe do Floquinho (coelho)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up">
+                    <h2>Entre em Contato</h2>
+                    <p>Estamos prontos para cuidar do seu pet. Agende uma consulta ou tire suas dúvidas.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <h4>Endereço</h4>
+                                <p>Av. Independência, 1810 - Jardim Sumare<br>Ribeirão Preto - SP, 14010-210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>(16) 3602-8190</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m10 8 4 4-4 4"/>
+                                <path d="M6 20v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 20h<br>Sábado: 8h às 14h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form wow-fade-up" data-delay="100">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="consulta">Consulta Clínica</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="vacina">Vacinação</option>
+                                <option value="exames">Exames Laboratoriais</option>
+                                <option value="emergencia">Emergência</option>
+                                <option value="banho">Banho & Tosa</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">
+                            Enviar Mensagem
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Centro Veterinário Seres</h3>
+                    <p>Cuidado completo e amoroso para seu melhor amigo em Ribeirão Preto.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Consultas Clínicas</a></li>
+                        <li><a href="#servicos">Cirurgias</a></li>
+                        <li><a href="#servicos">Vacinação</a></li>
+                        <li><a href="#servicos">Exames</a></li>
+                        <li><a href="#servicos">Emergências 24h</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Centro Veterinário Seres. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    entry.target.style.setProperty('--delay', delay + 'ms');
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            console.log('Form submitted:', data);
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
