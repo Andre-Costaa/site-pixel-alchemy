@@ -1,9 +1,9 @@
-# Revisão Playwright - Espécie Exótica - Clínica Veterinária Silvestres e Exóticos
+# Revisão Playwright - Bicho do Mato - Clínica Veterinária (Animais Silvestres)
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/especie-exotica-clinica-veterinaria-silvestres-e-exoticos/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/clinica-veterinaria-bicho-do-mato-atendimento-para-animais-silvestres/index.html
 **Revisor:** Playwright Automated Testing
-**Story:** REV-043
+**Story:** REV-044
 
 ---
 
@@ -79,7 +79,7 @@
 
 **Status:** APROVADO
 
-- **Hero Image:** Imagem da iguana carregada corretamente
+- **Hero Image:** Imagem da arara carregada corretamente
 - **Ícones:** Todos os ícones SVG carregados corretamente
 - **Estrelas de Avaliação:** Ícones de estrelas visíveis nos depoimentos (5 estrelas cada)
 - **Ícones de Contato:** Localização, telefone e horário visíveis
@@ -120,7 +120,7 @@
 
 ## Conclusão
 
-A revisão Playwright do site **Espécie Exótica - Clínica Veterinária Silvestres e Exóticos** foi **APROVADA**.
+A revisão Playwright do site **Bicho do Mato - Clínica Veterinária (Animais Silvestres)** foi **APROVADA**.
 
 ### Resumo
 
@@ -131,7 +131,7 @@ O site está funcionando corretamente em todos os breakpoints testados (1440px, 
 - O único erro no console é relacionado ao favicon.ico (404), que não afeta a funcionalidade do site
 - O design responsivo está bem implementado, com adaptações adequadas para cada breakpoint
 - A experiência do usuário está preservada em todos os tamanhos de tela
-- O site possui conteúdo específico e bem estruturado para clínica veterinária de animais silvestres e exóticos
+- O site possui conteúdo específico e bem estruturado para clínica veterinária de animais silvestres
 
 ---
 
