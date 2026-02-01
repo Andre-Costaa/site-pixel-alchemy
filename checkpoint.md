@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 41/45 (91%)
+- **Concluídas**: 32/45 (71%)
 - **Em Andamento**: 0
-- **Pendentes**: 4
+- **Pendentes**: 13
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-030)
+### Sites Concluídos (US-001 a US-031 e US-037)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -42,25 +42,25 @@
 | US-028 | **Di Gato Medicina Felina** | **pixelalchemy.com.br/site-demo/di-gato-medicina-felina** |
 | US-029 | **Dog Days - Clínica Veterinária 24h** | **pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h** |
 | US-030 | **BMvet 24 Horas - Zona Oeste** | **pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste** |
-| US-031 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
-| US-032 | **Vídeo Pet Endoscopia e Vídeocirurgia** | **pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria** |
-| US-033 | **Arthemia Clínica Veterinária** | **pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria** |
-| US-034 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
-| US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
-| US-036 | **Daniela Mosna Oncologia Veterinária** | **pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria** |
+| US-031 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-vet-matheus-nascimento** |
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-030 - BMvet 24 Horas - Zona Oeste
+- **Último Site**: US-031 - Endoscopia Veterinária - Vet. Matheus Nascimento
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste
-- **Design**: "Clinical Blue Trust" - Paleta medical blue trust (#1e40af primary blue, #0891b2 secondary cyan, #06b6d4 accent), tipografia Plus Jakarta Sans + Inter, tema veterinária 24h com gradient hero, floating shapes animations, e estética profissional e confiável
+- **URL**: pixelalchemy.com.br/site-demo/endoscopia-veterinaria-vet-matheus-nascimento
+- **Design**: "Surgical Precision" - Paleta cyan/orange surgical theme (#0ea5e9 primary cyan, #f97316 accent orange), tipografia Outfit + Inter, tema endoscopia veterinária com lens flare effects, procedural animations, e estética tecnológica médica
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
+| US-032 | Vídeo Pet Endoscopia e Vídeocirurgia | Pendente |
+| US-033 | Pet Work Clínica Veterinária | Pendente |
+| US-034 | Arthemia Clínica Veterinária | Pendente |
+| US-035 | Mr. Dog e Cia | Pendente |
+| US-036 | Daniela Mosna Oncologia Veterinária | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
 | US-039 | Clínica Veterinária Nova Aliança | Pendente |
 | US-040 | Instituto Veterinário Dr. Daleck | Pendente |
