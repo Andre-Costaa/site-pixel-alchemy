@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 41/45 (91%)
+- **Concluídas**: 42/45 (93%)
 - **Em Andamento**: 0
-- **Pendentes**: 4
+- **Pendentes**: 3
 
 ## URLs dos Demos
 
@@ -53,19 +53,19 @@
 | US-039 | **Clínica Veterinária Nova Aliança** | **pixelalchemy.com.br/site-demo/clinica-veterinaria-nova-alianca** |
 | US-040 | **Instituto Veterinário Dr. Daleck** | **pixelalchemy.com.br/site-demo/instituto-veterinario-dr-daleck** |
 | US-042 | **Centro Veterinário Seres** | **pixelalchemy.com.br/site-demo/centro-veterinario-seres** |
+| US-043 | **Espécie Exótica** | **pixelalchemy.com.br/site-demo/especie-exotica-clinica-veterinaria-silvestres-e-exoticos** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-042 - Centro Veterinário Seres
+- **Último Site**: US-043 - Espécie Exótica
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/centro-veterinario-seres
-- **Design**: Design holístico e profissional com paleta teal/sage/coral (#2A6B7C, #7D9B84, #D4917A), tipografia Bricolage Grotesque + Plus Jakarta Sans, formas orgânicas wave assimétricas, gradientes modernos. Layout com hero sobreposto com imagem lateral em clip-path, seção problema/solução contrastante, cards de serviço com hover elevado, diferenciais em background teal, depoimentos com citações destacadas, formulário de contato completo. Totalmente responsivo.
+- **URL**: pixelalchemy.com.br/site-demo/especie-exotica-clinica-veterinaria-silvestres-e-exoticos
+- **Design**: Design "Jungle Sunset" com paleta verde-jungle (#1E4D3B), coral do pôr do sol (#E07A5F) e âmbar dourado (#D4A445). Tipografia Space Grotesk + DM Sans. Formas orgânicas com padrão de folhas tropicais animadas no hero, cards com borda superior em gradiente sunset, seção problema/solução contrastante com fundo floresta, serviços em grid 3 colunas, depoimentos com fundo verde escuro, diferenciais com ícones em gradiente sunset, formulário de contato completo. Totalmente responsivo.
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
 | US-041 | Isabele Pereira Pets Não Convencionais | Pendente |
-| US-043 | Espécie Exótica | Pendente |
 | US-044 | Bicho do Mato | Pendente |
 | US-045 | Critical Care Cuidados Intensivos | Pendente |
