@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-029 - Dog Days - Clínica Veterinária 24h
+- **Último Site**: US-030 - BMvet 24 Horas - Zona Oeste
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/dog-days-clinica-veterinaria-24h
-- **Design**: "Urgent Care Professional" - Paleta emergency medical (#0d9488 teal primary, #f97316 orange accent, #ef4444 red alert), tipografia Space Grotesk + Inter, tema veterinária 24h com gradient hero, blobmorphism animado, heartbeat animation no CTA, e estética profissional e urgente
+- **URL**: pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste
+- **Design**: "Clinical Blue Trust" - Paleta medical blue trust (#1e40af primary blue, #0891b2 secondary cyan, #06b6d4 accent), tipografia Plus Jakarta Sans + Inter, tema veterinária 24h com gradient hero, floating shapes animations, e estética profissional e confiável
 
 ## Próximos Sites (Pendentes)
 
