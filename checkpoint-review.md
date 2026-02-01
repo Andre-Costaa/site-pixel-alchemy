@@ -1,7 +1,7 @@
-# Revisão Playwright - Endoscopia Veterinária - Vet. Matheus Nascimento
+# Revisão Playwright - Vídeo Pet Endoscopia e Vídeocirurgia Veterinária
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/endoscopia-veterinaria-vet-matheus-nascimento/index.html
+**URL Revisada:** https://www.pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -28,14 +28,14 @@
 **Status:** APROVADO
 
 - Hero section: ✅ Visível e funcionando
-- Seção "Por Que Escolher a Endoscopia Veterinária?": ✅ Visível com comparação Cirurgia Convencional vs Endoscopia
-- Seção "Serviços Especializados": ✅ Visível com 6 cards de serviços (Endoscopia Digestiva, Respiratória, Videocirurgia, Cistoscopia, Otorrinolaringoscopia, Artroscopia)
-- Seção "Depoimentos": ✅ Visível com 3 depoimentos
+- Seção "A Diferença da Tecnologia": ✅ Visível com comparação Cirurgia Convencional vs Vídeocirurgia
+- Seção "Procedimentos Especializados": ✅ Visível com 6 cards de serviços (Endoscopia Digestiva, Vídeocirurgia, Broncoscopia, Cistoscopia, Otoscopia de Vídeo, Rinoscopia)
 - Seção "Diferenciais": ✅ Visível com 6 diferenciais
+- Seção "Depoimentos": ✅ Visível com 3 depoimentos
 - Seção "Contato": ✅ Visível com formulário e informações
 - Footer: ✅ Visível
 
-**Screenshots:** `endoscopia-matheus-1440-full.png`
+**Screenshots:** `video-pet-1440-*.png`
 
 ---
 
@@ -45,7 +45,7 @@
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
 
-**Screenshots:** `endoscopia-matheus-1024.png`
+**Screenshots:** `video-pet-1024-*.png`
 
 ---
 
@@ -53,9 +53,9 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 **Status:** APROVADO
 
-Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela.
+Layout responsivo funcionando corretamente. Menu mobile (hambúrguer) ativado.
 
-**Screenshots:** `endoscopia-matheus-768.png`
+**Screenshots:** `video-pet-768-*.png`
 
 ---
 
@@ -65,7 +65,7 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 
 Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da tela. Menu mobile ativado.
 
-**Screenshots:** `endoscopia-matheus-480.png`
+**Screenshots:** `video-pet-480-*.png`
 
 ---
 
@@ -74,17 +74,17 @@ Layout responsivo funcionando corretamente. Conteúdo se adapta ao tamanho da te
 **Status:** APROVADO
 
 Todas as imagens carregando corretamente:
-- ✅ Imagem do hero (veterinário realizando procedimento endoscópico - Unsplash)
-- ✅ Ícones da seção de comparação (Cirurgia Convencional vs Endoscopia)
-- ✅ Ícones de serviços (6 serviços especializados)
+- ✅ Imagem do hero (veterinária com gato - Unsplash)
+- ✅ Imagens dos 6 cards de serviços (Unsplash)
 - ✅ Estrelas de avaliação nos depoimentos
 - ✅ Ícones de diferenciais (6 diferenciais)
-- ✅ Ícones de contato (Endereço, WhatsApp, Horário)
-- ✅ Logo Endoscopia Veterinária
+- ✅ Ícones de contato (Endereço, Telefone, Horário)
+- ✅ Fotos dos depoimentos (3 fotos)
+- ✅ Logo Vídeo Pet
 
 **Network Requests:**
 - Todas as imagens carregando corretamente sem erros 404
-- Todas as fontes (Outfit, Inter) carregando corretamente
+- Todas as fontes (Space Grotesk, Inter) carregando corretamente
 
 ---
 
@@ -95,12 +95,12 @@ Todas as imagens carregando corretamente:
 Links de navegação testados e funcionando:
 - ✅ "Início" → #inicio
 - ✅ "Serviços" → #servicos
-- ✅ "Depoimentos" → #depoimentos
 - ✅ "Diferenciais" → #diferenciais
+- ✅ "Depoimentos" → #depoimentos
 - ✅ "Contato" → #contato
+- ✅ "Agendar Consulta" (hero) → #contato
 - ✅ "Conhecer Serviços" (hero) → #servicos
-- ✅ Links "Saiba mais" nos serviços → WhatsApp
-- ✅ WhatsApp → https://wa.me/5516993345753
+- ✅ WhatsApp → https://wa.me/5516981307636
 
 Todos os links de âncora rolam suavemente para as seções correspondentes.
 
@@ -114,7 +114,7 @@ Campos testados e funcionando:
 - ✅ "Nome Completo" - Texto livre
 - ✅ "E-mail" - Aceita formato de email
 - ✅ "Telefone" - Aceita formato (XX) XXXXX-XXXX
-- ✅ "Serviço de Interesse" - Dropdown com 7 opções (Selecione um serviço, Endoscopia Digestiva, Endoscopia Respiratória, Videocirurgia, Cistoscopia, Otorrinolaringoscopia, Artroscopia, Outro)
+- ✅ "Serviço de Interesse" - Dropdown com 7 opções (Selecione o serviço, Endoscopia Digestiva, Vídeocirurgia, Broncoscopia, Cistoscopia, Otoscopia de Vídeo, Rinoscopia, Outro)
 - ✅ "Mensagem" - Texto livre multiline
 - ✅ Botão "Enviar Mensagem" - Funcional
 
@@ -122,8 +122,8 @@ Campos testados e funcionando:
 - Nome: "Teste Revisão"
 - E-mail: "teste@revisao.com"
 - Telefone: "(16) 99999-9999"
-- Serviço: "Endoscopia Digestiva"
-- Mensagem: "Mensagem de teste para revisão do site Endoscopia Veterinária - Vet. Matheus Nascimento."
+- Serviço: "Vídeocirurgia"
+- Mensagem: "Mensagem de teste para revisão do site Vídeo Pet Endoscopia."
 
 **Resultado:** Formulário preenchido corretamente, todos os campos funcionais.
 
@@ -140,12 +140,25 @@ Campos testados e funcionando:
 
 ## Screenshots Capturados
 
-- `endoscopia-matheus-1440-full.png` - Desktop (página completa)
-- `endoscopia-matheus-1024.png` - Tablet landscape
-- `endoscopia-matheus-768.png` - Tablet portrait
-- `endoscopia-matheus-480.png` - Mobile
-- `endoscopia-matheus-nav-servicos.png` - Navegação para Serviços
-- `endoscopia-matheus-form-preenchido.png` - Formulário preenchido
+- `video-pet-1440-top.png` - Desktop (hero)
+- `video-pet-1440-section2.png` - Desktop (seção diferença)
+- `video-pet-1440-servicos.png` - Desktop (serviços)
+- `video-pet-1440-servicos2.png` - Desktop (serviços continuação)
+- `video-pet-1440-diferenciais.png` - Desktop (diferenciais)
+- `video-pet-1440-depoimentos.png` - Desktop (depoimentos)
+- `video-pet-1440-depoimentos2.png` - Desktop (depoimentos 2)
+- `video-pet-1440-contato.png` - Desktop (contato)
+- `video-pet-1440-footer.png` - Desktop (footer)
+- `video-pet-1024-top.png` - Tablet landscape (hero)
+- `video-pet-1024-servicos.png` - Tablet landscape (serviços)
+- `video-pet-1024-footer.png` - Tablet landscape (footer)
+- `video-pet-768-top.png` - Tablet portrait (hero)
+- `video-pet-768-servicos.png` - Tablet portrait (serviços)
+- `video-pet-768-footer.png` - Tablet portrait (footer)
+- `video-pet-480-top.png` - Mobile (hero)
+- `video-pet-480-servicos.png` - Mobile (serviços)
+- `video-pet-480-footer.png` - Mobile (footer)
+- `video-pet-form-preenchido.png` - Formulário preenchido
 
 ---
 
@@ -153,7 +166,7 @@ Campos testados e funcionando:
 
 ✅ **REVISÃO APROVADA - PRONTO PARA ENTREGA**
 
-O site Endoscopia Veterinária - Vet. Matheus Nascimento está funcionando corretamente em todos os aspectos testados.
+O site Vídeo Pet Endoscopia e Vídeocirurgia Veterinária está funcionando corretamente em todos os aspectos testados.
 
 ### Pontos Positivos:
 
@@ -163,7 +176,7 @@ O site Endoscopia Veterinária - Vet. Matheus Nascimento está funcionando corre
 4. ✅ Navegação por âncoras funcionando corretamente
 5. ✅ Formulário completo e operacional
 6. ✅ Sem erros no console
-7. ✅ Design consistente e profissional com identidade visual adequada para clínica de endoscopia veterinária
+7. ✅ Design consistente e profissional com identidade visual adequada para clínica veterinária
 
 ### Recomendação:
 
