@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 32/45 (71.1%)
+- **Concluídas**: 33/45 (73.3%)
 - **Em Andamento**: 0
-- **Pendentes**: 13
+- **Pendentes**: 12
 
 ## URLs dos Demos
 
@@ -44,20 +44,21 @@
 | US-030 | **BMvet 24 Horas - Zona Oeste** | **pixelalchemy.com.br/site-demo/bmvet-24-horas-zona-oeste** |
 | US-031 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
 | US-032 | **Vídeo Pet Endoscopia e Vídeocirurgia** | **pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria** |
+| US-033 | **Arthemia Clínica Veterinária** | **pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria** |
+| US-034 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
+| US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-032 - Vídeo Pet Endoscopia e Vídeocirurgia Veterinária
+- **Último Site**: US-035 - Mr. Dog e Cia
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria
+- **URL**: pixelalchemy.com.br/site-demo/mr-dog-e-cia
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
 | US-033 | Pet Work | Pendente |
-| US-034 | Arthemia | Pendente |
-| US-035 | Mr. Dog e Cia | Pendente |
 | US-036 | Daniela Mosna Oncologia | Pendente |
 | US-037 | Laus Consultório Veterinário | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
