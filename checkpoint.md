@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 36/45 (80%)
+- **Concluídas**: 37/45 (82%)
 - **Em Andamento**: 0
-- **Pendentes**: 9
+- **Pendentes**: 8
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-035 e US-037)
+### Sites Concluídos (US-001 a US-037)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -48,19 +48,19 @@
 | US-034 | **Arthemia Clínica Veterinária** | **pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria** |
 | US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
+| US-036 | **Daniela Mosna Oncologia Veterinária** | **pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-035 - Mr. Dog e Cia
+- **Último Site**: US-036 - Daniela Mosna Oncologia Veterinária
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/mr-dog-e-cia
-- **Design**: "Playful Paw Prints" - Estética lúdica com cores quentes (âmbar #FF8C42, teal #2A9D8F), tipografia Fredoka + Nunito, paw print shapes animados, gradientes warm, cards com hover effects, decorative paw elements no hero, e visual acolhedor e profissional para clínica veterinária
+- **URL**: pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria
+- **Design**: "Hopeful Precision" - Estética médica de luxo com cores healing (sage green #4A7C59, terracotta #C47B5D), tipografia Cormorant Garamond + DM Sans, organic cellular gradient backgrounds com animated blobs, elegantes transições suaves, e visual compassivo e profissional para oncologia veterinária
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-036 | Daniela Mosna Oncologia Veterinária | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
 | US-039 | Clínica Veterinária Nova Aliança | Pendente |
 | US-040 | Instituto Veterinário Dr. Daleck | Pendente |
