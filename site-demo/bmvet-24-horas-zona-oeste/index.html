@@ -7,75 +7,48 @@
     <meta name="description" content="BMvet 24 Horas - Zona Oeste em Ribeirão Preto. Atendimento veterinário emergencial 24 horas. Av. Dom Pedro I, 2261 - Ipiranga. Telefone: (16) 3329-6880">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           BMVET 24 HORAS - ZONA OESTE
-           Design System: Medical Science Lab
-           ============================================ */
-
-        /* --- CSS Variables --- */
         :root {
-            /* Colors - Medical Science Palette */
-            --color-primary: #00b4d8;
-            --color-primary-dark: #0096b4;
-            --color-primary-light: #48cae4;
-            --color-secondary: #023e8a;
-            --color-accent: #0077b6;
-            --color-dark: #03045e;
-            --color-darker: #020244;
-            --color-light: #f0f9ff;
-            --color-white: #ffffff;
+            /* Clinical Blue Trust Palette */
+            --color-primary: #1e40af;
+            --color-primary-dark: #1e3a8a;
+            --color-primary-light: #3b82f6;
+            --color-secondary: #0891b2;
+            --color-secondary-dark: #0e7490;
+            --color-accent: #06b6d4;
+            --color-dark: #0f172a;
+            --color-dark-light: #1e293b;
             --color-gray: #64748b;
-            --color-gray-light: #e2e8f0;
-            --color-success: #10b981;
-            --color-danger: #ef4444;
+            --color-gray-light: #94a3b8;
+            --color-light: #f1f5f9;
+            --color-white: #ffffff;
 
             /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            --gradient-dark: linear-gradient(180deg, var(--color-darker) 0%, var(--color-dark) 100%);
-            --gradient-hero: linear-gradient(135deg, var(--color-darker) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
-            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+            --gradient-hero: linear-gradient(180deg, #eff6ff 0%, #f0f9ff 100%);
+            --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --gradient-overlay: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
 
-            /* Typography */
-            --font-display: 'Outfit', sans-serif;
-            --font-body: 'DM Sans', sans-serif;
-
-            /* Spacing */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 4rem;
-            --spacing-xl: 6rem;
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(30, 64, 175, 0.08);
+            --shadow-md: 0 8px 24px rgba(30, 64, 175, 0.12);
+            --shadow-lg: 0 16px 48px rgba(30, 64, 175, 0.16);
+            --shadow-xl: 0 24px 64px rgba(30, 64, 175, 0.20);
 
             /* Border Radius */
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
             --radius-xl: 32px;
-            --radius-full: 9999px;
 
             /* Transitions */
             --transition-fast: 0.2s ease;
-            --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* Shadows */
-            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.16);
-            --shadow-glow: 0 0 60px rgba(0, 180, 216, 0.3);
-            --shadow-glow-lg: 0 0 100px rgba(0, 180, 216, 0.4);
-
-            /* Z-index */
-            --z-base: 1;
-            --z-elevated: 10;
-            --z-header: 100;
-            --z-modal: 1000;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
         }
 
-        /* --- Reset & Base --- */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -86,438 +59,150 @@
         }
 
         body {
-            font-family: var(--font-body);
-            font-size: 16px;
-            line-height: 1.7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-light);
             color: var(--color-dark);
-            background: var(--color-white);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Typography --- */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
-        h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); }
-        h4 { font-size: clamp(1rem, 2vw, 1.5rem); }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--color-gray);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* --- Utilities --- */
         .container {
-            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            padding: 0 24px;
         }
 
-        .section {
-            padding: var(--spacing-xl) 0;
-            position: relative;
+        /* SVG Icons */
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
-        .text-center { text-align: center; }
-        .text-primary { color: var(--color-primary); }
-        .text-accent { color: var(--color-accent); }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-xs);
-            padding: 1rem 2rem;
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: var(--radius-full);
-            border: none;
-            cursor: pointer;
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
+        .icon-lg {
+            width: 48px;
+            height: 48px;
         }
 
-        .btn-primary {
-            background: var(--color-primary);
-            color: var(--color-white);
-            box-shadow: 0 4px 24px rgba(0, 180, 216, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(0, 180, 216, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--color-white);
-            border: 2px solid var(--color-white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-white);
-            color: var(--color-dark);
-        }
-
-        .btn-large {
-            padding: 1.25rem 2.5rem;
-            font-size: 1.125rem;
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.6);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float-rotate {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
-
-        @keyframes hexagon-float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-            75% {
-                transform: translateY(10px) rotate(-5deg);
-            }
-        }
-
-        @keyframes scan-line {
-            0% { top: 0%; }
-            100% { top: 100%; }
-        }
-
-        @keyframes molecule-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .wow-fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .wow-fade-up.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .wow-fade-in {
-            opacity: 0;
-            transition: opacity 0.7s ease;
-        }
-
-        .wow-fade-in.animated {
-            opacity: 1;
-        }
-
-        .wow-slide-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .wow-slide-left.animated {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .wow-slide-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .wow-slide-right.animated {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        [data-delay] {
-            transition-delay: var(--delay);
-        }
-
-        /* --- Header & Navigation --- */
-        .header {
+        /* Navigation */
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: var(--z-header);
-            padding: 1rem 0;
-            transition: all var(--transition-base);
-        }
-
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             box-shadow: var(--shadow-sm);
-            padding: 0.75rem 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
 
-        .header.scrolled .logo-text,
-        .header.scrolled .nav-link {
-            color: var(--color-dark);
+        .nav.hidden {
+            transform: translateY(-100%);
         }
 
-        .header.scrolled .nav-link::after {
-            background: var(--color-primary);
-        }
-
-        .header.scrolled .nav-cta {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        .header-content {
+        .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 80px;
         }
 
-        .logo {
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .logo-icon-wrapper {
-            width: 52px;
-            height: 52px;
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
+        .nav-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-glow);
-            position: relative;
         }
 
-        .logo-icon-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
-            opacity: 0.1;
-            animation: pulse-ring 3s infinite;
+        .nav-logo-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
         }
 
-        .logo-icon-wrapper svg {
-            width: 32px;
-            height: 32px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-md);
-            padding: 8px;
-            color: var(--color-white);
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
+        .nav-logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            color: var(--color-white);
-            letter-spacing: -0.03em;
-        }
-
-        .logo-text span {
+            font-size: 1.5rem;
             color: var(--color-primary);
+            letter-spacing: -0.02em;
         }
 
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
+        .nav-logo-text span {
+            color: var(--color-secondary);
         }
 
-        .nav-list {
+        .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            list-style: none;
+            gap: 40px;
         }
 
         .nav-link {
-            color: var(--color-white);
+            text-decoration: none;
+            color: var(--color-gray);
             font-weight: 600;
-            font-size: 0.9375rem;
-            position: relative;
-            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: width var(--transition-base);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link:hover {
+            color: var(--color-primary);
         }
 
         .nav-cta {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--color-white);
-            color: var(--color-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 0.875rem;
-            white-space: nowrap;
+            gap: 8px;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .nav-cta svg {
             width: 18px;
             height: 18px;
-            color: var(--color-danger);
         }
 
-        .mobile-toggle {
+        .nav-toggle {
             display: none;
-            flex-direction: column;
-            gap: 6px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 8px;
         }
 
-        .mobile-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--color-white);
-            border-radius: 2px;
-            transition: all var(--transition-fast);
-        }
-
-        .header.scrolled .mobile-toggle span {
-            background: var(--color-dark);
-        }
-
-        /* --- Hero Section --- */
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
+            padding-top: 140px;
+            padding-bottom: 100px;
             background: var(--gradient-hero);
             position: relative;
-            display: flex;
-            align-items: center;
             overflow: hidden;
         }
 
-        /* Molecular pattern background */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(72, 202, 228, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 119, 182, 0.05) 0%, transparent 70%);
-            opacity: 0.6;
-        }
-
-        /* Hexagonal grid overlay */
-        .hero-hexagons {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            animation: float-rotate 60s linear infinite;
-        }
-
-        .hero-shapes {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
@@ -528,376 +213,404 @@
 
         .hero-shape {
             position: absolute;
-            opacity: 0.15;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            opacity: 0.08;
+            animation: shape-float 25s ease-in-out infinite;
         }
 
         .hero-shape-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            right: 5%;
-            animation: molecule-spin 30s linear infinite;
+            width: 600px;
+            height: 600px;
+            background: var(--color-primary);
+            top: -200px;
+            right: -100px;
         }
 
         .hero-shape-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 15%;
-            left: 5%;
-            animation: molecule-spin 25s linear infinite reverse;
+            width: 450px;
+            height: 450px;
+            background: var(--color-secondary);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -12s;
         }
 
-        .hero-shape-3 {
-            width: 150px;
-            height: 150px;
-            top: 50%;
-            right: 25%;
-            animation: hexagon-float 20s ease-in-out infinite;
+        @keyframes shape-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(40px, -30px) rotate(8deg) scale(1.05); }
+            50% { transform: translate(-20px, 40px) rotate(-8deg) scale(0.95); }
+            75% { transform: translate(30px, 20px) rotate(5deg) scale(1.02); }
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
-            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fade-up 0.8s ease forwards;
         }
 
-        .hero-text {
-            color: var(--color-white);
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 180, 216, 0.2);
-            color: var(--color-primary-light);
-            padding: 0.625rem 1.25rem;
-            border-radius: var(--radius-full);
-            font-size: 0.875rem;
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-            border: 1px solid rgba(0, 180, 216, 0.3);
-            backdrop-filter: blur(10px);
+            gap: 8px;
+            background: rgba(30, 64, 175, 0.1);
+            color: var(--color-primary);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
         }
 
-        .hero-badge svg {
-            width: 18px;
-            height: 18px;
-            animation: pulse-ring 2s infinite;
+        .hero-badge-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
 
         .hero-title {
-            color: var(--color-white);
-            margin-bottom: var(--spacing-md);
-            text-shadow: 0 2px 40px rgba(0, 0, 0, 0.2);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--color-dark);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
         }
 
-        .hero-title .highlight {
-            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+        .hero-title span {
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .hero-description {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: var(--spacing-md);
-            max-width: 500px;
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: 32px;
+            max-width: 520px;
+            line-height: 1.8;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1rem;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
-        .hero-phone-card {
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            margin-top: var(--spacing-md);
-            padding: 1.25rem 1.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: fit-content;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
         }
 
-        .hero-phone-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--color-danger);
-            border-radius: 50%;
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 32px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(30, 64, 175, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
+            gap: 10px;
+        }
+
+        .hero-feature svg {
+            width: 22px;
+            height: 22px;
+            color: var(--color-secondary);
             flex-shrink: 0;
         }
 
-        .hero-phone-icon::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--color-danger);
-            animation: pulse-ring 2s infinite;
+        .hero-feature-text {
+            font-weight: 600;
+            color: var(--color-dark);
         }
 
-        .hero-phone-icon svg {
-            width: 26px;
-            height: 26px;
-            color: var(--color-white);
+        .hero-visual {
             position: relative;
-            z-index: 1;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fade-left 0.8s ease 0.2s forwards;
         }
 
-        .hero-phone-content {
-            color: var(--color-white);
+        @keyframes fade-left {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .hero-phone-label {
-            font-size: 0.8125rem;
-            opacity: 0.8;
-            font-weight: 500;
-        }
-
-        .hero-phone-number {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-image-wrapper {
+        .hero-image-card {
             position: relative;
-        }
-
-        .hero-image-frame {
-            position: relative;
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
             border-radius: var(--radius-xl);
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
         }
 
-        .hero-main-image {
+        .hero-image {
             width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-glow-lg);
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--gradient-overlay);
+            padding: 32px;
+            color: white;
+        }
+
+        .hero-overlay-text {
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .hero-float-card {
             position: absolute;
-            background: var(--color-white);
-            padding: 1rem 1.5rem;
+            background: white;
             border-radius: var(--radius-lg);
+            padding: 20px 24px;
             box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: float-rotate 4s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero-float-card-1 {
-            bottom: 30px;
-            left: -30px;
+            top: 30px;
+            left: -25px;
         }
 
         .hero-float-card-2 {
-            top: 30px;
-            right: -30px;
-            animation-delay: 1.5s;
+            bottom: 50px;
+            right: -25px;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         .float-card-icon {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             background: var(--gradient-primary);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            color: white;
+            margin-bottom: 12px;
         }
 
-        .float-card-icon svg {
-            width: 26px;
-            height: 26px;
-            color: var(--color-white);
+        .float-card-title {
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 4px;
         }
 
         .float-card-text {
-            font-weight: 700;
-            color: var(--color-dark);
-            font-size: 0.9375rem;
+            font-size: 0.85rem;
+            color: var(--color-gray);
         }
 
-        /* --- Problem/Solution Section --- */
+        /* Problem Solution Section */
         .problem-solution {
-            background: var(--color-light);
-            position: relative;
+            padding: 100px 0;
+            background: white;
         }
 
-        .problem-solution::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            line-height: 1.8;
         }
 
         .problem-solution-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
+            gap: 40px;
         }
 
-        .ps-card {
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ps-problem {
+        .problem-card {
             background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border: 1px solid rgba(239, 68, 68, 0.1);
-        }
-
-        .ps-solution {
-            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-            border: 1px solid rgba(0, 180, 216, 0.1);
-        }
-
-        .ps-icon-wrapper {
-            width: 80px;
-            height: 80px;
             border-radius: var(--radius-xl);
+            padding: 48px;
+            position: relative;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            position: relative;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 24px;
         }
 
-        .ps-problem .ps-icon-wrapper {
+        .problem-card .card-icon {
             background: rgba(239, 68, 68, 0.15);
-        }
-
-        .ps-problem .ps-icon-wrapper svg {
-            color: var(--color-danger);
-        }
-
-        .ps-solution .ps-icon-wrapper {
-            background: var(--gradient-primary);
-        }
-
-        .ps-solution .ps-icon-wrapper svg {
-            color: var(--color-white);
-        }
-
-        .ps-icon-wrapper svg {
-            width: 40px;
-            height: 40px;
-        }
-
-        .ps-title {
-            margin-bottom: 1rem;
-        }
-
-        .ps-problem .ps-title {
             color: #dc2626;
         }
 
-        .ps-solution .ps-title {
-            color: var(--color-primary-dark);
+        .solution-card .card-icon {
+            background: rgba(30, 64, 175, 0.15);
+            color: var(--color-primary);
         }
 
-        .ps-list {
+        .card-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 16px;
+        }
+
+        .card-list {
             list-style: none;
-            margin-top: var(--spacing-sm);
         }
 
-        .ps-list li {
+        .card-list li {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 0.875rem;
+            gap: 12px;
+            padding: 12px 0;
+            color: var(--color-gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .ps-list li svg {
-            width: 22px;
-            height: 22px;
+        .card-list li:last-child {
+            border-bottom: none;
+        }
+
+        .card-list svg {
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
             margin-top: 2px;
         }
 
-        .ps-problem .ps-list li svg {
-            color: var(--color-danger);
+        .problem-card .card-list svg {
+            color: #dc2626;
         }
 
-        .ps-solution .ps-list li svg {
-            color: var(--color-primary);
+        .solution-card .card-list svg {
+            color: var(--color-secondary);
         }
 
-        /* --- Services Section --- */
+        /* Services Section */
         .services {
-            background: var(--color-white);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto var(--spacing-lg);
-        }
-
-        .section-tag {
-            display: inline-block;
-            color: var(--color-primary);
-            font-weight: 700;
-            font-size: 0.8125rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 180, 216, 0.1);
-            border-radius: var(--radius-full);
-        }
-
-        .section-title {
-            color: var(--color-dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            color: var(--color-gray);
-            font-size: 1.125rem;
+            padding: 100px 0;
+            background: var(--color-light);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 32px;
         }
 
         .service-card {
-            background: var(--color-white);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-sm);
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
             transition: all var(--transition-base);
             position: relative;
-            overflow: hidden;
-            border: 1px solid var(--color-gray-light);
+            cursor: pointer;
+            border: 1px solid rgba(30, 64, 175, 0.08);
         }
 
         .service-card::before {
@@ -908,413 +621,351 @@
             right: 0;
             height: 4px;
             background: var(--gradient-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-base);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            opacity: 0;
+            transition: opacity var(--transition-base);
         }
 
         .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-primary-light);
+            box-shadow: var(--shadow-xl);
         }
 
         .service-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .service-icon {
             width: 72px;
             height: 72px;
             background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .service-icon::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
-            opacity: 0.2;
-            filter: blur(20px);
-            z-index: -1;
+            margin-bottom: 24px;
         }
 
         .service-icon svg {
             width: 36px;
             height: 36px;
-            color: var(--color-white);
+            color: white;
         }
 
         .service-card:nth-child(2) .service-icon {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-
-        .service-card:nth-child(2) .service-icon::after {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
         }
 
         .service-card:nth-child(3) .service-icon {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-
-        .service-card:nth-child(3) .service-icon::after {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
         }
 
         .service-card:nth-child(4) .service-icon {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .service-card:nth-child(4) .service-icon::after {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #be185d 0%, #ec4899 100%);
         }
 
         .service-card:nth-child(5) .service-icon {
-            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-        }
-
-        .service-card:nth-child(5) .service-icon::after {
-            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
         }
 
         .service-card:nth-child(6) .service-icon {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-        }
-
-        .service-card:nth-child(6) .service-icon::after {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
         }
 
         .service-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: var(--color-dark);
-            margin-bottom: 0.75rem;
+            margin-bottom: 12px;
         }
 
         .service-description {
             color: var(--color-gray);
-            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         .service-link {
-            color: var(--color-primary);
-            font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap var(--transition-fast);
         }
 
         .service-link:hover {
-            gap: 0.75rem;
+            gap: 12px;
         }
 
-        .service-link svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* --- Testimonials Section --- */
+        /* Testimonials Section */
         .testimonials {
-            background: var(--color-dark);
-            color: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1920&q=80') center/cover;
-            opacity: 0.05;
+            padding: 100px 0;
+            background: white;
         }
 
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
+            gap: 32px;
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-base);
-        }
-
-        .testimonial-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
+            background: var(--gradient-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            position: relative;
+            border: 1px solid rgba(30, 64, 175, 0.08);
         }
 
         .testimonial-stars {
             display: flex;
-            gap: 0.25rem;
-            margin-bottom: 1rem;
+            gap: 4px;
+            margin-bottom: 20px;
         }
 
         .testimonial-stars svg {
             width: 20px;
             height: 20px;
-            color: #fbbf24;
+            fill: #fbbf24;
         }
 
         .testimonial-text {
+            color: var(--color-gray);
             font-size: 1rem;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
+            margin-bottom: 24px;
             font-style: italic;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 16px;
         }
 
         .testimonial-avatar {
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
         }
 
-        .testimonial-info h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
+        .testimonial-info {
+            flex: 1;
         }
 
-        .testimonial-info p {
-            font-size: 0.875rem;
-            opacity: 0.6;
-            margin: 0;
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 4px;
         }
 
-        /* --- Differentials Section --- */
+        .testimonial-pet {
+            font-size: 0.85rem;
+            color: var(--color-gray-light);
+        }
+
+        /* Differentials Section */
         .differentials {
-            background: var(--color-light);
+            padding: 100px 0;
+            background: var(--color-dark);
+            color: white;
+        }
+
+        .differentials .section-title {
+            color: white;
+        }
+
+        .differentials .section-description {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .differentials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 32px;
         }
 
         .differential-card {
             text-align: center;
-            padding: var(--spacing-md);
+            padding: 40px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-base);
         }
 
-        .differential-icon-wrapper {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 1.5rem;
-            background: var(--color-white);
-            border-radius: var(--radius-xl);
+        .differential-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .differential-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            box-shadow: var(--shadow-sm);
         }
 
-        .differential-icon-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: var(--radius-xl);
-            border: 2px dashed var(--color-primary);
-            animation: float-rotate 8s ease-in-out infinite;
-        }
-
-        .differential-icon-wrapper svg {
-            width: 48px;
-            height: 48px;
-            color: var(--color-primary);
-        }
-
-        .differential-card:nth-child(2) .differential-icon-wrapper::before {
-            border-color: #8b5cf6;
-        }
-
-        .differential-card:nth-child(2) .differential-icon-wrapper svg {
-            color: #8b5cf6;
-        }
-
-        .differential-card:nth-child(3) .differential-icon-wrapper::before {
-            border-color: #f59e0b;
-        }
-
-        .differential-card:nth-child(3) .differential-icon-wrapper svg {
-            color: #f59e0b;
-        }
-
-        .differential-card:nth-child(4) .differential-icon-wrapper::before {
-            border-color: #10b981;
-        }
-
-        .differential-card:nth-child(4) .differential-icon-wrapper svg {
-            color: #10b981;
+        .differential-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
         }
 
         .differential-title {
-            color: var(--color-dark);
-            margin-bottom: 0.75rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         .differential-text {
-            color: var(--color-gray);
-            font-size: 0.9375rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* --- Contact Section --- */
+        /* Contact Section */
         .contact {
-            background: var(--color-white);
+            padding: 100px 0;
+            background: var(--gradient-hero);
         }
 
-        .contact-grid {
+        .contact-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
+            gap: 60px;
         }
 
-        .contact-info {
-            padding: var(--spacing-md);
-        }
-
-        .contact-card {
-            background: linear-gradient(145deg, var(--color-light) 0%, var(--color-white) 100%);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--color-gray-light);
-        }
-
-        .contact-card-title {
-            font-size: 1.5rem;
+        .contact-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
             color: var(--color-dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-description {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: 20px;
         }
 
         .contact-item-icon {
-            width: 52px;
-            height: 52px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow-sm);
             flex-shrink: 0;
         }
 
         .contact-item-icon svg {
-            width: 26px;
-            height: 26px;
-            color: var(--color-white);
-        }
-
-        .contact-item-content h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-            color: var(--color-dark);
-        }
-
-        .contact-item-content p {
-            color: var(--color-gray);
-            margin: 0;
-        }
-
-        .contact-item-content a {
+            width: 24px;
+            height: 24px;
             color: var(--color-primary);
+        }
+
+        .contact-item-content {
+            flex: 1;
+        }
+
+        .contact-item-label {
+            font-size: 0.85rem;
+            color: var(--color-gray-light);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
-        .contact-map {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
+        .contact-item-value {
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 1.05rem;
         }
 
-        .contact-map iframe {
-            width: 100%;
-            height: 280px;
-            border: none;
+        .contact-item-value a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .contact-item-value a:hover {
+            text-decoration: underline;
         }
 
         .contact-form-wrapper {
-            background: var(--color-white);
-            padding: var(--spacing-md);
+            background: white;
             border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-gray-light);
+            padding: 48px;
+            box-shadow: var(--shadow-xl);
         }
 
-        .contact-form-title {
-            font-size: 1.75rem;
+        .form-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--color-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
         }
 
-        .contact-form-subtitle {
+        .form-subtitle {
             color: var(--color-gray);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            margin-bottom: 32px;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
         }
 
         .form-label {
             display: block;
             font-weight: 600;
             color: var(--color-dark);
-            margin-bottom: 0.5rem;
-            font-size: 0.9375rem;
+            margin-bottom: 8px;
         }
 
         .form-input,
         .form-select,
         .form-textarea {
             width: 100%;
-            padding: 0.875rem 1.25rem;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            border: 2px solid var(--color-gray-light);
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
             border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
             transition: all var(--transition-fast);
-            background: var(--color-white);
+            background: white;
         }
 
         .form-input:focus,
@@ -1322,7 +973,7 @@
         .form-textarea:focus {
             outline: none;
             border-color: var(--color-primary);
-            box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1);
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
         }
 
         .form-textarea {
@@ -1330,33 +981,105 @@
             resize: vertical;
         }
 
-        /* --- Footer --- */
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
         .footer {
-            background: var(--color-darker);
-            color: var(--color-white);
-            padding: var(--spacing-lg) 0 var(--spacing-md);
+            background: var(--color-dark);
+            color: white;
+            padding: 80px 0 32px;
         }
 
-        .footer-grid {
+        .footer-inner {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .footer-brand .logo {
-            margin-bottom: 1rem;
+        .footer-brand-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .footer-brand p {
-            opacity: 0.7;
-            max-width: 320px;
+        .footer-brand-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .footer-brand-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand-name span {
+            color: var(--color-accent);
+        }
+
+        .footer-brand-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-social-link:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-social-link svg {
+            width: 20px;
+            height: 20px;
         }
 
         .footer-title {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 24px;
         }
 
         .footer-links {
@@ -1364,108 +1087,61 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            opacity: 0.7;
-            transition: all var(--transition-fast);
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color var(--transition-fast);
         }
 
         .footer-links a:hover {
-            opacity: 1;
-            color: var(--color-primary);
+            color: white;
         }
 
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .footer-social a {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition-fast);
-        }
-
-        .footer-social a:hover {
-            background: var(--color-primary);
-            transform: translateY(-4px);
-        }
-
-        .footer-social svg {
-            width: 20px;
-            height: 20px;
+        .footer-links li {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .footer-bottom {
-            padding-top: var(--spacing-md);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
         }
 
-        .footer-bottom p {
-            opacity: 0.6;
-            margin: 0;
+        .footer-bottom-links {
+            display: flex;
+            gap: 32px;
         }
 
-        /* --- Responsive Design --- */
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .differentials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-list {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--color-white);
-                flex-direction: column;
-                padding: var(--spacing-md);
-                gap: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-            }
-
-            .nav-list.active {
-                display: flex;
-            }
-
-            .nav-list .nav-link {
-                color: var(--color-dark);
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .hero-content {
+            .hero-inner {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -1479,34 +1155,64 @@
                 justify-content: center;
             }
 
-            .hero-phone-card {
-                margin-left: auto;
-                margin-right: auto;
+            .hero-features {
+                justify-content: center;
             }
 
-            .hero-float-card {
+            .hero-visual {
                 display: none;
             }
 
-            .problem-solution-grid,
-            .contact-grid,
-            .form-row {
+            .problem-solution-grid {
                 grid-template-columns: 1fr;
             }
 
-            .services-grid,
-            .testimonials-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
             .differentials-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer-grid {
+            .footer-inner {
                 grid-template-columns: 1fr;
                 text-align: center;
-            }
-
-            .footer-brand p {
-                margin: 0 auto;
             }
 
             .footer-social {
@@ -1515,11 +1221,16 @@
 
             .footer-bottom {
                 flex-direction: column;
+                gap: 16px;
                 text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
 
-        /* --- Reduced Motion --- */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -1530,202 +1241,191 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container header-content">
-            <a href="#" class="logo">
-                <div class="logo-icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                        <path d="M12 8v8"/>
-                        <path d="M8 12h8"/>
-                    </svg>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="nav-logo-text">BMvet<span>24H</span></span>
+                </a>
+                <div class="nav-menu">
+                    <a href="#servicos" class="nav-link">Serviços</a>
+                    <a href="#diferenciais" class="nav-link">Diferenciais</a>
+                    <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                    <a href="#contato" class="nav-link">Contato</a>
                 </div>
-                <span class="logo-text">BM<span>vet</span></span>
-            </a>
-
-            <nav class="nav">
-                <ul class="nav-list" id="navList">
-                    <li><a href="#inicio" class="nav-link">Início</a></li>
-                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                    <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
-                </ul>
-            </nav>
-
-            <a href="tel:+551633296880" class="nav-cta">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                Emergência 24h
-            </a>
-
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                <a href="tel:+551633296880" class="nav-cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    (16) 3329-6880
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-hexagons"></div>
-
-        <div class="hero-shapes">
-            <!-- Molecular structures SVG -->
-            <svg class="hero-shape hero-shape-1" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                <circle cx="100" cy="30" r="15" fill="rgba(0,180,216,0.3)"/>
-                <circle cx="165" cy="130" r="15" fill="rgba(0,180,216,0.3)"/>
-                <circle cx="35" cy="130" r="15" fill="rgba(0,180,216,0.3)"/>
-                <line x1="100" y1="30" x2="100" y2="70" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                <line x1="100" y1="130" x2="165" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-                <line x1="100" y1="130" x2="35" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-            </svg>
-
-            <svg class="hero-shape hero-shape-2" viewBox="0 0 200 200">
-                <polygon points="100,20 170,60 170,140 100,180 30,140 30,60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-                <circle cx="100" cy="100" r="25" fill="rgba(72,202,228,0.2)"/>
-            </svg>
-
-            <svg class="hero-shape hero-shape-3" viewBox="0 0 200 200">
-                <rect x="70" y="70" width="60" height="60" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" transform="rotate(45 100 100)"/>
-                <circle cx="100" cy="100" r="20" fill="rgba(0,119,182,0.2)"/>
-            </svg>
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
         </div>
-
-        <div class="container hero-content">
-            <div class="hero-text">
-                <div class="hero-badge wow-fade-up">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <circle cx="12" cy="12" r="10"/>
-                    </svg>
-                    Zona Oeste de Ribeirão Preto
-                </div>
-                <h1 class="hero-title wow-fade-up" data-delay="100">
-                    Medicina veterinária de <span class="highlight">excelência</span> 24 horas
-                </h1>
-                <p class="hero-description wow-fade-up" data-delay="200">
-                    Estrutura completa com equipamentos de última geração e equipe especializada pronta para atender seu pet a qualquer momento.
-                </p>
-                <div class="hero-actions wow-fade-up" data-delay="300">
-                    <a href="#contato" class="btn btn-primary btn-large">
-                        Agendar Agora
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="#servicos" class="btn btn-secondary btn-large">Nossos Serviços</a>
-                </div>
-                <div class="hero-phone-card wow-fade-up" data-delay="400">
-                    <div class="hero-phone-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 00-1.02.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.36 11.36 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
-                        </svg>
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Aberto 24 Horas na Zona Oeste
                     </div>
-                    <div class="hero-phone-content">
-                        <div class="hero-phone-label">Emergência 24h</div>
-                        <div class="hero-phone-number">(16) 3329-6880</div>
+                    <h1 class="hero-title">
+                        Cuidado Veterinário <span>24 Horas</span> em Ribeirão Preto
+                    </h1>
+                    <p class="hero-description">
+                        BMvet 24 Horas - Zona Oeste. Atendimento emergencial de excelência com equipe especializada e tecnologia de ponta para seu pet.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="tel:+551633296880" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Emergência 24H
+                        </a>
+                        <a href="#servicos" class="btn btn-secondary">
+                            Ver Serviços
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <span class="hero-feature-text">Atendimento 24h</span>
+                        </div>
+                        <div class="hero-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                            <span class="hero-feature-text">Equipe especializada</span>
+                        </div>
+                        <div class="hero-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            <span class="hero-feature-text">Tecnologia avançada</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="hero-image-wrapper wow-fade-in">
-                <div class="hero-image-frame">
-                    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80" alt="Equipe veterinária BMvet" class="hero-main-image">
-                </div>
-                <div class="hero-float-card hero-float-card-1">
-                    <div class="float-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                        </svg>
+                <div class="hero-visual">
+                    <div class="hero-image-card">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80" alt="Equipe veterinária BMvet cuidando de um pet" class="hero-image" loading="lazy">
+                        <div class="hero-overlay">
+                            <div class="hero-overlay-text">Equipe pronta para atender 24h</div>
+                        </div>
                     </div>
-                    <span class="float-card-text">Segurança Total</span>
-                </div>
-                <div class="hero-float-card hero-float-card-2">
-                    <div class="float-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
+                    <div class="hero-float-card hero-float-card-1">
+                        <div class="float-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="float-card-title">24 Horas</div>
+                        <div class="float-card-text">Sempre disponível</div>
                     </div>
-                    <span class="float-card-text">Monitoramento 24h</span>
+                    <div class="hero-float-card hero-float-card-2">
+                        <div class="float-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="float-card-title">Ano</div>
+                        <div class="float-card-text">Confiança</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Problem/Solution Section -->
-    <section class="section problem-solution">
+    <section class="problem-solution">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Por Que a BMvet</span>
-                <h2 class="section-title">Seu pet merece o melhor atendimento</h2>
-                <p class="section-description">Diferença entre um atendimento comum e a excelência médica veterinária.</p>
+                <span class="section-label">Por Que Escolher a BMvet</span>
+                <h2 class="section-title">Proteção Completo Para Seu Pet</h2>
+                <p class="section-description">Entendemos as angústias e dificuldades que você enfrenta. Nossa missão é proporcionar tranquilidade e o melhor cuidado.</p>
             </div>
-
             <div class="problem-solution-grid">
-                <div class="ps-card ps-problem wow-slide-left">
-                    <div class="ps-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="problem-card wow-fade-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 8v4M12 16h.01"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
                         </svg>
                     </div>
-                    <h3 class="ps-title">O desafio das emergências</h3>
-                    <p>Quando seu pet precisa de urgência, cada minuto conta. A falta de opções 24h pode colocar em risco a vida do animal.</p>
-                    <ul class="ps-list">
+                    <h3 class="card-title">O Problema</h3>
+                    <ul class="card-list">
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <span>Clínicas fechadas à noite e fins de semana</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Emergências podem acontecer a qualquer hora
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <span>Falta de especialistas em emergências</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Dificuldade encontrar veterinário 24h na Zona Oeste
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                            </svg>
-                            <span>Equipamentos limitados para diagnóstico rápido</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Preocupação com a saúde do pet em madrugadas
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Falta de atendimento especializado urgente
                         </li>
                     </ul>
                 </div>
-
-                <div class="ps-card ps-solution wow-slide-right">
-                    <div class="ps-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                            <path d="M22 4L12 14.01l-3-3"/>
+                <div class="solution-card wow-fade-up" data-delay="0.2">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
                         </svg>
                     </div>
-                    <h3 class="ps-title">A solução BMvet 24h</h3>
-                    <p>Unidade veterinária completa com equipe médica presente 24 horas, pronta para atender qualquer emergência com agilidade e excelência.</p>
-                    <ul class="ps-list">
+                    <h3 class="card-title">Nossa Solução</h3>
+                    <ul class="card-list">
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                                <path d="M22 4L12 14.01l-3-3"/>
-                            </svg>
-                            <span>Atendimento 24h, 7 dias por semana</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Atendimento 24 horas, 7 dias por semana
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                                <path d="M22 4L12 14.01l-3-3"/>
-                            </svg>
-                            <span>Médicos veterinários especialistas no local</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Localização estratégica na Zona Oeste
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                                <path d="M22 4L12 14.01l-3-3"/>
-                            </svg>
-                            <span>Tecnologia avançada para diagnóstico preciso</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Equipe veterinária sempre disponível
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Tecnologia de ponta e carinho pelo animal
                         </li>
                     </ul>
                 </div>
@@ -1734,113 +1434,105 @@
     </section>
 
     <!-- Services Section -->
-    <section class="section services" id="servicos">
+    <section class="services" id="servicos">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Serviços</span>
-                <h2 class="section-title">Atendimento veterinário completo</h2>
-                <p class="section-description">Da emergência à consulta preventiva, cobrimos todas as necessidades do seu pet.</p>
+                <span class="section-label">Nossos Serviços</span>
+                <h2 class="section-title">Cuidado Completo Para Seu Pet</h2>
+                <p class="section-description">Oferecemos uma gama completa de serviços veterinários para garantir a saúde e bem-estar do seu animal.</p>
             </div>
-
             <div class="services-grid">
                 <div class="service-card wow-fade-up">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
                         </svg>
                     </div>
-                    <h3 class="service-title">Emergências 24h</h3>
-                    <p class="service-description">Atendimento emergencial imediato com equipe médica sempre presente para situações críticas.</p>
+                    <h3 class="service-title">Emergência 24H</h3>
+                    <p class="service-description">Atendimento urgente disponível 24 horas por dia, todos os dias da semana. Equipe pronta para qualquer situação.</p>
                     <a href="#contato" class="service-link">
                         Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
                 </div>
-
-                <div class="service-card wow-fade-up" data-delay="100">
+                <div class="service-card wow-fade-up" data-delay="0.1">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2C8 2 6 5 6 8c0 3-2 4-2 6s2 5 4 5c1 0 2-1 4-1s3 1 4 1c2 0 4-3 4-5s-2-3-2-6c0-3-2-6-6-6z"/>
-                            <circle cx="9" cy="8" r="1"/>
-                            <circle cx="15" cy="8" r="1"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Clínica Geral</h3>
+                    <p class="service-description">Consultas, vacinas, exames e tratamentos completos com veterinários experientes e apaixonados pelo que fazem.</p>
+                    <a href="#contato" class="service-link">
+                        Saiba mais
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="0.2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                            <circle cx="12" cy="12" r="4"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Cirurgias</h3>
-                    <p class="service-description">Procedimentos cirúrgicos de alta complexidade com centro cirúrgico moderno e anestesia segura.</p>
+                    <p class="service-description">Procedimentos cirúrgicos com equipamentos modernos e anestesistas dedicados à segurança do seu pet.</p>
                     <a href="#contato" class="service-link">
                         Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
                 </div>
-
-                <div class="service-card wow-fade-up" data-delay="200">
+                <div class="service-card wow-fade-up" data-delay="0.3">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Internação e UTI</h3>
-                    <p class="service-description">Unidade de terapia intensiva com monitoramento contínuo e cuidados especializados.</p>
-                    <a href="#contato" class="service-link">
-                        Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="service-card wow-fade-up" data-delay="300">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Laboratório</h3>
-                    <p class="service-description">Análises clínicas completas com resultados rápidos para diagnóstico preciso e ágil.</p>
+                    <p class="service-description">Análises clínicas completas com resultados rápidos e precisos para diagnóstico assertivo do seu pet.</p>
                     <a href="#contato" class="service-link">
                         Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
                 </div>
-
-                <div class="service-card wow-fade-up" data-delay="400">
+                <div class="service-card wow-fade-up" data-delay="0.4">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <path d="M21 15l-5-5L5 21"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">UTI Veterinária</h3>
+                    <p class="service-description">Unidade de Terapia Intensiva equipada para monitoramento e tratamento contínuo de pets graves.</p>
+                    <a href="#contato" class="service-link">
+                        Saiba mais
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="0.5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
                         </svg>
                     </div>
                     <h3 class="service-title">Imagem</h3>
-                    <p class="service-description">Ultrassom, raio-X digital e outros exames de imagem com equipamentos de alta resolução.</p>
+                    <p class="service-description">Raio-X digital, ultrassom e outros exames de imagem com equipamentos de última geração.</p>
                     <a href="#contato" class="service-link">
                         Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="service-card wow-fade-up" data-delay="500">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Preventivo</h3>
-                    <p class="service-description">Consultas de rotina, vacinação e programas de prevenção para manter seu pet saudável.</p>
-                    <a href="#contato" class="service-link">
-                        Saiba mais
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
@@ -1850,95 +1542,62 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section testimonials" id="depoimentos">
+    <section class="testimonials" id="depoimentos">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag" style="background: rgba(0,180,216,0.2); color: var(--color-primary-light);">Depoimentos</span>
-                <h2 class="section-title" style="color: var(--color-white);">O que dizem sobre nós</h2>
-                <p class="section-description" style="color: rgba(255,255,255,0.8);">Histórias reais de tutores que confiaram na BMvet 24h.</p>
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+                <p class="section-description">A satisfação dos nossos clientes e a saúde dos seus pets são nossa maior recompensa.</p>
             </div>
-
             <div class="testimonials-grid">
                 <div class="testimonial-card wow-fade-up">
                     <div class="testimonial-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-                    <p class="testimonial-text">"Cheguei com meu gato às 3 da manhã em uma emergência. Foi atendido imediatamente pela equipe. A estrutura é impressionante e o cuidado foi excepcional."</p>
+                    <p class="testimonial-text">"Atenderam minha Thor no meio da madrugada! Equipe incrível, muito atenciosos e competentes. BMvet é referência na Zona Oeste."</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Roberto Almeida" class="testimonial-avatar">
+                        <div class="testimonial-avatar">MC</div>
                         <div class="testimonial-info">
-                            <h4>Roberto Almeida</h4>
-                            <p>Tutor do Thor (Persa)</p>
+                            <div class="testimonial-name">Marina Costa</div>
+                            <div class="testimonial-pet">Mãe da Thor (Golden)</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="testimonial-card wow-fade-up" data-delay="100">
+                <div class="testimonial-card wow-fade-up" data-delay="0.1">
                     <div class="testimonial-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-                    <p class="testimonial-text">"Minha cadela precisou de uma cirurgia de emergência. O veterinário explicou tudo com clareza e o procedimento foi um sucesso. Recomendo muito!"</p>
+                    <p class="testimonial-text">"Salvaram meu gato Mel em uma emergência no domingo. A estrutura é impecável e os veterinários são super dedicados. Recomendo!"</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Fernanda Lima" class="testimonial-avatar">
+                        <div class="testimonial-avatar">RL</div>
                         <div class="testimonial-info">
-                            <h4>Fernanda Lima</h4>
-                            <p>Tutora da Luna (Golden)</p>
+                            <div class="testimonial-name">Ricardo Lima</div>
+                            <div class="testimonial-pet">Pai do Mel (SRD)</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="testimonial-card wow-fade-up" data-delay="200">
+                <div class="testimonial-card wow-fade-up" data-delay="0.2">
                     <div class="testimonial-stars">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     </div>
-                    <p class="testimonial-text">"Excelente atendimento 24h! Meu pet ficou internado e recebia atualizações frequentes. A equipe é muito profissional e atenciosa."</p>
+                    <p class="testimonial-text">"Finalmente uma clínica 24h de confiança na Zona Oeste! Atendimento rápido, estrutura completa e equipe que realmente ama animais."</p>
                     <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Carlos Eduardo" class="testimonial-avatar">
+                        <div class="testimonial-avatar">PS</div>
                         <div class="testimonial-info">
-                            <h4>Carlos Eduardo</h4>
-                            <p>Tutor do Bob (Bulldog)</p>
+                            <div class="testimonial-name">Patrícia Santos</div>
+                            <div class="testimonial-pet">Mãe do Bob e Luna</div>
                         </div>
                     </div>
                 </div>
@@ -1947,158 +1606,187 @@
     </section>
 
     <!-- Differentials Section -->
-    <section class="section differentials" id="diferenciais">
+    <section class="differentials" id="diferenciais">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Diferenciais</span>
-                <h2 class="section-title">Por que escolher a BMvet</h2>
-                <p class="section-description">A combinação perfeita entre tecnologia, expertise e cuidado.</p>
+                <span class="section-label">Nossos Diferenciais</span>
+                <h2 class="section-title">Por Que Somos Diferentes</h2>
+                <p class="section-description">Compromisso com a excelência e o amor pelos animais nos tornam referência em Ribeirão Preto.</p>
             </div>
-
             <div class="differentials-grid">
                 <div class="differential-card wow-fade-up">
-                    <div class="differential-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"/>
                             <polyline points="12 6 12 12 16 14"/>
                         </svg>
                     </div>
-                    <h3 class="differential-title">Aberto 24 Horas</h3>
-                    <p class="differential-text">Equipe veterinária presente no local 24 horas por dia, todos os dias do ano.</p>
+                    <h3 class="differential-title">Atendimento 24H</h3>
+                    <p class="differential-text">Sempre disponíveis quando você precisa</p>
                 </div>
-
-                <div class="differential-card wow-fade-up" data-delay="100">
-                    <div class="differential-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                    <h3 class="differential-title">Tecnologia Avançada</h3>
-                    <p class="differential-text">Equipamentos modernos para diagnóstico preciso e tratamentos eficazes.</p>
-                </div>
-
-                <div class="differential-card wow-fade-up" data-delay="200">
-                    <div class="differential-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <div class="differential-card wow-fade-up" data-delay="0.1">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
                     <h3 class="differential-title">Equipe Especializada</h3>
-                    <p class="differential-text">Veterinários com especializações em diversas áreas da medicina animal.</p>
+                    <p class="differential-text">Veterinários altamente qualificados</p>
                 </div>
-
-                <div class="differential-card wow-fade-up" data-delay="300">
-                    <div class="differential-icon-wrapper">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                <div class="differential-card wow-fade-up" data-delay="0.2">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
                         </svg>
                     </div>
-                    <h3 class="differential-title">Atendimento Humanizado</h3>
-                    <p class="differential-text">Cuidado personalizado, tratando cada pet como único e especial.</p>
+                    <h3 class="differential-title">Tecnologia Avançada</h3>
+                    <p class="differential-text">Equipamentos de última geração</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="0.3">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="differential-title">Amor pelos Animais</h3>
+                    <p class="differential-text">Cuidado com paixão e dedicação</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="0.4">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="differential-title">Estacionamento</h3>
+                    <p class="differential-text">Conveniência para você</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="0.5">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22 6 12 13 2 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="differential-title">Ambiente Confortável</h3>
+                    <p class="differential-text">Espaço clean e acolhedor</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="0.6">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="differential-title">Agilidade</h3>
+                    <p class="differential-text">Atendimento rápido e eficiente</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="0.7">
+                    <div class="differential-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        </svg>
+                    </div>
+                    <h3 class="differential-title">Serviços Completos</h3>
+                    <p class="differential-text">Tudo em um só lugar</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact" id="contato">
+    <section class="contact" id="contato">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contato</span>
-                <h2 class="section-title">Entre em contato agora</h2>
-                <p class="section-description">Estamos prontos para atender seu pet a qualquer momento. Ligue ou visite-nos.</p>
-            </div>
-
-            <div class="contact-grid">
+            <div class="contact-inner">
                 <div class="contact-info">
-                    <div class="contact-card wow-fade-up">
-                        <h3 class="contact-card-title">Informações</h3>
+                    <h2 class="contact-title">Entre em Contato</h2>
+                    <p class="contact-description">Estamos sempre prontos para atender você e seu pet. Ligue agora mesmo ou agende uma visita!</p>
+                    <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-item-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 00-1.02.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1A11.36 11.36 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                                 </svg>
                             </div>
                             <div class="contact-item-content">
-                                <h4>Telefone</h4>
-                                <p><a href="tel:+551633296880">(16) 3329-6880</a></p>
-                                <small style="color: var(--color-primary); font-weight: 600;">Emergência 24h</small>
+                                <div class="contact-item-label">Telefone</div>
+                                <div class="contact-item-value">
+                                    <a href="tel:+551633296880">(16) 3329-6880</a>
+                                </div>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-item-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                     <circle cx="12" cy="10" r="3"/>
                                 </svg>
                             </div>
                             <div class="contact-item-content">
-                                <h4>Endereço</h4>
-                                <p>Av. Dom Pedro I, 2261 - Ipiranga<br>Ribeirão Preto - SP<br>CEP: 14055-620</p>
+                                <div class="contact-item-label">Endereço</div>
+                                <div class="contact-item-value">
+                                    Av. Dom Pedro I, 2261<br>
+                                    Ipiranga, Ribeirão Preto - SP<br>
+                                    CEP: 14055-620
+                                </div>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-item-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
                                 </svg>
                             </div>
                             <div class="contact-item-content">
-                                <h4>Horário</h4>
-                                <p>Emergências: 24 horas<br>Consultas: Seg a Sex, 8h às 20h</p>
+                                <div class="contact-item-label">Horário</div>
+                                <div class="contact-item-value">
+                                    Emergência: 24 horas<br>
+                                    Aberto todos os dias
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="contact-map wow-fade-up" data-delay="100">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.266789123456!2d-47.8123456789!3d-21.1678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zAv. Dom Pedro I, 2261!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
-
-                <div class="contact-form-wrapper wow-fade-up" data-delay="200">
-                    <h3 class="contact-form-title">Agende uma consulta</h3>
-                    <p class="contact-form-subtitle">Preencha o formulário e entraremos em contato</p>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Seu Nome</label>
-                                <input type="text" id="name" name="name" class="form-input" placeholder="Nome completo" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Telefone</label>
-                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="pet" class="form-label">Nome do Pet</label>
-                                <input type="text" id="pet" name="pet" class="form-input" placeholder="Nome do pet" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="service" class="form-label">Atendimento</label>
-                                <select id="service" name="service" class="form-select" required>
-                                    <option value="">Selecione</option>
-                                    <option value="emergencia">Emergência 24h</option>
-                                    <option value="consulta">Consulta</option>
-                                    <option value="cirurgia">Cirurgia</option>
-                                    <option value="exames">Exames</option>
-                                    <option value="vacina">Vacinação</option>
-                                </select>
-                            </div>
+                <div class="contact-form-wrapper">
+                    <h3 class="form-title">Agende um Atendimento</h3>
+                    <p class="form-subtitle">Preencha o formulário e entraremos em contato</p>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Seu Nome</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome completo" required>
                         </div>
                         <div class="form-group">
-                            <label for="message" class="form-label">Mensagem</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Descreva como podemos ajudar..."></textarea>
+                            <label class="form-label" for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
-                            Solicitar Agendamento
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Serviço</label>
+                            <select id="service" name="service" class="form-select" required>
+                                <option value="">Selecione o serviço</option>
+                                <option value="emergencia">Emergência 24H</option>
+                                <option value="clinica">Clínica Geral</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="laboratorio">Laboratório</option>
+                                <option value="uti">UTI Veterinária</option>
+                                <option value="imagem">Exames de Imagem</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            Enviar Mensagem
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
                             </svg>
                         </button>
                     </form>
@@ -2110,122 +1798,111 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-inner">
                 <div class="footer-brand">
-                    <div class="logo">
-                        <div class="logo-icon-wrapper" style="box-shadow: none;">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
-                                <path d="M12 8v8"/>
-                                <path d="M8 12h8"/>
-                            </svg>
-                        </div>
-                        <span class="logo-text">BM<span>vet</span> 24h</span>
+                    <div class="footer-brand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
                     </div>
-                    <p>Medicina veterinária de excelência 24 horas na Zona Oeste de Ribeirão Preto. Estrutura completa para atender seu pet.</p>
+                    <div class="footer-brand-name">BMvet<span>24H</span></div>
+                    <p class="footer-brand-text">Clínica veterinária especializada em atendimento 24 horas na Zona Oeste de Ribeirão Preto. Cuidado profissional e carinho para seu pet.</p>
                     <div class="footer-social">
-                        <a href="#" aria-label="Instagram">
+                        <a href="#" class="footer-social-link" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
-                                <path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="Facebook">
+                        <a href="#" class="footer-social-link" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                <path d="M12,2.16c3.2,0,3.58,0,4.85.07,3.25.15,4.77,1.69,4.92,4.92.06,1.27.07,1.65.07,4.85s0,3.58-.07,4.85c-.15,3.23-1.66,4.77-4.92,4.92-1.27.06-1.65.07-4.85.07s-3.58,0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23,8.42,2.18,8.8,2.16,12,2.16ZM12,0C8.74,0,8.33,0,7.05.07c-4.27.2-6.78,2.71-7,7C0,8.33,0,8.74,0,12s0,3.67.07,4.95c.2,4.27,2.71,6.78,7,7C8.33,24,8.74,24,12,24s3.67,0,4.95-.07c4.27-.2,6.78-2.71,7-7C24,15.67,24,15.26,24,12s0-3.67-.07-4.95c-.2-4.27-2.71-6.78-7-7C15.67,0,15.26,0,12,0Zm0,5.84A6.16,6.16,0,1,0,18.16,12,6.16,6.16,0,0,0,12,5.84ZM12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16ZM18.41,4.15a1.44,1.44,0,1,0,1.44,1.44A1.44,1.44,0,0,0,18.41,4.15Z"/>
                             </svg>
                         </a>
-                        <a href="#" aria-label="WhatsApp">
+                        <a href="#" class="footer-social-link" aria-label="WhatsApp">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
-
-                <div>
-                    <h4 class="footer-title">Links</h4>
+                <div class="footer-column">
+                    <h4 class="footer-title">Serviços</h4>
                     <ul class="footer-links">
-                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#servicos">Emergência 24H</a></li>
+                        <li><a href="#servicos">Clínica Geral</a></li>
+                        <li><a href="#servicos">Cirurgias</a></li>
+                        <li><a href="#servicos">Laboratório</a></li>
+                        <li><a href="#servicos">UTI Veterinária</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
                         <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
-
-                <div>
-                    <h4 class="footer-title">Serviços</h4>
+                <div class="footer-column">
+                    <h4 class="footer-title">Contato</h4>
                     <ul class="footer-links">
-                        <li><a href="#servicos">Emergências 24h</a></li>
-                        <li><a href="#servicos">Cirurgias</a></li>
-                        <li><a href="#servicos">Internação UTI</a></li>
-                        <li><a href="#servicos">Laboratório</a></li>
+                        <li>(16) 3329-6880</li>
+                        <li>Av. Dom Pedro I, 2261</li>
+                        <li>Ipiranga, Ribeirão Preto - SP</li>
+                        <li>CEP: 14055-620</li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2025 BMvet 24 Horas - Zona Oeste. Todos os direitos reservados.</p>
-                <p>Ribeirão Preto - SP</p>
+                <p>&copy; 2026 BMvet 24 Horas - Zona Oeste. Todos os direitos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // ============================================
-        // BMVET 24 HORAS - JavaScript
-        // ============================================
-
-        // --- Header Scroll Effect ---
-        const header = document.getElementById('header');
+        // Navigation scroll effect
         let lastScroll = 0;
+        const nav = document.getElementById('nav');
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
 
             if (currentScroll > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+                if (currentScroll > lastScroll) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
             }
 
             lastScroll = currentScroll;
         });
 
-        // --- Mobile Menu Toggle ---
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navList = document.getElementById('navList');
-
-        mobileToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-
-        // --- Smooth Scroll ---
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // --- Intersection Observer for Animations ---
+        // Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -2235,51 +1912,73 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-
-                    const delay = entry.target.getAttribute('data-delay');
-                    if (delay) {
-                        entry.target.style.setProperty('--delay', delay + 'ms');
-                    }
-
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, parseFloat(delay) * 1000);
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.wow-fade-up, .wow-fade-in, .wow-slide-left, .wow-slide-right').forEach(el => {
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
             observer.observe(el);
         });
 
-        // --- Form Handling ---
+        // Contact form handling
         const contactForm = document.getElementById('contactForm');
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+            const data = Object.fromEntries(formData);
 
+            // Here you would normally send to a backend
             console.log('Form submitted:', data);
 
-            alert('Obrigado pelo contato! Em breve entraremos em contato.');
+            // Show success message
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
             contactForm.reset();
         });
 
-        // --- Phone Link Tracking ---
-        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            link.addEventListener('click', () => {
-                console.log('Phone call initiated');
-            });
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (value.length <= 11) {
+                if (value.length > 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                } else if (value.length > 2) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else if (value.length > 0) {
+                    value = `(${value}`;
+                }
+            }
+
+            e.target.value = value;
         });
 
-        // --- Console Welcome Message ---
-        console.log('%c+----------------------------------+', 'font-size: 14px; color: #00b4d8;');
-        console.log('%c|  BMvet 24 Horas - Zona Oeste     |', 'font-size: 16px; font-weight: bold; color: #023e8a;');
-        console.log('%c|  Medicina Veterinária 24h       |', 'font-size: 14px; color: #0077b6;');
-        console.log('%c|  Ribeirão Preto - SP            |', 'font-size: 14px; color: #0077b6;');
-        console.log('%c|  (16) 3329-6880                 |', 'font-size: 14px; color: #00b4d8;');
-        console.log('%c+----------------------------------+', 'font-size: 14px; color: #00b4d8;');
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            const isVisible = navMenu.style.display === 'flex';
+            navMenu.style.display = isVisible ? 'none' : 'flex';
+
+            if (!isVisible) {
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = 'white';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.padding = '20px';
+                navMenu.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
+            }
+        });
     </script>
 </body>
 </html>
