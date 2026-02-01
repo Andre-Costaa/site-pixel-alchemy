@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heloisa Américo Deluzzi | Clínica e Cirurgia de Animais Silvestres - Ribeirão Preto</title>
+    <meta name="description" content="Clínica veterinária especializada em animais silvestres e exóticos em Ribeirão Preto. Cirurgia, tratamento e cuidado especializado para sua vida selvagem.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Jungle Noir Color Palette */
+            --color-forest: #0a1f12;
+            --color-forest-light: #142e1d;
+            --color-midnight: #0d1117;
+            --color-midnight-light: #1a212d;
+            --color-terracotta: #c45a3a;
+            --color-terracotta-light: #d67252;
+            --color-amber: #d4a853;
+            --color-amber-light: #e6bf75;
+            --color-sage: #4a6b5a;
+            --color-sage-light: #5c7f6c;
+            --color-cream: #f5f1e8;
+            --color-cream-dark: #e8e4db;
+            --color-gold: #b8963b;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', system-ui, sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-xxl: 8rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-forest);
+            color: var(--color-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(245, 241, 232, 0.85);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: linear-gradient(to bottom, var(--color-forest) 0%, transparent 100%);
+            transition: all var(--transition-base);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 31, 18, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-cream);
+        }
+
+        .nav-logo span {
+            color: var(--color-terracotta);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-terracotta);
+            transition: width var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--color-cream);
+            transition: all var(--transition-base);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: var(--spacing-xl) var(--spacing-md);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-midnight) 100%);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 55%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            mask-image: linear-gradient(to left, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 8px 16px;
+            background: rgba(196, 90, 58, 0.15);
+            border: 1px solid var(--color-terracotta);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-terracotta-light);
+        }
+
+        .hero-title {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-title em {
+            color: var(--color-terracotta);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--color-cream);
+            margin-bottom: var(--spacing-md);
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 16px 32px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-terracotta);
+            color: var(--color-cream);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-terracotta-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(196, 90, 58, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-cream);
+            border: 1px solid rgba(245, 241, 232, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(245, 241, 232, 0.1);
+            border-color: var(--color-cream);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Leaf decoration */
+        .leaf-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .leaf-decoration.top-right {
+            top: 10%;
+            right: 5%;
+        }
+
+        .leaf-decoration.bottom-left {
+            bottom: 10%;
+            left: -5%;
+        }
+
+        /* Section styles */
+        .section {
+            padding: var(--spacing-xl) var(--spacing-md);
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-terracotta);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--color-midnight);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .problem-card, .solution-card {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, rgba(74, 107, 90, 0.2) 0%, rgba(74, 107, 90, 0.05) 100%);
+            border: 1px solid rgba(74, 107, 90, 0.3);
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(196, 90, 58, 0.15) 0%, rgba(196, 90, 58, 0.05) 100%);
+            border: 1px solid rgba(196, 90, 58, 0.3);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .problem-card .card-icon {
+            color: var(--color-sage);
+        }
+
+        .solution-card .card-icon {
+            color: var(--color-terracotta);
+        }
+
+        .arrow-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow-divider svg {
+            width: 40px;
+            height: 40px;
+            color: var(--color-terracotta);
+        }
+
+        .list-check {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .list-check li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.95rem;
+        }
+
+        .list-check svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .problem-card .list-check svg {
+            color: var(--color-sage);
+        }
+
+        .solution-card .list-check svg {
+            color: var(--color-terracotta);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-forest);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: linear-gradient(180deg, var(--color-forest-light) 0%, var(--color-forest) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(196, 90, 58, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-terracotta), var(--color-amber));
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(196, 90, 58, 0.15);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-terracotta);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-cream);
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: rgba(245, 241, 232, 0.75);
+        }
+
+        /* Differentiators Section */
+        .differentiators {
+            background: var(--color-midnight);
+        }
+
+        .differentiators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .differentiator-card {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .differentiator-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--color-terracotta);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .differentiator-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .differentiator-text {
+            font-size: 0.9rem;
+            color: rgba(245, 241, 232, 0.7);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(180deg, var(--color-forest) 0%, var(--color-midnight) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            opacity: 0.15;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            color: var(--color-gold);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-sm);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-terracotta), var(--color-sage));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-cream);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-cream);
+        }
+
+        .testimonial-info span {
+            font-size: 0.85rem;
+            color: rgba(245, 241, 232, 0.6);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-forest);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            padding: var(--spacing-md);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info h3 em {
+            color: var(--color-terracotta);
+            font-style: italic;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(196, 90, 58, 0.15);
+            border-radius: 50%;
+            flex-shrink: 0;
+            color: var(--color-terracotta);
+        }
+
+        .contact-item-content h4 {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-terracotta);
+            margin-bottom: 4px;
+        }
+
+        .contact-item-content p {
+            font-size: 1rem;
+            color: var(--color-cream);
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-midnight-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(245, 241, 232, 0.7);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-cream);
+            transition: all var(--transition-fast);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--color-terracotta);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(245, 241, 232, 0.4);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: var(--color-midnight);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-midnight);
+            padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand h3 span {
+            color: var(--color-terracotta);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+        }
+
+        .footer-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-terracotta);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(245, 241, 232, 0.7);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            gap: var(--spacing-sm);
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: rgba(245, 241, 232, 0.5);
+        }
+
+        /* Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .wow-fade-in.animated {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--color-forest);
+                padding: var(--spacing-md);
+                gap: var(--spacing-sm);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all var(--transition-base);
+                pointer-events: none;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-image {
+                width: 100%;
+                opacity: 0.3;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .arrow-divider {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Heloisa <span>Deluzzi</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <img src="https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=1200&q=80" alt="Exotic bird in nature" class="hero-image">
+
+        <svg class="leaf-decoration top-right" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10C60 10 30 50 30 100C30 150 60 190 100 190C140 190 170 150 170 100C170 50 140 10 100 10Z" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M100 30C70 30 50 60 50 100C50 140 70 170 100 170C130 170 150 140 150 100C150 60 130 30 100 30Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+        </svg>
+
+        <svg class="leaf-decoration bottom-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10C60 10 30 50 30 100C30 150 60 190 100 190C140 190 170 150 170 100C170 50 140 10 100 10Z" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+
+        <div class="section-container">
+            <div class="hero-content">
+                <div class="hero-badge wow-fade-up">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/>
+                    </svg>
+                    Medicina Veterinária Especializada
+                </div>
+                <h1 class="hero-title wow-fade-up" data-delay="100">
+                    Cuidado Especializado para <em>Sua Vida Selvagem</em>
+                </h1>
+                <p class="hero-subtitle wow-fade-up" data-delay="200">
+                    Clínica e cirurgia veterinária especializada em animais silvestres e exóticos. Atendimento qualificado em Ribeirão Preto.
+                </p>
+                <div class="hero-cta wow-fade-up" data-delay="300">
+                    <a href="#contato" class="btn btn-primary">
+                        Agendar Consulta
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#servicos" class="btn btn-secondary">
+                        Conhecer Serviços
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Por Que Nós</span>
+                <h2>Sua Vida Selvagem Merece Cuidado Especializado</h2>
+            </div>
+
+            <div class="problem-solution-grid">
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 8v4M12 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3>O Desafio</h3>
+                    <p>Animais silvestres e exóticos necessitam de atendimento veterinário diferenciado, com conhecimentos específicos que clínicas convencionais não possuem.</p>
+                    <ul class="list-check">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            Poucos profissionais especializados
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            Falta de equipamentos adequados
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="arrow-divider wow-fade-in" data-delay="200">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+
+                <div class="solution-card wow-fade-up" data-delay="300">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="M22 4L12 14.01L9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Nossa Solução</h3>
+                    <p>Atendimento veterinário completo com especialização em fauna silvestre, equipamentos adequados e paixão pelos animais exóticos.</p>
+                    <ul class="list-check">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                            Veterinária especializada em silvestres
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                            Equipamentos para animais exóticos
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Serviços</span>
+                <h2>Atendimento Completo para Animais Silvestres</h2>
+                <p>Cuidados veterinários especializados para todas as espécies de animais silvestres e exóticos.</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card wow-fade-up" data-delay="100">
+                    <img src="https://images.unsplash.com/photo-1551085254-e96b210db58a?w=600&q=80" alt="Réptil em consulta veterinária" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Clínica Geral</h3>
+                    <p class="service-description">Consultas completas, exames físicos detalhados e protocolos preventivos para manter a saúde do seu animal silvestre.</p>
+                </article>
+
+                <article class="service-card wow-fade-up" data-delay="200">
+                    <img src="https://images.unsplash.com/photo-1576085898323-218337e3e43c?w=600&q=80" alt="Cirurgia veterinária especializada" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Cirurgias Especializadas</h3>
+                    <p class="service-description">Procedimentos cirúrgicos adaptados às particularidades anatômicas e fisiológicas de animais silvestres.</p>
+                </article>
+
+                <article class="service-card wow-fade-up" data-delay="300">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80" alt="Exame laboratorial veterinário" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"/>
+                            <path d="M9 3v18"/>
+                            <path d="M9 9h6"/>
+                            <path d="M9 15h6"/>
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Exames Laboratoriais</h3>
+                    <p class="service-description">Análises clínicas especializadas com referências adequadas para cada espécie de animal silvestre.</p>
+                </article>
+
+                <article class="service-card wow-fade-up" data-delay="400">
+                    <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&q=80" alt="Tratamento veterinário" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Tratamento Médico</h3>
+                    <p class="service-description">Protocolos terapêuticos personalizados, considerando as particularidades de cada espécie tratada.</p>
+                </article>
+
+                <article class="service-card wow-fade-up" data-delay="500">
+                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=600&q=80" alt="Aves exóticas" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 7l-8 8M8 7l8 8M17 7v10M7 7v10"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Medicina de Aves</h3>
+                    <p class="service-description">Atendimento especializado para pássaros exóticos e silvestres, desde psitacídeos até aves de rapina.</p>
+                </article>
+
+                <article class="service-card wow-fade-up" data-delay="600">
+                    <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=600&q=80" alt="Orientação ao tutor" class="service-image">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Orientação ao Tutor</h3>
+                    <p class="service-description">Consultoria sobre manejo adequado, alimentação e enriquecimento ambiental para animais silvestres.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiators Section -->
+    <section class="section differentiators" id="diferenciais">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Diferenciais</span>
+                <h2>Por Que Escolher a Clínica Heloisa Deluzzi</h2>
+            </div>
+
+            <div class="differentiators-grid">
+                <div class="differentiator-card wow-fade-up" data-delay="100">
+                    <div class="differentiator-number">01</div>
+                    <h3 class="differentiator-title">Especialização Real</h3>
+                    <p class="differentiator-text">Formação e experiência específica em medicina de animais silvestres e exóticos.</p>
+                </div>
+
+                <div class="differentiator-card wow-fade-up" data-delay="200">
+                    <div class="differentiator-number">02</div>
+                    <h3 class="differentiator-title">Equipamentos Adequados</h3>
+                    <p class="differentiator-text">Instrumentais dimensionados para diferentes espécies, de répteis a mamíferos.</p>
+                </div>
+
+                <div class="differentiator-card wow-fade-up" data-delay="300">
+                    <div class="differentiator-number">03</div>
+                    <h3 class="differentiator-title">Paixão pelo Que Fazemos</h3>
+                    <p class="differentiator-text">Dedicados ao bem-estar de animais que necessitam de cuidados especializados.</p>
+                </div>
+
+                <div class="differentiator-card wow-fade-up" data-delay="400">
+                    <div class="differentiator-number">04</div>
+                    <h3 class="differentiator-title">Atendimento Humanizado</h3>
+                    <p class="differentiator-text">Cuidamos com o mesmo carinho de vocês, respeitando o vínculo com seu animal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2>O Que Dizem Sobre Nós</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">A Dra. Heloisa salvou minha calopsita quando ninguém mais conseguia diagnosticar. O cuidado e a dedicação foram impressionantes. Recomendo de olhos fechados!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <h4>Marina Costa</h4>
+                            <span>Tutora de Lucky (calopsita)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Finalmente encontrei uma veterinária que entende de répteis! Meu tegu foi muito bem tratado e a Dra. me ensinou muito sobre os cuidados adequados.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <h4>Ricardo Santos</h4>
+                            <span>Tutor de Thor (tegu)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Profissionalismo excepcional. A cirurgia do nosso coelho foi perfeita e o pós-operatório foi muito bem acompanhado. Gratidão eterna!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FL</div>
+                        <div class="testimonial-info">
+                            <h4>Fernanda Lima</h4>
+                            <span>Tutora de Mel (coelho)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up">
+                    <span class="section-label">Contato</span>
+                    <h3>Agende uma <em>Consulta</em></h3>
+                    <p style="margin-bottom: var(--spacing-md);">Estamos prontos para cuidar do seu animal silvestre com todo o carinho e profissionalismo que ele merece.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Endereço</h4>
+                            <p>R. Tamôios, 145 - Santa Cruz do Jose Jacques<br>Ribeirão Preto - SP, 14020-700</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Telefone / WhatsApp</h4>
+                            <p>(14) 99831-5255</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábados: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper wow-fade-up" data-delay="200">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Seu Nome</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="animal" class="form-label">Tipo de Animal</label>
+                            <select id="animal" name="animal" class="form-select" required>
+                                <option value="">Selecione o tipo</option>
+                                <option value="ave">Ave (pássaro, psitacídeo, etc.)</option>
+                                <option value="reptil">Réptil (lagarto, tartaruga, cobra, etc.)</option>
+                                <option value="mamifero-exotico">Mamífero Exótico (coelho, furão, etc.)</option>
+                                <option value="roedor">Roedor (hamster, degu, etc.)</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Descreva brevemente como podemos ajudar..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Enviar Mensagem
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Heloisa <span>Deluzzi</span></h3>
+                    <p>Clínica e Cirurgia de Animais Silvestres</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Clínica Geral</a></li>
+                        <li><a href="#servicos">Cirurgias</a></li>
+                        <li><a href="#servicos">Exames</a></li>
+                        <li><a href="#servicos">Tratamentos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-links">
+                        <li>(14) 99831-5255</li>
+                        <li>Ribeirão Preto - SP</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Heloisa Américo Deluzzi. Todos os direitos reservados.</p>
+                <p>Desenvolvido com carinho para a vida selvagem.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+
+            // Format WhatsApp message
+            const message = `Olá! Meu nome é ${data.name}.\n\nTelefone: ${data.phone}\nTipo de animal: ${data.animal}\n\nMensagem: ${data.message}`;
+
+            // Create WhatsApp link
+            const whatsappLink = `https://wa.me/5514998315255?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp
+            window.open(whatsappLink, '_blank');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                }
+            }
+
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
