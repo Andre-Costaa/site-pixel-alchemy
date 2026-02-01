@@ -11,6 +11,78 @@ Cada revisão deve registrar:
 
 ---
 
+## REV-016 - LOVETS Hospital Veterinário
+
+**URL Revisado:** https://pixelalchemy.com.br/site-demo/lovets-hospital-veterinario/index.html
+
+**Data da Revisão:** 2026-02-01
+
+**Status:** ❌ REPROVADO
+
+**passes:** false
+
+### Checklist de Validação
+
+#### Layout e Responsividade
+- [ ] 1440px - Desktop large
+- [ ] 1024px - Desktop
+- [ ] 768px - Tablet
+- [ ] 480px - Mobile
+
+#### Imagens e Mídias
+- [x] Todas as imagens carregam corretamente
+- [x] Sem placeholders quebrados
+- [x] Sem imagens faltantes
+
+#### Navegação
+- [x] Âncoras internas funcionam
+- [x] CTAs não abrem páginas externas (exceto WhatsApp conforme esperado)
+
+#### Formulários e Interações
+- [x] Formulário funciona sem erros
+- [x] Interações visuais ok
+
+#### Console
+- [x] Sem erros críticos de JS
+- [x] Sem recursos bloqueados
+
+### Issues Encontradas
+
+**CRÍTICO:** As seções entre o hero e o footer estão completamente vazias/invisíveis em todos os breakpoints testados (1440px, 1024px, 768px, 480px) na carga inicial da página.
+
+**Seções afetadas:**
+- "Seu pet precisa de cuidado especial?" / "LOVETS: O cuidado que seu pet merece"
+- "Nossos Serviços" (Emergências 24h, Cirurgias, Exames Diagnósticos, Internação, Cardiologia, Oftalmologia)
+- "Depoimentos de Tutores" (Patrícia Lima, Fernando Martins, Juliana Costa)
+- "Por Que Escolher o LOVETS" (Atendimento 24 Horas, Equipe Especializada, Tecnologia Avançada, Atendimento Humanizado, Estrutura Completa, Prontuário Digital)
+- "Entre em Contato" (formulário e informações de contato)
+
+**Causa raiz:** Os elementos possuem classes CSS de animação que definem `opacity: 0` por padrão. A classe `visible` que deveria ser adicionada via Intersection Observer só é aplicada quando os elementos entram na viewport durante o scroll. Na carga inicial da página, todo o conteúdo abaixo da dobra fica invisível.
+
+**Correção sugerida:** Modificar o CSS para que os elementos com classes de animação tenham `opacity: 1` por padrão e apenas adicionem a animação quando a classe `visible` for aplicada. Alternativamente, garantir que o Intersection Observer dispare imediatamente para elementos visíveis ou adicionar a classe `visible` por padrão no HTML.
+
+### Notas
+
+Site reprovado devido à invisibilidade de todas as seções de conteúdo na carga inicial. O problema afeta a experiência do usuário de forma crítica, pois o visitante não consegue ver nenhuma informação sobre os serviços, depoimentos ou formulário de contato sem primeiro fazer scroll por toda a página.
+
+**Funcionalidades validadas após scroll:**
+- Layout responsivo funciona corretamente em todos os breakpoints
+- Todas as imagens carregam corretamente (hero, ícones, estrelas de avaliação)
+- Navegação por âncoras operacional (Serviços, Diferenciais, Depoimentos, Contato)
+- CTAs funcionam corretamente (Agendar Agora, Nossos Serviços)
+- Formulário de contato funciona e abre WhatsApp com dados preenchidos
+- Console sem erros críticos (apenas favicon.ico 404 - não crítico)
+
+Evidências disponíveis em:
+- `.playwright-mcp/rev016-1440-hero.png`
+- `.playwright-mcp/rev016-1440-full.png`
+- `.playwright-mcp/rev016-1440-after-scroll.png`
+- `.playwright-mcp/rev016-1024-full.png`
+- `.playwright-mcp/rev016-768-full.png`
+- `.playwright-mcp/rev016-480-full.png`
+
+---
+
 ## REV-047 - Dra Barbara Jobim
 
 **URL Revisado:** http://localhost:7777/site-demo/dra-barbara-jobim/index.html
@@ -306,6 +378,75 @@ Evidências disponíveis em:
 - `.playwright-mcp/rev041-768-full.png`
 - `.playwright-mcp/rev041-480-full.png`
 - `.playwright-mcp/rev041-1440-after-scroll.png`
+
+---
+
+## REV-015 - Hospital Clínico Especializado Veterinário HCEVET
+
+**URL Revisado:** https://pixelalchemy.com.br/site-demo/hospital-clinico-especializado-veterinario-hcevet/index.html
+
+**Data da Revisão:** 2026-02-01
+
+**Status:** ❌ REPROVADO
+
+**passes:** false
+
+### Checklist de Validação
+
+#### Layout e Responsividade
+- [x] 1440px - Desktop large
+- [x] 1024px - Desktop
+- [x] 768px - Tablet
+- [x] 480px - Mobile
+
+#### Imagens e Mídias
+- [ ] Todas as imagens carregam corretamente
+- [x] Sem placeholders quebrados
+- [x] Sem imagens faltantes
+
+#### Navegação
+- [x] Âncoras internas funcionam
+- [x] CTAs não abrem páginas externas
+
+#### Formulários e Interações
+- [x] Formulário funciona sem erros
+- [x] Interações visuais ok
+
+#### Console
+- [x] Sem erros críticos de JS
+- [x] Sem recursos bloqueados
+
+### Issues Encontradas
+
+**CRÍTICO:** A imagem principal do hero (veterinária cuidando de animal) não está visível na carga inicial da página em todos os breakpoints testados (1440px, 1024px, 768px, 480px).
+
+**Elemento afetado:**
+- Imagem do hero: `img[alt="Veterinária cuidando de animal com carinho"]`
+
+**Causa raiz:** A imagem possui `opacity: 0` definido via CSS/computed style. A imagem carrega corretamente (src da Unsplash: `https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80`), mas não é exibida devido à opacidade zero. Isso indica que uma animação de fade-in deveria ser acionada, mas não está funcionando corretamente.
+
+**Correção sugerida:** Verificar o JavaScript/CSS responsável pela animação de entrada da imagem do hero. A imagem deve ter `opacity: 1` por padrão ou a animação de fade-in deve ser acionada automaticamente na carga da página.
+
+### Notas
+
+Site reprovado devido à imagem principal do hero não estar visível na carga inicial. Isso afeta significativamente a primeira impressão do site, pois o hero fica com um espaço vazio/cinza no lugar da imagem.
+
+**Funcionalidades validadas:**
+- Layout responsivo funciona corretamente em todos os breakpoints
+- Todas as outras imagens carregam corretamente (ícones, estrelas de avaliação)
+- Navegação por âncoras operacional (Serviços, Diferenciais, Depoimentos, Contato)
+- CTAs funcionam corretamente (Agendar Consulta, Conhecer Serviços)
+- Formulário de contato funciona e aceita entrada de dados
+- Console sem erros críticos (apenas favicon.ico 404 - não crítico)
+
+**Observação:** Quando a opacidade é forçada para 1 via JavaScript, a imagem é exibida corretamente, confirmando que o problema é apenas na animação/estilo inicial.
+
+Evidências disponíveis em:
+- `.playwright-mcp/hcevet-1440-hero.png`
+- `.playwright-mcp/hcevet-1440-hero-with-image.png` (após correção manual da opacidade)
+- `.playwright-mcp/hcevet-1024-hero.png`
+- `.playwright-mcp/hcevet-768-hero.png`
+- `.playwright-mcp/hcevet-480-hero.png`
 
 ---
 
