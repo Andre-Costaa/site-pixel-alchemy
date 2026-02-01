@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instituto Veterinário Dr. Daleck | Ribeirão Preto - SP</title>
+    <meta name="description" content="Instituto Veterinário Dr. Daleck - Medicina veterinária de excelência em Ribeirão Preto. Cuidados especializados para seu pet com amor e profissionalismo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #D4765B;
+            --color-primary-light: #E89B85;
+            --color-primary-dark: #B85A42;
+            --color-secondary: #6B8E7A;
+            --color-secondary-light: #8BA897;
+            --color-accent: #F4A88A;
+            --color-cream: #FDF8F5;
+            --color-warm-white: #FFFBF8;
+            --color-charcoal: #2D2A2A;
+            --color-gray: #6B6560;
+            --color-light-gray: #E8E4E1;
+            --gradient-warm: linear-gradient(135deg, #D4765B 0%, #E89B85 50%, #F4A88A 100%);
+            --gradient-nature: linear-gradient(135deg, #6B8E7A 0%, #8BA897 100%);
+            --shadow-soft: 0 10px 40px rgba(212, 118, 91, 0.15);
+            --shadow-medium: 0 15px 50px rgba(45, 42, 42, 0.1);
+            --shadow-card: 0 8px 30px rgba(45, 42, 42, 0.08);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 40px;
+            --border-radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-base);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-charcoal);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-base);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-charcoal);
+            margin: 5px 0;
+            transition: var(--transition-base);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: var(--border-radius-blob);
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: blob-float 20s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-warm);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-nature);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--color-accent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes blob-float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(5deg) scale(1.05);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-5deg) scale(0.95);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(3deg) scale(1.02);
+            }
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: rgba(212, 118, 91, 0.15);
+            color: var(--color-primary-dark);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-charcoal);
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            padding: 14px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition-base);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-warm);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(212, 118, 91, 0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-charcoal);
+            border: 2px solid var(--color-light-gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            right: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.95);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .hero-icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-warm);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-icon-box svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .hero-overlay-text strong {
+            display: block;
+            font-size: 1.125rem;
+            color: var(--color-charcoal);
+        }
+
+        .hero-overlay-text span {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+
+        /* Floating cards decoration */
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+        }
+
+        .floating-card span {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .floating-card-1 {
+            top: 20px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 60px;
+            right: -20px;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: white;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .ps-card {
+            background: var(--color-cream);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ps-card.problem {
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .ps-card.solution {
+            border-left: 4px solid var(--color-secondary);
+            background: linear-gradient(135deg, rgba(107, 142, 122, 0.08) 0%, rgba(253, 248, 245, 1) 100%);
+        }
+
+        .ps-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .problem .ps-icon {
+            background: rgba(212, 118, 91, 0.15);
+        }
+
+        .solution .ps-icon {
+            background: rgba(107, 142, 122, 0.15);
+        }
+
+        .ps-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .problem .ps-icon svg {
+            color: var(--color-primary);
+        }
+
+        .solution .ps-icon svg {
+            color: var(--color-secondary);
+        }
+
+        .ps-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-charcoal);
+        }
+
+        .ps-card p {
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .ps-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .ps-list-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.9375rem;
+            color: var(--color-charcoal);
+        }
+
+        .ps-list-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .problem .ps-list-item svg {
+            color: var(--color-primary);
+        }
+
+        .solution .ps-list-item svg {
+            color: var(--color-secondary);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-warm);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(212, 118, 91, 0.12) 0%, rgba(244, 168, 138, 0.12) 100%);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-charcoal);
+        }
+
+        .service-card p {
+            color: var(--color-gray);
+            font-size: 0.9375rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition-fast);
+        }
+
+        .service-link:hover {
+            gap: var(--spacing-sm);
+        }
+
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+            transition: var(--transition-fast);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: white;
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-quote svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .testimonial-text {
+            color: var(--color-gray);
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: var(--color-charcoal);
+            font-size: 0.9375rem;
+        }
+
+        .testimonial-info span {
+            font-size: 0.8125rem;
+            color: var(--color-gray);
+        }
+
+        /* Diferenciais Section */
+        .diferenciais {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+            color: white;
+        }
+
+        .diferenciais .section-title {
+            color: white;
+        }
+
+        .diferenciais .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-base);
+        }
+
+        .diferencial-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .diferencial-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .diferencial-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .diferencial-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        .diferencial-item p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-cream);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-charcoal);
+        }
+
+        .contact-info p {
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 118, 91, 0.12);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+        }
+
+        .contact-item-text strong {
+            display: block;
+            color: var(--color-charcoal);
+            font-size: 0.9375rem;
+        }
+
+        .contact-item-text span {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-card);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.9375rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--color-light-gray);
+            border-radius: var(--border-radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            background: white;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-charcoal);
+            color: white;
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-brand svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+            max-width: 300px;
+        }
+
+        .footer-column h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background: var(--color-primary);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            color: white;
+        }
+
+        /* Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .wow-fade-in.animated {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: var(--shadow-card);
+                transform: translateX(100%);
+                transition: var(--transition-base);
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="28" r="8" fill="currentColor"/>
+                    <ellipse cx="42" cy="30" rx="10" ry="8" fill="currentColor"/>
+                    <circle cx="16" cy="44" r="6" fill="currentColor"/>
+                    <circle cx="32" cy="48" r="6" fill="currentColor"/>
+                    <circle cx="48" cy="44" r="6" fill="currentColor"/>
+                </svg>
+                Dr. Daleck
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="#contato" class="btn btn-primary">Agendar Consulta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge wow-fade-up">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    Medicina Veterinária de Excelência
+                </div>
+                <h1 class="hero-title wow-fade-up" data-delay="100">
+                    Cuidado que seu pet <span>merece</span>
+                </h1>
+                <p class="hero-description wow-fade-up" data-delay="200">
+                    Há mais de 25 anos oferecendo atendimento veterinário especializado com amor, dedicação e tecnologia de ponta em Ribeirão Preto.
+                </p>
+                <div class="hero-cta wow-fade-up" data-delay="300">
+                    <a href="#contato" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Agendar Consulta
+                    </a>
+                    <a href="#servicos" class="btn btn-secondary">Conhecer Serviços</a>
+                </div>
+            </div>
+            <div class="hero-visual wow-fade-in" data-delay="400">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&h=1000&fit=crop" alt="Veterinária examinando um cão gordinho" class="hero-image">
+                    <div class="hero-image-overlay">
+                        <div class="hero-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="hero-overlay-text">
+                            <strong>+15.000 pacientes</strong>
+                            <span>atendidos com carinho</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-card floating-card-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                    <span>Amor e cuidado</span>
+                </div>
+                <div class="floating-card floating-card-2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Segurança total</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag wow-fade-up">Por Que Nos Escolher</span>
+                <h2 class="section-title wow-fade-up" data-delay="100">Apreensão é normal.<br>Nós estamos aqui para ajudar.</h2>
+            </div>
+            <div class="ps-grid">
+                <div class="ps-card problem wow-fade-up" data-delay="200">
+                    <div class="ps-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>Preocupações Comuns</h3>
+                    <p>Sabemos que trazer seu pet ao veterinário pode ser estressante. Entendemos suas preocupações:</p>
+                    <div class="ps-list">
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                            <span>Medo do ambiente clínico</span>
+                        </div>
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                            <span>Receio de diagnósticos complicados</span>
+                        </div>
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                            <span>Preocupação com custos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-card solution wow-fade-up" data-delay="300">
+                    <div class="ps-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Nossa Solução</h3>
+                    <p>No Instituto Veterinário Dr. Daleck, transformamos essa experiência em algo positivo:</p>
+                    <div class="ps-list">
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Ambiente acolhedor e pet-friendly</span>
+                        </div>
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Explicações claras e transparentes</span>
+                        </div>
+                        <div class="ps-list-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Opções de tratamento acessíveis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag wow-fade-up">Nossos Serviços</span>
+                <h2 class="section-title wow-fade-up" data-delay="100">Cuidados completos para seu melhor amigo</h2>
+                <p class="section-subtitle wow-fade-up" data-delay="200">Oferecemos uma gama completa de serviços veterinários para garantir a saúde e felicidade do seu pet.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Clínica Geral</h3>
+                    <p>Consultas de rotina, check-ups completos e prevenção para manter seu pet sempre saudável.</p>
+                    <a href="#contato" class="service-link">
+                        Agendar
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Cirurgias</h3>
+                    <p>Procedimentos cirúrgicos com tecnologia avançada e equipe especializada.</p>
+                    <a href="#contato" class="service-link">
+                        Saiba mais
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Emergências 24h</h3>
+                    <p>Atendimento de urgência disponível a qualquer momento, dia ou noite.</p>
+                    <a href="tel:+551636327696" class="service-link">
+                        Ligar agora
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="600">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Laboratório</h3>
+                    <p>Análises clínicas completas com resultados rápidos e precisos.</p>
+                    <a href="#contato" class="service-link">
+                        Agendar exame
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="700">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Vacinação</h3>
+                    <p>Programa completo de vacinação para proteger seu pet de doenças.</p>
+                    <a href="#contato" class="service-link">
+                        Ver carteira
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="800">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Dermatologia</h3>
+                    <p>Tratamento especializado para alergias, infecções e problemas de pele.</p>
+                    <a href="#contato" class="service-link">
+                        Consultar
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag wow-fade-up">Depoimentos</span>
+                <h2 class="section-title wow-fade-up" data-delay="100">O que nossos clientes dizem</h2>
+                <p class="section-subtitle wow-fade-up" data-delay="200">A satisfação de quem confia a saúde do pet ao Instituto Veterinário Dr. Daleck.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"A equipe do Dr. Daleck salvou a vida do meu Max. O atendimento foi rápido, profissional e muito carinhoso. Eles trataram meu cachorro como se fosse da família."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Maria Silva" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Maria Silva</strong>
+                            <span>Mãe do Max (Golden Retriever)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="400">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Finalmente encontrei uma veterinária onde minha gata não fica estressada. O ambiente é super acolhedor e a Dra. Patricia é incrível com os animais."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Carlos Oliveira" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Carlos Oliveira</strong>
+                            <span>Pai da Luna (Siamesa)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="500">
+                    <div class="testimonial-quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Há 10 anos trato meus pets no Dr. Daleck. A qualidade do atendimento é impecável e sempre me sinto segura com as recomendações. Confiança total!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Ana Costa" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Ana Costa</strong>
+                            <span>Mãe da Mel e do Bob</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais Section -->
+    <section class="section diferenciais">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag wow-fade-up">Nossos Diferenciais</span>
+                <h2 class="section-title wow-fade-up" data-delay="100">Por que somos a melhor escolha</h2>
+            </div>
+            <div class="diferenciais-grid">
+                <div class="diferencial-item wow-fade-up" data-delay="200">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>25+ Anos de Experiência</h3>
+                    <p>Tradição e excelência em medicina veterinária</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="300">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais altamente qualificados</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="400">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Emergências 24h</h3>
+                    <p>Sempre disponíveis quando precisa</p>
+                </div>
+                <div class="diferencial-item wow-fade-up" data-delay="500">
+                    <div class="diferencial-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Amor pelos Animais</h3>
+                    <p>Tratamos cada pet como único</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info wow-fade-up">
+                    <h2>Pronto para agendar uma consulta?</h2>
+                    <p>Entre em contato conosco para agendar uma visita ou tirar suas dúvidas. Estamos aqui para ajudar seu pet a viver uma vida saudável e feliz.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Endereço</strong>
+                                <span>Av. Independência, 1549 - Jardim Sumare, Ribeirão Preto - SP, 14025-390</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Telefone</strong>
+                                <span>(16) 3632-7696</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <path d="M10 8h4"/>
+                                    <path d="M10 12h4"/>
+                                    <path d="M10 16h4"/>
+                                    <path d="M6 8h.01"/>
+                                    <path d="M6 12h.01"/>
+                                    <path d="M6 16h.01"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-text">
+                                <strong>Horário</strong>
+                                <span>Segunda a Sexta: 8h às 20h<br>Sábados: 8h às 14h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form wow-fade-up" data-delay="200">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Seu Nome</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" class="form-label">Serviço Desejado</label>
+                            <select id="service" name="service" class="form-select" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="clinica">Clínica Geral</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="vacinacao">Vacinação</option>
+                                <option value="laboratorio">Exames Laboratoriais</option>
+                                <option value="emergencia">Emergência</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Conte-nos sobre seu pet e o que precisa..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <path d="M22 2L11 13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="28" r="8" fill="white"/>
+                        <ellipse cx="42" cy="30" rx="10" ry="8" fill="white"/>
+                        <circle cx="16" cy="44" r="6" fill="white"/>
+                        <circle cx="32" cy="48" r="6" fill="white"/>
+                        <circle cx="48" cy="44" r="6" fill="white"/>
+                    </svg>
+                    <p>Cuidando com amor e dedicação dos seus pets há mais de 25 anos em Ribeirão Preto.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <nav class="footer-links">
+                        <a href="#inicio">Início</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#contato">Contato</a>
+                    </nav>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <nav class="footer-links">
+                        <a href="#servicos">Clínica Geral</a>
+                        <a href="#servicos">Cirurgias</a>
+                        <a href="#servicos">Laboratório</a>
+                        <a href="#servicos">Vacinação</a>
+                    </nav>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <nav class="footer-links">
+                        <a href="tel:+551636327696">(16) 3632-7696</a>
+                        <a href="https://wa.me/551636327696" target="_blank">WhatsApp</a>
+                        <a href="mailto:contato@drdaleck.com.br">Email</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Instituto Veterinário Dr. Daleck. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/551636327696" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if (window.scrollY > lastScrollY) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const service = formData.get('service');
+            const message = formData.get('message');
+
+            // Create WhatsApp message
+            const serviceNames = {
+                'clinica': 'Clínica Geral',
+                'cirurgia': 'Cirurgia',
+                'vacinacao': 'Vacinação',
+                'laboratorio': 'Exames Laboratoriais',
+                'emergencia': 'Emergência',
+                'outro': 'Outro'
+            };
+
+            const whatsappMessage = `Olá! Meu nome é ${name}.%0A%0A` +
+                `Telefone: ${phone}%0A` +
+                `Serviço desejado: ${serviceNames[service]}%0A%0A` +
+                `Mensagem: ${message}`;
+
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/551636327696?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Parallax effect for blobs
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (x - 0.5) * speed;
+                const yOffset = (y - 0.5) * speed;
+                blob.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
