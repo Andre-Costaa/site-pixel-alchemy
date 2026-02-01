@@ -1,7 +1,7 @@
-# Revisão Playwright - MALBEC VETERINÁRIA
+# Revisão Playwright - Gazeto Clínica Veterinária
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** http://localhost:8080/site-demo/malbec-veterinaria-atendimento-veterinario-domiciliar-24-horas/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/gazeto-clinica-veterinaria/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -30,60 +30,61 @@
 - Layout em duas colunas no hero (texto + imagem)
 - Cards de serviços em grid 3 colunas
 - Depoimentos em grid 3 colunas
-- Diferenciais em grid 2 colunas (6 itens)
+- Seção de diferenciais em grid 4 colunas
 - Seção de contato com formulário e info lado a lado
 
 **✅ 1024px (Tablet Landscape)**
-- Hero em uma coluna (imagem acima, texto abaixo)
-- Cards de serviços em grid 3 colunas
-- Depoimentos em grid 3 colunas
+- Layout adaptativo mantendo estrutura
+- Cards de serviços em grid 2-3 colunas
+- Depoimentos em grid 2-3 colunas
 - Diferenciais em grid 2 colunas
-- Navegação principal visível
 
 **✅ 768px (Tablet Portrait)**
 - Layout empilhado
 - Cards de serviços em grid 2 colunas
-- Depoimentos em grid 1 coluna
+- Depoimentos em grid 1-2 colunas
 - Diferenciais em grid 2 colunas
-- Botões CTAs empilhados verticalmente
 
 **✅ 480px (Mobile)**
 - Layout totalmente empilhado
 - Cards de serviços em 1 coluna
 - Depoimentos em 1 coluna
-- Diferenciais em 1 coluna
+- Diferenciais em 1-2 colunas
 - Botões CTAs empilhados verticalmente
 
 ### 2. Carregamento de Imagens
 
 **✅ Todas as imagens carregadas corretamente:**
-- Imagem hero (cachorros correndo)
-- Ícones de serviços (Emergências, Consultas, Cirurgias, Terapias, Eutanásia, Exames)
+- Imagem hero (veterinária examinando cachorro)
+- Imagens dos serviços (Consultas, Cirurgias, Vacinação, Exames, Odontologia, Banho e Tosa)
 - Ícones de diferenciais
 - Ícones de contato (endereço, telefone, horário)
 - Estrelas de avaliação nos depoimentos
-- Avatar placeholders nos depoimentos (iniciais dos clientes: MC, RF, AS)
+- Avatares dos clientes (Maria Silva, Carlos Mendes, Ana Paula)
+- Logo e ícones do site
 
 ### 3. Navegação e Âncoras
 
 **✅ Links de navegação testados e funcionando:**
+- "Início" → #inicio ✓
 - "Serviços" → #servicos ✓
 - "Depoimentos" → #depoimentos ✓
-- "Diferenciais" → #diferenciais ✓
-- "Agendar" → #contato ✓
+- "Contato" → #contato ✓
 - "Agendar Consulta" (hero) → #contato ✓
-- Telefone → tel:+5516981800379 ✓
+- "WhatsApp" → https://wa.me/551697400711 ✓
+- Telefone → tel:+5516997400711 ✓
 - Links do footer (Início, Serviços, Depoimentos, Contato) ✓
+- Links de serviços no footer ✓
 
 ### 4. Formulário de Contato
 
 **✅ Funcionalidades testadas:**
 - Campo "Seu Nome": preenchimento OK
 - Campo "Telefone": preenchimento OK
-- Campo "Tipo de Atendimento" (dropdown): seleção OK
-  - Opções: Emergência 24h, Consulta Domiciliar, Cirurgia de Pequeno Porte, Terapia/Medicamentos, Eutanásia Domiciliar, Outro
+- Campo "Serviço Desejado" (dropdown): seleção OK
+  - Opções: Consulta Clínica, Cirurgia, Vacinação, Exames Laboratoriais, Odontologia, Banho e Tosa, Outro
 - Campo "Mensagem": preenchimento OK
-- Botão "Enviar Solicitação": visível e clicável
+- Botão "Enviar Mensagem": visível e clicável
 
 ### 5. Console do Navegador
 
@@ -97,18 +98,11 @@
 
 ## Screenshots Capturados
 
-1. `malbec-1440px.png` - Layout desktop
-2. `malbec-1024px.png` - Layout tablet landscape
-3. `malbec-768px.png` - Layout tablet portrait
-4. `malbec-480px.png` - Layout mobile
-5. `malbec-fullpage.png` - Página completa
-6. `malbec-servicos.png` - Seção de serviços
-7. `malbec-depoimentos.png` - Seção de depoimentos
-8. `malbec-diferenciais.png` - Seção de diferenciais
-9. `malbec-contato.png` - Seção de contato
-10. `malbec-formulario.png` - Formulário de contato
-11. `malbec-form-preenchido.png` - Formulário preenchido
-12. `malbec-footer.png` - Footer
+1. `gazeto-1440px.png` - Layout desktop
+2. `gazeto-1024px.png` - Layout tablet landscape
+3. `gazeto-768px.png` - Layout tablet portrait
+4. `gazeto-480px.png` - Layout mobile
+5. `gazeto-form-preenchido.png` - Formulário de contato preenchido
 
 ---
 
@@ -116,7 +110,7 @@
 
 ✅ **REVISÃO APROVADA - SITE PRONTO PARA ENTREGA**
 
-O site da MALBEC VETERINÁRIA está funcionando corretamente em todos os aspectos verificados:
+O site da Gazeto Clínica Veterinária está funcionando corretamente em todos os aspectos verificados:
 
 - Layout responsivo em todos os breakpoints
 - Todas as imagens carregando sem erros
@@ -128,4 +122,4 @@ O site da MALBEC VETERINÁRIA está funcionando corretamente em todos os aspecto
 
 **passes=true**
 
-**Notas:** Site MALBEC VETERINÁRIA aprovado em todos os critérios de revisão. Nenhum problema crítico encontrado. O site está pronto para entrega ao cliente.
+**Notas:** Site Gazeto Clínica Veterinária aprovado em todos os critérios de revisão. Nenhum problema crítico encontrado. O site está pronto para entrega ao cliente.
