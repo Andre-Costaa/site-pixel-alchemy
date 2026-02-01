@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 35/45 (78%)
+- **Concluídas**: 36/45 (80%)
 - **Em Andamento**: 0
-- **Pendentes**: 10
+- **Pendentes**: 9
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-034 e US-037)
+### Sites Concluídos (US-001 a US-035 e US-037)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -46,20 +46,20 @@
 | US-032 | **Vídeo Pet Endoscopia e Vídeocirurgia Veterinária** | **pixelalchemy.com.br/site-demo/video-pet-endoscopia-e-videocirurgia-veterinaria** |
 | US-033 | **Pet Work Clínica Veterinária** | **pixelalchemy.com.br/site-demo/pet-work-clinica-veterinaria-banho-e-tosa-e-pet-shop** |
 | US-034 | **Arthemia Clínica Veterinária** | **pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria** |
+| US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-034 - Arthemia Clínica Veterinária
+- **Último Site**: US-035 - Mr. Dog e Cia
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/arthemia-clinica-veterinaria
-- **Design**: "Modern Wellness" - Paleta elegante (terracota #8B3A3A primary, dourado #D4A574 accent, creme #FAF6F1 background), tipografia Playfair Display + Inter, floating paw animations, gradient overlays, card hover effects, e estética wellness premium
+- **URL**: pixelalchemy.com.br/site-demo/mr-dog-e-cia
+- **Design**: "Playful Paw Prints" - Estética lúdica com cores quentes (âmbar #FF8C42, teal #2A9D8F), tipografia Fredoka + Nunito, paw print shapes animados, gradientes warm, cards com hover effects, decorative paw elements no hero, e visual acolhedor e profissional para clínica veterinária
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-035 | Mr. Dog e Cia | Pendente |
 | US-036 | Daniela Mosna Oncologia Veterinária | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
 | US-039 | Clínica Veterinária Nova Aliança | Pendente |
