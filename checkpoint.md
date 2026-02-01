@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 37/45 (82%)
+- **Concluídas**: 38/45 (84%)
 - **Em Andamento**: 0
-- **Pendentes**: 8
+- **Pendentes**: 7
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-037)
+### Sites Concluídos (US-001 a US-038)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -49,19 +49,19 @@
 | US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 | US-036 | **Daniela Mosna Oncologia Veterinária** | **pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria** |
+| US-038 | **Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres** | **pixelalchemy.com.br/site-demo/heloisa-americo-deluzzi-clinica-e-cirurgia-de-animais-silvestres** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-036 - Daniela Mosna Oncologia Veterinária
+- **Último Site**: US-038 - Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria
-- **Design**: "Hopeful Precision" - Estética médica de luxo com cores healing (sage green #4A7C59, terracotta #C47B5D), tipografia Cormorant Garamond + DM Sans, organic cellular gradient backgrounds com animated blobs, elegantes transições suaves, e visual compassivo e profissional para oncologia veterinária
+- **URL**: pixelalchemy.com.br/site-demo/heloisa-americo-deluzzi-clinica-e-cirurgia-de-animais-silvestres
+- **Design**: "Jungle Noir" - Estética editorial sofisticada com cores forest verde (#0a1f12), midnight azul (#0d1117), terracotta (#c45a3a), e amber (#d4a853). Tipografia Cormorant Garamond (display serif elegante) + Outfit (sans moderna). Layout editorial com dramatic photography, leaf decorations, gold accents. Formulário WhatsApp integrado. Totalmente responsivo com animações suaves.
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-038 | Heloisa Américo Deluzzi | Pendente |
 | US-039 | Clínica Veterinária Nova Aliança | Pendente |
 | US-040 | Instituto Veterinário Dr. Daleck | Pendente |
 | US-041 | Isabele Pereira Pets Não Convencionais | Pendente |
