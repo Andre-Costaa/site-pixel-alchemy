@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 36/45 (80%)
+- **Concluídas**: 37/45 (82%)
 - **Em Andamento**: 0
-- **Pendentes**: 9
+- **Pendentes**: 8
 
 ## URLs dos Demos
 
@@ -52,10 +52,10 @@
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-017 - Veterinary Clinic & Pet Puppies (NOVO DESIGN)
+- **Último Site**: US-020 - Clínica Veterinária Pena Verde - Animais Silvestres e Exóticos
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/veterinary-clinic-pet-puppies
-- **Design**: "Joyful Warm" - Paleta laranja/amarelo/menta com Fredoka + Nunito fonts
+- **URL**: pixelalchemy.com.br/site-demo/clinica-veterinaria-pena-verde-animais-silvestres-e-exoticos
+- **Design**: "Forest Wild" - Paleta verde floresta/madeira com Playfair Display + Inter fonts, ícones em formato de folha, especialização em animais silvestres e exóticos
 
 ## Próximos Sites (Pendentes)
 
