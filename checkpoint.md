@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 34/45 (75.6%)
+- **Concluídas**: 36/45 (80%)
 - **Em Andamento**: 0
-- **Pendentes**: 11
+- **Pendentes**: 9
 
 ## URLs dos Demos
 
@@ -48,18 +48,19 @@
 | US-034 | **Endoscopia Veterinária - Vet. Matheus Nascimento** | **pixelalchemy.com.br/site-demo/endoscopia-veterinaria-matheus-nascimento** |
 | US-035 | **Mr. Dog e Cia** | **pixelalchemy.com.br/site-demo/mr-dog-e-cia** |
 | US-036 | **Daniela Mosna Oncologia Veterinária** | **pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria** |
+| US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 
 ## Última Atualização
 - **Data**: 2026-01-31
-- **Último Site**: US-036 - Daniela Mosna Oncologia Veterinária
+- **Último Site**: US-017 - Veterinary Clinic & Pet Puppies (NOVO DESIGN)
 - **Status**: Concluído e commitado
-- **URL**: pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria
+- **URL**: pixelalchemy.com.br/site-demo/veterinary-clinic-pet-puppies
+- **Design**: "Joyful Warm" - Paleta laranja/amarelo/menta com Fredoka + Nunito fonts
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-037 | Laus Consultório Veterinário | Pendente |
 | US-038 | Heloisa Américo Deluzzi | Pendente |
 | US-039 | Clínica Veterinária Nova Aliança | Pendente |
 | US-040 | Instituto Veterinário Dr. Daleck | Pendente |
