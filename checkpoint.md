@@ -2,9 +2,9 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 42/45 (93%)
+- **Concluídas**: 43/45 (96%)
 - **Em Andamento**: 0
-- **Pendentes**: 3
+- **Pendentes**: 2
 
 ## URLs dos Demos
 
@@ -54,18 +54,18 @@
 | US-040 | **Instituto Veterinário Dr. Daleck** | **pixelalchemy.com.br/site-demo/instituto-veterinario-dr-daleck** |
 | US-042 | **Centro Veterinário Seres** | **pixelalchemy.com.br/site-demo/centro-veterinario-seres** |
 | US-043 | **Espécie Exótica** | **pixelalchemy.com.br/site-demo/especie-exotica-clinica-veterinaria-silvestres-e-exoticos** |
+| US-044 | **Bicho do Mato** | **pixelalchemy.com.br/site-demo/clinica-veterinaria-bicho-do-mato-atendimento-para-animais-silvestres** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-043 - Espécie Exótica
+- **Último Site**: US-044 - Bicho do Mato
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/especie-exotica-clinica-veterinaria-silvestres-e-exoticos
-- **Design**: Design "Jungle Sunset" com paleta verde-jungle (#1E4D3B), coral do pôr do sol (#E07A5F) e âmbar dourado (#D4A445). Tipografia Space Grotesk + DM Sans. Formas orgânicas com padrão de folhas tropicais animadas no hero, cards com borda superior em gradiente sunset, seção problema/solução contrastante com fundo floresta, serviços em grid 3 colunas, depoimentos com fundo verde escuro, diferenciais com ícones em gradiente sunset, formulário de contato completo. Totalmente responsivo.
+- **URL**: pixelalchemy.com.br/site-demo/clinica-veterinaria-bicho-do-mato-atendimento-para-animais-silvestres
+- **Design**: Design "Forest Canopy" com paleta verde-floresta (#2D5A47), terracota (#C47A5F) e âmbar (#D4A445). Tipografia Outfit + Inter. Formas orgânicas com padrão de folhas do dossel animadas no hero, cards com borda superior em gradiente earth, seção problema/solução contrastante, serviços em grid 3 colunas, depoimentos com fundo floresta escuro, diferenciais com ícones em gradiente earth, formulário de contato completo. Totalmente responsivo.
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
 | US-041 | Isabele Pereira Pets Não Convencionais | Pendente |
-| US-044 | Bicho do Mato | Pendente |
 | US-045 | Critical Care Cuidados Intensivos | Pendente |
