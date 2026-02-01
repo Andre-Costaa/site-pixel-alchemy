@@ -1,7 +1,7 @@
-# Revisão Playwright - Four Pets Clínica Veterinária 24h
+# Revisão Playwright - Nucleon Veterinary Diagnostics
 
 **Data da Revisão:** 2026-02-01
-**URL Revisada:** https://pixelalchemy.com.br/site-demo/four-pets-clinica-veterinaria-24h/index.html
+**URL Revisada:** https://pixelalchemy.com.br/site-demo/nucleon-veterinary-diagnostics/index.html
 **Revisor:** Playwright Automated Testing
 
 ---
@@ -15,10 +15,10 @@
 | Layout 1024px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 768px | ✅ APROVADO | Layout responsivo funcionando |
 | Layout 480px | ✅ APROVADO | Layout responsivo funcionando |
-| Carregamento de Imagens | ❌ REPROVADO | 2 imagens quebradas (Exames Diagnósticos e Cardiologia) |
+| Carregamento de Imagens | ❌ REPROVADO | 1 imagem quebrada (Hero - Laboratório) |
 | Navegação/Âncoras | ✅ APROVADO | Links de navegação funcionando |
 | Formulário | ✅ APROVADO | Formulário preenchível sem erros |
-| Console (Erros JS) | ⚠️ APROVADO | Apenas erro não crítico de favicon.ico |
+| Console (Erros JS) | ✅ APROVADO | Apenas erro não crítico de favicon.ico |
 
 ---
 
@@ -29,70 +29,68 @@
 **✅ 1440px (Desktop)**
 - Layout em duas colunas no hero (texto + imagem)
 - Cards de serviços em grid 3 colunas
+- Cards de diferenciais em grid 3 colunas
 - Depoimentos em grid 3 colunas
-- Seção de diferenciais em grid 4 colunas
 - Seção de contato com formulário e info lado a lado
 
 **✅ 1024px (Tablet Landscape)**
 - Layout adaptativo mantendo estrutura
 - Cards de serviços em grid 2-3 colunas
+- Diferenciais em grid 3 colunas
 - Depoimentos em grid 2-3 colunas
-- Diferenciais em grid 2 colunas
 
 **✅ 768px (Tablet Portrait)**
 - Layout empilhado
 - Cards de serviços em grid 2 colunas
-- Depoimentos em grid 1-2 colunas
 - Diferenciais em grid 2 colunas
+- Depoimentos em grid 2 colunas
 
 **✅ 480px (Mobile)**
 - Layout totalmente empilhado
 - Cards de serviços em 1 coluna
+- Diferenciais em 1 coluna
 - Depoimentos em 1 coluna
-- Diferenciais em 1-2 colunas
 - Botões CTAs empilhados verticalmente
 
 ### 2. Carregamento de Imagens
 
-**❌ IMAGENS QUEBRADAS ENCONTRADAS:**
+**❌ IMAGEM QUEBRADA ENCONTRADA:**
 
-1. **Exames Diagnósticos** (card #4)
-   - URL: `https://images.unsplash.com/photo-1596492784531-6e6eb5ea9205?w=400&h=180&fit=crop`
-   - Status: 404 Not Found
-   - Impacto: Card exibindo texto alternativo "Exames Diagnósticos" sem imagem
-
-2. **Cardiologia Veterinária** (card #5)
-   - URL: `https://images.unsplash.com/photo-1589924691195-41432c84c161?w=400&h=180&fit=crop`
-   - Status: 404 Not Found
-   - Impacto: Card exibindo texto alternativo "Cardiologia Veterinária" sem imagem
+1. **Imagem do Hero (Laboratório Veterinário)**
+   - URL: `https://images.unsplash.com/photo-1628008368351-1d34d4e9e059?w=800&q=80`
+   - Status: Imagem não carrega (naturalWidth=0)
+   - Impacto: Área do hero exibindo apenas gradiente/background sem a imagem do laboratório
 
 **✅ Imagens carregadas corretamente:**
-- Imagem hero (veterinária examinando cachorro)
-- Imagens dos serviços: Emergências 24h, Cirurgias de Urgência, UTI e Internação, Vacinação
-- Avatares dos clientes (Fernanda Oliveira, Ricardo Santos, Juliana Costa)
-- Ícones e elementos visuais
+- Avatares dos clientes (Dra. Marina Santos, Roberto Almeida, Dr. Carlos Mendes)
+- Ícones dos serviços (Hematologia, Bioquímica, Endocrinologia, etc.)
+- Ícones de check (✓) nos cards
+- Ícones de contato (endereço, telefone, email, horário)
+- Logo Nucleon
 
 ### 3. Navegação e Âncoras
 
 **✅ Links de navegação testados e funcionando:**
 - "Início" → #inicio ✓
 - "Serviços" → #servicos ✓
+- "Diferenciais" → #diferenciais ✓
 - "Depoimentos" → #depoimentos ✓
-- "Contato" → #contato ✓
-- "WhatsApp Emergência" (hero) → https://wa.me/551632368348 ✓
-- Telefone → tel:+551632368348 ✓
-- Links do footer (Início, Serviços, Depoimentos, Contato) ✓
+- "Agendar Exame" → #contato ✓
+- "Agendar Agora" (CTA) → #contato ✓
+- "Conhecer Serviços" → #servicos ✓
+- Links do footer (Início, Serviços, Diferenciais, Depoimentos) ✓
 - Links de serviços no footer ✓
 
 ### 4. Formulário de Contato
 
 **✅ Funcionalidades testadas:**
-- Campo "Seu Nome": preenchimento OK
+- Campo "Nome Completo": preenchimento OK
+- Campo "Email": preenchimento OK
 - Campo "Telefone": preenchimento OK
-- Campo "Serviço Desejado" (dropdown): seleção OK
-  - Opções: Emergência 24h, Consulta Clínica, Cirurgia, Exames Laboratoriais, UTI/Internação, Vacinação, Outro
+- Campo "Tipo de Exame" (dropdown): seleção OK
+  - Opções: Hematologia, Bioquímica Clínica, Endocrinologia, Citologia/Histopatologia, Microbiologia, Diagnóstico por Imagem, Checkup Completo, Outro
 - Campo "Mensagem": preenchimento OK
-- Botão "Enviar pelo WhatsApp": visível e clicável
+- Botão "Enviar Mensagem": visível e clicável
 
 ### 5. Console do Navegador
 
@@ -106,38 +104,44 @@
 
 ## Screenshots Capturados
 
-1. `four-pets-1440px.png` - Layout desktop
-2. `four-pets-1024px.png` - Layout tablet landscape
-3. `four-pets-768px.png` - Layout tablet portrait
-4. `four-pets-480px.png` - Layout mobile
-5. `four-pets-form-preenchido.png` - Formulário de contato preenchido
-6. `four-pets-servicos.png` - Seção de serviços mostrando imagens quebradas
+1. `nucleon-1440-top.png` - Layout desktop hero
+2. `nucleon-1440-section2.png` - Seção "O Desafio do Diagnóstico Veterinário"
+3. `nucleon-1440-section3.png` - Seção de serviços
+4. `nucleon-1440-section5.png` - Seção de diferenciais
+5. `nucleon-1440-section6.png` - Seção de depoimentos
+6. `nucleon-1440-section7.png` - Formulário de contato
+7. `nucleon-1024-top.png` - Layout tablet landscape
+8. `nucleon-768-top.png` - Layout tablet portrait
+9. `nucleon-480-top.png` - Layout mobile
+10. `nucleon-form-filled.png` - Formulário preenchido
+11. `nucleon-hero-image-check.png` - Verificação da imagem do hero
 
 ---
 
 ## Problemas Encontrados
 
-### 🔴 PROBLEMA CRÍTICO: Imagens Quebradas
+### 🔴 PROBLEMA CRÍTICO: Imagem do Hero Quebrada
 
-**Descrição:** Duas imagens dos cards de serviço estão retornando 404:
+**Descrição:** A imagem principal do hero (laboratório veterinário) não está carregando:
 
-1. **Exames Diagnósticos** - URL da Unsplash não existe mais
-2. **Cardiologia Veterinária** - URL da Unsplash não existe mais
+- **URL:** `https://images.unsplash.com/photo-1628008368351-1d34d4e9e059?w=800&q=80`
+- **Status:** Imagem retorna naturalWidth=0 (não carregada)
+- **Impacto:** Área do hero exibe apenas o gradiente de background sem a imagem do laboratório
 
 **Correção Sugerida:**
-Substituir as URLs das imagens no arquivo `index.html`:
+Substituir a URL da imagem no arquivo `index.html` na seção hero:
 
 ```html
-<!-- Card Exames Diagnósticos - Linha ~285 -->
-<img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=180&fit=crop" alt="Exames Diagnósticos">
-
-<!-- Card Cardiologia - Linha ~298 -->
-<img src="https://images.unsplash.com/photo-1626263468007-a9e0cf83f1ac?w=400&h=180&fit=crop" alt="Cardiologia Veterinária">
+<!-- Hero Image - Linha aproximada do hero -->
+<img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80"
+     alt="Laboratório Veterinário Nucleon - Análise clínica avançada para pets"
+     class="hero-image">
 ```
 
-Alternativas de imagens testadas e funcionando:
-- Exames: `photo-1579154204601-01588f351e67` (laboratório/veterinário)
-- Cardiologia: `photo-1626263468007-a9e0cf83f1ac` (coração/cardiologia)
+Alternativas de imagens de laboratório veterinário testadas e funcionando:
+- `photo-1579154204601-01588f351e67` (laboratório/veterinário)
+- `photo-1626263468007-a9e0cf83f1ac` (equipamentos médicos)
+- `photo-1581093458791-9f3c3900df4b` (laboratório)
 
 ---
 
@@ -145,18 +149,18 @@ Alternativas de imagens testadas e funcionando:
 
 ❌ **REVISÃO REPROVADA - CORREÇÕES NECESSÁRIAS**
 
-O site da Four Pets Clínica Veterinária 24h apresenta problemas que precisam ser corrigidos antes da entrega:
+O site da Nucleon Veterinary Diagnostics apresenta um problema que precisa ser corrigido antes da entrega:
 
 - ✅ Layout responsivo em todos os breakpoints
-- ❌ **2 imagens quebradas na seção de serviços** (Exames Diagnósticos e Cardiologia)
+- ❌ **1 imagem quebrada na seção hero** (Laboratório Veterinário)
 - ✅ Navegação interna funcionando perfeitamente
 - ✅ Formulário de contato funcional
 - ✅ Console limpo (apenas erro não crítico de favicon)
 
-**Ação necessária:** Substituir as URLs das imagens quebradas antes de enviar ao cliente.
+**Ação necessária:** Substituir a URL da imagem do hero antes de enviar ao cliente.
 
 ---
 
 **passes=false**
 
-**Notas:** Site Four Pets Clínica Veterinária 24h reprovado devido a 2 imagens quebradas na seção de serviços. É necessário corrigir as URLs das imagens de "Exames Diagnósticos" e "Cardiologia Veterinária" antes da entrega ao cliente.
+**Notas:** Site Nucleon Veterinary Diagnostics reprovado devido à imagem do hero não carregar. É necessário corrigir a URL da imagem do laboratório veterinário antes da entrega ao cliente.
