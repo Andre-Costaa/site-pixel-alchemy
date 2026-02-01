@@ -2,13 +2,13 @@
 
 ## Progresso Geral
 - **Total de User Stories**: 45
-- **Concluídas**: 38/45 (84%)
+- **Concluídas**: 40/45 (89%)
 - **Em Andamento**: 0
-- **Pendentes**: 7
+- **Pendentes**: 5
 
 ## URLs dos Demos
 
-### Sites Concluídos (US-001 a US-038)
+### Sites Concluídos (US-001 a US-040)
 
 | US | Clínica | URL |
 |----|---------|-----|
@@ -50,20 +50,20 @@
 | US-037 | **Laus Consultório Veterinário** | **pixelalchemy.com.br/site-demo/laus-consultorio-veterinario** |
 | US-036 | **Daniela Mosna Oncologia Veterinária** | **pixelalchemy.com.br/site-demo/daniela-mosna-oncologia-veterinaria** |
 | US-038 | **Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres** | **pixelalchemy.com.br/site-demo/heloisa-americo-deluzzi-clinica-e-cirurgia-de-animais-silvestres** |
+| US-039 | **Clínica Veterinária Nova Aliança** | **pixelalchemy.com.br/site-demo/clinica-veterinaria-nova-alianca** |
+| US-040 | **Instituto Veterinário Dr. Daleck** | **pixelalchemy.com.br/site-demo/instituto-veterinario-dr-daleck** |
 
 ## Última Atualização
 - **Data**: 2026-02-01
-- **Último Site**: US-038 - Heloisa Américo Deluzzi - Clínica e Cirurgia de Animais Silvestres
+- **Último Site**: US-040 - Instituto Veterinário Dr. Daleck
 - **Status**: Concluído
-- **URL**: pixelalchemy.com.br/site-demo/heloisa-americo-deluzzi-clinica-e-cirurgia-de-animais-silvestres
-- **Design**: "Jungle Noir" - Estética editorial sofisticada com cores forest verde (#0a1f12), midnight azul (#0d1117), terracotta (#c45a3a), e amber (#d4a853). Tipografia Cormorant Garamond (display serif elegante) + Outfit (sans moderna). Layout editorial com dramatic photography, leaf decorations, gold accents. Formulário WhatsApp integrado. Totalmente responsivo com animações suaves.
+- **URL**: pixelalchemy.com.br/site-demo/instituto-veterinario-dr-daleck
+- **Design**: Estética orgânica e profissional com cores terrosas quentes (terracota #D4765B, sálvia #6B8E7A), tipografia elegante (Playfair Display + DM Sans), formas blob animadas com efeito parallax, gradientes suaves. Layout com hero section sobreposta, cards de serviço com hover animations, seção problema/solução empática, depoimentos com fotos reais, diferenciais com background verde natureza, formulário WhatsApp integrado. Totalmente responsivo.
 
 ## Próximos Sites (Pendentes)
 
 | US | Clínica | Status |
 |----|---------|--------|
-| US-039 | Clínica Veterinária Nova Aliança | Pendente |
-| US-040 | Instituto Veterinário Dr. Daleck | Pendente |
 | US-041 | Isabele Pereira Pets Não Convencionais | Pendente |
 | US-042 | Centro Veterinário Seres | Pendente |
 | US-043 | Espécie Exótica | Pendente |
