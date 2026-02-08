@@ -19,6 +19,44 @@ after each iteration and it's included in prompts for context.
 - **Golden Champagne & Pearl Noir Palette**: `--color-champagne: #C9A86C`, `--color-champagne-light: #D9B87C`, `--color-champagne-mid: #E0C090`, `--color-champagne-dark: #A88A50`, `--color-champagne-deep: #886A30`, `--color-pearl: #E8E4DC`, `--color-pearl-light: #F0ECE4`, `--color-pearl-dark: #D8D4CC`, `--color-pearl-mist: #F8F6F2`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A` - luxurious, sophisticated aesthetic with warm champagne gold tones and elegant pearl accents
 - **Geometric Ellipse Border Radius**: `--radius-ellipse-1: 70% 30% 50% 50% / 50% 50% 70% 30%`, `--radius-ellipse-2: 50% 50% 70% 30% / 30% 70% 50% 50%`, `--radius-ellipse-3: 60% 40% 40% 60% / 40% 60% 60% 40%`, `--radius-ellipse-4: 40% 60% 60% 40% / 60% 40% 40% 60%` for geometric, elliptical shapes with distinctive elongated qualities
 - **Cormorant Garamond + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated luxury with excellent readability
+- **Pearl Noir & Brushed Titanium Palette**: `--color-pearl: #E8E4E0`, `--color-pearl-light: #F0ECE8`, `--color-pearl-soft: #F8F4F0`, `--color-pearl-warm: #ECE8E4`, `--color-titanium: #A8A8B0`, `--color-titanium-light: #B8B8C0`, `--color-titanium-mid: #C8C8D0`, `--color-titanium-dark: #9898A0`, `--color-titanium-deep: #888890`, `--color-titanium-shimmer: #D8D8E0`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-noir-deep: #0F0F12`, `--color-champagne-shimmer: #D4C8C0` - clean, sophisticated dental aesthetic with pearl tones and titanium metallic accents
+- **Pearl Tooth Border Radius**: `--radius-pearl-1: 65% 35% 50% 50% / 50% 50% 65% 35%`, `--radius-pearl-2: 50% 50% 65% 35% / 35% 65% 50% 50%`, `--radius-pearl-3: 55% 45% 40% 60% / 50% 50% 55% 45%`, `--radius-pearl-4: 45% 55% 60% 40% / 50% 50% 45% 55%` for organic, tooth/pearl-shaped animations with rounded qualities
+
+---
+
+## 2026-02-08 - US-075
+- Created complete website for Dra. Katia Miyoshi - Harmonização Facial - Dentista in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-katia-miyoshi-harmonizacao-facial-dentista/index.html` (new)
+- **Design Concept**: Pearl Noir & Brushed Titanium aesthetic with cool pearl tones, brushed titanium metallic accents, and soft noir charcoal backgrounds. A completely new clean sophisticated dental direction from all previous 26 palettes (copper/rose, ruby/silver, emerald/ivory, amethyst/platinum, sapphire/champagne, sage/pearl, lavender/mocha, rose/quartz, amber/bronze, plum/gold, golden champagne/pearl noir, onyx/bronze patina, jade/brushed gold, aurora/pearl silver, orchid/antique brass, champagne noir/rose gold, moss/burnt sienna). Pearl tooth-shaped border-radius patterns create organic, rounded animations reminiscent of tooth enamel and pearls.
+- **Typography**: Cormorant Garamond (display) paired with Plus Jakarta Sans (body) for elegant sophisticated luxury with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating pearl tooth-shaped backgrounds using gradient meshes
+  - Pearl tooth border-radius patterns (`--radius-pearl-1`, `--radius-pearl-2`, `--radius-pearl-3`, `--radius-pearl-4`) create organic, rounded animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Av. Braz Olaia Acosta, 727 - Sala 108 - Jardim California, Ribeirão Preto - SP, 14026-040, Brazil | (16) 92000-3886
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-katia-miyoshi-harmonizacao-facial-dentista
+
+**Learnings**:
+- **Pattern**: Pearl Noir & Brushed Titanium palette creates a clean, sophisticated dental aesthetic with pearl tones and titanium metallic accents that conveys precision and modernity - completely different from all 26 previous palettes
+- **Pattern**: Pearl tooth border-radius shapes (`65% 35% 50% 50% / 50% 50% 65% 35%`) provide a more organic, rounded interpretation of blobmorphism with smooth qualities that feel like tooth enamel and pearls
+- **Pattern**: Cormorant Garamond + Plus Jakarta Sans typography pairing combines elegant serif sophistication with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The pearl-titanium-noir palette feels more clean and clinical while maintaining premium positioning - it evokes feelings of dental precision, modern technology, and aesthetic excellence
+- **Gotcha**: Pearl tooth-shaped borders create a distinctive organic animation that feels rounded and sophisticated without being distracting - different from all previous shape patterns used
+- **Gotcha**: The pearl color family (#E8E4E0, #F0ECE8, #F8F4F0) evokes dental enamel and pearls - perfect for dental aesthetics clinics seeking a clean, sophisticated brand
+- **Gotcha**: Brushed titanium accents (#A8A8B0, #B8B8C0, #9898A0) add metallic quality that suggests modern dental technology and precision - creates a balanced, sophisticated color harmony
+- **Gotcha**: Cool noir charcoal backgrounds (#1A1A1A, #2A2A2A) provide elegant contrast without being as harsh as pure black, creating a sophisticated foundation
+- **Gotcha**: The palette is significantly cooler than all previous warm-toned palettes while maintaining premium aesthetic - perfect for dental clinics seeking a modern, precise brand identity
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
 
