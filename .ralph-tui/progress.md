@@ -768,3 +768,43 @@ after each iteration and it's included in prompts for context.
 - **Libre Baskerville + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2026-02-08 - US-065
+- Created complete website for Dra Iara Pengo - Harmonização Facial e Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-iara-pengo/index.html` (new)
+- **Design Concept**: Onyx Noir & Bronze Patina aesthetic with deep onyx blacks (#1A1A1A, #0F0F12), warm bronze patina (#A67C52, #B88D62, #9A6C52), verdigris accents (#4A6B6A, #5A7B7A, #3A5B5A), and antique ivory backgrounds (#F8F6F2, #F3F1EA). A completely new classical direction from all previous 17 palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink, opal/dusty rose, coral/seafoam, burgundy/gold, porcelain/rouge, chrome/violet, amethyst/platinum, rose gold/champagne diamond, teal/copper). Patina shard-shaped border-radius patterns create organic, metallic animations reminiscent of aged bronze surfaces.
+- **Typography**: Cormorant Garamond (display) paired with Space Grotesk (body) for classical elegance with modern geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating patina shard backgrounds using gradient meshes
+  - Patina shard border-radius patterns (`--radius-patina-1`, `--radius-patina-2`, `--radius-patina-3`, `--radius-patina-4`) create organic, metallic animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on verdigris background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Av. Sen. César Vergueiro, 480 - sala 20 - Jardim Irajá, Ribeirão Preto - SP, 14020-510 | (16) 99227-7033
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-iara-pengo
+
+**Learnings**:
+- **Pattern**: Onyx Noir & Bronze Patina palette creates a timeless, sophisticated aesthetic with classical qualities that conveys enduring beauty and transformation - completely different from all 17 previous palettes
+- **Pattern**: Patina shard border-radius shapes (`68% 32% 52% 48% / 52% 38% 62% 48%`) provide a more organic, metallic interpretation of blobmorphism with irregular qualities that feel aged and refined
+- **Pattern**: Cormorant Garamond + Space Grotesk typography pairing combines classical serif display elegance with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The onyx-bronze patina-verdigris-ivory palette feels more timeless and classical while maintaining premium positioning - it evokes feelings of classical sculpture, ancient beauty, and enduring elegance
+- **Gotcha**: Patina shard-shaped borders create a distinctive metallic animation that feels organic and aged without being distracting - different from all previous shape patterns used
+- **Gotcha**: The verdigris accents (#4A6B6A, #5A7B7A) add the beautiful blue-green oxidation color that forms on aged bronze - completely unique accent color not used in any previous site
+- **Gotcha**: Antique ivory backgrounds (#F8F6F2) provide warmth and classical elegance without being as yellow-based as champagne tones, creating a timeless foundation
+- **Gotcha**: The bronze patina color family (#A67C52, #B88D62, #9A6C52) evokes aged metal surfaces and classical sculpture - perfect for facial harmonization clinics seeking a timeless, sophisticated brand
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Onyx Noir & Bronze Patina Palette**: `--color-onyx: #1A1A1A`, `--color-onyx-deep: #0F0F12`, `--color-bronze: #A67C52`, `--color-bronze-light: #B88D62`, `--color-bronze-dark: #8A5C42`, `--color-bronze-patina: #9A6C52`, `--color-verdigris: #4A6B6A`, `--color-verdigris-light: #5A7B7A`, `--color-verdigris-dark: #3A5B5A`, `--color-verdigris-deep: #2A4B4A`, `--color-ivory-antique: #F8F6F2`, `--color-ivory-warm: #F3F1EA`, `--color-sand: #E8E4DC`, `--color-sand-light: #F0ECE6` - timeless, sophisticated classical aesthetic perfect for premium aesthetic clinics
+- **Patina Shard Border Radius**: `--radius-patina-1: 68% 32% 52% 48% / 52% 38% 62% 48%`, `--radius-patina-2: 48% 52% 62% 38% / 42% 58% 42% 58%`, `--radius-patina-3: 58% 42% 48% 52% / 52% 48% 52% 48%`, `--radius-patina-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, metallic patina shard-like shapes
+- **Cormorant Garamond + Space Grotesk Typography**: Classical serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---

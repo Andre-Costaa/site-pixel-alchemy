@@ -431,4 +431,37 @@
 
 ---
 
+---
+
+### US-065 - Dra Iara Pengo - ✅ COMPLETED
+**Status**: Site profissional completo criado e testado
+**URL**: https://pixelalchemy.com.br/site-demo/dra-iara-pengo
+
+### Site Details
+- **Cliente**: Dra Iara Pengo
+- **Especialidade**: Harmonização Facial e Estética Avançada
+- **Localização**: Ribeirão Preto - SP
+- **Endereço**: Av. Sen. César Vergueiro, 480 - sala 20 - Jardim Irajá, Ribeirão Preto - SP, 14020-510
+- **Telefone**: (16) 99227-7033
+
+### Design Features
+- **Estética**: Onyx Noir & Bronze Patina (onyx blacks profundos, bronze patina com qualidades metálicas antigas, verdigris accents, ivory backgrounds) - paleta atemporal e sofisticada que evoca esculturas clássicas e beleza duradoura
+- **Tipografia**: Cormorant Garamond (títulos) + Space Grotesk (corpo) - combinação elegante de serif display clássico com sans-serif geométrico moderno
+- **Animações**: 4 formas de patina shard flutuantes com border-radius patina-shaped para efeito orgânico e metálico
+- **Seções**: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- **Integração**: Formulário de contato com WhatsApp
+
+### Testes Realizados
+- ✅ Desktop view verificado
+- ✅ Mobile view (375x812) verificado
+- ✅ Formulário WhatsApp testado
+- ✅ Smooth scroll navigation
+- ✅ Animações Intersection Observer
+- ✅ Accessibility (prefers-reduced-motion)
+
+### Files
+- `site-demo/dra-iara-pengo/index.html` (64 KB)
+
+---
+
 *Last Updated: 2026-02-08*
