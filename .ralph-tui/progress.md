@@ -47,7 +47,50 @@ after each iteration and it's included in prompts for context.
 - **Mobile optimization**: Single-column layouts for grid components on mobile, stacked hero with image below content
 
 **Codebase Patterns Added**:
-- **Ethereal Rose & Gold Palette**: `--color-blush: #F8E8E8`, `--color-rose: #E8B4B8`, `--color-gold: #C9A86C`, `--color-champagne: #F5EDE3` - perfect for aesthetic/esthetic clinics
+- **Sapphire Noir & Champagne Palette**: `--color-sapphire: #1E3A5F`, `--color-sapphire-light: #2A5298`, `--color-sapphire-dark: #0F2440`, `--color-sapphire-deep: #0A1830`, `--color-champagne: #D4AF77`, `--color-champagne-light: #E5C89A`, `--color-champagne-dark: #B8945C`, `--color-ivory: #FAF8F5` - sophisticated, trustworthy premium aesthetic perfect for clinics seeking to convey reliability and elegance
+- **Diamond Border Radius**: `--radius-diamond: 75% 25% 55% 45% / 45% 65% 35% 55%`, `--radius-diamond-2: 55% 45% 35% 65% / 65% 35% 55% 45%`, `--radius-diamond-3: 40% 60% 65% 35% / 55% 45% 35% 65%` for crystalline, geometric shapes with sharp architectural angles
+- **Cinzel Decorative + Manrope Typography**: Roman-inspired decorative serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
+
+## 2025-02-08 - US-055
+- Created complete website for Remon - Harmonização Facial e Estética Avançada em Ribeirão Preto
+- Files changed:
+  - `site-demo/remon/index.html` (new)
+- **Design Concept**: Sapphire Noir & Champagne aesthetic with deep sapphire blues, warm champagne gold accents on ivory backgrounds. A completely new direction from previous palettes - cool, sophisticated, and trustworthy with crystalline diamond-shaped border-radius patterns creating architectural, geometric animations.
+- **Typography**: Cinzel Decorative (display) paired with Manrope (body) for Roman-inspired elegance with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating diamond-shaped backgrounds using gradient meshes
+  - Diamond border-radius patterns (`--radius-diamond`, `--radius-diamond-2`, `--radius-diamond-3`) create crystalline, architectural shapes
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Sala 715 - Nova Ribeirânia, Ribeirão Preto - SP, 14096-730 | (16) 98142-0597
+- **Demo URL**: pixelalchemy.com.br/site-demo/remon
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view (375x812) responsive: ✓
+  - Mobile menu hamburger functional: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Sapphire Noir & Champagne palette creates a cool, sophisticated aesthetic that conveys trust and premium quality - different from all warm palettes used previously (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold)
+- **Pattern**: Diamond border-radius shapes (`75% 25% 55% 45% / 45% 65% 35% 55%`) provide a more geometric, crystalline interpretation of blobmorphism with sharp architectural angles that differentiate from organic petal/flame shapes
+- **Pattern**: Cinzel Decorative + Manrope typography pairing combines Roman-inspired decorative serif elegance with modern geometric sans-serif for sophisticated readability that feels classical yet contemporary
+- **Gotcha**: The sapphire-champagne-ivory palette feels more trustworthy and professional while maintaining premium positioning - it evokes feelings of reliability, confidence, and excellence
+- **Gotcha**: Diamond-shaped borders create a distinctive crystalline aesthetic with sharp angles that feels architectural and modern - completely different from the soft organic curves of previous sites
+- **Gotcha**: Ivory backgrounds (#FAF8F5) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more modern foundation that pairs beautifully with cool sapphire tones
+- **Gotcha**: The cool sapphire palette differentiates significantly from the warm feminine palettes of previous sites while maintaining the premium aesthetic expected by aesthetic clinic clients
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 - **Organic Blob Animation**: Multi-layer animated blobs with blur filters create depth and movement without being distracting
 - **WhatsApp Form Handler**: JavaScript that formats form data into WhatsApp message and opens API URL directly
 - **Serene Sage & Pearl Palette**: `--color-sage: #9CBFA8`, `--color-pearl: #F8F6F3`, `--color-mint: #D4E5DC`, `--color-golden: #C4A77D` - fresh, natural aesthetic with soft greens and creamy whites
