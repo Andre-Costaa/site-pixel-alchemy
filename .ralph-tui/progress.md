@@ -49,10 +49,13 @@ after each iteration and it's included in prompts for context.
 - **Rose Gold & Velvet Noir Palette**: `--color-velvet: #2D1F1F`, `--color-velvet-light: #3D2A2A`, `--color-burgundy: #4A1C1C`, `--color-wine: #7B2E3E`, `--color-rosegold: #D4A574`, `--color-rosegold-light: #E8C9A8`, `--color-rosegold-shimmer: #F0DCC8`, `--color-cream: #FDF8F5`, `--color-blush: #F5E6E0` - luxurious feminine elegance with deep burgundy/velvet tones and rose gold metallics
 - **Arch Border Radius**: `--radius-arch: 50% 50% 0 0 / 100% 100% 0 0`, `--radius-arch-sm: 40% 40% 0 0 / 80% 80% 0 0`, `--radius-arch-lg: 60% 60% 0 0 / 120% 120% 0 0` for architectural arch-inspired shapes with elegant rounded tops and flat bottoms
 - **Playfair Display + DM Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability and distinctive character
+- **Rose Quartz & Gilded Noir Palette**: `--rose-quartz: #E8C8D8`, `--rose-quartz-light: #F0D8E8`, `--rose-quartz-dark: #D8B8C8`, `--rose-quartz-deep: #C8A8B8`, `--rose-quartz-pale: #F8E8F0`, `--rose-quartz-mist: #E8D8E8`, `--gilded-gold: #D4A84B`, `--gilded-gold-light: #E8C270`, `--gilded-gold-mid: #F0D080`, `--gilded-gold-dark: #C4983C`, `--gilded-gold-deep: #B48830`, `--gilded-gold-shimmer: #FAF0E0`, `--noir-deep: #0A0A0F`, `--noir-dark: #0F0F15`, `--noir-mid: #1A1A22`, `--noir-charcoal: #252530` - feminine, glamorous, and transformative aesthetic inspired by rose quartz crystals and gilded gold accents on deep noir backgrounds
+- **Glamour Glow Border Radius**: `--radius-glamour-1: 72% 28% 46% 54% / 54% 38% 62% 48%`, `--radius-glamour-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-glamour-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-glamour-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for organic, luminous glamour glow-shaped animations with crystal facet and glow effect qualities
+- **Crimson Pro + Outfit Typography**: Elegant serif display font with sophisticated warmth paired with modern geometric sans-serif body font for contemporary readability and distinctive character
 
 ---
 
-## 2026-02-08 - US-083
+## 2026-02-08 - US-086
 - Created complete website for Dra. Manoela Zuccolotto - Harmonização Facial - MZucca Estética Avançada in Ribeirão Preto
 - Files changed:
   - `site-demo/dra-manoela-zuccolotto-harmonizacao-facial-mzucca-estetica-a/index.html` (new)
@@ -1619,3 +1622,42 @@ after each iteration and it's included in prompts for context.
 - **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
+
+---
+
+## 2026-02-08 - US-086
+- Created complete website for Clínica Glamoré - Dra. Jéssica Baleia - Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez/index.html` (new)
+- **Design Concept**: Rose Quartz & Gilded Noir aesthetic with rose quartz crystals representing feminine beauty and transformation, gilded gold accents representing luxury and glamour, and deep noir backgrounds for sophistication. A completely new feminine-glamour direction from all previous 48+ palettes - inspired by the luxurious warmth of rose quartz crystals and gilded gold jewelry. Glamour glow border-radius patterns create organic, luminous animations reminiscent of crystal facets and glow effects.
+- **Typography**: Crimson Pro (display) paired with Outfit (body) for elegant serif sophistication with warm, refined qualities paired with modern geometric sans-serif body font for contemporary readability and distinctive character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating glamour glow-shaped backgrounds using gradient meshes
+  - Glamour glow border-radius patterns (`--radius-glamour-1`, `--radius-glamour-2`, `--radius-glamour-3`, `--radius-glamour-4`) create organic, luminous animations
+  - Auto-hiding navigation with smooth scroll and glassmorphism effect
+  - Problem/Solution section with hover effects and left border accent (problem cards on red-tinted dark, solution cards on rose-tinted dark)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchimento Labial, Preenchedores Faciais, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with icon rings that reveal rose-gold gradients on hover
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects with staggered delays (0ms/100ms/200ms/300ms/400ms/500ms)
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Parallax effect for hero blobs on mouse movement
+- **Contact Info**: R. Triunfo, 1349 - Edifício Dubai: sala 411 - Jardim Botânico, Ribeirão Preto - SP, 14021-612, Brazil | (16) 99390-2657
+- **Demo URL**: pixelalchemy.com.br/site-demo/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez
+
+**Learnings**:
+- **Pattern**: Rose Quartz & Gilded Noir palette creates a feminine, glamorous, and transformative aesthetic with rose quartz crystals and gilded gold accents on deep noir backgrounds that conveys luxury, beauty, and confidence - completely different from all 48+ previous palettes
+- **Pattern**: Glamour glow border-radius shapes (`72% 28% 46% 54% / 54% 38% 62% 48%`) provide an organic, luminous interpretation of blobmorphism with crystal facet and glow effect qualities that feel like light catching on crystal surfaces
+- **Pattern**: Crimson Pro + Outfit typography pairing combines elegant serif sophistication with warm, refined qualities (Crimson Pro) and modern geometric sans-serif readability (Outfit) for distinctive character and contemporary professionalism
+- **Pattern**: The rose quartz tones (#E8C8D8, #F0D8E8) paired with gilded gold accents (#D4A84B, #E8C270) create a sophisticated color harmony that feels feminine and glamorous - perfect for aesthetic clinics targeting sophisticated women seeking transformation
+- **Gotcha**: The rose-quartz-gilded-gold-noir palette feels more feminine and glamorous while maintaining premium positioning - it evokes feelings of beauty, luxury, transformation, and confidence
+- **Gotcha**: Glamour glow-shaped borders create a distinctive luminous animation that feels luxurious and dynamic without being distracting - different from all 48+ previous shape patterns (orchid petal, wave, leaf, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, ribbon, aurora wave, arch, jade stone, facial contour, etc.)
+- **Gotcha**: The rose quartz crystal tones (#E8C8D8, #F0D8E8, #D8B8C8, #C8A8B8) paired with gilded gold (#D4A84B, #E8C270, #F0D080) creates a sophisticated color harmony that feels glamorous and feminine - perfect for clinics with "Glamour" in their name seeking a luxurious brand identity
+- **Gotcha**: Crimson Pro is a distinctive choice for display typography - it provides elegant serif sophistication with warm, refined qualities that make it unique from all previous font choices (Playfair Display, Bodoni Moda, Libre Baskerville, EB Garamond, Cormorant Garamond, etc.)
+- **Gotcha**: Outfit provides modern geometric sans-serif qualities that make it unique from previous body font choices (Plus Jakarta Sans, Manrope, Jost, Space Grotesk, Satoshi, DM Sans, Instrument Sans, etc.)
+- **Gotcha**: The gradient-glamour gradient (`linear-gradient(135deg, var(--rose-quartz-light) 0%, var(--gilded-gold-light) 50%, var(--rose-quartz-pale) 100%)`) creates a luxurious rose-gold transition effect that's perfect for feminine glamour brands
+- **Gotcha**: The glamour glow aesthetic is particularly appropriate for clinics named "Glamoré" as it reinforces the glamour and luxury positioning while maintaining medical professionalism
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
