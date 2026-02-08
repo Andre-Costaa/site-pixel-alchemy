@@ -53,9 +53,46 @@ after each iteration and it's included in prompts for context.
 - **Glamour Glow Border Radius**: `--radius-glamour-1: 72% 28% 46% 54% / 54% 38% 62% 48%`, `--radius-glamour-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-glamour-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-glamour-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for organic, luminous glamour glow-shaped animations with crystal facet and glow effect qualities
 - **Crimson Pro + Outfit Typography**: Elegant serif display font with sophisticated warmth paired with modern geometric sans-serif body font for contemporary readability and distinctive character
 
-- **Sapphire Noir & Pearl Frost Palette**: `--sapphire-deep: #0D1A3A`, `--sapphire-dark: #1A2A5A`, `--sapphire-mid: #2A3A7A`, `--sapphire-light: #3A4A9A`, `--sapphire-pale: #5A6AB8`, `--sapphire-frost: #8A9AD8`, `--pearl-frost: #E8F0F8`, `--pearl-frost-light: #F0F5FA`, `--pearl-frost-dark: #D8E8F0`, `--pearl-ice: #F8FAFC`, `--crystal-ice: #A8D0E8`, `--crystal-blue: #88C0E0`, `--frost-white: #F0F8FF` - cool, sophisticated crystalline aesthetic with sapphire blue tones and pearl frost whites
-- **Crystalline Border Radius**: `--radius-crystal-1: 75% 25% 45% 55% / 55% 35% 65% 45%`, `--radius-crystal-2: 45% 55% 75% 25% / 35% 65% 35% 65%`, `--radius-crystal-3: 65% 35% 40% 60% / 60% 40% 60% 40%`, `--radius-crystal-4: 40% 60% 60% 40% / 40% 60% 40% 60%` for angular, faceted, crystalline shapes with sharp qualities reminiscent of ice crystals and sapphire gemstones
-- **Tenor Sans + Inter Typography**: Elegant sophisticated serif display font with classical qualities paired with modern geometric sans-serif body font for distinctive readability with contemporary edge
+- **French Garden & Champagne Gold Palette**: `--sage-deep: #2D4A3A`, `--sage-dark: #3D5A4A`, `--sage-mid: #4A6A5A`, `--sage-light: #6A8A7A`, `--sage-pale: #8AAA9A`, `--sage-mist: #BACCAC`, `--champagne-deep: #B89A5A`, `--champagne-dark: #C8AA6A`, `--champagne-mid: #D4B87A`, `--champagne-light: #E0C890`, `--champagne-shimmer: #E8D0A0`, `--champagne-glow: #F0D8B0`, `--cream-deep: #F5F0E8`, `--cream-mid: #FAF5ED`, `--cream-light: #FDF8F5`, `--cream-pearl: #FFFBF8` - sophisticated French garden-inspired aesthetic with sage green tones representing formal topiary elegance, champagne gold warmth and luxury
+- **Topiary Border Radius**: `--radius-topiary-1: 70% 30% 50% 50% / 55% 45% 50% 50%`, `--radius-topiary-2: 50% 50% 70% 30% / 45% 55% 50% 50%`, `--radius-topiary-3: 60% 40% 40% 60% / 50% 50% 45% 55%`, `--radius-topiary-4: 40% 60% 60% 40% / 55% 45% 55% 45%` for elegant, symmetric topiary-shaped animations with formal French garden qualities reminiscent of Versailles topiary art
+- **Playfair Display + Outfit Typography**: Elegant French-inspired serif display font paired with modern geometric sans-serif body font for sophisticated luxury with contemporary readability
+
+---
+
+## 2026-02-08 - US-088
+- Created complete website for Clínica de Estética Belle Santé in Ribeirão Preto
+- Files changed:
+  - `site-demo/clinica-de-estetica-belle-sante/index.html` (new)
+- **Design Concept**: French Garden & Champagne Gold aesthetic with sage garden greens, champagne gold metallics, and French cream backgrounds. A completely new sophisticated French-inspired direction from all previous 45+ palettes - inspired by the elegance of French formal gardens (like Versailles) with topiary artistry and champagne luxury. Topiary border-radius patterns create elegant, symmetric animations reminiscent of formal French garden topiary.
+- **Typography**: Playfair Display (display) paired with Outfit (body) for elegant French-inspired serif sophistication with modern geometric sans-serif readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating topiary-shaped backgrounds using gradient meshes
+  - Topiary border-radius patterns (`--radius-topiary-1`, `--radius-topiary-2`, `--radius-topiary-3`, `--radius-topiary-4`) create elegant, symmetric animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on cream, solution cards on sage gradient)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on sage background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Edifício Spazzio Mariza Vilela - R. Paschoal Bardaro, 1516 - Jardim Botânico, Ribeirão Preto - SP, 14020-340, Brazil | (16) 99770-2307
+- **Demo URL**: pixelalchemy.com.br/site-demo/clinica-de-estetica-belle-sante
+
+**Learnings**:
+- **Pattern**: French Garden & Champagne Gold palette creates a sophisticated, elegant aesthetic with French formal garden qualities that conveys refinement and luxury - completely different from all 45+ previous palettes
+- **Pattern**: Topiary border-radius shapes (`70% 30% 50% 50% / 55% 45% 50% 50%`) provide a more elegant, symmetric interpretation of blobmorphism with qualities that feel like formal French garden topiary art
+- **Pattern**: Playfair Display + Outfit typography pairing combines elegant French-inspired serif sophistication with modern geometric sans-serif for distinctive readability with contemporary edge
+- **Gotcha**: The sage-champagne-cream palette feels more sophisticated and elegant while maintaining premium positioning - it evokes feelings of French refinement, luxury, and timeless beauty
+- **Gotcha**: Topiary-shaped borders create a distinctive elegant animation that feels symmetric and refined without being distracting - different from all 45+ previous shape patterns (aurora wave, orchid petal, geode, leaf, wave, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, ribbon, etc.)
+- **Gotcha**: The sage garden tones (#2D4A3A, #3D5A4A, #4A6A5A) paired with champagne gold metallics (#B89A5A, #D4B87A, #E0C890) creates a sophisticated color harmony that feels elegant and refined - perfect for facial aesthetic clinics seeking a French-inspired luxury brand identity
+- **Gotcha**: The French name "Belle Santé" (Beautiful Health) inspired the French garden aesthetic - the sage colors represent the topiary gardens while champagne gold adds luxury
+- **Gotcha**: Playfair Display is an excellent choice for French-inspired elegance - it provides serif sophistication with classical qualities that reference French typography traditions
+- **Gotcha**: The cream backgrounds (#F5F0E8, #FAF5ED, #FDF8F5) provide warm sophisticated foundation that pairs beautifully with sage greens, creating an elegant, French-inspired atmosphere
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
 
 ---
 
