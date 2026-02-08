@@ -42,6 +42,9 @@ after each iteration and it's included in prompts for context.
 - **Moonstone Noir & Antique Silver Palette**: `--color-moonstone: #E8E8F0`, `--color-moonstone-pearl: #F0F0F8`, `--color-moonstone-iridescent: #F5F5FA`, `--color-moonstone-blue: #D8D8E8`, `--color-moonstone-lavender: #E8E8F5`, `--color-silver: #B8B8C8`, `--color-silver-light: #C8C8D8`, `--color-midnight: #0A0A12`, `--color-midnight-deep: #050508`, `--color-labradentite: #4A5A8A` - mystical, sophisticated iridescent aesthetic with moonstone opalescent qualities and antique silver metallics
 - **Aurora Wave Border Radius**: `--radius-aurora-1: 68% 32% 48% 52% / 52% 42% 58% 48%`, `--radius-aurora-2: 48% 52% 68% 32% / 42% 58% 42% 58%`, `--radius-aurora-3: 58% 42% 42% 58% / 52% 48% 52% 48%`, `--radius-aurora-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, flowing animations reminiscent of northern lights and moonstone iridescence
 - **Bodoni Moda + Satoshi Typography**: Elegant sophisticated serif display font paired with modern geometric sans-serif body font for distinctive luxury with contemporary readability
+- **Rose Gold & Velvet Noir Palette**: `--color-velvet: #2D1F1F`, `--color-velvet-light: #3D2A2A`, `--color-burgundy: #4A1C1C`, `--color-wine: #7B2E3E`, `--color-rosegold: #D4A574`, `--color-rosegold-light: #E8C9A8`, `--color-rosegold-shimmer: #F0DCC8`, `--color-cream: #FDF8F5`, `--color-blush: #F5E6E0` - luxurious feminine elegance with deep burgundy/velvet tones and rose gold metallics
+- **Arch Border Radius**: `--radius-arch: 50% 50% 0 0 / 100% 100% 0 0`, `--radius-arch-sm: 40% 40% 0 0 / 80% 80% 0 0`, `--radius-arch-lg: 60% 60% 0 0 / 120% 120% 0 0` for architectural arch-inspired shapes with elegant rounded tops and flat bottoms
+- **Playfair Display + DM Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability and distinctive character
 
 ---
 
@@ -1491,6 +1494,50 @@ after each iteration and it's included in prompts for context.
 - **Plum Noir & Champagne Gold Palette**: `--color-plum-deep: #1A0A1E`, `--color-plum: #2D1336`, `--color-plum-mid: #4A1F52`, `--color-plum-light: #6B3275`, `--color-plum-pale: #8B4A94`, `--color-gold: #D4A84B`, `--color-gold-light: #E8C270`, `--color-gold-mid: #F0D080`, `--color-gold-dark: #C4983C`, `--color-gold-deep: #B48830`, `--color-gold-shimmer: #FAF0E0`, `--color-cream: #F8F5F0`, `--color-cream-light: #FAF8F5` - bold, sophisticated palette inspired by luxurious plum wine and champagne pairings
 - **Petal Border Radius**: `--radius-petal-1: 70% 30% 50% 50% / 50% 40% 60% 50%`, `--radius-petal-2: 50% 50% 65% 35% / 40% 60% 40% 60%`, `--radius-petal-3: 60% 40% 45% 55% / 55% 45% 55% 45%`, `--radius-petal-4: 40% 60% 55% 45% / 45% 55% 45% 55%` for organic, petal-shaped animations with floral qualities
 - **Cormorant Garamond + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated luxury with excellent readability
+
+---
+
+## 2026-02-08 - US-084
+- Created complete website for Bonacci Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/bonacci-estetica-avancada/index.html` (new)
+- **Design Concept**: Rose Gold & Velvet Noir aesthetic with luxurious feminine elegance, deep burgundy/velvet tones, rose gold metallics, and cream/blush accents. A completely new sophisticated direction from all previous 43+ palettes - inspired by luxury cosmetics, high-end spa environments, and elegant feminine aesthetics. Arch-shaped frames inspired by classical architecture create distinctive visual structures. Ornate rotating decorations add sophisticated movement.
+- **Typography**: Playfair Display (display) paired with DM Sans (body) for elegant serif sophistication with modern geometric sans-serif readability - providing distinctive character and excellent readability
+- **Key Features Implemented**:
+  - Animated hero with arch-shaped background decorations and rotating ornamental rings
+  - Arch border-radius patterns (`--radius-arch`, `--radius-arch-sm`, `--radius-arch-lg`) create architectural shapes with elegant rounded tops
+  - Shimmer animation on primary buttons using gradient overlays that slide on hover
+  - Auto-hiding navigation with scroll-triggered shadow effect
+  - Problem/Solution section with hover effects (problem cards on cream, solution cards on velvet gradient)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Premium)
+  - 3 testimonial cards with decorative quote marks and rose gold accents
+  - 6 differential items with pulsing icon backgrounds on velvet noir background
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement for decorations
+- **Contact Info**: Rua Milton José Robusti, 75 - Sala 1610 - Jardim Botânico, Ribeirão Preto - SP, 14021-613, Brazil | (16) 99630-9696
+- **Demo URL**: pixelalchemy.com.br/site-demo/bonacci-estetica-avancada
+
+**Learnings**:
+- **Pattern**: Rose Gold & Velvet Noir palette creates a luxurious feminine elegance aesthetic with deep burgundy/velvet tones and rose gold metallics that conveys sophistication and warmth - completely different from all 43+ previous palettes with its warm, feminine luxury positioning
+- **Pattern**: Arch border-radius shapes (`50% 50% 0 0 / 100% 100% 0 0`) provide architectural inspiration that creates distinctive frames for hero images and decorative elements, adding classical elegance
+- **Pattern**: Playfair Display + DM Sans typography pairing combines elegant serif sophistication with modern geometric sans-serif for distinctive readability - Playfair Display has more character than Bodoni while maintaining elegance
+- **Gotcha**: The rose gold metallic tones (#D4A574, #E8C9A8, #F0DCC8) paired with deep burgundy velvet (#4A1C1C, #7B2E3E) creates a sophisticated warm color harmony that feels luxurious and feminine without being overly feminine - perfect for aesthetic clinics targeting sophisticated women
+- **Gotcha**: Arch-shaped frames provide a distinctive architectural element that sets this design apart from previous blobmorphism patterns - the arch shape references classical architecture while feeling modern and elegant
+- **Gotcha**: The rotating ornamental ring decoration in the hero adds subtle sophistication and creates movement that feels luxurious rather than distracting
+- **Gotcha**: Shimmer animations on buttons (using gradient overlays that slide on hover) add a premium touch that feels like metallic rose gold catching light
+- **Gotcha**: The cream (#FDF8F5) and blush (#F5E6E0) neutrals provide a warm, sophisticated foundation that's more feminine than ivory but still neutral and elegant
+- **Gotcha**: DM Sans provides excellent geometric sans-serif readability that balances Playfair Display's elegance - it's more distinctive than common choices like Inter or Roboto
+- **Gotcha**: The velvet noir backgrounds (#2D1F1F, #1A1212) are warm and deep rather than cool/neutral like previous noir palettes, creating a more intimate and sophisticated feeling
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating stat cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Rose Gold & Velvet Noir Palette**: `--color-velvet: #2D1F1F`, `--color-velvet-light: #3D2A2A`, `--color-burgundy: #4A1C1C`, `--color-wine: #7B2E3E`, `--color-rosegold: #D4A574`, `--color-rosegold-light: #E8C9A8`, `--color-rosegold-shimmer: #F0DCC8`, `--color-cream: #FDF8F5`, `--color-blush: #F5E6E0` - luxurious feminine elegance with deep burgundy/velvet tones and rose gold metallics
+- **Arch Border Radius**: `--radius-arch: 50% 50% 0 0 / 100% 100% 0 0`, `--radius-arch-sm: 40% 40% 0 0 / 80% 80% 0 0`, `--radius-arch-lg: 60% 60% 0 0 / 120% 120% 0 0` for architectural arch-inspired shapes with elegant rounded tops and flat bottoms
+- **Playfair Display + DM Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability and distinctive character
 
 ---
 
