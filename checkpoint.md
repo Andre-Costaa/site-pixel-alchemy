@@ -747,4 +747,37 @@
 
 ---
 
+---
+
+### US-078 - Dra. Andrea Andrucioli - ✅ COMPLETED
+**Status**: Site profissional completo criado e testado
+**URL**: https://pixelalchemy.com.br/site-demo/dra-andrea-andrucioli-harmonizacao-orofacial
+
+### Site Details
+- **Cliente**: Dra. Andrea Andrucioli
+- **Especialidade**: Harmonização Orofacial
+- **Localização**: Ribeirão Preto - SP
+- **Endereço**: Av. Cel. Fernando Ferreira Leite, 1520 - sala 116 - Jardim California, Ribeirão Preto - SP, 14026-020
+- **Telefone**: (16) 99700-9897
+
+### Design Features
+- **Estética**: Bronze Orchid & Porcelain Noir (bronze/brass quente, orchid purple, porcelain backgrounds) - paleta quente e luxuosa com qualidades florais elegantes
+- **Tipografia**: Cormorant Infant (títulos) + Outfit (corpo) - combinação única de serif infantil elegante com sans-serif geométrico moderno
+- **Animações**: 4 formas de pétala de orquídea flutuantes com border-radius orchid-shaped para efeito orgânico e floral
+- **Seções**: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- **Integração**: Formulário de contato com WhatsApp
+
+### Testes Realizados
+- ✅ Desktop view verificado
+- ✅ Mobile view (375x812) verificado
+- ✅ Formulário WhatsApp testado
+- ✅ Smooth scroll navigation
+- ✅ Animações Intersection Observer
+- ✅ Accessibility (prefers-reduced-motion)
+
+### Files
+- `site-demo/dra-andrea-andrucioli-harmonizacao-orofacial/index.html` (58 KB)
+
+---
+
 *Last Updated: 2026-02-08*

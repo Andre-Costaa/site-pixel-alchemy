@@ -7,6 +7,9 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
+- **Bronze Orchid & Porcelain Noir Palette**: `--color-bronze: #B8860B`, `--color-bronze-light: #C9962C`, `--color-bronze-mid: #D4A542`, `--color-bronze-dark: #A67800`, `--color-bronze-deep: #966A00`, `--color-bronze-shimmer: #E0B860`, `--color-orchid: #8B4789`, `--color-orchid-light: #9B5799`, `--color-orchid-mid: #B069AA`, `--color-orchid-dark: #7B3879`, `--color-orchid-deep: #6B2969`, `--color-porcelain: #FAFAF8`, `--color-cream: #F0ECE8` - warm, luxurious metallic aesthetic with elegant floral orchid accents
+- **Orchid Petal Border Radius**: `--radius-orchid-1: 65% 35% 45% 55% / 55% 40% 60% 45%`, `--radius-orchid-2: 45% 55% 65% 35% / 40% 60% 35% 65%`, `--radius-orchid-3: 55% 45% 35% 65% / 60% 35% 55% 45%`, `--radius-orchid-4: 35% 65% 55% 45% / 35% 55% 45% 60%` for organic, floral petal-shaped animations with elegant qualities
+- **Cormorant Infant + Outfit Typography**: Unique elegant serif display font with playful infant qualities paired with modern geometric sans-serif body font for sophisticated warmth with personality
 - **Ivory & Emerald Noir Palette**: `--color-emerald: #2D5A4A`, `--color-emerald-light: #3D7A6A`, `--color-emerald-mid: #4A8A7A`, `--color-emerald-dark: #1D3A2A`, `--color-emerald-deep: #0D2A1A`, `--color-emerald-mist: #E8F0EC`, `--color-ivory: #FAFAF6`, `--color-ivory-warm: #F5F5F0`, `--color-sage: #8BA89A`, `--color-gold: #B89B5A` - natural, sophisticated aesthetic with organic qualities inspired by leaves and nature
 - **Copper Noir & Rose Quartz Palette**: `--color-copper: #B8704A`, `--color-copper-light: #D89060`, `--color-copper-mid: #C88050`, `--color-copper-dark: #985030`, `--color-copper-deep: #683020`, `--color-rose-quartz: #E8C8D8`, `--color-rose-quartz-light: #F0D8E8`, `--color-rose-quartz-dark: #D8B8C8`, `--color-ivory: #FAFAF6` - warm, luxurious metallic aesthetic with soft rose quartz accents
 - **Fluid Wave Border Radius**: `--radius-wave-1: 62% 38% 46% 54% / 54% 42% 58% 46%`, `--radius-wave-2: 48% 52% 62% 38% / 42% 58% 46% 54%`, `--radius-wave-3: 56% 44% 38% 62% / 48% 52% 44% 56%`, `--radius-wave-4: 42% 58% 52% 48% / 52% 48% 58% 42%` for organic, flowing animations reminiscent of gentle waves
@@ -27,6 +30,43 @@ after each iteration and it's included in prompts for context.
 - **Platinum Noir & Rose Gold Palette**: `--color-platinum: #B8B8C0`, `--color-platinum-light: #C8C8D0`, `--color-platinum-mid: #D8D8E0`, `--color-platinum-dark: #A8A8B0`, `--color-platinum-deep: #888890`, `--color-platinum-shimmer: #E8E8F0`, `--color-rose-gold: #C9A088`, `--color-rose-gold-light: #D9B098`, `--color-rose-gold-mid: #E0C0A8`, `--color-rose-gold-dark: #B89078`, `--color-rose-gold-deep: #A87860`, `--color-rose-gold-shimmer: #E8D0C0`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-alabaster: #FAFAF8`, `--color-cream: #F0ECE8` - sophisticated, modern medical-elegant aesthetic with cool platinum silver tones and warm rose gold metallic accents
 - **Structural/Nasal Architecture Border Radius**: `--radius-struct-1: 68% 32% 48% 52% / 52% 38% 62% 48%`, `--radius-struct-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-struct-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-struct-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for architectural, structural shapes that reference nasal anatomy and sophisticated geometry
 - **Libre Baskerville + Manrope Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability with contemporary edge
+
+---
+
+## 2026-02-08 - US-078
+- Created complete website for Dra. Andrea Andrucioli - Harmonização Orofacial in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-andrea-andrucioli-harmonizacao-orofacial/index.html` (new)
+- **Design Concept**: Bronze Orchid & Porcelain Noir aesthetic with warm bronze/brass metallic tones, elegant orchid purple accents, and porcelain white backgrounds. A completely new sophisticated floral direction from all previous 29 palettes - inspired by the warmth of bronze metallics and the elegant beauty of orchid flowers. Orchid petal border-radius patterns create organic, flowing animations reminiscent of flower petals.
+- **Typography**: Cormorant Infant (display) paired with Outfit (body) for unique sophisticated warmth with personality - the first use of Cormorant Infant in the project, providing a distinctive serif font with elegant infant qualities
+- **Key Features Implemented**:
+  - Animated hero with 4 floating orchid petal-shaped backgrounds using gradient meshes
+  - Orchid petal border-radius patterns (`--radius-orchid-1`, `--radius-orchid-2`, `--radius-orchid-3`, `--radius-orchid-4`) create organic, floral animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on porcelain, solution cards on noir)
+  - 6 service cards (Harmonização Facial, Preenchimento Labial, Tratamento de Mandíbula, Mento e Queixo, Rinomodelação, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Av. Cel. Fernando Ferreira Leite, 1520 - sala 116 - Jardim California, Ribeirão Preto - SP, 14026-020, Brazil | (16) 99700-9897
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-andrea-andrucioli-harmonizacao-orofacial
+
+**Learnings**:
+- **Pattern**: Bronze Orchid & Porcelain Noir palette creates a sophisticated aesthetic that balances warm bronze metallic tones (#B8860B) with elegant orchid purple colors (#8B4789) - completely different from all 29 previous palettes
+- **Pattern**: The bronze-orchid combination is inspired by elegant floral beauty with metallic accents, creating a warm, luxurious aesthetic that feels sophisticated and feminine
+- **Pattern**: Orchid petal border-radius shapes (`65% 35% 45% 55% / 55% 40% 60% 45%`) provide a floral, organic interpretation of blobmorphism that feels like elegant flower petals
+- **Pattern**: Cormorant Infant + Outfit typography pairing combines a unique serif display font with elegant infant qualities (never used before in the project) with modern geometric sans-serif for distinctive personality with excellent readability
+- **Gotcha**: The bronze-orchid-porcelain palette feels warm, luxurious, and sophisticated while maintaining premium positioning - it evokes feelings of elegance, femininity, and refined beauty
+- **Gotcha**: Orchid petal-shaped borders create a distinctive floral animation that feels organic and elegant without being distracting - different from all previous 29 shape patterns used
+- **Gotcha**: The warm bronze tones paired with elegant orchid purples creates a sophisticated color harmony that feels balanced and luxurious - both warm and refined
+- **Gotcha**: Cormorant Infant is a unique choice for display typography - it provides serif elegance with subtle infant qualities that make it distinctive from all previous font choices (Playfair Display, Libre Baskerville, Crimson Pro, Bodoni Moda, Cormorant Garamond, Cinzel Decorative)
+- **Gotcha**: The bronze-orchid aesthetic is particularly appropriate for orofacial harmonization practices seeking a warm, luxurious brand identity that conveys both femininity and sophistication
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
 
 ---
 
