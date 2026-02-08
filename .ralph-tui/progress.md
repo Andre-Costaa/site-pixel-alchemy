@@ -21,6 +21,46 @@ after each iteration and it's included in prompts for context.
 - **Cormorant Garamond + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated luxury with excellent readability
 - **Pearl Noir & Brushed Titanium Palette**: `--color-pearl: #E8E4E0`, `--color-pearl-light: #F0ECE8`, `--color-pearl-soft: #F8F4F0`, `--color-pearl-warm: #ECE8E4`, `--color-titanium: #A8A8B0`, `--color-titanium-light: #B8B8C0`, `--color-titanium-mid: #C8C8D0`, `--color-titanium-dark: #9898A0`, `--color-titanium-deep: #888890`, `--color-titanium-shimmer: #D8D8E0`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-noir-deep: #0F0F12`, `--color-champagne-shimmer: #D4C8C0` - clean, sophisticated dental aesthetic with pearl tones and titanium metallic accents
 - **Pearl Tooth Border Radius**: `--radius-pearl-1: 65% 35% 50% 50% / 50% 50% 65% 35%`, `--radius-pearl-2: 50% 50% 65% 35% / 35% 65% 50% 50%`, `--radius-pearl-3: 55% 45% 40% 60% / 50% 50% 55% 45%`, `--radius-pearl-4: 45% 55% 60% 40% / 50% 50% 45% 55%` for organic, tooth/pearl-shaped animations with rounded qualities
+- **Bronze & Celadon Noir Palette**: `--color-bronze: #B8874A`, `--color-bronze-light: #D4A868`, `--color-bronze-mid: #C89855`, `--color-bronze-dark: #A0783A`, `--color-bronze-deep: #886028`, `--color-bronze-shimmer: #E0C090`, `--color-celadon: #7AA892`, `--color-celadon-light: #98C0AA`, `--color-celadon-dark: #629878`, `--color-celadon-deep: #4A7860`, `--color-celadon-mist: #D0E8E0`, `--color-celadon-pale: #E8F0EC`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-ivory: #FAFAF6`, `--color-cream: #F0ECE8` - sophisticated, warm metallic aesthetic with cool celadon ceramic glaze accents inspired by Asian ceramics
+- **Ceramic Curve Border Radius**: `--radius-curve-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-curve-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-curve-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-curve-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for smooth, flowing ceramic-like shapes with gentle curves reminiscent of celadon pottery
+- **Playfair Display + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
+
+## 2026-02-08 - US-076
+- Created complete website for Dra. Brenda Dick - Harmonização Facial e Odontologia Especializada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-brenda-dick-harmonizacao-facial-e-odontologia-especializ/index.html` (new)
+- **Design Concept**: Bronze & Celadon Noir aesthetic with warm bronze metallic tones, cool celadon green ceramic glaze colors on ivory backgrounds with noir accents. A completely new sophisticated direction from all previous palettes - inspired by the warmth of bronze sculpture and the cool elegance of Asian celadon ceramics. Ceramic curve border-radius patterns create smooth, flowing animations reminiscent of hand-crafted pottery.
+- **Typography**: Playfair Display (display) paired with Outfit (body) for elegant sophisticated luxury with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating ceramic curve-shaped backgrounds using gradient meshes
+  - Ceramic curve border-radius patterns (`--radius-curve-1`, `--radius-curve-2`, `--radius-curve-3`, `--radius-curve-4`) create smooth, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on ivory, solution cards on noir)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Odontologia Estética)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Av. Braz Olaia Acosta, 1900 - Sala 410 - Nova Aliança, Ribeirão Preto - SP, 14026-040, Brazil | (16) 99371-8919
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-brenda-dick-harmonizacao-facial-e-odontologia-especializ
+
+**Learnings**:
+- **Pattern**: Bronze & Celadon Noir palette creates a sophisticated aesthetic that balances warm bronze metallic tones (#B8874A) with cool celadon green ceramic glaze colors (#7AA892) - completely different from all 27 previous palettes
+- **Pattern**: The bronze-celadon combination is inspired by Asian celadon ceramics with bronze accents, creating an elegant, artistic aesthetic that feels sophisticated and culturally refined
+- **Pattern**: Ceramic curve border-radius shapes (`72% 28% 48% 52% / 52% 38% 62% 48%`) provide a smooth, flowing interpretation of blobmorphism that feels like hand-crafted pottery with gentle curves
+- **Pattern**: Playfair Display + Outfit typography pairing combines elegant serif sophistication with modern geometric sans-serif for excellent readability
+- **Gotcha**: The bronze-celadon-ivory palette feels more sophisticated and artistic while maintaining premium positioning - it evokes feelings of craftsmanship, elegance, and refined beauty
+- **Gotcha**: Ceramic curve-shaped borders create a distinctive smooth animation that feels organic and refined without being distracting - different from all previous shape patterns (pearl tooth, ellipse, faceted, leaf, flame, petal, diamond, geode, etc.)
+- **Gotcha**: The warm bronze tones paired with cool celadon greens creates a sophisticated color harmony that feels balanced and elegant - neither too warm nor too cool
+- **Gotcha**: Using solution cards on noir backgrounds creates strong visual contrast and reinforces the problem/solution narrative structure
+- **Gotcha**: The bronze-celadon aesthetic is particularly appropriate for dental/facial harmonization practices seeking a sophisticated, artistic brand identity that conveys both warmth and precision
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
 
 ---
 
