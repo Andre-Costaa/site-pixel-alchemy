@@ -16,32 +16,52 @@ after each iteration and it's included in prompts for context.
 - **Ruby Noir & Antique Silver Palette**: `--color-ruby: #B83A5A`, `--color-ruby-light: #D84A7A`, `--color-ruby-dark: #982A4A`, `--color-ruby-deep: #681A2A`, `--color-silver: #B8B8C0`, `--color-silver-light: #C8C8D0`, `--color-silver-antique: #A8A8B0`, `--color-porcelain: #FAFAF8` - warm, luxurious aesthetic with crystalline gemstone qualities
 - **Gemstone Faceted Border Radius**: `--radius-faceted-1: 55% 45% 40% 60% / 50% 40% 60% 50%`, `--radius-faceted-2: 45% 55% 60% 40% / 40% 60% 50% 40%`, `--radius-faceted-3: 60% 40% 50% 50% / 45% 55% 40% 55%`, `--radius-faceted-4: 40% 60% 50% 50% / 55% 45% 50% 45%` for faceted, crystalline shapes with sharp angular qualities
 - **Crimson Pro + Space Grotesk Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated warmth
+- **Golden Champagne & Pearl Noir Palette**: `--color-champagne: #C9A86C`, `--color-champagne-light: #D9B87C`, `--color-champagne-mid: #E0C090`, `--color-champagne-dark: #A88A50`, `--color-champagne-deep: #886A30`, `--color-pearl: #E8E4DC`, `--color-pearl-light: #F0ECE4`, `--color-pearl-dark: #D8D4CC`, `--color-pearl-mist: #F8F6F2`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A` - luxurious, sophisticated aesthetic with warm champagne gold tones and elegant pearl accents
+- **Geometric Ellipse Border Radius**: `--radius-ellipse-1: 70% 30% 50% 50% / 50% 50% 70% 30%`, `--radius-ellipse-2: 50% 50% 70% 30% / 30% 70% 50% 50%`, `--radius-ellipse-3: 60% 40% 40% 60% / 40% 60% 60% 40%`, `--radius-ellipse-4: 40% 60% 60% 40% / 60% 40% 40% 60%` for geometric, elliptical shapes with distinctive elongated qualities
+- **Cormorant Garamond + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated luxury with excellent readability
 
 ---
 
-## 2026-02-08 - US-073
-- Created complete website for Leticia Deleigo Estética - Estética Avançada em Ribeirão Preto
+## 2026-02-08 - US-074
+- Created complete website for Dra. Polyana Alves - Harmonização Facial e Estética Avançada em Ribeirão Preto
 - Files changed:
-  - `site-demo/leticia-deleigo-estetica-estetica-avancada-preenchimento-lab/index.html` (new)
-- **Design Concept**: Copper Noir & Rose Quartz aesthetic with deep copper metallic tones, soft rose quartz accents, and warm ivory backgrounds. A completely new warm metallic direction from previous palettes (ruby/silver, emerald/ivory, amethyst/platinum, sapphire/champagne). Fluid Wave border-radius patterns create organic, flowing animations reminiscent of gentle waves and natural movement.
-- **Typography**: Libre Baskerville (display) paired with Manrope (body) for classic elegant serif with modern geometric sans-serif for sophisticated readability
+  - `site-demo/dra-polyana-alves/index.html` (new)
+- **Design Concept**: Golden Champagne & Pearl Noir aesthetic with warm champagne gold tones, soft pearl accents on ivory backgrounds, and deep noir charcoal accents. A completely new luxurious sophisticated direction from all previous palettes (copper/rose, ruby/silver, emerald/ivory, amethyst/platinum, sapphire/champagne, sage/pearl, lavender/mocha, rose/quartz, amber/bronze, plum/gold). Geometric Ellipse border-radius patterns create elegant, elongated animations reminiscent of flowing silk and luxury textiles.
+- **Typography**: Cormorant Garamond (display) paired with Plus Jakarta Sans (body) for elegant sophisticated luxury with modern geometric readability
 - **Key Features Implemented**:
-  - Animated hero with 4 floating fluid wave-shaped backgrounds using gradient meshes
-  - Fluid Wave border-radius patterns (`--radius-wave-1`, `--radius-wave-2`, `--radius-wave-3`, `--radius-wave-4`) create organic, flowing animations
+  - Animated hero with 4 floating geometric ellipse-shaped backgrounds using gradient meshes
+  - Geometric Ellipse border-radius patterns (`--radius-ellipse-1`, `--radius-ellipse-2`, `--radius-ellipse-3`, `--radius-ellipse-4`) create elegant, elongated animations
   - Auto-hiding navigation with smooth scroll
   - Problem/Solution section with hover effects and left border accent
-  - 6 service cards (Harmonização Facial, Preenchimento Labial, Botox, Preenchedores Faciais, Bioestimuladores, Protocolos Exclusivos)
-  - 3 testimonial cards with gradient avatars on copper background
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchimento Labial, Preenchedores Faciais, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on noir background
   - 6 differential items with pulsing icon rings
   - Contact form with WhatsApp integration (opens pre-filled message)
   - Responsive design for mobile, tablet, desktop
   - Intersection Observer animations for scroll-triggered effects
   - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
-- **Contact Info**: Av. Braz Olaia Acosta, 788 - Jardim California, Ribeirão Preto - SP, 14026-040, Brazil | (16) 98266-7369
-- **Demo URL**: pixelalchemy.com.br/site-demo/leticia-deleigo-estetica-estetica-avancada-preenchimento-lab
+- **Contact Info**: Av. Cel. Fernando Ferreira Leite, 1520 - Nova Aliança, Ribeirão Preto - SP, 14026-020, Brazil | (16) 99740-1577
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-polyana-alves
 - **Verification**:
   - Desktop view verified: ✓
   - Mobile view (375x812) responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Golden Champagne & Pearl Noir palette creates a luxurious, sophisticated aesthetic with warm golden tones and elegant pearl accents - completely different from all previous palettes while maintaining the premium aesthetic expected by aesthetic clinic clients
+- **Pattern**: Geometric Ellipse border-radius shapes (`70% 30% 50% 50% / 50% 50% 70% 30%`) provide a more elegant, elongated interpretation of blobmorphism that feels luxurious and flowing like silk textiles
+- **Pattern**: Cormorant Garamond + Plus Jakarta Sans typography pairing combines elegant sophisticated serif luxury with modern geometric sans-serif for excellent readability
+- **Gotcha**: The champagne-pearl-noir palette feels more luxurious and sophisticated while maintaining premium positioning - it evokes feelings of luxury, elegance, and timeless beauty with golden warmth
+- **Gotcha**: Geometric Ellipse-shaped borders create a distinctive elongated aesthetic with flowing movements that feel elegant and refined - different from all previous shape patterns (wave, leaf, gemstone, petal, flame, diamond, geode, etc.)
+- **Gotcha**: Champagne gold tones (#C9A86C) provide a luxurious warmth that pairs beautifully with soft pearl accents (#E8E4DC) creating a sophisticated yet warm aesthetic
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
+
+---
+
+## 2026-02-08 - US-073
   - Form submission to WhatsApp: ✓
   - Smooth scroll navigation: ✓
   - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
