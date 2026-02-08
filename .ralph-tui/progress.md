@@ -593,3 +593,42 @@ after each iteration and it's included in prompts for context.
 - **Crimson Pro + Manrope Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2026-02-08 - US-061
+- Created complete website for Dra. Camila Capeli - Biomédica Esteta in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-camila-capeli-biomedica-esteta/index.html` (new)
+- **Design Concept**: Porcelain & Rouge Noir aesthetic with porcelain white (#FAFAFA, #F5F5F5), soft blush (#E8D5D0, #D8C5C0), rouge noir (#B85C68, #985060, #783848), lab silver (#B8B8C0), and onyx black (#1A1A1A). A completely new direction from previous palettes - inspired by the world of biomedicine aesthetics with a porcelain doll/cosmetic laboratory feel. Droplet/syringe-shaped border-radius patterns create fluid animations inspired by cosmetic application.
+- **Typography**: Cormorant Garamond (display) paired with Plus Jakarta Sans (body) for elegant medical journal sophistication with modern geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating droplet/syringe-shaped backgrounds using gradient meshes
+  - Droplet border-radius patterns (`--radius-droplet-1`, `--radius-droplet-2`, `--radius-droplet-3`, `--radius-droplet-4`) create fluid, cosmetic animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Harmonização Corporal, Harmonização Íntima, Toxina Botulínica, Preenchedores Faciais, Bioestimuladores)
+  - 3 testimonial cards with gradient avatars on rouge-deep background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Av. Itatiaia, 662 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-240 | (16) 99789-5133
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-camila-capeli-biomedica-esteta
+
+**Learnings:**
+- **Pattern**: Porcelain & Rouge Noir palette creates a sophisticated, medical-elegant aesthetic that conveys precision and flawless results - perfect for a Biomédica Esteta brand that combines scientific expertise with aesthetic artistry
+- **Pattern**: Droplet/syringe border-radius shapes (`68% 32% 50% 50% / 50% 40% 60% 50%`) provide a more fluid, organic interpretation of blobmorphism that evokes cosmetic application and laboratory precision
+- **Pattern**: Cormorant Garamond + Plus Jakarta Sans typography pairing combines elegant serif sophistication with modern geometric sans-serif for a medical journal aesthetic that remains approachable
+- **Gotcha**: The porcelain-blush-rouge-lab silver palette feels cleaner and more clinical while maintaining warmth - it evokes feelings of precision, science, and flawless beauty
+- **Gotcha**: Droplet-shaped borders create a distinctive fluid animation that feels cosmetic and organic without being distracting - perfectly aligned with the biomedical aesthetic specialty
+- **Gotcha**: The porcelain white backgrounds (#FAFAFA) provide a pristine, clean foundation that reinforces the medical/biomedical positioning while remaining warm and inviting
+- **Gotcha**: Lab silver accents (#B8B8C0, #A8A8B0) add a clinical/medical quality that differentiates this from purely aesthetic spa-like treatments
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Porcelain & Rouge Noir Palette**: `--color-porcelain: #FAFAFA`, `--color-porcelain-warm: #F5F5F5`, `--color-porcelain-soft: #F0F0F0`, `--color-blush: #E8D5D0`, `--color-blush-light: #F0E5E0`, `--color-blush-mid: #D8C5C0`, `--color-blush-deep: #C8B5B0`, `--color-rouge: #B85C68`, `--color-rouge-light: #D87A88`, `--color-rouge-mid: #A85060`, `--color-rouge-dark: #884048`, `--color-rouge-deep: #682830`, `--color-lab-silver: #B8B8C0`, `--color-lab-silver-light: #C8C8D0`, `--color-lab-silver-dark: #A8A8B0` - sophisticated, medical-elegant aesthetic perfect for biomedical aesthetic specialists
+- **Droplet Border Radius**: `--radius-droplet-1: 68% 32% 50% 50% / 50% 40% 60% 50%`, `--radius-droplet-2: 50% 50% 35% 65% / 45% 55% 45% 55%`, `--radius-droplet-3: 55% 45% 60% 40% / 50% 50% 50% 50%`, `--radius-droplet-4: 40% 60% 45% 55% / 55% 45% 55% 45%` for fluid, cosmetic droplet-like shapes
+- **Cormorant Garamond + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for medical journal sophistication with excellent readability
+
+---
