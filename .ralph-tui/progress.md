@@ -459,3 +459,48 @@ after each iteration and it's included in prompts for context.
 - **Libre Baskerville + Inter Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2025-02-08 - US-058
+- Created complete website for Giovana Ramos - Harmonização Facial em Ribeirão Preto
+- Files changed:
+  - `site-demo/giovana-ramos-harmonizacao-facial-em-ribeirao-preto/index.html` (new)
+- **Design Concept**: Coral Noir & Seafoam aesthetic with warm coral tones, cool seafoam accents, and sand backgrounds. A completely new coastal-inspired direction from previous palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink, opal/dusty rose). Wave-shaped border-radius patterns create organic, fluid animations reminiscent of ocean waves.
+- **Typography**: Playfair Display (display) paired with Outfit (body) for sophisticated, modern elegance with excellent geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating wave-shaped backgrounds using gradient meshes
+  - Wave border-radius patterns (`--radius-wave-1`, `--radius-wave-2`, `--radius-wave-3`, `--radius-wave-4`) create organic, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on coral-black background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Olavo Bilac, 734 - Vila Seixas, Ribeirão Preto - SP, 14020-020 | (16) 99206-7264
+- **Demo URL**: pixelalchemy.com.br/site-demo/giovana-ramos-harmonizacao-facial-em-ribeirao-preto
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings**:
+- **Pattern**: Coral Noir & Seafoam palette creates a warm, refreshing aesthetic with coastal vibes that feels both sophisticated and approachable - completely different from all previous palettes
+- **Pattern**: Wave border-radius shapes (`63% 37% 54% 46% / 55% 48% 52% 45%`) provide a more fluid, organic interpretation of blobmorphism with gentle curves that feel like ocean waves
+- **Pattern**: Playfair Display + Outfit typography pairing combines elegant serif display with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The coral-seafoam-sand palette feels more refreshing and contemporary while maintaining premium positioning - it evokes feelings of natural beauty, coastal wellness, and modern elegance
+- **Gotcha**: Wave-shaped borders create a distinctive fluid animation that feels organic and calming without being distracting - different from the sharper geometric patterns of previous sites
+- **Gotcha**: Sand backgrounds (#F5F0E8, #FAF7F2) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more modern foundation
+- **Gotcha**: The coral-black (#1F1A1A) used in testimonials and footer creates strong contrast while maintaining warmth - different from the cooler charcoal tones used previously
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Coral Noir & Seafoam Palette**: `--color-coral: #E87A7A`, `--color-coral-light: #F5A3A3`, `--color-coral-dark: #D65A5A`, `--color-coral-deep: #B84040`, `--color-seafoam: #7DB4B8`, `--color-seafoam-light: #A8D4D8`, `--color-seafoam-dark: #5A9A9E`, `--color-seafoam-mid: #6AA8AC`, `--color-sand: #F5F0E8`, `--color-sand-light: #FAF7F2`, `--color-sand-warm: #E8DFD0`, `--color-coral-black: #1F1A1A`, `--color-coral-charcoal: #2A2525` - warm, refreshing coastal-inspired palette perfect for modern aesthetic clinics
+- **Wave Border Radius**: `--radius-wave-1: 63% 37% 54% 46% / 55% 48% 52% 45%`, `--radius-wave-2: 47% 53% 38% 62% / 43% 57% 43% 57%`, `--radius-wave-3: 58% 42% 63% 37% / 48% 52% 48% 52%`, `--radius-wave-4: 42% 58% 37% 63% / 52% 48% 52% 48%` for organic, flowing wave-like shapes with gentle curves
+- **Playfair Display + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
