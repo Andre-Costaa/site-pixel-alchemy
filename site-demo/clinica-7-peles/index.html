@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica 7 Peles | Dra. Fernanda Ursoli - Harmonização Facial em Ribeirão Preto</title>
+    <meta name="description" content="Clínica 7 Peles - Dra. Fernanda Ursoli. Harmonização facial e estética avançada em Ribeirão Preto. Tratamentos personalizados para realçar sua beleza natural.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Moss Noir & Burnt Sienna Palette */
+            --color-moss: #4A6B4A;
+            --color-moss-light: #6B8B6B;
+            --color-moss-dark: #2A4B2A;
+            --color-moss-deep: #1A3B1A;
+            --color-moss-mist: #E8F0E8;
+            --color-sienna: #B8784A;
+            --color-sienna-light: #C8986A;
+            --color-sienna-dark: #985838;
+            --color-sienna-deep: #783828;
+            --color-sienna-shimmer: #D8A888;
+            --color-sand: #F5F3F0;
+            --color-sand-warm: #E8E4DC;
+            --color-cream: #FAF8F5;
+            --color-charcoal: #2A2A28;
+            --color-charcoal-dark: #1A1A18;
+
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 5rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s ease;
+            --transition-slow: 0.6s ease;
+
+            /* Border Radius - Organic Moss Shapes */
+            --radius-moss-1: 68% 32% 52% 48% / 52% 38% 62% 48%;
+            --radius-moss-2: 48% 52% 62% 38% / 42% 58% 42% 58%;
+            --radius-moss-3: 58% 42% 48% 52% / 52% 48% 52% 48%;
+            --radius-moss-4: 42% 58% 52% 48% / 48% 52% 48% 52%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 2px 20px rgba(42, 42, 40, 0.1);
+        }
+
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-moss);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav__logo span {
+            color: var(--color-sienna);
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav__link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-moss), var(--color-sienna));
+            transition: width var(--transition-fast);
+        }
+
+        .nav__link:hover {
+            color: var(--color-moss);
+        }
+
+        .nav__link:hover::after {
+            width: 100%;
+        }
+
+        .nav__cta {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-dark));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .nav__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 107, 74, 0.3);
+        }
+
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav__toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-charcoal);
+            transition: var(--transition-fast);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 5% 4rem;
+            overflow: hidden;
+        }
+
+        .hero__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .hero__blob {
+            position: absolute;
+            border-radius: var(--radius-moss-1);
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: mossFloat 20s ease-in-out infinite;
+        }
+
+        .hero__blob--1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-light));
+            top: -10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero__blob--2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--color-sienna), var(--color-sienna-light));
+            bottom: 10%;
+            right: -5%;
+            border-radius: var(--radius-moss-2);
+            animation-delay: -5s;
+        }
+
+        .hero__blob--3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, var(--color-moss-light), var(--color-moss-mist));
+            top: 40%;
+            right: 20%;
+            border-radius: var(--radius-moss-3);
+            animation-delay: -10s;
+            opacity: 0.3;
+        }
+
+        .hero__blob--4 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-sienna-shimmer), var(--color-sand));
+            bottom: 20%;
+            left: 15%;
+            border-radius: var(--radius-moss-4);
+            animation-delay: -15s;
+            opacity: 0.25;
+        }
+
+        @keyframes mossFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(5deg) scale(1.05);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-5deg) scale(0.95);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(3deg) scale(1.02);
+            }
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(74, 107, 74, 0.1);
+            border: 1px solid rgba(74, 107, 74, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--color-moss);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0ms;
+            opacity: 0;
+        }
+
+        .hero__badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-sienna);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--color-charcoal);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 200ms;
+            opacity: 0;
+        }
+
+        .hero__title-accent {
+            background: linear-gradient(135deg, var(--color-moss), var(--color-sienna));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-charcoal);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 400ms;
+            opacity: 0;
+        }
+
+        .hero__ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 600ms;
+            opacity: 0;
+        }
+
+        .hero__cta {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
+        }
+
+        .hero__cta--primary {
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-dark));
+            color: white;
+            box-shadow: 0 4px 20px rgba(74, 107, 74, 0.3);
+        }
+
+        .hero__cta--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 107, 74, 0.4);
+        }
+
+        .hero__cta--secondary {
+            background: transparent;
+            color: var(--color-moss);
+            border: 2px solid var(--color-moss);
+        }
+
+        .hero__cta--secondary:hover {
+            background: var(--color-moss);
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: var(--spacing-2xl) 5%;
+        }
+
+        .section__header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section__label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-sienna);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section__title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section__description {
+            font-size: 1.1rem;
+            color: var(--color-charcoal);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--color-sand);
+        }
+
+        .problem-solution__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-solution__card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .problem-solution__card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-moss), var(--color-sienna));
+        }
+
+        .problem-solution__card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-solution__card--problem {
+            background: linear-gradient(135deg, rgba(184, 120, 74, 0.05), rgba(184, 120, 74, 0.02));
+        }
+
+        .problem-solution__card--solution {
+            background: linear-gradient(135deg, rgba(74, 107, 74, 0.05), rgba(74, 107, 74, 0.02));
+        }
+
+        .problem-solution__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .problem-solution__card--problem .problem-solution__icon {
+            background: linear-gradient(135deg, var(--color-sienna), var(--color-sienna-light));
+            color: white;
+        }
+
+        .problem-solution__card--solution .problem-solution__icon {
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-light));
+            color: white;
+        }
+
+        .problem-solution__card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .problem-solution__card-text {
+            color: var(--color-charcoal);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-moss), var(--color-sienna));
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(74, 107, 74, 0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card__icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--color-moss-mist), var(--color-sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card__icon::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 23px;
+            background: linear-gradient(135deg, var(--color-moss), var(--color-sienna));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .service-card:hover .service-card__icon::after {
+            opacity: 1;
+        }
+
+        .service-card__title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .service-card__description {
+            color: var(--color-charcoal);
+            opacity: 0.75;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-moss);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap var(--transition-fast);
+        }
+
+        .service-card__link:hover {
+            gap: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--color-moss-dark), var(--color-moss-deep));
+            color: white;
+        }
+
+        .testimonials .section__title,
+        .testimonials .section__description {
+            color: white;
+        }
+
+        .testimonials .section__label {
+            color: var(--color-sienna-shimmer);
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card__stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-sienna-shimmer);
+        }
+
+        .testimonial-card__quote {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-card__avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-moss-light), var(--color-sienna));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        .testimonial-card__info {
+            flex: 1;
+        }
+
+        .testimonial-card__name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-card__role {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Differentials Section */
+        .differentials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .differential-item {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .differential-item__icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .differential-item__icon-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid var(--color-moss);
+            opacity: 0.2;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+
+        .differential-item__icon-ring:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .differential-item__icon-ring:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 0.1;
+            }
+        }
+
+        .differential-item__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .differential-item__title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-charcoal);
+        }
+
+        .differential-item__text {
+            color: var(--color-charcoal);
+            opacity: 0.75;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-sand);
+        }
+
+        .contact__container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact__form {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact__form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact__form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-charcoal);
+            font-size: 0.9rem;
+        }
+
+        .contact__form-input,
+        .contact__form-select,
+        .contact__form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--color-sand-warm);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--color-cream);
+        }
+
+        .contact__form-input:focus,
+        .contact__form-select:focus,
+        .contact__form-textarea:focus {
+            outline: none;
+            border-color: var(--color-moss);
+            background: white;
+        }
+
+        .contact__form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact__form-cta {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--color-moss), var(--color-moss-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .contact__form-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 107, 74, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-charcoal-dark);
+            color: white;
+            padding: var(--spacing-2xl) 5% var(--spacing-xl);
+        }
+
+        .footer__container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer__top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer__brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer__brand span {
+            color: var(--color-sienna);
+        }
+
+        .footer__description {
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        .footer__section-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-sienna-shimmer);
+        }
+
+        .footer__links {
+            list-style: none;
+        }
+
+        .footer__link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            padding: 0.5rem 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .footer__link:hover {
+            opacity: 1;
+        }
+
+        .footer__contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            opacity: 0.7;
+        }
+
+        .footer__contact-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--color-sienna);
+        }
+
+        .footer__bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        /* Animation Classes */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.wow-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-up[data-delay] {
+            transition-delay: var(--delay, 0ms);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav__links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-cream);
+                flex-direction: column;
+                padding: 1rem 5%;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav__links.active {
+                display: flex;
+            }
+
+            .nav__cta {
+                display: none;
+            }
+
+            .nav__toggle {
+                display: flex;
+            }
+
+            .hero__blob--1,
+            .hero__blob--2 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero__blob--3,
+            .hero__blob--4 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact__form {
+                padding: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav__logo">7 <span>Peles</span></a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="#home" class="nav__link">Início</a></li>
+            <li><a href="#services" class="nav__link">Serviços</a></li>
+            <li><a href="#testimonials" class="nav__link">Depoimentos</a></li>
+            <li><a href="#differentials" class="nav__link">Diferenciais</a></li>
+            <li><a href="#contact" class="nav__link">Contato</a></li>
+        </ul>
+        <a href="#contact" class="nav__cta">Agendar Consulta</a>
+        <div class="nav__toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero__background">
+            <div class="hero__blob hero__blob--1"></div>
+            <div class="hero__blob hero__blob--2"></div>
+            <div class="hero__blob hero__blob--3"></div>
+            <div class="hero__blob hero__blob--4"></div>
+        </div>
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                Estética Avançada em Ribeirão Preto
+            </div>
+            <h1 class="hero__title">
+                Sua beleza natural,<br>
+                <span class="hero__title-accent">potencializada</span>
+            </h1>
+            <p class="hero__subtitle">
+                Dra. Fernanda Ursoli combina técnica apurada e arte para criar resultados naturais e harmoniosos que realçam seus melhores traços.
+            </p>
+            <div class="hero__ctas">
+                <a href="#contact" class="hero__cta hero__cta--primary">Agendar Consulta</a>
+                <a href="#services" class="hero__cta hero__cta--secondary">Conhecer Tratamentos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution" id="problem-solution">
+        <div class="section__header wow-fade-up">
+            <span class="section__label">Sua Jornada</span>
+            <h2 class="section__title">Transforme sua autoestima</h2>
+            <p class="section__description">Entendemos suas preocupações e oferecemos soluções personalizadas para você se sentir confiante.</p>
+        </div>
+        <div class="problem-solution__grid">
+            <div class="problem-solution__card problem-solution__card--problem wow-fade-up" data-delay="0">
+                <div class="problem-solution__icon">😔</div>
+                <h3 class="problem-solution__card-title">O Desafio</h3>
+                <p class="problem-solution__card-text">Sinais de envelhecimento, assimetrias faciais ou simplesmente não se sentir confiante com sua aparência podem impactar sua autoestima e qualidade de vida.</p>
+            </div>
+            <div class="problem-solution__card problem-solution__card--solution wow-fade-up" data-delay="200">
+                <div class="problem-solution__icon">✨</div>
+                <h3 class="problem-solution__card-title">A Solução</h3>
+                <p class="problem-solution__card-text">Com a Dra. Fernanda Ursoli, você recebe tratamentos personalizados que respeitam sua individualidade, com resultados naturais e duradouros.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="section__header wow-fade-up">
+            <span class="section__label">Tratamentos</span>
+            <h2 class="section__title">Procedimentos Especializados</h2>
+            <p class="section__description">Técnicas avançadas para realçar sua beleza com naturalidade e segurança.</p>
+        </div>
+        <div class="services__grid">
+            <div class="service-card wow-fade-up" data-delay="0">
+                <div class="service-card__icon">🎯</div>
+                <h3 class="service-card__title">Harmonização Facial</h3>
+                <p class="service-card__description">Equilíbrio e proporção para seus traços faciais com técnicas minimamente invasivas e resultados naturais.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+            <div class="service-card wow-fade-up" data-delay="200">
+                <div class="service-card__icon">💉</div>
+                <h3 class="service-card__title">Toxina Botulínica</h3>
+                <p class="service-card__description">Suavize linhas de expressão e previna novos sinais com aplicação precisa e personalizada.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+            <div class="service-card wow-fade-up" data-delay="400">
+                <div class="service-card__icon">💎</div>
+                <h3 class="service-card__title">Preenchedores Faciais</h3>
+                <p class="service-card__description">Restaure volume e contorno com ácido hialurônico de alta qualidade para resultados harmônicos.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+            <div class="service-card wow-fade-up" data-delay="0">
+                <div class="service-card__icon">👄</div>
+                <h3 class="service-card__title">Preenchimento Labial</h3>
+                <p class="service-card__description">Lábios mais volumosos e definidos com técnicas que preservam a naturalidade do seu sorriso.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+            <div class="service-card wow-fade-up" data-delay="200">
+                <div class="service-card__icon">🌟</div>
+                <h3 class="service-card__title">Bioestimuladores</h3>
+                <p class="service-card__description">Estimule o colágeno natural para uma pele mais firme, jovem e saudável a longo prazo.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+            <div class="service-card wow-fade-up" data-delay="400">
+                <div class="service-card__icon">⭐</div>
+                <h3 class="service-card__title">Protocolos Exclusivos</h3>
+                <p class="service-card__description">Tratamentos personalizados combinando técnicas para resultados únicos e satisfatórios.</p>
+                <a href="#contact" class="service-card__link">Saiba mais →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section__header wow-fade-up">
+            <span class="section__label">Depoimentos</span>
+            <h2 class="section__title">O que dizem nossas pacientes</h2>
+            <p class="section__description">Histórias reais de transformação e satisfação.</p>
+        </div>
+        <div class="testimonials__grid">
+            <div class="testimonial-card wow-fade-up" data-delay="0">
+                <div class="testimonial-card__stars">★★★★★</div>
+                <p class="testimonial-card__quote">"A Dra. Fernanda é incrível! Fiz minha harmonização facial e o resultado superou todas as minhas expectativas. Natural e elegante!"</p>
+                <div class="testimonial-card__author">
+                    <div class="testimonial-card__avatar">MC</div>
+                    <div class="testimonial-card__info">
+                        <div class="testimonial-card__name">Maria Clara</div>
+                        <div class="testimonial-card__role">Empresária</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card wow-fade-up" data-delay="200">
+                <div class="testimonial-card__stars">★★★★★</div>
+                <p class="testimonial-card__quote">"Profissionalismo e dedicação desde a primeira consulta. Me senti sempre segura e confiante durante todo o tratamento."</p>
+                <div class="testimonial-card__author">
+                    <div class="testimonial-card__avatar">AL</div>
+                    <div class="testimonial-card__info">
+                        <div class="testimonial-card__name">Ana Luíza</div>
+                        <div class="testimonial-card__role">Advogada</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card wow-fade-up" data-delay="400">
+                <div class="testimonial-card__stars">★★★★★</div>
+                <p class="testimonial-card__quote">"Os resultados são naturais e duradouros. Recebo elogios sempre! Recomendo a Clínica 7 Peles para todas as minhas amigas."</p>
+                <div class="testimonial-card__author">
+                    <div class="testimonial-card__avatar">JS</div>
+                    <div class="testimonial-card__info">
+                        <div class="testimonial-card__name">Juliana Silva</div>
+                        <div class="testimonial-card__role">Arquiteta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="section differentials" id="differentials">
+        <div class="section__header wow-fade-up">
+            <span class="section__label">Por que nos escolher</span>
+            <h2 class="section__title">Nossos Diferenciais</h2>
+            <p class="section__description">O que torna a Clínica 7 Peles única em Ribeirão Preto.</p>
+        </div>
+        <div class="differentials__grid">
+            <div class="differential-item wow-fade-up" data-delay="0">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">👩‍⚕️</div>
+                </div>
+                <h3 class="differential-item__title">Especialista Dedicada</h3>
+                <p class="differential-item__text">Dra. Fernanda Ursoli acompanha cada paciente com atenção personalizada.</p>
+            </div>
+            <div class="differential-item wow-fade-up" data-delay="200">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">🎨</div>
+                </div>
+                <h3 class="differential-item__title">Abordagem Artística</h3>
+                <p class="differential-item__text">Técnicas que combinam ciência e arte para resultados harmônicos.</p>
+            </div>
+            <div class="differential-item wow-fade-up" data-delay="400">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">🔬</div>
+                </div>
+                <h3 class="differential-item__title">Tecnologia Avançada</h3>
+                <p class="differential-item__text">Equipamentos de última geração para procedimentos seguros e eficazes.</p>
+            </div>
+            <div class="differential-item wow-fade-up" data-delay="0">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">💚</div>
+                </div>
+                <h3 class="differential-item__title">Resultados Naturais</h3>
+                <p class="differential-item__text">Enhancement que respeita suas características únicas e individuais.</p>
+            </div>
+            <div class="differential-item wow-fade-up" data-delay="200">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">🛡️</div>
+                </div>
+                <h3 class="differential-item__title">Segurança Primeiro</h3>
+                <p class="differential-item__text">Protocolos rigorosos e produtos certificados para sua tranquilidade.</p>
+            </div>
+            <div class="differential-item wow-fade-up" data-delay="400">
+                <div class="differential-item__icon-wrapper">
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon-ring"></div>
+                    <div class="differential-item__icon">📍</div>
+                </div>
+                <h3 class="differential-item__title">Localização Privilegiada</h3>
+                <p class="differential-item__text">Clínica facilmente acessível no Alto da Boa Vista em Ribeirão Preto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section__header wow-fade-up">
+            <span class="section__label">Contato</span>
+            <h2 class="section__title">Agende sua consulta</h2>
+            <p class="section__description">Dê o primeiro passo para transformar sua autoestima. Entre em contato conosco.</p>
+        </div>
+        <div class="contact__container">
+            <form class="contact__form wow-fade-up" id="contactForm">
+                <div class="contact__form-group">
+                    <label class="contact__form-label" for="name">Nome completo</label>
+                    <input class="contact__form-input" type="text" id="name" name="name" required placeholder="Seu nome">
+                </div>
+                <div class="contact__form-group">
+                    <label class="contact__form-label" for="email">E-mail</label>
+                    <input class="contact__form-input" type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="contact__form-group">
+                    <label class="contact__form-label" for="phone">Telefone</label>
+                    <input class="contact__form-input" type="tel" id="phone" name="phone" required placeholder="(16) 99999-9999">
+                </div>
+                <div class="contact__form-group">
+                    <label class="contact__form-label" for="service">Tratamento de interesse</label>
+                    <select class="contact__form-select" id="service" name="service" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="harmonizacao">Harmonização Facial</option>
+                        <option value="botox">Toxina Botulínica</option>
+                        <option value="preenchedores">Preenchedores Faciais</option>
+                        <option value="labial">Preenchimento Labial</option>
+                        <option value="bioestimuladores">Bioestimuladores</option>
+                        <option value="protocolos">Protocolos Exclusivos</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="contact__form-group">
+                    <label class="contact__form-label" for="message">Mensagem</label>
+                    <textarea class="contact__form-textarea" id="message" name="message" placeholder="Conte-nos sobre suas expectativas..."></textarea>
+                </div>
+                <button type="submit" class="contact__form-cta">Enviar via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__top">
+                <div>
+                    <div class="footer__brand">7 <span>Peles</span></div>
+                    <p class="footer__description">Estética avançada com resultados naturais e duradouros. Dra. Fernanda Ursoli - Harmonização Facial em Ribeirão Preto.</p>
+                </div>
+                <div>
+                    <h4 class="footer__section-title">Links Rápidos</h4>
+                    <ul class="footer__links">
+                        <li><a href="#home" class="footer__link">Início</a></li>
+                        <li><a href="#services" class="footer__link">Tratamentos</a></li>
+                        <li><a href="#testimonials" class="footer__link">Depoimentos</a></li>
+                        <li><a href="#contact" class="footer__link">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__section-title">Contato</h4>
+                    <div class="footer__contact-item">
+                        <span>📍</span>
+                        <span>R. Itacolomi, 193 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-250</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <span>📱</span>
+                        <span>(16) 99776-2809</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Clínica 7 Peles - Dra. Fernanda Ursoli. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > lastScrollY && window.scrollY > 200) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('wow-visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form - WhatsApp integration
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const serviceNames = {
+                'harmonizacao': 'Harmonização Facial',
+                'botox': 'Toxina Botulínica',
+                'preenchedores': 'Preenchedores Faciais',
+                'labial': 'Preenchimento Labial',
+                'bioestimuladores': 'Bioestimuladores',
+                'protocolos': 'Protocolos Exclusivos',
+                'outro': 'Outro'
+            };
+
+            const whatsappMessage = encodeURIComponent(
+                `*Olá! Gostaria de agendar uma consulta na Clínica 7 Peles*\n\n` +
+                `📋 *Dados de contato:*\n` +
+                `• Nome: ${name}\n` +
+                `• Email: ${email}\n` +
+                `• Telefone: ${phone}\n\n` +
+                `🎯 *Tratamento de interesse:* ${serviceNames[service] || service}\n\n` +
+                `💬 *Mensagem:*\n${message || 'Gostaria de mais informações.'}`
+            );
+
+            const whatsappURL = `https://wa.me/5516997762809?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Parallax effect for hero blobs
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+            document.querySelectorAll('.hero__blob').forEach((blob, index) => {
+                const speed = (index + 1) * 0.5;
+                blob.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

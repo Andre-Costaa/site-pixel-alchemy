@@ -769,6 +769,45 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-02-08 - US-066
+- Created complete website for Clínica 7 Peles - Dra. Fernanda Ursoli in Ribeirão Preto
+- Files changed:
+  - `site-demo/clinica-7-peles/index.html` (new)
+- **Design Concept**: Moss Noir & Burnt Sienna aesthetic with deep moss greens (#4A6B4A, #6B8B6B), warm burnt sienna tones (#B8784A, #C8986A), and cream backgrounds (#FAF8F5). A completely new earth-toned organic direction from all previous 18 palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink, opal/dusty rose, coral/seafoam, burgundy/gold, porcelain/rouge, chrome/violet, amethyst/platinum, rose gold/champagne diamond, teal/copper, onyx/bronze patina). Moss-shaped border-radius patterns create organic, flowing animations reminiscent of natural forest elements.
+- **Typography**: Playfair Display (display) paired with Plus Jakarta Sans (body) for elegant sophistication with modern geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating moss-shaped backgrounds using gradient meshes
+  - Moss border-radius patterns (`--radius-moss-1`, `--radius-moss-2`, `--radius-moss-3`, `--radius-moss-4`) create organic, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on moss-deep background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Itacolomi, 193 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-250, Brazil | (16) 99776-2809
+- **Demo URL**: pixelalchemy.com.br/site-demo/clinica-7-peles
+
+**Learnings**:
+- **Pattern**: Moss Noir & Burnt Sienna palette creates an earthy, sophisticated aesthetic with natural organic qualities that conveys transformation and grounded beauty - completely different from all 18 previous palettes
+- **Pattern**: Moss border-radius shapes (`68% 32% 52% 48% / 52% 38% 62% 48%`) provide a more organic, flowing interpretation of blobmorphism with natural curves that feel forest-like and grounded
+- **Pattern**: Playfair Display + Plus Jakarta Sans typography pairing combines elegant serif display with modern geometric sans-serif body for sophisticated readability
+- **Gotcha**: The moss-sienna-cream palette feels more earthy and natural while maintaining premium positioning - it evokes feelings of natural beauty, organic wellness, and grounded transformation
+- **Gotcha**: Moss-shaped borders create a distinctive organic animation that feels natural and flowing without being distracting - different from all previous shape patterns used
+- **Gotcha**: The burnt sienna accent color (#B8784A, #C8986A) adds warmth and earthiness that complements the cool moss tones perfectly - creates a balanced, natural color harmony
+- **Gotcha**: The "7 Peles" brand name pairs well with the earthy moss aesthetic - suggests natural beauty, layers of care, and organic transformation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Moss Noir & Burnt Sienna Palette**: `--color-moss: #4A6B4A`, `--color-moss-light: #6B8B6B`, `--color-moss-dark: #2A4B2A`, `--color-moss-deep: #1A3B1A`, `--color-moss-mist: #E8F0E8`, `--color-sienna: #B8784A`, `--color-sienna-light: #C8986A`, `--color-sienna-dark: #985838`, `--color-sienna-deep: #783828`, `--color-sienna-shimmer: #D8A888`, `--color-sand: #F5F3F0`, `--color-sand-warm: #E8E4DC`, `--color-cream: #FAF8F5` - earthy, sophisticated natural aesthetic perfect for organic-focused aesthetic clinics
+- **Moss Border Radius**: `--radius-moss-1: 68% 32% 52% 48% / 52% 38% 62% 48%`, `--radius-moss-2: 48% 52% 62% 38% / 42% 58% 42% 58%`, `--radius-moss-3: 58% 42% 48% 52% / 52% 48% 52% 48%`, `--radius-moss-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, flowing moss-like shapes with natural curves
+- **Playfair Display + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
+
 ## 2026-02-08 - US-065
 - Created complete website for Dra Iara Pengo - Harmonização Facial e Estética Avançada in Ribeirão Preto
 - Files changed:
