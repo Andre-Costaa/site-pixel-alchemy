@@ -95,5 +95,46 @@ after each iteration and it's included in prompts for context.
 - **Serene Sage & Pearl Palette**: `--color-sage: #9CBFA8`, `--color-sage-dark: #7FA68C`, `--color-pearl: #F8F6F3`, `--color-mint: #D4E5DC`, `--color-golden: #C4A77D` - fresh, natural aesthetic
 - **Dual Organic Border Radius**: `--radius-organic: 60% 40% 30% 70% / 60% 30% 70% 40%` and `--radius-organic-2: 40% 60% 70% 30% / 40% 70% 30% 60%` for more dynamic blob animations
 - **Pulsing Ring Animation**: CSS animation on differential icons creates subtle attention-grabbing effect without being distracting
+- **Twilight Lavender & Mocha Palette**: `--color-lavender: #B8A5C4`, `--color-lavender-dark: #9A84A8`, `--color-mocha: #C4B5A8`, `--color-mocha-dark: #A89484`, `--color-champagne: #F5EDE3` - contemporary, fashion-forward aesthetic
+- **Triple Organic Border Radius**: Third pattern `--radius-organic-3: 50% 50% 40% 60% / 50% 40% 60% 50%` for even more variety in blob animations
+
+---
+
+## 2025-02-08 - US-050
+- Created complete website for Dra. Amanda Gaipo - Harmonização Facial em Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-amanda-gaipo/index.html` (new)
+- **Design Concept**: Twilight Lavender & Mocha aesthetic with warm lavender, soft mocha, and champagne accents. Contemporary and fashion-forward while maintaining premium elegance. Triple organic border-radius patterns create dynamic, breathing animations.
+- **Typography**: Cormorant Garamond (display) paired with Lato (body) for sophisticated, modern readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating blob backgrounds using gradient meshes
+  - Triple organic border-radius patterns for more dynamic blob animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects on cards
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Bioestimuladores, Preenchimento Labial, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Garibaldi, 2042 - Sala - Jardim Sumaré, Ribeirão Preto - SP, 14025-190 | (16) 99456-3928
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-amanda-gaipo
+- **Verification**:
+  - Desktop view tested: ✓
+  - Mobile view (375x812) tested: ✓
+  - Form submission to WhatsApp tested: ✓
+  - Smooth scroll navigation tested: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Twilight Lavender & Mocha palette creates a contemporary, fashion-forward aesthetic that appeals to a younger, trend-conscious demographic while maintaining premium positioning
+- **Pattern**: Triple organic border-radius patterns (`--radius-organic`, `--radius-organic-2`, `--radius-organic-3`) create maximum variety in blob animations
+- **Pattern**: Lato body font provides excellent readability while maintaining modern feel - better than Inter for this aesthetic
+- **Gotcha**: The lavender-mocha palette feels more sophisticated and fashion-forward than both the rose/gold (US-048) and sage/pearl (US-049) options
+- **Gotcha**: Cormorant Garamond + Lato is an excellent pairing for sophisticated yet readable designs
+- **Gotcha**: Adding gradient fade background (`--gradient-fade`) creates subtle transitions between sections
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
