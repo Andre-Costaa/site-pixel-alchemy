@@ -24,10 +24,13 @@ after each iteration and it's included in prompts for context.
 - **Bronze & Celadon Noir Palette**: `--color-bronze: #B8874A`, `--color-bronze-light: #D4A868`, `--color-bronze-mid: #C89855`, `--color-bronze-dark: #A0783A`, `--color-bronze-deep: #886028`, `--color-bronze-shimmer: #E0C090`, `--color-celadon: #7AA892`, `--color-celadon-light: #98C0AA`, `--color-celadon-dark: #629878`, `--color-celadon-deep: #4A7860`, `--color-celadon-mist: #D0E8E0`, `--color-celadon-pale: #E8F0EC`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-ivory: #FAFAF6`, `--color-cream: #F0ECE8` - sophisticated, warm metallic aesthetic with cool celadon ceramic glaze accents inspired by Asian ceramics
 - **Ceramic Curve Border Radius**: `--radius-curve-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-curve-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-curve-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-curve-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for smooth, flowing ceramic-like shapes with gentle curves reminiscent of celadon pottery
 - **Playfair Display + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+- **Platinum Noir & Rose Gold Palette**: `--color-platinum: #B8B8C0`, `--color-platinum-light: #C8C8D0`, `--color-platinum-mid: #D8D8E0`, `--color-platinum-dark: #A8A8B0`, `--color-platinum-deep: #888890`, `--color-platinum-shimmer: #E8E8F0`, `--color-rose-gold: #C9A088`, `--color-rose-gold-light: #D9B098`, `--color-rose-gold-mid: #E0C0A8`, `--color-rose-gold-dark: #B89078`, `--color-rose-gold-deep: #A87860`, `--color-rose-gold-shimmer: #E8D0C0`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-alabaster: #FAFAF8`, `--color-cream: #F0ECE8` - sophisticated, modern medical-elegant aesthetic with cool platinum silver tones and warm rose gold metallic accents
+- **Structural/Nasal Architecture Border Radius**: `--radius-struct-1: 68% 32% 48% 52% / 52% 38% 62% 48%`, `--radius-struct-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-struct-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-struct-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for architectural, structural shapes that reference nasal anatomy and sophisticated geometry
+- **Libre Baskerville + Manrope Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability with contemporary edge
 
 ---
 
-## 2026-02-08 - US-076
+## 2026-02-08 - US-077
 - Created complete website for Dra. Brenda Dick - Harmonização Facial e Odontologia Especializada in Ribeirão Preto
 - Files changed:
   - `site-demo/dra-brenda-dick-harmonizacao-facial-e-odontologia-especializ/index.html` (new)
@@ -1245,4 +1248,39 @@ after each iteration and it's included in prompts for context.
 - **Bubble Border Radius**: `--radius-bubble-1: 65% 35% 55% 45% / 50% 45% 55% 50%`, `--radius-bubble-2: 45% 55% 40% 60% / 55% 45% 55% 45%`, `--radius-bubble-3: 55% 45% 60% 40% / 40% 60% 40% 60%`, `--radius-bubble-4: 40% 60% 45% 55% / 60% 40% 60% 40%` for organic, effervescent bubble-like shapes with gentle curves
 - **Playfair Display + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
+---
+## 2026-02-08 - US-077
+- Created complete website for Dra. Isabelle Marchi - Rinomodelação Estruturada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-isabelle-marchi-rinomodelacao-estruturada/index.html` (new)
+- **Design Concept**: Platinum Noir & Rose Gold aesthetic with cool platinum silver tones, warm rose gold metallic accents on alabaster backgrounds with noir charcoal accents. A completely new sophisticated medical-elegant direction from all previous 28 palettes. Structural/nasal architecture border-radius patterns create architectural, geometric animations reminiscent of nasal structure and medical precision.
+- **Typography**: Libre Baskerville (display) paired with Manrope (body) for classic elegant sophistication with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating structural-shaped backgrounds using gradient meshes
+  - Structural border-radius patterns (`--radius-struct-1`, `--radius-struct-2`, `--radius-struct-3`, `--radius-struct-4`) create architectural, sophisticated animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Rinomodelação Estruturada, Harmonização Nasal, Preenchimento Nasal, Ponta Nasal, Correção de Giba, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Av. Cel. Fernando Ferreira Leite, 1520 - sala 1605 - Nova Aliança, Ribeirão Preto - SP, 14026-020, Brazil | (16) 99179-8230
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-isabelle-marchi-rinomodelacao-estruturada
+
+**Learnings**:
+- **Pattern**: Platinum Noir & Rose Gold palette creates a sophisticated, modern medical-elegant aesthetic that balances cool platinum silver tones (#B8B8C0) with warm rose gold metallic accents (#C9A088) - completely different from all 28 previous palettes
+- **Pattern**: The platinum-rose gold combination is inspired by medical precision and luxury aesthetics, creating an elegant, professional aesthetic that feels sophisticated and trustworthy
+- **Pattern**: Structural border-radius shapes (`68% 32% 48% 52% / 52% 38% 62% 48%`) provide an architectural, geometric interpretation of blobmorphism that feels structural and precise - perfect for rinomodelação/nasal procedures
+- **Pattern**: Libre Baskerville + Manrope typography pairing combines classic elegant serif sophistication with modern geometric sans-serif for sophisticated readability with contemporary edge
+- **Gotcha**: The platinum-rose gold-alabaster palette feels more modern and medical-elegant while maintaining premium positioning - it evokes feelings of precision, sophistication, and medical excellence
+- **Gotcha**: Structural-shaped borders create a distinctive architectural animation that feels precise and sophisticated without being distracting - different from all previous shape patterns (pearl tooth, ceramic curve, ellipse, faceted, leaf, flame, petal, diamond, geode, wave, etc.)
+- **Gotcha**: The cool platinum tones paired with warm rose gold creates a sophisticated color harmony that feels balanced and elegant - neither too cool nor too warm
+- **Gotcha**: The platinum-rose gold aesthetic is particularly appropriate for rinomodelação specialists seeking a sophisticated, medical-elegant brand identity that conveys both precision and beauty
+- **Gotcha**: Alabaster backgrounds (#FAFAF8) provide a clean, sophisticated foundation that pairs beautifully with both cool platinum and warm rose gold tones
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
 ---
