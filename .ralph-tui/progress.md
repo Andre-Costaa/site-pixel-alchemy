@@ -7,6 +7,50 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
+- **Ivory & Emerald Noir Palette**: `--color-emerald: #2D5A4A`, `--color-emerald-light: #3D7A6A`, `--color-emerald-mid: #4A8A7A`, `--color-emerald-dark: #1D3A2A`, `--color-emerald-deep: #0D2A1A`, `--color-emerald-mist: #E8F0EC`, `--color-ivory: #FAFAF6`, `--color-ivory-warm: #F5F5F0`, `--color-sage: #8BA89A`, `--color-gold: #B89B5A` - natural, sophisticated aesthetic with organic qualities inspired by leaves and nature
+- **Leaf Border Radius**: `--radius-leaf-1: 65% 35% 45% 55% / 55% 45% 55% 45%`, `--radius-leaf-2: 45% 55% 65% 35% / 45% 55% 45% 55%`, `--radius-leaf-3: 55% 45% 35% 65% / 55% 45% 55% 45%`, `--radius-leaf-4: 35% 65% 55% 45% / 45% 55% 45% 55%` for organic, leaf-shaped animations that feel natural and alive
+- **Libre Baskerville + Outfit Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
+
+## 2025-02-08 - US-071
+- Created complete website for Dra Juliana Bittencourt - Harmonização Facial em Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-juliana-bittencourt-harmonizacao-facial/index.html` (new)
+- **Design Concept**: Ivory & Emerald Noir aesthetic with deep emerald greens, warm gold accents, and ivory backgrounds. A completely new natural/organic direction from previous palettes (amethyst/platinum, orchid/brass, sapphire/champagne, rose/gold, sage/pearl, lavender/mocha, amber/bronze, etc.). Leaf-shaped border-radius patterns create organic, natural animations reminiscent of falling leaves and nature.
+- **Typography**: Libre Baskerville (display) paired with Outfit (body) for classic elegance with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating leaf-shaped backgrounds using gradient meshes
+  - Leaf border-radius patterns (`--radius-leaf-1`, `--radius-leaf-2`, `--radius-leaf-3`, `--radius-leaf-4`) create organic, natural animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on emerald-soft background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Triunfo, 1349 - Jardim Botânico, Ribeirão Preto - SP, 14021-612 | (16) 99725-2010
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-juliana-bittencourt-harmonizacao-facial
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view (375x812) responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Ivory & Emerald Noir palette creates a natural, sophisticated aesthetic with organic qualities that conveys freshness and natural beauty - completely different from all previous palettes
+- **Pattern**: Leaf border-radius shapes (`65% 35% 45% 55% / 55% 45% 55% 45%`) provide a more organic, flowing interpretation of blobmorphism that feels natural and alive
+- **Pattern**: Libre Baskerville + Outfit typography pairing combines classic serif elegance with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The emerald-ivory-gold palette feels more natural and contemporary while maintaining premium positioning - it evokes feelings of freshness, nature, and organic beauty
+- **Gotcha**: Leaf-shaped borders create a distinctive organic aesthetic with flowing movements that feel alive and dynamic - different from all previous shape patterns used
+- **Gotcha**: Ivory backgrounds (#FAFAF6) provide warm clean foundation that pairs beautifully with emerald greens, creating a fresh, natural atmosphere
+- **Gotcha**: The emerald palette differentiates significantly from both cool (amethyst, sapphire) and warm (orchid, amber) palettes of previous sites while maintaining the premium aesthetic expected by aesthetic clinic clients
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
 ---
 
 ## 2025-02-08 - US-060
