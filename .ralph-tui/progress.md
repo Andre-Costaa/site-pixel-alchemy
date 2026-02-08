@@ -10,6 +10,49 @@ after each iteration and it's included in prompts for context.
 - **Ivory & Emerald Noir Palette**: `--color-emerald: #2D5A4A`, `--color-emerald-light: #3D7A6A`, `--color-emerald-mid: #4A8A7A`, `--color-emerald-dark: #1D3A2A`, `--color-emerald-deep: #0D2A1A`, `--color-emerald-mist: #E8F0EC`, `--color-ivory: #FAFAF6`, `--color-ivory-warm: #F5F5F0`, `--color-sage: #8BA89A`, `--color-gold: #B89B5A` - natural, sophisticated aesthetic with organic qualities inspired by leaves and nature
 - **Leaf Border Radius**: `--radius-leaf-1: 65% 35% 45% 55% / 55% 45% 55% 45%`, `--radius-leaf-2: 45% 55% 65% 35% / 45% 55% 45% 55%`, `--radius-leaf-3: 55% 45% 35% 65% / 55% 45% 55% 45%`, `--radius-leaf-4: 35% 65% 55% 45% / 45% 55% 45% 55%` for organic, leaf-shaped animations that feel natural and alive
 - **Libre Baskerville + Outfit Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+- **Ruby Noir & Antique Silver Palette**: `--color-ruby: #B83A5A`, `--color-ruby-light: #D84A7A`, `--color-ruby-dark: #982A4A`, `--color-ruby-deep: #681A2A`, `--color-silver: #B8B8C0`, `--color-silver-light: #C8C8D0`, `--color-silver-antique: #A8A8B0`, `--color-porcelain: #FAFAF8` - warm, luxurious aesthetic with crystalline gemstone qualities
+- **Gemstone Faceted Border Radius**: `--radius-faceted-1: 55% 45% 40% 60% / 50% 40% 60% 50%`, `--radius-faceted-2: 45% 55% 60% 40% / 40% 60% 50% 40%`, `--radius-faceted-3: 60% 40% 50% 50% / 45% 55% 40% 55%`, `--radius-faceted-4: 40% 60% 50% 50% / 55% 45% 50% 45%` for faceted, crystalline shapes with sharp angular qualities
+- **Crimson Pro + Space Grotesk Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated warmth
+
+---
+
+## 2026-02-08 - US-072
+- Created complete website for Dra. Miriam Freitas - Estética Facial e Corporal em Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-miriam-freitas-estetica-facial-e-corporal/index.html` (new)
+- **Design Concept**: Ruby Noir & Antique Silver aesthetic with deep ruby reds, antique silver accents, and porcelain backgrounds. A completely new warm luxurious direction from previous palettes. Gemstone faceted border-radius patterns create crystalline, elegant animations reminiscent of precious gemstones.
+- **Typography**: Crimson Pro (display) paired with Space Grotesk (body) for elegant warmth with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating gemstone-faceted backgrounds using gradient meshes
+  - Gemstone faceted border-radius patterns (`--radius-faceted-1`, `--radius-faceted-2`, `--radius-faceted-3`, `--radius-faceted-4`) create crystalline, luxurious animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Corporais)
+  - 3 testimonial cards with gradient avatars on ruby background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Magda Perona Frossard, 770 - Sala 10 - Nova Aliança, Ribeirão Preto - SP, 14026-596, Brazil | (16) 99205-3308
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-miriam-freitas-estetica-facial-e-corporal
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view (375x812) responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Ruby Noir & Antique Silver palette creates a warm, luxurious aesthetic with crystalline qualities that conveys elegance and premium beauty - completely different from all previous palettes
+- **Pattern**: Gemstone faceted border-radius shapes (`55% 45% 40% 60% / 50% 40% 60% 50%`) provide a more crystalline, angular interpretation of blobmorphism that feels elegant and luxurious
+- **Pattern**: Crimson Pro + Space Grotesk typography pairing combines elegant serif warmth with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The ruby-silver-porcelain palette feels more luxurious and warm while maintaining premium positioning - it evokes feelings of elegance, luxury, and timeless beauty
+- **Gotcha**: Gemstone faceted borders create a distinctive crystalline aesthetic with angular movements that feel luxurious and dynamic - different from all previous shape patterns used (leaf, flame, petal, diamond, geode, etc.)
+- **Gotcha**: Porcelain backgrounds (#FAFAF8) provide warmth with subtle cool undertones, creating a clean, elegant foundation that pairs beautifully with ruby tones
+- **Gotcha**: The ruby palette differentiates significantly from all previous options (emerald, amethyst, sapphire, lavender, sage, amber, plum, burgundy, etc.) while maintaining the premium aesthetic expected by aesthetic clinic clients
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
 
