@@ -30,6 +30,9 @@ after each iteration and it's included in prompts for context.
 - **Platinum Noir & Rose Gold Palette**: `--color-platinum: #B8B8C0`, `--color-platinum-light: #C8C8D0`, `--color-platinum-mid: #D8D8E0`, `--color-platinum-dark: #A8A8B0`, `--color-platinum-deep: #888890`, `--color-platinum-shimmer: #E8E8F0`, `--color-rose-gold: #C9A088`, `--color-rose-gold-light: #D9B098`, `--color-rose-gold-mid: #E0C0A8`, `--color-rose-gold-dark: #B89078`, `--color-rose-gold-deep: #A87860`, `--color-rose-gold-shimmer: #E8D0C0`, `--color-noir: #1A1A1A`, `--color-noir-charcoal: #2A2A2A`, `--color-alabaster: #FAFAF8`, `--color-cream: #F0ECE8` - sophisticated, modern medical-elegant aesthetic with cool platinum silver tones and warm rose gold metallic accents
 - **Structural/Nasal Architecture Border Radius**: `--radius-struct-1: 68% 32% 48% 52% / 52% 38% 62% 48%`, `--radius-struct-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-struct-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-struct-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for architectural, structural shapes that reference nasal anatomy and sophisticated geometry
 - **Libre Baskerville + Manrope Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability with contemporary edge
+- **Obsidian Noir & Champagne Quartz Palette**: `--color-obsidian: #0D0D0F`, `--color-obsidian-light: #1A1A1F`, `--color-obsidian-mid: #252530`, `--color-obsidian-dark: #08080A`, `--color-obsidian-deep: #050507`, `--color-champagne: #D4B896`, `--color-champagne-light: #E8D4B8`, `--color-champagne-mid: #F0E0C8`, `--color-champagne-dark: #C4A878`, `--color-champagne-deep: #B49868`, `--color-champagne-shimmer: #F8F0E0`, `--color-quartz: #E8E0D8`, `--color-quartz-rose: #F0E8E0`, `--color-quartz-warm: #F5F0E8` - sophisticated, modern crystalline aesthetic inspired by luxury quartz crystal jewelry
+- **Quartz Crystal Border Radius**: `--radius-crystal-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-crystal-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-crystal-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-crystal-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for faceted, crystalline shapes with angular qualities reminiscent of quartz crystals
+- **Libre Baskerville + Plus Jakarta Sans Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability
 
 ---
 
@@ -1323,4 +1326,46 @@ after each iteration and it's included in prompts for context.
 - **Gotcha**: Alabaster backgrounds (#FAFAF8) provide a clean, sophisticated foundation that pairs beautifully with both cool platinum and warm rose gold tones
 - **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
 - **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
+
+---
+
+## 2026-02-08 - US-079
+- Created complete website for Dra. Fernanda Nirschl - Harmonização Facial e Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-fernanda-nirschl/index.html` (new)
+- **Design Concept**: Obsidian Noir & Champagne Quartz aesthetic with deep obsidian blacks, champagne quartz crystal accents, and warm neutral backgrounds. A completely new sophisticated crystalline direction from all previous 30+ palettes - inspired by the luxury of quartz crystal jewelry and premium medical aesthetics. Quartz crystal border-radius patterns create faceted, crystalline animations reminiscent of precious gemstones.
+- **Typography**: Libre Baskerville (display) paired with Plus Jakarta Sans (body) for classic elegant serif sophistication with modern geometric readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating quartz crystal-shaped backgrounds using gradient meshes
+  - Quartz crystal border-radius patterns (`--radius-crystal-1`, `--radius-crystal-2`, `--radius-crystal-3`, `--radius-crystal-4`) create faceted, crystalline animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on obsidian-light, solution cards on obsidian-mid)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on obsidian background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Av. Leais Paulista, 864 - Jardim Irajá, Ribeirão Preto - SP, 14020-650, Brazil | (16) 99725-2814
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-fernanda-nirschl
+
+**Learnings**:
+- **Pattern**: Obsidian Noir & Champagne Quartz palette creates a sophisticated, modern aesthetic that balances deep obsidian blacks (#0D0D0F) with warm champagne quartz crystal accents (#D4B896) - completely different from all 30+ previous palettes
+- **Pattern**: The obsidian-champagne quartz combination is inspired by luxury crystal jewelry and premium medical aesthetics, creating a sophisticated, luxurious aesthetic that feels modern and refined
+- **Pattern**: Quartz crystal border-radius shapes (`72% 28% 48% 52% / 52% 38% 62% 48%`) provide a faceted, crystalline interpretation of blobmorphism that feels like precious gemstones with angular qualities
+- **Pattern**: Libre Baskerville + Plus Jakarta Sans typography pairing combines classic elegant serif sophistication with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The obsidian-champagne quartz palette feels more sophisticated and modern while maintaining premium positioning - it evokes feelings of luxury, refinement, and premium quality
+- **Gotcha**: Quartz crystal-shaped borders create a distinctive faceted animation that feels crystalline and elegant without being distracting - different from all previous 30+ shape patterns used (orchid petal, ceramic curve, ellipse, faceted, leaf, flame, petal, diamond, geode, wave, pearl tooth, structural, etc.)
+- **Gotcha**: The deep obsidian tones paired with warm champagne quartz creates a sophisticated color harmony that feels balanced and luxurious - the darkest palette used yet while maintaining elegance
+- **Gotcha**: The obsidian-champagne quartz aesthetic is particularly appropriate for facial harmonization and advanced esthetics clinics seeking a sophisticated, luxurious brand identity that conveys both modernity and refinement
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
+
+**Codebase Patterns Added**:
+- **Obsidian Noir & Champagne Quartz Palette**: `--color-obsidian: #0D0D0F`, `--color-obsidian-light: #1A1A1F`, `--color-obsidian-mid: #252530`, `--color-obsidian-dark: #08080A`, `--color-obsidian-deep: #050507`, `--color-champagne: #D4B896`, `--color-champagne-light: #E8D4B8`, `--color-champagne-mid: #F0E0C8`, `--color-champagne-dark: #C4A878`, `--color-champagne-deep: #B49868`, `--color-champagne-shimmer: #F8F0E0`, `--color-quartz: #E8E0D8`, `--color-quartz-rose: #F0E8E0`, `--color-quartz-warm: #F5F0E8` - sophisticated, modern crystalline aesthetic inspired by luxury quartz crystal jewelry
+- **Quartz Crystal Border Radius**: `--radius-crystal-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-crystal-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-crystal-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-crystal-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for faceted, crystalline shapes with angular qualities reminiscent of quartz crystals
+- **Libre Baskerville + Plus Jakarta Sans Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability
+
 ---
