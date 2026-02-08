@@ -414,3 +414,48 @@ after each iteration and it's included in prompts for context.
 - **Cormorant Garamond + DM Sans Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2025-02-08 - US-057
+- Created complete website for Dra. Karen Veronese - Harmonização Facial em Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-karen-veronese/index.html` (new)
+- **Design Concept**: Opal & Dusty Rose Noir aesthetic with opal whites/iridescents, dusty rose accents, and deep charcoal backgrounds. A completely new luminous direction from previous palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink). Opal shard-shaped border-radius patterns create crystalline, luminous animations reminiscent of opalescent gemstones.
+- **Typography**: Libre Baskerville (display) paired with Inter (body) for sophisticated, elegant readability with a classic Google Fonts pairing that avoids generic fonts
+- **Key Features Implemented**:
+  - Animated hero with 4 floating opal shard backgrounds using gradient meshes
+  - Opal shard border-radius patterns (`--radius-shard-1`, `--radius-shard-2`, `--radius-shard-3`, `--radius-shard-4`) create crystalline, luminous animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on charcoal background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Rua Milton José Robusti, 75 - sala 103 - Jardim Botânico, Ribeirão Preto - SP, 14021-613 | (16) 99153-9505
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-karen-veronese
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings**:
+- **Pattern**: Opal & Dusty Rose Noir palette creates a luminous, sophisticated aesthetic with iridescent qualities that conveys radiance and transformation - perfect for facial harmonization clinics seeking a modern yet timeless feel
+- **Pattern**: Opal shard border-radius shapes (`72% 28% 48% 52% / 52% 38% 62% 48%`) provide a more crystalline, geometric interpretation of blobmorphism with sharp angular qualities that feel architectural and modern
+- **Pattern**: Libre Baskerville + Inter typography pairing combines elegant serif display font with modern geometric sans-serif body font for sophisticated readability
+- **Gotcha**: The opal-dusty rose-charcoal palette feels more luminous and contemporary while maintaining premium positioning - it evokes feelings of radiance, transformation, and modern elegance
+- **Gotcha**: Opal shard-shaped borders create a distinctive crystalline aesthetic with sharp angular movements that feel alive and dynamic - different from the softer organic patterns used in previous sites
+- **Gotcha**: Opal white backgrounds (#F8F6F4) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more luminous foundation
+- **Gotcha**: Using charcoal dark backgrounds in testimonials and footer creates strong visual impact and reinforces the modern, sophisticated aesthetic
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Opal & Dusty Rose Noir Palette**: `--color-opal-white: #F8F6F4`, `--color-opal-light: #E8E4E0`, `--color-opal-mid: #D8D4D0`, `--color-opal-warm: #C8C4BC`, `--color-dusty-rose: #C9A8A8`, `--color-dusty-rose-light: #D9B8B8`, `--color-dusty-rose-dark: #A88888`, `--color-dusty-rose-deep: #886868`, `--color-charcoal: #2A2A2A`, `--color-charcoal-dark: #1A1A1A` - luminous, sophisticated palette perfect for modern aesthetic clinics
+- **Opal Shard Border Radius**: `--radius-shard-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-shard-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-shard-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-shard-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for crystalline, geometric shapes with sharp angular qualities
+- **Libre Baskerville + Inter Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
