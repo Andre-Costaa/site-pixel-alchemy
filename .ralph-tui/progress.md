@@ -933,3 +933,49 @@ after each iteration and it's included in prompts for context.
 - **Playfair Display + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2026-02-08 - US-069
+- Created complete website for Dra. Camila Barcellos - Medicina e Autoestima in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-camila-barcellos/index.html` (new)
+- **Design Concept**: Orchid Noir & Antique Brass aesthetic with deep orchid purples (#8B5A8A, #A87AA8, #6B3A6B), warm antique brass (#A87848, #B88858, #986838), and warm porcelain backgrounds (#FAFAF8, #F5F5F2). A completely new warm feminine direction from all previous 22 palettes. Orchid petal-shaped border-radius patterns create organic, flowing animations reminiscent of orchid flowers.
+- **Typography**: Crimson Pro (display) paired with Plus Jakarta Sans (body) for elegant sophistication with modern geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating orchid petal-shaped backgrounds using gradient meshes
+  - Orchid petal border-radius patterns (`--radius-orchid-1`, `--radius-orchid-2`, `--radius-orchid-3`, `--radius-orchid-4`) create organic, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on orchid-deep background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Stélio Machado Loureiro, 480 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-470, Brazil | (14) 99793-4138
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-camila-barcellos
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view (375x812) responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings**:
+- **Pattern**: Orchid Noir & Antique Brass palette creates a sophisticated, warm feminine aesthetic with elegant qualities that conveys beauty and transformation - completely different from all 22 previous palettes
+- **Pattern**: Orchid petal border-radius shapes (`68% 32% 52% 48% / 52% 38% 62% 48%`) provide a more organic, floral interpretation of blobmorphism with gentle curves that feel elegant and feminine
+- **Pattern**: Crimson Pro + Plus Jakarta Sans typography pairing combines elegant serif sophistication with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The orchid-brass-porcelain palette feels warmer and more feminine while maintaining premium positioning - it evokes feelings of beauty, transformation, and self-esteem (perfect for "Medicina e Autoestima" branding)
+- **Gotcha**: Orchid petal-shaped borders create a distinctive organic animation that feels elegant and feminine without being distracting - different from all previous shape patterns used
+- **Gotcha**: The orchid color family (#8B5A8A, #A87AA8, #6B3A6B) evokes beautiful orchid flowers - perfect for facial harmonization clinics seeking a sophisticated, feminine brand
+- **Gotcha**: Antique brass accents (#A87848, #B88858, #986838) add warmth and vintage sophistication that complements the cool orchid tones perfectly - creates a balanced, elegant color harmony
+- **Gotcha**: Warm porcelain backgrounds (#FAFAF8, #F5F5F2) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more modern foundation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Orchid Noir & Antique Brass Palette**: `--color-orchid: #8B5A8A`, `--color-orchid-light: #A87AA8`, `--color-orchid-mid: #986A98`, `--color-orchid-dark: #6B3A6B`, `--color-orchid-deep: #4B2A4B`, `--color-orchid-mist: #F0E8F0`, `--color-brass: #A87848`, `--color-brass-light: #B88858`, `--color-brass-mid: #C89868`, `--color-brass-dark: #986838`, `--color-brass-deep: #784828`, `--color-brass-shimmer: #D8A878`, `--color-porcelain: #FAFAF8`, `--color-porcelain-warm: #F5F5F2`, `--color-porcelain-soft: #F0F0EC`, `--color-ivory: #F8F6F4`, `--color-charcoal: #2A2828`, `--color-charcoal-dark: #1A1818`, `--color-ink: #1A1A1A`, `--color-ink-deep: #0F0F12` - sophisticated, warm feminine aesthetic perfect for premium aesthetic clinics
+- **Orchid Petal Border Radius**: `--radius-orchid-1: 68% 32% 52% 48% / 52% 38% 62% 48%`, `--radius-orchid-2: 48% 52% 62% 38% / 42% 58% 42% 58%`, `--radius-orchid-3: 58% 42% 48% 52% / 52% 48% 52% 48%`, `--radius-orchid-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, flowing orchid petal-like shapes with gentle curves
+- **Crimson Pro + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
