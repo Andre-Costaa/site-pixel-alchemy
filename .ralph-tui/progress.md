@@ -53,6 +53,10 @@ after each iteration and it's included in prompts for context.
 - **Glamour Glow Border Radius**: `--radius-glamour-1: 72% 28% 46% 54% / 54% 38% 62% 48%`, `--radius-glamour-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-glamour-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-glamour-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for organic, luminous glamour glow-shaped animations with crystal facet and glow effect qualities
 - **Crimson Pro + Outfit Typography**: Elegant serif display font with sophisticated warmth paired with modern geometric sans-serif body font for contemporary readability and distinctive character
 
+- **Sapphire Noir & Pearl Frost Palette**: `--sapphire-deep: #0D1A3A`, `--sapphire-dark: #1A2A5A`, `--sapphire-mid: #2A3A7A`, `--sapphire-light: #3A4A9A`, `--sapphire-pale: #5A6AB8`, `--sapphire-frost: #8A9AD8`, `--pearl-frost: #E8F0F8`, `--pearl-frost-light: #F0F5FA`, `--pearl-frost-dark: #D8E8F0`, `--pearl-ice: #F8FAFC`, `--crystal-ice: #A8D0E8`, `--crystal-blue: #88C0E0`, `--frost-white: #F0F8FF` - cool, sophisticated crystalline aesthetic with sapphire blue tones and pearl frost whites
+- **Crystalline Border Radius**: `--radius-crystal-1: 75% 25% 45% 55% / 55% 35% 65% 45%`, `--radius-crystal-2: 45% 55% 75% 25% / 35% 65% 35% 65%`, `--radius-crystal-3: 65% 35% 40% 60% / 60% 40% 60% 40%`, `--radius-crystal-4: 40% 60% 60% 40% / 40% 60% 40% 60%` for angular, faceted, crystalline shapes with sharp qualities reminiscent of ice crystals and sapphire gemstones
+- **Tenor Sans + Inter Typography**: Elegant sophisticated serif display font with classical qualities paired with modern geometric sans-serif body font for distinctive readability with contemporary edge
+
 ---
 
 ## 2026-02-08 - US-086
@@ -1659,5 +1663,42 @@ after each iteration and it's included in prompts for context.
 - **Gotcha**: Outfit provides modern geometric sans-serif qualities that make it unique from previous body font choices (Plus Jakarta Sans, Manrope, Jost, Space Grotesk, Satoshi, DM Sans, Instrument Sans, etc.)
 - **Gotcha**: The gradient-glamour gradient (`linear-gradient(135deg, var(--rose-quartz-light) 0%, var(--gilded-gold-light) 50%, var(--rose-quartz-pale) 100%)`) creates a luxurious rose-gold transition effect that's perfect for feminine glamour brands
 - **Gotcha**: The glamour glow aesthetic is particularly appropriate for clinics named "Glamoré" as it reinforces the glamour and luxury positioning while maintaining medical professionalism
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+---
+
+## 2026-02-08 - US-087
+- Created complete website for Clínica Harmoniser - Estética de Alta Performance in Ribeirão Preto
+- Files changed:
+  - `site-demo/clinica-harmoniser/index.html` (new)
+- **Design Concept**: Sapphire Noir & Pearl Frost aesthetic with cool sapphire blue tones, pearl frost whites, and icy crystal accents. A completely new crystalline frosted direction from all previous 50+ palettes - inspired by the elegant qualities of sapphire crystals and frost-kissed pearl surfaces. Crystalline border-radius patterns create angular, faceted animations reminiscent of ice crystals and sapphire gemstones.
+- **Typography**: Tenor Sans (display) paired with Inter (body) for elegant sophisticated serif luxury with modern geometric sans-serif readability - the first use of Tenor Sans in the project, providing a distinctive elegant display serif with classical qualities
+- **Key Features Implemented**:
+  - Animated hero with 4 floating crystalline-shaped backgrounds using gradient meshes
+  - Crystalline border-radius patterns (`--radius-crystal-1`, `--radius-crystal-2`, `--radius-crystal-3`, `--radius-crystal-4`) create angular, faceted animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on dark, solution cards on noir gradient)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on midnight background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Ribeirão Preto - SP | (16) 99716-2770
+- **Demo URL**: pixelalchemy.com.br/site-demo/clinica-harmoniser
+
+**Learnings**:
+- **Pattern**: Sapphire Noir & Pearl Frost palette creates a cool, sophisticated crystalline aesthetic with sapphire blue tones and pearl frost whites that conveys icy elegance and precision - completely different from all 50+ previous palettes
+- **Pattern**: Crystalline border-radius shapes (`75% 25% 45% 55% / 55% 35% 65% 45%`) provide a more angular, faceted interpretation of blobmorphism with qualities that feel like ice crystals and sapphire gemstones
+- **Pattern**: Tenor Sans + Inter typography pairing combines elegant sophisticated serif luxury with modern geometric sans-serif for distinctive readability with contemporary edge
+- **Gotcha**: The sapphire-frost-icy-crystal palette feels more cool and precise while maintaining premium positioning - it evokes feelings of clarity, refinement, and crystalline beauty
+- **Gotcha**: Crystalline-shaped borders create a distinctive angular animation that feels icy and dynamic without being distracting - different from all 50+ previous shape patterns (orchid petal, geode, leaf, wave, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, ribbon, aurora wave, glamour glow, arch, etc.)
+- **Gotcha**: The sapphire blue tones (#0D1A3A, #1A2A5A, #2A3A7A) paired with pearl frost whites (#E8F0F8, #F0F5FA, #F8FAFC) creates a sophisticated color harmony that feels cool and elegant - perfect for high-performance facial harmonization clinics seeking a unique, precise brand identity
+- **Gotcha**: The icy crystal accents (#A8D0E8, #88C0E0) provide cool blue tones that reference the clarity of ice crystals and sapphire gemstones, adding crystalline depth to the palette
+- **Gotcha**: Tenor Sans is a distinctive choice for display typography - it provides elegant serif qualities with classical refinement that make it unique from all previous font choices (Crimson Pro, Cormorant Garamond, Playfair Display, Libre Baskerville, EB Garamond, Bodoni Moda, etc.)
+- **Gotcha**: The frost-kissed pearl backgrounds (#E8F0F8, #F0F5FA, #F8FAFC) are cooler and crisper than previous pearl palettes, creating a more icy and sophisticated foundation
 - **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
 - **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile

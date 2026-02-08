@@ -2,6 +2,36 @@
 
 ## Current Status
 
+### US-087 - Clínica Harmoniser - Estética de Alta Performance - ✅ COMPLETED
+**Status**: Site profissional completo criado e testado
+**URL**: https://pixelalchemy.com.br/site-demo/clinica-harmoniser
+
+### Site Details
+- **Cliente**: Clínica Harmoniser
+- **Especialidade**: Estética de Alta Performance - Harmonização Facial
+- **Localização**: Ribeirão Preto - SP
+- **Telefone**: (16) 99716-2770
+
+### Design Features
+- **Estética**: Sapphire Noir & Pearl Frost (safira azul profundo, pearl frost branco, icy crystal accents) - paleta cool, sofisticada e cristalina inspirada em cristais de safira e superfícies de pearl frost
+- **Tipografia**: Tenor Sans (títulos) + Inter (corpo) - combinação elegante de serif display com qualidades clássicas e sofisticação calorosa com sans-serif geométrico moderno com legibilidade contemporânea
+- **Animações**: 4 formas de crystalline flutuantes com border-radius crystalline-shaped para efeito angular e facetado
+- **Seções**: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- **Integração**: Formulário de contato com WhatsApp
+
+### Testes Realizados
+- ✅ Desktop view verificado
+- ✅ Mobile view (375x812) verificado
+- ✅ Formulário WhatsApp testado
+- ✅ Smooth scroll navigation
+- ✅ Animações Intersection Observer
+- ✅ Accessibility (prefers-reduced-motion)
+
+### Files
+- `site-demo/clinica-harmoniser/index.html` (1932 linhas, ~62 KB)
+
+---
+
 ### US-086 - Clínica Glamoré - Dra. Jéssica Baleia - ✅ COMPLETED
 **Status**: Site profissional completo criado e testado
 **URL**: https://pixelalchemy.com.br/site-demo/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez
