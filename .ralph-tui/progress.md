@@ -979,3 +979,43 @@ after each iteration and it's included in prompts for context.
 - **Crimson Pro + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2026-02-08 - US-070
+- Created complete website for Botolifting - Clínica de Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/botolifting-clinica-de-estetica-avancada/index.html` (new)
+- **Design Concept**: Champagne Noir & Rose Gold aesthetic with warm champagne gold (#D4A872, #E8C898), soft rose gold (#C8909C, #D8A8AC), pearl backgrounds (#FAFAF8), and noir accents (#1A1A1A). A completely new luxurious direction from all previous 24 palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink, opal/dusty rose, coral/seafoam, burgundy/gold, porcelain/rouge, chrome/violet, amethyst/platinum, rose gold/champagne diamond, teal/copper, onyx/bronze patina, moss/burnt sienna, jade/brushed gold, aurora/pearl silver, orchid/antique brass). Bubble-shaped border-radius patterns create organic, effervescent animations reminiscent of champagne bubbles.
+- **Typography**: Playfair Display (display) paired with Plus Jakarta Sans (body) for sophisticated elegance with modern geometric character
+- **Key Features Implemented**:
+  - Animated hero with 4 floating bubble-shaped backgrounds using gradient meshes
+  - Bubble border-radius patterns (`--radius-bubble-1`, `--radius-bubble-2`, `--radius-bubble-3`, `--radius-bubble-4`) create organic, effervescent animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Av. Sen. César Vergueiro, 1027 - Jardim Irajá, Ribeirão Preto - SP, 14020-500, Brazil | (16) 3325-7725
+- **Demo URL**: pixelalchemy.com.br/site-demo/botolifting-clinica-de-estetica-avancada
+
+**Learnings**:
+- **Pattern**: Champagne Noir & Rose Gold palette creates a luxurious, sophisticated aesthetic with warm effervescent qualities that conveys celebration and transformation - completely different from all 24 previous palettes
+- **Pattern**: Bubble border-radius shapes (`65% 35% 55% 45% / 50% 45% 55% 50%`) provide a more organic, effervescent interpretation of blobmorphism with gentle curves that feel like champagne bubbles
+- **Pattern**: Playfair Display + Plus Jakarta Sans typography pairing combines elegant serif display with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The champagne-rose gold-pearl palette feels more luxurious and celebratory while maintaining premium positioning - it evokes feelings of celebration, luxury, and transformative beauty
+- **Gotcha**: Bubble-shaped borders create a distinctive effervescent animation that feels organic and celebratory without being distracting - different from all previous shape patterns used
+- **Gotcha**: The champagne color family (#D4A872, #E8C898) evokes celebratory champagne - perfect for aesthetic clinics seeking a luxurious, celebratory brand that suggests transformation and renewal
+- **Gotcha**: Rose gold accents (#C8909C, #D8A8AC) add warmth and femininity that complements the warm champagne tones perfectly - creates a balanced, luxurious color harmony
+- **Gotcha**: Pearl backgrounds (#FAFAF8, #F5F5F0) provide warmth and sophistication without being as yellow-based as cream tones, creating a cleaner, more luminous foundation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Champagne Noir & Rose Gold Palette**: `--color-champagne: #D4A872`, `--color-champagne-light: #E8C898`, `--color-champagne-dark: #B89060`, `--color-champagne-deep: #987848`, `--color-champagne-shimmer: #F5E8D0`, `--color-rose-gold: #C8909C`, `--color-rose-gold-light: #D8A8AC`, `--color-rose-gold-dark: #A87884`, `--color-rose-gold-deep: #885868`, `--color-rose-gold-mist: #F0E0E4`, `--color-pearl: #FAFAF8`, `--color-pearl-warm: #F5F5F0`, `--color-pearl-soft: #F0F0E8`, `--color-noir: #1A1A1A`, `--color-noir-deep: #0F0F12`, `--color-charcoal: #2A2828`, `--color-charcoal-dark: #1A1818` - luxurious, celebratory aesthetic perfect for premium aesthetic clinics
+- **Bubble Border Radius**: `--radius-bubble-1: 65% 35% 55% 45% / 50% 45% 55% 50%`, `--radius-bubble-2: 45% 55% 40% 60% / 55% 45% 55% 45%`, `--radius-bubble-3: 55% 45% 60% 40% / 40% 60% 40% 60%`, `--radius-bubble-4: 40% 60% 45% 55% / 60% 40% 60% 40%` for organic, effervescent bubble-like shapes with gentle curves
+- **Playfair Display + Plus Jakarta Sans Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
