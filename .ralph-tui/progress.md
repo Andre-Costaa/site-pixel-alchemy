@@ -847,3 +847,43 @@ after each iteration and it's included in prompts for context.
 - **Cormorant Garamond + Space Grotesk Typography**: Classical serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
+
+## 2026-02-08 - US-067
+- Created complete website for Dr Brunno Rodrigues - Harmonização Facial e Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dr-brunno-rodrigues/index.html` (new)
+- **Design Concept**: Jade Noir & Brushed Gold aesthetic with deep jade greens (#2A6B5A, #3A8B7A, #1A4B3A), warm brushed gold (#B89858, #C8A868, #A88048), and rice paper backgrounds (#FAFAF8, #F5F5F2). A completely new sophisticated direction from all previous 20 palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne, pearl/mink, opal/dusty rose, coral/seafoam, burgundy/gold, porcelain/rouge, chrome/violet, amethyst/platinum, rose gold/champagne diamond, teal/copper, onyx/bronze patina, moss/burnt sienna). Jade stone-shaped border-radius patterns create refined, organic animations reminiscent of carved jade stones.
+- **Typography**: Crimson Pro (display) paired with Manrope (body) for sophisticated elegance with modern readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating jade stone-shaped backgrounds using gradient meshes
+  - Jade stone border-radius patterns (`--radius-jade-1`, `--radius-jade-2`, `--radius-jade-3`, `--radius-jade-4`) create refined, organic animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on jade background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. João Penteado, 1545 - Jardim America, Ribeirão Preto - SP, 14020-180, Brazil | (16) 99122-0511
+- **Demo URL**: pixelalchemy.com.br/site-demo/dr-brunno-rodrigues
+
+**Learnings**:
+- **Pattern**: Jade Noir & Brushed Gold palette creates a sophisticated, refined aesthetic with masculine elegance that conveys precision and transformation - completely different from all 20 previous palettes
+- **Pattern**: Jade stone border-radius shapes (`68% 32% 52% 48% / 52% 38% 62% 48%`) provide a more refined, organic interpretation of blobmorphism with subtle angular qualities that feel carved and polished
+- **Pattern**: Crimson Pro + Manrope typography pairing combines elegant serif sophistication with modern geometric sans-serif for refined readability
+- **Gotcha**: The jade-gold-rice paper palette feels more sophisticated and masculine while maintaining premium positioning - it evokes feelings of precision, craftsmanship, and Eastern-inspired elegance
+- **Gotcha**: Jade stone-shaped borders create a distinctive refined animation that feels organic and polished without being distracting - different from all previous shape patterns used
+- **Gotcha**: The jade color family (#2A6B5A, #3A8B7A, #1A4B3A) evokes precious carved jade stones - perfect for facial harmonization clinics seeking a sophisticated, masculine brand
+- **Gotcha**: Brushed gold accents (#B89858, #C8A868, #A88048) add metallic quality that complements the cool jade tones perfectly - creates a balanced, sophisticated color harmony
+- **Gotcha**: Rice paper backgrounds (#FAFAF8, #F5F5F2) provide warmth and subtle texture without being as yellow-based as champagne tones, creating a refined foundation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Jade Noir & Brushed Gold Palette**: `--color-jade: #2A6B5A`, `--color-jade-light: #3A8B7A`, `--color-jade-mid: #4A9B8A`, `--color-jade-dark: #1A4B3A`, `--color-jade-deep: #0A2B1A`, `--color-jade-mist: #E8F5F0`, `--color-gold: #B89858`, `--color-gold-light: #C8A868`, `--color-gold-mid: #D8B878`, `--color-gold-dark: #A88048`, `--color-gold-deep: #886038`, `--color-gold-shimmer: #E8D8C0`, `--color-rice-paper: #FAFAF8`, `--color-rice-warm: #F5F5F2`, `--color-rice-soft: #F0F0EC`, `--color-ink-black: #1A1A1A`, `--color-ink-deep: #0F0F12` - sophisticated, masculine elegance perfect for premium aesthetic clinics
+- **Jade Stone Border Radius**: `--radius-jade-1: 68% 32% 52% 48% / 52% 38% 62% 48%`, `--radius-jade-2: 48% 52% 62% 38% / 42% 58% 42% 58%`, `--radius-jade-3: 58% 42% 48% 52% / 52% 48% 52% 48%`, `--radius-jade-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for refined, organic jade stone-like shapes with subtle angular qualities
+- **Crimson Pro + Manrope Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
