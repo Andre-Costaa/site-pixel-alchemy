@@ -181,6 +181,51 @@ after each iteration and it's included in prompts for context.
 - **Ethereal Emerald & Silk Palette**: `--color-emerald: #2D7A6E`, `--color-emerald-light: #4A9A8C`, `--color-emerald-dark: #1F5A52`, `--color-silk-cream: #F7F5F0`, `--color-champagne: #C9A86C` - sophisticated, luxurious aesthetic perfect for premium aesthetic clinics
 - **Geometric-Elliptic Border Radius**: `--radius-ellipse: 70% 30% / 30% 70% 70% 30%` creates architectural, modern elliptic shapes that differentiate from organic blobs
 - **Bodoni Moda + Source Sans 3 Typography**: High-contrast serif display font paired with clean, readable sans-serif body font for sophisticated elegance
+- **Opulent Rose & Quartz Palette**: `--color-rose: #C8758A`, `--color-rose-light: #D99AA8`, `--color-rose-dark: #A85D6E`, `--color-quartz: #E8D5E0`, `--color-rose-mist: #FDF0F3` - warm, luxurious crystalline aesthetic
+- **Quartz Crystal Border Radius**: `--radius-quartz: 75% 25% / 35% 65% 65% 35%`, `--radius-quartz-2: 55% 45% / 65% 35% 45% 55%`, `--radius-quartz-3: 40% 60% / 55% 45% 35% 65%` for crystalline, geometric shapes
+- **Cormorant Garamond + Outfit Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance
+- **Amber & Bronze Noir Palette**: `--color-amber: #D48A3A`, `--color-amber-light: #E5A856`, `--color-amber-dark: #B86F1A`, `--color-bronze: #A67C42`, `--color-ivory: #FAF7F2` - warm, sophisticated amber/bronze tones on ivory backgrounds
+- **Flame Border Radius**: `--radius-flame: 65% 35% 45% 55% / 55% 45% 55% 45%` creates organic flame-like shapes with distinctive flickering animation
+- **Crimson Pro + DM Sans Typography**: Elegant serif display font paired with modern geometric sans-serif for sophisticated warmth
+
+---
+
+## 2025-02-08 - US-053
+- Created complete website for Dra. Nayara Nubia - Harmonização Facial e Estética Avançada em Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-nayara-nubia/index.html` (new)
+- **Design Concept**: Amber & Bronze Noir aesthetic with warm amber tones, bronze accents on ivory backgrounds. A completely new warm direction from previous palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz). Flame-shaped border-radius patterns create organic, flickering animations reminiscent of candlelight warmth.
+- **Typography**: Crimson Pro (display) paired with DM Sans (body) for elegant warmth with modern readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating flame-shaped backgrounds using gradient meshes
+  - Flame border-radius patterns (`--radius-flame`, `--radius-flame-2`, `--radius-flame-3`) create organic, flickering animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects on cards
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on amber background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: Praça Cornélio Píres, 143 - Jardim America, Ribeirão Preto - SP, 14020-229 | (16) 99302-4664
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-nayara-nubia
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings:**
+- **Pattern**: Amber & Bronze Noir palette creates a warm, sophisticated aesthetic with golden warmth that feels luxurious and approachable - perfect for facial harmonization clinics seeking a modern yet timeless feel
+- **Pattern**: Flame border-radius shapes (`65% 35% 45% 55% / 55% 45% 55% 45%`) provide a more organic interpretation of blobmorphism with unique asymmetrical flickering quality
+- **Pattern**: Crimson Pro + DM Sans typography pairing combines elegant serif warmth with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The amber-bronze-ivory palette feels warmer and more inviting than all previous options while maintaining premium positioning - it evokes feelings of luxury, warmth, and natural beauty
+- **Gotcha**: Flame-shaped borders create a distinctive flickering animation that feels alive and organic without being distracting - different from the floating blob patterns used in previous sites
+- **Gotcha**: Ivory backgrounds (#FAF7F2) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more modern foundation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
 
