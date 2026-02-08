@@ -358,5 +358,59 @@ after each iteration and it's included in prompts for context.
 - **Opulent Rose & Quartz Palette**: `--color-rose: #C8758A`, `--color-rose-light: #D99AA8`, `--color-rose-dark: #A85D6E`, `--color-quartz: #E8D5E0`, `--color-rose-mist: #FDF0F3` - warm, luxurious crystalline aesthetic
 - **Quartz Crystal Border Radius**: `--radius-quartz: 75% 25% / 35% 65% 65% 35%`, `--radius-quartz-2: 55% 45% / 65% 35% 45% 55%`, `--radius-quartz-3: 40% 60% / 55% 45% 35% 65%` for crystalline, geometric shapes
 - **Cormorant Garamond + Outfit Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance
+- **Amber & Bronze Noir Palette**: `--color-amber: #D48A3A`, `--color-amber-light: #E5A856`, `--color-amber-dark: #B86F1A`, `--color-bronze: #A67C42`, `--color-ivory: #FAF7F2` - warm, sophisticated amber/bronze tones on ivory backgrounds
+- **Flame Border Radius**: `--radius-flame: 65% 35% 45% 55% / 55% 45% 55% 45%` creates organic flame-like shapes with distinctive flickering animation
+- **Crimson Pro + DM Sans Typography**: Elegant serif display font paired with modern geometric sans-serif for sophisticated warmth
+- **Velvet Plum & Gold Noir Palette**: `--color-plum: #8B4A6B`, `--color-plum-light: #A85D82`, `--color-plum-dark: #6B3A52`, `--color-plum-deep: #4A2838`, `--color-plum-mist: #F8EDF5`, `--color-gold: #C9A86C` - warm, luxurious feminine aesthetic perfect for premium aesthetic clinics
+- **Petal Border Radius**: `--radius-petal: 68% 32% 42% 58% / 52% 38% 62% 48%`, `--radius-petal-2: 48% 52% 58% 42% / 38% 62% 48% 52%`, `--radius-petal-3: 58% 42% 48% 52% / 62% 38% 52% 48%` for organic, flowing petal-like shapes
+- **Playfair Display + Outfit Typography**: Elegant serif display font paired with modern geometric sans-serif body font for sophisticated elegance
+- **Sapphire Noir & Champagne Palette**: `--color-sapphire: #1E3A5F`, `--color-sapphire-light: #2A5298`, `--color-sapphire-dark: #0F2440`, `--color-sapphire-deep: #0A1830`, `--color-champagne: #D4AF77`, `--color-champagne-light: #E5C89A`, `--color-champagne-dark: #B8945C`, `--color-ivory: #FAF8F5` - sophisticated, trustworthy premium aesthetic perfect for clinics seeking to convey reliability and elegance
+- **Diamond Border Radius**: `--radius-diamond: 75% 25% 55% 45% / 45% 65% 35% 55%`, `--radius-diamond-2: 55% 45% 35% 65% / 65% 35% 55% 45%`, `--radius-diamond-3: 40% 60% 65% 35% / 55% 45% 35% 65%` for crystalline, geometric shapes with sharp architectural angles
+- **Cinzel Decorative + Manrope Typography**: Roman-inspired decorative serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
+
+---
+
+## 2025-02-08 - US-056
+- Created complete website for Beauté Clinic - Dra. Suzan Salvador - Harmonização Facial e Estética Avançada em Ribeirão Preto
+- Files changed:
+  - `site-demo/beaute-clinic/index.html` (new)
+- **Design Concept**: Pearl & Mink Noir aesthetic with soft pearl grays, warm mink brown, rose gold accents on cream backgrounds. A completely new cool-neutral direction from previous palettes (rose/gold, sage/pearl, lavender/mocha, emerald/silk, rose/quartz, amber/bronze, plum/gold, sapphire/champagne). Pearl-shaped border-radius patterns create soft, flowing animations reminiscent of luminous pearls.
+- **Typography**: Cormorant Garamond (display) paired with DM Sans (body) for sophisticated, elegant readability
+- **Key Features Implemented**:
+  - Animated hero with 4 floating pearl-shaped backgrounds using gradient meshes
+  - Pearl border-radius patterns (`--radius-pearl-1`, `--radius-pearl-2`, `--radius-pearl-3`, `--radius-pearl-4`) create soft, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Exclusivos)
+  - 3 testimonial cards with gradient avatars on mink-deep background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+- **Contact Info**: R. Adolfo Serra, 1352 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-520 | (16) 99728-7401
+- **Demo URL**: pixelalchemy.com.br/site-demo/beaute-clinic
+- **Verification**:
+  - Desktop view verified: ✓
+  - Mobile view responsive: ✓
+  - Form submission to WhatsApp: ✓
+  - Smooth scroll navigation: ✓
+  - All sections present: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer: ✓
+
+**Learnings**:
+- **Pattern**: Pearl & Mink Noir palette creates a cool, sophisticated aesthetic with French elegance that conveys timeless luxury - completely different from all warm palettes used previously
+- **Pattern**: Pearl border-radius shapes (`62% 38% 45% 55% / 58% 42% 58% 42%`) provide a more soft, flowing interpretation of blobmorphism with gentle curves that feel refined and elegant
+- **Pattern**: Cormorant Garamond + DM Sans typography pairing combines classic serif elegance with modern geometric sans-serif for sophisticated readability
+- **Gotcha**: The pearl-mink-rose-gold palette feels cooler and more refined than all previous options while maintaining premium positioning - it evokes feelings of timeless French elegance and sophistication
+- **Gotcha**: Pearl-shaped borders create a distinctive soft animation that feels luminous and organic without being distracting - different from the sharper geometric patterns of previous sites
+- **Gotcha**: Cream backgrounds (#FAF8F5) provide warmth without being as yellow-based as champagne tones, creating a cleaner, more modern foundation
+- **Gotcha**: The "Beauté" brand name (French for beauty) pairs perfectly with the Pearl & Mink Noir aesthetic - the pearl tones suggest luminous, radiant results from facial treatments
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
+
+**Codebase Patterns Added**:
+- **Pearl & Mink Noir Palette**: `--color-pearl: #E8E4DF`, `--color-pearl-light: #F5F2ED`, `--color-pearl-dark: #D0CCC7`, `--color-mink: #8B7E74`, `--color-mink-light: #A69D94`, `--color-mink-dark: #6B6158`, `--color-mink-deep: #4A423C`, `--color-rose-gold: #C9A88C`, `--color-rose-gold-light: #DCC0A8`, `--color-rose-gold-dark: #A88A6E`, `--color-cream: #FAF8F5` - ultra-sophisticated, quiet luxury palette with French elegance perfect for premium aesthetic clinics
+- **Pearl Mink Border Radius**: `--radius-pearl-1: 62% 38% 45% 55% / 58% 42% 58% 42%`, `--radius-pearl-2: 45% 55% 38% 62% / 42% 58% 42% 58%`, `--radius-pearl-3: 55% 45% 62% 38% / 48% 52% 48% 52%`, `--radius-pearl-4: 38% 62% 55% 45% / 52% 48% 52% 48%` for soft, flowing pearl-like shapes with gentle curves
+- **Cormorant Garamond + DM Sans Typography**: Classic serif display font paired with modern geometric sans-serif body font for sophisticated elegance with excellent readability
 
 ---
