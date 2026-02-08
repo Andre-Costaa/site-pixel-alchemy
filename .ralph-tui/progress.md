@@ -7,6 +7,10 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
+- **Jade Noir & Golden Pearl Palette**: `--color-jade: #2D6A5A`, `--color-jade-light: #3D8A7A`, `--color-jade-mid: #4A9A8A`, `--color-jade-dark: #1D4A3A`, `--color-jade-deep: #0D2A1A`, `--color-jade-mist: #D0E8E0`, `--color-jade-pale: #E8F0EC`, `--color-pearl-gold: #D4C4A8`, `--color-pearl-gold-light: #E8DCC8`, `--color-pearl-gold-mid: #F0E8DC`, `--color-pearl-gold-dark: #B8A888`, `--color-pearl-gold-deep: #A89878`, `--color-pearl-gold-shimmer: #FAF5F0`, `--color-noir-deep: #0A0A0F`, `--color-noir-dark: #12121A`, `--color-ivory-mist: #F0F0E8`, `--color-cream-light: #FAF8F5` - sophisticated, natural aesthetic with jade green tones representing harmony and balance, golden pearl warmth and luxury
+- **Jade Stone Border Radius**: `--radius-jade-1: 68% 32% 48% 52% / 52% 42% 58% 48%`, `--radius-jade-2: 48% 52% 68% 32% / 42% 58% 42% 58%`, `--radius-jade-3: 58% 42% 42% 58% / 52% 48% 52% 48%`, `--radius-jade-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, jade stone-shaped animations with natural qualities reminiscent of precious jade formations
+- **Cormorant Garamond + Instrument Sans Typography**: Elegant serif display font paired with refined geometric sans-serif body font for sophisticated luxury with contemporary professionalism - first use of both fonts in the project
+
 - **Bronze Orchid & Porcelain Noir Palette**: `--color-bronze: #B8860B`, `--color-bronze-light: #C9962C`, `--color-bronze-mid: #D4A542`, `--color-bronze-dark: #A67800`, `--color-bronze-deep: #966A00`, `--color-bronze-shimmer: #E0B860`, `--color-orchid: #8B4789`, `--color-orchid-light: #9B5799`, `--color-orchid-mid: #B069AA`, `--color-orchid-dark: #7B3879`, `--color-orchid-deep: #6B2969`, `--color-porcelain: #FAFAF8`, `--color-cream: #F0ECE8` - warm, luxurious metallic aesthetic with elegant floral orchid accents
 - **Orchid Petal Border Radius**: `--radius-orchid-1: 65% 35% 45% 55% / 55% 40% 60% 45%`, `--radius-orchid-2: 45% 55% 65% 35% / 40% 60% 35% 65%`, `--radius-orchid-3: 55% 45% 35% 65% / 60% 35% 55% 45%`, `--radius-orchid-4: 35% 65% 55% 45% / 35% 55% 45% 60%` for organic, floral petal-shaped animations with elegant qualities
 - **Cormorant Infant + Outfit Typography**: Unique elegant serif display font with playful infant qualities paired with modern geometric sans-serif body font for sophisticated warmth with personality
@@ -1575,5 +1579,43 @@ after each iteration and it's included in prompts for context.
 - **Gotcha**: The porcelain-gold-noir aesthetic is particularly appropriate for exclusive facelifting protocols seeking a premium brand identity that conveys both luxury and medical professionalism
 - **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
 - **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, trust indicators stacked on mobile
+
+---
+
+## 2026-02-08 - US-085
+- Created complete website for Dra. Zulene Ferreira – Harmonização Orofacial in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-zulene-ferreira-harmonizacao-orofacial/index.html` (new)
+- **Design Concept**: Jade Noir & Golden Pearl aesthetic with jade green tones representing harmony and balance, golden pearl warmth and luxury, and deep noir backgrounds for sophistication. A completely new natural-inspired direction from all previous 46+ palettes - inspired by the precious jade stone symbolizing harmony, balance, and renewal (perfect for facial harmonization). Jade stone border-radius patterns create organic, flowing animations reminiscent of natural jade formations.
+- **Typography**: Cormorant Garamond (display) paired with Instrument Sans (body) for elegant serif luxury with refined geometric sans-serif readability - the first use of both fonts in the project, providing distinctive character and sophistication
+- **Key Features Implemented**:
+  - Animated hero with 4 floating jade stone-shaped backgrounds using gradient meshes
+  - Jade stone border-radius patterns (`--radius-jade-1`, `--radius-jade-2`, `--radius-jade-3`, `--radius-jade-4`) create organic, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on dark, solution cards on dark gradient)
+  - 6 service cards (Harmonização Orofacial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects with staggered delays (0ms/100ms/200ms/300ms/400ms/500ms)
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Parallax effect for hero blobs on mouse movement
+- **Contact Info**: R. Chile, 1711 - Sala 504 - Jardim Irajá, Ribeirão Preto - SP, 14020-610, Brazil | (16) 99735-6029
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-zulene-ferreira-harmonizacao-orofacial
+
+**Learnings**:
+- **Pattern**: Jade Noir & Golden Pearl palette creates a sophisticated natural aesthetic with jade green tones representing harmony and balance, golden pearl warmth and luxury, and deep noir backgrounds for sophistication - completely different from all 46+ previous palettes
+- **Pattern**: Jade stone border-radius shapes (`68% 32% 48% 52% / 52% 42% 58% 48%`) provide an organic, flowing interpretation of blobmorphism with natural qualities that feel like precious jade stones and natural formations
+- **Pattern**: Cormorant Garamond + Instrument Sans typography pairing combines elegant serif luxury with refined geometric sans-serif for sophisticated readability with contemporary professionalism - the first use of both fonts in the project
+- **Pattern**: Jade green tones (#2D6A5A, #3D8A7A, #4A9A8A) paired with golden pearl accents (#D4C4A8, #E8DCC8) create a sophisticated color harmony that feels natural and luxurious - perfect for facial harmonization clinics
+- **Gotcha**: The jade-green-golden-pearl-noir palette feels more natural and harmonious while maintaining premium positioning - it evokes feelings of balance, renewal, and transformation
+- **Gotcha**: Jade stone-shaped borders create a distinctive flowing animation that feels organic and natural without being distracting - different from all 46+ previous shape patterns (orchid petal, wave, leaf, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, ribbon, aurora wave, arch, etc.)
+- **Gotcha**: The jade green tones (#2D6A5A) paired with golden pearl (#D4C4A8) creates a sophisticated color harmony that feels natural and luxurious - perfect for facial harmonization clinics seeking a unique, harmonious brand identity
+- **Gotcha**: Cormorant Garamond is a distinctive choice for display typography - it provides elegant serif luxury with qualities that make it unique from all previous font choices (Playfair Display, Bodoni Moda, Libre Baskerville, EB Garamond, etc.)
+- **Gotcha**: Instrument Sans is a refined geometric sans-serif that provides excellent readability with contemporary sophistication - the first use of this font in the project
+- **Gotcha**: The jade-green-golden-pearl aesthetic is particularly appropriate for facial harmonization clinics as jade symbolizes harmony, balance, and renewal in many cultures - creating meaningful brand resonance
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
