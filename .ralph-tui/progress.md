@@ -36,6 +36,45 @@ after each iteration and it's included in prompts for context.
 - **Obsidian Noir & Champagne Quartz Palette**: `--color-obsidian: #0D0D0F`, `--color-obsidian-light: #1A1A1F`, `--color-obsidian-mid: #252530`, `--color-obsidian-dark: #08080A`, `--color-obsidian-deep: #050507`, `--color-champagne: #D4B896`, `--color-champagne-light: #E8D4B8`, `--color-champagne-mid: #F0E0C8`, `--color-champagne-dark: #C4A878`, `--color-champagne-deep: #B49868`, `--color-champagne-shimmer: #F8F0E0`, `--color-quartz: #E8E0D8`, `--color-quartz-rose: #F0E8E0`, `--color-quartz-warm: #F5F0E8` - sophisticated, modern crystalline aesthetic inspired by luxury quartz crystal jewelry
 - **Quartz Crystal Border Radius**: `--radius-crystal-1: 72% 28% 48% 52% / 52% 38% 62% 48%`, `--radius-crystal-2: 48% 52% 68% 32% / 38% 62% 38% 62%`, `--radius-crystal-3: 62% 38% 42% 58% / 58% 42% 52% 48%`, `--radius-crystal-4: 38% 62% 52% 48% / 42% 58% 48% 52%` for faceted, crystalline shapes with angular qualities reminiscent of quartz crystals
 - **Libre Baskerville + Plus Jakarta Sans Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability
+- **Cinnamon Noir & Pearl Silk Palette**: `--color-cinnamon: #C17F59`, `--color-cinnamon-light: #D99A72`, `--color-cinnamon-mid: #E8B090`, `--color-cinnamon-dark: #A86540`, `--color-cinnamon-deep: #884A28`, `--color-cinnamon-shimmer: #F0C8A8`, `--color-terracotta: #D4785C`, `--color-terracotta-light: #E89878`, `--color-terracotta-mid: #F0A888`, `--color-terracotta-dark: #B85840`, `--color-pearl: #E8E4E0`, `--color-pearl-light: #F0ECE8`, `--color-silk: #D8D4D0` - warm, sophisticated natural aesthetic with cinnamon spice tones and soft pearl silk accents
+- **Silk Ribbon Border Radius**: `--radius-ribbon-1: 70% 30% 50% 50% / 50% 50% 70% 30%`, `--radius-ribbon-2: 50% 50% 70% 30% / 30% 70% 50% 50%`, `--radius-ribbon-3: 60% 40% 45% 55% / 55% 45% 55% 45%`, `--radius-ribbon-4: 40% 60% 55% 45% / 45% 55% 45% 55%` for fluid, flowing silk ribbon shapes with elegant movement
+- **EB Garamond + Jost Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability with contemporary edge
+
+---
+
+## 2026-02-08 - US-081
+- Created complete website for Clínica Milla Lemos Estética Facial in Ribeirão Preto
+- Files changed:
+  - `site-demo/clinica-milla-lemos-estetica-facial/index.html` (new)
+- **Design Concept**: Cinnamon Noir & Pearl Silk aesthetic with warm cinnamon spice tones, warm terracotta accents, and soft pearl silk backgrounds. A completely new sophisticated natural direction from all previous 31+ palettes - inspired by the warmth of natural spices and the elegance of silk fabrics. Silk ribbon border-radius patterns create fluid, flowing animations reminiscent of elegant silk ribbons.
+- **Typography**: EB Garamond (display) paired with Jost (body) for classic elegant serif sophistication with modern geometric readability - the first use of EB Garamond in the project, providing a distinctive classic serif font with elegant book qualities
+- **Key Features Implemented**:
+  - Animated hero with 4 floating silk ribbon-shaped backgrounds using gradient meshes
+  - Silk ribbon border-radius patterns (`--radius-ribbon-1`, `--radius-ribbon-2`, `--radius-ribbon-3`, `--radius-ribbon-4`) create fluid, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on pearl, solution cards on noir)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on noir background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: R. Emma Barcarollo Guimarães, 117 - Jardim Botânico, Ribeirão Preto - SP, 14021-595, Brazil | (16) 98156-3060
+- **Demo URL**: pixelalchemy.com.br/site-demo/clinica-milla-lemos-estetica-facial
+
+**Learnings**:
+- **Pattern**: Cinnamon Noir & Pearl Silk palette creates a warm, sophisticated natural aesthetic with cinnamon spice tones and soft pearl silk accents that conveys natural warmth and elegance - completely different from all 31+ previous palettes
+- **Pattern**: Silk ribbon border-radius shapes (`70% 30% 50% 50% / 50% 50% 70% 30%`) provide a fluid, flowing interpretation of blobmorphism with elegant movement that feels like silk fabric
+- **Pattern**: EB Garamond + Jost typography pairing combines classic elegant serif sophistication with modern geometric sans-serif for distinctive readability with contemporary edge
+- **Gotcha**: The cinnamon-terracotta-pearl-silk palette feels more warm and natural while maintaining premium positioning - it evokes feelings of natural warmth, sophistication, and elegant beauty
+- **Gotcha**: Silk ribbon-shaped borders create a distinctive fluid animation that feels elegant and flowing without being distracting - different from all 31+ previous shape patterns (orchid petal, geode, leaf, wave, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, etc.)
+- **Gotcha**: The warm cinnamon tones (#C17F59) paired with soft terracotta (#D4785C) creates a sophisticated color harmony that feels warm and natural - perfect for facial aesthetic clinics seeking a warm, natural brand identity
+- **Gotcha**: EB Garamond is a distinctive choice for display typography - it provides classic serif elegance with book qualities that make it unique from all previous font choices (Playfair Display, Libre Baskerville, Crimson Pro, Bodoni Moda, Cormorant Garamond, Cinzel Decorative, Cormorant Infant)
+- **Gotcha**: The cinnamon-terracotta-pearl-silk aesthetic is particularly appropriate for facial harmonization clinics seeking a warm, natural brand identity that conveys both sophistication and approachability
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards adapted for mobile
 
 ---
 
