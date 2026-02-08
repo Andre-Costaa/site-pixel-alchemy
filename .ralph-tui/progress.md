@@ -39,6 +39,46 @@ after each iteration and it's included in prompts for context.
 - **Cinnamon Noir & Pearl Silk Palette**: `--color-cinnamon: #C17F59`, `--color-cinnamon-light: #D99A72`, `--color-cinnamon-mid: #E8B090`, `--color-cinnamon-dark: #A86540`, `--color-cinnamon-deep: #884A28`, `--color-cinnamon-shimmer: #F0C8A8`, `--color-terracotta: #D4785C`, `--color-terracotta-light: #E89878`, `--color-terracotta-mid: #F0A888`, `--color-terracotta-dark: #B85840`, `--color-pearl: #E8E4E0`, `--color-pearl-light: #F0ECE8`, `--color-silk: #D8D4D0` - warm, sophisticated natural aesthetic with cinnamon spice tones and soft pearl silk accents
 - **Silk Ribbon Border Radius**: `--radius-ribbon-1: 70% 30% 50% 50% / 50% 50% 70% 30%`, `--radius-ribbon-2: 50% 50% 70% 30% / 30% 70% 50% 50%`, `--radius-ribbon-3: 60% 40% 45% 55% / 55% 45% 55% 45%`, `--radius-ribbon-4: 40% 60% 55% 45% / 45% 55% 45% 55%` for fluid, flowing silk ribbon shapes with elegant movement
 - **EB Garamond + Jost Typography**: Classic elegant serif display font paired with modern geometric sans-serif body font for sophisticated readability with contemporary edge
+- **Moonstone Noir & Antique Silver Palette**: `--color-moonstone: #E8E8F0`, `--color-moonstone-pearl: #F0F0F8`, `--color-moonstone-iridescent: #F5F5FA`, `--color-moonstone-blue: #D8D8E8`, `--color-moonstone-lavender: #E8E8F5`, `--color-silver: #B8B8C8`, `--color-silver-light: #C8C8D8`, `--color-midnight: #0A0A12`, `--color-midnight-deep: #050508`, `--color-labradentite: #4A5A8A` - mystical, sophisticated iridescent aesthetic with moonstone opalescent qualities and antique silver metallics
+- **Aurora Wave Border Radius**: `--radius-aurora-1: 68% 32% 48% 52% / 52% 42% 58% 48%`, `--radius-aurora-2: 48% 52% 68% 32% / 42% 58% 42% 58%`, `--radius-aurora-3: 58% 42% 42% 58% / 52% 48% 52% 48%`, `--radius-aurora-4: 42% 58% 52% 48% / 48% 52% 48% 52%` for organic, flowing animations reminiscent of northern lights and moonstone iridescence
+- **Bodoni Moda + Satoshi Typography**: Elegant sophisticated serif display font paired with modern geometric sans-serif body font for distinctive luxury with contemporary readability
+
+---
+
+## 2026-02-08 - US-083
+- Created complete website for Dra. Manoela Zuccolotto - Harmonização Facial - MZucca Estética Avançada in Ribeirão Preto
+- Files changed:
+  - `site-demo/dra-manoela-zuccolotto-harmonizacao-facial-mzucca-estetica-a/index.html` (new)
+- **Design Concept**: Moonstone Noir & Antique Silver aesthetic with moonstone opalescent tones, antique silver metallics, and deep midnight noir backgrounds. A completely new mystical iridescent direction from all previous 42+ palettes - inspired by the ethereal qualities of moonstone crystals and tarnished silver jewelry. Aurora wave border-radius patterns create flowing, organic animations reminiscent of northern lights and moonstone iridescence.
+- **Typography**: Bodoni Moda (display) paired with Satoshi (body) for elegant sophisticated serif luxury with modern geometric sans-serif readability - the first use of Satoshi in the project, providing a distinctive contemporary geometric sans-serif
+- **Key Features Implemented**:
+  - Animated hero with 4 floating aurora wave-shaped backgrounds using gradient meshes
+  - Aurora wave border-radius patterns (`--radius-aurora-1`, `--radius-aurora-2`, `--radius-aurora-3`, `--radius-aurora-4`) create organic, flowing animations
+  - Auto-hiding navigation with smooth scroll
+  - Problem/Solution section with hover effects and left border accent (problem cards on dark, solution cards on noir gradient)
+  - 6 service cards (Harmonização Facial, Toxina Botulínica, Preenchedores Faciais, Preenchimento Labial, Bioestimuladores, Protocolos Personalizados)
+  - 3 testimonial cards with gradient avatars on midnight background
+  - 6 differential items with pulsing icon rings
+  - Contact form with WhatsApp integration (opens pre-filled message)
+  - Responsive design for mobile, tablet, desktop
+  - Intersection Observer animations for scroll-triggered effects
+  - Accessibility: prefers-reduced-motion support, focus styles, semantic HTML
+  - Hero parallax effect on mouse movement
+- **Contact Info**: Av. Wladimir Meirelles Ferreira, 1660 - sala 209 - Alto da Boa Vista, Ribeirão Preto - SP, 14021-630, Brazil | (16) 99637-0230
+- **Demo URL**: pixelalchemy.com.br/site-demo/dra-manoela-zuccolotto-harmonizacao-facial-mzucca-estetica-a
+
+**Learnings**:
+- **Pattern**: Moonstone Noir & Antique Silver palette creates a mystical, sophisticated iridescent aesthetic with moonstone opalescent qualities and antique silver metallics that conveys ethereal elegance and transformation - completely different from all 42+ previous palettes
+- **Pattern**: Aurora wave border-radius shapes (`68% 32% 48% 52% / 52% 42% 58% 48%`) provide a more flowing, organic interpretation of blobmorphism with qualities that feel like northern lights and moonstone iridescence
+- **Pattern**: Bodoni Moda + Satoshi typography pairing combines elegant sophisticated serif luxury with modern geometric sans-serif for distinctive readability with contemporary edge
+- **Gotcha**: The moonstone-opalescent-silver-midnight palette feels more mystical and ethereal while maintaining premium positioning - it evokes feelings of transformation, mystery, and iridescent beauty
+- **Gotcha**: Aurora wave-shaped borders create a distinctive flowing animation that feels mystical and dynamic without being distracting - different from all 42+ previous shape patterns (orchid petal, geode, leaf, wave, faceted, ellipse, pearl tooth, ceramic curve, structural, petal, crystal, ribbon, etc.)
+- **Gotcha**: The moonstone opalescent tones (#E8E8F0, #F0F0F8) paired with antique silver metallics (#B8B8C8, #C8C8D8) creates a sophisticated color harmony that feels mystical and ethereal - perfect for facial harmonization clinics seeking a unique, transformative brand identity
+- **Gotcha**: The labradentite blue accent (#4A5A8A) provides a deep iridescent blue that references the blue flash of labradorite/moonstone crystals, adding mystical depth to the palette
+- **Gotcha**: Satoshi is a distinctive choice for body typography - it provides modern geometric sans-serif qualities that make it unique from all previous font choices (Outfit, Plus Jakarta Sans, Manrope, Jost, Space Grotesk, etc.)
+- **Gotcha**: The midnight noir backgrounds (#0A0A12, #050508) are deeper and cooler than previous noir palettes, creating a more mysterious and sophisticated foundation
+- **Performance**: All animations use GPU-accelerated properties (transform, opacity) for smooth 60fps performance
+- **Mobile optimization**: Enhanced hover states disabled on touch devices, stacked layouts for smaller screens, floating cards hidden on mobile
 
 ---
 
