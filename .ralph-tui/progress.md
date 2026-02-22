@@ -15,6 +15,24 @@
 
 ---
 
+## 2026-02-22 - US-105
+- **What was implemented:** Playwright review for Pizzaria Donna Margherita site (pizzaria-donna-margherita)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-105
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1440.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1024.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-768.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED including notion.no_manual_fallback
+  - Site follows Italian theme with tomato/olive/basil color palette
+
+---
+
 ## 2026-02-22 - US-101
 - **What was implemented:** Playwright review for Dra. Mariana Alves Silva site (dra-mariana-alves-silva)
 - **Files changed:**
