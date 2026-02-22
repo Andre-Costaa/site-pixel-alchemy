@@ -14,6 +14,8 @@ after each iteration and it's included in prompts for context.
 - **Warm Coral & Champagne Theme**: For beauty salons, use a warm palette combining coral accents (`--coral-500` to `--coral-600`) with champagne gold base tones (`--champagne-100` to `--champagne-300`). This creates a welcoming yet premium feel perfect for hair/beauty services.
 - **Service Cards with Pricing**: Display service cards with clear pricing badges (`A partir de R$ X`) to set expectations and encourage conversions.
 - **Empresa Pattern for Salons**: Beauty salons (even with "personal" names like "Essence Hair") follow the empresa pattern - use "vocês", "queriam", "do salão" rather than individual pronouns.
+- **Italian Restaurant Theme**: For pizzerias and Italian restaurants, use a warm palette with tomato red accents (`--tomato-500` to `--tomato-600`), cream base (`--cream-50` to `--cream-200`), and basil green (`--basil-500` to `--basil-600`). This evokes authentic Italian cuisine and appetite appeal.
+- **Pricing Badges on Service Cards**: Food businesses benefit from clear pricing displayed as badges (`A partir de R$ X`) on service/menu cards to set expectations and drive conversions.
 
 ---
 
@@ -46,6 +48,21 @@ after each iteration and it's included in prompts for context.
   - Service cards with visible pricing badges help set client expectations
   - Beauty salons follow "empresa" pattern (vocês/queriam) even with personal-sounding names
   - When prospect doesn't exist in Notion, create new entry with all required fields
+
+---
+
+## 2026-02-22 - US-094 - Pizzaria Donna Margherita
+- Created new site at site-demo/pizzaria-donna-margherita/index.html
+- Implemented Italian-inspired color palette with tomato red accents, cream base, and basil green
+- All required sections: Hero, Problema/Solução, Serviços (Cardápio), Depoimentos, Diferenciais, Contato, Footer
+- Business info correctly implemented: Av. Nove de Julho, 1890 - Campos Elíseos, Ribeirão Preto - SP, Tel: (16) 99654-3210
+- Created Notion entry with Status="Mensagem Pronta", URL Demo, outreach message, Slug, US ID, Site Criado Em
+- Updated prd.json to mark US-094 as complete (passes: true)
+- **Learnings:**
+  - Italian restaurant theme uses tomato red, cream, and basil green palette for appetite appeal
+  - Service cards with pricing badges work well for food businesses (pizza menu)
+  - Pizzerias follow "empresa" pattern (vocês/queriam) in outreach messages
+  - Food businesses benefit from emphasizing appetite appeal and quality ingredients in design
 
 ---
 
