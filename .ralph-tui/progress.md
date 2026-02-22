@@ -22,6 +22,25 @@ after each iteration and it's included in prompts for context.
 - **Ocean Blue & Mint Theme for Dental**: For dental clinics, use a professional palette with ocean blue accents (`--ocean-600` to `--ocean-800`) and mint green (`--mint-400` to `--mint-600`). This conveys trust, cleanliness, and freshness appropriate for healthcare.
 - **Tooth Icon Animation**: Subtle shine animation on tooth/logo icons reinforces the dental niche and adds visual interest without being distracting.
 - **Individual Professional Pattern for Dentists**: When the business is named after a dentist (Dr./Dra.), use individual pronouns ("ele", "dele", "do consultório do Dr.") rather than company pronouns ("vocês").
+- **Cognac & Navy Theme for Barbershops**: For premium barbershops, use a sophisticated palette with cognac/whiskey accents (`--cognac-500` to `--cognac-600`) and deep navy base (`--navy-800` to `--navy-900`). Gold accents (`--gold-500`) add luxury. This creates a refined gentleman atmosphere distinct from industrial styles.
+- **Cinzel Font for Classic Elegance**: Use 'Cinzel' serif font for barbershops and gentleman-focused businesses to evoke tradition, craftsmanship, and timeless elegance.
+- **Empresa Pattern for Barbershops**: Barbershops follow the "empresa" pattern - use "vocês", "queriam", "da barbearia" rather than individual pronouns.
+
+---
+
+## 2026-02-22 - US-097 - Barbearia Gentleman's Cut
+- Created new site at site-demo/barbearia-gentleman-s-cut/index.html
+- Implemented sophisticated Cognac & Navy color palette with gold accents for premium gentleman aesthetic
+- All required sections: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- Business info correctly implemented: R. Lafaiete, 234 - Centro, Ribeirão Preto - SP, Tel: (16) 3345-6789
+- Created Notion entry with Status="Mensagem Pronta", URL Demo, outreach message, Slug, US ID, Site Criado Em
+- Updated prd.json to mark US-097 as complete (passes: true)
+- **Learnings:**
+  - Cognac + Navy + Gold palette creates a sophisticated gentleman atmosphere distinct from industrial barbershop styles
+  - Cinzel serif font adds classic elegance perfect for premium barbershops
+  - For barbershops (empresa), use "vocês/queriam/da barbearia" pronouns in outreach
+  - Service cards with pricing work well for barbershop services (corte, barba, combo)
+  - Scissor SVG illustrations reinforce the barbershop niche elegantly
 
 ---
 
