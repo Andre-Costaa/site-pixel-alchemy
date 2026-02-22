@@ -294,6 +294,10 @@ Reference module for programmatic message generation. In practice, the LLM agent
    - `US ID` → user story ID (e.g., "US-089")
    - `Site Criado Em` → today's date (YYYY-MM-DD)
 9. Commit as `feat: US-XXX - Client Name - Site Completo`
+10. **Done Gate** before setting `passes=true`:
+   - Run: `python3 scripts/done_gate.py --us-id US-XXX`
+   - Only mark done if output is `DONE GATE: PASS`
+   - Preferred marker: `python3 scripts/mark_story_done.py --us-id US-XXX`
 
 ## Workflow Checklist
 
@@ -307,3 +311,4 @@ Before marking a client site as complete, verify:
 - [ ] Notion updated with Status **"Mensagem Pronta"** + all required fields
 - [ ] Commit created with correct format
 - [ ] Pushed to repository
+- [ ] Done gate passed (`python3 scripts/done_gate.py --us-id US-XXX`)

@@ -121,6 +121,7 @@ def build_user_story(
         f"Criar pasta 'site-demo/{slug}' e salvar index.html dentro",
         "Gerar mensagem de outreach personalizada (ver template-mensagem-outreach.md)",
         "Atualizar Notion: Status → 'Mensagem Pronta', URL Demo, Mensagem, Slug, US ID, Site Criado Em",
+        f"Rodar done gate: python3 scripts/done_gate.py --us-id {us_id} (só marcar passes=true se PASS)",
         "Fazer git add, commit e push ao finalizar",
     ])
 
@@ -130,7 +131,7 @@ def build_user_story(
         "description": ". ".join(desc_parts) + ".",
         "acceptanceCriteria": criteria,
         "priority": priority,
-        "passes": None,
+        "passes": False,
         "notes": "",
         "dependsOn": [previous_us_id] if previous_us_id else [],
         "completionNotes": "",

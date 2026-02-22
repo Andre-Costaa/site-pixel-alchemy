@@ -248,6 +248,7 @@ Prospecto no Notion → Gerar prd.json → Criar site → Gerar mensagem → Atu
 2. **Gerar mensagem de outreach personalizada** (ver `template-mensagem-outreach.md`)
 3. **Atualizar Notion CRM** com Status "Mensagem Pronta" + URL Demo + Mensagem
 4. Fazer commit e push
+5. **Rodar done gate**: `python3 scripts/done_gate.py --us-id US-XXX` e só então marcar `passes=true`
 
 Veja `scripts/README.md` para detalhes completos do workflow.
 

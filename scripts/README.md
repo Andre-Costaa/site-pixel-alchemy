@@ -145,6 +145,21 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
 git push
 ```
 
+### 6. Done Gate (OBRIGATORIO)
+Antes de marcar `passes=true` no `prd.json`, valide a story:
+
+```bash
+python3 scripts/done_gate.py --us-id US-XXX
+```
+
+Se retornar `DONE GATE: PASS`, marque a story como concluida com:
+
+```bash
+python3 scripts/mark_story_done.py --us-id US-XXX
+```
+
+Se falhar, nao marque como concluida. Corrija os pontos reportados.
+
 ## Checklist de Conclusão
 
 Antes de marcar uma user story como completa, verificar:
@@ -155,6 +170,7 @@ Antes de marcar uma user story como completa, verificar:
 - [ ] Notion atualizado com Status "Mensagem Pronta" + todos os campos
 - [ ] Commit realizado com mensagem correta
 - [ ] Push para repositório remoto
+- [ ] `python3 scripts/done_gate.py --us-id US-XXX` retornou PASS
 
 ## Referências
 
