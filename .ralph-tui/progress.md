@@ -25,6 +25,24 @@ after each iteration and it's included in prompts for context.
 - **Cognac & Navy Theme for Barbershops**: For premium barbershops, use a sophisticated palette with cognac/whiskey accents (`--cognac-500` to `--cognac-600`) and deep navy base (`--navy-800` to `--navy-900`). Gold accents (`--gold-500`) add luxury. This creates a refined gentleman atmosphere distinct from industrial styles.
 - **Cinzel Font for Classic Elegance**: Use 'Cinzel' serif font for barbershops and gentleman-focused businesses to evoke tradition, craftsmanship, and timeless elegance.
 - **Empresa Pattern for Barbershops**: Barbershops follow the "empresa" pattern - use "vocês", "queriam", "da barbearia" rather than individual pronouns.
+- **Soft Mauve & Pearl Theme for Harmonization**: For harmonization/aesthetics clinics, use a sophisticated palette with pearl base (`--pearl-50` to `--pearl-900`) and mauve accents (`--mauve-400` to `--mauve-600`). Dusty rose (`--dusty-400` to `--dusty-600`) adds warmth. This creates an elegant, calming atmosphere perfect for facial aesthetics.
+- **Playfair Display Font for Feminine Elegance**: Use 'Playfair Display' serif font combined with 'DM Sans' for aesthetics clinics to convey sophistication and modern femininity.
+- **Individual Professional Pattern for Harmonization**: When the business is named after an aesthetics professional (Dra.), use individual pronouns ("ela", "dela", "do consultório da Dra.") rather than company pronouns ("vocês").
+
+---
+
+## 2026-02-22 - US-098 - Clínica Harmonia Facial - Dra. Juliana Rodrigues
+- Created new site at site-demo/clinica-harmonia-facial-dra-juliana-rodrigues/index.html
+- Implemented unique Soft Mauve & Pearl color palette with mauve and dusty rose accents
+- All required sections: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- Business info correctly implemented: Av. Independência, 1567 - Alto da Boa Vista, Ribeirão Preto - SP, Tel: (16) 99887-6543
+- Created Notion entry with Status="Mensagem Pronta", URL Demo, outreach message, Slug, US ID, Site Criado Em
+- **Learnings:**
+  - Soft mauve + pearl + dusty rose palette creates an elegant, calming atmosphere perfect for harmonization clinics
+  - Playfair Display font paired with DM Sans conveys modern femininity and sophistication
+  - For individual aesthetics professionals (Dra.), use "ela/dela/do consultório da Dra." pronouns in outreach
+  - Floating credential cards (CRM, ratings) in hero add credibility for medical aesthetics
+  - Emphasizing "resultados naturais" messaging resonates with harmonization patients
 
 ---
 
