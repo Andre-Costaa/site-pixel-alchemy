@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica VetLife 24h - Atendimento veterinário de emergência 24 horas em Ribeirão Preto. Cirurgias, internação e cuidados intensivos para seu pet.">
+    <meta name="keywords" content="clínica veterinária 24h, veterinário emergência, Ribeirão Preto, cirurgia veterinária, pet 24 horas">
+    <title>Clínica VetLife 24h | Atendimento Veterinário 24 Horas em Ribeirão Preto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-midnight: #0a1628;
+            --color-midnight-light: #132238;
+            --color-midnight-lighter: #1c2e4a;
+            --color-teal: #00d4aa;
+            --color-teal-dark: #00b894;
+            --color-teal-light: #5ee7c5;
+            --color-amber: #f39c12;
+            --color-amber-light: #f5b041;
+            --color-coral: #e74c3c;
+            --color-cream: #f8fafc;
+            --color-slate: #64748b;
+            --color-slate-light: #94a3b8;
+            --color-white: #ffffff;
+
+            --gradient-hero: linear-gradient(135deg, #0a1628 0%, #132238 50%, #1c2e4a 100%);
+            --gradient-teal: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+            --gradient-amber: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            --gradient-overlay: linear-gradient(180deg, rgba(10, 22, 40, 0.95) 0%, rgba(19, 34, 56, 0.85) 100%);
+
+            --shadow-sm: 0 2px 8px rgba(0, 212, 170, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 212, 170, 0.12);
+            --shadow-lg: 0 8px 40px rgba(0, 212, 170, 0.15);
+            --shadow-xl: 0 16px 60px rgba(0, 212, 170, 0.2);
+            --shadow-glow: 0 0 40px rgba(0, 212, 170, 0.3);
+
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --border-radius-pill: 999px;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-2xl: 6rem;
+            --spacing-3xl: 8rem;
+
+            --font-display: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-cream);
+            background-color: var(--color-midnight);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-3xl) 0;
+            position: relative;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 170, 0.1);
+            transition: var(--transition-base);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-teal);
+        }
+
+        .nav-logo .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--color-teal);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7); }
+            50% { transform: scale(1.1); opacity: 0.9; box-shadow: 0 0 0 10px rgba(0, 212, 170, 0); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-slate-light);
+            font-size: 0.9rem;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--color-teal);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-teal);
+            transition: var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-teal);
+            color: var(--color-midnight);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+            transition: var(--transition-base);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+            top: 50%;
+            right: -200px;
+            transform: translateY(-50%);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateY(-50%) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-pill);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-teal);
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-teal);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-white);
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .hero-title span {
+            background: var(--gradient-teal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-lg);
+            max-width: 500px;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .btn-primary {
+            background: var(--gradient-teal);
+            color: var(--color-midnight);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(0, 212, 170, 0.5);
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: var(--color-teal);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--spacing-xl);
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-teal);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--color-slate);
+            margin-top: 0.25rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: rgba(19, 34, 56, 0.95);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-card-1 {
+            top: 20px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .hero-card-2 {
+            bottom: 40px;
+            left: -30px;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-teal);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .hero-card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-midnight);
+        }
+
+        .hero-card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-white);
+        }
+
+        .hero-card-text {
+            font-size: 0.8rem;
+            color: var(--color-slate-light);
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--color-midnight-light);
+            position: relative;
+        }
+
+        .problem-solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 170, 0.3), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .section-label {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--color-teal);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-pill);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-slate-light);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .problem-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(231, 76, 60, 0.4);
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.1);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+        }
+
+        .problem-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-coral);
+        }
+
+        .problem-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .problem-text {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+        }
+
+        .solution-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .solution-divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-teal), transparent);
+            max-width: 200px;
+        }
+
+        .solution-divider-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 var(--spacing-md);
+        }
+
+        .solution-divider-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-midnight);
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(0, 184, 148, 0.05) 100%);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .solution-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .solution-title span {
+            color: var(--color-teal);
+        }
+
+        .solution-text {
+            font-size: 1.125rem;
+            color: var(--color-slate-light);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-midnight);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: rgba(19, 34, 56, 0.6);
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-teal);
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 170, 0.3);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient-teal);
+            transform: scale(1.1);
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-teal);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover .service-icon svg {
+            fill: var(--color-midnight);
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .service-text {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--color-teal);
+            font-weight: 500;
+        }
+
+        .service-feature svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-teal);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--color-midnight-light);
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 170, 0.2);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-amber);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-midnight);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 1rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--color-slate);
+        }
+
+        /* Differentials Section */
+        .differentials {
+            background: var(--color-midnight);
+            position: relative;
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .differential-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: rgba(19, 34, 56, 0.4);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            transition: var(--transition-base);
+        }
+
+        .differential-card:hover {
+            background: rgba(19, 34, 56, 0.6);
+            border-color: rgba(0, 212, 170, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .differential-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-teal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .differential-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .differential-desc {
+            font-size: 0.875rem;
+            color: var(--color-slate);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-midnight-light);
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info > p {
+            font-size: 1.125rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background: rgba(10, 22, 40, 0.4);
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            transition: var(--transition-base);
+        }
+
+        .contact-method:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            background: rgba(10, 22, 40, 0.6);
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-teal);
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-midnight);
+        }
+
+        .contact-method-content h4 {
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-method-content p {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+        }
+
+        .contact-hours {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+        }
+
+        .contact-hours-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-hours-header svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-teal);
+        }
+
+        .contact-hours-header h4 {
+            font-weight: 600;
+            color: var(--color-teal);
+        }
+
+        .contact-hours p {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+        }
+
+        .contact-form {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid rgba(0, 212, 170, 0.1);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(19, 34, 56, 0.6);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: var(--border-radius-md);
+            color: var(--color-white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-base);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-teal);
+            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--color-slate);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gradient-teal);
+            color: var(--color-midnight);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-midnight);
+            border-top: 1px solid rgba(0, 212, 170, 0.1);
+            padding: var(--spacing-2xl) 0 var(--spacing-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .footer-logo span {
+            color: var(--color-teal);
+        }
+
+        .footer-logo .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-teal);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-base);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-teal);
+            transform: translateY(-3px);
+        }
+
+        .footer-social a svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-teal);
+            transition: var(--transition-base);
+        }
+
+        .footer-social a:hover svg {
+            fill: var(--color-midnight);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-teal);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 212, 170, 0.1);
+            padding-top: var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            color: var(--color-slate);
+        }
+
+        .footer-bottom a {
+            color: var(--color-slate-light);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--color-teal);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Emergency Floating Button */
+        .emergency-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .emergency-btn {
+            background: var(--color-coral);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-pill);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+            animation: emergencyPulse 2s ease-in-out infinite;
+            transition: var(--transition-base);
+        }
+
+        @keyframes emergencyPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(231, 76, 60, 0.6), 0 0 0 10px rgba(231, 76, 60, 0.1); }
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: #ff5240;
+        }
+
+        .emergency-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                max-width: 100%;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image {
+                height: 350px;
+            }
+
+            .hero-card {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: var(--spacing-md);
+                gap: var(--spacing-md);
+                border-top: 1px solid rgba(0, 212, 170, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .problem-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .emergency-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .emergency-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .differentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: var(--spacing-2xl) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="pulse-dot"></span>
+                VetLife<span>24h</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="tel:1634567890" class="nav-cta">Ligar Agora</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span>
+                        Atendimento 24 horas
+                    </div>
+                    <h1 class="hero-title">
+                        Cuidado veterinário <span>sem hora para acabar</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Emergências não esperam horário comercial. Na VetLife 24h, seu pet recebe atendimento de qualidade a qualquer hora do dia ou da noite.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#contato" class="btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1.01A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/></svg>
+                            Agendar Consulta
+                        </a>
+                        <a href="#servicos" class="btn-secondary">
+                            Nossos Serviços
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">15+</span>
+                            <span class="hero-stat-label">Anos de experiência</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">24h</span>
+                            <span class="hero-stat-label">Atendimento contínuo</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">50k+</span>
+                            <span class="hero-stat-label">Pets atendidos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80" alt="Veterinário cuidando de um cachorro" class="hero-image">
+                        <div class="hero-card hero-card-1">
+                            <div class="hero-card-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            </div>
+                            <div class="hero-card-title">Cuidado com amor</div>
+                            <div class="hero-card-text">Seu pet em boas mãos</div>
+                        </div>
+                        <div class="hero-card hero-card-2">
+                            <div class="hero-card-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <div class="hero-card-title">Equipe especializada</div>
+                            <div class="hero-card-text">Veterinários experientes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section problem-solution" id="sobre">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Por que escolher a VetLife?</span>
+                <h2 class="section-title">Emergências acontecem. Estamos prontos.</h2>
+                <p class="section-subtitle">Entendemos o desespero de ver seu pet sofrendo e não saber onde encontrar ajuda. Por isso, criamos uma clínica verdadeiramente 24 horas.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                    </div>
+                    <h3 class="problem-title">Clínicas fechadas</h3>
+                    <p class="problem-text">A maioria das clínicas fecha à noite e nos fins de semana, deixando pets sem atendimento quando mais precisam.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="200">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                    </div>
+                    <h3 class="problem-title">Demora no atendimento</h3>
+                    <p class="problem-text">Em emergências, cada minuto conta. Longas esperas podem fazer toda a diferença no prognóstico do seu pet.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="300">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    </div>
+                    <h3 class="problem-title">Falta de estrutura</h3>
+                    <p class="problem-text">Muitas clínicas não possuem equipamentos completos para diagnósticos rápidos e precisos em casos urgentes.</p>
+                </div>
+            </div>
+
+            <div class="solution-divider">
+                <div class="solution-divider-line"></div>
+                <div class="solution-divider-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <div class="solution-divider-line"></div>
+            </div>
+
+            <div class="solution-card wow-fade-up">
+                <div class="solution-content">
+                    <h3 class="solution-title">A solução: <span>VetLife 24h</span></h3>
+                    <p class="solution-text">Uma clínica veterinária completa, aberta 24 horas por dia, 7 dias por semana, com equipe de plantão, equipamentos de última geração e estrutura para emergências, cirurgias e internações. Seu pet nunca estará sem cuidados quando precisar.</p>
+                    <a href="#contato" class="btn-primary">Conheça nossa estrutura</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Serviços</span>
+                <h2 class="section-title">Cuidado completo para seu pet</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de serviços veterinários, disponíveis 24 horas por dia.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                    </div>
+                    <h3 class="service-title">Emergência 24h</h3>
+                    <p class="service-text">Atendimento imediato para casos urgentes a qualquer hora do dia ou da noite, todos os dias do ano.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Sem fila de espera</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3 class="service-title">Cirurgias</h3>
+                    <p class="service-text">Centro cirúrgico equipado para procedimentos de emergência e eletivos com segurança e precisão.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Equipamentos modernos</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                    </div>
+                    <h3 class="service-title">Internação</h3>
+                    <p class="service-text">Acomodações confortáveis com monitoramento contínuo para pets que precisam de cuidados intensivos.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Monitoramento 24h</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 16H4V8h16v12z"/></svg>
+                    </div>
+                    <h3 class="service-title">Exames Laboratoriais</h3>
+                    <p class="service-text">Laboratório próprio para resultados rápidos de sangue, urina, fezes e outros exames diagnósticos.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Resultados em minutos</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"/></svg>
+                    </div>
+                    <h3 class="service-title">Imagens (Raio-X/Ultrassom)</h3>
+                    <p class="service-text">Equipamentos de imagem digital para diagnósticos precisos e rápidos de fraturas, gestação e mais.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Alta resolução digital</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="600">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3 class="service-title">Vacinação e Prevenção</h3>
+                    <p class="service-text">Programas completos de vacinação, vermifugação e prevenção para manter seu pet sempre saudável.</p>
+                    <div class="service-feature">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span>Todas as vacinas disponíveis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que dizem nossos clientes</h2>
+                <p class="section-subtitle">Histórias reais de tutores que confiam na VetLife 24h para cuidar de seus pets.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Salvaram a vida do meu cachorro em uma madrugada de domingo. Ele engoliu um objeto e precisou de cirurgia de emergência. A equipe foi incrível, profissional e carinhosa."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <h4>Maria Cecília</h4>
+                            <p>Tutora do Thor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Finalmente uma clínica que de fato funciona 24 horas! Já tive experiências ruins com outras que diziam ser 24h mas não tinham médico de plantão. A VetLife é diferente, recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RP</div>
+                        <div class="testimonial-info">
+                            <h4>Ricardo Pereira</h4>
+                            <p>Tutor da Luna e do Simba</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Minha gata precisou ficar internada por 3 dias e fui visitá-la todos os dias. A estrutura é excelente, limpa e os veterinários mantiveram-me informada sobre tudo. Muito obrigada!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FS</div>
+                        <div class="testimonial-info">
+                            <h4>Fernanda Santos</h4>
+                            <p>Tutora da Mel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="section differentials">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Números</span>
+                <h2 class="section-title">Resultados que comprovam nossa excelência</h2>
+                <p class="section-subtitle">Anos de dedicação aos pets de Ribeirão Preto e região.</p>
+            </div>
+
+            <div class="differentials-grid">
+                <div class="differential-card wow-fade-up" data-delay="100">
+                    <div class="differential-number" data-count="15">0</div>
+                    <div class="differential-label">Anos de experiência</div>
+                    <div class="differential-desc">Cuidando de pets desde 2009</div>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="200">
+                    <div class="differential-number" data-count="50000">0</div>
+                    <div class="differential-label">Pets atendidos</div>
+                    <div class="differential-desc">Cães, gatos e animais exóticos</div>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="300">
+                    <div class="differential-number" data-count="12">0</div>
+                    <div class="differential-label">Veterinários</div>
+                    <div class="differential-desc">Equipe especializada 24h</div>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="400">
+                    <div class="differential-number" data-count="98">0</div>
+                    <div class="differential-label">% Satisfação</div>
+                    <div class="differential-desc">Avaliação dos clientes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up">
+                    <span class="section-label">Entre em Contato</span>
+                    <h3>Estamos aqui para ajudar seu pet</h3>
+                    <p>Entre em contato conosco para agendar uma consulta, tirar dúvidas ou em caso de emergência. Nossa equipe está pronta para atender você.</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Telefone</h4>
+                                <p>(16) 3456-7890</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Endereço</h4>
+                                <p>Av. Presidente Vargas, 890 - Jardim América<br>Ribeirão Preto - SP</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Email</h4>
+                                <p>contato@vetlife24h.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <div class="contact-hours-header">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <h4>Horário de Funcionamento</h4>
+                        </div>
+                        <p><strong>24 horas por dia, 7 dias por semana</strong><br>Incluindo feriados e finais de semana</p>
+                    </div>
+                </div>
+
+                <div class="contact-form wow-fade-up" data-delay="200">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Nome</label>
+                                <input type="text" id="name" class="form-input" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Telefone</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="pet">Nome do Pet</label>
+                            <input type="text" id="pet" class="form-input" placeholder="Nome do seu pet">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Serviço de Interesse</label>
+                            <select id="service" class="form-select">
+                                <option value="">Selecione um serviço</option>
+                                <option value="emergencia">Emergência 24h</option>
+                                <option value="consulta">Consulta de Rotina</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="vacina">Vacinação</option>
+                                <option value="exame">Exames Laboratoriais</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem</label>
+                            <textarea id="message" class="form-textarea" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="pulse-dot"></span>
+                        VetLife<span>24h</span>
+                    </div>
+                    <p>Atendimento veterinário de emergência 24 horas em Ribeirão Preto. Cuidando do seu pet com amor e excelência.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <div class="footer-links">
+                        <a href="#inicio">Início</a>
+                        <a href="#sobre">Sobre</a>
+                        <a href="#servicos">Serviços</a>
+                        <a href="#depoimentos">Depoimentos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <div class="footer-links">
+                        <a href="#servicos">Emergência 24h</a>
+                        <a href="#servicos">Cirurgias</a>
+                        <a href="#servicos">Internação</a>
+                        <a href="#servicos">Exames</a>
+                        <a href="#servicos">Vacinação</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <div class="footer-links">
+                        <a href="tel:1634567890">(16) 3456-7890</a>
+                        <a href="#">Av. Presidente Vargas, 890</a>
+                        <a href="#">Jardim América</a>
+                        <a href="#">Ribeirão Preto - SP</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Clínica VetLife 24h. Todos os direitos reservados.</p>
+                <p>Desenvolvido por <a href="https://www.pixelalchemy.com.br" target="_blank">Pixel Alchemy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Emergency Floating Button -->
+    <div class="emergency-float">
+        <a href="tel:1634567890" class="emergency-btn">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Emergência 24h
+        </a>
+    </div>
+
+    <script>
+        // Navigation scroll behavior
+        const nav = document.getElementById('nav');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 100) {
+                if (currentScrollY > lastScrollY) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+            } else {
+                nav.classList.remove('hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const countTo = parseInt(target.dataset.count);
+                    animateCounter(target, countTo);
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.differential-number').forEach(el => {
+            counterObserver.observe(el);
+        });
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + (target < 100 ? '+' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 30);
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            e.target.reset();
+        });
+
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 7) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+            } else if (value.length > 2) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            }
+
+            e.target.value = value;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
