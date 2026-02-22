@@ -16,6 +16,9 @@ after each iteration and it's included in prompts for context.
 - **Empresa Pattern for Salons**: Beauty salons (even with "personal" names like "Essence Hair") follow the empresa pattern - use "vocês", "queriam", "do salão" rather than individual pronouns.
 - **Italian Restaurant Theme**: For pizzerias and Italian restaurants, use a warm palette with tomato red accents (`--tomato-500` to `--tomato-600`), cream base (`--cream-50` to `--cream-200`), and basil green (`--basil-500` to `--basil-600`). This evokes authentic Italian cuisine and appetite appeal.
 - **Pricing Badges on Service Cards**: Food businesses benefit from clear pricing displayed as badges (`A partir de R$ X`) on service/menu cards to set expectations and drive conversions.
+- **Pet Shop Playful Theme**: For pet shops, use a warm, playful palette with coral/salmon accents (`--paw-500` to `--paw-600`), sunny yellow base (`--sunny-100` to `--sunny-300`), and forest green (`--forest-500` to `--forest-600`). This conveys warmth, trust, and joy appropriate for pet care services.
+- **Paw Print Logo Animation**: Subtle bounce animation on logo icons adds playfulness and reinforces the pet niche without being distracting.
+- **Empresa Pattern for Pet Shops**: Pet shops follow the "empresa" pattern - use "vocês", "queriam", "da loja" rather than individual pronouns, even when the name sounds personal.
 
 ---
 
@@ -77,6 +80,21 @@ after each iteration and it's included in prompts for context.
   - Notion entry was missing - critical to always verify CRM is updated even if site exists
   - Veterinary clinic sites follow "empresa" pattern (vocês/queriam) not individual professional
   - 24h emergency services require prominent visual emphasis (badges, urgent colors)
+
+---
+
+## 2026-02-22 - US-095 - Pet Shop Bichos & Cia
+- Created new site at site-demo/pet-shop-bichos-cia/index.html
+- Implemented warm, playful color palette with coral accents (paw-500), sunny yellow base, and forest green
+- All required sections: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- Business info correctly implemented: R. Visconde de Inhaúma, 654 - Jardim Paulista, Ribeirão Preto - SP, Tel: (16) 3198-7654
+- Created Notion entry with Status="Mensagem Pronta", URL Demo, outreach message, Slug, US ID, Site Criado Em
+- **Learnings:**
+  - Pet shop theme uses coral/salmon, sunny yellow, and forest green palette for warmth and trust
+  - Paw print logo with subtle bounce animation adds playfulness appropriate for pet niche
+  - Pet shops follow "empresa" pattern (vocês/queriam) in outreach messages
+  - Service cards with pricing work well for pet services (banho, tosa, consulta)
+  - Emphasizing "amor e cuidado" messaging resonates with pet owners
 
 ---
 
