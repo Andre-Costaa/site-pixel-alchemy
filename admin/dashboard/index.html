@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Pixel Alchemy - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ============================================
+   CSS Variables & Reset
+   ============================================ */
+:root {
+    --color-charcoal: #1a1f2e;
+    --color-charcoal-light: #2a2f3e;
+    --color-cream: #faf8f4;
+    --color-cream-dark: #f0ede8;
+    --color-terracotta: #e07856;
+    --color-terracotta-light: #ed9d7f;
+    --color-sage: #8ba888;
+    --color-sage-light: #a8c4a5;
+    --color-lavender: #b5a6c8;
+    --color-lavender-light: #cec3db;
+    --color-clay: #c4a68a;
+    --color-clay-light: #d9c4af;
+
+    --gradient-warm: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-clay) 100%);
+    --gradient-cool: linear-gradient(135deg, var(--color-sage) 0%, var(--color-lavender) 100%);
+
+    --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    --radius-sm: 12px;
+    --radius-md: 24px;
+
+    --shadow-sm: 0 2px 8px rgba(26, 31, 46, 0.04);
+    --shadow-md: 0 4px 16px rgba(26, 31, 46, 0.08);
+    --shadow-lg: 0 8px 32px rgba(26, 31, 46, 0.12);
+
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+
+    --sidebar-width: 260px;
+
+    --niche-dentista: #e07856;
+    --niche-veterinaria: #8ba888;
+    --niche-harmonizacao: #b5a6c8;
+    --niche-beleza: #c4a68a;
+    --niche-barbearia: #1a1f2e;
+    --niche-petshop: #65a3b8;
+    --niche-pizzaria: #d4543b;
+    --niche-padaria: #d4a76a;
+    --niche-acougue: #8b2500;
+    --niche-outro: #888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   Password Gate
+   ============================================ */
+.password-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-charcoal);
+}
+
+.password-gate.hidden {
+    display: none;
+}
+
+.password-box {
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-2xl);
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.password-box h1 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.password-box p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.password-input-wrap {
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+}
+
+.password-input-wrap input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid var(--color-cream-dark);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.password-input-wrap input:focus {
+    border-color: var(--color-terracotta);
+}
+
+.password-error {
+    color: #d4543b;
+    font-size: 0.85rem;
+    min-height: 1.2em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.password-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--gradient-warm);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.password-btn:hover {
+    opacity: 0.9;
+}
+
+/* ============================================
+   Layout: Sidebar + Main
+   ============================================ */
+.dashboard-layout {
+    display: none;
+    min-height: 100vh;
+}
+
+.dashboard-layout.visible {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--color-charcoal);
+    color: #fff;
+    padding: var(--spacing-lg) 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    padding: 0 var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.sidebar-brand h2 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sidebar-brand span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    margin-top: 2px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px var(--spacing-lg);
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+    border-left-color: var(--color-terracotta);
+}
+
+.sidebar-nav li a svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.sidebar-nav li a:hover svg,
+.sidebar-nav li a.active svg {
+    opacity: 1;
+}
+
+.sidebar-footer {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+}
+
+/* Main content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: var(--spacing-2xl);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Decorative blobs */
+.main-content::before,
+.main-content::after {
+    content: '';
+    position: fixed;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    opacity: 0.08;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-content::before {
+    width: 400px;
+    height: 400px;
+    background: var(--color-terracotta);
+    top: -100px;
+    right: -100px;
+}
+
+.main-content::after {
+    width: 300px;
+    height: 300px;
+    background: var(--color-sage);
+    bottom: 100px;
+    left: 300px;
+}
+
+/* ============================================
+   Section Base
+   ============================================ */
+.dashboard-section {
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.section-header .badge {
+    background: var(--color-terracotta);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   KPI Cards
+   ============================================ */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.kpi-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.kpi-card:nth-child(1)::before { background: var(--color-terracotta); }
+.kpi-card:nth-child(2)::before { background: var(--color-sage); }
+.kpi-card:nth-child(3)::before { background: var(--color-lavender); }
+.kpi-card:nth-child(4)::before { background: var(--color-clay); }
+
+.kpi-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.kpi-value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.kpi-sub {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ============================================
+   Charts Row
+   ============================================ */
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.chart-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+}
+
+/* Donut chart */
+.donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.82rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-count {
+    color: #888;
+    margin-left: auto;
+    font-weight: 600;
+    min-width: 28px;
+    text-align: right;
+}
+
+/* SEO coverage bars */
+.seo-bars {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.seo-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.seo-bar-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    width: 100px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.seo-bar-track {
+    flex: 1;
+    height: 28px;
+    background: var(--color-cream-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.seo-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease;
+    position: relative;
+}
+
+.seo-bar-pct {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.seo-bar-pct.outside {
+    color: var(--color-charcoal);
+    right: auto;
+    left: calc(100% + 8px);
+}
+
+/* ============================================
+   Pipeline Funnel
+   ============================================ */
+.funnel-wrap {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.funnel-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.funnel-stage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.funnel-stage-label {
+    width: 140px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.funnel-bar-track {
+    flex: 1;
+    height: 32px;
+    background: var(--color-cream-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.funnel-bar-fill {
+    height: 100%;
+    background: var(--gradient-warm);
+    border-radius: 6px;
+    transition: width 1s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    min-width: fit-content;
+}
+
+.funnel-bar-count {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.funnel-bar-count.outside {
+    color: var(--color-charcoal);
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ============================================
+   Treemap
+   ============================================ */
+.treemap-container {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.treemap-svg-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.treemap-rect {
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.treemap-rect:hover {
+    opacity: 0.85;
+}
+
+.treemap-label {
+    pointer-events: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    fill: #fff;
+}
+
+.treemap-count {
+    pointer-events: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    fill: rgba(255,255,255,0.85);
+}
+
+/* Drill-down panel */
+.drilldown-panel {
+    display: none;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-md);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.drilldown-panel.visible {
+    display: block;
+}
+
+.drilldown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.drilldown-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.drilldown-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 4px;
+}
+
+.drilldown-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+}
+
+.drilldown-list li {
+    padding: 8px 12px;
+    background: var(--color-cream);
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.drilldown-list li a {
+    color: var(--color-charcoal);
+    text-decoration: none;
+}
+
+.drilldown-list li a:hover {
+    color: var(--color-terracotta);
+}
+
+/* ============================================
+   SEO Clusters
+   ============================================ */
+.cluster-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cluster-filter-btn {
+    padding: 6px 16px;
+    border: 2px solid var(--color-cream-dark);
+    border-radius: 100px;
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.cluster-filter-btn:hover {
+    border-color: var(--color-terracotta);
+}
+
+.cluster-filter-btn.active {
+    background: var(--color-terracotta);
+    color: #fff;
+    border-color: var(--color-terracotta);
+}
+
+.cluster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.cluster-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base);
+}
+
+.cluster-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.cluster-card-top {
+    height: 4px;
+}
+
+.cluster-card-body {
+    padding: var(--spacing-md);
+}
+
+.cluster-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cluster-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.cluster-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.cluster-pill.opp-high {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+.cluster-pill.opp-medium {
+    background: #fff8e1;
+    color: #f57f17;
+    border-color: #fff9c4;
+}
+
+.cluster-pill.opp-low {
+    background: #fce4ec;
+    color: #c62828;
+    border-color: #f8bbd0;
+}
+
+.cluster-pill .pill-vol {
+    font-weight: 700;
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.cluster-expanded {
+    display: none;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-cream);
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.cluster-expanded.visible {
+    display: block;
+}
+
+.cluster-expanded .related-kw {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #fff;
+    border-radius: 4px;
+    margin: 2px;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Tooltip */
+.tooltip {
+    position: fixed;
+    background: var(--color-charcoal);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.15s;
+    max-width: 260px;
+    line-height: 1.4;
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+.table-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.table-search {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 16px;
+    border: 2px solid var(--color-cream-dark);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.table-search:focus {
+    border-color: var(--color-terracotta);
+}
+
+.table-select {
+    padding: 10px 16px;
+    border: 2px solid var(--color-cream-dark);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.data-table-wrap {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.data-table thead {
+    background: var(--color-charcoal);
+    color: #fff;
+}
+
+.data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.data-table th:hover {
+    background: var(--color-charcoal-light);
+}
+
+.data-table th .sort-arrow {
+    margin-left: 4px;
+    opacity: 0.4;
+}
+
+.data-table th .sort-arrow.active {
+    opacity: 1;
+}
+
+.data-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-cream-dark);
+    vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(250, 248, 244, 0.5);
+}
+
+.data-table .check-yes {
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+.data-table .check-no {
+    color: #c62828;
+    font-weight: 700;
+}
+
+.seo-score-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.78rem;
+}
+
+.seo-score-badge.score-high { background: #e8f5e9; color: #2e7d32; }
+.seo-score-badge.score-mid { background: #fff8e1; color: #f57f17; }
+.seo-score-badge.score-low { background: #fce4ec; color: #c62828; }
+
+.niche-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.table-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #888;
+}
+
+.table-pagination button {
+    padding: 6px 14px;
+    border: 1px solid var(--color-cream-dark);
+    border-radius: 6px;
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.table-pagination button:hover:not(:disabled) {
+    border-color: var(--color-terracotta);
+    color: var(--color-terracotta);
+}
+
+.table-pagination button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ============================================
+   Timeline (Area Chart)
+   ============================================ */
+.timeline-card {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.timeline-svg-wrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.timeline-area {
+    fill: url(#areaGradient);
+    opacity: 0.3;
+}
+
+.timeline-line {
+    fill: none;
+    stroke: var(--color-terracotta);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.timeline-dot {
+    fill: var(--color-terracotta);
+    stroke: #fff;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.timeline-dot:hover {
+    r: 6;
+}
+
+.timeline-axis text {
+    font-family: var(--font-body);
+    font-size: 11px;
+    fill: #888;
+}
+
+.timeline-axis line {
+    stroke: var(--color-cream-dark);
+}
+
+.timeline-grid line {
+    stroke: var(--color-cream-dark);
+    stroke-dasharray: 4 4;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 0;
+        overflow-x: auto;
+    }
+
+    .sidebar-brand {
+        display: none;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sidebar-nav li a {
+        padding: 14px 16px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+        font-size: 0.82rem;
+    }
+
+    .sidebar-nav li a.active {
+        border-bottom-color: var(--color-terracotta);
+        border-left-color: transparent;
+    }
+
+    .sidebar-nav li a span {
+        display: none;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 52px;
+        padding: var(--spacing-lg);
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-row {
+        grid-template-columns: 1fr;
+    }
+
+    .funnel-stage-label {
+        width: 110px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: var(--spacing-md);
+    }
+
+    .cluster-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-table {
+        font-size: 0.78rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 8px 10px;
+    }
+
+    .funnel-stage-label {
+        width: 80px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.animate-in.visible {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-in {
+        opacity: 1;
+        transform: none;
+    }
+    .animate-in.visible {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    .seo-bar-fill,
+    .funnel-bar-fill {
+        transition: none;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     Password Gate
+     ============================================ -->
+<div class="password-gate" id="passwordGate">
+    <div class="password-box">
+        <h1>Pixel Alchemy</h1>
+        <p>Dashboard interno. Insira a senha para acessar.</p>
+        <div class="password-input-wrap">
+            <input type="password" id="passwordInput" placeholder="Senha" autocomplete="off">
+        </div>
+        <div class="password-error" id="passwordError"></div>
+        <button class="password-btn" id="passwordBtn">Entrar</button>
+    </div>
+</div>
+
+<!-- ============================================
+     Dashboard Layout
+     ============================================ -->
+<div class="dashboard-layout" id="dashboardLayout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <h2>Pixel Alchemy</h2>
+            <span>Dashboard v1.0</span>
+        </div>
+        <ul class="sidebar-nav" id="sidebarNav">
+            <li><a href="#visao-geral" class="active" data-section="visao-geral">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Visao Geral</span></a></li>
+            <li><a href="#pipeline" data-section="pipeline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Pipeline</span></a></li>
+            <li><a href="#nichos" data-section="nichos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                <span>Nichos</span></a></li>
+            <li><a href="#clusters" data-section="clusters">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <span>Clusters SEO</span></a></li>
+            <li><a href="#keywords" data-section="keywords">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h6"/></svg>
+                <span>Keywords</span></a></li>
+            <li><a href="#auditoria" data-section="auditoria">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                <span>Auditoria SEO</span></a></li>
+            <li><a href="#timeline" data-section="timeline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Timeline</span></a></li>
+        </ul>
+        <div class="sidebar-footer" id="sidebarFooter">
+            Atualizado em: --
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+
+        <!-- 1. Visao Geral -->
+        <section class="dashboard-section" id="visao-geral">
+            <div class="section-header">
+                <h2>Visao Geral</h2>
+                <span class="badge">KPIs</span>
+            </div>
+
+            <div class="kpi-grid" id="kpiGrid">
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Sites Criados</div>
+                    <div class="kpi-value" data-counter="0" id="kpiSites">0</div>
+                    <div class="kpi-sub">em site-demo/</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Nichos Ativos</div>
+                    <div class="kpi-value" data-counter="0" id="kpiNiches">0</div>
+                    <div class="kpi-sub">categorias de negocio</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Taxa Conclusao</div>
+                    <div class="kpi-value" data-counter="0" id="kpiCompletion">0%</div>
+                    <div class="kpi-sub">user stories (PRD)</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">SEO Score Medio</div>
+                    <div class="kpi-value" data-counter="0" id="kpiSeo">0</div>
+                    <div class="kpi-sub">de 100 pontos</div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card animate-in">
+                    <h3>Distribuicao por Nicho</h3>
+                    <div class="chart-container">
+                        <div class="donut-wrap" id="donutChart"></div>
+                    </div>
+                </div>
+                <div class="chart-card animate-in">
+                    <h3>Cobertura SEO</h3>
+                    <div class="chart-container">
+                        <div class="seo-bars" id="seoBars"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Pipeline -->
+        <section class="dashboard-section" id="pipeline">
+            <div class="section-header">
+                <h2>Pipeline de Producao</h2>
+                <span class="badge">Funil</span>
+            </div>
+            <div class="funnel-wrap animate-in" id="funnelChart"></div>
+        </section>
+
+        <!-- 3. Nichos (Treemap) -->
+        <section class="dashboard-section" id="nichos">
+            <div class="section-header">
+                <h2>Distribuicao por Nichos</h2>
+                <span class="badge">Treemap</span>
+            </div>
+            <div class="treemap-container animate-in">
+                <div class="treemap-svg-wrap" id="treemapChart"></div>
+            </div>
+            <div class="drilldown-panel" id="drilldownPanel">
+                <div class="drilldown-header">
+                    <h3 id="drilldownTitle">--</h3>
+                    <button class="drilldown-close" id="drilldownClose">&times;</button>
+                </div>
+                <ul class="drilldown-list" id="drilldownList"></ul>
+            </div>
+        </section>
+
+        <!-- 4. SEO Clusters -->
+        <section class="dashboard-section" id="clusters">
+            <div class="section-header">
+                <h2>Mapa de Clusters SEO</h2>
+                <span class="badge">Keywords</span>
+            </div>
+            <div class="cluster-filters" id="clusterFilters"></div>
+            <div class="cluster-grid" id="clusterGrid"></div>
+        </section>
+
+        <!-- 5. Keywords Table -->
+        <section class="dashboard-section" id="keywords">
+            <div class="section-header">
+                <h2>Keywords SEO</h2>
+                <span class="badge">Tabela</span>
+            </div>
+            <div class="table-controls">
+                <input type="text" class="table-search" id="kwSearch" placeholder="Buscar keyword...">
+                <select class="table-select" id="kwNicheFilter">
+                    <option value="">Todos os nichos</option>
+                </select>
+            </div>
+            <div class="data-table-wrap">
+                <table class="data-table" id="kwTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="keyword">Keyword <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="niche">Nicho <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="volume">Volume <span class="sort-arrow active">&#9660;</span></th>
+                            <th data-sort="competition">Competicao <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="opportunity">Oportunidade <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="sites">Sites <span class="sort-arrow">&#9650;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="kwBody"></tbody>
+                </table>
+                <div class="table-pagination" id="kwPagination"></div>
+            </div>
+        </section>
+
+        <!-- 6. Auditoria SEO -->
+        <section class="dashboard-section" id="auditoria">
+            <div class="section-header">
+                <h2>Auditoria SEO por Site</h2>
+                <span class="badge">Audit</span>
+            </div>
+            <div class="table-controls">
+                <input type="text" class="table-search" id="auditSearch" placeholder="Buscar site...">
+                <select class="table-select" id="auditNicheFilter">
+                    <option value="">Todos os nichos</option>
+                </select>
+            </div>
+            <div class="data-table-wrap">
+                <table class="data-table" id="auditTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="slug">Site <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="niche">Nicho <span class="sort-arrow">&#9650;</span></th>
+                            <th data-sort="seo_score">Score <span class="sort-arrow active">&#9660;</span></th>
+                            <th data-sort="title">Title</th>
+                            <th data-sort="description">Description</th>
+                            <th data-sort="og_title">OG Tags</th>
+                            <th data-sort="json_ld">JSON-LD</th>
+                            <th data-sort="canonical">Canonical</th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditBody"></tbody>
+                </table>
+                <div class="table-pagination" id="auditPagination"></div>
+            </div>
+        </section>
+
+        <!-- 7. Timeline -->
+        <section class="dashboard-section" id="timeline">
+            <div class="section-header">
+                <h2>Timeline de Criacao</h2>
+                <span class="badge">Historia</span>
+            </div>
+            <div class="timeline-card animate-in">
+                <div class="timeline-svg-wrap" id="timelineChart"></div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+/* ============================================
+   Dashboard App
+   ============================================ */
+(function() {
+    'use strict';
+
+    // Niche colors map
+    const NICHE_COLORS = {
+        'Dentista': '#e07856',
+        'Veterinaria': '#8ba888',
+        'Harmonizacao': '#b5a6c8',
+        'Beleza': '#c4a68a',
+        'Barbearia': '#1a1f2e',
+        'Pet Shop': '#65a3b8',
+        'Pizzaria': '#d4543b',
+        'Padaria': '#d4a76a',
+        'Acougue': '#8b2500',
+        'Outro': '#888'
+    };
+
+    const COMP_ORDER = { 'baixa': 0, 'media': 1, 'alta': 2 };
+    const ROWS_PER_PAGE = 20;
+
+    let DATA = null;
+
+    // ---- Utility ----
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---- DashboardAuth ----
+    const DashboardAuth = {
+        HASH: '0473b4b3f98c8a071cd64401813a1b495f327336b610889395618bea26139a4b',
+
+        async sha256(text) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        },
+
+        async verify(password) {
+            const hash = await this.sha256(password);
+            return hash === this.HASH;
+        },
+
+        isAuthenticated() {
+            return sessionStorage.getItem('pa_dashboard_auth') === '1';
+        },
+
+        setAuthenticated() {
+            sessionStorage.setItem('pa_dashboard_auth', '1');
+        },
+
+        init() {
+            const gate = $('#passwordGate');
+            const layout = $('#dashboardLayout');
+
+            if (this.isAuthenticated()) {
+                gate.classList.add('hidden');
+                layout.classList.add('visible');
+                DataLoader.load();
+                return;
+            }
+
+            const input = $('#passwordInput');
+            const btn = $('#passwordBtn');
+            const error = $('#passwordError');
+
+            const tryLogin = async () => {
+                const pw = input.value;
+                if (!pw) { error.textContent = 'Digite a senha.'; return; }
+                const valid = await this.verify(pw);
+                if (valid) {
+                    this.setAuthenticated();
+                    gate.classList.add('hidden');
+                    layout.classList.add('visible');
+                    DataLoader.load();
+                } else {
+                    error.textContent = 'Senha incorreta.';
+                    input.value = '';
+                    input.focus();
+                }
+            };
+
+            btn.addEventListener('click', tryLogin);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') tryLogin();
+            });
+            input.focus();
+        }
+    };
+
+    // ---- DataLoader ----
+    const DataLoader = {
+        async load() {
+            try {
+                const resp = await fetch('dashboard-data.json');
+                if (!resp.ok) throw new Error('Failed to load data');
+                DATA = await resp.json();
+                DashboardApp.init();
+            } catch (err) {
+                console.error('DataLoader error:', err);
+                $('.main-content').innerHTML = '<div style="padding:3rem;text-align:center;color:#c62828;"><h2>Erro ao carregar dados</h2><p>Execute: python3 scripts/generate_dashboard_data.py</p></div>';
+            }
+        }
+    };
+
+    // ---- ChartRenderer ----
+    const ChartRenderer = {
+
+        // Donut chart (SVG)
+        renderDonut(containerId, distribution) {
+            const container = $(containerId);
+            const entries = Object.entries(distribution).sort((a, b) => b[1] - a[1]);
+            const total = entries.reduce((s, e) => s + e[1], 0);
+
+            const size = 200;
+            const cx = size / 2, cy = size / 2, r = 75;
+            const inner = 45;
+
+            let svgPaths = '';
+            let startAngle = -90;
+
+            entries.forEach(([niche, count]) => {
+                const angle = (count / total) * 360;
+                const endAngle = startAngle + angle;
+                const largeArc = angle > 180 ? 1 : 0;
+
+                const x1 = cx + r * Math.cos((startAngle * Math.PI) / 180);
+                const y1 = cy + r * Math.sin((startAngle * Math.PI) / 180);
+                const x2 = cx + r * Math.cos((endAngle * Math.PI) / 180);
+                const y2 = cy + r * Math.sin((endAngle * Math.PI) / 180);
+                const ix1 = cx + inner * Math.cos((endAngle * Math.PI) / 180);
+                const iy1 = cy + inner * Math.sin((endAngle * Math.PI) / 180);
+                const ix2 = cx + inner * Math.cos((startAngle * Math.PI) / 180);
+                const iy2 = cy + inner * Math.sin((startAngle * Math.PI) / 180);
+
+                const color = NICHE_COLORS[niche] || '#888';
+                svgPaths += `<path d="M${x1},${y1} A${r},${r} 0 ${largeArc},1 ${x2},${y2} L${ix1},${iy1} A${inner},${inner} 0 ${largeArc},0 ${ix2},${iy2} Z" fill="${color}" opacity="0.9"><title>${niche}: ${count}</title></path>`;
+                startAngle = endAngle;
+            });
+
+            const svg = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="flex-shrink:0">
+                ${svgPaths}
+                <text x="${cx}" y="${cy - 6}" text-anchor="middle" font-family="var(--font-display)" font-size="24" font-weight="700" fill="var(--color-charcoal)">${total}</text>
+                <text x="${cx}" y="${cy + 14}" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="#888">sites</text>
+            </svg>`;
+
+            let legend = entries.map(([niche, count]) =>
+                `<div class="legend-item"><span class="legend-dot" style="background:${NICHE_COLORS[niche] || '#888'}"></span><span>${niche}</span><span class="legend-count">${count}</span></div>`
+            ).join('');
+
+            container.innerHTML = svg + `<div class="donut-legend">${legend}</div>`;
+        },
+
+        // Horizontal SEO coverage bars
+        renderSeoBars(containerId, seoSummary, totalSites) {
+            const container = $(containerId);
+            const metrics = [
+                { label: 'Title', key: 'with_title', color: 'var(--color-terracotta)' },
+                { label: 'Description', key: 'with_description', color: 'var(--color-sage)' },
+                { label: 'H1', key: 'with_h1', color: 'var(--color-lavender)' },
+                { label: 'OG Tags', key: 'with_og_tags', color: 'var(--color-clay)' },
+                { label: 'Keywords', key: 'with_keywords', color: '#65a3b8' },
+                { label: 'Canonical', key: 'with_canonical', color: '#d4a76a' },
+                { label: 'JSON-LD', key: 'with_json_ld', color: '#d4543b' },
+                { label: 'Robots', key: 'with_robots', color: '#8b2500' },
+            ];
+
+            container.innerHTML = metrics.map(m => {
+                const count = seoSummary[m.key] || 0;
+                const pct = totalSites > 0 ? Math.round((count / totalSites) * 100) : 0;
+                const isNarrow = pct < 15;
+                return `<div class="seo-bar-row">
+                    <span class="seo-bar-label">${m.label}</span>
+                    <div class="seo-bar-track">
+                        <div class="seo-bar-fill" style="width:${pct}%;background:${m.color}">
+                            <span class="seo-bar-pct${isNarrow ? ' outside' : ''}">${pct}%</span>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        },
+
+        // Pipeline funnel
+        renderFunnel(containerId, pipeline) {
+            const container = $(containerId);
+            const maxCount = Math.max(...Object.values(pipeline.counts), 1);
+
+            container.innerHTML = `<div class="funnel-stages">${pipeline.stages.map(stage => {
+                const count = pipeline.counts[stage] || 0;
+                const pct = Math.max((count / maxCount) * 100, count > 0 ? 5 : 0);
+                const isNarrow = pct < 10;
+                return `<div class="funnel-stage">
+                    <span class="funnel-stage-label">${stage}</span>
+                    <div class="funnel-bar-track">
+                        <div class="funnel-bar-fill" style="width:${pct}%">
+                            ${!isNarrow ? `<span class="funnel-bar-count">${count}</span>` : ''}
+                        </div>
+                        ${isNarrow && count > 0 ? `<span class="funnel-bar-count outside">${count}</span>` : ''}
+                    </div>
+                </div>`;
+            }).join('')}</div>`;
+        },
+
+        // Treemap (squarify simplified)
+        renderTreemap(containerId, distribution, allSites) {
+            const container = $(containerId);
+            const entries = Object.entries(distribution).sort((a, b) => b[1] - a[1]);
+            const total = entries.reduce((s, e) => s + e[1], 0);
+
+            const W = 800, H = 400;
+            const rects = this._squarify(entries.map(([n, c]) => ({ name: n, value: c })), 0, 0, W, H);
+
+            let svgContent = rects.map(r => {
+                const color = NICHE_COLORS[r.name] || '#888';
+                const textColor = ['Barbearia'].includes(r.name) ? 'rgba(255,255,255,0.95)' : '#fff';
+                const showLabel = r.w > 60 && r.h > 40;
+                return `<rect class="treemap-rect" x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" fill="${color}" rx="4" data-niche="${r.name}"/>
+                    ${showLabel ? `<text class="treemap-label" x="${r.x + r.w/2}" y="${r.y + r.h/2 - 8}" text-anchor="middle" font-size="${r.w > 120 ? 13 : 10}" fill="${textColor}">${r.name}</text>
+                    <text class="treemap-count" x="${r.x + r.w/2}" y="${r.y + r.h/2 + 14}" text-anchor="middle" font-size="${r.w > 120 ? 22 : 16}" fill="${textColor}">${r.value}</text>` : ''}`;
+            }).join('');
+
+            container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet">${svgContent}</svg>`;
+
+            // Click handler for drill-down
+            container.querySelectorAll('.treemap-rect').forEach(rect => {
+                rect.addEventListener('click', () => {
+                    const niche = rect.getAttribute('data-niche');
+                    const sites = allSites.filter(s => s.niche === niche);
+                    Interactions.showDrilldown(niche, sites);
+                });
+            });
+        },
+
+        _squarify(items, x, y, w, h) {
+            if (items.length === 0) return [];
+            if (items.length === 1) {
+                return [{ name: items[0].name, value: items[0].value, x, y, w, h }];
+            }
+
+            const total = items.reduce((s, i) => s + i.value, 0);
+            const rects = [];
+            let cx = x, cy = y, cw = w, ch = h;
+
+            for (let i = 0; i < items.length; i++) {
+                const ratio = items[i].value / total;
+                if (cw >= ch) {
+                    const rw = cw * ratio;
+                    rects.push({ name: items[i].name, value: items[i].value, x: cx, y: cy, w: Math.max(rw, 1), h: ch });
+                    cx += rw;
+                    cw -= rw;
+                } else {
+                    const rh = ch * ratio;
+                    rects.push({ name: items[i].name, value: items[i].value, x: cx, y: cy, w: cw, h: Math.max(rh, 1) });
+                    cy += rh;
+                    ch -= rh;
+                }
+            }
+            return rects;
+        },
+
+        // Timeline area chart
+        renderTimeline(containerId, timeline) {
+            const container = $(containerId);
+            if (!timeline || timeline.length === 0) {
+                container.innerHTML = '<p style="color:#888;text-align:center;padding:2rem;">Sem dados de timeline.</p>';
+                return;
+            }
+
+            const margin = { top: 20, right: 30, bottom: 50, left: 50 };
+            const W = 800, H = 340;
+            const innerW = W - margin.left - margin.right;
+            const innerH = H - margin.top - margin.bottom;
+
+            const dates = timeline.map(t => new Date(t.date));
+            const minDate = dates[0];
+            const maxDate = dates[dates.length - 1];
+            const dateRange = maxDate - minDate || 1;
+            const maxCount = timeline[timeline.length - 1].cumulative_count;
+
+            const xScale = (d) => margin.left + ((new Date(d) - minDate) / dateRange) * innerW;
+            const yScale = (v) => margin.top + innerH - (v / maxCount) * innerH;
+
+            // Build path
+            let linePath = '';
+            let areaPath = '';
+            const points = timeline.map(t => ({
+                x: xScale(t.date),
+                y: yScale(t.cumulative_count),
+                ...t
+            }));
+
+            points.forEach((p, i) => {
+                if (i === 0) {
+                    linePath += `M${p.x},${p.y}`;
+                    areaPath += `M${p.x},${yScale(0)} L${p.x},${p.y}`;
+                } else {
+                    linePath += ` L${p.x},${p.y}`;
+                    areaPath += ` L${p.x},${p.y}`;
+                }
+            });
+            areaPath += ` L${points[points.length-1].x},${yScale(0)} Z`;
+
+            // Y axis ticks
+            const yTicks = [];
+            const yStep = Math.ceil(maxCount / 5);
+            for (let v = 0; v <= maxCount; v += yStep) {
+                yTicks.push(v);
+            }
+            if (yTicks[yTicks.length - 1] < maxCount) yTicks.push(maxCount);
+
+            // X axis ticks (monthly)
+            const xTicks = [];
+            const seen = new Set();
+            timeline.forEach(t => {
+                const ym = t.date.substring(0, 7);
+                if (!seen.has(ym)) {
+                    seen.add(ym);
+                    xTicks.push({ label: ym, x: xScale(t.date) });
+                }
+            });
+
+            // Milestone dots
+            const milestones = [1, 50, 89, timeline.length];
+            const milestonePoints = milestones
+                .filter(m => m <= timeline.length)
+                .map(m => points[m - 1])
+                .filter(Boolean);
+
+            let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#e07856" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#e07856" stop-opacity="0.02"/>
+                    </linearGradient>
+                </defs>
+                <g class="timeline-grid">
+                    ${yTicks.map(v => `<line x1="${margin.left}" y1="${yScale(v)}" x2="${W - margin.right}" y2="${yScale(v)}"/>`).join('')}
+                </g>
+                <g class="timeline-axis">
+                    ${yTicks.map(v => `<text x="${margin.left - 10}" y="${yScale(v) + 4}" text-anchor="end">${v}</text>`).join('')}
+                    ${xTicks.map(t => `<text x="${t.x}" y="${H - 10}" text-anchor="middle">${t.label}</text>`).join('')}
+                </g>
+                <path class="timeline-area" d="${areaPath}"/>
+                <path class="timeline-line" d="${linePath}"/>
+                ${milestonePoints.map(p => `<circle class="timeline-dot" cx="${p.x}" cy="${p.y}" r="4" data-info="${p.us_id} - ${p.title} (${p.date})"/>`).join('')}
+            </svg>`;
+
+            container.innerHTML = svg;
+
+            // Tooltip on dots
+            container.querySelectorAll('.timeline-dot').forEach(dot => {
+                dot.addEventListener('mouseenter', (e) => {
+                    Interactions.showTooltip(e, dot.getAttribute('data-info'));
+                });
+                dot.addEventListener('mouseleave', () => {
+                    Interactions.hideTooltip();
+                });
+            });
+        }
+    };
+
+    // ---- TableManager ----
+    const TableManager = {
+
+        // Keywords table
+        kwState: { data: [], filtered: [], sortKey: 'volume', sortDir: -1, page: 0, search: '', nicheFilter: '' },
+
+        initKeywords(clusters) {
+            const rows = [];
+            Object.entries(clusters).forEach(([niche, nicheData]) => {
+                nicheData.clusters.forEach(kw => {
+                    rows.push({
+                        keyword: kw.keyword,
+                        niche: nicheData.label,
+                        volume: kw.volume,
+                        competition: kw.competition,
+                        opportunity: kw.opportunity,
+                        sites: kw.sites_targeting
+                    });
+                });
+            });
+            this.kwState.data = rows;
+            this.kwFilter();
+
+            // Populate niche filter
+            const niches = [...new Set(rows.map(r => r.niche))].sort();
+            const sel = $('#kwNicheFilter');
+            niches.forEach(n => {
+                const opt = document.createElement('option');
+                opt.value = n; opt.textContent = n;
+                sel.appendChild(opt);
+            });
+
+            // Events
+            let debounce;
+            $('#kwSearch').addEventListener('input', (e) => {
+                clearTimeout(debounce);
+                debounce = setTimeout(() => {
+                    this.kwState.search = e.target.value.toLowerCase();
+                    this.kwState.page = 0;
+                    this.kwFilter();
+                }, 300);
+            });
+
+            sel.addEventListener('change', (e) => {
+                this.kwState.nicheFilter = e.target.value;
+                this.kwState.page = 0;
+                this.kwFilter();
+            });
+
+            // Sort
+            $$('#kwTable th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => {
+                    const key = th.getAttribute('data-sort');
+                    if (this.kwState.sortKey === key) {
+                        this.kwState.sortDir *= -1;
+                    } else {
+                        this.kwState.sortKey = key;
+                        this.kwState.sortDir = -1;
+                    }
+                    this.kwState.page = 0;
+                    this.kwFilter();
+                    this._updateSortArrows('#kwTable', key, this.kwState.sortDir);
+                });
+            });
+        },
+
+        kwFilter() {
+            let f = this.kwState.data;
+            if (this.kwState.search) {
+                f = f.filter(r => r.keyword.toLowerCase().includes(this.kwState.search));
+            }
+            if (this.kwState.nicheFilter) {
+                f = f.filter(r => r.niche === this.kwState.nicheFilter);
+            }
+            const key = this.kwState.sortKey;
+            const dir = this.kwState.sortDir;
+            f.sort((a, b) => {
+                let va = a[key], vb = b[key];
+                if (key === 'competition') { va = COMP_ORDER[va] || 0; vb = COMP_ORDER[vb] || 0; }
+                if (typeof va === 'string') return dir * va.localeCompare(vb);
+                return dir * (va - vb);
+            });
+            this.kwState.filtered = f;
+            this.kwRender();
+        },
+
+        kwRender() {
+            const { filtered, page } = this.kwState;
+            const start = page * ROWS_PER_PAGE;
+            const slice = filtered.slice(start, start + ROWS_PER_PAGE);
+
+            $('#kwBody').innerHTML = slice.map(r => {
+                const oppClass = r.opportunity >= 75 ? 'opp-high' : r.opportunity >= 60 ? 'opp-medium' : 'opp-low';
+                const compLabel = { 'baixa': 'Baixa', 'media': 'Media', 'alta': 'Alta' }[r.competition] || r.competition;
+                return `<tr>
+                    <td>${r.keyword}</td>
+                    <td><span class="niche-tag" style="background:${NICHE_COLORS[r.niche] || '#888'}">${r.niche}</span></td>
+                    <td>${r.volume.toLocaleString('pt-BR')}</td>
+                    <td>${compLabel}</td>
+                    <td><span class="cluster-pill ${oppClass}" style="cursor:default">${r.opportunity}</span></td>
+                    <td>${r.sites}</td>
+                </tr>`;
+            }).join('');
+
+            this._renderPagination('#kwPagination', filtered.length, page, (p) => {
+                this.kwState.page = p;
+                this.kwRender();
+            });
+        },
+
+        // Audit table
+        auditState: { data: [], filtered: [], sortKey: 'seo_score', sortDir: -1, page: 0, search: '', nicheFilter: '' },
+
+        initAudit(sites) {
+            this.auditState.data = sites;
+            this.auditFilter();
+
+            const niches = [...new Set(sites.map(s => s.niche))].sort();
+            const sel = $('#auditNicheFilter');
+            niches.forEach(n => {
+                const opt = document.createElement('option');
+                opt.value = n; opt.textContent = n;
+                sel.appendChild(opt);
+            });
+
+            let debounce;
+            $('#auditSearch').addEventListener('input', (e) => {
+                clearTimeout(debounce);
+                debounce = setTimeout(() => {
+                    this.auditState.search = e.target.value.toLowerCase();
+                    this.auditState.page = 0;
+                    this.auditFilter();
+                }, 300);
+            });
+
+            sel.addEventListener('change', (e) => {
+                this.auditState.nicheFilter = e.target.value;
+                this.auditState.page = 0;
+                this.auditFilter();
+            });
+
+            $$('#auditTable th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => {
+                    const key = th.getAttribute('data-sort');
+                    if (this.auditState.sortKey === key) {
+                        this.auditState.sortDir *= -1;
+                    } else {
+                        this.auditState.sortKey = key;
+                        this.auditState.sortDir = -1;
+                    }
+                    this.auditState.page = 0;
+                    this.auditFilter();
+                    this._updateSortArrows('#auditTable', key, this.auditState.sortDir);
+                });
+            });
+        },
+
+        auditFilter() {
+            let f = this.auditState.data;
+            if (this.auditState.search) {
+                f = f.filter(s => s.slug.toLowerCase().includes(this.auditState.search));
+            }
+            if (this.auditState.nicheFilter) {
+                f = f.filter(s => s.niche === this.auditState.nicheFilter);
+            }
+            const key = this.auditState.sortKey;
+            const dir = this.auditState.sortDir;
+            f.sort((a, b) => {
+                let va, vb;
+                if (key === 'seo_score') { va = a.seo_score; vb = b.seo_score; }
+                else if (key === 'slug' || key === 'niche') { va = a[key]; vb = b[key]; }
+                else { va = a.seo[key] ? 1 : 0; vb = b.seo[key] ? 1 : 0; }
+                if (typeof va === 'string') return dir * va.localeCompare(vb);
+                return dir * (va - vb);
+            });
+            this.auditState.filtered = f;
+            this.auditRender();
+        },
+
+        auditRender() {
+            const { filtered, page } = this.auditState;
+            const start = page * ROWS_PER_PAGE;
+            const slice = filtered.slice(start, start + ROWS_PER_PAGE);
+
+            const check = (v) => v ? '<span class="check-yes">&#10003;</span>' : '<span class="check-no">&#10007;</span>';
+            const scoreBadge = (s) => {
+                const cls = s >= 60 ? 'score-high' : s >= 35 ? 'score-mid' : 'score-low';
+                return `<span class="seo-score-badge ${cls}">${s}</span>`;
+            };
+
+            $('#auditBody').innerHTML = slice.map(s => `<tr>
+                <td><a href="${s.url}" target="_blank" style="color:var(--color-charcoal);text-decoration:none">${s.slug}</a></td>
+                <td><span class="niche-tag" style="background:${NICHE_COLORS[s.niche] || '#888'}">${s.niche}</span></td>
+                <td>${scoreBadge(s.seo_score)}</td>
+                <td>${check(s.seo.title)}</td>
+                <td>${check(s.seo.description)}</td>
+                <td>${check(s.seo.og_title)}</td>
+                <td>${check(s.seo.json_ld)}</td>
+                <td>${check(s.seo.canonical)}</td>
+            </tr>`).join('');
+
+            this._renderPagination('#auditPagination', filtered.length, page, (p) => {
+                this.auditState.page = p;
+                this.auditRender();
+            });
+        },
+
+        _renderPagination(containerId, total, currentPage, onPage) {
+            const pages = Math.ceil(total / ROWS_PER_PAGE);
+            const container = $(containerId);
+            if (pages <= 1) { container.innerHTML = `<span>${total} resultados</span><span></span>`; return; }
+
+            container.innerHTML = `
+                <span>${total} resultados (pagina ${currentPage + 1} de ${pages})</span>
+                <span>
+                    <button id="${containerId.slice(1)}Prev" ${currentPage === 0 ? 'disabled' : ''}>&laquo; Anterior</button>
+                    <button id="${containerId.slice(1)}Next" ${currentPage >= pages - 1 ? 'disabled' : ''}>Proximo &raquo;</button>
+                </span>`;
+
+            const prevBtn = $(`${containerId}Prev`);
+            const nextBtn = $(`${containerId}Next`);
+            if (prevBtn) prevBtn.addEventListener('click', () => onPage(currentPage - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => onPage(currentPage + 1));
+        },
+
+        _updateSortArrows(tableId, activeKey, dir) {
+            $$(`${tableId} th[data-sort] .sort-arrow`).forEach(arrow => {
+                const th = arrow.closest('th');
+                const key = th.getAttribute('data-sort');
+                if (key === activeKey) {
+                    arrow.classList.add('active');
+                    arrow.innerHTML = dir > 0 ? '&#9650;' : '&#9660;';
+                } else {
+                    arrow.classList.remove('active');
+                    arrow.innerHTML = '&#9650;';
+                }
+            });
+        }
+    };
+
+    // ---- Interactions ----
+    const Interactions = {
+
+        initSidebar() {
+            const links = $$('#sidebarNav a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('data-section');
+                    const section = $(`#${sectionId}`);
+                    if (section) {
+                        section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+                    }
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            // Scroll spy
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        links.forEach(l => {
+                            l.classList.toggle('active', l.getAttribute('data-section') === id);
+                        });
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+            $$('.dashboard-section').forEach(sec => observer.observe(sec));
+        },
+
+        initClusters(clusters) {
+            const filterContainer = $('#clusterFilters');
+            const grid = $('#clusterGrid');
+
+            // "All" button
+            let filterHtml = '<button class="cluster-filter-btn active" data-niche="">Todos</button>';
+            Object.entries(clusters).forEach(([key, data]) => {
+                filterHtml += `<button class="cluster-filter-btn" data-niche="${key}" style="border-color:${data.color}">${data.label}</button>`;
+            });
+            filterContainer.innerHTML = filterHtml;
+
+            const renderCards = (filter) => {
+                let html = '';
+                Object.entries(clusters).forEach(([key, data]) => {
+                    if (filter && filter !== key) return;
+                    let pills = data.clusters.map((kw, i) => {
+                        const oppClass = kw.opportunity >= 75 ? 'opp-high' : kw.opportunity >= 60 ? 'opp-medium' : 'opp-low';
+                        return `<span class="cluster-pill ${oppClass}" data-niche-key="${key}" data-kw-index="${i}"
+                            data-tooltip="Vol: ${kw.volume.toLocaleString('pt-BR')} | Comp: ${kw.competition} | Opp: ${kw.opportunity}">${kw.keyword} <span class="pill-vol">${kw.volume}</span></span>`;
+                    }).join('');
+
+                    let expandedSections = data.clusters.map((kw, i) =>
+                        `<div class="cluster-expanded" id="expanded-${key}-${i}">
+                            <strong>Relacionadas:</strong><br>
+                            ${kw.related.map(r => `<span class="related-kw">${r}</span>`).join('')}
+                        </div>`
+                    ).join('');
+
+                    html += `<div class="cluster-card" data-niche="${key}">
+                        <div class="cluster-card-top" style="background:${data.color}"></div>
+                        <div class="cluster-card-body">
+                            <h3>${data.label} <span style="font-size:0.8rem;color:#888;font-weight:400">(${data.clusters.length} keywords)</span></h3>
+                            <div class="cluster-pills">${pills}</div>
+                            ${expandedSections}
+                        </div>
+                    </div>`;
+                });
+                grid.innerHTML = html;
+
+                // Pill click: expand related
+                grid.querySelectorAll('.cluster-pill').forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        const nk = pill.getAttribute('data-niche-key');
+                        const idx = pill.getAttribute('data-kw-index');
+                        const exp = $(`#expanded-${nk}-${idx}`);
+                        if (exp) exp.classList.toggle('visible');
+                    });
+
+                    // Tooltip on hover
+                    pill.addEventListener('mouseenter', (e) => {
+                        this.showTooltip(e, pill.getAttribute('data-tooltip'));
+                    });
+                    pill.addEventListener('mouseleave', () => {
+                        this.hideTooltip();
+                    });
+                });
+            };
+
+            renderCards('');
+
+            // Filter buttons
+            filterContainer.querySelectorAll('.cluster-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterContainer.querySelectorAll('.cluster-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderCards(btn.getAttribute('data-niche'));
+                });
+            });
+        },
+
+        showDrilldown(niche, sites) {
+            const panel = $('#drilldownPanel');
+            $('#drilldownTitle').textContent = `${niche} (${sites.length} sites)`;
+            $('#drilldownList').innerHTML = sites.map(s =>
+                `<li><a href="${s.url}" target="_blank">${s.slug}</a> <span class="seo-score-badge ${s.seo_score >= 60 ? 'score-high' : s.seo_score >= 35 ? 'score-mid' : 'score-low'}" style="font-size:0.7rem">${s.seo_score}</span></li>`
+            ).join('');
+            panel.classList.add('visible');
+            panel.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        },
+
+        initDrilldownClose() {
+            $('#drilldownClose').addEventListener('click', () => {
+                $('#drilldownPanel').classList.remove('visible');
+            });
+        },
+
+        showTooltip(event, text) {
+            const tip = $('#tooltip');
+            tip.textContent = text;
+            tip.classList.add('visible');
+            const x = Math.min(event.clientX + 12, window.innerWidth - 280);
+            const y = event.clientY - 40;
+            tip.style.left = x + 'px';
+            tip.style.top = y + 'px';
+        },
+
+        hideTooltip() {
+            $('#tooltip').classList.remove('visible');
+        }
+    };
+
+    // ---- Animations ----
+    const Animations = {
+
+        counterAnimation(el, target, suffix) {
+            if (prefersReducedMotion) {
+                el.textContent = target + (suffix || '');
+                return;
+            }
+            const duration = 1200;
+            const start = performance.now();
+            const isFloat = String(target).includes('.');
+
+            const step = (now) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = isFloat
+                    ? (target * eased).toFixed(1)
+                    : Math.round(target * eased);
+                el.textContent = current + (suffix || '');
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        },
+
+        initScrollAnimations() {
+            if (prefersReducedMotion) {
+                $$('.animate-in').forEach(el => el.classList.add('visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '-50px' });
+
+            $$('.animate-in').forEach(el => observer.observe(el));
+        }
+    };
+
+    // ---- DashboardApp ----
+    const DashboardApp = {
+        init() {
+            if (!DATA) return;
+
+            // Update footer
+            const genAt = DATA.generated_at ? new Date(DATA.generated_at).toLocaleString('pt-BR') : '--';
+            $('#sidebarFooter').textContent = `Atualizado: ${genAt}`;
+
+            // KPIs
+            const sites = DATA.sites;
+            const prd = DATA.prd;
+            Animations.counterAnimation($('#kpiSites'), sites.total_count, '');
+            Animations.counterAnimation($('#kpiNiches'), Object.keys(sites.niche_distribution).length, '');
+            Animations.counterAnimation($('#kpiCompletion'), prd.completion_rate, '%');
+            Animations.counterAnimation($('#kpiSeo'), sites.seo_summary.avg_score, '');
+
+            // Charts
+            ChartRenderer.renderDonut('#donutChart', sites.niche_distribution);
+            ChartRenderer.renderSeoBars('#seoBars', sites.seo_summary, sites.total_count);
+            ChartRenderer.renderFunnel('#funnelChart', DATA.pipeline);
+            ChartRenderer.renderTreemap('#treemapChart', sites.niche_distribution, sites.list);
+            ChartRenderer.renderTimeline('#timelineChart', DATA.timeline);
+
+            // Clusters
+            Interactions.initClusters(DATA.seo_clusters);
+
+            // Tables
+            TableManager.initKeywords(DATA.seo_clusters);
+            TableManager.initAudit(sites.list);
+
+            // Interactions
+            Interactions.initSidebar();
+            Interactions.initDrilldownClose();
+
+            // Animations
+            Animations.initScrollAnimations();
+        }
+    };
+
+    // ---- Boot ----
+    document.addEventListener('DOMContentLoaded', () => {
+        DashboardAuth.init();
+    });
+
+})();
+</script>
+</body>
+</html>
