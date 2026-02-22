@@ -274,6 +274,7 @@ def check_notion(us_id: str, story: dict[str, Any], cwd: Path) -> list[dict[str,
     status_evidence = "mensagem pronta" in content
     manual_fallback = "cannot directly call the mcp tools" in content
     api_error = "api error" in content and "notion" in content
+    api_error_blocking = api_error and not update_evidence
 
     results.append(
         {
@@ -305,10 +306,10 @@ def check_notion(us_id: str, story: dict[str, Any], cwd: Path) -> list[dict[str,
     results.append(
         {
             "name": "notion.no_api_error",
-            "passed": not api_error,
-            "detail": "No Notion API error in logs"
-            if not api_error
-            else "Notion API error detected in logs",
+            "passed": not api_error_blocking,
+            "detail": "No blocking Notion API error in logs"
+            if not api_error_blocking
+            else "Notion API error detected with no successful update evidence",
         }
     )
     return results
