@@ -19,6 +19,26 @@ after each iteration and it's included in prompts for context.
 - **Pet Shop Playful Theme**: For pet shops, use a warm, playful palette with coral/salmon accents (`--paw-500` to `--paw-600`), sunny yellow base (`--sunny-100` to `--sunny-300`), and forest green (`--forest-500` to `--forest-600`). This conveys warmth, trust, and joy appropriate for pet care services.
 - **Paw Print Logo Animation**: Subtle bounce animation on logo icons adds playfulness and reinforces the pet niche without being distracting.
 - **Empresa Pattern for Pet Shops**: Pet shops follow the "empresa" pattern - use "vocês", "queriam", "da loja" rather than individual pronouns, even when the name sounds personal.
+- **Ocean Blue & Mint Theme for Dental**: For dental clinics, use a professional palette with ocean blue accents (`--ocean-600` to `--ocean-800`) and mint green (`--mint-400` to `--mint-600`). This conveys trust, cleanliness, and freshness appropriate for healthcare.
+- **Tooth Icon Animation**: Subtle shine animation on tooth/logo icons reinforces the dental niche and adds visual interest without being distracting.
+- **Individual Professional Pattern for Dentists**: When the business is named after a dentist (Dr./Dra.), use individual pronouns ("ele", "dele", "do consultório do Dr.") rather than company pronouns ("vocês").
+
+---
+
+## 2026-02-22 - US-096 - Dr. Ricardo Mendes Odontologia
+- Created new site at site-demo/dr-ricardo-mendes-odontologia/index.html
+- Implemented professional Ocean Blue & Mint color palette for dental clinic
+- All required sections: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- Business info correctly implemented: R. Américo Brasiliense, 987 - Centro, Ribeirão Preto - SP, Tel: (16) 99234-8765
+- Created Notion entry with Status="Mensagem Pronta", URL Demo, outreach message, Slug, US ID, Site Criado Em
+- Updated prd.json to mark US-096 as complete (passes: true)
+- Committed and pushed to repository
+- **Learnings:**
+  - Ocean blue + mint palette creates trust and cleanliness feel perfect for dental clinics
+  - Tooth icon with subtle shine animation reinforces dental niche
+  - For individual dentists (Dr.), use "ele/dele/do consultório do Dr." pronouns in outreach
+  - Service cards with pricing work well for dental treatments (ortodontia, clareamento, etc.)
+  - Emphasizing "sorriso transformado" messaging resonates with dental patients
 
 ---
 
