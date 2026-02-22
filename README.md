@@ -226,6 +226,33 @@ function trackEvent(category, action, label) {
    - Sitemap XML
    - robots.txt
 
+## Workflow de Criação de Sites para Clientes
+
+Este repositório também contém 145+ sites de clientes em `site-demo/`. Cada site é criado seguindo um processo automatizado que integra IA, Notion CRM e geração de mensagens de outreach.
+
+### Documentação do Workflow
+
+- **[scripts/README.md](scripts/README.md)** — Documentação completa do workflow de automação
+- **[prompt-modelo.md](prompt-modelo.md)** — Prompt para criação de sites premiados
+- **[template-mensagem-outreach.md](template-mensagem-outreach.md)** — Template para geração de mensagens personalizadas
+- **[CLAUDE.md](CLAUDE.md)** — Instruções para Claude Code (agente IA)
+
+### Pipeline de Criação
+
+```
+Prospecto no Notion → Gerar prd.json → Criar site → Gerar mensagem → Atualizar Notion → Commit
+```
+
+**IMPORTANTE para agentes**: Ao criar um site para um cliente, você DEVE:
+1. Criar o site seguindo `prompt-modelo.md`
+2. **Gerar mensagem de outreach personalizada** (ver `template-mensagem-outreach.md`)
+3. **Atualizar Notion CRM** com Status "Mensagem Pronta" + URL Demo + Mensagem
+4. Fazer commit e push
+
+Veja `scripts/README.md` para detalhes completos do workflow.
+
+---
+
 ## Licença
 
 Projeto desenvolvido para Pixel Alchemy - Todos os direitos reservados.

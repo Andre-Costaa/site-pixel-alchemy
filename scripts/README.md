@@ -1,0 +1,178 @@
+# Scripts de Automação — Pixel Alchemy
+
+Este diretório contém scripts Python para automação do workflow de criação de sites e gestão do Notion CRM.
+
+## Visão Geral do Workflow
+
+```
+Prospecto no Notion (Status: "Qualificado")
+    ↓
+[1] site_orchestrator.py gera user story no prd.json
+    ↓
+[2] Ralph TUI / Agente cria o site usando prompt-modelo.md
+    ↓
+[3] Agente gera mensagem de outreach (template-mensagem-outreach.md)
+    ↓
+[4] Agente atualiza Notion via notion_client.py
+    Status → "Mensagem Pronta"
+    URL Demo, Mensagem, Slug, US ID, Site Criado Em
+    ↓
+[5] Commit: "feat: US-XXX - Nome Cliente - Site Completo"
+```
+
+## Arquivos
+
+### `config.py`
+Configuração centralizada com:
+- Paths do projeto (PRD_JSON_PATH, SITE_DEMO_DIR)
+- IDs do Notion (DATABASE_ID, DATA_SOURCE_ID)
+- URLs base (SITE_DEMO_BASE_URL)
+- Prefixos de ID por nicho
+- Pipeline de status
+
+### `slug_utils.py`
+Utilitários para geração de slugs:
+- `generate_slug(nome)` — converte nome em slug URL-safe
+- `ensure_unique_slug(slug, existing)` — garante unicidade adicionando sufixo numérico
+- `get_existing_slugs()` — lista todos os slugs em `site-demo/`
+
+### `site_orchestrator.py`
+Gera user stories no `prd.json` a partir de prospectos do Notion.
+
+**Uso**:
+```bash
+# Ver o que seria gerado (dry run)
+python3 scripts/site_orchestrator.py --dry-run
+
+# Gerar user stories de todos os prospectos qualificados
+python3 scripts/site_orchestrator.py --from-json prospects.json
+
+# Gerar para um prospecto específico
+python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Laura"
+```
+
+**Output**: Adiciona user stories ao `prd.json` com acceptance criteria completo, incluindo:
+- Criação do site seguindo `prompt-modelo.md`
+- **Geração de mensagem de outreach** (ver `template-mensagem-outreach.md`)
+- **Atualização do Notion** com URL Demo, Mensagem, Slug, US ID, Site Criado Em
+- Commit e push
+
+### `notion_client.py`
+Wrapper para operações no Notion CRM via MCP.
+
+**Funções principais**:
+
+```python
+# Buscar prospectos por query
+mcp_search_prospects(query="Qualificado")
+
+# Buscar dados de um prospecto específico
+mcp_fetch_prospect(page_id="...")
+
+# Atualizar prospecto com dados do site criado
+build_site_ready_update(
+    page_id="notion-uuid",
+    slug="dra-laura-sanches",
+    us_id="US-089",
+    url_demo="https://www.pixelalchemy.com.br/site-demo/dra-laura-sanches/",
+    site_created_date="2026-02-22",
+    mensagem="Olá! Sou o André, fundador da Pixel Alchemy..."
+)
+
+# Marcar site como em criação
+build_site_in_progress_update(page_id="notion-uuid")
+```
+
+**IMPORTANTE**: Após criar um site, o agente DEVE chamar `build_site_ready_update()` com a mensagem gerada para atualizar o Notion corretamente.
+
+### `message_generator.py`
+Módulo Python para geração programática de mensagens (referência).
+
+**Uso**:
+```python
+from message_generator import generate_cold_message, infer_genero_from_nome
+
+genero = infer_genero_from_nome("Dra. Laura Sanches")  # → "feminino"
+
+mensagem = generate_cold_message(
+    nome="Dra. Laura Sanches",
+    nicho="Dentista",
+    slug="dra-laura-sanches",
+    genero=genero
+)
+```
+
+**NOTA**: Este módulo serve como **referência**. Na prática, o **agente LLM é quem gera** a mensagem usando o `template-mensagem-outreach.md` porque ele tem mais contexto sobre o site criado e pode adaptar melhor o tom e conteúdo.
+
+## Workflow Completo para Agentes
+
+Quando você (agente) for criar um site para um prospecto:
+
+### 1. Receber user story do `prd.json`
+O user story já contém todos os dados necessários nos acceptance criteria.
+
+### 2. Criar o site
+- Seguir `prompt-modelo.md` rigorosamente
+- Criar pasta `site-demo/<slug>/`
+- Gerar `index.html` self-contained (CSS + JS inline)
+
+### 3. Gerar mensagem de outreach
+- **OBRIGATÓRIO**: Consultar `template-mensagem-outreach.md`
+- Identificar tipo de negócio (pessoa física vs empresa)
+- Adaptar tom ao nicho (formal para saúde, descontraído para outros)
+- Usar pronomes corretos:
+  - Pessoa física (Dra./Dr.): "dele/dela", "queria", "do consultório da"
+  - Empresa: "vocês", "queriam", "da clínica/pizzaria/barbearia"
+- Incluir URL completa do site demo
+- Manter abaixo de 800 caracteres
+
+### 4. Atualizar Notion CRM
+- **OBRIGATÓRIO**: Usar `notion_client.build_site_ready_update()`
+- Campos a atualizar:
+  - `Status` → **"Mensagem Pronta"** (não "Site Pronto")
+  - `URL Demo` → URL completa do site
+  - `Mensagem` → mensagem gerada no passo 3
+  - `Slug` → slug do site
+  - `US ID` → ID da user story (ex: "US-089")
+  - `Site Criado Em` → data de hoje (YYYY-MM-DD)
+
+### 5. Commit
+```bash
+git add site-demo/<slug>/
+git commit -m "feat: US-XXX - Nome do Cliente - Site Completo
+
+Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+git push
+```
+
+## Checklist de Conclusão
+
+Antes de marcar uma user story como completa, verificar:
+
+- [ ] Site criado em `site-demo/<slug>/index.html`
+- [ ] Site testado localmente (responsivo 480/768/1024/1440px)
+- [ ] Mensagem de outreach gerada seguindo template
+- [ ] Notion atualizado com Status "Mensagem Pronta" + todos os campos
+- [ ] Commit realizado com mensagem correta
+- [ ] Push para repositório remoto
+
+## Referências
+
+- **Prompt de criação de sites**: `../prompt-modelo.md`
+- **Template de mensagens**: `../template-mensagem-outreach.md`
+- **Instruções gerais do projeto**: `../CLAUDE.md`
+- **Notion CRM**: Database ID `2f76f51e-b8a5-8088-a52c-db29fc3c1f81`
+
+## Troubleshooting
+
+### "Site criado mas Notion não foi atualizado"
+→ Certifique-se de chamar `build_site_ready_update()` com TODOS os parâmetros, incluindo `mensagem`.
+
+### "Mensagem muito genérica"
+→ Releia `template-mensagem-outreach.md` e adapte tom ao nicho específico.
+
+### "Status ficou 'Site Pronto' em vez de 'Mensagem Pronta'"
+→ Versão antiga do `notion_client.py`. Use a versão atualizada que define Status como "Mensagem Pronta".
+
+### "Erro ao gerar slug único"
+→ Use `slug_utils.ensure_unique_slug()` para garantir que não haja colisão.

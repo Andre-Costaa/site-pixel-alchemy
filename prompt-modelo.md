@@ -66,3 +66,56 @@ A paleta de cores (valores hex)
 O conceito do gancho do hero
 Um elemento interativo único que você implementará Em seguida, construa a página completa. </thinking_process>
 
+<post_creation_workflow>
+APÓS CRIAR O SITE, VOCÊ DEVE:
+
+1. Gerar Mensagem de Outreach Personalizada
+   - Consulte template-mensagem-outreach.md para guia completo
+   - Adapte tom ao tipo de negócio (profissional para saúde, descontraído para food/beleza)
+   - Use pronomes corretos:
+     * Pessoa física (Dra./Dr.): "dele/dela", "queria", "do consultório da Dra."
+     * Empresa: "vocês", "queriam", "da clínica/barbearia/pizzaria"
+   - Estrutura da mensagem:
+     * Saudação + apresentação
+     * Contexto sobre presença digital
+     * URL do site demo
+     * Explicação do objetivo (autoridade + adaptação fiel)
+     * Call to action suave (conversa breve ou resposta direta)
+     * Despedida amigável
+   - Manter mensagem abaixo de 800 caracteres
+   - Incluir URL completa do site demo
+
+2. Atualizar Notion CRM
+   - Use as funções do scripts/notion_client.py
+   - Campos a atualizar:
+     * Status → "Mensagem Pronta"
+     * URL Demo → "https://www.pixelalchemy.com.br/site-demo/<slug>/"
+     * Mensagem → {mensagem gerada no passo 1}
+     * Slug → "<slug>"
+     * US ID → "US-XXX"
+     * Site Criado Em → data de hoje (formato YYYY-MM-DD)
+   - Exemplo de chamada MCP:
+     ```python
+     notion_client.build_site_ready_update(
+         page_id="<notion-page-id>",
+         slug="<slug>",
+         us_id="US-XXX",
+         url_demo="https://www.pixelalchemy.com.br/site-demo/<slug>/",
+         site_created_date="2026-02-22",
+         mensagem="<mensagem gerada>"
+     )
+     ```
+
+3. Git Commit
+   - Stage e commit com mensagem:
+     "feat: US-XXX - <Nome do Cliente> - Site Completo"
+   - Incluir co-autoria:
+     "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+
+ESTES PASSOS SÃO OBRIGATÓRIOS. O site só está completo após:
+✓ Site criado e salvo
+✓ Mensagem de outreach gerada
+✓ Notion CRM atualizado
+✓ Commit realizado
+</post_creation_workflow>
+
