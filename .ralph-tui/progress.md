@@ -27,3 +27,14 @@ after each iteration and it's included in prompts for context.
   - Outreach message for Mairake already exists in `template-mensagem-outreach.md` as the example for "Clinica (empresa)" pattern.
 ---
 
+## 2026-02-23 - US-005
+- What was implemented: Fixed animation visibility issue for Dra. Ana Carolina Orlanda Junqueira Defina dental site
+- Files changed: `site-demo/dra-ana-carolina-orlanda/index.html` (modified)
+- Issue: Sections "A Experiência que Você Merece" (problem-solution), "Tratamentos que Transformam" (services), "Depoimentos", "Diferenciais" and "Contato" were invisible due to Intersection Observer not observing elements
+- Fix: Added code to observe all `.animate-on-scroll` elements with the Intersection Observer
+- **Learnings:**
+  - When using Intersection Observer for scroll animations, you must call `observer.observe(el)` for each element you want to track
+  - The CSS was correctly setting `opacity: 1` by default, but without the observer actively watching elements, the animation classes weren't being applied properly on scroll
+  - Playwright visual testing confirmed all sections are now visible on both desktop and mobile breakpoints
+---
+
