@@ -151,7 +151,7 @@ Lead → Qualificado → Site em Criação → Mensagem Pronta → Enviado → R
 - **Lead**: Prospect identified, initial data collected
 - **Qualificado**: Prospect vetted and approved for site creation
 - **Site em Criação**: User story generated, agent is building the site
-- **Mensagem Pronta**: ✅ Site created + outreach message generated + Notion updated (READY TO SEND)
+- **Mensagem Pronta**: OK: Site created + outreach message generated + Notion updated (READY TO SEND)
 - **Enviado**: Outreach message sent to prospect via WhatsApp/Instagram
 - **Respondeu**: Prospect responded to outreach
 - **Reunião**: Meeting scheduled or completed
@@ -160,61 +160,54 @@ Lead → Qualificado → Site em Criação → Mensagem Pronta → Enviado → R
 - **Perdido**: Prospect declined or went silent
 - **Descartado**: Prospect disqualified
 
-### Accessing via MCP
+### Accessing via MCP (ad-hoc queries only)
 
-Use the Notion MCP tools to interact with this database:
+Use the Notion MCP tools for **ad-hoc queries and reads** only:
 - **Search**: `notion-search` with query related to prospect names
 - **Fetch database**: `notion-fetch` with ID `2f76f51e-b8a5-8088-a52c-db29fc3c1f81`
 - **Create prospect**: `notion-create-pages` with parent `data_source_id: "2f76f51e-b8a5-800b-8c7e-000bf9f86798"`
-- **Update prospect**: `notion-update-page` with the page ID of the specific prospect
+
+Para atualizacoes de producao (pipeline automatizado), use o outbox (ver abaixo).
 
 ### CRITICAL: How to Update Notion After Creating a Site
 
-**When you finish creating a client site, you MUST update the Notion database with ALL of these fields:**
+**When you finish creating a client site, you MUST update the Notion database via the outbox pipeline.** This creates verifiable receipts that done_gate requires to pass.
 
-```python
-from scripts.notion_client import build_site_ready_update
+**Step 1 -- Enqueue the update:**
 
-# Example for "Dra. Laura Sanches"
-build_site_ready_update(
-    page_id="2f76f51e-XXXX-XXXX-XXXX-XXXXXXXXXXXX",  # Get from Notion search
-    slug="dra-laura-sanches",                        # URL slug (no spaces, lowercase)
-    us_id="US-090",                                   # User story ID from prd.json
-    url_demo="https://www.pixelalchemy.com.br/site-demo/dra-laura-sanches/",
-    site_created_date="2026-02-22",                   # Today's date (YYYY-MM-DD)
-    mensagem="""Olá! Tudo bem? Sou o André, fundador da Pixel Alchemy.
-
-Estávamos analisando a presença digital do consultório da Dra. Laura Sanches e percebemos que ela ainda não tem um website. Tomamos a liberdade de rascunhar um layout demo:
-
-https://www.pixelalchemy.com.br/site-demo/dra-laura-sanches/
-
-O objetivo foi criar uma experiência que transmita mais autoridade e sofisticação aos seus pacientes. Adaptamos cada detalhe que queria, com fotos reais, informações, serviços e depoimentos para que o site fique 100% fiel à identidade do consultório dela.
-
-Se você gostar da linha visual e quiser um site para a Dra. Laura, podemos conversar 10 ou 15 minutinhos? Posso explicar e tirar dúvidas por aqui mesmo, caso prefira.
-
-Abraços, aguardo sua resposta!"""
-)
+```bash
+python3 scripts/notion_outbox_enqueue.py --us-id US-090 --page-id 2f76f51e-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-**This updates these Notion fields automatically**:
-- ✅ `Status` → `"Mensagem Pronta"` (exact value, do NOT use "Site Pronto")
-- ✅ `URL Demo` → Full URL to the deployed site
-- ✅ `Mensagem` → The personalized outreach message you generated
-- ✅ `Slug` → URL slug used in site-demo directory
-- ✅ `US ID` → User story identifier from prd.json
-- ✅ `Site Criado Em` → Date the site was created
+This reads the user story from `tasks/prd.json` and enqueues all required field updates into `.notion-outbox/pending/`.
+
+**Step 2 -- Process the outbox queue:**
+
+```bash
+python3 scripts/notion_outbox_worker.py --once
+```
+
+This sends the update to Notion and writes a verified receipt to `.notion-outbox/done/`. The done_gate checks for this receipt.
+
+**Fields updated by the outbox pipeline:**
+- [done] `Status` -> `"Mensagem Pronta"` (exact value, do NOT use "Site Pronto")
+- [done] `URL Demo` -> Full URL to the deployed site
+- [done] `Mensagem` -> The personalized outreach message you generated
+- [done] `Slug` -> URL slug used in site-demo directory
+- [done] `US ID` -> User story identifier from tasks/prd.json
+- [done] `Site Criado Em` -> Date the site was created
 
 **Finding the Notion page_id**:
 1. Search Notion for the prospect name
 2. Use the page ID returned from the search
-3. Or check the user story notes if page_id was stored during orchestration
+3. Or check the user story `notionPageId` field if page_id was stored during orchestration
 
 ## Python Scripts Workflow
 
 The `scripts/` directory contains automation tools for the site creation pipeline. See `scripts/README.md` for complete documentation.
 
 ### `site_orchestrator.py`
-Generates user stories in `prd.json` from Notion prospects.
+Generates user stories in `tasks/prd.json` from Notion prospects.
 
 ```bash
 # Preview what would be generated (dry run)
@@ -228,22 +221,7 @@ python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Lau
 ```
 
 ### `notion_client.py`
-Python wrapper for Notion CRM operations. After creating a site, MUST call:
-
-```python
-from scripts.notion_client import build_site_ready_update
-
-build_site_ready_update(
-    page_id="notion-uuid",
-    slug="client-slug",
-    us_id="US-089",
-    url_demo="https://www.pixelalchemy.com.br/site-demo/client-slug/",
-    site_created_date="2026-02-22",
-    mensagem="[generated outreach message]"
-)
-```
-
-This updates the Notion database with Status "Mensagem Pronta" and all required fields.
+Python wrapper for Notion CRM operations. Used internally by the outbox worker to build API payloads. For production updates, use the outbox pipeline instead of calling this module directly (see "How to Update Notion After Creating a Site" above).
 
 ### `slug_utils.py`
 Utilities for generating and ensuring unique URL slugs:
@@ -265,6 +243,10 @@ Reference module for programmatic message generation. In practice, the LLM agent
 - `template-mensagem-outreach.md` — Outreach message template with examples by niche
 - `NOTION-FIELDS-REFERENCE.md` — **Quick reference for Notion database fields and update patterns**
 - `scripts/README.md` — Complete workflow documentation
+- `scripts/notion_outbox_enqueue.py` — Enqueue Notion updates (outbox pattern)
+- `scripts/notion_outbox_worker.py` — Process outbox queue, create verified receipts
+- `scripts/notion_sync/` — Outbox infrastructure (contracts, store, worker, reconcile)
+- `.notion-outbox/` — Local outbox state (gitignored)
 
 ## When Creating a New Client Site
 
@@ -286,13 +268,11 @@ Reference module for programmatic message generation. In practice, the LLM agent
    - Include demo URL and personalized context about their business
    - Keep message under 800 characters for WhatsApp/Instagram
    - See `template-mensagem-outreach.md` for complete examples by niche
-8. **Update Notion CRM** with:
-   - `Status` → **"Mensagem Pronta"** (exactly this value, not "Site Pronto")
-   - `URL Demo` → full URL to deployed site
-   - `Mensagem` → the generated outreach message
-   - `Slug` → URL slug
-   - `US ID` → user story ID (e.g., "US-089")
-   - `Site Criado Em` → today's date (YYYY-MM-DD)
+8. **Update Notion CRM via outbox** (NOT via MCP directly):
+   - Enqueue: `python3 scripts/notion_outbox_enqueue.py --us-id US-XXX --page-id PAGE_ID`
+   - Process: `python3 scripts/notion_outbox_worker.py --once`
+   - This updates: `Status` -> "Mensagem Pronta", `URL Demo`, `Mensagem`, `Slug`, `US ID`, `Site Criado Em`
+   - The done_gate requires the outbox receipt to pass
 9. Commit as `feat: US-XXX - Client Name - Site Completo`
 10. **Done Gate** before setting `passes=true`:
    - Run: `python3 scripts/done_gate.py --us-id US-XXX`
@@ -308,7 +288,7 @@ Before marking a client site as complete, verify:
 - [ ] Outreach message generated following `template-mensagem-outreach.md`
 - [ ] Correct pronouns used (pessoa física vs empresa)
 - [ ] Tone appropriate for business niche
-- [ ] Notion updated with Status **"Mensagem Pronta"** + all required fields
+- [ ] Notion updated via outbox (`notion_outbox_enqueue.py` + `notion_outbox_worker.py`) with Status **"Mensagem Pronta"** + all required fields
 - [ ] Commit created with correct format
 - [ ] Pushed to repository
 - [ ] Done gate passed (`python3 scripts/done_gate.py --us-id US-XXX`)

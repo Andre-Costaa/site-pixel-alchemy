@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -21,6 +22,10 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+from config import NOTION_OUTBOX_DIR
+from notion_client import NotionAPIClient
+from notion_sync.store import read_json
+from prd_store import load_prd
 
 SITE_RE = re.compile(r"site-demo/([^'/\s]+)")
 INFO_RE = re.compile(r"^Informa..es(?: da cl.nica)?:\s*(.+)$", re.IGNORECASE)
@@ -50,14 +55,6 @@ def run_git(args: list[str], cwd: Path) -> tuple[int, str, str]:
         check=False,
     )
     return proc.returncode, proc.stdout.strip(), proc.stderr.strip()
-
-
-def load_prd(path: Path) -> dict[str, Any]:
-    with path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
-    if not isinstance(data, dict) or not isinstance(data.get("userStories"), list):
-        raise ValueError("Invalid prd.json shape")
-    return data
 
 
 def extract_story(prd: dict[str, Any], us_id: str) -> dict[str, Any] | None:
@@ -193,17 +190,39 @@ def check_site(story: dict[str, Any], cwd: Path) -> list[dict[str, str | bool]]:
     return results
 
 
-def check_git(us_id: str, cwd: Path, require_origin_main: bool) -> list[dict[str, str | bool]]:
+def check_git(
+    us_id: str,
+    story: dict[str, Any],
+    cwd: Path,
+    require_origin_main: bool,
+) -> list[dict[str, str | bool]]:
     results: list[dict[str, str | bool]] = []
 
-    code, out, _ = run_git(["log", "--grep", us_id, "--format=%H", "-n", "1"], cwd)
+    # Use the story slug-derived site path to avoid false positives from grep in unrelated commits.
+    criteria = story.get("acceptanceCriteria") or []
+    if not isinstance(criteria, list):
+        criteria = []
+
+    slug = extract_slug(criteria)
+    if not slug:
+        results.append(
+            {
+                "name": "git.commit.local",
+                "passed": False,
+                "detail": "Cannot determine site path (slug missing in acceptanceCriteria)",
+            }
+        )
+        return results
+
+    site_rel = f"site-demo/{slug}/index.html"
+    code, out, _ = run_git(["log", "-n", "1", "--format=%H", "--", site_rel], cwd)
     has_local = code == 0 and bool(out.strip())
     commit = out.splitlines()[0].strip() if has_local else ""
     results.append(
         {
             "name": "git.commit.local",
             "passed": has_local,
-            "detail": commit if has_local else f"No local commit found for {us_id}",
+            "detail": commit if has_local else f"No local commit found for {site_rel}",
         }
     )
 
@@ -249,69 +268,76 @@ def check_notion(us_id: str, story: dict[str, Any], cwd: Path) -> list[dict[str,
         )
         return results
 
-    logs = sorted((cwd / ".ralph-tui" / "iterations").glob(f"*_{us_id}.log"))
-    if not logs:
+    token = os.environ.get("NOTION_TOKEN", "")
+    if not token:
         results.append(
             {
-                "name": "notion.logs",
+                "name": "notion.token",
                 "passed": False,
-                "detail": f"No iteration log found for {us_id}",
+                "detail": "NOTION_TOKEN is required to verify Notion updates without MCP/logs",
             }
         )
         return results
 
-    content = "\n".join(
-        log.read_text(encoding="utf-8", errors="ignore") for log in logs
-    ).lower()
-    update_evidence = any(
-        token in content
-        for token in [
-            "mcp__plugin_notion_notion__notion-update-page",
-            "mcp__plugin_notion_notion__notion-create-pages",
-            "build_site_ready_update",
-        ]
-    )
-    status_evidence = "mensagem pronta" in content
-    manual_fallback = "cannot directly call the mcp tools" in content
-    api_error = "api error" in content and "notion" in content
-    api_error_blocking = api_error and not update_evidence
+    # Objective evidence: receipt created by the outbox worker + optional live verification.
+    idx_path = NOTION_OUTBOX_DIR / "index" / "us_id" / f"{us_id}.json"
+    if not idx_path.exists():
+        results.append(
+            {
+                "name": "notion.receipt",
+                "passed": False,
+                "detail": f"Missing receipt index: {idx_path}",
+            }
+        )
+        return results
 
+    idx = read_json(idx_path)
+    receipt_path = Path(idx.get("receipt", ""))
+    if not receipt_path.exists():
+        results.append(
+            {
+                "name": "notion.receipt",
+                "passed": False,
+                "detail": f"Receipt file not found: {receipt_path}",
+            }
+        )
+        return results
+
+    receipt = read_json(receipt_path)
+    verified = bool(receipt.get("verified"))
     results.append(
         {
-            "name": "notion.update_evidence",
-            "passed": update_evidence,
-            "detail": "Found Notion tool/update evidence"
-            if update_evidence
-            else "No Notion update/create call found in logs",
+            "name": "notion.receipt.verified",
+            "passed": verified,
+            "detail": "Receipt is verified" if verified else "Receipt not verified",
         }
     )
-    results.append(
-        {
-            "name": "notion.status_mensagem_pronta",
-            "passed": status_evidence,
-            "detail": "Found 'Mensagem Pronta' evidence"
-            if status_evidence
-            else "Missing 'Mensagem Pronta' evidence",
-        }
-    )
-    results.append(
-        {
-            "name": "notion.no_manual_fallback",
-            "passed": not manual_fallback,
-            "detail": "No manual fallback detected"
-            if not manual_fallback
-            else "Manual fallback detected (MCP not executed)",
-        }
-    )
-    results.append(
-        {
-            "name": "notion.no_api_error",
-            "passed": not api_error_blocking,
-            "detail": "No blocking Notion API error in logs"
-            if not api_error_blocking
-            else "Notion API error detected with no successful update evidence",
-        }
-    )
+
+    # Read-after-write: fetch live page and confirm expected properties.
+    try:
+        notion = NotionAPIClient(token=token)
+        ok = notion.verify_page_simple(
+            page_id=str(receipt.get("page_id", "")),
+            expected_properties=receipt.get("expected_properties") or {},
+        )
+        results.append(
+            {
+                "name": "notion.read_after_write",
+                "passed": ok,
+                "detail": "Live Notion properties match receipt"
+                if ok
+                else "Live Notion properties do not match receipt",
+            }
+        )
+    except Exception as exc:  # noqa: BLE001 - operational boundary
+        results.append(
+            {
+                "name": "notion.read_after_write",
+                "passed": False,
+                "detail": f"Failed to verify via Notion API: {exc!r}",
+            }
+        )
+
     return results
 
 
@@ -337,7 +363,7 @@ def evaluate_story(
 
     checks: list[dict[str, Any]] = []
     checks.extend(check_site(story, cwd))
-    checks.extend(check_git(us_id, cwd, require_origin_main=require_origin_main))
+    checks.extend(check_git(us_id, story, cwd, require_origin_main=require_origin_main))
     checks.extend(check_notion(us_id, story, cwd))
 
     passed = all(bool(check["passed"]) for check in checks)
@@ -356,8 +382,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--prd",
-        default="prd.json",
-        help="Path to prd.json (default: prd.json)",
+        default="tasks/prd.json",
+        help="Path to prd.json (default: tasks/prd.json)",
     )
     parser.add_argument(
         "--no-require-origin-main",

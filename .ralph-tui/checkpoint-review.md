@@ -579,3 +579,81 @@ Evidências disponíveis em:
 - `.playwright-mcp/rev035-1024-full.png`
 - `.playwright-mcp/rev035-768-full.png`
 - `.playwright-mcp/rev035-480-full.png`
+
+---
+
+## US-116 (Autofix for US-110) - Padaria & Confeitaria Pão Dourado
+
+**URL Revisado:** http://localhost:5500/site-demo/padaria-confeitaria-pao-dourado/
+
+**Data da Revisão:** 2026-02-22
+
+**Status:** ✅ APROVADO (Revalidação)
+
+**passes:** true
+
+### Checklist de Validação
+
+#### Layout e Responsividade
+- [x] 1440px - Desktop large
+- [x] 1024px - Desktop
+- [x] 768px - Tablet
+- [x] 480px - Mobile
+
+#### Imagens e Mídias
+- [x] Todas as imagens carregam corretamente
+- [x] Sem placeholders quebrados
+- [x] Sem imagens faltantes
+
+#### Navegação
+- [x] Âncoras internas funcionam
+- [x] CTAs não abrem páginas externas (exceto WhatsApp conforme esperado)
+
+#### Formulários e Interações
+- [x] Formulário funciona sem erros
+- [x] Interações visuais ok
+
+#### Console
+- [x] Sem erros críticos de JS
+- [x] Sem recursos bloqueados
+
+### Issues Encontradas
+
+Nenhuma issue encontrada. A autofix US-116 foi gerada incorretamente - o site US-110 já estava completo.
+
+**Causa raiz:** O automation_loop.py gerou uma tarefa de autofix reportando falhas em `git.commit.local` e `site.file`, mas ambos os checks estavam PASSING:
+- `site.file`: ✅ Site existe em `site-demo/padaria-confeitaria-pao-dourado/index.html`
+- `git.commit.local`: ✅ Commit 914ab4d existe localmente
+- A única "falha" reportada era `git.commit.origin_main: PENDING` que é esperado para branches não mergeadas
+
+### Notas
+
+Revalidação concluída com sucesso. O site US-110 (Padaria & Confeitaria Pão Dourado) já estava completo e funcional. Nenhuma alteração de código foi necessária.
+
+**Done Gate Result:**
+```json
+{
+  "passed": true,
+  "checks": [
+    "site.file: PASS",
+    "site.section.hero: PASS",
+    "site.section.problem_solution: PASS",
+    "site.section.services: PASS",
+    "site.section.testimonials: PASS",
+    "site.section.differentials: PASS",
+    "site.section.contact: PASS",
+    "site.section.footer: PASS",
+    "site.form: PASS",
+    "git.commit.local: PASS",
+    "notion.required: PASS (Not required by this story)"
+  ]
+}
+```
+
+Evidências de revalidação disponíveis em:
+- `.playwright-mcp/temp-us-116/padaria-confeitaria-pao-dourado-1440.png`
+- `.playwright-mcp/temp-us-116/padaria-confeitaria-pao-dourado-1024.png`
+- `.playwright-mcp/temp-us-116/padaria-confeitaria-pao-dourado-768.png`
+- `.playwright-mcp/temp-us-116/padaria-confeitaria-pao-dourado-480.png`
+
+---
