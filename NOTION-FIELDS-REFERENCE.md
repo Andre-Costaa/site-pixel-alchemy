@@ -99,8 +99,7 @@ update = build_site_ready_update(
     mensagem="""[mensagem personalizada gerada]"""
 )
 
-# Execute via MCP
-# notion-update-page com os parâmetros retornados
+# Execute via outbox pipeline (ver scripts/README.md passo 4)
 ```
 
 ### Campos Atualizados Automaticamente

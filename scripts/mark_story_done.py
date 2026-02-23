@@ -8,11 +8,11 @@ Marks `passes=true` only if done gate checks pass.
 from __future__ import annotations
 
 import argparse
-import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from done_gate import US_RE, evaluate_story, load_prd
+from done_gate import US_RE, evaluate_story
+from prd_store import load_prd, save_prd
 
 
 def parse_args() -> argparse.Namespace:
@@ -20,7 +20,7 @@ def parse_args() -> argparse.Namespace:
         description="Mark a PRD story as done only after done-gate validation."
     )
     parser.add_argument("--us-id", required=True, help="Story ID, e.g. US-090")
-    parser.add_argument("--prd", default="prd.json", help="Path to prd.json")
+    parser.add_argument("--prd", default="tasks/prd.json", help="Path to prd.json")
     parser.add_argument(
         "--completion-notes",
         default="Completed by agent (done gate validated)",
@@ -80,9 +80,7 @@ def main() -> int:
     prd.setdefault("metadata", {})
     prd["metadata"]["updatedAt"] = datetime.now(timezone.utc).isoformat()
 
-    with prd_path.open("w", encoding="utf-8") as f:
-        json.dump(prd, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    save_prd(prd, prd_path)
 
     print(f"{args.us_id} marked as done.")
     return 0

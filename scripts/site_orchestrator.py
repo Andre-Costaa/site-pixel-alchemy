@@ -11,7 +11,7 @@ Workflow:
     3. Append to prd.json
     4. Update Notion: Status → "Site em Criação"
     5. (External) Claude Code / Ralph TUI creates the site
-    6. Update Notion: Status → "Site Pronto", URL Demo, Slug, US ID, Site Criado Em
+    6. Update Notion: Status → "Mensagem Pronta", URL Demo, Slug, US ID, Site Criado Em
 
 Usage:
     # Show what would be generated (dry run)
@@ -31,21 +31,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from config import PRD_JSON_PATH, SITE_DEMO_BASE_URL, SITE_DEMO_DIR
+from config import SITE_DEMO_BASE_URL, SITE_DEMO_DIR
+from prd_store import load_prd, save_prd
 from slug_utils import ensure_unique_slug, generate_slug, get_existing_slugs
-
-
-def load_prd() -> dict:
-    """Load the current prd.json."""
-    with open(PRD_JSON_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_prd(data: dict) -> None:
-    """Save prd.json with consistent formatting."""
-    with open(PRD_JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
 
 def get_next_us_id(prd: dict) -> tuple[str, int]:
@@ -96,10 +84,12 @@ def build_user_story(
     telefone = prospect.get("Telefone", "")
     endereco = prospect.get("Endereço", "")
     descricao = prospect.get("Descrição", "")
+    page_id = prospect.get("page_id") or prospect.get("Page ID") or prospect.get("pageId") or ""
 
     # Build description
     desc_parts = [f"Criar site profissional para {nome}"]
-    if endereco and endereco != "Ribeirão Preto":
+    # Add city when we have an address that is not already explicit.
+    if endereco and "ribeirão preto" not in endereco.lower():
         desc_parts[0] += f" em Ribeirão Preto"
     if descricao:
         desc_parts.append(descricao)
@@ -135,6 +125,8 @@ def build_user_story(
         "notes": "",
         "dependsOn": [previous_us_id] if previous_us_id else [],
         "completionNotes": "",
+        # Optional: enable objective Notion updates/verification later.
+        "notionPageId": page_id,
     }
 
     return story
