@@ -20,6 +20,60 @@
 - Stats counters with animated numbers for credibility
 - Grid background animation for tech/modern feel
 
+### Pet Shop Pattern
+- Warm and playful color palette (coral/sunny yellow/forest green)
+- Pet emojis (🐕🐈) as hero visual instead of photos
+- Floating cards with stats (years of experience, pets served)
+- 8 service cards covering full pet shop offering (banho, tosa, vet, hotel, daycare, pet shop)
+- Form includes "Nome do pet" field - specific to pet business
+- Gentle bounce animation on logo for friendly feel
+- Warm and playful color palette (coral/sunny yellow/forest green)
+- Pet emojis (🐕🐈) as hero visual instead of photos
+- Floating cards with stats (years of experience, pets served)
+- 8 service cards covering full pet shop offering (banho, tosa, vet, hotel, daycare, pet shop)
+- Form includes "Nome do pet" field - specific to pet business
+- Gentle bounce animation on logo for friendly feel
+
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*, --color-midnight, --color-teal)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+### Veterinary/24h Clinic Pattern
+- Dark theme with teal/coral accents for emergency visibility
+- Floating emergency button (red/coral) fixed at bottom-right
+- Pulse animation on logo/dot to indicate 24h availability
+- Stats counters with animated numbers for credibility
+- Grid background animation for tech/modern feel
+
+---
+
+## 2026-02-22 - US-106
+- **What was implemented:** Playwright review for Pet Shop Bichos & Cia site (pet-shop-bichos-cia)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-106
+  - Created `.playwright-mcp/pet-shop-bichos-cia-1440.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-1024.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-768.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Falta de tempo, Preocupação com saúde, Produtos de qualidade) and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED for US-095
+  - Site follows warm and playful color palette (coral/sunny yellow/forest green) appropriate for pet shop
+  - Pet emojis (🐕🐈) used as hero visual - effective for businesses without professional photos
+  - 8 service cards covering complete pet shop offering (banho, tosa, vet, hotel, daycare, pet shop)
+  - Form includes "Nome do pet" field - business-specific customization
+  - All mandatory done gate checks passed: git.commit.origin_main, notion.update_evidence, notion.status_mensagem_pronta, notion.no_manual_fallback, site.section.problem_solution, site.section.differentials
+
 ---
 
 ## 2026-02-22 - US-102
