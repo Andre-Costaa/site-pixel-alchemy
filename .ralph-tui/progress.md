@@ -5,13 +5,12 @@ after each iteration and it's included in prompts for context.
 
 ## Codebase Patterns (Study These First)
 
-- **Self-contained single-file pattern**: All new client sites use a single `index.html` with inline `<style>` and `<script>` tags. No external CSS/JS files.
-- **Progressive enhancement animations**: Elements are always visible by default (`opacity: 1; transform: none`). JS adds `js-enabled` class to body, then IntersectionObserver adds `animated` class for entrance effects. Never hide content behind JS.
-- **Font pairing convention**: Each site uses a unique serif + sans-serif Google Fonts pairing to differentiate from other sites. Avoid reusing exact same font combos across sites.
-- **Color system**: Each site defines its own `--primary`, `--accent`, and variant CSS custom properties in `:root`. Use a distinct palette per client to avoid generic look.
-- **SVG icons over HTML entities**: Prefer inline SVGs for icons (especially in service cards, contact items, footer) for consistent rendering cross-browser. HTML entities (`&#128205;` etc.) can render as emoji and break design consistency.
-- **WhatsApp button**: Fixed bottom-right, links to `https://wa.me/55{phone_without_formatting}`. Include proper WhatsApp SVG icon.
-- **Phone mask**: JS input mask for Brazilian phone format `(XX) XXXXX-XXXX` on contact form phone field.
+*Add reusable patterns discovered during development here.*
+
+- Client sites use self-contained single-file pattern: `site-demo/<slug>/index.html`
+- Standard sections: Hero, Problema/Solucao, Servicos, Depoimentos, Diferenciais, Contato, Footer
+- Dark theme with amber/gold accents for barbershops
+- Done gate requires dedicated `site.section.problem_solution` with keywords "problema" AND "solucao"
 
 ---
 
@@ -42,12 +41,10 @@ after each iteration and it's included in prompts for context.
 - What was implemented: Playwright review and fix for Barbearia Soul Fine site (slug: barbearia-soul-fine)
 - Files changed: `site-demo/barbearia-soul-fine/index.html` (modified - added Problem/Solution section)
 - Issue: Done gate was failing on `site.section.problem_solution` check - the site had "Como Funciona" (process) and "Sobre" (about) sections but no dedicated Problem/Solution section
-- Fix: Added dedicated Problem/Solution section with id="experiencia" between Hero and Services. Contains two cards: "O Problema" (5 pain points) and "Nossa Solucao" (5 solutions). Added responsive CSS styling matching the site's dark industrial barbershop theme.
+- Fix: Added dedicated Problem/Solution section with id="problema-solucao" between Services and Como Funciona. Contains two cards: "O Problema" (5 pain points) and "A Solucao Soul Fine" (5 solutions). Added responsive CSS styling matching the site's dark industrial barbershop theme. Updated navigation (desktop + mobile).
 - **Learnings:**
   - The done_gate.py check for `site.section.problem_solution` looks for both "problema/problem/desafio" AND "solucao/solution/solu" keywords in the normalized HTML content
   - A generic "Sobre" (About) or "Como Funciona" (Process) section does NOT satisfy this requirement - it must explicitly frame problems vs solutions
   - When adding sections to existing sites, match the existing CSS variable naming and color scheme (the site used `--amber-mid`, `--bg-card`, `--bg-surface` etc.)
-  - The section should be placed early in the page flow (after Hero, before Services) to establish value proposition
-  - Using `&#10005;` (X) and `&#10003;` (checkmark) as list markers creates clear visual distinction between problems and solutions
+  - The section should be placed early in the page flow (after Services) to establish value proposition
 ---
-
