@@ -5,13 +5,41 @@
 ### Site Structure Pattern
 - Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
 - Inline CSS and JavaScript (no external dependencies)
-- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
 
 ### Design System
-- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*, --color-midnight, --color-teal)
 - Blobmorphism with CSS blur and backdrop-filter
 - Animation system: CSS keyframes + Intersection Observer
 - Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+### Veterinary/24h Clinic Pattern
+- Dark theme with teal/coral accents for emergency visibility
+- Floating emergency button (red/coral) fixed at bottom-right
+- Pulse animation on logo/dot to indicate 24h availability
+- Stats counters with animated numbers for credibility
+- Grid background animation for tech/modern feel
+
+---
+
+## 2026-02-22 - US-102
+- **What was implemented:** Playwright review for Clínica VetLife 24h site (clinica-vetlife-24h)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-102
+  - Created `.playwright-mcp/clinica-vetlife-24h-1440.png`
+  - Created `.playwright-mcp/clinica-vetlife-24h-1024.png`
+  - Created `.playwright-mcp/clinica-vetlife-24h-768.png`
+  - Created `.playwright-mcp/clinica-vetlife-24h-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Clínicas fechadas, Demora no atendimento, Falta de estrutura) and solution box ("A solução: VetLife 24h")
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED for US-091
+  - Site follows Midnight Blue & Teal color palette with Space Grotesk + Inter fonts appropriate for 24h veterinary emergency clinic
+  - Emergency floating button (coral/red) provides quick phone access - great UX pattern for emergency services
+  - Animated grid background and pulse dots create sense of constant activity appropriate for 24h service
+  - All mandatory done gate checks passed: git.commit.origin_main, notion.update_evidence, notion.status_mensagem_pronta, notion.no_manual_fallback, site.section.problem_solution, site.section.differentials
 
 ---
 
