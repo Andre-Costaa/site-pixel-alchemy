@@ -38,3 +38,16 @@ after each iteration and it's included in prompts for context.
   - Playwright visual testing confirmed all sections are now visible on both desktop and mobile breakpoints
 ---
 
+## 2026-02-23 - US-100
+- What was implemented: Playwright review and fix for Barbearia Soul Fine site (slug: barbearia-soul-fine)
+- Files changed: `site-demo/barbearia-soul-fine/index.html` (modified - added Problem/Solution section)
+- Issue: Done gate was failing on `site.section.problem_solution` check - the site had "Como Funciona" (process) and "Sobre" (about) sections but no dedicated Problem/Solution section
+- Fix: Added dedicated Problem/Solution section with id="experiencia" between Hero and Services. Contains two cards: "O Problema" (5 pain points) and "Nossa Solucao" (5 solutions). Added responsive CSS styling matching the site's dark industrial barbershop theme.
+- **Learnings:**
+  - The done_gate.py check for `site.section.problem_solution` looks for both "problema/problem/desafio" AND "solucao/solution/solu" keywords in the normalized HTML content
+  - A generic "Sobre" (About) or "Como Funciona" (Process) section does NOT satisfy this requirement - it must explicitly frame problems vs solutions
+  - When adding sections to existing sites, match the existing CSS variable naming and color scheme (the site used `--amber-mid`, `--bg-card`, `--bg-surface` etc.)
+  - The section should be placed early in the page flow (after Hero, before Services) to establish value proposition
+  - Using `&#10005;` (X) and `&#10003;` (checkmark) as list markers creates clear visual distinction between problems and solutions
+---
+
