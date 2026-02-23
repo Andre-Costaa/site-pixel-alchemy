@@ -109,6 +109,32 @@ mensagem = generate_cold_message(
 
 **NOTA**: Este módulo serve como **referência**. Na prática, o **agente LLM é quem gera** a mensagem usando o `template-mensagem-outreach.md` porque ele tem mais contexto sobre o site criado e pode adaptar melhor o tom e conteúdo.
 
+### `ralph_heartbeat_tui.py`
+Monitor em Python com TUI moderna para acompanhar sessão ativa do `ralph-tui` com heartbeat periódico.
+
+**Mostra em tempo real**:
+- status da sessão (`running`, `paused`, `completed`, etc.)
+- progresso de tarefas e iterações
+- cauda de log da iteração mais recente
+- sinais de erro e tempo de inatividade
+- recomendação objetiva: **`CONTINUE`** ou **`STOP`** (inclui "Parar agora? SIM/NAO")
+
+**Heartbeat**:
+- padrão: **5 minutos** (`300s`)
+- persistência em JSONL: `.ralph-tui/heartbeat/heartbeat.jsonl`
+
+**Uso**:
+```bash
+# TUI em tempo real
+python3 scripts/ralph_heartbeat_tui.py
+
+# Snapshot único (debug/validação rápida)
+python3 scripts/ralph_heartbeat_tui.py --once
+
+# Heartbeat a cada 2 minutos
+python3 scripts/ralph_heartbeat_tui.py --heartbeat-seconds 120
+```
+
 ## Workflow Completo para Agentes
 
 Quando você (agente) for criar um site para um prospecto:
