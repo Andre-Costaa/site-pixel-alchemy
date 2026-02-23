@@ -27,12 +27,15 @@
 - 8 service cards covering full pet shop offering (banho, tosa, vet, hotel, daycare, pet shop)
 - Form includes "Nome do pet" field - specific to pet business
 - Gentle bounce animation on logo for friendly feel
-- Warm and playful color palette (coral/sunny yellow/forest green)
-- Pet emojis (🐕🐈) as hero visual instead of photos
-- Floating cards with stats (years of experience, pets served)
-- 8 service cards covering full pet shop offering (banho, tosa, vet, hotel, daycare, pet shop)
-- Form includes "Nome do pet" field - specific to pet business
-- Gentle bounce animation on logo for friendly feel
+
+### Bakery/Padaria Pattern
+- Warm golden color palette (wheat, golden, caramel, crust brown tones)
+- Food emojis (🥖🥐🍞) as hero visual to convey freshness and appetite appeal
+- Floating cards with stats (+40 tipos de pães, 4.9 avaliação)
+- 6 service cards covering padaria offering (pães artesanais, croissants, bolos, confeitaria, café colonial, sanduíches)
+- Form includes product selector dropdown - specific to bakery business
+- Emphasis on tradição (since 1985) and artesanal quality
+- Gentle bounce animation on bread visual for appetizing feel
 
 ### Site Structure Pattern
 - Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
@@ -185,4 +188,28 @@
   - Only console error is favicon 404 (non-critical)
   - Done gate shows all checks PASSED including notion.no_manual_fallback (no historical issues)
   - Site follows the Rose Gold Luxury theme with Cormorant Garamond + Plus Jakarta Sans fonts
+
+---
+
+## 2026-02-22 - US-110
+- **What was implemented:** Playwright review for Padaria & Confeitaria Pão Dourado site (padaria-confeitaria-pao-dourado)
+- **Files changed:**
+  - Created `site-demo/padaria-confeitaria-pao-dourado/index.html`
+  - Updated `checkpoint-review.md` with review results for US-110
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-1440.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-1024.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-768.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Pouco Tempo, Qualidade Incerta, Bolos Impessoais) and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED for US-099
+  - Site follows warm golden bakery color palette (wheat, golden, caramel, crust brown) appropriate for padaria
+  - Food emojis (🥖🥐) used as hero visual - effective for bakery businesses to convey freshness
+  - 6 service cards covering complete padaria offering (pães artesanais, croissants, bolos, confeitaria, café colonial, sanduíches)
+  - Form includes product selector dropdown - business-specific customization for bakery
+  - All mandatory done gate checks passed: site.file, site.section.hero, site.section.problem_solution, site.section.services, site.section.testimonials, site.section.differentials, site.section.contact, site.section.footer, site.form, site.phone, site.address, git.commit.local, notion.update_evidence, notion.status_mensagem_pronta
+
 ---
