@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padaria & Confeitaria Pão Dourado | Pães Artesanais em Ribeirão Preto</title>
+    <meta name="description" content="Padaria artesanal em Ribeirão Preto com pães frescos diariamente, confeitaria fina, bolos personalizados e café colonial. Tradição e qualidade desde 1985.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Warm Bakery Color Palette */
+            --wheat-50: #FFFBF0;
+            --wheat-100: #FDF4D8;
+            --wheat-200: #FAE8B8;
+            --wheat-300: #F5D896;
+            --wheat-400: #E8C06A;
+            --wheat-500: #D4A84A;
+            --wheat-600: #B88D3A;
+            --wheat-700: #8F6E2E;
+            --wheat-800: #6B5223;
+            --wheat-900: #4A3818;
+
+            --golden-500: #D4A84A;
+            --golden-600: #B88D3A;
+            --golden-400: #E8C06A;
+
+            --caramel-500: #C17F45;
+            --caramel-600: #A06635;
+            --caramel-400: #D99B6A;
+
+            --crust-500: #8B5A2B;
+            --crust-600: #6B4423;
+            --crust-400: #A67C52;
+
+            --charcoal: #2C1810;
+            --warm-white: #FFFCF8;
+            --cream: #FFF8E7;
+
+            --gradient-golden: linear-gradient(135deg, var(--golden-500) 0%, var(--caramel-500) 100%);
+            --gradient-warm: linear-gradient(135deg, var(--caramel-500) 0%, var(--crust-500) 100%);
+
+            --border-radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --shadow-soft: 0 10px 40px rgba(44, 24, 16, 0.1);
+            --shadow-medium: 0 20px 60px rgba(44, 24, 16, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 252, 248, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(193, 127, 69, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--crust-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-golden);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--caramel-500);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--caramel-600);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-golden);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(193, 127, 69, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--charcoal);
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--wheat-100) 50%, var(--cream) 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--border-radius-blob);
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--golden-400), var(--caramel-500));
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--wheat-400), var(--wheat-500));
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        .hero-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--caramel-400), var(--golden-500));
+            top: 50%;
+            right: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(5deg); }
+            50% { transform: translate(-20px, 20px) rotate(-5deg); }
+            75% { transform: translate(20px, 30px) rotate(3deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(193, 127, 69, 0.1);
+            color: var(--caramel-600);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--caramel-500);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--caramel-600);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--wheat-800);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-golden);
+            color: white;
+            box-shadow: 0 10px 30px rgba(193, 127, 69, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(193, 127, 69, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--charcoal);
+            border: 2px solid var(--wheat-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--caramel-500);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-bread-visual {
+            width: 100%;
+            height: 400px;
+            background: var(--gradient-golden);
+            border-radius: var(--border-radius-blob);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: var(--shadow-medium);
+            animation: gentle-bounce 6s ease-in-out infinite;
+        }
+
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float-card 8s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 20%;
+            left: -30px;
+            animation-delay: -4s;
+        }
+
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-golden);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .floating-card-text {
+            font-size: 0.875rem;
+        }
+
+        .floating-card-text strong {
+            display: block;
+            font-size: 1rem;
+            color: var(--charcoal);
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(193, 127, 69, 0.1);
+            color: var(--caramel-600);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--wheat-800);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .problem-card {
+            background: var(--warm-white);
+            border: 2px solid var(--wheat-200);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--caramel-400);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-golden);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: var(--wheat-800);
+            font-size: 0.95rem;
+        }
+
+        .solution-box {
+            background: var(--gradient-warm);
+            border-radius: 32px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .solution-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-box p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--wheat-50) 0%, var(--cream) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--wheat-200);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-golden);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--wheat-800);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--warm-white);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid var(--wheat-200);
+        }
+
+        .testimonial-stars {
+            color: var(--golden-500);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--charcoal);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-golden);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-info span {
+            color: var(--wheat-700);
+            font-size: 0.875rem;
+        }
+
+        /* Differentials Section */
+        .differentials {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--crust-600) 0%, var(--charcoal) 100%);
+            color: white;
+        }
+
+        .differentials .section-title {
+            color: white;
+        }
+
+        .differentials .section-subtitle {
+            color: var(--wheat-300);
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .differential-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .differential-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .differential-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--golden-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .differential-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .differential-card p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--wheat-800);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-golden);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text strong {
+            display: block;
+            color: var(--charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text span, .contact-text a {
+            color: var(--wheat-800);
+            text-decoration: none;
+        }
+
+        .contact-text a:hover {
+            color: var(--caramel-600);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--wheat-200);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--wheat-200);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--warm-white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--caramel-500);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gradient-golden);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(193, 127, 69, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--golden-400);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--golden-400);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-visual {
+                order: 0;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-bread-visual {
+                height: 300px;
+                font-size: 5rem;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .problems-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .solution-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🥖</div>
+                Pão Dourado
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#problema">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="#contato" class="nav-cta">Peça Agora</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Desde 1985</div>
+                <h1>O Sabor da <span>Tradição</span> em Cada Mordida</h1>
+                <p class="hero-description">Pães artesanais fresquinhos todos os dias, confeitaria fina e aquele café colonial que só a Pão Dourado tem. Venha viver uma experiência única em Ribeirão Preto.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary">Fazer Encomenda</a>
+                    <a href="#servicos" class="btn btn-secondary">Nossos Produtos</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-bread-visual">🥖</div>
+                    <div class="floating-card floating-card-1">
+                        <div class="floating-card-icon">🥐</div>
+                        <div class="floating-card-text">
+                            <strong>+40</strong>
+                            Tipos de pães
+                        </div>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <div class="floating-card-icon">⭐</div>
+                        <div class="floating-card-text">
+                            <strong>4.9</strong>
+                            Avaliação média
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution" id="problema">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Por Que Escolher a Pão Dourado?</span>
+                <h2 class="section-title">O Problema do Dia a Dia</h2>
+                <p class="section-subtitle">Sabemos como é difícil encontrar produtos de qualidade que atendam às suas necessidades</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card wow-fade-up" data-delay="100">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Pouco Tempo</h3>
+                    <p>Correria do dia a dia não deixa tempo para preparar aquele café da manhã especial ou encontrar produtos frescos de qualidade.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="200">
+                    <div class="problem-icon">😕</div>
+                    <h3>Qualidade Incerta</h3>
+                    <p>Muitas padarias vendem produtos industrializados ou que não são feitos no dia, comprometendo o sabor e a frescura.</p>
+                </div>
+                <div class="problem-card wow-fade-up" data-delay="300">
+                    <div class="problem-icon">🎂</div>
+                    <h3>Bolos Impessoais</h3>
+                    <p>Encontrar uma confeitaria que faça bolos personalizados com carinho e atenção aos detalhes é cada vez mais difícil.</p>
+                </div>
+            </div>
+            <div class="solution-box wow-fade-up">
+                <h3>A Solução: Padaria & Confeitaria Pão Dourado</h3>
+                <p>Desde 1985, tradição e qualidade se encontram na Pão Dourado. Nossos pães são assados diariamente com ingredientes selecionados, nossa confeitaria é feita com amor e carinho, e nosso café colonial é uma experiência única. Tudo isso com o atendimento caloroso de quem entende que cada cliente é especial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Nossos Produtos</span>
+                <h2 class="section-title">O Que Oferecemos</h2>
+                <p class="section-subtitle">Uma variedade de produtos artesanais feitos com amor e dedicação</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">🥖</div>
+                    <h3>Pães Artesanais</h3>
+                    <p>Franceses, integrais, de fermentação natural, recheados e especiais. Assados todos os dias no forno a lenha para garantir frescura e sabor incomparáveis.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">🥐</div>
+                    <h3>Croissants & Folhados</h3>
+                    <p>Croissants amanteigados, folhados de queijo, chocolate e frutas. Perfeitos para um café da manhã especial ou um lanche da tarde.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">🎂</div>
+                    <h3>Bolos & Tortas</h3>
+                    <p>Bolos personalizados para festas, tortas doces e salgadas, cupcakes e doces finos. Feitos sob encomenda com ingredientes de primeira qualidade.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">🧁</div>
+                    <h3>Confeitaria Fina</h3>
+                    <p>Brigadeiros gourmet, beijinhos, doces de festa, trufas e bombons. Ideais para presentear ou adoçar seu dia.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">☕</div>
+                    <h3>Café Colonial</h3>
+                    <p>Experiência completa com variedade de pães, bolos, frios, queijos, geleias e o melhor café da cidade. Perfeito para reunir a família.</p>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="600">
+                    <div class="service-icon">🥪</div>
+                    <h3>Sanduíches & Lanches</h3>
+                    <p>Sanduíches naturais, mistos quentes, salgados assados e fritos. Opções deliciosas para qualquer hora do dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+                <p class="section-subtitle">A opinião de quem já experimentou nossos produtos</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"A Pão Dourado é parte da nossa família há anos. O pão francês deles é simplesmente o melhor de Ribeirão Preto. Não consigo imaginar nosso café da manhã sem ele!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <strong>Maria Clara Santos</strong>
+                            <span>Cliente há 8 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Encomendei o bolo de aniversário da minha mãe e ficou perfeito! Além de lindo, estava delicioso. O atendimento é impecável e você sente o carinho em cada detalhe."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div class="testimonial-info">
+                            <strong>Roberto Ferreira</strong>
+                            <span>Cliente há 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"O café colonial da Pão Dourado é uma experiência única. Levamos toda a família todo mês e sempre saímos satisfeitos. A variedade e a qualidade são impressionantes!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AL</div>
+                        <div class="testimonial-info">
+                            <strong>Ana Lucia Mendes</strong>
+                            <span>Cliente há 5 anos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="differentials" id="diferenciais">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white;">Nossos Diferenciais</span>
+                <h2 class="section-title">Por Que Somos Especiais</h2>
+                <p class="section-subtitle">Tradição e qualidade que você pode confiar</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-card wow-fade-up" data-delay="100">
+                    <div class="differential-number">40+</div>
+                    <h3>Anos de Tradição</h3>
+                    <p>Desde 1985 fazendo parte da história de Ribeirão Preto</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="200">
+                    <div class="differential-number">40+</div>
+                    <h3>Tipos de Pães</h3>
+                    <p>Uma variedade incrível para todos os gostos</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="300">
+                    <div class="differential-number">100%</div>
+                    <h3>Artesanal</h3>
+                    <p>Produtos feitos à mão com ingredientes selecionados</p>
+                </div>
+                <div class="differential-card wow-fade-up" data-delay="400">
+                    <div class="differential-number">4.9</div>
+                    <h3>Avaliação Média</h3>
+                    <p>Reconhecimento dos nossos clientes satisfeitos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="contact-container">
+            <div class="contact-info wow-fade-up">
+                <span class="section-tag">Contato</span>
+                <h3>Venha Nos Visitar</h3>
+                <p>Estamos esperando por você com produtos fresquinhos e um atendimento de qualidade.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <strong>Endereço</strong>
+                            <span>R. Duque de Caxias, 456 - Centro<br>Ribeirão Preto - SP</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <strong>Telefone</strong>
+                            <a href="tel:+551632678901">(16) 3267-8901</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-text">
+                            <strong>Horário de Funcionamento</strong>
+                            <span>Segunda a Sábado: 6h às 20h<br>Domingo: 7h às 13h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form wow-fade-up" data-delay="200">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Faça sua Encomenda</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Produto de Interesse</label>
+                        <select id="product" name="product" required>
+                            <option value="">Selecione um produto</option>
+                            <option value="paes">Pães Artesanais</option>
+                            <option value="bolo">Bolo Personalizado</option>
+                            <option value="doces">Doces & Confeitaria</option>
+                            <option value="cafe">Café Colonial</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="Detalhes do seu pedido..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Pedido</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">🥖</div>
+                        Pão Dourado
+                    </a>
+                    <p>Desde 1985 trazendo o melhor da panificação artesanal para Ribeirão Preto. Tradição, qualidade e sabor em cada produto.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#problema">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="#servicos">Pães Artesanais</a></li>
+                        <li><a href="#servicos">Bolos & Tortas</a></li>
+                        <li><a href="#servicos">Confeitaria</a></li>
+                        <li><a href="#servicos">Café Colonial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+551632678901">(16) 3267-8901</a></li>
+                        <li><a href="#contato">R. Duque de Caxias, 456</a></li>
+                        <li><a href="#contato">Ribeirão Preto - SP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 Padaria & Confeitaria Pão Dourado. Todos os direitos reservados.</p>
+                <p>Desenvolvido com ❤️ em Ribeirão Preto</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll behavior
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                if (currentScroll > lastScroll) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+            } else {
+                nav.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu pedido! Entraremos em contato em breve para confirmar.');
+            this.reset();
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
