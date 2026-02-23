@@ -230,6 +230,24 @@
 
 ---
 
+## 2026-02-22 - US-116 (Autofix for US-110)
+- **What was implemented:** Autofix analysis for US-110 Playwright review
+- **Files changed:**
+  - Updated `checkpoint-review.md` with revalidation results for US-110
+  - Created `.playwright-mcp/temp-us-116/padaria-confeitaria-pao-dourado-*.png` (temporary QA screenshots)
+- **Learnings:**
+  - Confirmed pattern from US-112 and US-114: autofix tasks may be generated with incorrect failure attribution
+  - The `git.commit.local` check was actually PASSING (commit 914ab4d exists)
+  - The `site.file` check was also PASSING (site exists at `site-demo/padaria-confeitaria-pao-dourado/index.html`)
+  - The reported "failures" were misattributed - the only pending check was `git.commit.origin_main` which is expected
+  - Playwright review stories (US-10X series) don't require Notion updates
+  - When revalidating review stories, use `--no-require-origin-main` flag to skip the origin/main check
+  - Root cause: The automation_loop.py misattributes check failures when generating autofix tasks
+  - No code changes were required - the original US-110 implementation was correct
+  - All mandatory sections validated: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+
+---
+
 ## 2026-02-22 - US-112 (Autofix for US-102)
 - **What was implemented:** Autofix analysis for US-102 Playwright review
 - **Files changed:**
