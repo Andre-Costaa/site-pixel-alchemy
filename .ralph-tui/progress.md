@@ -14,6 +14,16 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-02-23 - US-003
+- What was implemented: Fixed hero image for Dra. Laura Sanches site - replaced male dentist image with female dentist image to match the client's gender
+- Files changed: `site-demo/dra-laura-sanches/index.html` (line 1538)
+- **Learnings:**
+  - When using stock images for professional sites, always verify that the image matches the client's gender and professional identity
+  - Unsplash photo IDs: `photo-1559839734-2b71ea197ec2` shows a male doctor, `photo-1594824476967-48c8b964273f` shows a female healthcare professional
+  - Playwright visual testing is essential to catch content mismatches that automated tests might miss
+  - Always test at multiple breakpoints (375px, 768px, 1024px, 1440px) to ensure responsive images work correctly
+---
+
 ## 2026-02-23 - US-001
 - What was implemented: Complete professional site for Mairake Odontologia (dental clinic in Ribeirao Preto)
 - Files changed: `site-demo/mairake-odontologia/index.html` (new)
