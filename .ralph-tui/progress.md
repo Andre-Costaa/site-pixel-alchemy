@@ -15,6 +15,27 @@
 
 ---
 
+## 2026-02-24 - US-139
+- **What was implemented:** Playwright review for Dra. Katia Miyoshi site (dra-katia-miyoshi-harmonizacao-facial-dentista)
+- **Files changed:**
+  - Updated `site-demo/dra-katia-miyoshi-harmonizacao-facial-dentista/index.html` - Fixed hero image (male doctor → female doctor)
+  - Updated `checkpoint-review.md` with review results for US-139
+  - Created `.playwright-mcp/dra-katia-miyoshi-harmonizacao-facial-dentista-1440.png`
+  - Created `.playwright-mcp/dra-katia-miyoshi-harmonizacao-facial-dentista-1024.png`
+  - Created `.playwright-mcp/dra-katia-miyoshi-harmonizacao-facial-dentista-768.png`
+  - Created `.playwright-mcp/dra-katia-miyoshi-harmonizacao-facial-dentista-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Desafio - problem card, A Solução - solution card)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Pearl Noir & Brushed Titanium color palette with Cormorant Garamond + Plus Jakarta Sans fonts
+  - **CRITICAL FIX**: Hero image originally showed male doctor, updated to female doctor to match Dra. Katia Miyoshi
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-137
 - **What was implemented:** Playwright review for Dra. Isabela Barros site (dra-isabela-barros)
 - **Files changed:**
