@@ -848,3 +848,88 @@ The site is responsive and functional at all tested breakpoints (1440px, 1024px,
 - `.playwright-mcp/clinica-botoesthetic-1024.png`
 - `.playwright-mcp/clinica-botoesthetic-768.png`
 - `.playwright-mcp/clinica-botoesthetic-480.png`
+
+---
+
+# Checkpoint Review - US-117
+
+## Review Date
+2026-02-23
+
+## Site Reviewed
+clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez (Clínica Glamoré - Estética Avançada - Dra. Jéssica Baleia)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Revele sua beleza natural com a Dra. Jéssica Baleia" and CTAs |
+| Problema/Solução | PASS | Dedicated section "Sua beleza merece cuidado especializado" with 4 cards (2 problem cards: Sinais de envelhecimento, Harmonização facial; 2 solution cards: Resultados naturais, Atendimento premium) |
+| Serviços | PASS | 6 service cards displayed (Harmonização Facial, Toxina Botulínica, Preenchimento Labial, Preenchedores Faciais, Bioestimuladores, Protocolos Personalizados) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Maria Clara, Ana Silva, Patrícia Lima) |
+| Diferenciais | PASS | 6 differential cards (Profissional Qualificada, Produtos de Qualidade, Resultados Naturais, Acompanhamento Completo, Localização Privilegiada, Procedimentos Rápidos) |
+| Contato | PASS | Form with name, phone, service selector, message + contact details and hours |
+| Footer | PASS | Links and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#home, #services, #testimonials, #differentials, #contact) |
+| CTAs | PASS | "Agendar Consulta" and "Conhecer Tratamentos" buttons functional |
+| Form Fields | PASS | Name, phone, service selector, message - all present |
+| Form Submission | PASS | WhatsApp integration functional |
+| Console Errors | PASS | No errors (only favicon 404 - non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Done Gate Results (US-086)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99390-2657
+- site.address: PASS
+- git.commit.local: PASS - 3c44f6e9de1548bd02b0ff082cc2b0094e16ae44
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.required: PASS - Not required by this story
+```
+
+### Review Conclusion
+**APPROVED**
+
+The site clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez passes all functional and structural requirements.
+
+All mandatory sections are present and correctly implemented:
+- Hero section with proper H1 and CTAs
+- Dedicated Problema/Solução section (not replaced by generic Sobre/Processo)
+- Services grid with 6 cards
+- Testimonials with star ratings
+- Differentials section with 6 cards
+- Contact form and details
+- Footer with links
+
+The site follows a Rose Quartz & Gilded Noir color palette with Crimson Pro + Outfit font combination appropriate for a premium aesthetics clinic.
+
+The site is responsive and functional at all tested breakpoints (1440px, 1024px, 768px, 480px).
+
+### Evidence Files
+- `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-1440.png`
+- `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-1024.png`
+- `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-768.png`
+- `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-480.png`

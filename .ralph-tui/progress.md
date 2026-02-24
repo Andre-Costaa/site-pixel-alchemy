@@ -15,6 +15,25 @@
 
 ---
 
+## 2026-02-23 - US-117
+- **What was implemented:** Playwright review for Clínica Glamoré - Estética Avançada site (clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-117
+  - Created `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-1440.png`
+  - Created `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-1024.png`
+  - Created `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-768.png`
+  - Created `.playwright-mcp/clinica-glamore-estetica-avancada-dra-jessica-baleia-embelez-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 4 cards (2 problem cards: Sinais de envelhecimento, Harmonização facial; 2 solution cards: Resultados naturais, Atendimento premium)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - No console errors (only favicon 404 - non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Rose Quartz & Gilded Noir color palette with Crimson Pro + Outfit fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-23 - US-115
 - **What was implemented:** Playwright review for Clínica BotoEsthetic site (clinica-botoesthetic)
 - **Files changed:**
