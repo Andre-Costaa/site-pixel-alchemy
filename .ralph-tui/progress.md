@@ -15,6 +15,28 @@
 
 ---
 
+## 2026-02-24 - US-153
+- **What was implemented:** Playwright review for Mônica Bordoni Odontologia site (monica-bordoni-odontologia)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-153
+  - Created `.playwright-mcp/monica-bordoni-odontologia-1440.png`
+  - Created `.playwright-mcp/monica-bordoni-odontologia-1024.png`
+  - Created `.playwright-mcp/monica-bordoni-odontologia-768.png`
+  - Created `.playwright-mcp/monica-bordoni-odontologia-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Problema - problem card, A Solução - solution card)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Sage Green & Coral color palette with Playfair Display + Outfit fonts
+  - Hero image shows professional dental clinic interior with modern equipment (appropriate for endodontista)
+  - 6 service cards covering comprehensive endodontic treatments
+  - 4 differential items highlighting key differentiators
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-151
 - **What was implemented:** Playwright review for Luís Felipe Chicaroni site (luis-felipe-chicaroni)
 - **Files changed:**

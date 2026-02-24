@@ -1,3 +1,76 @@
+# Checkpoint Review - US-153
+
+## Review Date
+2026-02-24
+
+## Site Reviewed
+monica-bordoni-odontologia (Mônica Bordoni Odontologia - Endodontista em Ribeirão Preto)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Salve seu dente com precisão e carinho" and CTAs (Agendar Consulta, Conhecer Serviços) |
+| Problema/Solução | PASS | Dedicated section "A dor que você sente tem solução" with 2 cards (O Problema - problem card, A Solução - solution card) |
+| Serviços | PASS | 6 service cards displayed (Tratamento de Canal, Retratamento de Canal, Cirurgia Peraapical, Localização de Canal, Obturação de Canal, Avaliação e Diagnóstico) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Maria Clara Silva, Roberto Ferreira, Ana Santos) |
+| Diferenciais | PASS | 4 differential items (Especialista Qualificada, Tecnologia Avançada, Atendimento Humanizado, Agilidade) |
+| Contato | PASS | Form with name, phone, email, service selector, message + contact details and hours |
+| Footer | PASS | Links and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #servicos, #depoimentos, #contato) |
+| CTAs | PASS | "Agendar Consulta" and "Conhecer Serviços" buttons functional |
+| Form Fields | PASS | Name, phone, email, service selector, message - all present |
+| Form Submission | PASS | Form validation functional |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Hero Image Verification
+**Hero Image Check**: The hero image shows a professional dental clinic interior with modern equipment, appropriate for an endodontista. No image change required.
+- Current image: Modern dental clinic with professional equipment
+
+### Done Gate Results (US-018)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99123-7468
+- site.address: PASS
+- git.commit.local: PASS - f33b524a6c448eeaba183ef85a72323c7c54d0c6
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.required: PASS - Not required by this story
+```
+
+### Design System
+- **Color Palette**: Sage Green & Coral (Sage Dark #4A7C6F, Sage #7BA89A, Coral #E87A6D, Cream #FAF8F5)
+- **Typography**: Playfair Display (display) + Outfit (body)
+- **Style**: Organic blob shapes with soft, calming colors appropriate for endodontics specialist
+
+### Review Outcome
+**APPROVED** - All mandatory sections present, all done gate checks passed, site is responsive at all breakpoints.
+
+---
+
 # Checkpoint Review - US-151
 
 ## Review Date
