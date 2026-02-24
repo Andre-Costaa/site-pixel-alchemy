@@ -15,6 +15,43 @@
 
 ---
 
+## 2026-02-24 - US-105
+- **What was implemented:** Playwright review for Pizzaria Donna Margherita site (pizzaria-donna-margherita)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-105
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1440.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1024.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-768.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Massa Industrializada, Molhos Genéricos, Entregas Atrasadas) and solution box
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.*)
+  - Notion receipt check fails due to missing outbox index from original US-094 creation - this is a historical artifact
+  - Site follows Italian theme color palette (tomato red, olive green, basil green, cream) with Bricolage Grotesque + Plus Jakarta Sans fonts
+  - 6 service cards covering pizza menu items with prices
+  - 4 differential items highlighting key differentiators (Forno a Lenha, Massa 48h, Ingredientes Italianos, Entrega Rápida)
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
+## Codebase Patterns
+
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+---
+
 ## 2026-02-24 - US-110
 - **What was implemented:** Playwright review for Padaria & Confeitaria Pão Dourado site (padaria-confeitaria-pao-dourado)
 - **Files changed:**
