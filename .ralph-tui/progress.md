@@ -15,6 +15,38 @@
 
 ---
 
+## 2026-02-23 - US-125
+- **What was implemented:** Playwright review for Dra Fernanda Nirschl site (dra-fernanda-nirschl)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-125
+  - Created `.playwright-mcp/dra-fernanda-nirschl-1440.png`
+  - Created `.playwright-mcp/dra-fernanda-nirschl-1024.png`
+  - Created `.playwright-mcp/dra-fernanda-nirschl-768.png`
+  - Created `.playwright-mcp/dra-fernanda-nirschl-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 cards (O Desafio, A Avaliação, A Solução)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Obsidian Noir & Champagne Quartz color palette with Libre Baskerville + Plus Jakarta Sans fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+---
+
 ## 2026-02-23 - US-123
 - **What was implemented:** Playwright review for Dra Barbara Jobim site (dra-barbara-jobim)
 - **Files changed:**
