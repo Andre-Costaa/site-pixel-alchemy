@@ -30,6 +30,24 @@ When clicking on logo links with `href="#"` causes JavaScript errors:
 
 ---
 
+## 2026-02-24 - US-161
+- **What was implemented:** Created complete website for Aladin Barbearia
+- **Files changed:**
+  - Created `site-demo/aladin-barbearia/index.html` - Complete self-contained barbershop website
+  - Updated `prd.json` - Added US-161 story with notionPageId
+  - Generated `/tmp/mensagem.txt` - Personalized outreach message
+- **Learnings:**
+  - Created unique Midnight & Amber color palette for barbershop theme
+  - Used Bebas Neue + DM Sans font combination for modern barbershop aesthetic
+  - All mandatory sections validated: Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer
+  - Notion page ID found: 2f86f51e-b8a5-81fe-a235-c747736bf719
+  - Notion updated via outbox with Status "Mensagem Pronta", URL Demo, Mensagem, Slug, US ID, Site Criado Em
+  - Done gate shows all site checks PASS (site.file, site.section.*)
+  - Site features: 6 service cards, 3 testimonials, 4 differentials, contact form
+  - Fully responsive at all breakpoints (480px, 768px, 1024px, 1440px)
+
+---
+
 ## 2026-02-24 - US-142
 - **What was implemented:** Playwright review for Dra. Manoela Zuccolotto - MZucca Estética Avançada site (dra-manoela-zuccolotto-harmonizacao-facial-mzucca-estetica-a)
 - **Files changed:**
