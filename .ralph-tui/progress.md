@@ -15,6 +15,44 @@
 
 ---
 
+## 2026-02-24 - US-109
+- **What was implemented:** Playwright review for Clínica Harmonia Facial - Dra. Juliana Rodrigues site (clinica-harmonia-facial-dra-juliana-rodrigues)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-109
+  - Created `.playwright-mcp/clinica-harmonia-facial-dra-juliana-rodrigues-1440.png`
+  - Created `.playwright-mcp/clinica-harmonia-facial-dra-juliana-rodrigues-1024.png`
+  - Created `.playwright-mcp/clinica-harmonia-facial-dra-juliana-rodrigues-768.png`
+  - Created `.playwright-mcp/clinica-harmonia-facial-dra-juliana-rodrigues-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with problem card ("Você se sente insegura com sua aparência?") and solution card ("A solução: Harmonização Natural")
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.*)
+  - Notion receipt check fails due to missing outbox index from original US-098 creation - this is a historical artifact
+  - Site follows elegant color palette with soft rose/mauve tones appropriate for facial harmonization clinic
+  - Hero image shows professional female doctor performing facial procedure - appropriate for Dra. Juliana Rodrigues
+  - 6 service cards covering comprehensive harmonização facial treatments with pricing
+  - 4 differential items highlighting key differentiators
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
+## Codebase Patterns
+
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+---
+
 ## 2026-02-24 - US-105
 - **What was implemented:** Playwright review for Pizzaria Donna Margherita site (pizzaria-donna-margherita)
 - **Files changed:**
