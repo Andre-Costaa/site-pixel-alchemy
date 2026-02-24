@@ -30,6 +30,58 @@ When clicking on logo links with `href="#"` causes JavaScript errors:
 
 ---
 
+## 2026-02-24 - US-134
+- **What was implemented:** Playwright review for Dra. Barbara Silva site (dra-barbara-silva) - FINAL with fixes
+- **Files changed:**
+  - `site-demo/dra-barbara-silva/index.html` - Fixed wow-fade-up opacity issue
+  - Updated `checkpoint-review.md` with review results for US-134
+  - Created `.playwright-mcp/dra-barbara-silva-1440.png`
+  - Created `.playwright-mcp/dra-barbara-silva-1024.png`
+  - Created `.playwright-mcp/dra-barbara-silva-768.png`
+  - Created `.playwright-mcp/dra-barbara-silva-480.png`
+- **Learnings:**
+  - CRITICAL FIX: Content was invisible in screenshots because `.wow-fade-up` started with `opacity: 0`
+  - Solução: Alterado CSS para `opacity: 1` e `transform: translateY(0)` por padrão
+  - Pattern: Sempre garantir conteúdo visível por padrão, animações são opcionais
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Que Você Busca, Nossa Solução)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS (site.file, site.section.*, git.commit.origin_main)
+  - Site follows Rose Gold & Champagne Diamond color palette with Cormorant Garamond + Manrope fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
+## 2026-02-24 - US-130
+- **What was implemented:** Playwright review for Dra Nayara Nubia site (dra-nayara-nubia) - FINAL with fixes
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+### Hero Animation Fix Pattern
+When hero content appears invisible in screenshots, check if:
+- CSS animation starts with `opacity: 0` and relies on animation to complete
+- Fix: Set initial opacity to 1 so content is visible even if animation doesn't complete
+- Keep animation for enhanced effect but don't depend on it for visibility
+
+### Smooth Scroll Fix Pattern
+When clicking on logo links with `href="#"` causes JavaScript errors:
+- Error: `SyntaxError: Failed to execute 'querySelector' on 'Document': '#' is not a valid selector`
+- Fix: Add check in smooth scroll handler to skip empty anchors:
+  ```javascript
+  if (href === '#' || !href) return;
+  ```
+- This prevents the error when clicking logo/home links that don't have a specific target
+
+---
+
 ## 2026-02-24 - US-130
 - **What was implemented:** Playwright review for Dra Nayara Nubia site (dra-nayara-nubia) - FINAL with fixes
 - **Files changed:**
