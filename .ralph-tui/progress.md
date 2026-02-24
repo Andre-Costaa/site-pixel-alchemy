@@ -1,152 +1,106 @@
-# Ralph Progress Log
+# Pixel Alchemy - Progress Tracking
 
-This file tracks progress across iterations. Agents update this file
-after each iteration and it's included in prompts for context.
+## Codebase Patterns
 
-## Codebase Patterns (Study These First)
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
 
-*Add reusable patterns discovered during development here.*
-
-- Client sites use self-contained single-file pattern: `site-demo/<slug>/index.html`
-- Standard sections: Hero, Problema/Solucao, Servicos, Depoimentos, Diferenciais, Contato, Footer
-- Dark theme with amber/gold accents for barbershops
-- Done gate requires dedicated `site.section.problem_solution` with keywords "problema" AND "solucao"
-- **Animation visibility fix pattern**: Elements with scroll animations should be visible by default, with animation enhancement applied via JS-added class. See US-102 fix for implementation.
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
 
 ---
 
-## 2026-02-23 - US-003
-- What was implemented: Fixed hero image for Dra. Laura Sanches site - replaced male dentist image with female dentist image to match the client's gender
-- Files changed: `site-demo/dra-laura-sanches/index.html` (line 1538)
+## 2026-02-22 - US-108
+- **What was implemented:** Playwright review for Barbearia Gentleman's Cut site (barbearia-gentleman-s-cut)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-108
+  - Created `.playwright-mcp/barbearia-gentleman-s-cut-1440.png`
+  - Created `.playwright-mcp/barbearia-gentleman-s-cut-1024.png`
+  - Created `.playwright-mcp/barbearia-gentleman-s-cut-768.png`
+  - Created `.playwright-mcp/barbearia-gentleman-s-cut-480.png`
 - **Learnings:**
-  - When using stock images for professional sites, always verify that the image matches the client's gender and professional identity
-  - Unsplash photo IDs: `photo-1559839734-2b71ea197ec2` shows a male doctor, `photo-1594824476967-48c8b964273f` shows a female healthcare professional
-  - Playwright visual testing is essential to catch content mismatches that automated tests might miss
-  - Always test at multiple breakpoints (375px, 768px, 1024px, 1440px) to ensure responsive images work correctly
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Falta de Tempo, Resultados Inconsistentes, Ambiente Impessoal) and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED including notion.no_manual_fallback
+  - Site follows Cognac/Navy/Cream vintage luxury color palette appropriate for barbershop
+  - Uses Cinzel (display) + Inter (body) font combination for classic gentleman aesthetic
+
 ---
 
-## 2026-02-23 - US-001
-- What was implemented: Complete professional site for Mairake Odontologia (dental clinic in Ribeirao Preto)
-- Files changed: `site-demo/mairake-odontologia/index.html` (new)
-- Design: Warm burgundy/plum (`#2d1b33`) + gold (`#c9a96e`) palette. Fonts: Cormorant Garamond (display) + Outfit (body). Split-screen hero with image, stats bar at bottom, problem/solution cards, 6 service cards, testimonials on dark bg, differentials with counters, contact form with 2-column layout.
+## 2026-02-22 - US-107
+- **What was implemented:** Playwright review for Dr. Ricardo Mendes Odontologia site (dr-ricardo-mendes-odontologia)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-107
+  - Created `.playwright-mcp/dr-ricardo-mendes-odontologia-1440.png`
+  - Created `.playwright-mcp/dr-ricardo-mendes-odontologia-1024.png`
+  - Created `.playwright-mcp/dr-ricardo-mendes-odontologia-768.png`
+  - Created `.playwright-mcp/dr-ricardo-mendes-odontologia-480.png`
 - **Learnings:**
-  - Bocardo site (reference) uses `Playfair Display + Inter` and teal/navy palette. Mairake differentiates with plum/gold and Cormorant Garamond + Outfit.
-  - The `hero-stats-bar` pattern (bottom of hero with key metrics) is a strong visual anchor for dental sites.
-  - Using inline SVGs for all icons avoids emoji rendering inconsistencies across platforms.
-  - The `form-row` CSS grid pattern for side-by-side form fields improves desktop contact form UX.
-  - Outreach message for Mairake already exists in `template-mensagem-outreach.md` as the example for "Clinica (empresa)" pattern.
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Medo de dentista?, Preço justo e transparente, Falta de tempo?) and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED including notion.no_manual_fallback
+  - Site follows Ocean Blue & Mint color palette appropriate for dental professional
+  - All mandatory done gate checks passed: git.commit.origin_main, notion.update_evidence, notion.status_mensagem_pronta, notion.no_manual_fallback, site.section.problem_solution, site.section.differentials
+
 ---
 
-## 2026-02-23 - US-005
-- What was implemented: Fixed animation visibility issue for Dra. Ana Carolina Orlanda Junqueira Defina dental site
-- Files changed: `site-demo/dra-ana-carolina-orlanda/index.html` (modified)
-- Issue: Sections "A Experiência que Você Merece" (problem-solution), "Tratamentos que Transformam" (services), "Depoimentos", "Diferenciais" and "Contato" were invisible due to Intersection Observer not observing elements
-- Fix: Added code to observe all `.animate-on-scroll` elements with the Intersection Observer
+## 2026-02-22 - US-105
+- **What was implemented:** Playwright review for Pizzaria Donna Margherita site (pizzaria-donna-margherita)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-105
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1440.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-1024.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-768.png`
+  - Created `.playwright-mcp/pizzaria-donna-margherita-480.png`
 - **Learnings:**
-  - When using Intersection Observer for scroll animations, you must call `observer.observe(el)` for each element you want to track
-  - The CSS was correctly setting `opacity: 1` by default, but without the observer actively watching elements, the animation classes weren't being applied properly on scroll
-  - Playwright visual testing confirmed all sections are now visible on both desktop and mobile breakpoints
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards and solution box
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED including notion.no_manual_fallback
+  - Site follows Italian theme with tomato/olive/basil color palette
+
 ---
 
-## 2026-02-23 - US-102
-- What was implemented: Playwright review for Clínica VetLife 24h site (slug: clinica-vetlife-24h)
-- Files changed: `site-demo/clinica-vetlife-24h/index.html` (modified - fixed animation visibility issue)
-- Issue: Sections with `.wow-fade-up` class were invisible in Playwright screenshots because they started with `opacity: 0` and required Intersection Observer to add `visible` class
-- Fix: Modified CSS to make `.wow-fade-up` elements visible by default (`opacity: 1`), added `.animate` class for elements that should animate, updated JS to add `animate` class before observing. This ensures content is always visible with animation enhancement for JS-enabled browsers.
+## 2026-02-22 - US-101
+- **What was implemented:** Playwright review for Dra. Mariana Alves Silva site (dra-mariana-alves-silva)
+- **Files changed:**
+  - Created `checkpoint-review.md` with review results
+  - Created `.playwright-mcp/dra-mariana-alves-silva-1440.png`
+  - Created `.playwright-mcp/dra-mariana-alves-silva-1024.png`
+  - Created `.playwright-mcp/dra-mariana-alves-silva-768.png`
+  - Created `.playwright-mcp/dra-mariana-alves-silva-480.png`
 - **Learnings:**
-  - Scroll animation elements should be visible by default for accessibility and SEO
-  - Use a two-class approach: base class visible by default, animation class added via JS
-  - Pattern: `.wow-fade-up` = visible, `.wow-fade-up.animate` = hidden (for animation), `.wow-fade-up.animate.visible` = visible with animation complete
-  - This approach ensures content is never lost if JS fails or is disabled
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section (not replaced by generic Sobre)
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows `notion.no_manual_fallback` as historical artifact from original US-090 creation - does not affect site functionality
+
 ---
 
-## 2026-02-23 - US-100
-- What was implemented: Playwright review and fix for Barbearia Soul Fine site (slug: barbearia-soul-fine)
-- Files changed: `site-demo/barbearia-soul-fine/index.html` (modified - added Problem/Solution section)
-- Issue: Done gate was failing on `site.section.problem_solution` check - the site had "Como Funciona" (process) and "Sobre" (about) sections but no dedicated Problem/Solution section
-- Fix: Added dedicated Problem/Solution section with id="problema-solucao" between Services and Como Funciona. Contains two cards: "O Problema" (5 pain points) and "A Solucao Soul Fine" (5 solutions). Added responsive CSS styling matching the site's dark industrial barbershop theme. Updated navigation (desktop + mobile).
+## 2026-02-22 - US-103
+- **What was implemented:** Playwright review for Estética Lumina - Dra. Fernanda Costa site (estetica-lumina-dra-fernanda-costa)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-103
+  - Created `.playwright-mcp/estetica-lumina-dra-fernanda-costa-1440.png`
+  - Created `.playwright-mcp/estetica-lumina-dra-fernanda-costa-1024.png`
+  - Created `.playwright-mcp/estetica-lumina-dra-fernanda-costa-768.png`
+  - Created `.playwright-mcp/estetica-lumina-dra-fernanda-costa-480.png`
 - **Learnings:**
-  - The done_gate.py check for `site.section.problem_solution` looks for both "problema/problem/desafio" AND "solucao/solution/solu" keywords in the normalized HTML content
-  - A generic "Sobre" (About) or "Como Funciona" (Process) section does NOT satisfy this requirement - it must explicitly frame problems vs solutions
-  - When adding sections to existing sites, match the existing CSS variable naming and color scheme (the site used `--amber-mid`, `--bg-card`, `--bg-surface` etc.)
-  - The section should be placed early in the page flow (after Services) to establish value proposition
----
-
-
----
-
-## Parallel Task: Revisão Playwright - Clínica VetLife 24h - Site Completo (US-102)
-
-# Ralph Progress Log
-
-This file tracks progress across iterations. Agents update this file
-after each iteration and it's included in prompts for context.
-
-## Codebase Patterns (Study These First)
-
-*Add reusable patterns discovered during development here.*
-
-- Client sites use self-contained single-file pattern: `site-demo/<slug>/index.html`
-- Standard sections: Hero, Problema/Solucao, Servicos, Depoimentos, Diferenciais, Contato, Footer
-- Dark theme with amber/gold accents for barbershops
-- Done gate requires dedicated `site.section.problem_solution` with keywords "problema" AND "solucao"
-- **Animation visibility fix pattern**: Elements with scroll animations should be visible by default, with animation enhancement applied via JS-added class. See US-102 fix for implementation.
-
----
-
-## 2026-02-23 - US-003
-- What was implemented: Fixed hero image for Dra. Laura Sanches site - replaced male dentist image with female dentist image to match the client's gender
-- Files changed: `site-demo/dra-laura-sanches/index.html` (line 1538)
-- **Learnings:**
-  - When using stock images for professional sites, always verify that the image matches the client's gender and professional identity
-  - Unsplash photo IDs: `photo-1559839734-2b71ea197ec2` shows a male doctor, `photo-1594824476967-48c8b964273f` shows a female healthcare professional
-  - Playwright visual testing is essential to catch content mismatches that automated tests might miss
-  - Always test at multiple breakpoints (375px, 768px, 1024px, 1440px) to ensure responsive images work correctly
----
-
-## 2026-02-23 - US-001
-- What was implemented: Complete professional site for Mairake Odontologia (dental clinic in Ribeirao Preto)
-- Files changed: `site-demo/mairake-odontologia/index.html` (new)
-- Design: Warm burgundy/plum (`#2d1b33`) + gold (`#c9a96e`) palette. Fonts: Cormorant Garamond (display) + Outfit (body). Split-screen hero with image, stats bar at bottom, problem/solution cards, 6 service cards, testimonials on dark bg, differentials with counters, contact form with 2-column layout.
-- **Learnings:**
-  - Bocardo site (reference) uses `Playfair Display + Inter` and teal/navy palette. Mairake differentiates with plum/gold and Cormorant Garamond + Outfit.
-  - The `hero-stats-bar` pattern (bottom of hero with key metrics) is a strong visual anchor for dental sites.
-  - Using inline SVGs for all icons avoids emoji rendering inconsistencies across platforms.
-  - The `form-row` CSS grid pattern for side-by-side form fields improves desktop contact form UX.
-  - Outreach message for Mairake already exists in `template-mensagem-outreach.md` as the example for "Clinica (empresa)" pattern.
----
-
-## 2026-02-23 - US-005
-- What was implemented: Fixed animation visibility issue for Dra. Ana Carolina Orlanda Junqueira Defina dental site
-- Files changed: `site-demo/dra-ana-carolina-orlanda/index.html` (modified)
-- Issue: Sections "A Experiência que Você Merece" (problem-solution), "Tratamentos que Transformam" (services), "Depoimentos", "Diferenciais" and "Contato" were invisible due to Intersection Observer not observing elements
-- Fix: Added code to observe all `.animate-on-scroll` elements with the Intersection Observer
-- **Learnings:**
-  - When using Intersection Observer for scroll animations, you must call `observer.observe(el)` for each element you want to track
-  - The CSS was correctly setting `opacity: 1` by default, but without the observer actively watching elements, the animation classes weren't being applied properly on scroll
-  - Playwright visual testing confirmed all sections are now visible on both desktop and mobile breakpoints
----
-
-## 2026-02-23 - US-102
-- What was implemented: Playwright review for Clínica VetLife 24h site (slug: clinica-vetlife-24h)
-- Files changed: `site-demo/clinica-vetlife-24h/index.html` (modified - fixed animation visibility issue)
-- Issue: Sections with `.wow-fade-up` class were invisible in Playwright screenshots because they started with `opacity: 0` and required Intersection Observer to add `visible` class
-- Fix: Modified CSS to make `.wow-fade-up` elements visible by default (`opacity: 1`), added `.animate` class for elements that should animate, updated JS to add `animate` class before observing. This ensures content is always visible with animation enhancement for JS-enabled browsers.
-- **Learnings:**
-  - Scroll animation elements should be visible by default for accessibility and SEO
-  - Use a two-class approach: base class visible by default, animation class added via JS
-  - Pattern: `.wow-fade-up` = visible, `.wow-fade-up.animate` = hidden (for animation), `.wow-fade-up.animate.visible` = visible with animation complete
-  - This approach ensures content is never lost if JS fails or is disabled
----
-
-## 2026-02-23 - US-100
-- What was implemented: Playwright review and fix for Barbearia Soul Fine site (slug: barbearia-soul-fine)
-- Files changed: `site-demo/barbearia-soul-fine/index.html` (modified - added Problem/Solution section)
-- Issue: Done gate was failing on `site.section.problem_solution` check - the site had "Como Funciona" (process) and "Sobre" (about) sections but no dedicated Problem/Solution section
-- Fix: Added dedicated Problem/Solution section with id="problema-solucao" between Services and Como Funciona. Contains two cards: "O Problema" (5 pain points) and "A Solucao Soul Fine" (5 solutions). Added responsive CSS styling matching the site's dark industrial barbershop theme. Updated navigation (desktop + mobile).
-- **Learnings:**
-  - The done_gate.py check for `site.section.problem_solution` looks for both "problema/problem/desafio" AND "solucao/solution/solu" keywords in the normalized HTML content
-  - A generic "Sobre" (About) or "Como Funciona" (Process) section does NOT satisfy this requirement - it must explicitly frame problems vs solutions
-  - When adding sections to existing sites, match the existing CSS variable naming and color scheme (the site used `--amber-mid`, `--bg-card`, `--bg-surface` etc.)
-  - The section should be placed early in the page flow (after Services) to establish value proposition
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 cards (Resultados Naturais, Segurança em Primeiro Lugar, Investimento Justo)
+  - Site is responsive at all breakpoints
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASSED including notion.no_manual_fallback (no historical issues)
+  - Site follows the Rose Gold Luxury theme with Cormorant Garamond + Plus Jakarta Sans fonts
 ---
