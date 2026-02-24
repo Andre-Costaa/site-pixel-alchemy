@@ -15,6 +15,27 @@
 
 ---
 
+## 2026-02-24 - US-155
+- **What was implemented:** Playwright review for Royal Face Ribeirão Preto site (royal-face-ribeirao-preto)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-155
+  - Created `.playwright-mcp/royal-face-ribeirao-preto-1440.png`
+  - Created `.playwright-mcp/royal-face-ribeirao-preto-1024.png`
+  - Created `.playwright-mcp/royal-face-ribeirao-preto-768.png`
+  - Created `.playwright-mcp/royal-face-ribeirao-preto-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (Desafios que Compreendemos - problem card, Soluções que Encantam - solution card)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Regal Burgundy & Gold Noir color palette with Crimson Pro + Manrope fonts
+  - 6 service cards covering comprehensive estética avançada treatments
+  - 6 differential items highlighting key differentiators
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-153
 - **What was implemented:** Playwright review for Mônica Bordoni Odontologia site (monica-bordoni-odontologia)
 - **Files changed:**
