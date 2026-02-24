@@ -1211,12 +1211,17 @@
         }
 
         .wow-fade-up {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .wow-fade-up.visible {
+        .wow-fade-up.animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .wow-fade-up.animate.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1947,6 +1952,7 @@
         }, observerOptions);
 
         document.querySelectorAll('.wow-fade-up').forEach(el => {
+            el.classList.add('animate');
             observer.observe(el);
         });
 

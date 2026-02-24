@@ -11,6 +11,7 @@ after each iteration and it's included in prompts for context.
 - Standard sections: Hero, Problema/Solucao, Servicos, Depoimentos, Diferenciais, Contato, Footer
 - Dark theme with amber/gold accents for barbershops
 - Done gate requires dedicated `site.section.problem_solution` with keywords "problema" AND "solucao"
+- **Animation visibility fix pattern**: Elements with scroll animations should be visible by default, with animation enhancement applied via JS-added class. See US-102 fix for implementation.
 
 ---
 
@@ -45,6 +46,18 @@ after each iteration and it's included in prompts for context.
   - When using Intersection Observer for scroll animations, you must call `observer.observe(el)` for each element you want to track
   - The CSS was correctly setting `opacity: 1` by default, but without the observer actively watching elements, the animation classes weren't being applied properly on scroll
   - Playwright visual testing confirmed all sections are now visible on both desktop and mobile breakpoints
+---
+
+## 2026-02-23 - US-102
+- What was implemented: Playwright review for Clínica VetLife 24h site (slug: clinica-vetlife-24h)
+- Files changed: `site-demo/clinica-vetlife-24h/index.html` (modified - fixed animation visibility issue)
+- Issue: Sections with `.wow-fade-up` class were invisible in Playwright screenshots because they started with `opacity: 0` and required Intersection Observer to add `visible` class
+- Fix: Modified CSS to make `.wow-fade-up` elements visible by default (`opacity: 1`), added `.animate` class for elements that should animate, updated JS to add `animate` class before observing. This ensures content is always visible with animation enhancement for JS-enabled browsers.
+- **Learnings:**
+  - Scroll animation elements should be visible by default for accessibility and SEO
+  - Use a two-class approach: base class visible by default, animation class added via JS
+  - Pattern: `.wow-fade-up` = visible, `.wow-fade-up.animate` = hidden (for animation), `.wow-fade-up.animate.visible` = visible with animation complete
+  - This approach ensures content is never lost if JS fails or is disabled
 ---
 
 ## 2026-02-23 - US-100
