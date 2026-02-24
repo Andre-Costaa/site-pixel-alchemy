@@ -382,8 +382,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--prd",
-        default="tasks/prd.json",
-        help="Path to prd.json (default: tasks/prd.json)",
+        default="prd.json",
+        help="Path to prd.json (default: prd.json)",
     )
     parser.add_argument(
         "--no-require-origin-main",

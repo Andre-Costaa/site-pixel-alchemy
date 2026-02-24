@@ -235,7 +235,7 @@ def main():
         print("  3. Save to JSON: prospects.json")
         print("  4. Run: python3 scripts/site_orchestrator.py --from-json prospects.json")
         print("  5. Ralph TUI processes new entries in prd.json")
-        print("  6. Update Notion: notion-update-page for each completed site")
+        print("  6. Update Notion: notion_outbox_enqueue + notion_outbox_worker (or notion_update_from_prd --process)")
 
 
 if __name__ == "__main__":

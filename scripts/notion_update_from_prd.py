@@ -26,7 +26,7 @@ SITE_RE = re.compile(r"site-demo/([^'/\s]+)")
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Update Notion for a PRD story via outbox (no MCP).")
     p.add_argument("--us-id", required=True, help="Story ID, e.g. US-090")
-    p.add_argument("--prd", default="tasks/prd.json", help="Path to PRD JSON")
+    p.add_argument("--prd", default="prd.json", help="Path to PRD JSON")
     p.add_argument("--mensagem-file", required=True, help="Path to message text file")
     p.add_argument("--site-criado-em", required=True, help="YYYY-MM-DD")
     p.add_argument("--outbox-dir", default=str(NOTION_OUTBOX_DIR), help="Outbox root directory")
@@ -93,4 +93,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

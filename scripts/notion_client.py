@@ -16,8 +16,8 @@ Usage within Claude Code (MCP):
     - update_prospect() → use notion-update-page with update_properties command
     - create_prospect() → use notion-create-pages with data_source_id parent
 
-Usage standalone (requires NOTION_TOKEN env var):
-    NOTION_TOKEN=secret_xxx python3 scripts/notion_client.py
+Usage standalone (requires NOTION_TOKEN in process env or project .env):
+    python3 scripts/notion_client.py
 """
 
 from __future__ import annotations

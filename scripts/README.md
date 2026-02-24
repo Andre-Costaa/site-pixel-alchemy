@@ -7,7 +7,7 @@ Este diretório contém scripts Python para automação do workflow de criação
 ```
 Prospecto no Notion (Status: "Qualificado")
     ↓
-[1] site_orchestrator.py gera user story no tasks/prd.json
+[1] site_orchestrator.py gera user story no prd.json
     ↓
 [2] Ralph TUI / Agente cria o site usando prompt-modelo.md
     ↓
@@ -24,6 +24,8 @@ Prospecto no Notion (Status: "Qualificado")
 
 ### `config.py`
 Configuração centralizada com:
+- Autoload de `.env` no root do projeto (sem precisar `source .env` manual)
+- Variáveis já definidas no ambiente têm prioridade sobre `.env`
 - Paths do projeto (PRD_JSON_PATH, SITE_DEMO_DIR)
 - IDs do Notion (DATABASE_ID, DATA_SOURCE_ID)
 - URLs base (SITE_DEMO_BASE_URL)
@@ -37,7 +39,7 @@ Utilitários para geração de slugs:
 - `get_existing_slugs()` — lista todos os slugs em `site-demo/`
 
 ### `site_orchestrator.py`
-Gera user stories no `tasks/prd.json` a partir de prospectos exportados do Notion (JSON).
+Gera user stories no `prd.json` a partir de prospectos exportados do Notion (JSON).
 
 **Uso**:
 ```bash
@@ -51,7 +53,7 @@ python3 scripts/site_orchestrator.py --from-json prospects.json
 python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Laura"
 ```
 
-**Output**: Adiciona user stories ao `tasks/prd.json` com acceptance criteria completo, incluindo:
+**Output**: Adiciona user stories ao `prd.json` com acceptance criteria completo, incluindo:
 - Criação do site seguindo `prompt-modelo.md`
 - **Geração de mensagem de outreach** (ver `template-mensagem-outreach.md`)
 - **Atualização do Notion** com URL Demo, Mensagem, Slug, US ID, Site Criado Em
@@ -65,30 +67,20 @@ Wrapper para Notion:
 ### `notion_outbox_enqueue.py` / `notion_outbox_worker.py`
 Atualização confiável do Notion via outbox + receipts (sem “prova por log”).
 
-**Funções principais**:
+**Comandos principais (produção)**:
 
-```python
-# Buscar prospectos por query
-mcp_search_prospects(query="Qualificado")
+```bash
+# Atualização a partir da story (recomendado quando há notionPageId)
+python3 scripts/notion_update_from_prd.py --us-id US-089 --prd ./prd.json --mensagem-file /tmp/mensagem.txt --site-criado-em 2026-02-23 --process
 
-# Buscar dados de um prospecto específico
-mcp_fetch_prospect(page_id="...")
-
-# Atualizar prospecto com dados do site criado
-build_site_ready_update(
-    page_id="notion-uuid",
-    slug="dra-laura-sanches",
-    us_id="US-089",
-    url_demo="https://www.pixelalchemy.com.br/site-demo/dra-laura-sanches/",
-    site_created_date="2026-02-22",
-    mensagem="Olá! Sou o André, fundador da Pixel Alchemy..."
-)
-
-# Marcar site como em criação
-build_site_in_progress_update(page_id="notion-uuid")
+# Atualização manual via outbox (quando não há notionPageId)
+python3 scripts/notion_outbox_enqueue.py --us-id US-089 --page-id <NOTION_PAGE_ID> \
+  --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" \
+  --slug "<slug>" --site-criado-em "2026-02-23" --mensagem-file /tmp/mensagem.txt
+python3 scripts/notion_outbox_worker.py --once
 ```
 
-**IMPORTANTE**: Após criar um site, o agente DEVE chamar `build_site_ready_update()` com a mensagem gerada para atualizar o Notion corretamente.
+**IMPORTANTE**: Após criar um site, o agente DEVE atualizar o Notion via outbox para gerar receipt verificável.
 
 ### `message_generator.py`
 Módulo Python para geração programática de mensagens (referência).
@@ -139,7 +131,7 @@ python3 scripts/ralph_heartbeat_tui.py --heartbeat-seconds 120
 
 Quando você (agente) for criar um site para um prospecto:
 
-### 1. Receber user story do `tasks/prd.json`
+### 1. Receber user story do `prd.json`
 O user story já contém todos os dados necessários nos acceptance criteria.
 
 ### 2. Criar o site
@@ -190,7 +182,7 @@ git push
 ```
 
 ### 6. Done Gate (OBRIGATORIO)
-Antes de marcar `passes=true` no `tasks/prd.json`, valide a story:
+Antes de marcar `passes=true` no `prd.json`, valide a story:
 
 ```bash
 python3 scripts/done_gate.py --us-id US-XXX
@@ -226,7 +218,7 @@ Antes de marcar uma user story como completa, verificar:
 ## Troubleshooting
 
 ### "Site criado mas Notion não foi atualizado"
-→ Certifique-se de chamar `build_site_ready_update()` com TODOS os parâmetros, incluindo `mensagem`.
+→ Use o pipeline outbox (`notion_outbox_enqueue.py` + `notion_outbox_worker.py`) ou `notion_update_from_prd.py --process`.
 
 ### "Mensagem muito genérica"
 → Releia `template-mensagem-outreach.md` e adapte tom ao nicho específico.

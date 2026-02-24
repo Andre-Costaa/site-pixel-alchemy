@@ -86,24 +86,27 @@ APÓS CRIAR O SITE, VOCÊ DEVE:
    - Incluir URL completa do site demo
 
 2. Atualizar Notion CRM
-   - Use as funções do scripts/notion_client.py
-   - Campos a atualizar:
+   - **OBRIGATÓRIO**: usar pipeline outbox (sem update MCP direto) para gerar receipt verificável
+   - Campos obrigatórios:
      * Status → "Mensagem Pronta"
      * URL Demo → "https://www.pixelalchemy.com.br/site-demo/<slug>/"
      * Mensagem → {mensagem gerada no passo 1}
      * Slug → "<slug>"
      * US ID → "US-XXX"
      * Site Criado Em → data de hoje (formato YYYY-MM-DD)
-   - Exemplo de chamada MCP:
-     ```python
-     notion_client.build_site_ready_update(
-         page_id="<notion-page-id>",
-         slug="<slug>",
-         us_id="US-XXX",
-         url_demo="https://www.pixelalchemy.com.br/site-demo/<slug>/",
-         site_created_date="2026-02-22",
-         mensagem="<mensagem gerada>"
-     )
+   - Com `notionPageId` presente na story:
+     ```bash
+     python3 scripts/notion_update_from_prd.py --us-id US-XXX --prd ./prd.json --mensagem-file /tmp/mensagem.txt --site-criado-em YYYY-MM-DD --process
+     ```
+   - Sem `notionPageId`, usar enqueue manual + worker:
+     ```bash
+     python3 scripts/notion_outbox_enqueue.py --us-id US-XXX --page-id <NOTION_PAGE_ID> --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" --slug "<slug>" --site-criado-em YYYY-MM-DD --mensagem-file /tmp/mensagem.txt
+     python3 scripts/notion_outbox_worker.py --once
+     ```
+   - Validar evidência objetiva antes de concluir:
+     ```bash
+     python3 scripts/done_gate.py --prd ./prd.json --us-id US-XXX --json
+     python3 scripts/mark_story_done.py --prd ./prd.json --us-id US-XXX
      ```
 
 3. Git Commit
@@ -118,4 +121,3 @@ ESTES PASSOS SÃO OBRIGATÓRIOS. O site só está completo após:
 ✓ Notion CRM atualizado
 ✓ Commit realizado
 </post_creation_workflow>
-

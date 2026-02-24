@@ -179,7 +179,7 @@ Para atualizacoes de producao (pipeline automatizado), use o outbox (ver abaixo)
 python3 scripts/notion_outbox_enqueue.py --us-id US-090 --page-id 2f76f51e-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-This reads the user story from `tasks/prd.json` and enqueues all required field updates into `.notion-outbox/pending/`.
+This reads the user story from `prd.json` and enqueues all required field updates into `.notion-outbox/queue/`.
 
 **Step 2 -- Process the outbox queue:**
 
@@ -187,14 +187,14 @@ This reads the user story from `tasks/prd.json` and enqueues all required field 
 python3 scripts/notion_outbox_worker.py --once
 ```
 
-This sends the update to Notion and writes a verified receipt to `.notion-outbox/done/`. The done_gate checks for this receipt.
+This sends the update to Notion and writes a verified receipt to `.notion-outbox/receipts/` plus `.notion-outbox/index/us_id/US-XXX.json`. The done_gate checks this evidence.
 
 **Fields updated by the outbox pipeline:**
 - [done] `Status` -> `"Mensagem Pronta"` (exact value, do NOT use "Site Pronto")
 - [done] `URL Demo` -> Full URL to the deployed site
 - [done] `Mensagem` -> The personalized outreach message you generated
 - [done] `Slug` -> URL slug used in site-demo directory
-- [done] `US ID` -> User story identifier from tasks/prd.json
+- [done] `US ID` -> User story identifier from prd.json
 - [done] `Site Criado Em` -> Date the site was created
 
 **Finding the Notion page_id**:
@@ -207,7 +207,7 @@ This sends the update to Notion and writes a verified receipt to `.notion-outbox
 The `scripts/` directory contains automation tools for the site creation pipeline. See `scripts/README.md` for complete documentation.
 
 ### `site_orchestrator.py`
-Generates user stories in `tasks/prd.json` from Notion prospects.
+Generates user stories in `prd.json` from Notion prospects.
 
 ```bash
 # Preview what would be generated (dry run)

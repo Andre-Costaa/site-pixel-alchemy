@@ -2,11 +2,11 @@
 PRD Store
 =========
 
-Single source of truth is `tasks/prd.json` (per repository process),
-but this repo historically used `prd.json` at the project root.
+Single source of truth is `prd.json` at the project root.
+The legacy mirror `tasks/prd.json` is kept synchronized for compatibility.
 
-This module reads from the canonical path when present and keeps the
-legacy file in sync on writes to avoid divergence during transition.
+This module reads from the canonical path when present and keeps the legacy
+file in sync on writes to avoid divergence during transition.
 """
 
 from __future__ import annotations
@@ -42,4 +42,3 @@ def save_prd(data: dict[str, Any], path: Path | None = None) -> None:
         atomic_write_json(PRD_JSON_PATH, data)
     if PRD_JSON_LEGACY_PATH.resolve() != prd_path.resolve():
         atomic_write_json(PRD_JSON_LEGACY_PATH, data)
-

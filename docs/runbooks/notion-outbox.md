@@ -10,7 +10,8 @@ O padrão é:
 4. Done gate valida por receipt + fetch do Notion
 
 ## Pré-requisitos
-- `NOTION_TOKEN` configurado no ambiente.
+- `NOTION_TOKEN` configurado no `.env` do projeto ou no ambiente do processo.
+- Os scripts Python carregam automaticamente o `.env` do root do projeto.
 
 ## Enfileirar Update
 Exemplo (marcar Mensagem Pronta com campos críticos):

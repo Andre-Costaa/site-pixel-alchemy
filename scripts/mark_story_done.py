@@ -20,7 +20,7 @@ def parse_args() -> argparse.Namespace:
         description="Mark a PRD story as done only after done-gate validation."
     )
     parser.add_argument("--us-id", required=True, help="Story ID, e.g. US-090")
-    parser.add_argument("--prd", default="tasks/prd.json", help="Path to prd.json")
+    parser.add_argument("--prd", default="prd.json", help="Path to prd.json")
     parser.add_argument(
         "--completion-notes",
         default="Completed by agent (done gate validated)",
