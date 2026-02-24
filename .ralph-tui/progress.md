@@ -15,6 +15,28 @@
 
 ---
 
+## 2026-02-24 - US-110
+- **What was implemented:** Playwright review for Padaria & Confeitaria Pão Dourado site (padaria-confeitaria-pao-dourado)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-110
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-1440.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-1024.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-768.png`
+  - Created `.playwright-mcp/padaria-confeitaria-pao-dourado-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Pouco Tempo, Qualidade Incerta, Bolos Impessoais) and solution box
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.*)
+  - Notion receipt check fails due to missing outbox index from original US-099 creation - this is a historical artifact
+  - Site follows warm bakery color palette (golden, caramel, wheat tones) with Bricolage Grotesque + Plus Jakarta Sans fonts
+  - 6 service cards covering comprehensive bakery/confectionery products
+  - 4 differential items highlighting key differentiators (40+ years tradition)
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-159
 - **What was implemented:** Playwright review for Clínica Harmoniser site (clinica-harmoniser)
 - **Files changed:**

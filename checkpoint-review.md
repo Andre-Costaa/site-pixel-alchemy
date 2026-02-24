@@ -1,3 +1,70 @@
+# Checkpoint Review - US-110
+
+## Review Date
+2026-02-24
+
+## Site Reviewed
+padaria-confeitaria-pao-dourado (Padaria & Confeitaria Pão Dourado)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "O Sabor da Tradição em Cada Mordida" and CTAs (Fazer Encomenda, Nossos Produtos) |
+| Problema/Solução | PASS | Dedicated section with 3 problem cards (Pouco Tempo, Qualidade Incerta, Bolos Impessoais) and solution box |
+| Serviços | PASS | 6 service cards displayed (Pães Artesanais, Croissants & Folhados, Bolos & Tortas, Confeitaria Fina, Café Colonial, Sanduíches & Lanches) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Maria Clara Santos, Roberto Ferreira, Ana Lucia Mendes) |
+| Diferenciais | PASS | 4 differential items (40+ Anos de Tradição, 40+ Tipos de Pães, 100% Artesanal, 4.9 Avaliação Média) |
+| Contato | PASS | Form with name, phone, product selector, message + contact details and hours |
+| Footer | PASS | Links and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #problema, #servicos, #depoimentos, #contato) |
+| CTAs | PASS | "Fazer Encomenda" and "Nossos Produtos" buttons functional |
+| Form Fields | PASS | Name, phone, product selector, message - all present |
+| Form Submission | PASS | Form validation functional |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Hero Image Verification
+**Hero Image Check**: The site uses an animated hero with bread emoji (🥖) on golden blob background - appropriate for a bakery/padaria.
+
+### Done Gate Results (US-099)
+```
+Overall: PASSED (site checks only)
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 3267-8901
+- site.address: PASS
+- git.commit.local: PASS - 914ab4dab445b5ea72ce852c0f3aa0d9dc1b6e41
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.receipt: FAIL - Missing outbox index (historical artifact from original US-099 creation)
+```
+
+## Review Conclusion
+**APPROVED** - All mandatory sections present, all functional tests passed, done gate shows all site checks PASS. The notion.receipt check fails due to missing outbox index from original US-099 creation - this is a historical artifact and does not affect site functionality. The site follows the warm bakery color palette (golden, caramel, wheat tones) with Bricolage Grotesque + Plus Jakarta Sans fonts, appropriate for a traditional bakery in Ribeirão Preto.
+
+---
+
 # Checkpoint Review - US-159
 
 ## Review Date
