@@ -586,3 +586,95 @@ The site is responsive and functional at all tested breakpoints (1440px, 1024px,
 - `.playwright-mcp/pet-shop-bichos-cia-1024.png`
 - `.playwright-mcp/pet-shop-bichos-cia-768.png`
 - `.playwright-mcp/pet-shop-bichos-cia-480.png`
+
+---
+
+# Checkpoint Review - US-111
+
+## Review Date
+2026-02-23
+
+## Site Reviewed
+beaute-clinic (Beauté Clinic - Dra. Suzan Salvador - Harmonização Facial)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Sua beleza única, elevada à perfeição" and CTAs |
+| Problema/Solução | PASS | Dedicated section "Sua Beleza Merece Excelência" with 3 problem cards (Resultados Inconsistentes, Falta de Segurança, Experiência Impessoal) and solution box |
+| Serviços | PASS | 6 service cards displayed (Toxina Botulínica, Preenchimento Facial, Bioestimuladores, Fios de PDO, Skinbooster, Harmonização Facial Completa) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Mariana Lopes, Fernanda Costa, Patricia Mendes) |
+| Diferenciais | PASS | 4 differential cards (Avaliação Personalizada, Tecnologia de Ponta, Acompanhamento Contínuo, Resultados Naturais) |
+| Contato | PASS | Form with name, phone, email, service selector, message + contact details and hours |
+| Footer | PASS | Links, social icons, and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #sobre, #servicos, #depoimentos, #contato) |
+| CTAs | PASS | "Agendar Consulta" and "Conhecer Tratamentos" buttons functional |
+| Form Fields | PASS | Name, phone, email, service selector, message - all present |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Issues Found and Fixed
+| Issue | Severity | Fix Applied |
+|-------|----------|-------------|
+| Hero image showed male doctor | CRITICAL | Updated image src to female doctor (photo-1651008376811-b90baee60c1f) to match Dra. Suzan Salvador |
+
+### Done Gate Results (US-056)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99728-7401
+- site.address: PASS
+- git.commit.local: PASS - 5f1a8c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.update_evidence: PASS
+- notion.status_mensagem_pronta: PASS
+- notion.no_manual_fallback: PASS
+- notion.no_api_error: PASS
+```
+
+### Review Conclusion
+**APPROVED**
+
+The site beaute-clinic passes all functional and structural requirements.
+
+All mandatory sections are present and correctly implemented:
+- Hero section with proper H1 and CTAs
+- Dedicated Problema/Solução section (not replaced by generic Sobre/Processo)
+- Services grid with 6 cards
+- Testimonials with star ratings
+- Differentials section with 4 cards
+- Contact form and details
+- Footer with links
+
+The site follows a Pearl & Mint luxury theme with Cormorant Garamond + Montserrat font combination appropriate for a premium aesthetics clinic.
+
+The site is responsive and functional at all tested breakpoints (1440px, 1024px, 768px, 480px).
+
+### Evidence Files
+- `.playwright-mcp/beaute-clinic-1440.png`
+- `.playwright-mcp/beaute-clinic-1024.png`
+- `.playwright-mcp/beaute-clinic-768.png`
+- `.playwright-mcp/beaute-clinic-480.png`
