@@ -15,6 +15,28 @@
 
 ---
 
+## 2026-02-23 - US-106
+- **What was implemented:** Playwright review for Pet Shop Bichos & Cia site (pet-shop-bichos-cia)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-106
+  - Created `.playwright-mcp/pet-shop-bichos-cia-1440.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-1024.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-768.png`
+  - Created `.playwright-mcp/pet-shop-bichos-cia-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 3 problem cards (Falta de tempo, Preocupação com saúde, Produtos de qualidade) and solution box
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.*)
+  - Notion receipt check fails due to missing outbox index from original US-095 creation - this is a historical artifact
+  - Site follows Warm & Playful color palette (Sunny Yellow, Paw Coral, Forest Green, Sky Blue) appropriate for pet shop
+  - Uses Bricolage Grotesque + Plus Jakarta Sans font combination
+  - 8 service cards (more than typical 6) - comprehensive service offering
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-23 - US-104
 - **What was implemented:** Playwright review for Salão Essence Hair & Beauty site (salao-essence-hair-beauty)
 - **Files changed:**

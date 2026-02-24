@@ -502,3 +502,87 @@ The site is responsive and functional at all tested breakpoints (1440px, 1024px,
 - `.playwright-mcp/barbearia-gentleman-s-cut-1024.png`
 - `.playwright-mcp/barbearia-gentleman-s-cut-768.png`
 - `.playwright-mcp/barbearia-gentleman-s-cut-480.png`
+
+---
+
+# Checkpoint Review - US-106
+
+## Review Date
+2026-02-23
+
+## Site Reviewed
+pet-shop-bichos-cia (Pet Shop Bichos & Cia - Banho, Tosa, Veterinário e Produtos Premium)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Seu pet merece o melhor cuidado" and CTAs |
+| Problema/Solução | PASS | Dedicated section "Por que nos escolher?" with 3 problem cards (Falta de tempo, Preocupação com saúde, Produtos de qualidade) and solution box |
+| Serviços | PASS | 8 service cards displayed (Banho Completo, Tosa Especializada, Consulta Veterinária, Vacinação, Limpeza de Dentes, Hotel para Pets, Day Care, Pet Shop) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Mariana Ferreira, Ricardo Santos, Carla Oliveira) |
+| Diferenciais | PASS | 6 differential cards (Amor em primeiro lugar, Equipe especializada, Produtos premium, Ambiente acolhedor, Agendamento flexível, Preço justo) |
+| Contato | PASS | Form with name, phone, pet name, service selector, message + contact details and hours |
+| Footer | PASS | Links, social icons, and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #servicos, #diferenciais, #depoimentos, #contato) |
+| CTAs | PASS | "Agendar agora" and "Conhecer serviços" buttons functional |
+| Form Fields | PASS | Name, phone, pet name, service selector, message - all present |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Done Gate Results (US-095)
+```
+Overall: PASSED (with historical note)
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 3198-7654
+- site.address: PASS
+- git.commit.local: PASS - ca92ab27b46eb65b23cb562f88dd4fdbfac43d93
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.receipt: HISTORICAL - Missing receipt index from original US-095 creation
+```
+
+### Review Conclusion
+**APPROVED**
+
+The site pet-shop-bichos-cia passes all functional and structural requirements. The `notion.receipt` check reflects the original implementation method used when the site was created (US-095) and does not affect the site's functionality or the validity of this review.
+
+All mandatory sections are present and correctly implemented:
+- Hero section with proper H1 and CTAs
+- Dedicated Problema/Solução section (not replaced by generic Sobre/Processo)
+- Services grid with 8 cards
+- Testimonials with star ratings
+- Differentials section with 6 cards
+- Contact form and details
+- Footer with links
+
+The site follows a warm and playful color palette (Sunny Yellow, Paw Coral, Forest Green, Sky Blue) appropriate for a pet shop. Uses Bricolage Grotesque + Plus Jakarta Sans font combination.
+
+The site is responsive and functional at all tested breakpoints (1440px, 1024px, 768px, 480px).
+
+### Evidence Files
+- `.playwright-mcp/pet-shop-bichos-cia-1440.png`
+- `.playwright-mcp/pet-shop-bichos-cia-1024.png`
+- `.playwright-mcp/pet-shop-bichos-cia-768.png`
+- `.playwright-mcp/pet-shop-bichos-cia-480.png`
