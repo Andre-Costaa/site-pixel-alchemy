@@ -159,7 +159,7 @@ Site aprovado na revisão Playwright. Todas as seções obrigatórias estão pre
 ### Correções Aplicadas
 | Problema | Solução |
 |----------|---------|
-| Animação de opacidade causando seções invisíveis | Alterado CSS `.wow` e `.wow-fade-up` para `opacity: 1` por padrão |
+| Erro JavaScript no smooth scroll (selector inválido '#') | Adicionada verificação para ignorar links com href="#" vazio no handler de smooth scroll |
 
 ### Done Gate US-053
 ```
@@ -174,12 +174,12 @@ Site aprovado na revisão Playwright. Todas as seções obrigatórias estão pre
 ✅ site.form - OK
 ✅ site.phone - (16) 99302-4664
 ✅ site.address - OK
-✅ git.commit.local - aac4be6b6bfbb33dc4792e485ad21ecfa5a4027c
-✅ git.commit.origin_main - Commit reachable from origin/main
+✅ git.commit.local - 0f049be0f8e448ac7ae512338d8377cc4688a0a8
+⏳ git.commit.origin_main - Commit on branch ralph-parallel/US-130 (pending merge)
 ✅ notion.required - Not required by this story
 ```
 
 ### Conclusão
-Site aprovado na revisão Playwright. Todas as seções obrigatórias estão presentes, o design está responsivo em todos os breakpoints testados e a funcionalidade está completa. Foi necessário corrigir o CSS de animação para garantir que o conteúdo seja visível em todos os breakpoints.
+Site aprovado na revisão Playwright. Todas as seções obrigatórias estão presentes, o design está responsivo em todos os breakpoints testados e a funcionalidade está completa. Foi corrigido um erro JavaScript no smooth scroll que ocorria ao clicar no logo (href="#").
 
 ---
