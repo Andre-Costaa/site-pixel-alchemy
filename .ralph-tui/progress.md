@@ -15,6 +15,40 @@
 
 ---
 
+## 2026-02-24 - US-135
+- **What was implemented:** Playwright review for Dra. Caroline Cruz Estética Avançada site (dra-caroline-cruz-estetica-avancada-harmonizacao-facial-pree)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-135
+  - Created `.playwright-mcp/dra-caroline-cruz-estetica-avancada-harmonizacao-facial-pree-1440.png`
+  - Created `.playwright-mcp/dra-caroline-cruz-estetica-avancada-harmonizacao-facial-pree-1024.png`
+  - Created `.playwright-mcp/dra-caroline-cruz-estetica-avancada-harmonizacao-facial-pree-768.png`
+  - Created `.playwright-mcp/dra-caroline-cruz-estetica-avancada-harmonizacao-facial-pree-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 4 cards (2 problem cards: Insatisfação com a aparência, Medo de resultados artificiais; 2 solution cards: Segurança e profissionalismo, Resultados naturais e harmoniosos)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Opulent Rose & Quartz color palette with Cormorant Garamond + Outfit fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
+## Codebase Patterns
+
+### Site Structure Pattern
+- Self-contained single-file HTML sites in `site-demo/<slug>/index.html`
+- Inline CSS and JavaScript (no external dependencies)
+- Standard sections: Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer
+
+### Design System
+- CSS custom properties for colors (--color-*, --pearl-*, --mint-*)
+- Blobmorphism with CSS blur and backdrop-filter
+- Animation system: CSS keyframes + Intersection Observer
+- Mobile-first responsive breakpoints: 480px, 768px, 1024px, 1440px
+
+---
+
 ## 2026-02-23 - US-133
 - **What was implemented:** Playwright review for Dra. Andrea Andrucioli site (dra-andrea-andrucioli-harmonizacao-orofacial)
 - **Files changed:**
