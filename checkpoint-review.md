@@ -1357,3 +1357,87 @@ The site is responsive and functional at all tested breakpoints (1440px, 1024px,
 - `.playwright-mcp/dra-iara-pengo-1024.png`
 - `.playwright-mcp/dra-iara-pengo-768.png`
 - `.playwright-mcp/dra-iara-pengo-480.png`
+
+---
+
+# Checkpoint Review - US-129
+
+## Review Date
+2026-02-23
+
+## Site Reviewed
+dra-marli-queiroz (Dra Marli Queiroz - Dentista em Ribeirão Preto)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Seu Sorriso, Nossa Prioridade" and CTAs (phone, Conheça os Serviços) |
+| Problema/Solução | PASS | Dedicated section "Supere os Desafios Odontológicos" with 4 problem items (Dor e desconforto constante, Insegurança ao sorrir, Dificuldade para alimentar, Medo do dentista) and solution card |
+| Serviços | PASS | 6 service cards displayed (Clínico Geral, Estética Dental, Implantes Dentários, Ortodontia, Endodontia, Próteses Dentárias) |
+| Depoimentos | PASS | 4 testimonials with 5-star ratings (Maria Clara Santos, Roberto Ferreira, Ana Luiza Oliveira, Pedro Mendes) |
+| Diferenciais | PASS | 4 differential cards (Atendimento Personalizado, Tecnologia Avançada, Ambiente Acolhedor, Pontualidade) |
+| Contato | PASS | Form with name, phone, email, message + contact details and hours |
+| Footer | PASS | Links, social icons, and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #servicos, #depoimentos, #contato) |
+| CTAs | PASS | "(16) 99742-5095" phone button and "Conheça os Serviços" buttons functional |
+| Form Fields | PASS | Name, phone, email, message - all present |
+| Form Submission | PASS | WhatsApp integration functional |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Done Gate Results (US-027)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99742-5095
+- git.commit.local: PASS - d342c9ec7d1b7f8053fb960c2ed5c556dbca8041
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.required: PASS - Not required by this story
+```
+
+### Review Conclusion
+**APPROVED**
+
+The site dra-marli-queiroz passes all functional and structural requirements.
+
+All mandatory sections are present and correctly implemented:
+- Hero section with proper H1 and CTAs
+- Dedicated Problema/Solução section (not replaced by generic Sobre/Processo)
+- Services grid with 6 cards
+- Testimonials with star ratings
+- Differentials section with 4 cards
+- Contact form and details
+- Footer with links
+
+The site follows a Teal & Cream color palette with Cormorant Garamond + Outfit font combination appropriate for a dental clinic.
+
+The site is responsive and functional at all tested breakpoints (1440px, 1024px, 768px, 480px).
+
+### Evidence Files
+- `.playwright-mcp/dra-marli-queiroz-1440.png`
+- `.playwright-mcp/dra-marli-queiroz-1024.png`
+- `.playwright-mcp/dra-marli-queiroz-768.png`
+- `.playwright-mcp/dra-marli-queiroz-480.png`
