@@ -1017,3 +1017,88 @@ The site is responsive and functional at all tested breakpoints (1440px, 1024px,
 - `.playwright-mcp/dr-brunno-rodrigues-1024.png`
 - `.playwright-mcp/dr-brunno-rodrigues-768.png`
 - `.playwright-mcp/dr-brunno-rodrigues-480.png`
+
+---
+
+# Checkpoint Review - US-121
+
+## Review Date
+2026-02-23
+
+## Site Reviewed
+dr-felipe-garcia (Dr. Felipe Garcia - Dentista em Ribeirão Preto - Clínica Valens)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Seu Sorriso Perfeito Começa Aqui" and CTAs (Agendar pelo WhatsApp, Conhecer Serviços) |
+| Problema/Solução | PASS | Dedicated section "O Diferencial Dr. Felipe Garcia" with 2 cards (Os Desafios do Sorriso - problem card, A Solução Ideal - solution card) |
+| Serviços | PASS | 6 service cards displayed (Implantes Dentários, Clareamento Dental, Facetas de Porcelana, Ortodontia, Próteses Dentárias, Clínico Geral) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Maria Clara Silva, Ricardo Oliveira, Ana Ferreira) |
+| Diferenciais | PASS | 4 differential cards (Tecnologia Avançada, Atendimento Humanizado, Horário Flexível, Localização Privilegiada) |
+| Contato | PASS | Form with name, phone, service selector, message + contact details and hours |
+| Footer | PASS | Links, social icons, and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #diferencial, #servicos, #depoimentos, #contato) |
+| CTAs | PASS | "Agendar pelo WhatsApp" and "Conhecer Serviços" buttons functional |
+| Form Fields | PASS | Name, phone, service selector, message - all present |
+| Form Submission | PASS | Form validation and success message functional |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Done Gate Results (US-017)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99455-4830
+- site.address: PASS
+- git.commit.local: PASS - 55997fc24c9839f22a24cebeede10b1a69d21667
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.required: PASS - Not required by this story
+```
+
+### Review Conclusion
+**APPROVED**
+
+The site dr-felipe-garcia passes all functional and structural requirements.
+
+All mandatory sections are present and correctly implemented:
+- Hero section with proper H1 and CTAs
+- Dedicated Problema/Solução section (not replaced by generic Sobre/Processo)
+- Services grid with 6 cards
+- Testimonials with star ratings
+- Differentials section with 4 cards
+- Contact form and details
+- Footer with links
+
+The site follows a Navy Blue & Gold color palette with Playfair Display + Plus Jakarta Sans font combination appropriate for a premium dental clinic.
+
+The site is responsive and functional at all tested breakpoints (1440px, 1024px, 768px, 480px).
+
+### Evidence Files
+- `.playwright-mcp/dr-felipe-garcia-1440.png`
+- `.playwright-mcp/dr-felipe-garcia-1024.png`
+- `.playwright-mcp/dr-felipe-garcia-768.png`
+- `.playwright-mcp/dr-felipe-garcia-480.png`

@@ -15,6 +15,25 @@
 
 ---
 
+## 2026-02-23 - US-121
+- **What was implemented:** Playwright review for Dr. Felipe Garcia site (dr-felipe-garcia)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-121
+  - Created `.playwright-mcp/dr-felipe-garcia-1440.png`
+  - Created `.playwright-mcp/dr-felipe-garcia-1024.png`
+  - Created `.playwright-mcp/dr-felipe-garcia-768.png`
+  - Created `.playwright-mcp/dr-felipe-garcia-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (Os Desafios do Sorriso - problem card, A Solução Ideal - solution card)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Navy Blue & Gold color palette with Playfair Display + Plus Jakarta Sans fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-23 - US-119
 - **What was implemented:** Playwright review for Dr Brunno Rodrigues site (dr-brunno-rodrigues)
 - **Files changed:**
