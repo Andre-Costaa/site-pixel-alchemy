@@ -19,6 +19,38 @@ When hero content appears invisible in screenshots, check if:
 - Fix: Set initial opacity to 1 so content is visible even if animation doesn't complete
 - Keep animation for enhanced effect but don't depend on it for visibility
 
+### Smooth Scroll Fix Pattern
+When clicking on logo links with `href="#"` causes JavaScript errors:
+- Error: `SyntaxError: Failed to execute 'querySelector' on 'Document': '#' is not a valid selector`
+- Fix: Add check in smooth scroll handler to skip empty anchors:
+  ```javascript
+  if (href === '#' || !href) return;
+  ```
+- This prevents the error when clicking logo/home links that don't have a specific target
+
+---
+
+## 2026-02-24 - US-130
+- **What was implemented:** Playwright review for Dra Nayara Nubia site (dra-nayara-nubia) - FINAL with fixes
+- **Files changed:**
+  - `site-demo/dra-nayara-nubia/index.html` - Fixed JavaScript smooth scroll error
+  - Updated `checkpoint-review.md` with review results for US-130
+  - Created `.playwright-mcp/dra-nayara-nubia-1440.png`
+  - Created `.playwright-mcp/dra-nayara-nubia-1024.png`
+  - Created `.playwright-mcp/dra-nayara-nubia-768.png`
+  - Created `.playwright-mcp/dra-nayara-nubia-480.png`
+- **Learnings:**
+  - CRITICAL FIX: JavaScript error when clicking logo link with href="#" - querySelector fails with invalid selector
+  - Solução: Adicionar verificação `if (href === '#' || !href) return;` no handler de smooth scroll
+  - Pattern: Sempre validar o href antes de usar em querySelector para evitar erros com anchors vazios
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Desafio, A Solução)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.local)
+  - Site follows Amber & Bronze Noir color palette with Crimson Pro + DM Sans fonts
+  - Review APPROVED - all functional and structural requirements met
+
 ---
 
 ## 2026-02-24 - US-126
