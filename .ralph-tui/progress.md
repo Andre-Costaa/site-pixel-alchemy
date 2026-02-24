@@ -15,6 +15,25 @@
 
 ---
 
+## 2026-02-23 - US-115
+- **What was implemented:** Playwright review for Clínica BotoEsthetic site (clinica-botoesthetic)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-115
+  - Created `.playwright-mcp/clinica-botoesthetic-1440.png`
+  - Created `.playwright-mcp/clinica-botoesthetic-1024.png`
+  - Created `.playwright-mcp/clinica-botoesthetic-768.png`
+  - Created `.playwright-mcp/clinica-botoesthetic-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Desafio, A Solução)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Chrome Noir & Electric Violet color palette with Prata + Figtree fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-23 - US-113
 - **What was implemented:** Playwright review for Botolifting - Clínica de Estética Avançada site (botolifting-clinica-de-estetica-avancada)
 - **Files changed:**
