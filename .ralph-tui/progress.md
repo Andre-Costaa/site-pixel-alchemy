@@ -15,6 +15,25 @@
 
 ---
 
+## 2026-02-23 - US-127
+- **What was implemented:** Playwright review for Dra Iara Pengo site (dra-iara-pengo)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-127
+  - Created `.playwright-mcp/dra-iara-pengo-1440.png`
+  - Created `.playwright-mcp/dra-iara-pengo-1024.png`
+  - Created `.playwright-mcp/dra-iara-pengo-768.png`
+  - Created `.playwright-mcp/dra-iara-pengo-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards (O Desafio, A Solução)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Onyx Noir & Bronze Patina color palette with Cormorant Garamond + Space Grotesk fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-23 - US-125
 - **What was implemented:** Playwright review for Dra Fernanda Nirschl site (dra-fernanda-nirschl)
 - **Files changed:**
