@@ -21,6 +21,25 @@ When hero content appears invisible in screenshots, check if:
 
 ---
 
+## 2026-02-24 - US-126
+- **What was implemented:** Playwright review for Dra Gel - Clínica site (dra-gel-clinica)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-126
+  - Created `.playwright-mcp/dra-gel-clinica-1440.png`
+  - Created `.playwright-mcp/dra-gel-clinica-1024.png`
+  - Created `.playwright-mcp/dra-gel-clinica-768.png`
+  - Created `.playwright-mcp/dra-gel-clinica-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Differenciais, Contato, Footer)
+  - Problema/Solução section uses a benefits-focused approach with 3 cards (Atendimento Personalizado, Técnicas Avançadas, Resultados Naturais)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Teal Noir & Copper color palette with Libre Baskerville + Outfit fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-122 (Final)
 - **What was implemented:** Playwright review for Dra. Angélica Lucena site (dra-angelica-lucena) - FINAL with fixes
 - **Files changed:**
