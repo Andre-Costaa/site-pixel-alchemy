@@ -71,6 +71,26 @@
 
 ---
 
+## 2026-02-23 - US-101 (Re-verification)
+- **What was implemented:** Re-verification Playwright review for Dra. Mariana Alves Silva site (dra-mariana-alves-silva)
+- **Files changed:**
+  - Verified `checkpoint-review.md` with review results
+  - Re-created `.playwright-mcp/dra-mariana-alves-silva-1440.png`
+  - Re-created `.playwright-mcp/dra-mariana-alves-silva-1024.png`
+  - Re-created `.playwright-mcp/dra-mariana-alves-silva-768.png`
+  - Re-created `.playwright-mcp/dra-mariana-alves-silva-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with problem-card and solution-card structure
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all site checks PASS (site.file, site.section.*, git.commit.*)
+  - Notion receipt check fails due to missing outbox index from original US-090 creation - this is a historical artifact
+  - Site follows Pearl & Mint luxury theme with Cormorant Garamond + Montserrat fonts
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-22 - US-101
 - **What was implemented:** Playwright review for Dra. Mariana Alves Silva site (dra-mariana-alves-silva)
 - **Files changed:**
