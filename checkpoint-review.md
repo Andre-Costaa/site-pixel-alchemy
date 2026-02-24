@@ -1,3 +1,70 @@
+# Checkpoint Review - US-116
+
+## Review Date
+2026-02-24
+
+## Site Reviewed
+clinica-doctor-oral (Clínica Doctor Oral - Odontologia Premium em Ribeirão Preto)
+
+## Playwright Review Results
+
+### Screenshots Captured
+- [x] 1440px (Desktop)
+- [x] 1024px (Tablet Landscape)
+- [x] 768px (Tablet Portrait)
+- [x] 480px (Mobile)
+
+### Mandatory Sections Validation
+| Section | Status | Notes |
+|---------|--------|-------|
+| Hero | PASS | Present with H1 "Transforme seu Sorriso com Excelência" and CTAs (Agendar Consulta, phone button) |
+| Problema/Solução | PASS | Dedicated section with 2 cards: "O Desafio" (problem card with 4 pain points) and "A Solução Doctor Oral" (solution card with 4 benefits) |
+| Serviços | PASS | 6 service cards displayed (Clareamento Dental, Implantes Dentários, Ortodontia, Facetas de Porcelana, Limpeza e Prevenção, Restaurações Estéticas) |
+| Depoimentos | PASS | 3 testimonials with 5-star ratings (Maria Silva, João Santos, Ana Oliveira) |
+| Diferenciais | PASS | 4 differential items with stats (4.9 Avaliação Google, 15+ Anos de Experiência, 5k+ Pacientes Atendidos, 24h Suporte Emergência) |
+| Contato | PASS | Form with name, phone, email, treatment selector, message + contact details and hours |
+| Footer | PASS | Links, social media, and copyright |
+
+### Functional Tests
+| Test | Status | Notes |
+|------|--------|-------|
+| Navigation Anchors | PASS | All anchor links working (#inicio, #servicos, #depoimentos, #diferenciais, #contato) |
+| CTAs | PASS | "Agendar Consulta" and phone buttons functional |
+| Form Fields | PASS | Name, phone, email, treatment selector, message - all present |
+| Form Submission | PASS | Form validation functional |
+| Console Errors | PASS | Only favicon 404 (non-critical) |
+| Asset Loading | PASS | No critical errors |
+| Mobile Menu | PASS | Hamburger menu present at 768px and below |
+
+### Hero Image Verification
+**Hero Image Check**: The site uses a professional dental clinic interior image showing modern dental equipment and treatment room - appropriate for a dental clinic.
+
+### Done Gate Results (US-036)
+```
+Overall: PASSED
+
+Site Checks:
+- site.file: PASS
+- site.section.hero: PASS
+- site.section.problem_solution: PASS
+- site.section.services: PASS
+- site.section.testimonials: PASS
+- site.section.differentials: PASS
+- site.section.contact: PASS
+- site.section.footer: PASS
+- site.form: PASS
+- site.phone: PASS - (16) 99340-8589
+- site.address: PASS
+- git.commit.local: PASS - 455618c6aeb55333049e76e0035fe3077d26e1c2
+- git.commit.origin_main: PASS - Commit reachable from origin/main
+- notion.required: PASS - Not required by this story
+```
+
+## Review Conclusion
+**APPROVED** - All mandatory sections present, all functional tests passed, done gate shows all checks PASS. The site follows a Navy Blue & Mint color palette with Playfair Display + DM Sans fonts, appropriate for a premium dental clinic in Ribeirão Preto.
+
+---
+
 # Checkpoint Review - US-109
 
 ## Review Date

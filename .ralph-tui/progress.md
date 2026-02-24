@@ -15,6 +15,28 @@
 
 ---
 
+## 2026-02-24 - US-116
+- **What was implemented:** Playwright review for Clínica Doctor Oral site (clinica-doctor-oral)
+- **Files changed:**
+  - Updated `checkpoint-review.md` with review results for US-116
+  - Created `.playwright-mcp/clinica-doctor-oral-1440.png`
+  - Created `.playwright-mcp/clinica-doctor-oral-1024.png`
+  - Created `.playwright-mcp/clinica-doctor-oral-768.png`
+  - Created `.playwright-mcp/clinica-doctor-oral-480.png`
+- **Learnings:**
+  - All mandatory sections validated and present (Hero, Problema/Solução, Serviços, Depoimentos, Diferenciais, Contato, Footer)
+  - Problema/Solução section is properly implemented as dedicated section with 2 cards: "O Desafio" (problem card with 4 pain points: dentes sensíveis, insegurança ao sorrir, medo do dentista, tratamentos caros) and "A Solução Doctor Oral" (solution card with 4 benefits: tecnologia indolor, sorriso bonito, ambiente acolhedor, planos transparentes)
+  - Site is responsive at all breakpoints (1440px, 1024px, 768px, 480px)
+  - Only console error is favicon 404 (non-critical)
+  - Done gate shows all checks PASS including git.commit.origin_main
+  - Site follows Navy Blue & Mint color palette with Playfair Display + DM Sans fonts
+  - Hero image shows professional dental clinic interior with modern equipment - appropriate for a dental clinic
+  - 6 service cards covering comprehensive dental treatments (Clareamento, Implantes, Ortodontia, Facetas, Limpeza, Restaurações)
+  - 4 differential items with stats (4.9 Google rating, 15+ years experience, 5k+ patients, 24h emergency support)
+  - Review APPROVED - all functional and structural requirements met
+
+---
+
 ## 2026-02-24 - US-109
 - **What was implemented:** Playwright review for Clínica Harmonia Facial - Dra. Juliana Rodrigues site (clinica-harmonia-facial-dra-juliana-rodrigues)
 - **Files changed:**
