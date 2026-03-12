@@ -31,14 +31,30 @@ def load_prd(path: Path | None = None) -> dict[str, Any]:
         return _validate_prd_shape(json.load(f))
 
 
-def save_prd(data: dict[str, Any], path: Path | None = None) -> None:
+def save_prd(
+    data: dict[str, Any],
+    path: Path | None = None,
+    *,
+    sync_mirrors: bool | None = None,
+) -> None:
     prd_path = path or PRD_JSON_PATH
+    canonical = PRD_JSON_PATH.resolve()
+    legacy = PRD_JSON_LEGACY_PATH.resolve()
+    target = prd_path.resolve()
 
     # Write to the requested path atomically.
     atomic_write_json(prd_path, data)
 
-    # Bidirectional sync: always keep canonical and legacy in lockstep.
-    if PRD_JSON_PATH.resolve() != prd_path.resolve():
+    # Mirror sync applies only to canonical/legacy targets by default.
+    # This prevents alternate files (e.g. prd.smoke.json) from overwriting
+    # production PRD paths.
+    if sync_mirrors is None:
+        sync_mirrors = target in {canonical, legacy}
+    if not sync_mirrors:
+        return
+
+    # Bidirectional sync for canonical <-> legacy.
+    if canonical != target:
         atomic_write_json(PRD_JSON_PATH, data)
-    if PRD_JSON_LEGACY_PATH.resolve() != prd_path.resolve():
+    if legacy != target:
         atomic_write_json(PRD_JSON_LEGACY_PATH, data)

@@ -127,6 +127,29 @@ python3 scripts/ralph_heartbeat_tui.py --once
 python3 scripts/ralph_heartbeat_tui.py --heartbeat-seconds 120
 ```
 
+### `ralph_autoclose.py`
+Sidecar de auto-conclusão: observa `session.json` do Ralph e executa
+`mark_story_done.py` automaticamente quando uma task fica `completed`.
+
+```bash
+# Rodar em paralelo ao ralph-tui
+python3 scripts/ralph_autoclose.py --prd ./prd.json
+
+# Rodar uma varredura única
+python3 scripts/ralph_autoclose.py --prd ./prd.json --once
+```
+
+### `ralph_run_auto.py`
+Comando único para rodar `ralph-tui` + sidecar de auto-conclusão.
+
+```bash
+# Fluxo recomendado (sem retrabalho)
+python3 scripts/ralph_run_auto.py --prd ./prd.json --parallel 1
+
+# Smoke test
+python3 scripts/ralph_run_auto.py --prd ./prd.smoke.json --parallel 1 --force
+```
+
 ## Workflow Completo para Agentes
 
 Quando você (agente) for criar um site para um prospecto:
@@ -195,6 +218,11 @@ python3 scripts/mark_story_done.py --us-id US-XXX
 ```
 
 Se falhar, nao marque como concluida. Corrija os pontos reportados.
+
+**Modo automático equivalente ao fluxo manual**:
+```bash
+python3 scripts/ralph_run_auto.py --prd ./prd.json --parallel 1
+```
 
 ## Checklist de Conclusão
 
