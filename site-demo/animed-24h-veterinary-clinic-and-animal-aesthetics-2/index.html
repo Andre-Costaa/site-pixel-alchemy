@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animed 24H | Centro Veterinario e Estetica Animal em Ribeirao Preto</title>
+    <meta name="description" content="Animed 24H em Ribeirao Preto com emergencia veterinaria, internacao, especialidades, exames e estetica animal. Atendimento 24 horas na R. Cerqueira Cesar, 1710.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-charcoal: #102332;
+            --color-cream: #f5efe5;
+            --color-terracotta: #d56d4b;
+            --color-terracotta-light: #ebb094;
+            --color-sage: #4c8e85;
+            --color-sage-light: #a9d2cb;
+            --color-lavender: #b8c6e8;
+            --color-lavender-light: #e0e7f5;
+            --color-clay: #f2c89f;
+            --color-clay-light: #f8e4cc;
+            --color-ink-soft: #365161;
+            --color-white: #ffffff;
+            --gradient-warm: linear-gradient(135deg, #d56d4b 0%, #f2c89f 100%);
+            --gradient-cool: linear-gradient(135deg, #4c8e85 0%, #b8c6e8 100%);
+            --gradient-night: linear-gradient(135deg, #102332 0%, #17445f 48%, #4c8e85 100%);
+            --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 239, 229, 0.96) 100%);
+            --shadow-soft: 0 24px 60px rgba(16, 35, 50, 0.12);
+            --shadow-card: 0 18px 40px rgba(16, 35, 50, 0.10);
+            --shadow-blob: 0 30px 80px rgba(76, 142, 133, 0.22);
+            --border-radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --radius-sm: 18px;
+            --radius-md: 28px;
+            --radius-lg: 42px;
+            --radius-pill: 999px;
+            --container: min(1180px, calc(100% - 2rem));
+            --nav-height: 84px;
+            --transition-fast: 0.25s ease;
+            --transition-base: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--color-charcoal);
+            background:
+                radial-gradient(circle at top left, rgba(184, 198, 232, 0.45), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(213, 109, 75, 0.18), transparent 30%),
+                var(--color-cream);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .page-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .texture {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(16, 35, 50, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 35, 50, 0.025) 1px, transparent 1px);
+            background-size: 22px 22px;
+            mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+            z-index: -2;
+        }
+
+        .container {
+            width: var(--container);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 1rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.52);
+            border: 1px solid rgba(16, 35, 50, 0.08);
+            backdrop-filter: blur(18px);
+            color: var(--color-ink-soft);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: var(--gradient-warm);
+            box-shadow: 0 0 0 8px rgba(213, 109, 75, 0.12);
+        }
+
+        .section {
+            padding: 5.5rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 42rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            line-height: 0.98;
+            letter-spacing: -0.04em;
+            margin-top: 1rem;
+        }
+
+        .section-header p {
+            margin-top: 1rem;
+            color: rgba(16, 35, 50, 0.76);
+            font-size: 1.02rem;
+        }
+
+        .nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 30;
+            transition: transform var(--transition-base), background var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .nav.is-hidden {
+            transform: translateY(-110%);
+        }
+
+        .nav.is-scrolled .nav-inner {
+            box-shadow: 0 18px 35px rgba(16, 35, 50, 0.14);
+            background: rgba(245, 239, 229, 0.82);
+        }
+
+        .nav-inner {
+            width: min(1240px, calc(100% - 1rem));
+            margin: 0.6rem auto 0;
+            padding: 0.95rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            min-width: 0;
+        }
+
+        .brand-badge {
+            width: 2.9rem;
+            height: 2.9rem;
+            border-radius: 20px;
+            display: grid;
+            place-items: center;
+            color: var(--color-white);
+            background: var(--gradient-night);
+            box-shadow: var(--shadow-card);
+            flex-shrink: 0;
+        }
+
+        .brand-badge svg {
+            width: 1.45rem;
+            height: 1.45rem;
+            fill: currentColor;
+        }
+
+        .brand-copy strong,
+        .hero-copy h1,
+        .highlight-card h3,
+        .service-card h3,
+        .step-card h3,
+        .testimonial-card h3,
+        .faq-item summary,
+        .contact-card h3,
+        .footer-brand strong {
+            font-family: "Bricolage Grotesque", sans-serif;
+        }
+
+        .brand-copy strong {
+            display: block;
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        .brand-copy span {
+            display: block;
+            color: rgba(16, 35, 50, 0.68);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.22rem;
+        }
+
+        .nav-menu {
+            display: none;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-menu a {
+            color: rgba(16, 35, 50, 0.78);
+            font-weight: 700;
+            font-size: 0.96rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 3.2rem;
+            padding: 0 1.35rem;
+            border-radius: var(--radius-pill);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            color: var(--color-white);
+            background: var(--gradient-night);
+            box-shadow: 0 18px 30px rgba(23, 68, 95, 0.26);
+        }
+
+        .button-secondary {
+            color: var(--color-charcoal);
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(16, 35, 50, 0.08);
+        }
+
+        .nav-toggle {
+            width: 3rem;
+            height: 3rem;
+            border: 0;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+            display: inline-grid;
+            place-items: center;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            position: relative;
+            width: 1.2rem;
+            height: 2px;
+            background: var(--color-charcoal);
+        }
+
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 1.2rem;
+            height: 2px;
+            background: var(--color-charcoal);
+        }
+
+        .nav-toggle span::before {
+            top: -0.38rem;
+        }
+
+        .nav-toggle span::after {
+            top: 0.38rem;
+        }
+
+        .mobile-panel {
+            display: grid;
+            gap: 0.85rem;
+            margin: 0.8rem auto 0;
+            width: min(1240px, calc(100% - 1rem));
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-base);
+        }
+
+        .mobile-panel.is-open {
+            max-height: 22rem;
+        }
+
+        .mobile-card {
+            padding: 1rem;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(18px);
+            display: grid;
+            gap: 0.85rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero {
+            padding-top: calc(var(--nav-height) + 2.75rem);
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            overflow: clip;
+        }
+
+        .hero::before,
+        .hero::after,
+        .blob {
+            position: absolute;
+            border-radius: var(--border-radius-blob);
+            filter: blur(0);
+            pointer-events: none;
+        }
+
+        .hero::before {
+            content: "";
+            inset: 8% auto auto -18%;
+            width: 18rem;
+            height: 18rem;
+            background: rgba(184, 198, 232, 0.58);
+            animation: float-blob 18s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: "";
+            inset: auto -16% 4% auto;
+            width: 22rem;
+            height: 22rem;
+            background: rgba(213, 109, 75, 0.24);
+            animation: float-blob 22s ease-in-out infinite reverse;
+        }
+
+        .blob {
+            background: rgba(76, 142, 133, 0.22);
+            box-shadow: var(--shadow-blob);
+            backdrop-filter: blur(14px);
+        }
+
+        .blob-1 {
+            width: 14rem;
+            height: 14rem;
+            top: 4rem;
+            right: 12%;
+            animation: float-blob 20s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 10rem;
+            height: 10rem;
+            bottom: 7rem;
+            left: 4%;
+            background: rgba(242, 200, 159, 0.46);
+            animation: float-blob 15s ease-in-out infinite reverse;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .hero-copy {
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(3rem, 11vw, 6.9rem);
+            line-height: 0.88;
+            letter-spacing: -0.06em;
+            max-width: 10.5ch;
+        }
+
+        .hero-copy p {
+            font-size: 1.06rem;
+            max-width: 37rem;
+            color: rgba(16, 35, 50, 0.76);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .hero-meta {
+            display: grid;
+            gap: 0.9rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .hero-meta article,
+        .hero-panel,
+        .service-card,
+        .step-card,
+        .differentials-grid article,
+        .testimonial-card,
+        .contact-card,
+        .faq-item,
+        .footer-card {
+            background: var(--gradient-surface);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-meta article {
+            padding: 1rem;
+            border-radius: 24px;
+        }
+
+        .hero-meta span {
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(16, 35, 50, 0.6);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-meta strong {
+            font-size: 1rem;
+            line-height: 1.35;
+        }
+
+        .hero-panel {
+            position: relative;
+            padding: 1.3rem;
+            border-radius: 34px;
+            overflow: hidden;
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), transparent 50%, rgba(76, 142, 133, 0.1));
+            pointer-events: none;
+        }
+
+        .panel-stack {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .panel-emergency {
+            position: relative;
+            padding: 1.35rem;
+            min-height: 16rem;
+            border-radius: 28px;
+            color: var(--color-white);
+            background: var(--gradient-night);
+            overflow: hidden;
+        }
+
+        .panel-emergency::after {
+            content: "";
+            position: absolute;
+            inset: auto -10% -20% auto;
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .panel-emergency small,
+        .service-card small,
+        .step-card small,
+        .testimonial-card small,
+        .contact-card small {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .panel-emergency h2 {
+            font-size: clamp(2rem, 7vw, 3.7rem);
+            line-height: 0.9;
+            margin: 0.7rem 0 0.9rem;
+            max-width: 8ch;
+        }
+
+        .panel-emergency p {
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 24rem;
+        }
+
+        .highlight-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .highlight-card {
+            padding: 1.1rem;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.35rem;
+            letter-spacing: -0.04em;
+        }
+
+        .highlight-card p {
+            margin-top: 0.5rem;
+            color: rgba(16, 35, 50, 0.72);
+            font-size: 0.96rem;
+        }
+
+        .problem-solution {
+            padding-top: 1.5rem;
+        }
+
+        .problem-grid,
+        .services-grid,
+        .steps-grid,
+        .differentials-grid,
+        .testimonials-grid,
+        .contact-grid,
+        .footer-grid {
+            display: grid;
+            gap: 1.15rem;
+        }
+
+        .problem-card {
+            padding: 1.4rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(16, 35, 50, 0.08);
+        }
+
+        .problem-card strong {
+            display: block;
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.55rem;
+        }
+
+        .problem-card p {
+            color: rgba(16, 35, 50, 0.72);
+        }
+
+        .services {
+            z-index: 1;
+        }
+
+        .service-card,
+        .step-card,
+        .testimonial-card,
+        .contact-card,
+        .footer-card {
+            border-radius: 30px;
+            padding: 1.4rem;
+        }
+
+        .service-card {
+            min-height: 100%;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 28px 55px rgba(16, 35, 50, 0.16);
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -2.5rem -2.5rem auto;
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            background: rgba(184, 198, 232, 0.25);
+        }
+
+        .service-icon {
+            width: 3.1rem;
+            height: 3.1rem;
+            display: grid;
+            place-items: center;
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(76, 142, 133, 0.15), rgba(213, 109, 75, 0.16));
+            color: var(--color-charcoal);
+        }
+
+        .service-icon svg {
+            width: 1.4rem;
+            height: 1.4rem;
+            fill: currentColor;
+        }
+
+        .service-card h3,
+        .step-card h3,
+        .testimonial-card h3,
+        .contact-card h3 {
+            font-size: 1.4rem;
+            letter-spacing: -0.04em;
+        }
+
+        .service-card p,
+        .step-card p,
+        .testimonial-card p,
+        .contact-card p,
+        .footer-card p,
+        .footer-card a {
+            margin-top: 0.7rem;
+            color: rgba(16, 35, 50, 0.74);
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 1rem;
+        }
+
+        .tag-list span {
+            padding: 0.45rem 0.7rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(76, 142, 133, 0.12);
+            color: var(--color-ink-soft);
+        }
+
+        .process {
+            background: linear-gradient(180deg, rgba(184, 198, 232, 0.16), transparent 55%);
+        }
+
+        .step-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 50%;
+            background: var(--gradient-night);
+            color: var(--color-white);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .differentials-grid article {
+            padding: 1.5rem;
+            border-radius: 30px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .stat-card {
+            padding: 1.1rem;
+            border-radius: 24px;
+            background: rgba(16, 35, 50, 0.04);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+
+        .stat-card span {
+            display: block;
+            margin-top: 0.35rem;
+            color: rgba(16, 35, 50, 0.7);
+        }
+
+        .testimonial-card {
+            position: relative;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+            margin: 0.75rem 0 0.5rem;
+            color: var(--color-terracotta);
+        }
+
+        .rating svg {
+            width: 1rem;
+            height: 1rem;
+            fill: currentColor;
+        }
+
+        .faq {
+            background: linear-gradient(180deg, transparent 0%, rgba(242, 200, 159, 0.14) 100%);
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .faq-item {
+            border-radius: 26px;
+            padding: 0 1.2rem;
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: 700;
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            font-size: 1.6rem;
+            line-height: 1;
+            color: var(--color-sage);
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            padding: 0 0 1.2rem;
+            color: rgba(16, 35, 50, 0.72);
+        }
+
+        .contact-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 38px;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(16, 35, 50, 0.96), rgba(76, 142, 133, 0.9));
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-wrap::before {
+            content: "";
+            position: absolute;
+            top: -4rem;
+            right: -3rem;
+            width: 12rem;
+            height: 12rem;
+            border-radius: var(--border-radius-blob);
+            background: rgba(255, 255, 255, 0.08);
+            animation: float-blob 17s ease-in-out infinite;
+        }
+
+        .contact-wrap .section-header h2,
+        .contact-wrap .section-header p {
+            color: var(--color-white);
+        }
+
+        .contact-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-points {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .contact-points div {
+            padding: 0.95rem 1rem;
+            border-radius: 20px;
+            background: rgba(16, 35, 50, 0.04);
+        }
+
+        .contact-points span {
+            display: block;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(16, 35, 50, 0.52);
+        }
+
+        .contact-points strong {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+
+        form {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .field-grid {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .field {
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .field label {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--color-charcoal);
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(16, 35, 50, 0.08);
+            border-radius: 18px;
+            padding: 0.92rem 1rem;
+            background: rgba(255, 255, 255, 0.98);
+            color: var(--color-charcoal);
+        }
+
+        .field textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        .form-note {
+            font-size: 0.85rem;
+            color: rgba(16, 35, 50, 0.62);
+        }
+
+        .footer {
+            padding-top: 2rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .footer-grid {
+            align-items: start;
+        }
+
+        .footer-card {
+            min-height: 100%;
+        }
+
+        .footer-brand strong {
+            font-size: 1.4rem;
+            letter-spacing: -0.04em;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 0.55rem;
+            margin-top: 1rem;
+        }
+
+        .footer-note {
+            margin-top: 1.3rem;
+            font-size: 0.83rem;
+            color: rgba(16, 35, 50, 0.56);
+        }
+
+        .wow-fade-up,
+        .wow-fade-in {
+            opacity: 0;
+            transform: translate3d(0, 26px, 0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: var(--delay, 0ms);
+        }
+
+        .wow-fade-in {
+            transform: translate3d(0, 0, 0) scale(0.96);
+        }
+
+        .wow-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        @keyframes float-blob {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate3d(18px, -22px, 0) rotate(4deg);
+            }
+            50% {
+                transform: translate3d(-18px, 18px, 0) rotate(-6deg);
+            }
+            75% {
+                transform: translate3d(12px, 10px, 0) rotate(3deg);
+            }
+        }
+
+        @media (min-width: 480px) {
+            .hero-meta {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 7rem 0;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .nav-toggle,
+            .mobile-panel {
+                display: none;
+            }
+
+            .hero-grid,
+            .problem-grid,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+
+            .services-grid,
+            .steps-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .differentials-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+
+            .highlight-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .field-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.02fr 0.98fr;
+                align-items: center;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.15fr 0.85fr;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .hero-copy h1 {
+                font-size: 7.4rem;
+            }
+
+            .section-header h2 {
+                font-size: 4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+                transition-delay: 0ms !important;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <div class="texture"></div>
+
+        <nav class="nav" id="nav">
+            <div class="nav-inner">
+                <a class="nav-brand" href="#hero" aria-label="Ir para o inicio da Animed 24H">
+                    <div class="brand-badge" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 4.2c1.4-2.2 4.8-2.4 6.3-.3 1.3 1.8.8 4.4-.9 5.9l-1.2 1.1c-.7.6-1.1 1.4-1.1 2.3v.5H8.9v-.5c0-.9-.4-1.7-1.1-2.3l-1.2-1.1C4.9 8.3 4.4 5.7 5.7 3.9c1.5-2.1 4.9-1.9 6.3.3Zm-2.8 11.1h5.6v1.5c0 1.6-1.3 2.9-2.8 2.9s-2.8-1.3-2.8-2.9v-1.5Z"/></svg>
+                    </div>
+                    <div class="brand-copy">
+                        <strong>Animed 24H</strong>
+                        <span>Veterinaria e estetica animal</span>
+                    </div>
+                </a>
+
+                <div class="nav-menu" aria-label="Navegacao principal">
+                    <a href="#services">Servicos</a>
+                    <a href="#process">Fluxo</a>
+                    <a href="#differentials">Diferenciais</a>
+                    <a href="#testimonials">Depoimentos</a>
+                    <a href="#contact">Contato</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a class="button button-primary" href="https://wa.me/551636235347" target="_blank" rel="noreferrer">WhatsApp 24h</a>
+                    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel" aria-label="Abrir menu">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mobile-panel" id="mobile-panel">
+                <div class="mobile-card">
+                    <a href="#services">Servicos</a>
+                    <a href="#process">Fluxo</a>
+                    <a href="#differentials">Diferenciais</a>
+                    <a href="#testimonials">Depoimentos</a>
+                    <a href="#contact">Contato</a>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero section" id="hero">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="container hero-grid">
+                    <div class="hero-copy wow-fade-up">
+                        <span class="eyebrow">Centro veterinario 24 horas em Ribeirao Preto</span>
+                        <h1>Emergencia, especialidades e acolhimento no mesmo pulso.</h1>
+                        <p>
+                            A Animed 24H concentra atendimento clinico, emergencia, internacao, exames, cirurgias e estetica animal em uma operacao pensada para agir rapido e acompanhar cada caso com clareza. Tudo isso na R. Cerqueira Cesar, 1710, Jardim Sumare.
+                        </p>
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="tel:+551636235347">Ligar agora</a>
+                            <a class="button button-secondary" href="#contact">Agendar avaliacao</a>
+                        </div>
+                        <div class="hero-meta">
+                            <article>
+                                <span>Telefone</span>
+                                <strong>(16) 3623-5347</strong>
+                            </article>
+                            <article>
+                                <span>Plantao</span>
+                                <strong>24 horas por dia</strong>
+                            </article>
+                            <article>
+                                <span>Foco</span>
+                                <strong>Urgencia e especialidades</strong>
+                            </article>
+                            <article>
+                                <span>Endereco</span>
+                                <strong>Jardim Sumare, Ribeirao Preto</strong>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="hero-panel wow-fade-in" style="--delay:120ms;">
+                        <div class="panel-stack">
+                            <article class="panel-emergency">
+                                <small>Pronto atendimento 24h</small>
+                                <h2>Base clinica e medicina intensiva sem ruptura.</h2>
+                                <p>
+                                    A estrutura da Animed combina pronto atendimento, internacao monitorada e acesso a especialidades como cardiologia, neurologia, ortopedia e dermatologia para reduzir tempo de decisao nos casos mais sensiveis.
+                                </p>
+                            </article>
+
+                            <div class="highlight-grid">
+                                <article class="highlight-card">
+                                    <h3>Especialidades integradas</h3>
+                                    <p>Cardiologia, endocrinologia, nefrologia, oncologia, oftalmologia, fisioterapia, acupuntura, ozonioterapia e mais.</p>
+                                </article>
+                                <article class="highlight-card">
+                                    <h3>Experiencia completa</h3>
+                                    <p>Clinica geral, exames, cirurgias, internacao e estetica animal num mesmo ponto de contato para os tutores.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section problem-solution" id="problem-solution">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Problema e solucao</span>
+                        <h2>Quando o pet piora rapido, a resposta precisa ser coordenada.</h2>
+                        <p>O desafio dos tutores e chegar a uma clinica que nao apenas estabilize a emergencia, mas tambem conduza a investigacao e o acompanhamento com especialistas sem perda de contexto.</p>
+                    </div>
+                    <div class="problem-grid">
+                        <article class="problem-card wow-fade-up">
+                            <strong>Problema</strong>
+                            <p>Em momentos criticos, deslocar o animal entre atendimento inicial, exames e especialistas atrasa decisoes e aumenta a inseguranca da familia.</p>
+                        </article>
+                        <article class="problem-card wow-fade-up" style="--delay:120ms;">
+                            <strong>Solucao</strong>
+                            <p>A Animed 24H organiza o fluxo no mesmo endereco, com pronto atendimento, internacao, equipe multidisciplinar e estetica animal para rotinas de cuidado continuo.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section services" id="services">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Servicos veterinarios</span>
+                        <h2>Uma grade de cuidado que cobre urgencia, diagnostico e reabilitacao.</h2>
+                        <p>A selecao abaixo reflete a estrutura apresentada pela clinica e o perfil de atendimento de um centro veterinario 24h com foco em resolucao clinica e continuidade do caso.</p>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card wow-fade-up" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2Zm2 6H3v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8Zm-8 2h2v2h2v2h-2v2h-2v-2H9v-2h4v-2Z"/></svg>
+                            </div>
+                            <small>Urgencia</small>
+                            <h3>Pronto atendimento 24h</h3>
+                            <p>Recepcao de casos agudos, triagem rapida, estabilizacao e encaminhamento imediato para internacao, exames ou especialista.</p>
+                            <div class="tag-list">
+                                <span>Atendimento continuo</span>
+                                <span>Triagem rapida</span>
+                            </div>
+                        </article>
+
+                        <article class="service-card wow-fade-up" style="--delay:100ms;" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm3.4 9.1-3.9 4.4a1 1 0 0 1-1.5 0l-2-2.2 1.5-1.3 1.2 1.3 3.2-3.6 1.5 1.4Z"/></svg>
+                            </div>
+                            <small>Medicina intensiva</small>
+                            <h3>Internacao e monitoracao</h3>
+                            <p>Suporte hospitalar para pacientes que exigem observacao constante, manejo intensivo e reavaliacoes frequentes.</p>
+                            <div class="tag-list">
+                                <span>Internacao</span>
+                                <span>Monitoracao</span>
+                            </div>
+                        </article>
+
+                        <article class="service-card wow-fade-up" style="--delay:200ms;" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M9 3a7 7 0 1 0 4.5 12.4l4.1 4.1 1.4-1.4-4.1-4.1A7 7 0 0 0 9 3Zm0 2a5 5 0 1 1 0 10A5 5 0 0 1 9 5Z"/></svg>
+                            </div>
+                            <small>Diagnostico</small>
+                            <h3>Exames e apoio clinico</h3>
+                            <p>Base para investigacao de casos complexos com exames e leitura clinica alinhada ao acompanhamento do paciente.</p>
+                            <div class="tag-list">
+                                <span>Investigacao</span>
+                                <span>Precisao</span>
+                            </div>
+                        </article>
+
+                        <article class="service-card wow-fade-up" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 2 6 7v7l6 8 6-8V7l-6-5Zm0 3.1 3.5 2.9v5.3L12 18l-3.5-4.7V8l3.5-2.9Z"/></svg>
+                            </div>
+                            <small>Especialidades</small>
+                            <h3>Cardio a neuro</h3>
+                            <p>Cardiologia, dermatologia, endocrinologia, nefrologia, neurologia, ortopedia, oncologia, oftalmologia e outras frentes de apoio especializado.</p>
+                            <div class="tag-list">
+                                <span>Cardiologia</span>
+                                <span>Neurologia</span>
+                                <span>Ortopedia</span>
+                            </div>
+                        </article>
+
+                        <article class="service-card wow-fade-up" style="--delay:100ms;" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 4c-2.5 0-4.6 1.6-5.4 3.9C4.6 8.4 3 10.5 3 13c0 3.3 2.7 6 6 6 1.2 0 2.4-.4 3.3-1 1 .7 2.1 1 3.3 1 3.3 0 6-2.7 6-6 0-2.5-1.6-4.6-3.9-5.4C16.6 5.6 14.5 4 12 4Zm-1.5 5h3v2h2v3h-2v2h-3v-2h-2v-3h2V9Z"/></svg>
+                            </div>
+                            <small>Cirurgia</small>
+                            <h3>Procedimentos com retaguarda</h3>
+                            <p>Anestesia, cirurgia geral e suporte de pos-operatorio em um ambiente preparado para observacao e reavaliacao.</p>
+                            <div class="tag-list">
+                                <span>Anestesia</span>
+                                <span>Pos-operatorio</span>
+                            </div>
+                        </article>
+
+                        <article class="service-card wow-fade-up" style="--delay:200ms;" data-tilt>
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v8a6 6 0 0 1-12 0V6a2 2 0 0 1 2-2Zm0 2v8a4 4 0 1 0 8 0V6H7Zm2 1h6v2H9V7Zm0 4h4v2H9v-2Z"/></svg>
+                            </div>
+                            <small>Estetica animal</small>
+                            <h3>Rotina de bem-estar</h3>
+                            <p>Banho, tosa e cuidados esteticamente orientados para manter conforto, higiene e continuidade no relacionamento com a clinica.</p>
+                            <div class="tag-list">
+                                <span>Banho e tosa</span>
+                                <span>Higiene</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section process" id="process">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Como funciona</span>
+                        <h2>Fluxo pensado para casos urgentes e acompanhamento consistente.</h2>
+                        <p>Em um centro 24h, processo claro reduz ansiedade dos tutores e melhora a leitura da evolucao do paciente.</p>
+                    </div>
+                    <div class="steps-grid">
+                        <article class="step-card wow-fade-up">
+                            <div class="step-number">01</div>
+                            <small>Recepcao do caso</small>
+                            <h3>Triagem e priorizacao</h3>
+                            <p>O pet e avaliado na chegada para definir risco, necessidade de estabilizacao, exames imediatos ou internacao hospitalar.</p>
+                        </article>
+                        <article class="step-card wow-fade-up" style="--delay:100ms;">
+                            <div class="step-number">02</div>
+                            <small>Leitura clinica</small>
+                            <h3>Diagnostico e conduta</h3>
+                            <p>Clinicos e especialistas cruzam sinais, exames e historico para construir a melhor linha de tratamento ou cirurgia.</p>
+                        </article>
+                        <article class="step-card wow-fade-up" style="--delay:200ms;">
+                            <div class="step-number">03</div>
+                            <small>Continuidade</small>
+                            <h3>Internacao, alta ou retorno</h3>
+                            <p>O caso segue para monitoracao, reabilitacao, orientacao de retorno ou plano continuo de cuidado com a equipe.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section differentials" id="differentials">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Diferenciais</span>
+                        <h2>Estrutura hospitalar com amplitude de especialidades e reputacao local.</h2>
+                        <p>Os diferenciais combinam profundidade tecnica, acesso permanente e uma relacao de proximidade frequentemente citada por clientes da clinica.</p>
+                    </div>
+
+                    <div class="differentials-grid">
+                        <article class="wow-fade-up">
+                            <h3>Amplitude clinica no mesmo endereco</h3>
+                            <p>
+                                A Animed apresenta atendimento 24h, internacao, cirurgia, exames e um portifolio extenso de especialidades veterinarias. Isso reduz friccao em casos complexos e ajuda a manter o raciocinio clinico integrado.
+                            </p>
+                            <div class="stats-row">
+                                <div class="stat-card">
+                                    <strong data-count="24">0</strong>
+                                    <span>horas de plantao</span>
+                                </div>
+                                <div class="stat-card">
+                                    <strong data-count="18">0</strong>
+                                    <span>frentes especializadas</span>
+                                </div>
+                                <div class="stat-card">
+                                    <strong data-count="1">0</strong>
+                                    <span>endereco central</span>
+                                </div>
+                                <div class="stat-card">
+                                    <strong data-count="100">0</strong>
+                                    <span>foco em continuidade</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="wow-fade-up" style="--delay:120ms;">
+                            <h3>Confianca percebida pelos tutores</h3>
+                            <p>
+                                As avaliacoes publicadas pela propria clinica reforcam padrao de atendimento atencioso, clareza no contato e suporte ao tutor mesmo depois da consulta.
+                            </p>
+                            <div class="tag-list">
+                                <span>Atendimento humanizado</span>
+                                <span>Suporte por WhatsApp</span>
+                                <span>Equipe elogiada</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section testimonials" id="testimonials">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Depoimentos</span>
+                        <h2>Tutores destacam atencao, disponibilidade e acompanhamento.</h2>
+                        <p>Os relatos abaixo foram adaptados a partir de depoimentos apresentados pela clinica em sua presenca digital, preservando o sentido central de cada experiencia.</p>
+                    </div>
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card wow-fade-up">
+                            <small>Amanda da Silva</small>
+                            <div class="rating" aria-label="avaliacao maxima">
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                            </div>
+                            <h3>Atendimento cuidadoso do inicio ao retorno.</h3>
+                            <p>A cliente relata equipe muito atenciosa e suporte continuo pelo WhatsApp, ponto que aumentou a seguranca no cuidado com o pet.</p>
+                        </article>
+
+                        <article class="testimonial-card wow-fade-up" style="--delay:100ms;">
+                            <small>Valeria Silva</small>
+                            <div class="rating" aria-label="avaliacao maxima">
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                            </div>
+                            <h3>Referencia pela dedicacao com os animais.</h3>
+                            <p>O depoimento reforca que a equipe cuida com zelo e gera confianca na rotina de quem precisa de uma clinica de referencia na cidade.</p>
+                        </article>
+
+                        <article class="testimonial-card wow-fade-up" style="--delay:200ms;">
+                            <small>Debora Pereira</small>
+                            <div class="rating" aria-label="avaliacao maxima">
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5Z"/></svg>
+                            </div>
+                            <h3>Retorno rapido e boa orientacao.</h3>
+                            <p>A experiencia publicada destaca boa recepcao, disponibilidade da equipe e tranquilidade no esclarecimento de duvidas ao longo do atendimento.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section faq" id="faq">
+                <div class="container">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">FAQ</span>
+                        <h2>Perguntas comuns de quem procura atendimento veterinario 24h.</h2>
+                        <p>Respostas objetivas para acelerar a decisao do tutor em momentos delicados e no agendamento de servicos de rotina.</p>
+                    </div>
+                    <div class="faq-list">
+                        <details class="faq-item wow-fade-up">
+                            <summary>A Animed atende emergencia a qualquer horario?</summary>
+                            <p>Sim. A proposta da clinica e atuar 24 horas, com pronto atendimento para situacoes agudas e possibilidade de internacao quando necessario.</p>
+                        </details>
+                        <details class="faq-item wow-fade-up" style="--delay:100ms;">
+                            <summary>Quais especialidades a clinica divulga?</summary>
+                            <p>A presenca digital da Animed apresenta cardiologia, dermatologia, endocrinologia, nefrologia, neurologia, ortopedia, oncologia, oftalmologia, fisioterapia, acupuntura, ozonioterapia e outras frentes.</p>
+                        </details>
+                        <details class="faq-item wow-fade-up" style="--delay:200ms;">
+                            <summary>Existe estetica animal alem do atendimento clinico?</summary>
+                            <p>Sim. O proprio nome comercial destaca estetica animal, complementando o cuidado continuo do pet com servicos de bem-estar e higiene.</p>
+                        </details>
+                        <details class="faq-item wow-fade-up" style="--delay:300ms;">
+                            <summary>Onde fica a clinica?</summary>
+                            <p>A unidade fica na R. Cerqueira Cesar, 1710 - Jardim Sumare, Ribeirao Preto - SP, 14025-120, Brazil.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section contact" id="contact">
+                <div class="container contact-wrap">
+                    <div class="section-header wow-fade-up">
+                        <span class="eyebrow">Contato</span>
+                        <h2>Fale com a Animed 24H e organize o proximo passo do atendimento.</h2>
+                        <p>Use o formulario para agendamento e orientacao inicial, ou acione o telefone em casos que exigem resposta imediata.</p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <article class="contact-card wow-fade-up">
+                            <small>Informacoes da clinica</small>
+                            <h3>Atendimento 24h em localizacao central.</h3>
+                            <p>A Animed atende tutores de Ribeirao Preto e regiao com estrutura hospitalar e suporte de especialidades no mesmo endereco.</p>
+                            <div class="contact-points">
+                                <div>
+                                    <span>Telefone</span>
+                                    <strong>(16) 3623-5347</strong>
+                                </div>
+                                <div>
+                                    <span>Endereco</span>
+                                    <strong>R. Cerqueira Cesar, 1710 - Jardim Sumare, Ribeirao Preto - SP, 14025-120, Brazil</strong>
+                                </div>
+                                <div>
+                                    <span>Horarios</span>
+                                    <strong>Emergencia e suporte 24 horas, todos os dias.</strong>
+                                </div>
+                                <div>
+                                    <span>Especialidades citadas</span>
+                                    <strong>Cardiologia, neurologia, ortopedia, oncologia, dermatologia, anestesia e internacao.</strong>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="contact-card wow-fade-up" style="--delay:120ms;">
+                            <small>Formulario de contato</small>
+                            <h3>Envie sua mensagem.</h3>
+                            <form id="lead-form">
+                                <div class="field-grid">
+                                    <div class="field">
+                                        <label for="name">Nome</label>
+                                        <input id="name" name="name" type="text" placeholder="Seu nome" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="contact-info">Email ou telefone</label>
+                                        <input id="contact-info" name="contact-info" type="text" placeholder="Como a clinica pode retornar" required>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="service">Servico de interesse</label>
+                                    <select id="service" name="service" required>
+                                        <option value="">Selecione um servico</option>
+                                        <option>Emergencia 24h</option>
+                                        <option>Consulta e exames</option>
+                                        <option>Especialidades veterinarias</option>
+                                        <option>Cirurgia e internacao</option>
+                                        <option>Estetica animal</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label for="message">Mensagem</label>
+                                    <textarea id="message" name="message" placeholder="Conte brevemente o que seu pet precisa." required></textarea>
+                                </div>
+                                <button class="button button-primary" type="submit">Enviar via WhatsApp</button>
+                                <p class="form-note">Ao enviar, sua mensagem abre diretamente no WhatsApp da clinica para agilizar o atendimento.</p>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer" id="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <article class="footer-card wow-fade-up footer-brand">
+                        <strong>Animed 24H Veterinary Clinic and Animal Aesthetics</strong>
+                        <p>Clinica veterinaria 24 horas com foco em emergencia, especialidades e cuidado continuo em Ribeirao Preto.</p>
+                        <div class="footer-note">Site conceito desenvolvido para apresentar uma presenca digital mais sofisticada e objetiva para a marca.</div>
+                    </article>
+
+                    <article class="footer-card wow-fade-up" style="--delay:100ms;">
+                        <strong>Links e contato</strong>
+                        <div class="footer-links">
+                            <a href="#hero">Inicio</a>
+                            <a href="#services">Servicos</a>
+                            <a href="#differentials">Diferenciais</a>
+                            <a href="#testimonials">Depoimentos</a>
+                            <a href="tel:+551636235347">(16) 3623-5347</a>
+                            <a href="https://wa.me/551636235347" target="_blank" rel="noreferrer">WhatsApp</a>
+                        </div>
+                        <div class="footer-note">Endereco: R. Cerqueira Cesar, 1710 - Jardim Sumare, Ribeirao Preto - SP, 14025-120, Brazil.</div>
+                    </article>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (() => {
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const nav = document.getElementById("nav");
+            const navToggle = document.querySelector(".nav-toggle");
+            const mobilePanel = document.getElementById("mobile-panel");
+            const navLinks = Array.from(document.querySelectorAll(".mobile-card a, .nav-menu a"));
+            const revealItems = document.querySelectorAll(".wow-fade-up, .wow-fade-in");
+            const counters = document.querySelectorAll("[data-count]");
+            const tiltCards = document.querySelectorAll("[data-tilt]");
+            const form = document.getElementById("lead-form");
+            let lastScrollY = window.scrollY;
+
+            const setMenuState = (open) => {
+                mobilePanel.classList.toggle("is-open", open);
+                navToggle.setAttribute("aria-expanded", String(open));
+            };
+
+            if (navToggle) {
+                navToggle.addEventListener("click", () => {
+                    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+                    setMenuState(!expanded);
+                });
+            }
+
+            navLinks.forEach((link) => {
+                link.addEventListener("click", () => setMenuState(false));
+            });
+
+            const handleScroll = () => {
+                const currentScrollY = window.scrollY;
+                nav.classList.toggle("is-scrolled", currentScrollY > 24);
+
+                if (currentScrollY > lastScrollY && currentScrollY > 180) {
+                    nav.classList.add("is-hidden");
+                } else {
+                    nav.classList.remove("is-hidden");
+                }
+
+                lastScrollY = currentScrollY;
+            };
+
+            window.addEventListener("scroll", handleScroll, { passive: true });
+            handleScroll();
+
+            if (!prefersReducedMotion && "IntersectionObserver" in window) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        entry.target.classList.add("wow-visible");
+                        observer.unobserve(entry.target);
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -50px 0px"
+                });
+
+                revealItems.forEach((item) => {
+                    const delay = item.getAttribute("style")?.match(/--delay:(\d+)ms/)?.[1];
+                    if (delay) {
+                        item.style.setProperty("--delay", `${delay}ms`);
+                    }
+                    revealObserver.observe(item);
+                });
+
+                const counterObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const element = entry.target;
+                        const target = Number(element.dataset.count || 0);
+                        const duration = 1200;
+                        const startTime = performance.now();
+
+                        const animate = (time) => {
+                            const progress = Math.min((time - startTime) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            element.textContent = String(Math.round(target * eased));
+
+                            if (progress < 1) {
+                                requestAnimationFrame(animate);
+                            }
+                        };
+
+                        requestAnimationFrame(animate);
+                        observer.unobserve(element);
+                    });
+                }, {
+                    threshold: 0.35
+                });
+
+                counters.forEach((counter) => counterObserver.observe(counter));
+
+                tiltCards.forEach((card) => {
+                    card.addEventListener("pointermove", (event) => {
+                        const bounds = card.getBoundingClientRect();
+                        const x = (event.clientX - bounds.left) / bounds.width;
+                        const y = (event.clientY - bounds.top) / bounds.height;
+                        const rotateX = (0.5 - y) * 8;
+                        const rotateY = (x - 0.5) * 10;
+                        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                    });
+
+                    card.addEventListener("pointerleave", () => {
+                        card.style.transform = "";
+                    });
+                });
+            } else {
+                revealItems.forEach((item) => item.classList.add("wow-visible"));
+                counters.forEach((counter) => {
+                    counter.textContent = counter.dataset.count || "0";
+                });
+            }
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const data = new FormData(form);
+                const message = [
+                    "Ola, Animed 24H.",
+                    `Meu nome e ${data.get("name")}.`,
+                    `Contato: ${data.get("contact-info")}.`,
+                    `Servico: ${data.get("service")}.`,
+                    `Mensagem: ${data.get("message")}`
+                ].join(" ");
+                const url = `https://wa.me/551636235347?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank", "noopener");
+            });
+        })();
+    </script>
+</body>
+</html>
