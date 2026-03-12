@@ -1,27 +1,280 @@
-# Repository Guidelines
+# AGENTS.md
 
-## Project Structure & Module Organization
-- Single-page site with entry point at `index.html`; global styles in `styles.css`; behaviors in `script.js`.
-- Brand assets live at `favicon.svg`, `logo.svg` and `apple-touch-icon.png.html`; manifest at `site.webmanifest`.
-- Visual baselines for QA are in `.playwright-mcp/` (PNG captures of expected states); keep them updated when UI changes.
-- Additional context lives in `README.md` (design notes) and `contexto.md`/`CLAUDE.md` (authoring guidance).
+This file provides guidance to any AI agent (Claude Code, Droid/Factory AI, Codex, Kimi CLI, or similar) when working with code in this repository. It is the agent-agnostic equivalent of CLAUDE.md.
 
-## Build, Test, and Development Commands
-- No build step; the stack is vanilla HTML/CSS/JS. Open `index.html` directly or serve locally for smooth navigation and font loading:
-  - `python3 -m http.server 5500` (or similar) from the repo root, then visit `http://localhost:5500`.
-- For quick CSS/JS checks, reload the page; there is no bundler or watcher in use.
+## Project Overview
 
-## Coding Style & Naming Conventions
-- HTML: keep sections semantic (`header`, `section`, `footer`) and mirror the existing section labels and hierarchy.
-- CSS: 4-space indentation; leverage existing custom properties (`--color-*`, `--spacing-*`, etc.) before adding new tokens. Class names are lowercase-kebab (e.g., `nav-menu`, `hero-blob`). Use the sectioned comment blocks already present for new areas.
-- JS: vanilla ES6, `const`/`let` with camelCase identifiers (e.g., `trackEvent`, `navToggle`). Keep behaviors modular by grouping related logic under the documented headers and prefer `QuerySelector` APIs.
-- Assets: prefer optimized SVG/PNG, matching the current visual style. Avoid introducing heavy dependencies.
+Pixel Alchemy is a digital agency that produces single-page promotional websites for Brazilian clinics (aesthetics, dental, veterinary, beauty). The repo contains **two layers**:
 
-## Testing Guidelines
-- There is no automated test suite. Do a manual pass on key breakpoints (desktop, 1024px, 768px, 480px) verifying nav scroll behavior, hero animations, accordion, stats counter, and contact form flow.
-- Use the images in `.playwright-mcp/` to compare states such as mobile menu open/closed and post-scroll nav.
-- Respect `prefers-reduced-motion`; ensure new animations degrade gracefully.
+1. **Root site** (`index.html`, `styles.css`, `script.js`) — the agency's own promotional page at pixelalchemy.com.br
+2. **Client sites** (`site-demo/<client-name>/`) — 150+ individual client websites, each deployed as a subdirectory of the main domain (e.g., `pixelalchemy.com.br/site-demo/dra-lara-costa/`)
 
-## Commit & Pull Request Guidelines
-- Follow the existing Git style: `Type: Description` with a capitalized type (e.g., `Refactor: Ajustar animações do hero`, `feat: add mobile menu tests`). Keep messages concise and action-oriented; Portuguese descriptions are common.
-- PRs should describe the change, affected sections, and any design impacts. Attach before/after screenshots (desktop and mobile) when UI changes, note manual test steps/browsers, and link related issues or tasks if applicable.
+Client data and prospect tracking lives primarily in the **Notion CRM database** (see below).
+
+## Technology Stack
+
+Pure HTML5, CSS3, and Vanilla JavaScript. No frameworks, no build process, no dependencies. Google Fonts: Bricolage Grotesque (display) + Plus Jakarta Sans (body).
+
+## Development Commands
+
+```bash
+# Serve locally (needed for font loading and proper navigation)
+python3 -m http.server 5500
+# Then visit http://localhost:5500 (root site) or http://localhost:5500/site-demo/<client-name>/
+```
+
+No build, lint, or test commands exist. Manual visual QA at breakpoints 480px, 768px, 1024px, 1440px.
+
+## Client Site Architecture
+
+### File pattern
+
+Use the **self-contained single-file pattern**: Single `index.html` with all CSS in `<style>` and all JS in `<script>` tags inline. No external files.
+
+### Standard section structure
+
+Each client site follows the same section template, adapted to the business type:
+
+1. **Navigation** — Auto-hides on scroll down, mobile hamburger menu
+2. **Hero** — Value prop, CTAs, animated blobs/visual elements
+3. **Services/Treatments** — Card grid (responsive: 1-2-3 columns)
+4. **Process/How It Works** — Timeline or steps
+5. **About/Differentials** — Stats counter, trust signals
+6. **Testimonials** — Client reviews with star ratings
+7. **FAQ** — Accordion
+8. **Contact** — Form (name, email/phone, service selector, message) + business info
+9. **Footer** — Links, legal info
+
+Sections may be renamed or reordered per business niche (e.g., veterinary clinics emphasize "Emergencia 24h", dental clinics emphasize "Tratamentos").
+
+## Design System
+
+### Color system
+
+All colors are CSS custom properties in `:root`. Each accent color has a `-light` variant.
+
+- Base: `--color-charcoal`, `--color-cream`
+- Accents: `--color-terracotta` (primary CTA), `--color-sage`, `--color-lavender`, `--color-clay`
+- Gradients: `--gradient-warm` (terracotta-clay), `--gradient-cool` (sage-lavender)
+
+Client sites customize these values per brand but follow the same variable naming pattern.
+
+### Blobmorphism system
+
+Blob shapes are the core design language:
+
+- `--border-radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%` creates organic shapes
+- Hero blobs (`.blob-1` through `.blob-4`) use CSS `blur` + `backdrop-filter` + 20s transform animations
+- Layered z-index for depth perception
+
+### Animation system
+
+Three approaches, all respecting `prefers-reduced-motion`:
+
+1. **CSS keyframes**: Continuous effects (blob floating 6-20s, card floating, ripple)
+2. **Intersection Observer**: Scroll-triggered `.wow-fade-up` / `.wow-fade-in` with `data-delay` for stagger (100ms increments), threshold 0.1, rootMargin -50px
+3. **JavaScript-driven**: Counter animation (stats), tilt effect (service cards), parallax (blobs)
+
+Use only `transform` and `opacity` for GPU acceleration.
+
+### Responsive breakpoints
+
+Mobile-first: base (<480px) - 480px - 768px - 1024px.
+
+## Coding Conventions
+
+- **HTML**: Semantic sections with `<section class="section-name" id="section-name">`
+- **CSS**: 4-space indent, leverage existing `--color-*` / `--spacing-*` tokens, lowercase-kebab class names, sectioned comment blocks
+- **JS**: Vanilla ES6, `const`/`let`, camelCase identifiers, modular sections under documented comment headers, `querySelector` APIs
+- **No emojis** in any code or content — create SVG/image if an icon is needed
+
+## Commit Convention
+
+```
+feat: US-XXX - Client Name - Site Completo
+```
+
+Each client site is a single commit as a user story (US-XXX, sequential numbering). Portuguese descriptions are standard.
+
+## Notion CRM — Controle de Prospeccao
+
+**Database ID**: `2f76f51e-b8a5-8088-a52c-db29fc3c1f81`
+
+### Database schema
+
+| Property | Type | Values / Notes |
+|---|---|---|
+| **Nome** | title | Client/business name (primary key) |
+| **Nicho** | select | `Dentista`, `Veterinaria`, `Harmonizacao`, `Beleza`, `Pizzaria`, `Barbearia`, `Padaria`, `Acougue`, `Pet Shop` |
+| **Status** | select | `Lead` - `Qualificado` - `Site em Criacao` - `Mensagem Pronta` - `Enviado` - `Respondeu` - `Reuniao` - `Proposta` - `Fechado` / `Perdido` / `Descartado` |
+| **Telefone** | text | Phone number with area code |
+| **Endereco** | text | Business full address |
+| **URL Demo** | url | **CRITICAL**: `https://www.pixelalchemy.com.br/site-demo/<slug>/` |
+| **Mensagem** | text | **CRITICAL**: Personalized outreach message |
+| **Slug** | text | **CRITICAL**: URL slug for site-demo directory |
+| **US ID** | text | **CRITICAL**: User story ID from prd.json (e.g., `US-089`) |
+| **Site Criado Em** | date | **CRITICAL**: Date when site was created (YYYY-MM-DD) |
+| **Descricao** | text | Business description |
+| **Instagram** | text | Instagram handle or URL |
+
+### Sales pipeline
+
+```
+Lead - Qualificado - Site em Criacao - Mensagem Pronta - Enviado - Respondeu - Reuniao - Proposta - Fechado / Perdido / Descartado
+```
+
+- **Mensagem Pronta**: Site + outreach message + Notion update = READY TO SEND
+
+## Pipeline Execution — Step by Step
+
+This is the EXACT sequence for executing a user story (US-XXX). Follow every step. The done_gate will reject incomplete work.
+
+### Step 1: Read the user story from prd.json
+
+```bash
+python3 -c "import json; prd=json.load(open('prd.json')); story=[s for s in prd['userStories'] if s['id']=='US-XXX'][0]; print(json.dumps(story, indent=2, ensure_ascii=False))"
+```
+
+Extract: client name, slug, phone, address, nicho, notionPageId.
+
+### Step 2: Research the business
+
+Search Google, Instagram, and Facebook for real information: services, testimonials, team, brand colors, opening hours.
+
+### Step 3: Create the site
+
+```bash
+mkdir -p site-demo/<slug>
+```
+
+Create `site-demo/<slug>/index.html` — self-contained, inline CSS + JS. All 9 standard sections. Real business info. Responsive at all breakpoints.
+
+### Step 4: Generate outreach message
+
+Read `template-mensagem-outreach.md` for template and examples.
+
+**CRITICAL RULES**:
+- **Pessoa fisica** (Dr./Dra. + name): use "dele/dela", "do consultorio da Dra./do Dr.", "queria"
+- **Empresa** (business name): use "voces", "da clinica/barbearia/pizzaria", "queriam"
+- **Nicho-specific tone**:
+  - Healthcare (Dentista, Veterinaria, Harmonizacao): "autoridade e sofisticacao", "pacientes"
+  - Beauty (Beleza, Barbearia): "estilo e profissionalismo", "clientes"
+  - Food (Pizzaria, Padaria, Acougue): "apetite e qualidade", "clientes"
+  - Pet Shop: "confianca e profissionalismo", "tutores"
+- Max 800 characters
+- Include demo URL: `https://www.pixelalchemy.com.br/site-demo/<slug>/`
+
+Save message to a temp file:
+
+```bash
+cat > /tmp/mensagem-US-XXX.txt << 'EOF'
+[generated message here]
+EOF
+```
+
+### Step 5: Update Notion via outbox
+
+**ALL fields are required. The outbox will BLOCK if any is missing.**
+
+```bash
+cd scripts && python3 notion_outbox_enqueue.py \
+  --us-id US-XXX \
+  --page-id NOTION_PAGE_UUID \
+  --status "Mensagem Pronta" \
+  --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" \
+  --slug "<slug>" \
+  --mensagem-file /tmp/mensagem-US-XXX.txt \
+  --site-criado-em $(date +%Y-%m-%d)
+```
+
+Then process the queue:
+
+```bash
+python3 notion_outbox_worker.py --once
+```
+
+### Step 6: Commit and push
+
+```bash
+git add site-demo/<slug>/
+git commit -m "feat: US-XXX - Client Name - Site Completo"
+git push origin main
+```
+
+### Step 7: Run done gate
+
+```bash
+cd scripts && python3 done_gate.py --us-id US-XXX
+```
+
+**Only mark the story as done if output is `DONE GATE: PASS`.**
+
+If FAIL: read the check details, fix the issue, re-run.
+
+```bash
+python3 mark_story_done.py --us-id US-XXX
+```
+
+## Guardrails (enforced by scripts)
+
+These are NOT suggestions. The pipeline scripts enforce them:
+
+| Guardrail | Script | What happens if violated |
+|---|---|---|
+| Duplicate prospect | `site_orchestrator.py` + `notion_dedup_guard.py` | SKIP — story not created |
+| Duplicate slug | `site_orchestrator.py` + `notion_dedup_guard.py` | SKIP — story not created |
+| Incomplete outbox | `notion_outbox_enqueue.py` | BLOCKED — missing Status, Mensagem, Slug, URL Demo, or US ID |
+| Missing fields in Notion | `done_gate.py` | FAIL — checks receipt has all 5 critical fields |
+| Missing site sections | `done_gate.py` | FAIL — checks HTML for hero, services, testimonials, contact, footer, form |
+| No git commit | `done_gate.py` | FAIL — requires commit containing site-demo/<slug>/index.html |
+
+## Anti-patterns — DO NOT
+
+- **DO NOT** update Notion directly via API or MCP. Always use the outbox pipeline (enqueue + worker).
+- **DO NOT** use status "Site Pronto". The correct status is "Mensagem Pronta".
+- **DO NOT** skip the outreach message. The done_gate checks for it.
+- **DO NOT** use `git add .` or `git add -A`. Add specific files only.
+- **DO NOT** mark `passes=true` without running done_gate first.
+- **DO NOT** create separated CSS/JS files. Use self-contained single-file pattern.
+- **DO NOT** use emojis in code or content.
+
+## Dedup Check (manual)
+
+Before creating any new prospect or site:
+
+```bash
+cd scripts && python3 notion_dedup_guard.py --check-name "Dra. Laura Sanches"
+cd scripts && python3 notion_dedup_guard.py --check-slug "dra-laura-sanches"
+```
+
+Exit code 0 = available. Exit code 1 = duplicate found.
+
+## Key Files
+
+- `prd.json` — User stories (source of truth for what to build)
+- `template-mensagem-outreach.md` — Outreach message template with examples by niche
+- `site-demo/<client-name>/` — Individual client sites (150+)
+- `scripts/site_orchestrator.py` — Generates user stories from Notion prospects
+- `scripts/notion_outbox_enqueue.py` — Enqueue Notion updates (ALL fields required)
+- `scripts/notion_outbox_worker.py` — Process outbox queue, create verified receipts
+- `scripts/done_gate.py` — Validates all completion criteria before marking done
+- `scripts/mark_story_done.py` — Marks story as done (only after done_gate PASS)
+- `scripts/notion_dedup_guard.py` — Checks for duplicate prospects/slugs
+- `CLAUDE.md` — Claude Code specific instructions (superset of this file)
+- `NOTION-FIELDS-REFERENCE.md` — Quick reference for Notion database fields
+
+## Workflow Checklist
+
+Before marking a client site as complete, verify:
+
+- [ ] Site created in `site-demo/<slug>/index.html` (self-contained)
+- [ ] All 9 sections present (nav, hero, services, process, differentials, testimonials, FAQ, contact, footer)
+- [ ] Responsive at all breakpoints (480/768/1024/1440px)
+- [ ] Real business info used (phone, address, services from research)
+- [ ] Outreach message generated following `template-mensagem-outreach.md`
+- [ ] Correct pronouns (pessoa fisica vs empresa)
+- [ ] Tone appropriate for business niche
+- [ ] Notion updated via outbox with ALL required fields (Status, URL Demo, Mensagem, Slug, US ID, Site Criado Em)
+- [ ] Commit format: `feat: US-XXX - Client Name - Site Completo`
+- [ ] Pushed to repository
+- [ ] Done gate PASS: `python3 scripts/done_gate.py --us-id US-XXX`

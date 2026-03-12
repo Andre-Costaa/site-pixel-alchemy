@@ -55,6 +55,16 @@ def main() -> int:
     if not properties:
         raise SystemExit("No properties provided. Pass --status/--url-demo/--slug/--mensagem-file/--site-criado-em.")
 
+    # Enforce all critical fields are present to prevent incomplete Notion updates.
+    required = {"Status", "Mensagem", "Slug", "URL Demo", "US ID"}
+    missing = required - set(properties.keys())
+    if missing:
+        raise SystemExit(
+            f"BLOCKED: Missing required fields: {', '.join(sorted(missing))}.\n"
+            f"All of {sorted(required)} must be provided.\n"
+            f"Use --status, --url-demo, --slug, --mensagem-file, and --us-id."
+        )
+
     outbox = NotionOutbox(Path(args.outbox_dir))
     event = outbox.enqueue_update_page_properties(
         us_id=args.us_id,

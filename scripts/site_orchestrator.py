@@ -32,6 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config import SITE_DEMO_BASE_URL, SITE_DEMO_DIR
+from notion_dedup_guard import check_duplicate, check_slug_duplicate
 from prd_store import load_prd, save_prd
 from slug_utils import ensure_unique_slug, generate_slug, get_existing_slugs
 
@@ -147,9 +148,20 @@ def generate_for_prospect(
         print(f"  SKIP: No name provided")
         return None
 
+    # Dedup check: reject if prospect already exists in Notion
+    existing = check_duplicate(nome)
+    if existing:
+        print(f"  SKIP: Duplicate in Notion — '{nome}' already exists (page={existing['page_id']}, status={existing.get('Status', '')})")
+        return None
+
     # Generate slug
     raw_slug = generate_slug(nome)
     slug = ensure_unique_slug(raw_slug, existing_slugs)
+
+    # Dedup check: reject if slug already used
+    if check_slug_duplicate(slug):
+        print(f"  SKIP: Slug '{slug}' already in use (Notion or disk)")
+        return None
 
     # Check if site already exists
     site_dir = SITE_DEMO_DIR / slug

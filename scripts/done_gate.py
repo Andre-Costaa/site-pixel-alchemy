@@ -313,12 +313,27 @@ def check_notion(us_id: str, story: dict[str, Any], cwd: Path) -> list[dict[str,
         }
     )
 
+    # Verify critical fields are present in the receipt's expected_properties.
+    expected = receipt.get("expected_properties") or {}
+    for field in ("Status", "Mensagem", "Slug", "URL Demo", "US ID"):
+        value = expected.get(field, "")
+        has_value = bool(value)
+        results.append(
+            {
+                "name": f"notion.field.{field}",
+                "passed": has_value,
+                "detail": f"{field} present in receipt"
+                if has_value
+                else f"{field} MISSING from outbox receipt — enqueue with all required fields",
+            }
+        )
+
     # Read-after-write: fetch live page and confirm expected properties.
     try:
         notion = NotionAPIClient(token=token)
         ok = notion.verify_page_simple(
             page_id=str(receipt.get("page_id", "")),
-            expected_properties=receipt.get("expected_properties") or {},
+            expected_properties=expected,
         )
         results.append(
             {
