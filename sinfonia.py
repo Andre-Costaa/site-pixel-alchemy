@@ -312,11 +312,11 @@ def dispatch_agent(story: dict[str, Any], state: dict[str, Any], config: dict[st
     cmd_parts = [runner_cfg["command"]]
     for arg in runner_cfg["args"]:
         if "{{prompt_file}}" in arg:
-            # For claude, the -p flag reads from file directly
-            if runner_name == "claude":
-                arg = prompt_file.read_text(encoding="utf-8")
-            else:
+            # droid uses --prompt-file (reads from path); others need inline text
+            if runner_name == "droid":
                 arg = str(prompt_file)
+            else:
+                arg = prompt_file.read_text(encoding="utf-8")
         cmd_parts.append(arg)
 
     # Log file
@@ -349,7 +349,10 @@ def dispatch_agent(story: dict[str, Any], state: dict[str, Any], config: dict[st
 def kill_agent(pid: int) -> None:
     try:
         os.kill(pid, signal.SIGTERM)
-        time.sleep(10)
+        for _ in range(10):
+            time.sleep(1)
+            if not is_process_alive(pid):
+                return
         os.kill(pid, signal.SIGKILL)
     except ProcessLookupError:
         pass
@@ -361,15 +364,21 @@ def is_process_alive(pid: int) -> bool:
         return True
     except ProcessLookupError:
         return False
+    except PermissionError:
+        return True  # process exists but owned by another user
 
 
 # ── Done Gate ────────────────────────────────────────────────────────────────
 
 def run_done_gate(us_id: str, config: dict[str, Any]) -> tuple[bool, str]:
     cmd = config["done_gate"]["command"].replace("{{us_id}}", us_id)
-    proc = subprocess.run(
-        cmd, shell=True, capture_output=True, text=True, cwd=str(REPO_ROOT),
-    )
+    try:
+        proc = subprocess.run(
+            cmd, shell=True, capture_output=True, text=True, cwd=str(REPO_ROOT),
+            timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        return False, "done_gate timed out after 300s"
     output = proc.stdout + proc.stderr
     passed = "DONE GATE: PASS" in output
     return passed, output
@@ -377,9 +386,13 @@ def run_done_gate(us_id: str, config: dict[str, Any]) -> tuple[bool, str]:
 
 def run_mark_done(us_id: str, config: dict[str, Any]) -> tuple[bool, str]:
     cmd = config["done_gate"]["mark_done"].replace("{{us_id}}", us_id)
-    proc = subprocess.run(
-        cmd, shell=True, capture_output=True, text=True, cwd=str(REPO_ROOT),
-    )
+    try:
+        proc = subprocess.run(
+            cmd, shell=True, capture_output=True, text=True, cwd=str(REPO_ROOT),
+            timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        return False, "mark_story_done timed out after 300s"
     output = proc.stdout + proc.stderr
     return proc.returncode == 0, output
 
@@ -518,6 +531,9 @@ def run_loop(config: dict[str, Any], runner_override: str | None, once: bool, st
         # Skip stories that already have state files (in progress / errored)
         claimable = []
         for s in pending:
+            # Skip stories that already reached FAILED and were archived
+            if (ARCHIVE_DIR / f"{s['id']}.json").exists():
+                continue
             existing = read_state(s["id"])
             if existing is None:
                 claimable.append(s)
@@ -597,6 +613,21 @@ def run_loop(config: dict[str, Any], runner_override: str | None, once: bool, st
                     transition(state, "ERRORED", last_error=f"exit_code_{retcode}")
 
         for us_id in finished:
+            del active[us_id]
+
+        # Check for timeouts in active agents
+        timeout_secs = config.get("timeout_minutes", 30) * 60
+        timed_out = []
+        for us_id, (proc, state) in active.items():
+            if state.get("started_at"):
+                started = datetime.datetime.fromisoformat(state["started_at"])
+                elapsed = (datetime.datetime.now(datetime.timezone.utc) - started).total_seconds()
+                if elapsed > timeout_secs:
+                    log_warn(f"{us_id}  Timeout ({int(elapsed)}s > {timeout_secs}s)")
+                    kill_agent(proc.pid)
+                    transition(state, "ERRORED", last_error="timeout")
+                    timed_out.append(us_id)
+        for us_id in timed_out:
             del active[us_id]
 
         # Handle retries for errored states
