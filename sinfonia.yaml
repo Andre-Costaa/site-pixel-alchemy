@@ -1,0 +1,47 @@
+# sinfonia.yaml — Orchestrator configuration
+
+# Which agent runner to use (claude | codex | kimi | droid)
+runner: claude
+
+# Runner-specific settings
+runners:
+  claude:
+    command: "claude"
+    args: ["-p", "{{prompt_file}}", "--allowedTools", "Bash,Read,Write,Edit,Glob,Grep,Agent,WebSearch,WebFetch"]
+  codex:
+    command: "codex"
+    args: ["--model", "o4-mini", "--full-auto", "-q", "{{prompt_file}}"]
+  kimi:
+    command: "kimi"
+    args: ["-p", "{{prompt_file}}"]
+  droid:
+    command: "droid"
+    args: ["run", "--prompt-file", "{{prompt_file}}"]
+
+# Polling settings
+polling:
+  interval_seconds: 5
+  max_concurrent: 1
+
+# Retry settings
+retry:
+  max_attempts: 2
+  backoff_seconds: 30
+
+# Paths (relative to repo root)
+paths:
+  prd: "prd.json"
+  workflow: "WORKFLOW.md"
+  agents_md: "AGENTS.md"
+  outbox: ".notion-outbox"
+  logs: ".sinfonia/logs"
+  state: ".sinfonia/state"
+  archive: ".sinfonia/archive"
+
+# Done gate
+done_gate:
+  command: "cd scripts && python3 done_gate.py --us-id {{us_id}} --no-require-origin-main"
+  mark_done: "cd scripts && python3 mark_story_done.py --us-id {{us_id}} --no-require-origin-main"
+
+# Timeout per story (minutes)
+timeout_minutes: 30
