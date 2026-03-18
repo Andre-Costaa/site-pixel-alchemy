@@ -294,7 +294,6 @@ def dispatch_agent(story: dict[str, Any], state: dict[str, Any], config: dict[st
     us_id = story["id"]
     runner_name = state["runner"]
     runner_cfg = config["runners"][runner_name]
-
     # Build retry context from previous failure if any
     retry_context = None
     if state.get("done_gate_result") and state.get("attempt", 1) > 1:
@@ -308,19 +307,9 @@ def dispatch_agent(story: dict[str, Any], state: dict[str, Any], config: dict[st
     prompt = build_prompt(story, config, retry_context=retry_context)
     prompt_file = save_prompt(us_id, prompt)
 
-    # Build command
-    cmd_parts = [runner_cfg["command"]]
-    for arg in runner_cfg["args"]:
-        if "{{prompt_file}}" in arg:
-            # droid uses --prompt-file (reads from path); others need inline text
-            if runner_name == "droid":
-                arg = str(prompt_file)
-            else:
-                arg = prompt_file.read_text(encoding="utf-8")
-        cmd_parts.append(arg)
-
-    # Log file
+    # Log file — create it immediately so tail -f can start
     log_path = LOGS_DIR / f"{us_id}.log"
+    log_path.touch()
 
     # Symlink current.log for easy tail -f
     current_link = LOGS_DIR / "current.log"
@@ -332,18 +321,80 @@ def dispatch_agent(story: dict[str, Any], state: dict[str, Any], config: dict[st
 
     log_info(f"{us_id}  Dispatching to {runner_name} (log: .sinfonia/logs/{us_id}.log)")
 
-    log_file = open(log_path, "w")
+    # Write a wrapper shell script that executes the agent command.
+    # This avoids shell quoting issues with `script -c` when the prompt
+    # contains thousands of characters with special characters.
+    wrapper_path = PROMPTS_DIR / f"{us_id}.sh"
+    _write_wrapper_script(wrapper_path, runner_name, runner_cfg, prompt_file)
+
+    # Use `script` to allocate a pseudo-terminal so CLIs produce their full
+    # output as if running in a real terminal. Captures stdout+stderr to log.
+    # Flags: -q = quiet, -f = flush after each write, -c = run command
     proc = subprocess.Popen(
-        cmd_parts,
-        stdout=log_file,
-        stderr=subprocess.STDOUT,
+        ["script", "-q", "-f", "-c", f"bash {wrapper_path}", str(log_path)],
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
         cwd=str(REPO_ROOT),
     )
-    # Close parent's copy — child has its own fd after fork
-    log_file.close()
 
     transition(state, "RUNNING", started_at=datetime.datetime.now(datetime.timezone.utc).isoformat(), pid=proc.pid)
     return proc
+
+
+def _write_wrapper_script(wrapper_path: Path, runner_name: str, runner_cfg: dict, prompt_file: Path) -> None:
+    """Write a shell script that invokes the agent CLI with the prompt."""
+    cmd = runner_cfg["command"]
+    args = runner_cfg["args"]
+
+    # For runners that take the prompt inline (claude -p, codex exec, kimi --print -p),
+    # we use cat to pipe the prompt file contents. For droid -f, we pass the file path.
+    lines = ["#!/usr/bin/env bash", "set -euo pipefail", ""]
+
+    if runner_name == "droid":
+        # droid exec -f reads from file path
+        parts = [cmd]
+        for arg in args:
+            if "{{prompt_file}}" in arg:
+                parts.append(str(prompt_file))
+            else:
+                parts.append(arg)
+        lines.append("exec " + " ".join(_shell_quote(p) for p in parts))
+    elif runner_name == "claude":
+        # claude -p reads prompt from positional arg; use file as arg via $()
+        parts = [cmd]
+        for arg in args:
+            if "{{prompt_file}}" in arg:
+                # Replace with $(cat prompt_file) for safe expansion
+                parts.append(f'"$(cat {_shell_quote(str(prompt_file))})"')
+            else:
+                parts.append(_shell_quote(arg))
+        lines.append("exec " + " ".join(parts))
+    else:
+        # codex, kimi — same pattern: prompt as inline arg via cat
+        parts = [cmd]
+        for arg in args:
+            if "{{prompt_file}}" in arg:
+                parts.append(f'"$(cat {_shell_quote(str(prompt_file))})"')
+            else:
+                parts.append(_shell_quote(arg))
+        lines.append("exec " + " ".join(parts))
+
+    wrapper_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    wrapper_path.chmod(0o755)
+
+
+def _shell_quote(s: str) -> str:
+    """Quote a string for safe shell embedding."""
+    if not s:
+        return "''"
+    # If it's short and safe, no quoting needed
+    if all(c.isalnum() or c in "-_=./,:" for c in s):
+        return s
+    # Otherwise single-quote it (escaping any existing single quotes)
+    return "'" + s.replace("'", "'\"'\"'") + "'"
+
+
 
 
 def kill_agent(pid: int) -> None:
@@ -433,17 +484,16 @@ def write_status(config: dict[str, Any], prd: dict[str, Any], running: dict[str,
 
 
 def print_status_line(us_id: str | None, state_name: str, attempt: int, max_attempts: int, done: int, total: int, failed: int, runner: str) -> None:
-    bar_done = done
-    bar_total = total
-    pct = int(bar_done / bar_total * 100) if bar_total > 0 else 0
+    pct = int(done / total * 100) if total > 0 else 0
 
     # Progress bar
     bar_width = 20
-    filled = int(bar_width * bar_done / bar_total) if bar_total > 0 else 0
+    filled = int(bar_width * done / total) if total > 0 else 0
     bar = f"{'█' * filled}{'░' * (bar_width - filled)}"
 
     current = f"{us_id} {state_name} ({attempt}/{max_attempts})" if us_id else "idle"
 
+    # Move cursor up to overwrite previous status line, clear line, print new
     line = (
         f"{C.DIM}[Sinfonia]{C.RESET} "
         f"{C.CYAN}{bar}{C.RESET} {pct}% "
@@ -452,7 +502,8 @@ def print_status_line(us_id: str | None, state_name: str, attempt: int, max_atte
         f"| {C.MAGENTA}{current}{C.RESET} "
         f"| runner={C.BOLD}{runner}{C.RESET}"
     )
-    print(f"\r{line}", end="", flush=True)
+    # \033[2K clears entire line, \r returns to start
+    print(f"\033[2K\r{line}", end="", flush=True)
 
 
 # ── Reconciliation ───────────────────────────────────────────────────────────

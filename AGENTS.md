@@ -9,7 +9,7 @@ Pixel Alchemy is a digital agency that produces single-page promotional websites
 1. **Root site** (`index.html`, `styles.css`, `script.js`) — the agency's own promotional page at pixelalchemy.com.br
 2. **Client sites** (`site-demo/<client-name>/`) — 150+ individual client websites, each deployed as a subdirectory of the main domain (e.g., `pixelalchemy.com.br/site-demo/dra-lara-costa/`)
 
-Client data and prospect tracking lives primarily in the **Notion CRM database** (see below).
+Client data and prospect tracking lives in the **Notion CRM database**, which is the absolute source of truth (see below).
 
 ## Technology Stack
 
@@ -100,6 +100,13 @@ Each client site is a single commit as a user story (US-XXX, sequential numberin
 
 **Database ID**: `2f76f51e-b8a5-8088-a52c-db29fc3c1f81`
 
+### Source of truth policy
+
+- **Notion is the absolute source of truth** for prospect data, pipeline status, technical identifiers, and delivery state.
+- `prd.json` is an execution artifact only. It exists to support mass site creation and can be replaced in the future.
+- If `prd.json` conflicts with Notion, **Notion wins**.
+- Documentation and operational decisions must treat Notion as canonical.
+
 ### Database schema
 
 | Property | Type | Values / Notes |
@@ -109,13 +116,27 @@ Each client site is a single commit as a user story (US-XXX, sequential numberin
 | **Status** | select | `Lead` - `Qualificado` - `Site em Criacao` - `Mensagem Pronta` - `Enviado` - `Respondeu` - `Reuniao` - `Proposta` - `Fechado` / `Perdido` / `Descartado` |
 | **Telefone** | text | Phone number with area code |
 | **Endereco** | text | Business full address |
+| **Email Negocio** | text | Public business email when found with evidence |
+| **Email Responsavel** | text | Owner/partner/responsible email when found with evidence |
+| **Status Email** | select | `Validado` - `Encontrado` - `Duvidoso` - `Nao encontrado` |
+| **Fonte Email** | select | `Site` - `Instagram` - `Google` - `Facebook` - `Manual` |
+| **Email Validado Em** | date | Date of the last reliable email validation |
 | **URL Demo** | url | **CRITICAL**: `https://www.pixelalchemy.com.br/site-demo/<slug>/` |
 | **Mensagem** | text | **CRITICAL**: Personalized outreach message |
 | **Slug** | text | **CRITICAL**: URL slug for site-demo directory |
-| **US ID** | text | **CRITICAL**: User story ID from prd.json (e.g., `US-089`) |
+| **US ID** | text | **CRITICAL**: Operational story/job identifier used by automation (e.g., `US-089`) |
 | **Site Criado Em** | date | **CRITICAL**: Date when site was created (YYYY-MM-DD) |
 | **Descricao** | text | Business description |
 | **Instagram** | text | Instagram handle or URL |
+
+### PRD-Notion linkage rule
+
+`notionPageId` in `prd.json` is only an operational pointer back to the canonical record in Notion.
+
+- New execution artifacts must be created with `notionPageId` already populated.
+- If a legacy story is missing `notionPageId`, do not continue the delivery flow until you reconcile it against Notion.
+- Use `python3 scripts/reconcile_prd_notion_links.py` first in dry-run mode.
+- Use `--apply` only after reviewing the report and confirming that the match is unique and safe.
 
 ### Sales pipeline
 
@@ -129,17 +150,35 @@ Lead - Qualificado - Site em Criacao - Mensagem Pronta - Enviado - Respondeu - R
 
 This is the EXACT sequence for executing a user story (US-XXX). Follow every step. The done_gate will reject incomplete work.
 
-### Step 1: Read the user story from prd.json
+### Step 1: Read the canonical record from Notion, then load `prd.json` only if needed
+
+Always validate the prospect in Notion first. `prd.json` is only a working queue for mass execution.
+
+Extract from Notion: client name, slug, phone, address, nicho, and page identity.
+
+If the current run is being orchestrated through `prd.json`, then load the matching story:
 
 ```bash
 python3 -c "import json; prd=json.load(open('prd.json')); story=[s for s in prd['userStories'] if s['id']=='US-XXX'][0]; print(json.dumps(story, indent=2, ensure_ascii=False))"
 ```
 
-Extract: client name, slug, phone, address, nicho, notionPageId.
+If `notionPageId` is missing, STOP and reconcile first:
+
+```bash
+python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX
+python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX --apply
+```
 
 ### Step 2: Research the business
 
-Search Google, Instagram, and Facebook for real information: services, testimonials, team, brand colors, opening hours.
+Search Google, Instagram, Facebook, and the official website for real information: services, testimonials, team, brand colors, opening hours, and contact channels.
+
+For email capture:
+
+- Try `Email Responsavel` first only when there is explicit evidence.
+- If no direct responsible email is found, look for `Email Negocio`.
+- Save the result in Notion with `Status Email`, `Fonte Email`, and `Email Validado Em` when applicable.
+- If no reliable email is found, set `Status Email` to `Nao encontrado` or `Duvidoso` and continue the flow normally.
 
 ### Step 3: Create the site
 
@@ -175,6 +214,8 @@ EOF
 ### Step 5: Update Notion via outbox
 
 **ALL fields are required. The outbox will BLOCK if any is missing.**
+
+Email fields are optional in the outbox update, but the result of email research should still be recorded in Notion whenever the schema is available.
 
 ```bash
 cd scripts && python3 notion_outbox_enqueue.py \
@@ -223,6 +264,7 @@ These are NOT suggestions. The pipeline scripts enforce them:
 |---|---|---|
 | Duplicate prospect | `site_orchestrator.py` + `notion_dedup_guard.py` | SKIP — story not created |
 | Duplicate slug | `site_orchestrator.py` + `notion_dedup_guard.py` | SKIP — story not created |
+| Missing `notionPageId` at story creation | `site_orchestrator.py` | SKIP — execution artifact not created |
 | Incomplete outbox | `notion_outbox_enqueue.py` | BLOCKED — missing Status, Mensagem, Slug, URL Demo, or US ID |
 | Missing fields in Notion | `done_gate.py` | FAIL — checks receipt has all 5 critical fields |
 | Missing site sections | `done_gate.py` | FAIL — checks HTML for hero, services, testimonials, contact, footer, form |
@@ -232,6 +274,10 @@ These are NOT suggestions. The pipeline scripts enforce them:
 
 - **DO NOT** update Notion directly via API or MCP. Always use the outbox pipeline (enqueue + worker).
 - **DO NOT** use status "Site Pronto". The correct status is "Mensagem Pronta".
+- **DO NOT** create or continue a story that requires Notion if `notionPageId` is missing.
+- **DO NOT** treat `prd.json` as the source of truth when Notion says otherwise.
+- **DO NOT** invent owner/business emails or infer them from domain patterns without evidence.
+- **DO NOT** prefer manual `notion_outbox_enqueue.py` for new stories when `notion_update_from_prd.py` can be used.
 - **DO NOT** skip the outreach message. The done_gate checks for it.
 - **DO NOT** use `git add .` or `git add -A`. Add specific files only.
 - **DO NOT** mark `passes=true` without running done_gate first.
@@ -249,12 +295,28 @@ cd scripts && python3 notion_dedup_guard.py --check-slug "dra-laura-sanches"
 
 Exit code 0 = available. Exit code 1 = duplicate found.
 
+To reconcile legacy stories already in `prd.json` but missing `notionPageId`:
+
+```bash
+python3 scripts/reconcile_prd_notion_links.py
+python3 scripts/reconcile_prd_notion_links.py --apply
+```
+
+To fix stories that already have `notionPageId` but whose linked Notion page is missing `Slug` or `US ID`:
+
+```bash
+python3 scripts/sync_story_identity_to_notion.py
+python3 scripts/sync_story_identity_to_notion.py --apply
+```
+
 ## Key Files
 
 - `prd.json` — User stories (source of truth for what to build)
 - `template-mensagem-outreach.md` — Outreach message template with examples by niche
 - `site-demo/<client-name>/` — Individual client sites (150+)
 - `scripts/site_orchestrator.py` — Generates user stories from Notion prospects
+- `scripts/reconcile_prd_notion_links.py` — Reconciles legacy `prd.json` stories with live Notion pages by slug
+- `scripts/sync_story_identity_to_notion.py` — Syncs `Slug` and `US ID` from the story to the linked Notion page through the outbox
 - `scripts/notion_outbox_enqueue.py` — Enqueue Notion updates (ALL fields required)
 - `scripts/notion_outbox_worker.py` — Process outbox queue, create verified receipts
 - `scripts/done_gate.py` — Validates all completion criteria before marking done
@@ -274,6 +336,7 @@ Before marking a client site as complete, verify:
 - [ ] Outreach message generated following `template-mensagem-outreach.md`
 - [ ] Correct pronouns (pessoa fisica vs empresa)
 - [ ] Tone appropriate for business niche
+- [ ] `notionPageId` present in the story before updating Notion
 - [ ] Notion updated via outbox with ALL required fields (Status, URL Demo, Mensagem, Slug, US ID, Site Criado Em)
 - [ ] Commit format: `feat: US-XXX - Client Name - Site Completo`
 - [ ] Pushed to repository

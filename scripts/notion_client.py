@@ -36,6 +36,27 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from config import NOTION_DATA_SOURCE_ID, NOTION_DATABASE_ID
 
+SELECT_FIELDS = {
+    "Status",
+    "Aprovado",
+    "Venda",
+    "Origem",
+    "Nicho",
+    "Motivo Perda",
+    "Canal Contato",
+    "Status Email",
+    "Fonte Email",
+}
+DATE_FIELDS = {
+    "Site Criado Em",
+    "Email Validado Em",
+    "Data 1º Contato",
+    "Data Follow-up",
+    "Horário",
+}
+NUMBER_FIELDS = {"Valor", "Tentativas Contato"}
+URL_FIELDS = {"URL Demo"}
+
 
 def mcp_search_prospects(query: str) -> dict:
     """Generate MCP tool call for notion-search."""
@@ -104,10 +125,12 @@ def build_site_ready_update(
     url_demo: str,
     site_created_date: str,
     mensagem: str = "",
+    email_fields: dict[str, Any] | None = None,
 ) -> dict:
     """Build the MCP update call for after a site is created.
 
-    Sets: Status → "Mensagem Pronta", URL Demo, Slug, US ID, Mensagem, Site Criado Em
+    Sets: Status → "Mensagem Pronta", URL Demo, Slug, US ID, Mensagem, Site Criado Em.
+    Optional email research fields can also be included when available.
     """
     properties = {
         "Status": "Mensagem Pronta",
@@ -121,6 +144,8 @@ def build_site_ready_update(
     # Add message if provided
     if mensagem:
         properties["Mensagem"] = mensagem
+    if email_fields:
+        properties.update(email_fields)
 
     return mcp_update_prospect(page_id, properties)
 
@@ -326,13 +351,13 @@ def _encode_rich_text(value: str) -> dict[str, Any]:
 def _encode_simple_properties_for_notion(properties: dict[str, Any]) -> dict[str, Any]:
     encoded: dict[str, Any] = {}
     for name, value in properties.items():
-        if name == "Status":
+        if name in SELECT_FIELDS:
             encoded[name] = {"select": {"name": str(value)}}
-        elif name == "URL Demo":
+        elif name in URL_FIELDS:
             encoded[name] = {"url": str(value)}
-        elif name == "Site Criado Em":
+        elif name in DATE_FIELDS:
             encoded[name] = {"date": {"start": str(value)}}
-        elif isinstance(value, (int, float)) and name in ("Valor",):
+        elif isinstance(value, (int, float)) and name in NUMBER_FIELDS:
             encoded[name] = {"number": value}
         else:
             encoded[name] = _encode_rich_text("" if value is None else str(value))

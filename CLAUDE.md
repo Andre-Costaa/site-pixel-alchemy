@@ -9,7 +9,7 @@ Pixel Alchemy is a digital agency that produces single-page promotional websites
 1. **Root site** (`index.html`, `styles.css`, `script.js`) — the agency's own promotional page at pixelalchemy.com.br
 2. **Client sites** (`site-demo/<client-name>/`) — 145+ individual client websites, each deployed as a subdirectory of the main domain (e.g., `pixelalchemy.com.br/site-demo/dra-lara-costa/`)
 
-Client data and prospect tracking lives in `harmonizacao.csv` (legacy) and primarily in the **Notion CRM database** (see below).
+Client data and prospect tracking lives in the **Notion CRM database**, which is the absolute source of truth. `harmonizacao.csv` and `prd.json` are operational artifacts only.
 
 ## Technology Stack
 
@@ -107,6 +107,13 @@ Each client site is a single commit as a user story (US-XXX, sequential numberin
 
 The primary prospect/client management system is a Notion database accessible via MCP (Model Context Protocol).
 
+### Source of truth policy
+
+- **Notion is the absolute source of truth** for prospect data, commercial pipeline state, technical identifiers, and completion state.
+- `prd.json` is only an execution artifact for mass site creation and may be replaced in the future.
+- If any execution artifact disagrees with Notion, **Notion wins**.
+- Agents must document, verify, and reconcile against Notion first.
+
 **Page**: "Pixel Alchemy - Controle Prospecção" (`2f76f51e-b8a5-8038-8557-c157105f790d`)
 **Database**: "Controle" (`2f76f51e-b8a5-8088-a52c-db29fc3c1f81`)
 **Data Source**: `collection://2f76f51e-b8a5-800b-8c7e-000bf9f86798`
@@ -124,6 +131,11 @@ The primary prospect/client management system is a Notion database accessible vi
 | **Valor** | number (R$) | Deal value in BRL |
 | **Telefone** | text | Phone number with area code |
 | **Endereço** | text | Business full address |
+| **Email Negocio** | text | Public business email when found with confidence |
+| **Email Responsavel** | text | Owner/partner/responsible person's direct email when found with confidence |
+| **Status Email** | select | `Validado`, `Encontrado`, `Duvidoso`, `Nao encontrado` |
+| **Fonte Email** | select | `Site`, `Instagram`, `Google`, `Facebook`, `Manual` |
+| **Email Validado Em** | date | Last confident verification date for email |
 | **Site** | text | Existing website URL (if any) |
 | **URL Demo** | url | **CRITICAL**: Link to demo site `https://www.pixelalchemy.com.br/site-demo/<slug>/` |
 | **Instagram** | text | Instagram handle or URL |
@@ -134,7 +146,7 @@ The primary prospect/client management system is a Notion database accessible vi
 | **Observações** | text | Internal notes |
 | **Origem** | select | `Dentistas`, `Veterinária`, `harmonizacao`, `Pesquisa`, `Notion (Beleza)` |
 | **Slug** | text | **CRITICAL**: URL slug for site-demo directory (e.g., `dra-laura-sanches`) |
-| **US ID** | text | **CRITICAL**: User story ID from prd.json (e.g., `US-089`) |
+| **US ID** | text | **CRITICAL**: Operational story/job identifier used by automation (e.g., `US-089`) |
 | **Site Criado Em** | date | **CRITICAL**: Date when site was created (YYYY-MM-DD format) |
 | **Data 1º Contato** | date | First outreach date |
 | **Data Follow-up** | date | Follow-up date |
@@ -179,7 +191,7 @@ Para atualizacoes de producao (pipeline automatizado), use o outbox (ver abaixo)
 python3 scripts/notion_outbox_enqueue.py --us-id US-090 --page-id 2f76f51e-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-This reads the user story from `prd.json` and enqueues all required field updates into `.notion-outbox/queue/`.
+This reads the execution artifact from `prd.json` and enqueues all required field updates into `.notion-outbox/queue/`. The canonical record remains the linked page in Notion.
 
 **Step 2 -- Process the outbox queue:**
 
@@ -194,20 +206,28 @@ This sends the update to Notion and writes a verified receipt to `.notion-outbox
 - [done] `URL Demo` -> Full URL to the deployed site
 - [done] `Mensagem` -> The personalized outreach message you generated
 - [done] `Slug` -> URL slug used in site-demo directory
-- [done] `US ID` -> User story identifier from prd.json
+- [done] `US ID` -> Operational story/job identifier used by automation
 - [done] `Site Criado Em` -> Date the site was created
+- [optional] `Status Email`, `Email Negocio`, `Email Responsavel`, `Fonte Email`, `Email Validado Em`
 
 **Finding the Notion page_id**:
 1. Search Notion for the prospect name
 2. Use the page ID returned from the search
-3. Or check the user story `notionPageId` field if page_id was stored during orchestration
+3. Or check the execution artifact `notionPageId` field, which must point back to the canonical Notion page
+
+**Reconciliation rule**:
+- Execution artifacts that require Notion must contain `notionPageId`
+- If a legacy story is missing it, run `python3 scripts/reconcile_prd_notion_links.py` first
+- Review the report, then use `--apply` only for unique safe matches
 
 ## Python Scripts Workflow
 
 The `scripts/` directory contains automation tools for the site creation pipeline. See `scripts/README.md` for complete documentation.
 
 ### `site_orchestrator.py`
-Generates user stories in `prd.json` from Notion prospects.
+Generates execution artifacts in `prd.json` from canonical Notion prospects.
+
+`page_id` from Notion is mandatory in the prospect payload. New stories that require Notion must not be created without `notionPageId`.
 
 ```bash
 # Preview what would be generated (dry run)
@@ -222,6 +242,12 @@ python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Lau
 
 ### `notion_client.py`
 Python wrapper for Notion CRM operations. Used internally by the outbox worker to build API payloads. For production updates, use the outbox pipeline instead of calling this module directly (see "How to Update Notion After Creating a Site" above).
+
+### `reconcile_prd_notion_links.py`
+Safely reconciles legacy stories in `prd.json` with live Notion pages by slug. Default mode is report-only; `--apply` writes `notionPageId` only for unique safe matches.
+
+### `sync_story_identity_to_notion.py`
+Synchronizes `Slug` and `US ID` from stories that already have `notionPageId` to their linked Notion pages via the outbox.
 
 ### `slug_utils.py`
 Utilities for generating and ensuring unique URL slugs:
@@ -252,7 +278,10 @@ Reference module for programmatic message generation. In practice, the LLM agent
 
 1. Create directory under `site-demo/<client-slug>/`
 2. Use self-contained `index.html` (inline CSS + JS)
-3. Research the business (Google, Instagram, Facebook) to get real info: services, address, phone, testimonials
+3. Research the business (Google, Instagram, Facebook, official website) to get real info: services, address, phone, testimonials, and contact channels
+   - Also search for `Email Responsavel` or `Email Negocio`
+   - Never infer an email address from domain patterns without explicit evidence
+   - If email is not found, record `Status Email` as `Nao encontrado` or `Duvidoso`
 4. Adapt the standard section template to the business niche
 5. Customize color palette based on the client's brand/niche
 6. Ensure all breakpoints render correctly (480, 768, 1024, 1440)
@@ -269,9 +298,11 @@ Reference module for programmatic message generation. In practice, the LLM agent
    - Keep message under 800 characters for WhatsApp/Instagram
    - See `template-mensagem-outreach.md` for complete examples by niche
 8. **Update Notion CRM via outbox** (NOT via MCP directly):
-   - Enqueue: `python3 scripts/notion_outbox_enqueue.py --us-id US-XXX --page-id PAGE_ID`
-   - Process: `python3 scripts/notion_outbox_worker.py --once`
+   - Preferred: `python3 scripts/notion_update_from_prd.py --us-id US-XXX --mensagem-file /tmp/mensagem.txt --site-criado-em YYYY-MM-DD --process`
+   - Fallback manual flow: `python3 scripts/notion_outbox_enqueue.py --us-id US-XXX --page-id PAGE_ID`
+   - Process manual queue: `python3 scripts/notion_outbox_worker.py --once`
    - This updates: `Status` -> "Mensagem Pronta", `URL Demo`, `Mensagem`, `Slug`, `US ID`, `Site Criado Em`
+   - When available, also update: `Status Email`, `Email Negocio`, `Email Responsavel`, `Fonte Email`, `Email Validado Em`
    - The done_gate requires the outbox receipt to pass
 9. Commit as `feat: US-XXX - Client Name - Site Completo`
 10. **Done Gate** before setting `passes=true`:
@@ -288,6 +319,9 @@ Before marking a client site as complete, verify:
 - [ ] Outreach message generated following `template-mensagem-outreach.md`
 - [ ] Correct pronouns used (pessoa física vs empresa)
 - [ ] Tone appropriate for business niche
+- [ ] `Status Email` recorded when email schema is available
+- [ ] Any captured email was stored with evidence and source
+- [ ] `notionPageId` present in the story before production Notion update
 - [ ] Notion updated via outbox (`notion_outbox_enqueue.py` + `notion_outbox_worker.py`) with Status **"Mensagem Pronta"** + all required fields
 - [ ] Commit created with correct format
 - [ ] Pushed to repository

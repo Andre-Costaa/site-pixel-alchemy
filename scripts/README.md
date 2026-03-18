@@ -11,13 +11,17 @@ Prospecto no Notion (Status: "Qualificado")
     ↓
 [2] Ralph TUI / Agente cria o site usando prompt-modelo.md
     ↓
-[3] Agente gera mensagem de outreach (template-mensagem-outreach.md)
+[3] Agente pesquisa email do negocio/responsavel e registra resultado no Notion
+    Status Email, Email Negocio, Email Responsavel, Fonte Email, Email Validado Em
     ↓
-[4] Agente enfileira update no Notion (outbox) e processa com worker (sem MCP)
+[4] Agente gera mensagem de outreach (template-mensagem-outreach.md)
+    ↓
+[5] Agente enfileira update no Notion (outbox) e processa com worker (sem MCP)
     Status → "Mensagem Pronta"
     URL Demo, Mensagem, Slug, US ID, Site Criado Em
+    Email Negocio/Responsavel + Status Email quando houver evidencia
     ↓
-[5] Commit: "feat: US-XXX - Nome Cliente - Site Completo"
+[6] Commit: "feat: US-XXX - Nome Cliente - Site Completo"
 ```
 
 ## Arquivos
@@ -55,6 +59,7 @@ python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Lau
 
 **Output**: Adiciona user stories ao `prd.json` com acceptance criteria completo, incluindo:
 - Criação do site seguindo `prompt-modelo.md`
+- **Pesquisa e registro de email** do negócio/responsável com status explícito
 - **Geração de mensagem de outreach** (ver `template-mensagem-outreach.md`)
 - **Atualização do Notion** com URL Demo, Mensagem, Slug, US ID, Site Criado Em
 - Commit e push
@@ -73,7 +78,12 @@ Atualização confiável do Notion via outbox + receipts (sem “prova por log�
 # Atualização a partir da story (recomendado quando há notionPageId)
 python3 scripts/notion_update_from_prd.py --us-id US-089 --prd ./prd.json --mensagem-file /tmp/mensagem.txt --site-criado-em 2026-02-23 --process
 
-# Atualização manual via outbox (quando não há notionPageId)
+# Com metadados de email pesquisados
+python3 scripts/notion_update_from_prd.py --us-id US-089 --prd ./prd.json --mensagem-file /tmp/mensagem.txt \
+  --site-criado-em 2026-02-23 --status-email "Validado" --email-negocio "contato@exemplo.com" \
+  --fonte-email "Site" --email-validado-em 2026-02-23 --process
+
+# Atualização manual via outbox (uso excepcional; prefira manter notionPageId no PRD)
 python3 scripts/notion_outbox_enqueue.py --us-id US-089 --page-id <NOTION_PAGE_ID> \
   --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" \
   --slug "<slug>" --site-criado-em "2026-02-23" --mensagem-file /tmp/mensagem.txt
@@ -81,6 +91,49 @@ python3 scripts/notion_outbox_worker.py --once
 ```
 
 **IMPORTANTE**: Após criar um site, o agente DEVE atualizar o Notion via outbox para gerar receipt verificável.
+
+### `reconcile_prd_notion_links.py`
+Reconcilia stories legadas do `prd.json` com páginas reais do Notion por `slug`.
+
+Comportamento:
+- `dry-run` por padrão
+- grava em `prd.json` somente com `--apply`
+- aplica apenas matches únicos e seguros
+- gera relatório JSON em `.sinfonia/reports/`
+
+```bash
+# Relatório completo sem alterar o PRD
+python3 scripts/reconcile_prd_notion_links.py
+
+# Relatório + escrita no PRD apenas para matches únicos
+python3 scripts/reconcile_prd_notion_links.py --apply
+
+# Reconciliar uma story específica
+python3 scripts/reconcile_prd_notion_links.py --us-id US-090
+python3 scripts/reconcile_prd_notion_links.py --us-id US-090 --apply
+```
+
+### `sync_story_identity_to_notion.py`
+Sincroniza campos de identidade da story para a página já vinculada no Notion.
+
+Uso recomendado para corrigir conflitos em que a story já tem `notionPageId`, mas a página do Notion está sem `Slug` ou `US ID`, ou com `Slug` divergente.
+
+Comportamento:
+- `dry-run` por padrão
+- grava no Notion somente com `--apply`
+- usa outbox + worker para gerar receipt e verificar leitura após escrita
+
+```bash
+# Relatório sem alterar o Notion
+python3 scripts/sync_story_identity_to_notion.py
+
+# Aplicar updates seguros no Notion
+python3 scripts/sync_story_identity_to_notion.py --apply
+
+# Limitar a uma story específica
+python3 scripts/sync_story_identity_to_notion.py --us-id US-166
+python3 scripts/sync_story_identity_to_notion.py --us-id US-166 --apply
+```
 
 ### `message_generator.py`
 Módulo Python para geração programática de mensagens (referência).
@@ -155,7 +208,14 @@ python3 scripts/ralph_run_auto.py --prd ./prd.smoke.json --parallel 1 --force
 Quando você (agente) for criar um site para um prospecto:
 
 ### 1. Receber user story do `prd.json`
-O user story já contém todos os dados necessários nos acceptance criteria.
+O user story já contém os dados necessários nos acceptance criteria e deve conter `notionPageId` quando exigir update no Notion.
+
+Se a story exigir Notion e `notionPageId` estiver ausente:
+
+```bash
+python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX
+python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX --apply
+```
 
 ### 2. Criar o site
 - Seguir `prompt-modelo.md` rigorosamente
@@ -172,7 +232,16 @@ O user story já contém todos os dados necessários nos acceptance criteria.
 - Incluir URL completa do site demo
 - Manter abaixo de 800 caracteres
 
-### 4. Atualizar Notion CRM
+### 4. Pesquisar e registrar email
+- Procurar primeiro `Email Responsavel`; se nao houver evidencia confiavel, buscar `Email Negocio`
+- Nunca inferir email por padrao de dominio sem prova
+- Registrar sempre o resultado da busca no Notion:
+  - `Status Email` = `Validado`, `Encontrado`, `Duvidoso` ou `Nao encontrado`
+  - `Fonte Email` = `Site`, `Instagram`, `Google`, `Facebook` ou `Manual`
+  - `Email Validado Em` = data da checagem quando houver email confiavel
+- Se nao houver email, o fluxo **nao bloqueia**: seguir com WhatsApp/Instagram normalmente
+
+### 5. Atualizar Notion CRM
 - **OBRIGATÓRIO**: Atualizar via outbox (sem MCP) para ter receipt verificável.
 - Campos a atualizar:
   - `Status` → **"Mensagem Pronta"** (não "Site Pronto")
@@ -181,21 +250,26 @@ O user story já contém todos os dados necessários nos acceptance criteria.
   - `Slug` → slug do site
   - `US ID` → ID da user story (ex: "US-089")
   - `Site Criado Em` → data de hoje (YYYY-MM-DD)
+  - `Status Email` / `Email Negocio` / `Email Responsavel` / `Fonte Email` / `Email Validado Em` quando houver evidência
 
 **Exemplo**:
 ```bash
 python3 scripts/notion_outbox_enqueue.py --us-id US-089 --page-id <NOTION_PAGE_ID> \\
   --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" \\
-  --slug "<slug>" --site-criado-em "2026-02-23" --mensagem-file /tmp/mensagem.txt
+  --slug "<slug>" --site-criado-em "2026-02-23" --mensagem-file /tmp/mensagem.txt \\
+  --status-email "Validado" --email-negocio "contato@exemplo.com" --fonte-email "Site" \\
+  --email-validado-em "2026-02-23"
 python3 scripts/notion_outbox_worker.py --once
 ```
 
-**Alternativa (recomendado quando a story tem `notionPageId`)**:
+**Comando preferido quando a story tem `notionPageId`**:
 ```bash
 python3 scripts/notion_update_from_prd.py --us-id US-089 --mensagem-file /tmp/mensagem.txt --site-criado-em 2026-02-23 --process
 ```
 
-### 5. Commit
+**Importante**: para novas stories, `notionPageId` nao e opcional. O `site_orchestrator.py` deve bloquear criacao de story sem esse campo no payload do prospect.
+
+### 6. Commit
 ```bash
 git add site-demo/<slug>/
 git commit -m "feat: US-XXX - Nome do Cliente - Site Completo
@@ -204,7 +278,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
 git push
 ```
 
-### 6. Done Gate (OBRIGATORIO)
+### 7. Done Gate (OBRIGATORIO)
 Antes de marcar `passes=true` no `prd.json`, valide a story:
 
 ```bash
@@ -231,6 +305,7 @@ Antes de marcar uma user story como completa, verificar:
 - [ ] Site criado em `site-demo/<slug>/index.html`
 - [ ] Site testado localmente (responsivo 480/768/1024/1440px)
 - [ ] Mensagem de outreach gerada seguindo template
+- [ ] Story contains `notionPageId` before Notion update
 - [ ] Notion atualizado com Status "Mensagem Pronta" + todos os campos
 - [ ] Commit realizado com mensagem correta
 - [ ] Push para repositório remoto

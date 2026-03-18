@@ -3,6 +3,13 @@
 **Database**: "Controle" (`2f76f51e-b8a5-8088-a52c-db29fc3c1f81`)
 **Data Source**: `collection://2f76f51e-b8a5-800b-8c7e-000bf9f86798`
 
+## Fonte da Verdade
+
+- **O Notion e a fonte absoluta da verdade** para dados do prospect, pipeline comercial, identificadores tecnicos e estado de entrega.
+- `prd.json` e qualquer outro artefato de execucao servem apenas como apoio operacional para criacao em massa.
+- Esses artefatos podem ser trocados no futuro sem alterar a autoridade do sistema.
+- Se houver divergencia entre Notion e `prd.json`, **prevalece o Notion**.
+
 ## ⚠️ CRITICAL: Campos Obrigatórios Após Criar Site
 
 Quando você terminar de criar um site para um cliente, você **DEVE** atualizar estes campos no Notion:
@@ -13,8 +20,17 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 | **URL Demo** | url | `https://www.pixelalchemy.com.br/site-demo/<slug>/` | `https://www.pixelalchemy.com.br/site-demo/dra-laura-sanches/` |
 | **Mensagem** | text | Mensagem personalizada gerada | Ver `template-mensagem-outreach.md` |
 | **Slug** | text | Slug da pasta site-demo | `dra-laura-sanches` |
-| **US ID** | text | ID da user story | `US-090` |
+| **US ID** | text | ID operacional da automação | `US-090` |
 | **Site Criado Em** | date | Data de hoje (YYYY-MM-DD) | `2026-02-22` |
+
+## 🔗 Regra de Vínculo PRD ↔ Notion
+
+`notionPageId` nao e um campo do banco no Notion; ele e apenas um ponteiro operacional usado por artefatos de execucao para referenciar a pagina canonica no Notion.
+
+- Todo artefato novo de execucao que exige Notion deve nascer com `notionPageId`.
+- Se uma story legada estiver sem `notionPageId`, reconcilie antes de atualizar o Notion em producao.
+- Use `python3 scripts/reconcile_prd_notion_links.py` em modo padrao para gerar relatorio.
+- Use `--apply` apenas quando o match por `slug` for unico e seguro.
 
 ## 🔍 Schema Completo do Database
 
@@ -28,6 +44,12 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 
 - **Telefone** (text) — Com DDD: `(16) 99876-5432`
 - **Endereço** (text) — Endereço completo
+- **Canal Contato** (select) — Canal principal de abordagem/comunicacao
+- **Email Negocio** (text) — Email publico principal do negocio quando houver confianca
+- **Email Responsavel** (text) — Email direto do socio/proprietario/responsavel quando houver evidencia
+- **Status Email** (select) — `Validado`, `Encontrado`, `Duvidoso`, `Nao encontrado`
+- **Fonte Email** (select) — `Site`, `Instagram`, `Google`, `Facebook`, `Manual`
+- **Email Validado Em** (date) — Data da ultima validacao confiavel do email
 - **Instagram** (text) — Handle ou URL
 - **Facebook** (text) — URL da página
 - **Site** (text) — Website existente (se houver)
@@ -49,7 +71,7 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 
 - **URL Demo** (url) — **CAMPO CRÍTICO**: Link completo do site demo
 - **Slug** (text) — **CAMPO CRÍTICO**: Slug usado na URL (sem espaços, lowercase)
-- **US ID** (text) — **CAMPO CRÍTICO**: ID da user story no prd.json
+- **US ID** (text) — **CAMPO CRÍTICO**: ID operacional de story/job usado pela automacao
 - **Site Criado Em** (date) — **CAMPO CRÍTICO**: Data de criação do site
 - **Descrição** (text) — Descrição do negócio (usado na criação do site)
 
@@ -110,10 +132,21 @@ A função `build_site_ready_update()` atualiza:
 2. ✅ `URL Demo` → URL completa do site
 3. ✅ `Mensagem` → Mensagem de outreach personalizada
 4. ✅ `Slug` → Slug da pasta
-5. ✅ `US ID` → ID da user story
+5. ✅ `US ID` → ID operacional da automacao
 6. ✅ `Site Criado Em` → Data de criação (formato `YYYY-MM-DD`, `is_datetime: 0`)
 
 ## ❌ Erros Comuns a Evitar
+
+### ❌ Inventar Email
+```text
+ERRADO
+- deduzir email por padrao como nome@dominio.com sem prova
+- copiar email de terceiros sem vinculo claro com o negocio
+
+CORRETO
+- registrar apenas emails encontrados com evidencia
+- marcar `Status Email = Nao encontrado` ou `Duvidoso` quando nao houver confianca
+```
 
 ### ❌ Status Errado
 ```python
@@ -181,8 +214,11 @@ Antes de considerar uma user story concluída:
 - [ ] **URL Demo** = URL completa com `https://`
 - [ ] **Mensagem** = texto completo da mensagem personalizada
 - [ ] **Slug** = slug lowercase com hífens
-- [ ] **US ID** = ID correto da user story
+- [ ] **US ID** = ID operacional correto
 - [ ] **Site Criado Em** = data no formato `YYYY-MM-DD`
+- [ ] `Status Email` registrado quando o schema de email estiver disponivel
+- [ ] `Email Negocio` e/ou `Email Responsavel` preenchidos somente com evidencia confiavel
+- [ ] `notionPageId` presente no artefato de execucao, apontando para a pagina canonica no Notion
 - [ ] Commit criado e push realizado
 
 ## 🚨 Se o Agente Falhar

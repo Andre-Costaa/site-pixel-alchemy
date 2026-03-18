@@ -53,7 +53,7 @@ if [ -n "$EXTRA_ARGS" ]; then
 fi
 
 # Log tail command
-LOG_CMD="cd '$SCRIPT_DIR' && mkdir -p .sinfonia/logs && echo 'Waiting for agent output...' && while [ ! -L .sinfonia/logs/current.log ]; do sleep 1; done && tail -f .sinfonia/logs/current.log"
+LOG_CMD="cd '$SCRIPT_DIR' && mkdir -p .sinfonia/logs && echo 'Waiting for agent output...' && while [ ! -L .sinfonia/logs/current.log ] || [ ! -e .sinfonia/logs/current.log ]; do sleep 1; done && tail -F .sinfonia/logs/current.log"
 
 # Kill existing session if any
 tmux kill-session -t "$SESSION" 2>/dev/null || true

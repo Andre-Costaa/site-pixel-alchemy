@@ -7,7 +7,7 @@ manages the site creation pipeline, and writes back results to Notion.
 
 Workflow:
     1. Query Notion for prospects with Status = "Qualificado"
-    2. Generate slug, US ID, and user story JSON
+    2. Require page_id from Notion, then generate slug, US ID, and user story JSON
     3. Append to prd.json
     4. Update Notion: Status → "Site em Criação"
     5. (External) Claude Code / Ralph TUI creates the site
@@ -111,6 +111,7 @@ def build_user_story(
     criteria.extend([
         f"Criar pasta 'site-demo/{slug}' e salvar index.html dentro",
         "Gerar mensagem de outreach personalizada (ver template-mensagem-outreach.md)",
+        "Pesquisar e registrar no Notion: Email Negocio, Email Responsavel, Status Email, Fonte Email e Email Validado Em quando houver evidencia",
         "Atualizar Notion: Status → 'Mensagem Pronta', URL Demo, Mensagem, Slug, US ID, Site Criado Em",
         f"Rodar done gate: python3 scripts/done_gate.py --us-id {us_id} (só marcar passes=true se PASS)",
         "Fazer git add, commit e push ao finalizar",
@@ -126,7 +127,7 @@ def build_user_story(
         "notes": "",
         "dependsOn": [previous_us_id] if previous_us_id else [],
         "completionNotes": "",
-        # Optional: enable objective Notion updates/verification later.
+        # Required for objective Notion updates/verification.
         "notionPageId": page_id,
     }
 
@@ -146,6 +147,12 @@ def generate_for_prospect(
     nome = prospect.get("Nome", "")
     if not nome:
         print(f"  SKIP: No name provided")
+        return None
+
+    page_id = prospect.get("page_id") or prospect.get("Page ID") or prospect.get("pageId") or ""
+    if not page_id:
+        print("  SKIP: Missing Notion page_id in prospect payload")
+        print("        Stories that require Notion must be created with notionPageId.")
         return None
 
     # Dedup check: reject if prospect already exists in Notion

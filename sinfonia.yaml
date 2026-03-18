@@ -4,19 +4,33 @@
 runner: claude
 
 # Runner-specific settings
+# Output is captured via `script` (pseudo-terminal), so all CLIs produce their
+# full interactive-style output to the log file in real time. No stream-json needed.
+# {{prompt_file}} is replaced with file contents (inline) or file path depending on runner.
 runners:
   claude:
+    # Docs: https://code.claude.com/docs/en/headless
+    # -p = print/headless mode, --verbose for tool details
     command: "claude"
-    args: ["-p", "{{prompt_file}}", "--allowedTools", "Bash,Read,Write,Edit,Glob,Grep,Agent,WebSearch,WebFetch"]
+    args: ["-p", "{{prompt_file}}", "--verbose", "--output-format", "text", "--permission-mode", "bypassPermissions", "--allowedTools", "Bash,Read,Write,Edit,Glob,Grep,Agent,WebSearch,WebFetch"]
+
   codex:
+    # Docs: https://developers.openai.com/codex/cli/reference
+    # exec = non-interactive, --full-auto = no approval prompts
     command: "codex"
-    args: ["--model", "o4-mini", "--full-auto", "-q", "{{prompt_file}}"]
+    args: ["exec", "--full-auto", "{{prompt_file}}"]
+
   kimi:
+    # Docs: https://moonshotai.github.io/kimi-cli/en/customization/print-mode
+    # --print = headless + auto-approve (implies --yolo)
     command: "kimi"
-    args: ["-p", "{{prompt_file}}"]
+    args: ["--print", "-p", "{{prompt_file}}"]
+
   droid:
+    # Docs: https://docs.factory.ai/cli/droid-exec/overview
+    # exec = headless, -f = read prompt from file, --auto high = full autonomy
     command: "droid"
-    args: ["run", "--prompt-file", "{{prompt_file}}"]
+    args: ["exec", "-f", "{{prompt_file}}", "--auto", "high", "--skip-permissions-unsafe"]
 
 # Polling settings
 polling:
@@ -40,8 +54,8 @@ paths:
 
 # Done gate
 done_gate:
-  command: "cd scripts && python3 done_gate.py --us-id {{us_id}} --no-require-origin-main"
-  mark_done: "cd scripts && python3 mark_story_done.py --us-id {{us_id}} --no-require-origin-main"
+  command: "PYTHONPATH=scripts python3 scripts/done_gate.py --us-id {{us_id}} --no-require-origin-main"
+  mark_done: "PYTHONPATH=scripts python3 scripts/mark_story_done.py --us-id {{us_id}} --no-require-origin-main"
 
 # Timeout per story (minutes)
 timeout_minutes: 30
