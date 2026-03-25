@@ -44,12 +44,7 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 
 - **Telefone** (text) — Com DDD: `(16) 99876-5432`
 - **Endereço** (text) — Endereço completo
-- **Canal Contato** (select) — Canal principal de abordagem/comunicacao
-- **Email Negocio** (text) — Email publico principal do negocio quando houver confianca
-- **Email Responsavel** (text) — Email direto do socio/proprietario/responsavel quando houver evidencia
-- **Status Email** (select) — `Validado`, `Encontrado`, `Duvidoso`, `Nao encontrado`
-- **Fonte Email** (select) — `Site`, `Instagram`, `Google`, `Facebook`, `Manual`
-- **Email Validado Em** (date) — Data da ultima validacao confiavel do email
+- **Canal Contato** (select) — `WhatsApp`, `Instagram DM`, `Email`, `Telefone` — canal preferido de abordagem
 - **Instagram** (text) — Handle ou URL
 - **Facebook** (text) — URL da página
 - **Site** (text) — Website existente (se houver)
@@ -78,6 +73,9 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 ### Campos de Tracking
 
 - **Origem** (select) — `Dentistas`, `Veterinária`, `harmonizacao`, `Pesquisa`, `Notion (Beleza)`
+- **Tentativas Contato** (number) — Numero de tentativas de contato realizadas
+- **Motivo Perda** (select) — `Sem resposta`, `Sem interesse`, `Preço`, `Já tem site`, `Concorrente`
+- **Google Maps ID** (text) — ID do Google Maps do negocio
 - **Data 1º Contato** (date) — Data do primeiro contato
 - **Data Follow-up** (date) — Data do follow-up
 - **Horário** (date) — Horário agendado
@@ -136,17 +134,6 @@ A função `build_site_ready_update()` atualiza:
 6. ✅ `Site Criado Em` → Data de criação (formato `YYYY-MM-DD`, `is_datetime: 0`)
 
 ## ❌ Erros Comuns a Evitar
-
-### ❌ Inventar Email
-```text
-ERRADO
-- deduzir email por padrao como nome@dominio.com sem prova
-- copiar email de terceiros sem vinculo claro com o negocio
-
-CORRETO
-- registrar apenas emails encontrados com evidencia
-- marcar `Status Email = Nao encontrado` ou `Duvidoso` quando nao houver confianca
-```
 
 ### ❌ Status Errado
 ```python
@@ -216,8 +203,6 @@ Antes de considerar uma user story concluída:
 - [ ] **Slug** = slug lowercase com hífens
 - [ ] **US ID** = ID operacional correto
 - [ ] **Site Criado Em** = data no formato `YYYY-MM-DD`
-- [ ] `Status Email` registrado quando o schema de email estiver disponivel
-- [ ] `Email Negocio` e/ou `Email Responsavel` preenchidos somente com evidencia confiavel
 - [ ] `notionPageId` presente no artefato de execucao, apontando para a pagina canonica no Notion
 - [ ] Commit criado e push realizado
 
