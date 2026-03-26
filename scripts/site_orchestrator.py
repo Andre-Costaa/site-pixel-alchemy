@@ -111,7 +111,7 @@ def build_user_story(
     criteria.extend([
         f"Criar pasta 'site-demo/{slug}' e salvar index.html dentro",
         "Gerar mensagem de outreach personalizada (ver template-mensagem-outreach.md)",
-        "Pesquisar e registrar no Notion: Email Negocio, Email Responsavel, Status Email, Fonte Email e Email Validado Em quando houver evidencia",
+        "Pesquisar email de contato do negocio e registrar no campo Email do Notion quando encontrar",
         "Atualizar Notion: Status → 'Mensagem Pronta', URL Demo, Mensagem, Slug, US ID, Site Criado Em",
         f"Rodar done gate: python3 scripts/done_gate.py --us-id {us_id} (só marcar passes=true se PASS)",
         "Fazer git add, commit e push ao finalizar",

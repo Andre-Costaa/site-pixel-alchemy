@@ -23,13 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--slug", default="", help="Set Slug")
     parser.add_argument("--mensagem-file", default="", help="Path to a text file for Mensagem")
     parser.add_argument("--site-criado-em", default="", help="YYYY-MM-DD for Site Criado Em")
-    parser.add_argument("--email-negocio", default="", help="Set Email Negocio")
-    parser.add_argument("--email-responsavel", default="", help="Set Email Responsavel")
-    parser.add_argument("--nome-responsavel", default="", help="Set Nome Responsavel")
-    parser.add_argument("--cargo-responsavel", default="", help="Set Cargo Responsavel")
-    parser.add_argument("--fonte-email", default="", help="Set Fonte Email select value")
-    parser.add_argument("--status-email", default="", help="Set Status Email select value")
-    parser.add_argument("--email-validado-em", default="", help="YYYY-MM-DD for Email Validado Em")
+    parser.add_argument("--email", default="", help="Set Email (business or owner contact email)")
     parser.add_argument(
         "--outbox-dir",
         default=str(NOTION_OUTBOX_DIR),
@@ -58,20 +52,8 @@ def main() -> int:
         properties["Mensagem"] = Path(args.mensagem_file).read_text(encoding="utf-8")
     if args.us_id:
         properties["US ID"] = args.us_id
-    if args.email_negocio:
-        properties["Email Negocio"] = args.email_negocio
-    if args.email_responsavel:
-        properties["Email Responsavel"] = args.email_responsavel
-    if args.nome_responsavel:
-        properties["Nome Responsavel"] = args.nome_responsavel
-    if args.cargo_responsavel:
-        properties["Cargo Responsavel"] = args.cargo_responsavel
-    if args.fonte_email:
-        properties["Fonte Email"] = args.fonte_email
-    if args.status_email:
-        properties["Status Email"] = args.status_email
-    if args.email_validado_em:
-        properties["Email Validado Em"] = args.email_validado_em
+    if args.email:
+        properties["Email"] = args.email
 
     if not properties:
         raise SystemExit("No properties provided. Pass --status/--url-demo/--slug/--mensagem-file/--site-criado-em.")

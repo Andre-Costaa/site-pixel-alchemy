@@ -11,15 +11,13 @@ Prospecto no Notion (Status: "Qualificado")
     ↓
 [2] Ralph TUI / Agente cria o site usando prompt-modelo.md
     ↓
-[3] Agente pesquisa email do negocio/responsavel e registra resultado no Notion
-    Status Email, Email Negocio, Email Responsavel, Fonte Email, Email Validado Em
+[3] Agente pesquisa email de contato do negocio e registra no campo Email do Notion
     ↓
 [4] Agente gera mensagem de outreach (template-mensagem-outreach.md)
     ↓
 [5] Agente enfileira update no Notion (outbox) e processa com worker (sem MCP)
     Status → "Mensagem Pronta"
-    URL Demo, Mensagem, Slug, US ID, Site Criado Em
-    Email Negocio/Responsavel + Status Email quando houver evidencia
+    URL Demo, Mensagem, Slug, US ID, Site Criado Em, Email (quando encontrado)
     ↓
 [6] Commit: "feat: US-XXX - Nome Cliente - Site Completo"
 ```
@@ -59,7 +57,7 @@ python3 scripts/site_orchestrator.py --from-json prospects.json --name "Dra. Lau
 
 **Output**: Adiciona user stories ao `prd.json` com acceptance criteria completo, incluindo:
 - Criação do site seguindo `prompt-modelo.md`
-- **Pesquisa e registro de email** do negócio/responsável com status explícito
+- **Pesquisa e registro de email** de contato do negócio
 - **Geração de mensagem de outreach** (ver `template-mensagem-outreach.md`)
 - **Atualização do Notion** com URL Demo, Mensagem, Slug, US ID, Site Criado Em
 - Commit e push
@@ -78,10 +76,9 @@ Atualização confiável do Notion via outbox + receipts (sem “prova por log�
 # Atualização a partir da story (recomendado quando há notionPageId)
 python3 scripts/notion_update_from_prd.py --us-id US-089 --prd ./prd.json --mensagem-file /tmp/mensagem.txt --site-criado-em 2026-02-23 --process
 
-# Com metadados de email pesquisados
+# Com email pesquisado
 python3 scripts/notion_update_from_prd.py --us-id US-089 --prd ./prd.json --mensagem-file /tmp/mensagem.txt \
-  --site-criado-em 2026-02-23 --status-email "Validado" --email-negocio "contato@exemplo.com" \
-  --fonte-email "Site" --email-validado-em 2026-02-23 --process
+  --site-criado-em 2026-02-23 --email "contato@exemplo.com" --process
 
 # Atualização manual via outbox (uso excepcional; prefira manter notionPageId no PRD)
 python3 scripts/notion_outbox_enqueue.py --us-id US-089 --page-id <NOTION_PAGE_ID> \
@@ -233,12 +230,9 @@ python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX --apply
 - Manter abaixo de 800 caracteres
 
 ### 4. Pesquisar e registrar email
-- Procurar primeiro `Email Responsavel`; se nao houver evidencia confiavel, buscar `Email Negocio`
+- Procurar email de contato do negocio (site oficial, Google, Instagram, Facebook)
 - Nunca inferir email por padrao de dominio sem prova
-- Registrar sempre o resultado da busca no Notion:
-  - `Status Email` = `Validado`, `Encontrado`, `Duvidoso` ou `Nao encontrado`
-  - `Fonte Email` = `Site`, `Instagram`, `Google`, `Facebook` ou `Manual`
-  - `Email Validado Em` = data da checagem quando houver email confiavel
+- Registrar no campo `Email` do Notion quando encontrar
 - Se nao houver email, o fluxo **nao bloqueia**: seguir com WhatsApp/Instagram normalmente
 
 ### 5. Atualizar Notion CRM
@@ -250,15 +244,14 @@ python3 scripts/reconcile_prd_notion_links.py --us-id US-XXX --apply
   - `Slug` → slug do site
   - `US ID` → ID da user story (ex: "US-089")
   - `Site Criado Em` → data de hoje (YYYY-MM-DD)
-  - `Status Email` / `Email Negocio` / `Email Responsavel` / `Fonte Email` / `Email Validado Em` quando houver evidência
+  - `Email` quando encontrado durante pesquisa
 
 **Exemplo**:
 ```bash
 python3 scripts/notion_outbox_enqueue.py --us-id US-089 --page-id <NOTION_PAGE_ID> \\
   --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/" \\
   --slug "<slug>" --site-criado-em "2026-02-23" --mensagem-file /tmp/mensagem.txt \\
-  --status-email "Validado" --email-negocio "contato@exemplo.com" --fonte-email "Site" \\
-  --email-validado-em "2026-02-23"
+  --email "contato@exemplo.com"
 python3 scripts/notion_outbox_worker.py --once
 ```
 

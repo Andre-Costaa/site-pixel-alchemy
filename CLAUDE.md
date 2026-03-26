@@ -130,6 +130,7 @@ The primary prospect/client management system is a Notion database accessible vi
 | **Venda** | select | `Sim`, `Não`, `Em negociação` |
 | **Valor** | number (R$) | Deal value in BRL |
 | **Telefone** | text | Phone number with area code |
+| **Email** | text | Business or owner contact email (researched during site creation) |
 | **Endereço** | text | Business full address |
 | **Site** | text | Existing website URL (if any) |
 | **URL Demo** | url | **CRITICAL**: Link to demo site `https://www.pixelalchemy.com.br/site-demo/<slug>/` |

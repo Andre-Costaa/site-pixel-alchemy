@@ -43,6 +43,7 @@ Quando você terminar de criar um site para um cliente, você **DEVE** atualizar
 ### Campos de Contato
 
 - **Telefone** (text) — Com DDD: `(16) 99876-5432`
+- **Email** (text) — Email de contato do negócio ou do responsável (pesquisado durante criação do site)
 - **Endereço** (text) — Endereço completo
 - **Canal Contato** (select) — `WhatsApp`, `Instagram DM`, `Email`, `Telefone` — canal preferido de abordagem
 - **Instagram** (text) — Handle ou URL

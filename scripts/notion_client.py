@@ -44,12 +44,9 @@ SELECT_FIELDS = {
     "Nicho",
     "Motivo Perda",
     "Canal Contato",
-    "Status Email",
-    "Fonte Email",
 }
 DATE_FIELDS = {
     "Site Criado Em",
-    "Email Validado Em",
     "Data 1º Contato",
     "Data Follow-up",
     "Horário",
