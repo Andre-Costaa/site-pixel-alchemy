@@ -324,22 +324,22 @@ def merge_and_insert(conn, records, source):
                 rec[key] = ''
 
         if source == 'notion':
-            # Upsert por notion_id
+            # ── Notion: upsert por notion_id ────────────────────────────────
+            nid = rec.get('notion_id') or ''
             existing = conn.execute(
-                'SELECT id FROM prospects WHERE notion_id = ?',
-                (rec.get('notion_id'),)
+                'SELECT pipeline_status FROM prospects WHERE notion_id = ?',
+                (nid,)
             ).fetchone()
 
             if existing:
-                # Preserve local pipeline_status se existir
-                existing_row = conn.execute(
-                    'SELECT pipeline_status FROM prospects WHERE notion_id = ?',
-                    (rec['notion_id'],)
-                ).fetchone()
-                if existing_row and existing_row['pipeline_status'] not in (None, ''):
-                    rec['pipeline_status'] = existing_row['pipeline_status']
+                # BUGFIX #3: usar truthiness para preservar pipeline setado por agente
+                # '' (string vazia) E falsy → nao sobrescreve. Funciona!
+                # Mas se agente setou explicitamente '', we lose it. Usar 'is not None and != ""'.
+                ep = existing['pipeline_status']
+                if ep is not None and ep != '':
+                    rec['pipeline_status'] = ep
                 else:
-                    rec['pipeline_status'] = normalize_pipeline(rec.get('pipeline_status', ''))
+                    rec['pipeline_status'] = normalize_pipeline(rec.get('notion_status') or '')
                 if not rec.get('created_at'):
                     rec['created_at'] = now
 
@@ -357,11 +357,11 @@ def merge_and_insert(conn, records, source):
                 vals = [rec.get(c) for c in EXPLICIT_COLS]
                 conn.execute(
                     f"UPDATE prospects SET {set_clause} WHERE notion_id = ?",
-                    vals + [rec['notion_id']]
+                    vals + [nid]
                 )
                 updated += 1
             else:
-                rec['pipeline_status'] = normalize_pipeline(rec.get('pipeline_status', ''))
+                rec['pipeline_status'] = normalize_pipeline(rec.get('notion_status') or '')
                 rec['created_at'] = now
                 EXPLICIT_COLS = [
                     'notion_id', 'nome', 'pipeline_status', 'notion_status', 'nicho',
@@ -381,45 +381,49 @@ def merge_and_insert(conn, records, source):
                 inserted += 1
 
         else:
-            # CSV/JSON: upsert por telefone_norm (ignora se ja existe Notion com mesmo telefone)
+            # ── CSV/JSON: upsert por telefone_norm com MERGE inteligente ─────
+            # BUGFIX #1: se telefone ja existe (Notion), fazer MERGE em vez de skip.
+            # Regra: Notion wins em todos os campos, mas supplement do CSV se Notion nao tem.
             if not phone_norm:
                 continue
 
-            # Verifica se ja existe desse telefone_norm
             existing = conn.execute(
-                'SELECT id, source FROM prospects WHERE telefone_norm = ?',
+                'SELECT * FROM prospects WHERE telefone_norm = ?',
                 (phone_norm,)
             ).fetchone()
 
             if existing:
-                # Se ja veio do Notion, mantem Notion
-                if existing['source'] == 'notion':
-                    continue
-                # Caso contrario, atualiza
-                rec['created_at'] = now
-                rec['pipeline_status'] = 'Lead'
-                rec['notion_status'] = ''
-                if not rec.get('nicho'):
-                    rec['nicho'] = infer_niche(rec.get('nome', ''), rec.get('servicos', ''))
-                EXPLICIT_COLS = [
-                    'nome', 'pipeline_status', 'nicho',
-                    'telefone', 'telefone_norm', 'email', 'endereco',
-                    'site_url', 'origem', 'resposta', 'observacoes',
-                    'tentativas_contato', 'valor', 'source',
-                    'updated_at'
-                ]
-                set_clause = ', '.join([f"{c} = ?" for c in EXPLICIT_COLS])
-                vals = [rec.get(c) for c in EXPLICIT_COLS]
-                conn.execute(
-                    f"UPDATE prospects SET {set_clause} WHERE telefone_norm = ?",
-                    vals + [phone_norm]
-                )
-                updated += 1
+                # MERGE: supplement campos que estao vazios no Notion com dados do CSV/JSON
+                updates = {}
+                # Campos que o CSV pode ter que o Notion nao tem
+                for field in ('nome', 'endereco', 'site_url', 'email'):
+                    rec_val = rec.get(field)
+                    existing_val = existing[field]
+                    if rec_val and (not existing_val or existing_val.strip() == ''):
+                        updates[field] = rec_val
+                # Infer niche se Notion nao tem
+                if not existing['nicho'] or existing['nicho'].strip() == '':
+                    updates['nicho'] = rec.get('nicho') or infer_niche(
+                        rec.get('nome', ''), rec.get('servicos', '')
+                    )
+                # Log merged data para debug
+                if updates:
+                    print(f"  MERGE phone={phone_norm}: {list(updates.keys())}")
+                    set_clause = ', '.join([f"{k} = ?" for k in updates])
+                    vals = [updates[k] for k in updates]
+                    conn.execute(
+                        f"UPDATE prospects SET {set_clause}, updated_at = ? WHERE telefone_norm = ?",
+                        vals + [now, phone_norm]
+                    )
+                    updated += 1
+                else:
+                    # Nao fez nada mas nao perdeu dados do Notion
+                    pass
             else:
+                # Insert novo
                 rec['pipeline_status'] = 'Lead'
                 rec['notion_status'] = ''
                 rec['created_at'] = now
-                # Infere nicho se vazio
                 if not rec.get('nicho'):
                     rec['nicho'] = infer_niche(rec.get('nome', ''), rec.get('servicos', ''))
                 EXPLICIT_COLS = [

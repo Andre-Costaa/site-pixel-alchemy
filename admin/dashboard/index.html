@@ -351,8 +351,9 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
 
     function renderNotionStatus(os) {
         const nb = os.notion_status_breakdown || {};
-        const total = Object.values(nb).reduce((a,b)=>a+b,0) || 1;
-        const max = Math.max(...Object.values(nb),1);
+        const vals = Object.values(nb);
+        const total = vals.reduce((a, b) => a + b, 0) || 1;
+        const max = Math.max(...vals, 1);
         const colorMap = {
             'Lead':'#b5a6c8','Mensagem Pronta':'#e07856','Enviado':'#e05c5c',
             'Respondeu':'#5cbe7c','Reunião':'#8ba888','Proposta':'#c4a68a',
@@ -433,21 +434,34 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
     }
 
     function renderActivity(activities) {
-        if (!activities || activities.length === 0) {
+        if (!activities || !Array.isArray(activities) || activities.length === 0) {
             $('#activityList').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa">Nenhuma atividade</div>';
             return;
         }
         const dotMap = {'feat':'dot-green','fix':'dot-terracotta','chore':'dot-clay','docs':'dot-sage','refactor':'dot-clay'};
-        $('#activityList').innerHTML = activities.map(a => {
-            const prefix = a.message.split(':')[0].toLowerCase();
+        const list = document.createDocumentFragment();
+        activities.forEach(a => {
+            const msg = a.message || '';
+            const prefix = msg.split(':')[0].toLowerCase();
             const color = dotMap[prefix] || 'dot-clay';
             const date = a.date ? a.date.split(' ')[0] : '';
-            return `<div class="activity-item">
-                <div class="activity-dot ${color}"></div>
-                <div class="activity-msg">${a.message}</div>
-                <div class="activity-date">${date}</div>
-            </div>`;
-        }).join('');
+            const item = document.createElement('div');
+            item.className = 'activity-item';
+            const dot = document.createElement('div');
+            dot.className = `activity-dot ${color}`;
+            const msgEl = document.createElement('div');
+            msgEl.className = 'activity-msg';
+            msgEl.textContent = msg;
+            const dateEl = document.createElement('div');
+            dateEl.className = 'activity-date';
+            dateEl.textContent = date;
+            item.appendChild(dot);
+            item.appendChild(msgEl);
+            item.appendChild(dateEl);
+            list.appendChild(item);
+        });
+        $('#activityList').innerHTML = '';
+        $('#activityList').appendChild(list);
     }
 
     initGate();
