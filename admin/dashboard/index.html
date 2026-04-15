@@ -10,218 +10,174 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
-    --color-charcoal: #1a1f2e;
-    --color-charcoal-light: #2a2f3e;
-    --color-cream: #faf8f4;
-    --color-cream-dark: #f0ede8;
-    --color-terracotta: #e07856;
-    --color-terracotta-light: #ed9d7f;
-    --color-sage: #8ba888;
-    --color-sage-light: #a8c4a5;
-    --color-lavender: #b5a6c8;
-    --color-clay: #c4a68a;
-    --color-clay-light: #d9c4af;
-    --color-red: #e05c5c;
-    --color-green: #5cbe7c;
+    --bg: #faf8f4;
+    --card: #ffffff;
+    --border: #f0ede8;
+    --charcoal: #1a1f2e;
+    --charcoal-light: #2a2f3e;
+    --terracotta: #e07856;
+    --sage: #8ba888;
+    --lavender: #b5a6c8;
+    --clay: #c4a68a;
+    --red: #e05c5c;
+    --green: #5cbe7c;
+    --gray: #888;
+    --gray-light: #aaa;
 
+    --font: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --shadow-sm: 0 2px 8px rgba(26,31,46,0.06);
-    --shadow-md: 0 4px 20px rgba(26,31,46,0.10);
-    --shadow-lg: 0 8px 40px rgba(26,31,46,0.14);
+
+    --r: 16px;
+    --shadow: 0 2px 12px rgba(26,31,46,0.08);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-    font-family: var(--font-body);
-    background: var(--color-cream);
-    color: var(--color-charcoal);
-    min-height: 100vh;
-}
+body { font-family: var(--font); background: var(--bg); color: var(--charcoal); min-height: 100vh; }
 
-/* ===== PASSWORD GATE ===== */
+/* ── PASSWORD ── */
 .gate {
     position: fixed; inset: 0; z-index: 9999;
-    background: var(--color-charcoal);
+    background: var(--charcoal);
     display: flex; align-items: center; justify-content: center;
 }
 .gate.hidden { display: none; }
 .gate-box {
-    background: var(--color-cream);
-    border-radius: var(--radius-lg);
-    padding: 3rem;
-    width: 380px;
-    max-width: 95vw;
-    box-shadow: var(--shadow-lg);
-    text-align: center;
+    background: var(--bg); border-radius: var(--r);
+    padding: 2.5rem; width: 360px; max-width: 95vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
 }
-.gate-box h1 {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: var(--color-charcoal);
-}
-.gate-box p { color: #888; font-size: 0.88rem; margin-bottom: 1.8rem; }
+.gate-box h1 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+.gate-box p { color: var(--gray); font-size: 0.82rem; margin-bottom: 1.5rem; }
 .gate-box input {
-    width: 100%; padding: 14px 18px;
-    border: 2px solid var(--color-cream-dark);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body); font-size: 1rem;
-    outline: none; transition: border-color 0.2s; margin-bottom: 0.5rem;
+    width: 100%; padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 8px; font-family: var(--font); font-size: 1rem;
+    outline: none; margin-bottom: 0.5rem;
 }
-.gate-box input:focus { border-color: var(--color-terracotta); }
-.gate-error { color: var(--color-red); font-size: 0.82rem; min-height: 1.2em; margin-bottom: 0.8rem; }
+.gate-box input:focus { border-color: var(--terracotta); }
+.gate-error { color: var(--red); font-size: 0.78rem; min-height: 1.2em; margin-bottom: 0.8rem; }
 .gate-btn {
-    width: 100%; padding: 14px;
-    background: var(--color-charcoal);
-    color: #fff; border: none;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body); font-size: 1rem; font-weight: 600;
-    cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+    width: 100%; padding: 12px;
+    background: var(--charcoal); color: #fff;
+    border: none; border-radius: 8px;
+    font-family: var(--font); font-size: 1rem; font-weight: 600;
+    cursor: pointer;
 }
-.gate-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-.gate-btn:active { transform: translateY(0); }
+.gate-btn:hover { opacity: 0.85; }
 
-/* ===== LAYOUT ===== */
+/* ── LAYOUT ── */
 .layout { display: none; flex-direction: column; min-height: 100vh; }
 .layout.visible { display: flex; }
 
-/* Header */
 .header {
-    background: var(--color-charcoal); color: #fff;
+    background: var(--charcoal); color: #fff;
     padding: 1rem 2rem;
-    display: flex; align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
 }
-.header-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; }
-.header-sub { font-size: 0.8rem; color: #aaa; }
-.header-right { font-size: 0.75rem; color: #888; text-align: right; }
+.header-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+.header-sub { font-size: 0.75rem; color: #aaa; }
+.header-right { font-size: 0.72rem; color: #888; text-align: right; }
 
-/* Main */
-.main { flex: 1; padding: 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+.main { flex: 1; padding: 1.5rem 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
 
-/* Section */
-.section { margin-bottom: 3rem; }
+.section { margin-bottom: 2.5rem; }
 .section-title {
-    font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
-    margin-bottom: 1.2rem; padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-cream-dark);
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
 }
 
-/* KPI Grid */
+/* ── KPIs ── */
 .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem; margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.8rem;
 }
 .kpi {
-    background: #fff; border-radius: var(--radius-md);
-    padding: 1.2rem 1rem; box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-cream-dark);
+    background: var(--card); border-radius: var(--r);
+    padding: 1rem 0.8rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    text-align: center;
 }
-.kpi-label {
-    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.06em; color: #888; margin-bottom: 0.5rem;
-}
-.kpi-value {
-    font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; line-height: 1;
-}
-.kpi-sub { font-size: 0.72rem; color: #aaa; margin-top: 0.3rem; }
-.kpi-bar { height: 5px; background: var(--color-cream-dark); border-radius: 3px; margin-top: 0.6rem; overflow: hidden; }
-.kpi-bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
-.highlight-terracotta { color: var(--color-terracotta); }
-.highlight-sage { color: var(--color-sage); }
-.highlight-red { color: var(--color-red); }
-.highlight-green { color: var(--color-green); }
-.highlight-lavender { color: var(--color-lavender); }
+.kpi-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 0.4rem; }
+.kpi-value { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1; }
+.kpi-sub { font-size: 0.68rem; color: var(--gray-light); margin-top: 0.3rem; }
 
-/* Funnel */
-.funnel-container { background: #fff; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm); border: 1px solid var(--color-cream-dark); }
-.funnel-stage { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
-.funnel-stage:last-child { margin-bottom: 0; }
-.funnel-label { font-size: 0.82rem; font-weight: 500; width: 130px; flex-shrink: 0; color: var(--color-charcoal-light); }
-.funnel-bar-wrap { flex: 1; height: 30px; background: var(--color-cream-dark); border-radius: 6px; overflow: hidden; position: relative; }
-.funnel-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; transition: width 1.2s ease; min-width: 40px; }
-.funnel-bar span { font-size: 0.76rem; font-weight: 700; color: #fff; white-space: nowrap; }
-.funnel-count { font-size: 0.82rem; font-weight: 600; width: 40px; text-align: right; flex-shrink: 0; }
+/* ── FUNNEL ── */
+.card { background: var(--card); border-radius: var(--r); padding: 1.2rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.card-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; color: var(--charcoal-light); }
 
-/* Note box */
+.funnel-stage { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+.funnel-label { font-size: 0.78rem; font-weight: 500; width: 110px; flex-shrink: 0; }
+.funnel-bar-wrap { flex: 1; height: 26px; background: var(--border); border-radius: 6px; overflow: hidden; }
+.funnel-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; transition: width 1.2s ease; min-width: 36px; }
+.funnel-bar span { font-size: 0.72rem; font-weight: 700; color: #fff; }
+.funnel-count { font-size: 0.78rem; font-weight: 600; width: 35px; text-align: right; flex-shrink: 0; }
+
 .note-box {
-    background: #fef3e2;
-    border: 1px solid #f5d9a8;
-    border-radius: var(--radius-sm);
-    padding: 0.8rem 1rem;
-    font-size: 0.82rem;
-    color: #7a4a10;
-    margin-top: 1rem;
-    line-height: 1.5;
+    background: #fef8f0; border: 1px solid #f5d9a8;
+    border-radius: 8px; padding: 0.7rem 1rem;
+    font-size: 0.78rem; color: #7a4a10; margin-top: 1rem; line-height: 1.5;
 }
-.note-box strong { font-weight: 700; }
 
-/* Two column */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+/* ── TWO COL ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
 
-/* Card */
-.card {
-    background: #fff; border-radius: var(--radius-md);
-    padding: 1.5rem; box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-cream-dark);
-}
-.card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-charcoal); }
+/* ── NICHE ── */
+.niche-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.niche-name { font-size: 0.75rem; width: 110px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.niche-bar-wrap { flex: 1; height: 18px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.niche-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 6px; }
+.niche-bar-fill span { font-size: 0.68rem; font-weight: 700; color: #fff; }
+.niche-count { font-size: 0.75rem; font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
 
-/* Niche bars */
-.niche-bars { display: flex; flex-direction: column; gap: 0.6rem; }
-.niche-row { display: flex; align-items: center; gap: 0.8rem; }
-.niche-name { font-size: 0.8rem; width: 120px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.niche-bar-wrap { flex: 1; height: 22px; background: var(--color-cream-dark); border-radius: 4px; overflow: hidden; }
-.niche-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; min-width: 28px; }
-.niche-bar-fill span { font-size: 0.72rem; font-weight: 700; color: #fff; }
-.niche-count { font-size: 0.8rem; font-weight: 600; width: 35px; text-align: right; flex-shrink: 0; }
+/* ── MONTHLY ── */
+.monthly-bars { display: flex; align-items: flex-end; gap: 1rem; height: 110px; padding-top: 0.5rem; }
+.month-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.month-bar-wrap { width: 100%; height: 80px; background: var(--border); border-radius: 6px 6px 0 0; overflow: hidden; display: flex; align-items: flex-end; }
+.month-bar { width: 100%; background: var(--charcoal); border-radius: 6px 6px 0 0; transition: height 1s ease; min-height: 4px; }
+.month-label { font-size: 0.7rem; font-weight: 600; color: var(--gray); }
+.month-count-label { font-size: 0.8rem; font-weight: 700; }
 
-/* Monthly chart */
-.monthly-bars { display: flex; align-items: flex-end; gap: 1.5rem; height: 140px; padding-top: 0.5rem; }
-.month-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
-.month-bar-wrap { width: 100%; height: 100px; background: var(--color-cream-dark); border-radius: 6px 6px 0 0; overflow: hidden; display: flex; align-items: flex-end; }
-.month-bar { width: 100%; background: var(--color-charcoal); border-radius: 6px 6px 0 0; transition: height 1s ease; min-height: 4px; }
-.month-label { font-size: 0.75rem; font-weight: 600; color: #888; }
-.month-count-label { font-size: 0.85rem; font-weight: 700; color: var(--color-charcoal); }
+/* ── NOTION STATUS ── */
+.status-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.status-name { font-size: 0.75rem; width: 130px; flex-shrink: 0; font-weight: 500; }
+.status-bar-wrap { flex: 1; height: 16px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.status-bar { height: 100%; border-radius: 4px; background: var(--lavender); }
+.status-count { font-size: 0.75rem; font-weight: 600; width: 30px; text-align: right; }
 
-/* Activity feed */
-.activity-list { display: flex; flex-direction: column; gap: 0; max-height: 400px; overflow-y: auto; }
-.activity-item { display: flex; gap: 0.8rem; padding: 0.7rem 0; border-bottom: 1px solid var(--color-cream-dark); font-size: 0.8rem; }
+/* ── ACTIVITY ── */
+.activity-list { max-height: 350px; overflow-y: auto; }
+.activity-item { display: flex; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
 .activity-item:last-child { border-bottom: none; }
-.activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-.dot-green { background: var(--color-green); }
-.dot-terracotta { background: var(--color-terracotta); }
-.dot-sage { background: var(--color-sage); }
-.dot-clay { background: var(--color-clay); }
-.activity-msg { flex: 1; line-height: 1.4; color: var(--color-charcoal); }
-.activity-date { color: #aaa; font-size: 0.72rem; white-space: nowrap; }
+.activity-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.dot-green { background: var(--green); }
+.dot-terracotta { background: var(--terracotta); }
+.dot-sage { background: var(--sage); }
+.dot-clay { background: var(--clay); }
+.activity-msg { flex: 1; line-height: 1.4; color: var(--charcoal); }
+.activity-date { color: var(--gray-light); font-size: 0.7rem; white-space: nowrap; }
 
-/* PRD section */
-.prd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
-.prd-stat { background: #fff; border-radius: var(--radius-md); padding: 1.2rem; box-shadow: var(--shadow-sm); border: 1px solid var(--color-cream-dark); text-align: center; }
-.prd-stat-value { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; }
-.prd-stat-label { font-size: 0.72rem; color: #888; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+/* ── PRD ── */
+.prd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; }
+.prd-stat { background: var(--card); border-radius: var(--r); padding: 1rem; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; }
+.prd-stat-value { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; }
+.prd-stat-label { font-size: 0.68rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-/* Footer */
-.footer { text-align: center; padding: 1.5rem; font-size: 0.75rem; color: #aaa; border-top: 1px solid var(--color-cream-dark); }
+.footer { text-align: center; padding: 1.2rem; font-size: 0.72rem; color: var(--gray-light); border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
+<!-- PASSWORD -->
 <div class="gate" id="gate">
     <div class="gate-box">
         <h1>Pixel Alchemy</h1>
-        <p>Dashboard de Prospeccao. Insira a senha para acessar.</p>
+        <p>CRM de Prospeccao. Insira a senha.</p>
         <input type="password" id="gateInput" placeholder="Senha" autocomplete="off">
         <div class="gate-error" id="gateError"></div>
         <button class="gate-btn" id="gateBtn">Entrar</button>
@@ -246,45 +202,45 @@ body {
             <div class="kpi-grid" id="kpiGrid"></div>
         </div>
 
-        <!-- FUNIL + LEADS POR NICHO -->
+        <!-- FUNIL -->
         <div class="section">
             <h2 class="section-title">Funil de Prospeccao</h2>
             <div class="two-col">
                 <div class="card">
-                    <div class="card-title">Conversao por Etapa</div>
+                    <div class="card-title">Pipeline (SQLite)</div>
                     <div id="funnelChart"></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Leads por Nicho</div>
-                    <div id="nicheChart"></div>
+                    <div class="card-title">Status Original (Notion)</div>
+                    <div id="notionStatusChart"></div>
                 </div>
             </div>
         </div>
 
-        <!-- OUTREACH + PRODUCAO MENSAL -->
+        <!-- NICHO + PRODUCAO -->
         <div class="section">
-            <h2 class="section-title">Outreach e Producao</h2>
+            <h2 class="section-title">Leads por Nicho e Producao</h2>
             <div class="two-col">
                 <div class="card">
-                    <div class="card-title">Email Outreach</div>
-                    <div id="outreachChart"></div>
+                    <div class="card-title">Distribuicao por Nicho</div>
+                    <div id="nicheChart"></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Sites Criados por Mes</div>
+                    <div class="card-title">Sites Criados por Mes (Git)</div>
                     <div id="monthlyChart"></div>
                 </div>
             </div>
         </div>
 
-        <!-- PRD STATUS -->
+        <!-- PRD -->
         <div class="section">
-            <h2 class="section-title">PRD - User Stories</h2>
+            <h2 class="section-title">User Stories & Sites</h2>
             <div class="prd-grid" id="prdGrid"></div>
         </div>
 
-        <!-- ATIVIDADE RECENTE -->
+        <!-- ATIVIDADE -->
         <div class="section">
-            <h2 class="section-title">Atividade Recente (Git Log)</h2>
+            <h2 class="section-title">Atividade Recente (Git)</div>
             <div class="card">
                 <div class="activity-list" id="activityList"></div>
             </div>
@@ -299,7 +255,6 @@ body {
     'use strict';
     const $ = s => document.querySelector(s);
 
-    // ---- AUTH ----
     const HASH = '0ab6d63e627eaf2f63a43514d1722ec6de93c49fc7452a9de39fe1882e2f0d98';
 
     async function sha256(text) {
@@ -313,9 +268,7 @@ body {
         if (sessionStorage.getItem('pa_crm_auth') === '1') { showDashboard(); loadData(); return; }
         const input = $('#gateInput'), btn = $('#gateBtn'), err = $('#gateError');
         async function tryLogin() {
-            const pw = input.value;
-            if (!pw) { err.textContent = 'Digite a senha.'; return; }
-            if (await checkPW(pw)) {
+            if (await checkPW(input.value)) {
                 sessionStorage.setItem('pa_crm_auth', '1');
                 showDashboard(); loadData();
             } else {
@@ -329,191 +282,166 @@ body {
 
     function showDashboard() { $('#gate').classList.add('hidden'); $('#layout').classList.add('visible'); }
 
-    // ---- DATA ----
-    let DATA = null;
-
     async function loadData() {
         try {
             const r = await fetch('dashboard-data.json');
             if (!r.ok) throw new Error('Failed');
-            DATA = await r.json();
-            render();
+            render(await r.json());
         } catch(e) {
-            document.querySelector('.main').innerHTML = '<div style="text-align:center;padding:3rem;color:#e05c5c"><h2>Erro ao carregar dados</h2><p>Tente atualizar a pagina.</p></div>';
+            document.querySelector('.main').innerHTML = '<div style="text-align:center;padding:3rem;color:#e05c5c"><h2>Erro ao carregar dados</h2><p>Rode generate_crm_data.py para atualizar.</p></div>';
         }
     }
 
-    // ---- RENDER ----
-    function render() {
+    function render(DATA) {
         if (!DATA || !DATA.crm) return;
         const crm = DATA.crm;
         const updated = new Date(DATA.generated_at).toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'});
         $('#updatedAt').textContent = 'Atualizado: ' + updated;
-        $('#footer').textContent = 'Pixel Alchemy CRM | Dados reais de ' + updated;
+        $('#footer').textContent = 'Pixel Alchemy CRM | Dados de ' + updated;
 
         renderKPIs(crm);
         renderFunnel(crm.funnel);
-        renderNicheChart(crm.niche_distribution, crm.leads_summary);
-        renderOutreach(crm.outreach_stats);
+        renderNotionStatus(crm.outreach_stats);
+        renderNiches(crm.niche_distribution, crm.leads_summary);
         renderMonthly(crm.monthly_production);
-        renderPRD(crm.prd);
+        renderPRD(crm.prd, crm.leads_summary);
         renderActivity(crm.recent_activity);
     }
 
     function renderKPIs(c) {
         const ls = c.leads_summary;
         const os = c.outreach_stats;
-        const funnel = c.funnel.counts;
-
+        const fc = c.funnel.counts;
         const items = [
-            { label: 'Leads', value: ls.total_leads, sub: 'contatos com telefone', cls: '', color: '#1a1f2e' },
-            { label: 'Ja Contatados', value: ls.previously_contacted, sub: 'wave anterior (negaram)', cls: 'highlight-terracotta', color: '#e07856' },
-            { label: 'Nunca Contatados', value: ls.never_contacted, sub: 'pool atual sem outreach', cls: 'highlight-sage', color: '#8ba888' },
-            { label: 'Ja Negaram', value: ls.previously_denied, sub: 'contatados anteriormente', cls: 'highlight-red', color: '#e05c5c' },
-            { label: 'Respondem Hoje', value: os.currently_respondeu, sub: 'nenhuma resposta ainda', cls: 'highlight-lavender', color: '#b5a6c8' },
-            { label: 'Propostas', value: os.currently_proposta, sub: 'enviadas ate agora', cls: 'highlight-clay', color: '#c4a68a' },
+            { label: 'Total Leads', value: ls.total_leads, sub: 'no banco SQLite', color: '#1a1f2e' },
+            { label: 'Com Telefone', value: ls.with_phone, sub: 'tem como contatar', color: '#5cbe7c' },
+            { label: 'Lead', value: fc.Lead, sub: 'sem contato ainda', color: '#b5a6c8' },
+            { label: 'Contatado', value: fc.Contatado, sub: 'msg/enviado', color: '#e07856' },
+            { label: 'Respondeu', value: os.currently_respondeu, sub: '0 por enquanto', color: '#c4a68a' },
+            { label: 'Proposta', value: os.currently_proposta, sub: 'enviadas ate agora', color: '#8ba888' },
         ];
-
         $('#kpiGrid').innerHTML = items.map(i => `
             <div class="kpi">
                 <div class="kpi-label">${i.label}</div>
-                <div class="kpi-value ${i.cls}">${i.value}</div>
+                <div class="kpi-value" style="color:${i.color}">${i.value}</div>
                 <div class="kpi-sub">${i.sub}</div>
-            </div>`
-        ).join('');
+            </div>`).join('');
     }
 
     function renderFunnel(funnel) {
         const stages = funnel.stages;
         const counts = funnel.counts;
         const max = Math.max(...stages.map(s => counts[s] || 0), 1);
-
-        const colors = ['#5cbe7c','#7dc95e','#a8c4a5','#c4d49a','#d4c48a','#e0b87a','#e0a06a','#e08856','#e07060','#e05c5c'];
-
+        const colors = ['#5cbe7c','#7dc95e','#a8c4a5','#d4c48a','#e0b87a','#e07060'];
         $('#funnelChart').innerHTML = stages.map((stage, i) => {
             const count = counts[stage] || 0;
             const pct = (count / max) * 100;
-            const color = colors[Math.min(i, colors.length - 1)];
-            const w = Math.max(8, pct);
+            const w = Math.max(10, pct);
             return `<div class="funnel-stage">
                 <span class="funnel-label">${stage}</span>
                 <div class="funnel-bar-wrap">
-                    <div class="funnel-bar" style="width:${w}%;background:${color}">
+                    <div class="funnel-bar" style="width:${w}%;background:${colors[i]||'#888'}">
                         <span>${count}</span>
                     </div>
                 </div>
                 <span class="funnel-count">${count}</span>
             </div>`;
-        }).join('') + `<div class="note-box"><strong>Nota:</strong> ${funnel.note || ''}</div>`;
+        }).join('') + `<div class="note-box"><strong>Origem:</strong> ${funnel.note}</div>`;
     }
 
-    function renderNicheChart(niches, leads) {
-        const total = leads.total_leads || 1;
-        const max = Math.max(...Object.values(niches), 1);
-
+    function renderNotionStatus(os) {
+        const nb = os.notion_status_breakdown || {};
+        const total = Object.values(nb).reduce((a,b)=>a+b,0) || 1;
+        const max = Math.max(...Object.values(nb),1);
         const colorMap = {
-            'Veterinária': '#8ba888', 'Harmonização/Beleza': '#b5a6c8',
-            'Harmonização': '#b5a6c8', 'Dentista': '#e07856',
-            'Beleza': '#c4a68a', 'Barbearia': '#1a1f2e',
-            'Pet Shop': '#65a3b8', 'Pizzaria': '#d4543b',
-            'Padaria': '#d4a76a', 'Açougue': '#8b2500', 'Outros': '#aaa'
+            'Lead':'#b5a6c8','Mensagem Pronta':'#e07856','Enviado':'#e05c5c',
+            'Respondeu':'#5cbe7c','Reunião':'#8ba888','Proposta':'#c4a68a',
+            'Fechado':'#1a1f2e','Site em Criação':'#65a3b8','Perdido':'#999'
         };
-
-        const sorted = Object.entries(niches).sort((a,b) => b[1] - a[1]);
-
-        $('#nicheChart').innerHTML = `<div class="niche-bars">` +
-            sorted.map(([niche, count]) => {
-                const pct = (count / max) * 100;
-                const color = colorMap[niche] || '#888';
-                const pctLabel = ((count / total) * 100).toFixed(1) + '%';
-                return `<div class="niche-row">
-                    <span class="niche-name" title="${niche}">${niche}</span>
-                    <div class="niche-bar-wrap">
-                        <div class="niche-bar-fill" style="width:${pct}%;background:${color}">
-                            <span>${pctLabel}</span>
-                        </div>
-                    </div>
-                    <span class="niche-count">${count}</span>
-                </div>`;
-            }).join('') + `</div>`;
+        $('#notionStatusChart').innerHTML = Object.entries(nb).sort((a,b)=>b[1]-a[1]).map(([s,c]) => {
+            const pct = (c / max) * 100;
+            const color = colorMap[s] || '#aaa';
+            const pct2 = ((c / total) * 100).toFixed(1);
+            return `<div class="status-row">
+                <span class="status-name">${s}</span>
+                <div class="status-bar-wrap">
+                    <div class="status-bar" style="width:${pct}%;background:${color}"></div>
+                </div>
+                <span class="status-count">${c} (${pct2}%)</span>
+            </div>`;
+        }).join('');
     }
 
-    function renderOutreach(stats) {
-        const items = [
-            { label: 'Ja Contatados', value: stats.previously_contacted, color: '#e07856' },
-            { label: 'Ja Negaram', value: stats.previously_denied, color: '#e05c5c' },
-            { label: 'Respondem Agora', value: stats.currently_respondeu, color: '#b5a6c8' },
-            { label: 'Reuniao', value: stats.currently_reuniao, color: '#8ba888' },
-            { label: 'Proposta', value: stats.currently_proposta, color: '#c4a68a' },
-            { label: 'Fechado', value: stats.currently_fechado, color: '#5cbe7c' },
-        ];
-
-        const max = Math.max(...items.map(i => i.value), 1);
-
-        $('#outreachChart').innerHTML = `<div class="niche-bars">` +
-            items.map(i => {
-                const pct = (i.value / max) * 100;
-                return `<div class="niche-row">
-                    <span class="niche-name">${i.label}</span>
-                    <div class="niche-bar-wrap">
-                        <div class="niche-bar-fill" style="width:${pct}%;background:${i.color}">
-                            <span>${i.value}</span>
-                        </div>
+    function renderNiches(niches, ls) {
+        const total = ls.total_leads || 1;
+        const max = Math.max(...Object.values(niches),1);
+        const colorMap = {
+            'Veterinária':'#8ba888','Beleza':'#c4a68a','Harmonização':'#b5a6c8',
+            'Dentista':'#e07856','Pet Shop':'#65a3b8','Barbearia':'#1a1f2e',
+            'Padaria':'#d4a76a','Pizzaria':'#d4543b','Açougue':'#8b2500','Outros':'#aaa'
+        };
+        const sorted = Object.entries(niches).sort((a,b)=>b[1]-a[1]);
+        $('#nicheChart').innerHTML = sorted.map(([n,c]) => {
+            const pct = (c / max) * 100;
+            const color = colorMap[n] || '#aaa';
+            const pct2 = ((c/total)*100).toFixed(1)+'%';
+            return `<div class="niche-row">
+                <span class="niche-name" title="${n}">${n}</span>
+                <div class="niche-bar-wrap">
+                    <div class="niche-bar-fill" style="width:${pct}%;background:${color}">
+                        <span>${pct2}</span>
                     </div>
-                    <span class="niche-count">${i.value}</span>
-                </div>`;
-            }).join('') + `</div>` +
-            `<div class="note-box"><strong>Contexto:</strong> ${stats.note}</div>`;
+                </div>
+                <span class="niche-count">${c}</span>
+            </div>`;
+        }).join('');
     }
 
     function renderMonthly(monthly) {
         if (!monthly || monthly.length === 0) {
-            $('#monthlyChart').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa;font-size:0.85rem">Nenhum dado de producao mensal disponivel</div>';
+            $('#monthlyChart').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa;font-size:0.82rem">Sem dados de producao</div>';
             return;
         }
-        const max = Math.max(...monthly.map(m => m.count), 1);
-
+        const max = Math.max(...monthly.map(m=>m.count),1);
         $('#monthlyChart').innerHTML = `<div class="monthly-bars">` +
             monthly.map(m => {
                 const pct = (m.count / max) * 100;
                 const parts = m.month.split('-');
-                const monthLabel = parts[1] + '/' + parts[0].slice(2);
+                const label = parts[1]+'/'+parts[0].slice(2);
                 return `<div class="month-col">
                     <div class="month-count-label">${m.count}</div>
                     <div class="month-bar-wrap">
                         <div class="month-bar" style="height:${pct}%"></div>
                     </div>
-                    <div class="month-label">${monthLabel}</div>
+                    <div class="month-label">${label}</div>
                 </div>`;
-            }).join('') + `</div>`;
+            }).join('')+`</div>`;
     }
 
-    function renderPRD(prd) {
-        if (!prd) return;
+    function renderPRD(prd, ls) {
         const items = [
             { label: 'Stories Feitas', value: prd.stories_done, sub: `de ${prd.stories_total} totais`, color: '#5cbe7c' },
-            { label: 'Stories Pendentes', value: prd.stories_pending, sub: 'ainda por fazer', color: '#e07856' },
+            { label: 'Stories Pendentes', value: prd.stories_pending, sub: 'restantes', color: '#e07856' },
             { label: 'Reviews Feitos', value: prd.reviews_done, sub: `de ${prd.reviews_total} totais`, color: '#8ba888' },
-            { label: 'Demo Sites', value: prd.demo_sites_total || 0, sub: 'pastas em site-demo/', color: '#1a1f2e' },
+            { label: 'Demo Sites', value: ls.demo_sites_total, sub: 'pastas em site-demo/', color: '#1a1f2e' },
         ];
         $('#prdGrid').innerHTML = items.map(i => `
             <div class="prd-stat">
                 <div class="prd-stat-value" style="color:${i.color}">${i.value}</div>
-                <div class="prd-stat-label">${i.label} <span style="font-weight:400">${i.sub}</span></div>
-            </div>`
-        ).join('');
+                <div class="prd-stat-label">${i.label} <span style="font-weight:400;font-size:0.62rem">${i.sub}</span></div>
+            </div>`).join('');
     }
 
     function renderActivity(activities) {
         if (!activities || activities.length === 0) {
-            $('#activityList').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa">Nenhuma atividade recente</div>';
+            $('#activityList').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa">Nenhuma atividade</div>';
             return;
         }
-        const dotMap = { 'feat': 'dot-green', 'fix': 'dot-terracotta', 'chore': 'dot-clay', 'docs': 'dot-sage', 'refactor': 'dot-clay' };
+        const dotMap = {'feat':'dot-green','fix':'dot-terracotta','chore':'dot-clay','docs':'dot-sage','refactor':'dot-clay'};
         $('#activityList').innerHTML = activities.map(a => {
             const prefix = a.message.split(':')[0].toLowerCase();
             const color = dotMap[prefix] || 'dot-clay';
-            const date = a.date.split(' ')[0];
+            const date = a.date ? a.date.split(' ')[0] : '';
             return `<div class="activity-item">
                 <div class="activity-dot ${color}"></div>
                 <div class="activity-msg">${a.message}</div>
@@ -522,7 +450,6 @@ body {
         }).join('');
     }
 
-    // Boot
     initGate();
 })();
 </script>
