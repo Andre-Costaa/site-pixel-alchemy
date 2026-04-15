@@ -1,6 +1,13 @@
-# Scripts de Automação — Pixel Alchemy
+# Scripts de Automacao — Pixel Alchemy
 
-Este diretório contém scripts Python para automação do workflow de criação de sites e gestão do Notion CRM.
+## Quando Usar Este Documento
+
+- Ao executar scripts manualmente
+- Ao entender o que cada script faz
+- Ao criar fluxos de automacao
+- Ao fazer troubleshooting de um script especifico
+
+**Para pipeline de prospeccao completo, veja `PROSPECTION.md`.**
 
 ## Visão Geral do Workflow
 
@@ -202,7 +209,78 @@ python3 scripts/ralph_run_auto.py --prd ./prd.smoke.json --parallel 1 --force
 
 ## Workflow Completo para Agentes
 
-Quando você (agente) for criar um site para um prospecto:
+Quando voce (agente) for descobrir leads e fazer prospeccao:
+
+### 1. Carregar tokens
+
+```bash
+source .env 2>/dev/null || cp .env.example .env
+```
+
+### 2. Sync SQLite (dados atualizados)
+
+```bash
+NOTION_API_TOKEN="$NOTION_API_TOKEN" python3 scripts/sync_notion_csv_to_sqlite.py
+python3 scripts/generate_crm_data.py
+```
+
+### 3. Discovery de novos leads
+
+```bash
+# Um nicho
+SERP_API_KEY="$SERP_API_KEY" python3 scripts/lead_discovery_maps.py \
+  --niche "Veterinaria" --city "Ribeirao Preto" --limit 30
+
+# Verificar quantos novos prospects foram inseridos
+python3 scripts/generate_crm_data.py
+```
+
+### 4. Email discovery (para prospects sem email)
+
+```bash
+SERP_API_KEY="$SERP_API_KEY" python3 scripts/email_discovery.py --limit 50
+```
+
+### 5. Outreach via WhatsApp
+
+Para prospects com telefone, gerar link WhatsApp direto:
+
+```python
+import re, urllib.parse
+def wa_link(telefone):
+    digits = re.sub(r'\D', '', str(telefone))[-10:]
+    msg = urllib.parse.quote("Ola! Vi sua clinica no Google e achei otimo trabalho de voces! Somos a Pixel Alchemy e criamos sites profissionais. Posso te enviar uma proposta gratuita?")
+    return f"https://wa.me/55{digits}?text={msg}"
+```
+
+### 6. Atualizar pipeline em SQLite
+
+```python
+import sqlite3
+from datetime import datetime
+conn = sqlite3.connect('prospects.db')
+conn.execute(
+    "UPDATE prospects SET pipeline_status=?, updated_at=? WHERE id=?",
+    ('Contatado', datetime.now().isoformat(), prospect_id)
+)
+conn.commit()
+conn.close()
+```
+
+### 7. Notion outbox (opcional — para atualizar Notion manualmente)
+
+```bash
+python3 scripts/notion_outbox_enqueue.py --us-id US-XXX --page-id PAGE_ID \
+  --status "Mensagem Pronta" --url-demo "https://www.pixelalchemy.com.br/site-demo/<slug>/"
+python3 scripts/notion_outbox_worker.py --once
+```
+
+### 8. Done Gate (para workflow de site creation)
+
+```bash
+python3 scripts/done_gate.py --us-id US-XXX
+# Se PASS: python3 scripts/mark_story_done.py --us-id US-XXX
+```
 
 ### 1. Receber user story do `prd.json`
 O user story já contém os dados necessários nos acceptance criteria e deve conter `notionPageId` quando exigir update no Notion.

@@ -1,5 +1,16 @@
 # CLAUDE.md
 
+## Quando Ler Este Documento
+
+- Ao criar novos sites demo para clientes
+- Ao trabalhar com codigo HTML/CSS/JS
+- Ao definir convencoes de design ou arquitetura
+- Para duvidas sobre stack tecnico (NAO para pipeline de prospeccao)
+
+**Para pipeline de prospeccao e automacao, leia AGENTS.md primeiro.**
+
+---
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
@@ -176,11 +187,29 @@ NOTION_API_TOKEN='ntn_...' python3 scripts/sync_notion_csv_to_sqlite.py && \
 | **Data Follow-up** | date | Follow-up date |
 | **Horário** | date | Scheduled time |
 
-### Sales pipeline flow
+### Sales pipeline — TWO LAYERS (reconciled 2026-04-15)
 
+**Camada 1 — SQLite Funnel (automacao/scripts):**
 ```
-Lead → Qualificado → Site em Criação → Mensagem Pronta → Enviado → Respondeu → Reunião → Proposta → Fechado / Perdido / Descartado
+Lead → Contatado → Respondeu → Reuniao → Proposta → Fechado
 ```
+Usado por: `sync_notion_csv_to_sqlite.py`, `lead_discovery_maps.py`, `generate_crm_data.py`
+
+**Camada 2 — Notion Granular (operacao detalhada):**
+```
+Lead → Qualificado → Site em Criacao → Mensagem Pronta → Enviado → Respondeu → Reuniao → Proposta → Fechado / Perdido / Descartado
+```
+Usado por: Notion CRM, `notion_outbox_enqueue.py`, `notion_outbox_worker.py`
+
+**Mapeamento Notion → SQLite para automacao:**
+| Notion | SQLite |
+|--------|--------|
+| Lead | Lead |
+| Qualificado / Site em Criacao / Mensagem Pronta / Enviado | Contatado |
+| Respondeu / Reuniao / Proposta | mapeia diretamente |
+| Fechado / Perdido / Descartado | Fechado |
+
+**Regra: SQLite e a fonte unica para automacao. Notion e granular para referencia humana.**
 
 **Pipeline stages**:
 

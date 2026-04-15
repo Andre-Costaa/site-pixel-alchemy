@@ -1,78 +1,83 @@
 # AGENTS.md — Pixel Alchemy
 
+## Quando Ler Este Documento
+
+- Antes de QUALQUER trabalho neste repositorio
+- Ao receber uma tarefa de prospeccao, outreach ou automacao
+- Ao criar novos sites demo para clientes
+- Ao atualizar o CRM ou dashboard
+
+**Doc complementares (leia depois deste):**
+- `AUTOMATION.md` — credenciais, cron, scripts
+- `CLAUDE.md` — convencoes de codigo e arquitetura de sites
+- `scripts/README.md` — inventario e uso de cada script
+
+---
+
 ## Quick Summary
 
 Pixel Alchemy e uma agencia de web design brasileira. O sistema de automacao prospecta clientes automaticamente:
-- Encontra negocios sem site bom
-- Cria landing pages demo (ja criadas para a maioria)
-- Faz outreach via WhatsApp/email
-- Rastreia tudo no SQLite
+- Encontra negocios SEM site (cliente ideal) via SERP Maps
+- Cria landing pages demo
+- Faz outreach via WhatsApp (canal primario) ou email
+- Rastreia tudo no SQLite (fonte unica de verdade)
 
-## Read First
-
-Antes de qualquer trabalho, leia estes arquivos:
-1. `PROSPECTION.md` — workflow de prospeccao
-2. `AUTOMATION.md` — credenciais e configuracao
-3. `CLAUDE.md` — visao geral do projeto e Convencoes de codigo
-
-## Project Structure
-
-```
-site-pixel-alchemy/
-├── prospects.db          # Automation brain (SQLite) — FONTE UNICA DE VERDADE
-├── site-demo/            # 136+ demo sites (deployed on Vercel)
-├── scripts/
-│   ├── sync_notion_csv_to_sqlite.py  # Import: Notion + CSV + JSON → SQLite
-│   ├── generate_crm_data.py          # Dashboard: SQLite → dashboard-data.json
-│   └── outreach.py       # Pipeline de outreach (WIP)
-├── admin/dashboard/
-│   ├── index.html        # Dashboard HTML (protegido com senha)
-│   └── dashboard-data.json
-├── harmonizacao.csv      # Fonte de dados (leitura apenas)
-└── prospects-novos-batch.json  # Fonte de dados (leitura apenas)
-└── template-mensagem-outreach.md    # Mensagem de outreach
-```
+---
 
 ## Fonte de Verdade: SQLite
 
-**prospects.db e a UNICA fonte de verdade para prospeccao.**
+**`prospects.db` e a UNICA fonte de verdade para prospeccao e automacao.**
 
 | Fonte | Funcao |
-|-------|--------|
+|-------|---------|
 | `prospects.db` (SQLite) | Escrita e leitura de automacao |
 | Notion CRM | Historico / referencia manual (leitura apenas) |
-| harmonizacao.csv | Seed data (leitura apenas) |
-| prospects-novos-batch.json | Seed data (leitura apenas) |
+| `harmonizacao.csv` | Seed data (leitura apenas) |
+| `prospects-novos-batch.json` | Seed data (leitura apenas) |
 
-### Atualizar o banco
+---
 
-```bash
-cd ~/site-pixel-alchemy
-NOTION_API_TOKEN='ntn_...' python3 scripts/sync_notion_csv_to_sqlite.py && \
-  python3 scripts/generate_crm_data.py
-```
+## Prospect Pipeline — Duas Camadas (Reconciliadas)
 
-## Prospect Pipeline (Status)
-
+### SQLite Funnel (automacao e scripts)
 ```
 Lead → Contatado → Respondeu → Reuniao → Proposta → Fechado
 ```
+Usado por: `sync_notion_csv_to_sqlite.py`, `lead_discovery_maps.py`, `generate_crm_data.py`
 
 | Estagio | Significado |
 |---------|-------------|
 | `Lead` | Identificado, sem contato ainda |
-| `Contatado` | Mensagem/email/WhatsApp enviado |
+| `Contatado` | WhatsApp/email enviado |
 | `Respondeu` | Prospect respondeu |
 | `Reuniao` | Reuniao agendada/concluida |
 | `Proposta` | Proposta comercial enviada |
 | `Fechado` | Contrato fechado |
 
-**Dados reais (2026-04-15)**: Lead=149, Contatado=159, Respondeu=0, Reuniao=0, Proposta=0, Fechado=0.
+### Notion Pipeline (operacional detalhado)
+```
+Lead → Qualificado → Site em Criacao → Mensagem Pronta → Enviado → Respondeu → Reuniao → Proposta → Fechado / Perdido / Descartado
+```
+Usado por: Notion CRM, `notion_outbox_enqueue.py`, `notion_outbox_worker.py`
 
-**Com telefone**: 279/308 (97% tem phone)
-**Com email**: ~8/308 (2.6%) — **este e o bloqueio principal para outreach**
+**Mapeamento SQLite ← Notion:**
+- `Lead` → SQLite `Lead`
+- `Qualificado / Site em Criacao / Mensagem Pronta / Enviado` → SQLite `Contatado`
+- `Respondeu / Reuniao / Proposta` → mapeia diretamente
+- `Fechado / Perdido / Descartado` → SQLite `Fechado` ou fora do funnel
 
-## Numeros Atuais
+---
+
+## Numeros Atuais (2026-04-15)
+
+| Metrica | Valor |
+|---------|-------|
+| Total prospects | 313 |
+| Com telefone | 284 |
+| Com email | ~8 (2.6%) — **bloqueio principal** |
+| Pipeline: Lead | 154 |
+| Pipeline: Contatado | 159 |
+| Respondeu/Reuniao/Proposta/Fechado | 0 |
 
 | Nicho | Qtd |
 |-------|-----|
@@ -81,23 +86,58 @@ Lead → Contatado → Respondeu → Reuniao → Proposta → Fechado
 | Harmonizacao | 56 |
 | Dentista | 53 |
 | Outros | 18 |
+| Barbearia | 16 |
 | Pet Shop | 12 |
-| Barbearia | 11 |
 | Padaria | 11 |
 | Pizzaria | 11 |
 | Acougue | 8 |
 
-**Total**: 308 prospects | **Com telefone**: 279 | **Com email**: ~8 (2.6%)
+---
+
+## Project Structure
+
+```
+site-pixel-alchemy/
+├── prospects.db              # SQLite — FONTE UNICA (automation brain)
+├── site-demo/                # 136+ demo sites (Vercel)
+├── scripts/
+│   ├── sync_notion_csv_to_sqlite.py   # Sync: Notion + CSV → SQLite
+│   ├── lead_discovery_maps.py          # Discovery: SERP Maps (clientes SEM site)
+│   ├── email_discovery.py              # Email: extrair de sites descobertos
+│   ├── generate_crm_data.py            # Dashboard: SQLite → dashboard-data.json
+│   ├── done_gate.py                    # Valida deploy real
+│   ├── notion_outbox_enqueue.py        # Bota update do Notion em fila
+│   ├── notion_outbox_worker.py        # Consome fila e atualiza Notion
+│   ├── mark_story_done.py             # Marca story como done
+│   ├── message_generator.py            # Gera mensagem outreach
+│   └── site_orchestrator.py            # Orquestra criacao de site
+├── admin/dashboard/
+│   ├── index.html           # Dashboard (senha: pixel2026)
+│   └── dashboard-data.json
+├── .env.example             # Template de configuracao (copie para .env)
+├── .env                     # Tokens reais (NAO fazer commit)
+├── template-mensagem-outreach.md   # Template de outreach
+├── AUTOMATION.md            # Credenciais, cron, scripts
+└── CLAUDE.md               # Convencoes de codigo
+```
+
+---
 
 ## Como Rodar Prospeccao
 
 ```bash
 cd ~/site-pixel-alchemy
 
-# Atualizar dados do CRM
-NOTION_API_TOKEN='ntn_...' python3 scripts/sync_notion_csv_to_sqlite.py
+# 1. Carregar tokens (de .env)
+source .env 2>/dev/null || true
 
-# Ver status dos leads
+# 2. Sync Notion + CSV → SQLite
+NOTION_API_TOKEN="$NOTION_API_TOKEN" python3 scripts/sync_notion_csv_to_sqlite.py
+
+# 3. Discovery de novos leads (SERP Maps)
+SERP_API_KEY="$SERP_API_KEY" python3 scripts/lead_discovery_maps.py --niche "Veterinaria" --limit 20
+
+# 4. Refresh dashboard
 python3 scripts/generate_crm_data.py
 
 # Dashboard
@@ -105,20 +145,22 @@ python3 scripts/generate_crm_data.py
 # Senha: pixel2026
 ```
 
+---
+
 ## Regras de Outreach
 
 De `template-mensagem-outreach.md`:
 - Max 800 caracteres
 - Incluir demo URL: `https://www.pixelalchemy.com.br/site-demo/<slug>/`
-- Pessoa fisica (Dr./Dra. + nome): "dele/dela", "queria"
+- Pessoa fisica (Dr./Dra.): "dele/dela", "queria"
 - Empresa: "voces", "queriam"
-- Healthcare (Dentista/Vet/Harmonizacao): "autoridade e sofisticacao", "pacientes"
-- Beauty (Beleza/Barbearia): "estilo e profissionalismo", "clientes"
+- Healthcare: "autoridade e sofisticacao", "pacientes"
+- Beauty: "estilo e profissionalismo", "clientes"
 - Sem emojis
 
-## Workflow Git (para Demo Creation)
+---
 
-Demos sao criados fazendo push no GitHub → Vercel faz deploy automaticamente.
+## Workflow Git (Demo Creation)
 
 ```bash
 git add site-demo/<slug>/
@@ -126,18 +168,20 @@ git commit -m "feat: US-XXX - Client Name - Site Completo"
 git push origin main
 ```
 
-**O push automatizado usa PAT.** Token esta no AUTOMATION.md.
+---
 
 ## Regras Importantes
 
-1. **SQLite e a fonte de verdade** — todo trabalho de automacao le e escreve no prospects.db
-2. **Notion e leitura apenas** — nunca escrever diretamente no Notion via automacao
-3. **Limite de email**: ~20-30/dia para evitar spam
-4. **Commits**: sempre usar `feat: US-XXX - Name - action`
+1. **SQLite e a fonte de verdade** — toda automacao le e escreve no prospects.db
+2. **Nao escrever no Notion via automacao** — usar outbox pattern
+3. **Tokens: SEMPRE em .env** — nunca hardcoded ou em docs
+4. **Commits**: `feat: US-XXX - Name - action`
 5. **Sem emojis** em codigo ou conteudo
-6. **Demos auto-contidas**: arquivo HTML unico com CSS/JS inline
+6. **Demos auto-contidos**: HTML unico com CSS/JS inline
 7. **Nao inventar numeros** — se nao tem dado, mostrar 0
-8. **Nao fazer push de tokens** — usar variaveis de ambiente
+8. **WhatsApp e canal primario** — 97% dos prospects tem telefone
+
+---
 
 ## Subagent Template
 
@@ -146,13 +190,16 @@ Ao delegar para subagente, incluir:
 ```
 Contexto:
 - Prospect: {nome}, {nicho}
+- Pipeline status: {pipeline_status}
 - Demo URL: https://www.pixelalchemy.com.br/site-demo/{slug}/
-- Telefone: {telefone} (WhatsApp)
+- Telefone: {telefone} (WhatsApp: https://wa.me/55{ddd}{numero})
 - Email: {email} (raro — 97% nao tem)
-- Credenciais: ver AUTOMATION.md
+- Credenciais: ver AUTOMATION.md (tokens em .env)
 
-Tarefa: [descricao]
+Tarefa: [descricao clara do que fazer]
 ```
+
+---
 
 ## Troubleshooting
 
@@ -160,13 +207,18 @@ Tarefa: [descricao]
 |----------|---------|
 | Deploy falha | Verificar Vercel dashboard, fazer push para retrigger |
 | Prospect nao esta no SQLite | Rodar sync_notion_csv_to_sqlite.py |
-| Banco SQLite vazio | Verificar se sync rodou corretamente |
+| Banco SQLite vazio | Verificar NOTION_API_TOKEN esta no .env |
 | Dashboard nao atualiza | Rodar generate_crm_data.py depois do sync |
+| SERP sem credits | Verificar SERP_API_KEY em .env |
+| Script token error | `cp .env.example .env` e preencha |
+
+---
 
 ## Stack
 
-- Python 3 (scripts)
-- SQLite (database — fonte unica)
-- Mailgun API (email, 100/dia)
-- Vercel API (deploy validation)
-- GitHub PAT (push access)
+- Python 3 (scripts de automacao)
+- SQLite (banco — fonte unica)
+- SERPer API (Google Maps discovery)
+- Vercel (hosting de demos)
+- WhatsApp (canal primario de outreach)
+- GitHub PAT (deploy via push)

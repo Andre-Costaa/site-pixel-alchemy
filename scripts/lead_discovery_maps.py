@@ -20,10 +20,12 @@ Uso:
   SERP_API_KEY='...' python3 scripts/lead_discovery_maps.py [--niche "Veterinaria"] [--city "Ribeirão Preto"]
 """
 
-import json, re, sys, time, random, urllib.parse, urllib.request, sqlite3
+import json, re, sys, time, random, urllib.parse, urllib.request, sqlite3, os
 from datetime import datetime
 
-SERP_API_KEY = 'e3f5602aa54fded4589424ad6c454f6e0fc168af'
+SERP_API_KEY = os.environ.get('SERP_API_KEY', '')
+if not SERP_API_KEY:
+    raise ValueError("Variavel de ambiente SERP_API_KEY nao definida. Copie .env.example para .env e preencha.")
 MAPS_URL = 'https://google.serper.dev/search'
 NORMAL_URL = 'https://google.serper.dev/search'
 DB = '/opt/data/home/site-pixel-alchemy/prospects.db'
