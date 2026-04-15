@@ -1156,8 +1156,101 @@ body {
         transition: none;
     }
 }
-    </style>
-</head>
+
+/* ============================================
+   CRM Section Styles
+   ============================================ */
+.outreach-stats {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.outreach-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--color-cream);
+    border-radius: var(--radius-sm);
+    min-width: 100px;
+}
+
+.outreach-stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-terracotta);
+}
+
+.outreach-stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+.activity-feed {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px var(--spacing-lg);
+    border-bottom: 1px solid var(--color-cream-dark);
+    transition: background var(--transition-fast);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item:hover {
+    background: rgba(250, 248, 244, 0.5);
+}
+
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.activity-icon.site_created { background: var(--color-terracotta); color: #fff; }
+.activity-icon.review { background: var(--color-sage); color: #fff; }
+.activity-icon.chore { background: var(--color-clay); color: #fff; }
+.activity-icon.fix { background: #d4543b; color: #fff; }
+.activity-icon.docs { background: var(--color-lavender); color: #fff; }
+.activity-icon.merge { background: #888; color: #fff; }
+
+.activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-message {
+    font-size: 0.85rem;
+    color: var(--color-charcoal);
+    word-break: break-word;
+}
+
+.activity-date {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+}
+</style>
 <body>
 
 <!-- ============================================
@@ -1208,6 +1301,9 @@ body {
             <li><a href="#timeline" data-section="timeline">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Timeline</span></a></li>
+            <li><a href="#crm" data-section="crm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>CRM</span></a></li>
         </ul>
         <div class="sidebar-footer" id="sidebarFooter">
             Atualizado em: --
@@ -1371,6 +1467,80 @@ body {
             <div class="timeline-card animate-in">
                 <div class="timeline-svg-wrap" id="timelineChart"></div>
             </div>
+        </section>
+
+        <!-- 8. CRM Prospeccao -->
+        <section class="dashboard-section" id="crm">
+            <div class="section-header">
+                <h2>CRM de Prospeccao</h2>
+                <span class="badge">Vendas</span>
+            </div>
+
+            <!-- CRM KPIs -->
+            <div class="kpi-grid" id="crmKpiGrid">
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Leads Total</div>
+                    <div class="kpi-value" data-counter="0" id="crmLeads">0</div>
+                    <div class="kpi-sub">prospectos no pipeline</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Contactados</div>
+                    <div class="kpi-value" data-counter="0" id="crmContacted">0</div>
+                    <div class="kpi-sub">emails enviados</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Taxa Resposta</div>
+                    <div class="kpi-value" data-counter="0" id="crmResponseRate">0%</div>
+                    <div class="kpi-sub">respostas / enviados</div>
+                </div>
+                <div class="kpi-card animate-in">
+                    <div class="kpi-label">Proximos Passos</div>
+                    <div class="kpi-value" data-counter="0" id="crmMeetings">0</div>
+                    <div class="kpi-sub">reunioes marcadas</div>
+                </div>
+            </div>
+
+            <!-- Outreach KPIs Row -->
+            <div class="charts-row">
+                <div class="chart-card animate-in">
+                    <h3>Estatisticas de Outreach</h3>
+                    <div class="chart-container">
+                        <div class="outreach-stats" id="outreachStats">
+                            <div class="outreach-stat"><span class="outreach-stat-value" id="outEmailsSent">0</span><span class="outreach-stat-label">Emails Enviados</span></div>
+                            <div class="outreach-stat"><span class="outreach-stat-value" id="outResponses">0</span><span class="outreach-stat-label">Respostas</span></div>
+                            <div class="outreach-stat"><span class="outreach-stat-value" id="outMeetings">0</span><span class="outreach-stat-label">Reunioes</span></div>
+                            <div class="outreach-stat"><span class="outreach-stat-value" id="outProposals">0</span><span class="outreach-stat-label">Propostas</span></div>
+                            <div class="outreach-stat"><span class="outreach-stat-value" id="outClosed">0</span><span class="outreach-stat-label">Fechados</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-card animate-in">
+                    <h3>Leads por Nicho</h3>
+                    <div class="chart-container">
+                        <div class="donut-wrap" id="crmDonutChart"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipeline Funnel -->
+            <div class="section-header" style="margin-top: var(--spacing-lg);">
+                <h2>Funil de Prospeccao</h2>
+            </div>
+            <div class="funnel-wrap animate-in" id="crmFunnelChart"></div>
+
+            <!-- Monthly Production -->
+            <div class="section-header" style="margin-top: var(--spacing-lg);">
+                <h2>Producao Mensal</h2>
+            </div>
+            <div class="timeline-card animate-in">
+                <div class="timeline-svg-wrap" id="crmTimelineChart"></div>
+            </div>
+
+            <!-- Recent Activity Feed -->
+            <div class="section-header" style="margin-top: var(--spacing-lg);">
+                <h2>Atividade Recente</h2>
+            </div>
+            <div class="activity-feed animate-in" id="activityFeed"></div>
         </section>
 
     </main>
@@ -2200,6 +2370,76 @@ body {
 
             // Animations
             Animations.initScrollAnimations();
+
+            // CRM Section
+            this.initCRM();
+        },
+
+        initCRM() {
+            if (!DATA.crm) return;
+            const crm = DATA.crm;
+
+            // CRM KPIs
+            const leads = crm.leads_summary;
+            Animations.counterAnimation($('#crmLeads'), leads.total_leads, '');
+            Animations.counterAnimation($('#crmContacted'), leads.contacted, '');
+            Animations.counterAnimation($('#crmMeetings'), crm.outreach_stats.meetings_booked, '');
+
+            // Response rate
+            const outreach = crm.outreach_stats;
+            const rate = outreach.emails_sent > 0 ? Math.round((outreach.responses_received / outreach.emails_sent) * 100) : 0;
+            $('#crmResponseRate').textContent = rate + '%';
+
+            // Outreach stats
+            $('#outEmailsSent').textContent = outreach.emails_sent;
+            $('#outResponses').textContent = outreach.responses_received;
+            $('#outMeetings').textContent = outreach.meetings_booked;
+            $('#outProposals').textContent = outreach.proposals_sent;
+            $('#outClosed').textContent = outreach.deals_closed;
+
+            // CRM donut chart (leads by niche)
+            if (leads.by_niche) {
+                ChartRenderer.renderDonut('#crmDonutChart', leads.by_niche);
+            }
+
+            // CRM Funnel
+            if (crm.funnel) {
+                ChartRenderer.renderFunnel('#crmFunnelChart', crm.funnel);
+            }
+
+            // Monthly production timeline
+            if (crm.monthly_production && crm.monthly_production.length > 0) {
+                ChartRenderer.renderTimeline('#crmTimelineChart', crm.monthly_production);
+            }
+
+            // Recent activity feed
+            if (crm.recent_activity) {
+                this.renderActivityFeed(crm.recent_activity);
+            }
+        },
+
+        renderActivityFeed(activities) {
+            const container = $('#activityFeed');
+            if (!container) return;
+
+            const icons = {
+                'site_created': '+',
+                'review': 'V',
+                'chore': 'C',
+                'fix': '!',
+                'docs': 'D',
+                'merge': 'M'
+            };
+
+            container.innerHTML = activities.map(a => `
+                <div class="activity-item">
+                    <div class="activity-icon ${a.type || 'site_created'}">${icons[a.type] || '+'}</div>
+                    <div class="activity-content">
+                        <div class="activity-message">${a.message}</div>
+                        <div class="activity-date">${a.date}</div>
+                    </div>
+                </div>
+            `).join('');
         }
     };
 
