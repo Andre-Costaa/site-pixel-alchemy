@@ -103,20 +103,44 @@ Each client site is a single commit as a user story (US-XXX, sequential numberin
 
 `.playwright-mcp/` contains PNG screenshots at multiple breakpoints for previously reviewed sites. When making UI changes, compare against these baselines. Key breakpoints to verify: 480px, 768px, 1024px, 1440px. Check: nav scroll behavior, hero animations, accordion, stats counter, contact form, mobile menu.
 
-## Notion CRM — Controle de Prospecção
+## CRM — Fonte de Verdade: SQLite
 
-The primary prospect/client management system is a Notion database accessible via MCP (Model Context Protocol).
+### Source of truth policy (2026-04-15)
 
-### Source of truth policy
+**`prospects.db` (SQLite) e a UNICA fonte de verdade para prospeccao e automacao.**
+Notion e um arquivo historico / referencia manual. Nunca escrever no Notion via automacao.
 
-- **Notion is the absolute source of truth** for prospect data, commercial pipeline state, technical identifiers, and completion state.
-- `prd.json` is only an execution artifact for mass site creation and may be replaced in the future.
-- If any execution artifact disagrees with Notion, **Notion wins**.
-- Agents must document, verify, and reconcile against Notion first.
+- **SQLite wins** para pipeline, status, e dados operacionais.
+- Notion = leitura apenas para referencia de dados historicos.
+- `harmonizacao.csv` e `prospects-novos-batch.json` = seed data, leitura apenas.
 
-**Page**: "Pixel Alchemy - Controle Prospecção" (`2f76f51e-b8a5-8038-8557-c157105f790d`)
-**Database**: "Controle" (`2f76f51e-b8a5-8088-a52c-db29fc3c1f81`)
-**Data Source**: `collection://2f76f51e-b8a5-800b-8c7e-000bf9f86798`
+### Como atualizar antes de trabalhar
+
+```bash
+cd ~/site-pixel-alchemy
+NOTION_API_TOKEN='ntn_...' python3 scripts/sync_notion_csv_to_sqlite.py && \
+  python3 scripts/generate_crm_data.py
+```
+
+### Dashboard
+
+**URL**: https://www.pixelalchemy.com.br/admin/dashboard/
+**Senha**: `pixel2026`
+
+### Dados reais (2026-04-15)
+
+| Metrica | Valor |
+|---------|-------|
+| Total prospects | 308 |
+| Com telefone | 279 |
+| Pipeline: Lead | 149 |
+| Pipeline: Contatado | 159 |
+| Respondeu/Reuniao/Proposta/Fechado | 0 |
+
+### Notion CRM — Referencia Historica
+
+**Database**: `2f76f51e-b8a5-8088-a52c-db29fc3c1f81`
+**Nota**: O campo `Telefone` no Notion e tipo `rich_text`, NAO `phone_number`.
 
 ### Database schema
 
