@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Atual Centro de Beleza - Referencia em cortes, coloracao, mechas e tratamentos capilares em Ribeirao Preto. Agende pelo WhatsApp.">
+    <meta name="keywords" content="salao de beleza, Ribeirao Preto, corte feminino, mechas, coloracao, escova progressiva, hidratacao capilar">
+    <meta property="og:title" content="Atual Centro de Beleza | Ribeirao Preto">
+    <meta property="og:description" content="Transforme seu visual com profissionais que entendem de beleza. Agende sua transformacao.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Atual Centro de Beleza | Ribeirao Preto - SP</title>
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF5E8;
+            --cream-warm: #F3EBD6;
+            --brown: #9B7E5A;
+            --brown-light: #BFA07A;
+            --brown-dark: #7A6244;
+            --terracotta: #C17050;
+            --terracotta-dark: #A35D42;
+            --terracotta-light: #D4916F;
+            --gold: #C9A45C;
+            --gold-light: #DFC07E;
+            --gold-dark: #A88640;
+            --dark: #1E110A;
+            --dark-soft: #2D1F15;
+            --dark-medium: #3D2E22;
+            --white: #FEFCF8;
+            --shadow-sm: 0 2px 8px rgba(30, 17, 10, 0.08);
+            --shadow-md: 0 8px 30px rgba(30, 17, 10, 0.12);
+            --shadow-lg: 0 20px 60px rgba(30, 17, 10, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-display: 'Georgia', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .section-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 28px;
+            height: 1px;
+            background: var(--terracotta);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--brown);
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-blob, .gallery-item img, .service-card {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ========== HEADER / NAV ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(30, 17, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 164, 92, 0.1);
+            transition: transform 0.4s ease, background 0.4s ease;
+        }
+
+        header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--cream);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: rgba(250, 245, 232, 0.7);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--terracotta);
+            color: var(--cream) !important;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.78rem !important;
+            letter-spacing: 0.06em;
+            transition: background var(--transition), transform var(--transition) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 17, 10, 0.98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--cream);
+            opacity: 0.8;
+            transition: opacity var(--transition), color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(193, 112, 80, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 20%, rgba(201, 164, 92, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 100% 100% at 50% 50%, rgba(45, 31, 21, 1) 0%, rgba(30, 17, 10, 1) 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: blobFloat 20s ease-in-out infinite;
+        }
+
+        .hero-blob--1 {
+            width: 500px;
+            height: 500px;
+            background: var(--terracotta);
+            top: -10%;
+            right: -5%;
+            animation-duration: 18s;
+        }
+
+        .hero-blob--2 {
+            width: 400px;
+            height: 400px;
+            background: var(--gold);
+            bottom: -10%;
+            left: -5%;
+            animation-duration: 22s;
+            animation-delay: -5s;
+        }
+
+        .hero-blob--3 {
+            width: 300px;
+            height: 300px;
+            background: var(--brown);
+            top: 40%;
+            left: 30%;
+            animation-duration: 25s;
+            animation-delay: -10s;
+            opacity: 0.2;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(30px, -40px) rotate(5deg) scale(1.05); }
+            50% { transform: translate(-20px, 20px) rotate(-3deg) scale(0.95); }
+            75% { transform: translate(15px, 30px) rotate(4deg) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 164, 92, 0.3);
+            padding: 8px 24px;
+            border-radius: 100px;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            color: var(--cream);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(250, 245, 232, 0.65);
+            line-height: 1.8;
+            max-width: 520px;
+            margin: 0 auto 48px;
+            opacity: 0;
+            animation: fadeInUp 1s 0.7s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s 0.9s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 16px 36px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(193, 112, 80, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid rgba(250, 245, 232, 0.25);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(250, 245, 232, 0.3);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(250, 245, 232, 0.3), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            padding: 120px 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(155, 126, 90, 0.2), transparent);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .services-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--terracotta), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(155, 126, 90, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.4rem;
+        }
+
+        .service-icon--1 { background: rgba(193, 112, 80, 0.1); color: var(--terracotta); }
+        .service-icon--2 { background: rgba(155, 126, 90, 0.1); color: var(--brown); }
+        .service-icon--3 { background: rgba(201, 164, 92, 0.1); color: var(--gold-dark); }
+        .service-icon--4 { background: rgba(193, 112, 80, 0.1); color: var(--terracotta); }
+        .service-icon--5 { background: rgba(155, 126, 90, 0.1); color: var(--brown); }
+        .service-icon--6 { background: rgba(201, 164, 92, 0.1); color: var(--gold-dark); }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--brown);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--terracotta);
+        }
+
+        .service-price small {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--brown-light);
+            font-weight: 400;
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            padding: 120px 0;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: var(--radius-blob);
+            background: var(--terracotta);
+            opacity: 0.04;
+            top: -200px;
+            right: -200px;
+            filter: blur(80px);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background:
+                linear-gradient(135deg, var(--dark-medium) 0%, var(--dark-soft) 50%, rgba(193, 112, 80, 0.2) 100%);
+        }
+
+        .about-image-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(250, 245, 232, 0.15);
+            font-family: var(--font-display);
+            font-size: 4rem;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .about-image-inner span {
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 16px;
+            color: rgba(250, 245, 232, 0.08);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(201, 164, 92, 0.15);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+
+        .about-content .section-label {
+            color: var(--gold);
+        }
+
+        .about-content .section-label::before {
+            background: var(--gold);
+        }
+
+        .about-content .section-title {
+            color: var(--cream);
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: rgba(250, 245, 232, 0.6);
+            line-height: 1.9;
+            margin-bottom: 40px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            padding: 120px 0;
+            background: var(--cream-warm);
+            position: relative;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .team-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+
+        .team-card {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 24px;
+            position: relative;
+            background:
+                linear-gradient(160deg, var(--brown-dark) 0%, var(--dark-medium) 40%, rgba(201, 164, 92, 0.15) 100%);
+            transition: transform var(--transition);
+        }
+
+        .team-card:hover .team-photo {
+            transform: translateY(-4px);
+        }
+
+        .team-photo-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(250, 245, 232, 0.12);
+            font-family: var(--font-display);
+            font-size: 3rem;
+        }
+
+        .team-photo-inner span {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 12px;
+            color: rgba(250, 245, 232, 0.06);
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--terracotta);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            padding: 120px 0;
+            background: var(--cream);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .gallery-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 280px);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .gallery-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+        .gallery-item:nth-child(3) { grid-column: 3; grid-row: 1 / 3; }
+        .gallery-item:nth-child(4) { grid-column: 1; grid-row: 2; }
+        .gallery-item:nth-child(5) { grid-column: 2; grid-row: 2; }
+        .gallery-item:nth-child(6) { grid-column: 3; grid-row: 1 / 3; display: none; }
+
+        .gallery-item-bg {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.6s var(--transition);
+        }
+
+        .gallery-item--1 .gallery-item-bg {
+            background: linear-gradient(145deg, #8B5E3C 0%, #6B4226 40%, var(--terracotta-dark) 100%);
+        }
+        .gallery-item--2 .gallery-item-bg {
+            background: linear-gradient(145deg, #A08060 0%, #7A5C3E 50%, var(--brown-dark) 100%);
+        }
+        .gallery-item--3 .gallery-item-bg {
+            background: linear-gradient(145deg, var(--gold-dark) 0%, var(--brown) 50%, var(--terracotta) 100%);
+        }
+        .gallery-item--4 .gallery-item-bg {
+            background: linear-gradient(145deg, var(--brown) 0%, var(--dark-medium) 60%, var(--terracotta) 100%);
+        }
+        .gallery-item--5 .gallery-item-bg {
+            background: linear-gradient(145deg, var(--terracotta-light) 0%, var(--terracotta) 50%, var(--brown-dark) 100%);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 17, 10, 0.7) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: var(--radius-blob);
+            background: var(--gold);
+            opacity: 0.03;
+            bottom: -200px;
+            left: -100px;
+            filter: blur(80px);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .testimonials-header .section-label {
+            color: var(--gold);
+        }
+
+        .testimonials-header .section-label::before {
+            background: var(--gold);
+        }
+
+        .testimonials-header .section-title {
+            color: var(--cream);
+        }
+
+        .testimonials-header .section-subtitle {
+            color: rgba(250, 245, 232, 0.5);
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: rgba(250, 245, 232, 0.04);
+            border: 1px solid rgba(201, 164, 92, 0.08);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(250, 245, 232, 0.06);
+            border-color: rgba(201, 164, 92, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-star {
+            width: 16px;
+            height: 16px;
+            color: var(--gold);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: rgba(250, 245, 232, 0.65);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--terracotta), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--cream);
+            flex-shrink: 0;
+        }
+
+        .testimonial-author-info h4 {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .testimonial-author-info p {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.4);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            padding: 120px 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 16px;
+        }
+
+        .contact-intro {
+            font-size: 1rem;
+            color: var(--brown);
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(193, 112, 80, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--terracotta);
+            font-size: 1.1rem;
+        }
+
+        .contact-item-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brown-light);
+            margin-bottom: 4px;
+        }
+
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .contact-item-value a {
+            color: var(--terracotta);
+            transition: color var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--terracotta-dark);
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 0.9rem;
+            color: var(--brown);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--dark);
+            background: var(--cream);
+            border: 1px solid rgba(155, 126, 90, 0.15);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(193, 112, 80, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 32px;
+            border-top: 1px solid rgba(201, 164, 92, 0.08);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--cream);
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: rgba(250, 245, 232, 0.5);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 245, 232, 0.06);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.3);
+        }
+
+        .footer-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--gold);
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .footer-cta:hover {
+            color: var(--gold-light);
+        }
+
+        /* ========== FLOATING WHATSAPP ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 6px 32px rgba(37, 211, 102, 0.6), 0 0 0 12px rgba(37, 211, 102, 0.08); }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 48px;
+            }
+
+            .gallery-grid {
+                grid-template-rows: repeat(2, 240px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 440px;
+                margin: 0 auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .about-stats {
+                gap: 16px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+                gap: 48px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 220px);
+            }
+
+            .gallery-item:nth-child(3) {
+                grid-column: 2;
+                grid-row: 1 / 3;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 28px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:nth-child(3) {
+                grid-column: 1;
+                grid-row: auto;
+                aspect-ratio: 4 / 3;
+            }
+
+            .gallery-item {
+                aspect-ratio: 4 / 3;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="nav-logo">Atual <span>Centro de Beleza</span></a>
+                <div class="nav-links">
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#galeria">Galeria</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#contato" class="nav-cta">Agendar</a>
+                </div>
+                <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Agendar</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob hero-blob--1"></div>
+        <div class="hero-blob hero-blob--2"></div>
+        <div class="hero-blob hero-blob--3"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Ribeirao Preto, SP</div>
+            <h1 class="hero-title">Sua beleza <em>merece</em> um lugar de destaque</h1>
+            <p class="hero-description">Ha mais de duas decadas transformando visuais com tecnica, cuidado e personalidade no coracao de Ribeirao Preto.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/551634215155" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label">O que fazemos</span>
+                <h2 class="section-title">Servicos especializados</h2>
+                <p class="section-subtitle">Cada servico e pensado para valorizar seu estilo natural com tecnicas atualizadas e produtos de qualidade.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon service-icon--1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.657 18.357A2 2 0 0 1 5.29 15.29l1.367-1.367a2 2 0 0 1 2.828 0l2.475 2.475a2 2 0 0 1 0 2.828l-1.367 1.367a2 2 0 0 1-2.828 0L6.657 18.357z"/><path d="M7.757 14.828l-4.243-4.243"/><path d="M9.879 12.707l4.242-4.242"/><path d="M12 10.586l4.243-4.243"/><path d="M14.121 8.464l4.243-4.242"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Feminino</h3>
+                    <p class="service-desc">Cortes personalizados que harmonizam com seu rosto, estilo de vida e personalidade. Inclui lavagem e finalizacao.</p>
+                    <div class="service-price">R$ 85 <small>a partir de</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon service-icon--2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Masculino</h3>
+                    <p class="service-desc">Degradê, social, undercut e cortes modernos. Acabamento preciso com maquina e tesoura para o visual perfeito.</p>
+                    <div class="service-price">R$ 55 <small>a partir de</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon service-icon--3">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 class="service-name">Coloracao</h3>
+                    <p class="service-desc">Tintura profissional com cores vibrantes e duradouras. Consultoria de cor para encontrar o tom ideal para voce.</p>
+                    <div class="service-price">R$ 150 <small>a partir de</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon service-icon--4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5.5 6.5 12 3l6.5 3.5"/><path d="M3 12h18"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3 class="service-name">Mechas e Balayage</h3>
+                    <p class="service-desc">Fios iluminados com tecnicas de mechas ou balayage. Efeito natural e movimento com fios de luz bem distribuidos.</p>
+                    <div class="service-price">R$ 250 <small>a partir de</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon service-icon--5">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3 class="service-name">Hidratacao Capilar</h3>
+                    <p class="service-desc">Tratamentos profundos de reposicao de nutrientes e reconstrucao. Cabelos macios, brilhantes e saudaveis.</p>
+                    <div class="service-price">R$ 90 <small>a partir de</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon service-icon--6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                    </div>
+                    <h3 class="service-name">Escova Progressiva</h3>
+                    <p class="service-desc">Alisamento duradouro com produtos de primeira linha. Fios lisos, com brilho e movimento natural por meses.</p>
+                    <div class="service-price">R$ 350 <small>a partir de</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-inner">
+                        Atual
+                        <span>Centro de Beleza</span>
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="reveal">
+                        <span class="section-label">Nossa historia</span>
+                        <h2 class="section-title">Mais que um salao, um espaco de acolhimento</h2>
+                    </div>
+                    <p class="about-text reveal">
+                        Fundado no coracao de Ribeirao Preto, o Atual Centro de Beleza nasceu da paixao por transformar a autoestima das pessoas. Ao longo de mais de duas decadas, construímos uma reputacao baseada em confianca, qualidade e atencao aos detalhes.
+                    </p>
+                    <p class="about-text reveal">
+                        Nosso espaco foi pensado para que cada cliente se sinta em casa. Aqui, cada atendimento e unico, porque acreditamos que beleza e pessoal. Nossa equipe se atualiza constantemente para oferecer as melhores tecnicas do mercado, sempre com respeito a saude e a integridade dos fios.
+                    </p>
+                    <div class="about-stats reveal">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="20">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15000">0</div>
+                            <div class="stat-label">Clientes atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="6">0</div>
+                            <div class="stat-label">Profissionais</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="team-header reveal">
+                <span class="section-label">Nossa equipe</span>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-subtitle">Cada membro da nossa equipe traz experiencia, dedicacao e amor pelo que faz.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            AS
+                            <span>Profissional</span>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Ana Silva</h3>
+                    <p class="team-role">Colorista Especialista</p>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            RM
+                            <span>Profissional</span>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Renata Mendes</h3>
+                    <p class="team-role">Corte e Finalizacao</p>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            CO
+                            <span>Profissional</span>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Carlos Oliveira</h3>
+                    <p class="team-role">Barbearia e Masculino</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="gallery-header reveal">
+                <span class="section-label">Nosso trabalho</span>
+                <h2 class="section-title">Resultados que falam por si</h2>
+                <p class="section-subtitle">Cada transformacao conta uma historia. Confira alguns dos nossos trabalhos mais recentes.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item--1 reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Balayage Natural</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item--2 reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Corte Bob Moderno</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item--3 reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Mechas Iluminadas</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item--4 reveal reveal-delay-4">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Coloracao Intensa</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item--5 reveal reveal-delay-5">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Progressiva com Brilho</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossas clientes dizem</h2>
+                <p class="section-subtitle">A satisfacao de quem confia no nosso trabalho e a nossa maior motivacao.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Fiz balayage com a Ana e ficou exatamente como eu sonhava. As mechas ficaram super naturais e o cabelo continua saudavel. Melhor salao de Ribeirao Preto!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-author-info">
+                            <h4>Mariana Costa</h4>
+                            <p>Cliente ha 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Ambiente agradavel, atendimento nota 10 e profissionais que realmente entendem de cabelo. A Renata fez um corte perfeito, super atenciosa com cada detalhe."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FS</div>
+                        <div class="testimonial-author-info">
+                            <h4>Fernanda Souza</h4>
+                            <p>Cliente ha 5 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Sempre fui cliente do Atual. Fiz minha progressiva la e ficou incrivel, cabelo com muito brilho e movimento. O Carlos tambem e excelente nos cortos masculinos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RL</div>
+                        <div class="testimonial-author-info">
+                            <h4>Rafael Lima</h4>
+                            <p>Cliente ha 7 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="reveal">
+                        <span class="section-label">Contato</span>
+                        <h2 class="section-title">Venha nos conhecer</h2>
+                    </div>
+                    <p class="contact-intro reveal">Estamos no centro de Ribeirao Preto, com atendimento de segunda a sabado. Agende pelo WhatsApp e garanta seu horario.</p>
+                    <div class="contact-details reveal">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">Endereco</div>
+                                <div class="contact-item-value">R. Tibirica, 475 - Centro<br>Ribeirao Preto - SP, 14010-090</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">Telefone</div>
+                                <div class="contact-item-value"><a href="tel:+551634215155">(16) 3421-5155</a></div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">Horario de funcionamento</div>
+                                <div class="contact-item-value">Seg a Sex: 9h as 19h<br>Sabado: 8h as 17h<br>Domingo: Fechado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
+                    <h3>Envie uma mensagem</h3>
+                    <p>Preencha o formulario abaixo e entraremos em contato para confirmar seu horario.</p>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="corte-feminino">Corte Feminino</option>
+                                <option value="corte-masculino">Corte Masculino</option>
+                                <option value="coloracao">Coloracao</option>
+                                <option value="mechas">Mechas / Balayage</option>
+                                <option value="hidratacao">Hidratacao Capilar</option>
+                                <option value="progressiva">Escova Progressiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre o que deseja..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit" onclick="handleFormSubmit()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Atual <span>Centro de Beleza</span></div>
+                <div class="footer-links">
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">2025 Atual Centro de Beleza. Todos os direitos reservados.</p>
+                <a href="https://wa.me/551634215155" class="footer-cta">
+                    Agendar pelo WhatsApp
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING WHATSAPP ========== -->
+    <a href="https://wa.me/551634215155" class="whatsapp-float" aria-label="Contato pelo WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ========== NAVIGATION ========== */
+        (function() {
+            const header = document.getElementById('header');
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    header.classList.add('nav-hidden');
+                } else {
+                    header.classList.remove('nav-hidden');
+                }
+                if (currentScroll < 100) {
+                    header.classList.remove('nav-hidden');
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
+        /* ========== SCROLL REVEAL ========== */
+        (function() {
+            var reveals = document.querySelectorAll('.reveal');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '-50px 0px'
+            });
+
+            reveals.forEach(function(el) {
+                observer.observe(el);
+            });
+        })();
+
+        /* ========== COUNTER ANIMATION ========== */
+        (function() {
+            var counters = document.querySelectorAll('.stat-number[data-target]');
+            var animated = false;
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+                        counters.forEach(function(counter) {
+                            var target = parseInt(counter.getAttribute('data-target'));
+                            var duration = 2000;
+                            var start = 0;
+                            var startTime = null;
+
+                            function animate(timestamp) {
+                                if (!startTime) startTime = timestamp;
+                                var progress = Math.min((timestamp - startTime) / duration, 1);
+                                var eased = 1 - Math.pow(1 - progress, 3);
+                                var current = Math.floor(eased * target);
+
+                                if (target >= 1000) {
+                                    counter.textContent = (current / 1000).toFixed(current >= target ? 0 : 0) + 'k+';
+                                    if (progress >= 1) {
+                                        counter.textContent = (target / 1000) + 'k+';
+                                    }
+                                } else {
+                                    counter.textContent = current + (progress >= 1 ? '+' : '');
+                                }
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(animate);
+                                }
+                            }
+
+                            requestAnimationFrame(animate);
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            var statsContainer = document.querySelector('.about-stats');
+            if (statsContainer) {
+                observer.observe(statsContainer);
+            }
+        })();
+
+        /* ========== CONTACT FORM ========== */
+        function handleFormSubmit() {
+            var name = document.getElementById('name').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var service = document.getElementById('service').value;
+            var message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !service) {
+                return;
+            }
+
+            var serviceLabels = {
+                'corte-feminino': 'Corte Feminino',
+                'corte-masculino': 'Corte Masculino',
+                'coloracao': 'Coloracao',
+                'mechas': 'Mechas / Balayage',
+                'hidratacao': 'Hidratacao Capilar',
+                'progressiva': 'Escova Progressiva'
+            };
+
+            var text = 'Ola! Gostaria de agendar um horario.\n\nNome: ' + name +
+                '\nTelefone: ' + phone +
+                '\nServico: ' + (serviceLabels[service] || service) +
+                (message ? '\nMensagem: ' + message : '');
+
+            var encoded = encodeURIComponent(text);
+            window.open('https://wa.me/551634215155?text=' + encoded, '_blank');
+        }
+
+        /* ========== SMOOTH SCROLL FOR ANCHORS ========== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    var offset = header ? 80 : 0;
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
