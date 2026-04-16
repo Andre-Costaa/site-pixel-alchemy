@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Manzo Casa de Carnes - Restaurante em Ribeirao Preto, SP. Pratos executivos, pizzas especiais, massas artesanais e muito mais.">
+<meta property="og:title" content="Manzo Casa de Carnes | Restaurante - Ribeirao Preto">
+<meta property="og:description" content="Culinaria de autor com ingredientes selecionados. Venha conhecer nossa casa.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Manzo Casa de Carnes | Restaurante - Ribeirao Preto, SP</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--cream:#F9F6F2;
+--taupe:#8B7E74;
+--olive:#6B705C;
+--black:#1A1A1A;
+--olive-light:#8A8F7E;
+--taupe-light:#A89E95;
+--cream-dark:#EDE8E1;
+--font-display:'Trebuchet MS','Lucida Grande','Lucida Sans',sans-serif;
+--font-body:'Segoe UI','Lucida Grande','Lucida Sans',sans-serif;
+--spacing-xs:0.5rem;
+--spacing-sm:1rem;
+--spacing-md:1.5rem;
+--spacing-lg:2.5rem;
+--spacing-xl:4rem;
+--spacing-2xl:6rem;
+--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+font-family:var(--font-body);
+background:var(--cream);
+color:var(--black);
+line-height:1.7;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--olive);color:var(--cream)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ---- TYPOGRAPHY ---- */
+.font-display{
+font-family:var(--font-display);
+text-transform:uppercase;
+letter-spacing:0.18em;
+font-weight:700;
+}
+.section-label{
+font-family:var(--font-display);
+font-size:0.7rem;
+letter-spacing:0.35em;
+text-transform:uppercase;
+color:var(--olive);
+margin-bottom:var(--spacing-sm);
+display:block;
+}
+.section-title{
+font-family:var(--font-display);
+font-size:clamp(1.8rem,4vw,3rem);
+text-transform:uppercase;
+letter-spacing:0.12em;
+line-height:1.15;
+color:var(--black);
+margin-bottom:var(--spacing-md);
+}
+.section-divider{
+width:50px;height:2px;
+background:var(--olive);
+margin-bottom:var(--spacing-lg);
+}
+
+/* ---- NAV ---- */
+.nav{
+position:fixed;top:0;left:0;width:100%;z-index:1000;
+padding:1.2rem 2rem;
+display:flex;align-items:center;justify-content:space-between;
+transition:var(--transition);
+background:transparent;
+}
+.nav.scrolled{
+background:rgba(249,246,242,0.95);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+box-shadow:0 1px 0 rgba(26,26,26,0.06);
+padding:0.8rem 2rem;
+}
+.nav-logo{
+font-family:var(--font-display);
+font-size:0.85rem;
+letter-spacing:0.25em;
+text-transform:uppercase;
+font-weight:700;
+color:var(--black);
+}
+.nav-logo span{color:var(--olive)}
+.nav-links{display:none;gap:2.5rem;align-items:center}
+.nav-links a{
+font-family:var(--font-display);
+font-size:0.65rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--taupe);
+transition:var(--transition);
+position:relative;
+}
+.nav-links a::after{
+content:'';position:absolute;bottom:-4px;left:0;
+width:0;height:1px;background:var(--olive);
+transition:var(--transition);
+}
+.nav-links a:hover{color:var(--black)}
+.nav-links a:hover::after{width:100%}
+.nav-hamburger{
+display:flex;flex-direction:column;gap:5px;
+cursor:pointer;z-index:1001;
+background:none;border:none;
+}
+.nav-hamburger span{
+display:block;width:24px;height:1.5px;
+background:var(--black);
+transition:var(--transition);
+}
+.nav-hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(4px,5px);
+}
+.nav-hamburger.active span:nth-child(2){opacity:0}
+.nav-hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(4px,-5px);
+}
+.mobile-menu{
+position:fixed;top:0;left:0;width:100%;height:100vh;
+background:var(--cream);
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:2rem;
+opacity:0;pointer-events:none;
+transition:var(--transition);
+z-index:999;
+}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu a{
+font-family:var(--font-display);
+font-size:1rem;
+letter-spacing:0.3em;
+text-transform:uppercase;
+color:var(--black);
+transition:var(--transition);
+}
+.mobile-menu a:hover{color:var(--olive)}
+
+/* ---- HERO ---- */
+.hero{
+min-height:100vh;display:flex;align-items:center;
+position:relative;overflow:hidden;
+background:var(--black);
+}
+.hero-content{
+display:grid;grid-template-columns:1fr;
+width:100%;
+min-height:100vh;
+}
+.hero-visual{
+position:relative;min-height:55vh;
+background:linear-gradient(135deg,#3D2B1F 0%,#5C3D2E 30%,#6B4A3A 60%,#4A3228 100%);
+overflow:hidden;
+display:flex;align-items:center;justify-content:center;
+}
+.hero-visual::before{
+content:'';position:absolute;
+width:300%;height:300%;top:-100%;left:-100%;
+background:radial-gradient(ellipse at 30% 50%,rgba(107,112,92,0.15) 0%,transparent 50%),
+radial-gradient(ellipse at 70% 30%,rgba(139,126,116,0.1) 0%,transparent 40%);
+animation:heroFloat 20s ease-in-out infinite;
+}
+.hero-visual-inner{
+position:relative;z-index:1;text-align:center;
+padding:var(--spacing-lg);
+}
+.hero-visual-plate{
+width:180px;height:180px;margin:0 auto var(--spacing-md);
+border-radius:50%;
+background:linear-gradient(145deg,#8B6914 0%,#C49A3C 30%,#A07D2E 60%,#7A5E1F 100%);
+box-shadow:0 20px 60px rgba(0,0,0,0.4),inset 0 -4px 12px rgba(0,0,0,0.2),inset 0 4px 8px rgba(255,255,255,0.1);
+animation:plateFloat 6s ease-in-out infinite;
+}
+.hero-visual-plate::after{
+content:'';position:absolute;
+top:15%;left:15%;width:70%;height:70%;
+border-radius:50%;
+background:linear-gradient(135deg,#D4A853 0%,#E8C36A 50%,#C49A3C 100%);
+opacity:0.6;
+}
+@keyframes plateFloat{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+}
+@keyframes heroFloat{
+0%,100%{transform:translate(0,0)}
+33%{transform:translate(2%,-1%)}
+66%{transform:translate(-1%,2%)}
+}
+.hero-text{
+display:flex;flex-direction:column;
+justify-content:center;
+padding:var(--spacing-lg) var(--spacing-md);
+background:var(--cream);
+min-height:45vh;
+}
+.hero-eyebrow{
+font-family:var(--font-display);
+font-size:0.65rem;
+letter-spacing:0.4em;
+text-transform:uppercase;
+color:var(--olive);
+margin-bottom:var(--spacing-xs);
+}
+.hero-title{
+font-family:var(--font-display);
+font-size:clamp(2rem,6vw,3.5rem);
+text-transform:uppercase;
+letter-spacing:0.08em;
+line-height:1.05;
+color:var(--black);
+margin-bottom:var(--spacing-sm);
+}
+.hero-title em{
+font-style:normal;
+display:block;
+color:var(--olive);
+}
+.hero-subtitle{
+font-size:0.95rem;
+color:var(--taupe);
+line-height:1.8;
+max-width:400px;
+margin-bottom:var(--spacing-md);
+}
+.hero-cta{
+display:inline-flex;align-items:center;gap:0.75rem;
+font-family:var(--font-display);
+font-size:0.7rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--cream);
+background:var(--black);
+padding:1rem 2rem;
+transition:var(--transition);
+cursor:pointer;
+border:none;
+}
+.hero-cta:hover{
+background:var(--olive);
+transform:translateY(-2px);
+}
+.hero-cta svg{width:16px;height:16px;transition:var(--transition)}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+/* ---- SERVICES ---- */
+.services{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--cream);
+}
+.services-header{text-align:center;margin-bottom:var(--spacing-xl)}
+.services-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:var(--spacing-md);
+max-width:1200px;margin:0 auto;
+}
+.service-card{
+background:var(--cream-dark);
+border-radius:2px;
+overflow:hidden;
+transition:var(--transition);
+position:relative;
+}
+.service-card:hover{
+transform:translateY(-4px);
+box-shadow:0 20px 60px rgba(26,26,26,0.08);
+}
+.service-card-img{
+height:200px;
+position:relative;overflow:hidden;
+}
+.service-card-img .placeholder{
+width:100%;height:100%;
+transition:transform 0.6s ease;
+}
+.service-card:hover .service-card-img .placeholder{
+transform:scale(1.05);
+}
+.service-card-img .price-tag{
+position:absolute;bottom:var(--spacing-sm);right:var(--spacing-sm);
+font-family:var(--font-display);
+font-size:0.75rem;
+letter-spacing:0.15em;
+background:var(--black);
+color:var(--cream);
+padding:0.4rem 0.8rem;
+}
+.service-card-body{padding:var(--spacing-md)}
+.service-card-title{
+font-family:var(--font-display);
+font-size:0.8rem;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:var(--black);
+margin-bottom:0.4rem;
+}
+.service-card-desc{
+font-size:0.85rem;
+color:var(--taupe);
+line-height:1.7;
+}
+
+/* ---- ABOUT ---- */
+.about{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--black);
+color:var(--cream);
+position:relative;overflow:hidden;
+}
+.about::before{
+content:'';position:absolute;
+top:-50%;right:-20%;
+width:500px;height:500px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(107,112,92,0.08) 0%,transparent 70%);
+}
+.about-grid{
+display:grid;grid-template-columns:1fr;gap:var(--spacing-xl);
+max-width:1100px;margin:0 auto;
+position:relative;z-index:1;
+}
+.about-visual{
+display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);
+}
+.about-img{
+height:220px;
+border-radius:2px;
+overflow:hidden;
+}
+.about-img:nth-child(2){margin-top:var(--spacing-lg)}
+.about-img .placeholder{
+width:100%;height:100%;
+transition:transform 0.6s ease;
+}
+.about-img:hover .placeholder{transform:scale(1.05)}
+.about-content .section-label{color:var(--olive-light)}
+.about-content .section-title{color:var(--cream)}
+.about-content .section-divider{background:var(--olive)}
+.about-text{
+font-size:0.95rem;
+color:var(--taupe-light);
+line-height:1.9;
+margin-bottom:var(--spacing-md);
+}
+.about-stats{
+display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-sm);
+margin-top:var(--spacing-lg);
+}
+.about-stat-num{
+font-family:var(--font-display);
+font-size:clamp(1.5rem,3vw,2.2rem);
+letter-spacing:0.05em;
+color:var(--olive-light);
+font-weight:700;
+}
+.about-stat-label{
+font-size:0.7rem;
+letter-spacing:0.15em;
+text-transform:uppercase;
+color:var(--taupe);
+margin-top:0.25rem;
+}
+
+/* ---- TEAM ---- */
+.team{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--cream-dark);
+}
+.team-header{text-align:center;margin-bottom:var(--spacing-xl)}
+.team-grid{
+display:grid;grid-template-columns:1fr;gap:var(--spacing-lg);
+max-width:900px;margin:0 auto;
+}
+.team-card{text-align:center}
+.team-photo{
+width:180px;height:220px;margin:0 auto var(--spacing-md);
+border-radius:2px;overflow:hidden;
+position:relative;
+}
+.team-photo .placeholder{
+width:100%;height:100%;
+transition:transform 0.6s ease;
+}
+.team-card:hover .team-photo .placeholder{transform:scale(1.05)}
+.team-name{
+font-family:var(--font-display);
+font-size:0.8rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--black);
+margin-bottom:0.3rem;
+}
+.team-role{
+font-size:0.8rem;
+color:var(--taupe);
+letter-spacing:0.05em;
+}
+
+/* ---- GALLERY ---- */
+.gallery{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--cream);
+}
+.gallery-header{text-align:center;margin-bottom:var(--spacing-xl)}
+.gallery-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:var(--spacing-sm);
+max-width:1100px;margin:0 auto;
+}
+.gallery-item{
+height:260px;border-radius:2px;overflow:hidden;
+position:relative;cursor:pointer;
+}
+.gallery-item .placeholder{
+width:100%;height:100%;
+transition:transform 0.6s ease;
+}
+.gallery-item:hover .placeholder{transform:scale(1.08)}
+.gallery-item::after{
+content:'';position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(26,26,26,0.4) 0%,transparent 50%);
+opacity:0;transition:var(--transition);
+}
+.gallery-item:hover::after{opacity:1}
+.gallery-caption{
+position:absolute;bottom:0;left:0;right:0;
+padding:var(--spacing-md);
+z-index:2;
+opacity:0;transform:translateY(10px);
+transition:var(--transition);
+}
+.gallery-item:hover .gallery-caption{
+opacity:1;transform:translateY(0);
+}
+.gallery-caption span{
+font-family:var(--font-display);
+font-size:0.7rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--cream);
+}
+
+/* ---- TESTIMONIALS ---- */
+.testimonials{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--black);
+color:var(--cream);
+}
+.testimonials-header{text-align:center;margin-bottom:var(--spacing-xl)}
+.testimonials-header .section-label{color:var(--olive-light)}
+.testimonials-header .section-title{color:var(--cream)}
+.testimonials-header .section-divider{background:var(--olive)}
+.testimonials-grid{
+display:grid;grid-template-columns:1fr;gap:var(--spacing-md);
+max-width:1000px;margin:0 auto;
+}
+.testimonial-card{
+background:rgba(249,246,242,0.04);
+border:1px solid rgba(249,246,242,0.08);
+border-radius:2px;
+padding:var(--spacing-lg);
+transition:var(--transition);
+}
+.testimonial-card:hover{
+border-color:rgba(107,112,92,0.3);
+background:rgba(249,246,242,0.06);
+}
+.testimonial-stars{
+display:flex;gap:3px;margin-bottom:var(--spacing-sm);
+}
+.testimonial-stars svg{width:14px;height:14px;fill:var(--olive-light)}
+.testimonial-text{
+font-size:0.95rem;
+color:var(--taupe-light);
+line-height:1.9;
+font-style:italic;
+margin-bottom:var(--spacing-md);
+}
+.testimonial-author{
+font-family:var(--font-display);
+font-size:0.7rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--cream);
+}
+.testimonial-role{
+font-size:0.75rem;
+color:var(--taupe);
+margin-top:0.2rem;
+}
+
+/* ---- CONTACT ---- */
+.contact{
+padding:var(--spacing-2xl) var(--spacing-md);
+background:var(--cream);
+}
+.contact-header{text-align:center;margin-bottom:var(--spacing-xl)}
+.contact-grid{
+display:grid;grid-template-columns:1fr;gap:var(--spacing-xl);
+max-width:1000px;margin:0 auto;
+}
+.contact-info{display:flex;flex-direction:column;gap:var(--spacing-md)}
+.contact-item{display:flex;gap:var(--spacing-sm);align-items:flex-start}
+.contact-item svg{
+width:18px;height:18px;
+color:var(--olive);flex-shrink:0;margin-top:3px;
+}
+.contact-item-label{
+font-family:var(--font-display);
+font-size:0.65rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--olive);
+margin-bottom:0.15rem;
+}
+.contact-item-value{
+font-size:0.9rem;
+color:var(--black);
+line-height:1.6;
+}
+.contact-hours{
+margin-top:var(--spacing-sm);
+padding-top:var(--spacing-sm);
+border-top:1px solid var(--cream-dark);
+}
+.contact-hours-title{
+font-family:var(--font-display);
+font-size:0.65rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--olive);
+margin-bottom:0.5rem;
+}
+.contact-hours-list{display:flex;flex-direction:column;gap:0.3rem}
+.contact-hours-row{
+display:flex;justify-content:space-between;
+font-size:0.85rem;
+}
+.contact-hours-row span:first-child{color:var(--taupe)}
+.contact-hours-row span:last-child{color:var(--black)}
+.contact-whatsapp{
+display:inline-flex;align-items:center;gap:0.75rem;
+font-family:var(--font-display);
+font-size:0.7rem;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:var(--cream);
+background:#25D366;
+padding:1rem 2rem;
+margin-top:var(--spacing-md);
+transition:var(--transition);
+cursor:pointer;
+border:none;
+}
+.contact-whatsapp:hover{
+background:#1EBE57;
+transform:translateY(-2px);
+}
+.contact-whatsapp svg{width:18px;height:18px}
+.contact-map{
+height:300px;border-radius:2px;overflow:hidden;
+background:var(--cream-dark);
+display:flex;align-items:center;justify-content:center;
+}
+.contact-map-inner{
+width:100%;height:100%;
+background:linear-gradient(135deg,#E8E3DB 0%,#D9D3C9 30%,#E0DBD3 60%,#D5CFC5 100%);
+display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
+}
+.contact-map-inner svg{width:32px;height:32px;color:var(--taupe)}
+.contact-map-inner span{
+font-family:var(--font-display);
+font-size:0.65rem;
+letter-spacing:0.2em;
+text-transform:uppercase;
+color:var(--taupe);
+}
+
+/* ---- FOOTER ---- */
+.footer{
+padding:var(--spacing-xl) var(--spacing-md);
+background:var(--black);
+border-top:1px solid rgba(249,246,242,0.06);
+}
+.footer-inner{
+max-width:1100px;margin:0 auto;
+display:flex;flex-direction:column;
+align-items:center;gap:var(--spacing-md);
+text-align:center;
+}
+.footer-logo{
+font-family:var(--font-display);
+font-size:0.75rem;
+letter-spacing:0.3em;
+text-transform:uppercase;
+color:var(--cream);
+}
+.footer-logo span{color:var(--olive-light)}
+.footer-links{
+display:flex;gap:var(--spacing-md);
+flex-wrap:wrap;justify-content:center;
+}
+.footer-links a{
+font-size:0.75rem;
+color:var(--taupe);
+transition:var(--transition);
+}
+.footer-links a:hover{color:var(--cream)}
+.footer-copy{
+font-size:0.7rem;
+color:var(--taupe);
+letter-spacing:0.05em;
+}
+
+/* ---- WHATSAPP FLOAT ---- */
+.whatsapp-float{
+position:fixed;bottom:1.5rem;right:1.5rem;
+width:56px;height:56px;
+background:#25D366;
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(37,211,102,0.4);
+z-index:998;
+transition:var(--transition);
+cursor:pointer;
+border:none;
+}
+.whatsapp-float:hover{
+transform:scale(1.1);
+box-shadow:0 6px 30px rgba(37,211,102,0.5);
+}
+.whatsapp-float svg{width:28px;height:28px;fill:white}
+
+/* ---- ANIMATIONS ---- */
+.wow-fade-up{
+opacity:0;transform:translateY(30px);
+transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.wow-fade-up.visible{
+opacity:1;transform:translateY(0);
+}
+.wow-fade-in{
+opacity:0;
+transition:opacity 0.8s ease;
+}
+.wow-fade-in.visible{opacity:1}
+[data-delay="1"]{transition-delay:0.1s}
+[data-delay="2"]{transition-delay:0.2s}
+[data-delay="3"]{transition-delay:0.3s}
+[data-delay="4"]{transition-delay:0.4s}
+[data-delay="5"]{transition-delay:0.5s}
+[data-delay="6"]{transition-delay:0.6s}
+
+/* ---- RESPONSIVE ---- */
+@media(min-width:480px){
+.services-grid{grid-template-columns:1fr 1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.about-stats{gap:var(--spacing-md)}
+.testimonials-grid{grid-template-columns:1fr 1fr}
+}
+@media(min-width:768px){
+.nav-links{display:flex}
+.nav-hamburger{display:none}
+.hero-content{grid-template-columns:1fr 1fr}
+.hero-visual{min-height:100vh}
+.hero-text{min-height:100vh}
+.services-grid{grid-template-columns:repeat(3,1fr)}
+.team-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-item:nth-child(1){grid-column:span 2;height:320px}
+.gallery-item:nth-child(4){grid-column:span 2;height:320px}
+.testimonials-grid{grid-template-columns:repeat(3,1fr)}
+.contact-grid{grid-template-columns:1fr 1fr;align-items:start}
+.testimonials-grid .testimonial-card:nth-child(3){
+grid-column:1/-1;max-width:500px;justify-self:center;
+}
+}
+@media(min-width:1024px){
+.nav{padding:1.5rem 4rem}
+.nav.scrolled{padding:1rem 4rem}
+.services{padding:var(--spacing-2xl) 4rem}
+.about{padding:var(--spacing-2xl) 4rem}
+.team{padding:var(--spacing-2xl) 4rem}
+.gallery{padding:var(--spacing-2xl) 4rem}
+.testimonials{padding:var(--spacing-2xl) 4rem}
+.contact{padding:var(--spacing-2xl) 4rem}
+.about-grid{grid-template-columns:1fr 1fr;gap:var(--spacing-2xl)}
+.about-visual{grid-template-columns:1fr 1fr}
+.about-img{height:280px}
+.gallery-item{height:300px}
+.gallery-item:nth-child(1),.gallery-item:nth-child(4){height:360px}
+.testimonials-grid .testimonial-card:nth-child(3){
+grid-column:auto;max-width:none;justify-self:auto;
+}
+}
+@media(min-width:1440px){
+.services-grid,.gallery-grid{max-width:1300px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{
+animation-duration:0.01ms!important;
+transition-duration:0.01ms!important;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<a href="#" class="nav-logo">Manzo <span>Casa de Carnes</span></a>
+<div class="nav-links">
+<a href="#cardapio">Cardapio</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+<button class="nav-hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#cardapio">Cardapio</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+<div class="hero-content">
+<div class="hero-visual">
+<div class="hero-visual-inner">
+<div class="hero-visual-plate"></div>
+</div>
+</div>
+<div class="hero-text">
+<span class="hero-eyebrow">Restaurante em Ribeirao Preto</span>
+<h1 class="hero-title">Culinaria<em>de Autor</em></h1>
+<p class="hero-subtitle">Ingredientes selecionados, tecnicas artesanais e um ambiente acolhedor para momentos inesqueciveis a mesa.</p>
+<a href="#cardapio" class="hero-cta">
+Conheca nosso cardapio
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="cardapio">
+<div class="services-header">
+<span class="section-label wow-fade-up">Nosso Cardapio</span>
+<h2 class="section-title wow-fade-up" data-delay="1">Sabores que<br>Contam Historias</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+</div>
+<div class="services-grid">
+
+<div class="service-card wow-fade-up" data-delay="1">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#8B5E3C 0%,#A67B5B 40%,#6B4226 100%)"></div>
+<span class="price-tag">R$ 42,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Prato Executivo</h3>
+<p class="service-card-desc">Selecao diaria com arroz, feijao, farofa artesanal, salada verde e a proteina do dia preparada na brasa.</p>
+</div>
+</div>
+
+<div class="service-card wow-fade-up" data-delay="2">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#C4953A 0%,#A67C2E 40%,#8B6914 100%)"></div>
+<span class="price-tag">R$ 58,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Pizza Especial</h3>
+<p class="service-card-desc">Massa fermentada por 72 horas com ingredientes premium. Sabores rotativos com combinacoes exclusivas do chefe.</p>
+</div>
+</div>
+
+<div class="service-card wow-fade-up" data-delay="3">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#D4A853 0%,#C49A3C 40%,#A07D2E 100%)"></div>
+<span class="price-tag">R$ 54,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Massa Artesanal</h3>
+<p class="service-card-desc">Pasta fresca feita diariamente. Tagliatelle, pappardelle e ravioli com molhos de autor e queijos selecionados.</p>
+</div>
+</div>
+
+<div class="service-card wow-fade-up" data-delay="4">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#6B8F5C 0%,#8AAE7B 40%,#4A6B3C 100%)"></div>
+<span class="price-tag">R$ 34,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Salada Gourmet</h3>
+<p class="service-card-desc">Folhas frescas organicas com complementos selecionados. Opcoes com grelhados, queijo de cabra e vinagretes especiais.</p>
+</div>
+</div>
+
+<div class="service-card wow-fade-up" data-delay="5">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#9B6B7D 0%,#B88A9C 40%,#7D4F62 100%)"></div>
+<span class="price-tag">R$ 28,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Sobremesa</h3>
+<p class="service-card-desc">Doces artesanais que encerram a refeicao com perfeicao. Pudim, tiramisu e opcoes da estacao com caldas caseiras.</p>
+</div>
+</div>
+
+<div class="service-card wow-fade-up" data-delay="6">
+<div class="service-card-img">
+<div class="placeholder" style="background:linear-gradient(135deg,#5C7A8B 0%,#7B9AAE 40%,#3C5A6B 100%)"></div>
+<span class="price-tag">R$ 22,90</span>
+</div>
+<div class="service-card-body">
+<h3 class="service-card-title">Bebida Autoral</h3>
+<p class="service-card-desc">Drinks exclusivos criados pelo nosso barman. Combinacoes com frutas frescas, ervas e destilados premium selecionados.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+<div class="about-grid">
+<div class="about-visual">
+<div class="about-img wow-fade-up">
+<div class="placeholder" style="background:linear-gradient(135deg,#5C3D2E 0%,#7A5A4A 50%,#4A2E1F 100%)"></div>
+</div>
+<div class="about-img wow-fade-up" data-delay="2">
+<div class="placeholder" style="background:linear-gradient(135deg,#6B705C 0%,#8A8F7E 50%,#4A4F3C 100%)"></div>
+</div>
+</div>
+<div class="about-content">
+<span class="section-label wow-fade-up">Nossa Historia</span>
+<h2 class="section-title wow-fade-up" data-delay="1">Tradiccao e<br>Sabor em Cada<br>Prato</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+<p class="about-text wow-fade-up" data-delay="3">
+O Manzo Casa de Carnes nasceu da paixao pela culinaria de qualidade e do desejo de oferecer a Ribeirao Preto uma experiencia gastronomica autentica. Cada prato que sai da nossa cozinha carrega anos de pesquisa, tecnicas artesanais e ingredientes cuidadosamente selecionados de produtores locais.
+</p>
+<p class="about-text wow-fade-up" data-delay="4">
+Nosso espaco foi pensado para ser uma extensao da propria mesa de casa: acolhedor, sem pressa, onde cada refeicao se torna um momento especial. Aqui, a comida nao e apenas alimento -- e experiencia, memoria e celebracao.
+</p>
+<div class="about-stats wow-fade-up" data-delay="5">
+<div>
+<div class="about-stat-num" data-target="8">0</div>
+<div class="about-stat-label">Anos de tradiccao</div>
+</div>
+<div>
+<div class="about-stat-num" data-target="45">0</div>
+<div class="about-stat-label">Itens no cardapio</div>
+</div>
+<div>
+<div class="about-stat-num" data-target="12000">0</div>
+<div class="about-stat-label">Clientes atendidos</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipe">
+<div class="team-header">
+<span class="section-label wow-fade-up">Nossa Equipe</span>
+<h2 class="section-title wow-fade-up" data-delay="1">Atras de Cada<br>Prato</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+</div>
+<div class="team-grid">
+
+<div class="team-card wow-fade-up" data-delay="1">
+<div class="team-photo">
+<div class="placeholder" style="background:linear-gradient(160deg,#5C3D2E 0%,#8B6B5A 50%,#3D2518 100%)"></div>
+</div>
+<h3 class="team-name">Carlos Manzo</h3>
+<p class="team-role">Chef Executivo e Fundador</p>
+</div>
+
+<div class="team-card wow-fade-up" data-delay="2">
+<div class="team-photo">
+<div class="placeholder" style="background:linear-gradient(160deg,#6B705C 0%,#8A8F7E 50%,#4A4F3C 100%)"></div>
+</div>
+<h3 class="team-name">Ana Beatriz</h3>
+<p class="team-role">Sous Chef e Pastelera</p>
+</div>
+
+<div class="team-card wow-fade-up" data-delay="3">
+<div class="team-photo">
+<div class="placeholder" style="background:linear-gradient(160deg,#8B5E3C 0%,#A67B5B 50%,#5C3D2E 100%)"></div>
+</div>
+<h3 class="team-name">Ricardo Mendes</h3>
+<p class="team-role">Barman e Sommelier</p>
+</div>
+
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+<div class="gallery-header">
+<span class="section-label wow-fade-up">Galeria</span>
+<h2 class="section-title wow-fade-up" data-delay="1">Momentos ao<br>Vivo</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+</div>
+<div class="gallery-grid">
+
+<div class="gallery-item wow-fade-up" data-delay="1">
+<div class="placeholder" style="background:linear-gradient(135deg,#5C3D2E 0%,#8B6B5A 40%,#3D2518 100%)"></div>
+<div class="gallery-caption"><span>Ambiente Principal</span></div>
+</div>
+
+<div class="gallery-item wow-fade-up" data-delay="2">
+<div class="placeholder" style="background:linear-gradient(135deg,#C4953A 0%,#A67C2E 40%,#8B6914 100%)"></div>
+<div class="gallery-caption"><span>Pizza Especial</span></div>
+</div>
+
+<div class="gallery-item wow-fade-up" data-delay="3">
+<div class="placeholder" style="background:linear-gradient(135deg,#6B705C 0%,#8A8F7E 40%,#4A4F3C 100%)"></div>
+<div class="gallery-caption"><span>Detalhes da Cozinha</span></div>
+</div>
+
+<div class="gallery-item wow-fade-up" data-delay="4">
+<div class="placeholder" style="background:linear-gradient(135deg,#8B5E3C 0%,#A67B5B 40%,#6B4226 100%)"></div>
+<div class="gallery-caption"><span>Prato Executivo</span></div>
+</div>
+
+<div class="gallery-item wow-fade-up" data-delay="5">
+<div class="placeholder" style="background:linear-gradient(135deg,#D4A853 0%,#C49A3C 40%,#A07D2E 100%)"></div>
+<div class="gallery-caption"><span>Massa Artesanal</span></div>
+</div>
+
+<div class="gallery-item wow-fade-up" data-delay="6">
+<div class="placeholder" style="background:linear-gradient(135deg,#9B6B7D 0%,#B88A9C 40%,#7D4F62 100%)"></div>
+<div class="gallery-caption"><span>Sobremesas</span></div>
+</div>
+
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+<div class="testimonials-header">
+<span class="section-label wow-fade-up">Depoimentos</span>
+<h2 class="section-title wow-fade-up" data-delay="1">O Que Dizem<br>Nossos Clientes</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+</div>
+<div class="testimonials-grid">
+
+<div class="testimonial-card wow-fade-up" data-delay="1">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"O melhor restaurante de Ribeirao Preto. A pizza e de outro nivel, e o atendimento e impecavel. Viramos clientes frequentes desde a primeira visita."</p>
+<div class="testimonial-author">Fernanda Oliveira</div>
+<div class="testimonial-role">Cliente ha 2 anos</div>
+</div>
+
+<div class="testimonial-card wow-fade-up" data-delay="2">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"Pedi o prato executivo e fui surpreendido pela qualidade. Ingredientes frescos, apresentacao impecavel e um sabor que realmente marca. Recomendo demais."</p>
+<div class="testimonial-author">Marcos Ribeiro</div>
+<div class="testimonial-role">Cliente ha 1 ano</div>
+</div>
+
+<div class="testimonial-card wow-fade-up" data-delay="3">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">"Fizemos um aniversario la e foi perfeito. O ambiente e lindo, a comida incrivel e a equipe toda muito atenciosa. Vamos voltar com certeza."</p>
+<div class="testimonial-author">Juliana Costa</div>
+<div class="testimonial-role">Cliente ha 3 anos</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+<div class="contact-header">
+<span class="section-label wow-fade-up">Contato</span>
+<h2 class="section-title wow-fade-up" data-delay="1">Venha Nos Visitar</h2>
+<div class="section-divider wow-fade-up" data-delay="2"></div>
+</div>
+<div class="contact-grid">
+<div class="contact-info wow-fade-up">
+<div class="contact-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<div>
+<div class="contact-item-label">Endereco</div>
+<div class="contact-item-value">Av. Carlos Eduardo de Gasperi Consoni, 782<br>Ribeirao Preto, SP</div>
+</div>
+</div>
+<div class="contact-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+<div>
+<div class="contact-item-label">Telefone</div>
+<div class="contact-item-value">(16) 99769-5349</div>
+</div>
+</div>
+<div class="contact-hours">
+<div class="contact-hours-title">Horario de Funcionamento</div>
+<div class="contact-hours-list">
+<div class="contact-hours-row">
+<span>Segunda a Quinta</span>
+<span>11h30 -- 14h30 / 18h -- 22h</span>
+</div>
+<div class="contact-hours-row">
+<span>Sexta e Sabado</span>
+<span>11h30 -- 15h / 18h -- 23h</span>
+</div>
+<div class="contact-hours-row">
+<span>Domingo</span>
+<span>11h30 -- 16h</span>
+</div>
+</div>
+</div>
+<a href="https://wa.me/5516997695349" target="_blank" class="contact-whatsapp">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+Fale conosco no WhatsApp
+</a>
+</div>
+<div class="contact-map wow-fade-up" data-delay="2">
+<div class="contact-map-inner">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Ribeirao Preto, SP</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-logo">Manzo <span>Casa de Carnes</span></div>
+<div class="footer-links">
+<a href="#inicio">Inicio</a>
+<a href="#cardapio">Cardapio</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+</div>
+<div class="footer-copy">2025 Manzo Casa de Carnes. Todos os direitos reservados.</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5516997695349" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ---- NAV SCROLL ---- */
+const nav=document.getElementById('nav');
+let lastScroll=0;
+window.addEventListener('scroll',()=>{
+const st=window.scrollY;
+nav.classList.toggle('scrolled',st>50);
+lastScroll=st;
+},{passive:true});
+
+/* ---- HAMBURGER ---- */
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('active');
+document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';
+});
+mobileMenu.querySelectorAll('a').forEach(a=>{
+a.addEventListener('click',()=>{
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('active');
+document.body.style.overflow='';
+});
+});
+
+/* ---- INTERSECTION OBSERVER ---- */
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('visible');
+observer.unobserve(e.target);
+}
+});
+},{threshold:0.1,rootMargin:'-50px'});
+document.querySelectorAll('.wow-fade-up,.wow-fade-in').forEach(el=>observer.observe(el));
+
+/* ---- COUNTER ANIMATION ---- */
+const counterObserver=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+const el=e.target;
+const target=parseInt(el.getAttribute('data-target'));
+const duration=2000;
+const start=performance.now();
+const animate=(now)=>{
+const elapsed=now-start;
+const progress=Math.min(elapsed/duration,1);
+const eased=1-Math.pow(1-progress,3);
+const current=Math.floor(eased*target);
+el.textContent=current>=1000?current.toLocaleString('pt-BR')+'+':current+'+';
+if(progress<1)requestAnimationFrame(animate);
+};
+requestAnimationFrame(animate);
+counterObserver.unobserve(el);
+}
+});
+},{threshold:0.5});
+document.querySelectorAll('.about-stat-num[data-target]').forEach(el=>counterObserver.observe(el));
+
+/* ---- SMOOTH SCROLL (fallback) ---- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+const target=document.querySelector(a.getAttribute('href'));
+if(target){
+e.preventDefault();
+target.scrollIntoView({behavior:'smooth',block:'start'});
+}
+});
+});
+</script>
+</body>
+</html>
