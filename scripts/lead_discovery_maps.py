@@ -52,7 +52,7 @@ CIDADES = [
     'Jaguariúna',
 ]
 
-# ── SERP Maps ─────────────────────────────────────────────────────────
+# -- SERP Maps ---------------------------------------------------------
 
 def maps_search(query, num=20):
     """Busca businesses no Google Maps via SERP API."""
@@ -86,7 +86,7 @@ def normal_search(query, num=5):
         return {}
 
 
-# ── Phone normalization ─────────────────────────────────────────────
+# -- Phone normalization ---------------------------------------------
 
 def normalize_phone(raw):
     """Normaliza telefone para 10 digitos."""
@@ -100,7 +100,7 @@ def normalize_phone(raw):
     return digits if len(digits) == 10 else None
 
 
-# ── Email from Google (business name search) ───────────────────────
+# -- Email from Google (business name search) -----------------------
 
 def try_find_email_via_google(business_name, address=''):
     """
@@ -188,7 +188,7 @@ def try_email_from_site(url, timeout=5):
         return None
 
 
-# ── WhatsApp link from Maps data ────────────────────────────────────
+# -- WhatsApp link from Maps data ------------------------------------
 
 def get_whatsapp_link(place):
     """Extrai link WhatsApp dos bookingLinks ou gera de phone."""
@@ -218,7 +218,7 @@ def token_text():
     )
 
 
-# ── SQLite ───────────────────────────────────────────────────────────
+# -- SQLite -----------------------------------------------------------
 
 def prospect_exists_by_phone(phone_norm):
     conn = sqlite3.connect(DB)
@@ -287,28 +287,40 @@ def get_whatsapp_link_from_phone(phone_norm):
     return None
 
 
-# ── Scoring ───────────────────────────────────────────────────────────
+# -- Scoring -----------------------------------------------------------
+
+SOCIAL_SKIP = ['instagram', 'facebook', 'fb.com', 'wa.me', 'whatsapp',
+               'twitter', 'linkedin', 'youtube', 'tiktok', 'pinterest',
+               'booking', 'agende', 'schedule', 'yelp', 'google.com/maps',
+               'sites.appbarber', 'melhorbarbeiro']
+
+
+def has_real_website(place):
+    """
+    Verifica se o lugar tem um site REAL (nao apenas Instagram/Facebook/booking).
+    SERP Maps retorna Instagram/Facebook como 'website' para muitos negocios
+    que nao tem site proprio - isso e nosso bug principal.
+    """
+    site = place.get('website', '') or ''
+    if not site:
+        return False
+    site_lower = site.lower()
+    return not any(s in site_lower for s in SOCIAL_SKIP)
+
 
 def score_prospect(place):
     """
-    Score de quao bom e esse prospect.
-    Maior score = melhor cliente em potencial.
-
-    Prioridades:
-    - SEM website = score alto (nosso cliente ideal!)
-    - Tem telefone = pode WhatsApp
-    - Rating alto = ativo
-    - Review count alto = confiavel
+    Score: 0-100. Cliente ideal = SEM site real + tem telefone.
     """
-    score = 0
-
-    has_website = bool(place.get('website'))
+    has_real_site = has_real_website(place)
     has_phone = bool(place.get('phoneNumber'))
     rating = place.get('rating') or 0
     reviews = place.get('ratingCount') or 0
 
-    # SEM site = cliente ideal (+50)
-    if not has_website:
+    score = 0
+
+    # SEM site real = cliente ideal (+50)
+    if not has_real_site:
         score += 50
 
     # Telefone disponivel (+20)
@@ -331,10 +343,10 @@ def score_prospect(place):
     elif reviews >= 10:
         score += 5
 
-    return score, has_website
+    return score, has_real_site
 
 
-# ── Main ─────────────────────────────────────────────────────────────
+# -- Main -------------------------------------------------------------
 
 def discover_for_niche(nicho, cidade='Ribeirão Preto', limit_per_run=30):
     """
