@@ -40,7 +40,8 @@ if not SERP_API_KEY:
 SOCIAL_SKIP = ['instagram', 'facebook', 'fb.com', 'wa.me', 'whatsapp',
                'twitter', 'linkedin', 'youtube', 'tiktok', 'pinterest',
                'booking', 'agende', 'schedule', 'yelp', 'google.com/maps',
-               'sites.appbarber', 'melhorbarbeiro']
+               'sites.appbarber', 'melhorbarbeiro', 'fresha', 'cliniciapp',
+               'agendaki', 'beautyfair', 'magis', 'totalcross']
 
 
 # ============================================================================
@@ -94,6 +95,71 @@ def score_prospect(place):
     elif reviews >= 10:
         score += 5
     return score
+
+
+# -- Email extraction (MAX 2 chamadas por lead alem do Maps) --
+
+def try_email_from_site(url, call_counter, timeout=5):
+    """Tenta extrair email de um site. MAX 1 chamada."""
+    if not url or 'http' not in url.lower():
+        return None
+    if any(p in url.lower() for p in SOCIAL_SKIP):
+        return None
+    if call_counter['calls'] >= 2:
+        return None
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+        })
+        resp = urllib.request.urlopen(req, timeout=timeout)
+        html = resp.read().decode('utf-8', errors='ignore')
+        html = re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.DOTALL)
+        html = re.sub(r'<style[^>]*>.*?</style>', '', html, flags=re.DOTALL)
+        text = re.sub(r'<[^>]+>', ' ', html)
+        text = re.sub(r'\s+', ' ', text)
+        emails = re.findall(r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', text)
+        generic = {'contato@', 'info@', 'hello@', 'admin@', 'vendas@',
+                   'noreply@', 'suporte@', 'atendimento@', 'sac@'}
+        filtered = [e for e in emails if not any(e.startswith(g) for g in generic) and len(e) < 50]
+        call_counter['calls'] += 1
+        return filtered[0] if filtered else None
+    except:
+        call_counter['calls'] += 1
+        return None
+
+
+def try_find_email_via_google(business_name, address, call_counter):
+    """Para sem-site: 1 busca Google + 1 extracao site. MAX 2 chamadas."""
+    if call_counter['calls'] >= 2:
+        return None
+    cidade = address.split(' - ')[-1] if address else ''
+    query = f'"{business_name}" {cidade} contato'
+    try:
+        url = f"{SERPER_BASE}?q={urllib.parse.quote(query)}&num=5"
+        req = urllib.request.Request(url)
+        req.add_header('X-API-Key', SERP_API_KEY)
+        req.add_header('Content-Type', 'application/json')
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode())
+        call_counter['calls'] += 1
+        organic = data.get('organic', [])
+        for r in organic:
+            link = r.get('link', '') or ''
+            snippet = r.get('snippet', '') or ''
+            if any(s in link.lower() for s in SOCIAL_SKIP):
+                continue
+            # Email no snippet
+            emails = re.findall(r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}', snippet)
+            if emails:
+                return emails[0].lower()
+            # Tenta extrair do site (2a chamada)
+            if link and call_counter['calls'] < 2:
+                email = try_email_from_site(link, call_counter)
+                if email:
+                    return email
+        return None
+    except:
+        return None
 
 
 def serp_maps_search(query, num=10):
@@ -238,6 +304,18 @@ def process_combo(conn, combo, stats):
         score = score_prospect(place)
         has_real_site = has_real_website(place)
 
+        # Email extraction: MAX 3 chamadas por lead (Maps=batch, nao conta)
+        # Para sem-site: 1 busca Google + 1 extracao site = 2 extras
+        # Para com-site: 1 extracao email = 1 extra
+        call_counter = {'calls': 0}
+        email = None
+        if has_real_site and place.get('website'):
+            # Ja tem site real: 1 extracao direta
+            email = try_email_from_site(place['website'], call_counter)
+        elif not has_real_site:
+            # Sem site: 1 busca Google + opcional 1 extracao site
+            email = try_find_email_via_google(nome, place.get('address', ''), call_counter)
+
         # Build data dict
         data = {
             'nome': nome,
@@ -246,6 +324,7 @@ def process_combo(conn, combo, stats):
             'endereco': place.get('address') or '',
             'nicho': niche,
             'site_url': place.get('website') or '',
+            'email': email or '',
             'pipeline_status': 'Lead',
             'source': 'serp_pool',
             'rating': place.get('rating') or 0,
@@ -257,7 +336,8 @@ def process_combo(conn, combo, stats):
             pid = insert_prospect(conn, data)
             new_inserts += 1
             has_site = 'SIM' if has_real_site else 'NAO'
-            print(f"    + {nome[:40]} | score={score} | tel={bool(phone_norm)} | site={has_site}")
+            email_str = f" | email={email}" if email else f" | sem email ({call_counter['calls']} calls)"
+            print(f"    + {nome[:40]} | score={score} | tel={bool(phone_norm)} | site={has_site}{email_str}")
         except Exception as e:
             pass
 
