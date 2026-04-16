@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vize Beauty Hair - Salao de beleza em Ribeirao Preto, SP. Cortes, coloracao, mechas, hidratacao e escova progressiva. Agende pelo WhatsApp.">
+    <meta name="keywords" content="salao beleza, cabelo, corte, coloracao, mechas, ribeirao preto, vize beauty">
+    <meta property="og:title" content="Vize Beauty Hair - Salao de Beleza em Ribeirao Preto">
+    <meta property="og:description" content="Transforme seu visual com profissionais que entendem de beleza. Agende pelo WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/vize-beauty-hair/">
+    <meta property="og:locale" content="pt_BR">
+    <title>Vize Beauty Hair | Salao de Beleza - Ribeirao Preto, SP</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-dark: #9A5F2A;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2E;
+            --gold: #C9A96E;
+            --gold-light: #E2CC9C;
+            --gold-dark: #A68B4B;
+            --rose: #F5E6DA;
+            --rose-deep: #E8D0BE;
+            --warm-white: #FDFBF7;
+            --warm-gray: #A89888;
+            --shadow-soft: rgba(60, 36, 21, 0.08);
+            --shadow-medium: rgba(60, 36, 21, 0.15);
+            --shadow-strong: rgba(60, 36, 21, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-xl: 36px;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --font-serif: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--warm-white);
+            color: var(--espresso);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.1rem 2rem;
+            transition: all var(--transition-smooth);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 30px var(--shadow-soft);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--espresso);
+        }
+
+        .nav.scrolled .nav-link {
+            color: var(--espresso-light);
+        }
+
+        .nav.scrolled .nav-link:hover {
+            color: var(--bronze);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color var(--transition-smooth);
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: width var(--transition-smooth);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--bronze);
+            color: var(--cream) !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all var(--transition-smooth);
+        }
+
+        .nav-cta:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(184, 115, 51, 0.35);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--cream);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled .hamburger span {
+            background: var(--espresso);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(160deg, var(--espresso) 0%, #2A1810 40%, #4A2D1E 70%, var(--espresso-light) 100%);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 600px 600px at 20% 50%, rgba(184, 115, 51, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 500px at 80% 30%, rgba(201, 169, 110, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 400px at 50% 80%, rgba(247, 231, 206, 0.06) 0%, transparent 70%);
+            animation: heroShimmer 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroShimmer {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-2%, 1%) scale(1.02); }
+            100% { transform: translate(1%, -1%) scale(1); }
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--bronze);
+            top: -10%;
+            right: -10%;
+            animation: blobFloat1 18s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--gold);
+            bottom: 5%;
+            left: -5%;
+            animation: blobFloat2 22s ease-in-out infinite;
+        }
+
+        .hero-blob-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--champagne);
+            top: 40%;
+            right: 20%;
+            animation: blobFloat3 14s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-40px, 30px) scale(1.1); }
+            66% { transform: translate(20px, -20px) scale(0.95); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(1.1); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, -30px) scale(1.15); }
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleRise linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; animation-duration: 10s; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 40%; animation-duration: 7s; animation-delay: 1s; }
+        .particle:nth-child(4) { left: 55%; animation-duration: 9s; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 70%; animation-duration: 11s; animation-delay: 0.5s; }
+        .particle:nth-child(6) { left: 85%; animation-duration: 8.5s; animation-delay: 4s; }
+        .particle:nth-child(7) { left: 15%; animation-duration: 12s; animation-delay: 1.5s; }
+        .particle:nth-child(8) { left: 60%; animation-duration: 9.5s; animation-delay: 2.5s; }
+
+        @keyframes particleRise {
+            0% { bottom: -10%; opacity: 0; transform: translateX(0); }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.2; }
+            100% { bottom: 110%; opacity: 0; transform: translateX(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            color: var(--gold-light);
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.7s;
+        }
+
+        .hero-description {
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+            color: rgba(255, 248, 240, 0.7);
+            line-height: 1.8;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.9s;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 1.1s;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bronze);
+            color: var(--cream);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all var(--transition-smooth);
+            border: 2px solid var(--bronze);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--bronze);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 115, 51, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--cream);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 2px solid rgba(201, 169, 110, 0.4);
+            transition: all var(--transition-smooth);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1.5s;
+        }
+
+        .hero-scroll-indicator {
+            width: 28px;
+            height: 44px;
+            border: 2px solid rgba(201, 169, 110, 0.3);
+            border-radius: 14px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .hero-scroll-dot {
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0%, 100% { top: 8px; opacity: 1; }
+            50% { top: 24px; opacity: 0.3; }
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SECTION SHARED ===== */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 1rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            vertical-align: middle;
+            margin: 0 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--warm-gray);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--warm-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--champagne), var(--bronze), var(--gold));
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px var(--shadow-soft);
+            border-color: rgba(201, 169, 110, 0.4);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), var(--rose));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: transform var(--transition-bounce);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-name {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--espresso);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--bronze);
+            font-weight: 700;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--warm-gray);
+            font-family: var(--font-sans);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: linear-gradient(145deg, var(--champagne) 0%, var(--rose) 50%, var(--gold-light) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: var(--radius-lg);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 180px;
+            height: 180px;
+            border: 2px solid var(--bronze);
+            border-radius: var(--radius-lg);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .about-content {
+            padding: 1rem 0;
+        }
+
+        .about-text {
+            font-size: 1.02rem;
+            color: var(--espresso-light);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 169, 110, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--bronze);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--warm-white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            position: relative;
+            background: linear-gradient(145deg, var(--rose) 0%, var(--champagne) 50%, var(--gold-light) 100%);
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.1), transparent);
+        }
+
+        .team-photo-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+
+        .team-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--espresso);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--bronze);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(201, 169, 110, 0.15);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-bg {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:nth-child(1) .gallery-bg {
+            background: linear-gradient(145deg, var(--bronze) 0%, var(--espresso-light) 50%, var(--champagne) 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-bg {
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--rose) 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-bg {
+            background: linear-gradient(160deg, var(--gold-light) 0%, var(--bronze) 100%);
+        }
+
+        .gallery-item:nth-child(4) .gallery-bg {
+            background: linear-gradient(120deg, var(--rose-deep) 0%, var(--champagne) 50%, var(--gold) 100%);
+        }
+
+        .gallery-item:nth-child(5) .gallery-bg {
+            background: linear-gradient(135deg, var(--espresso-light) 0%, var(--bronze) 100%);
+        }
+
+        .gallery-item:nth-child(6) .gallery-bg {
+            background: linear-gradient(145deg, var(--gold) 0%, var(--champagne) 100%);
+        }
+
+        .gallery-item:hover .gallery-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(60, 36, 21, 0.4);
+        }
+
+        .gallery-overlay svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--cream);
+            fill: none;
+            stroke-width: 1.5;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-overlay svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--warm-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px var(--shadow-soft);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .testimonial-quote-icon {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--champagne);
+            line-height: 1;
+            margin-bottom: -0.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-star {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), var(--bronze));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .testimonial-name {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--espresso);
+        }
+
+        .testimonial-service {
+            font-size: 0.78rem;
+            color: var(--warm-gray);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: linear-gradient(160deg, var(--espresso) 0%, #2A1810 100%);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.08), transparent 70%);
+        }
+
+        .contact .section-label {
+            color: var(--gold);
+        }
+
+        .contact .section-title {
+            color: var(--cream);
+        }
+
+        .contact .section-desc {
+            color: rgba(255, 248, 240, 0.6);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: rgba(255, 248, 240, 0.85);
+            line-height: 1.6;
+        }
+
+        .contact-value a {
+            color: rgba(255, 248, 240, 0.85);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .contact-value a:hover {
+            color: var(--gold);
+        }
+
+        .contact-hours {
+            margin-top: 0.5rem;
+        }
+
+        .contact-hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: rgba(255, 248, 240, 0.7);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-hours-row span:last-child {
+            color: var(--gold-light);
+        }
+
+        .contact-form-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+        }
+
+        .contact-form-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-subtitle {
+            font-size: 0.88rem;
+            color: rgba(255, 248, 240, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--cream);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: all var(--transition-smooth);
+            outline: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 248, 240, 0.3);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--bronze);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-select option {
+            background: var(--espresso);
+            color: var(--cream);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all var(--transition-smooth);
+            margin-top: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1FB855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1A0F08;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 169, 110, 0.1);
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            font-size: 0.82rem;
+            color: rgba(255, 248, 240, 0.4);
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-link {
+            font-size: 0.82rem;
+            color: rgba(255, 248, 240, 0.5);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        [data-delay="1"] { transition-delay: 0.1s; }
+        [data-delay="2"] { transition-delay: 0.2s; }
+        [data-delay="3"] { transition-delay: 0.3s; }
+        [data-delay="4"] { transition-delay: 0.4s; }
+        [data-delay="5"] { transition-delay: 0.5s; }
+        [data-delay="6"] { transition-delay: 0.6s; }
+
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 15, 8, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 1.2rem;
+            color: var(--cream);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .about-grid {
+                gap: 3rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-image-accent {
+                display: none;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-row: span 1;
+                aspect-ratio: 1;
+            }
+
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+                aspect-ratio: 1;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 1;
+                max-width: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .whatsapp-float {
+                bottom: 1.2rem;
+                right: 1.2rem;
+                width: 52px;
+                height: 52px;
+            }
+
+            .whatsapp-float svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Vize <span>Beauty</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos" class="nav-link">Servicos</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#equipe" class="nav-link">Equipe</a></li>
+                <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-link nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos" class="nav-link mobile-link">Servicos</a>
+        <a href="#sobre" class="nav-link mobile-link">Sobre</a>
+        <a href="#equipe" class="nav-link mobile-link">Equipe</a>
+        <a href="#galeria" class="nav-link mobile-link">Galeria</a>
+        <a href="#depoimentos" class="nav-link mobile-link">Depoimentos</a>
+        <a href="#contato" class="nav-link mobile-link">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Salao de Beleza em Ribeirao Preto</div>
+            <h1 class="hero-title">Vize <em>Beauty</em> Hair</h1>
+            <p class="hero-subtitle">Onde cada fio conta uma historia</p>
+            <p class="hero-description">Transformamos seu visual com tecnicas modernas, produtos de alta qualidade e o cuidado personalizado que voce merece.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/551636298528" class="btn-primary" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    Agendar Horario
+                </a>
+                <a href="#servicos" class="btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-indicator">
+                <div class="hero-scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidado <em>personalizado</em><br>para cada estilo</h2>
+                <p class="section-desc">Oferecemos servicos completos de beleza com profissionais especializados e produtos de primeira linha.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="6" cy="4" r="2"/><circle cx="18" cy="4" r="2"/><path d="M6 6v6l6 2 6-2V6"/><path d="M12 14v8"/><path d="M8 22h8"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Feminino</h3>
+                    <p class="service-desc">Corte personalizado que valoriza seu rosto e estilo pessoal, com acabamento impecavel.</p>
+                    <span class="service-price">R$ 80 <small>/ a partir de</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Masculino</h3>
+                    <p class="service-desc">Cortes modernos e classico com maquina e tesoura, incluindo acabamento na barba.</p>
+                    <span class="service-price">R$ 55 <small>/ a partir de</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2v6l3-3"/><path d="M20.4 14.5A5 5 0 0 0 16 10h-1V6a3 3 0 0 0-6 0v4H8a5 5 0 0 0-4.4 4.5"/><circle cx="12" cy="19" r="3"/></svg>
+                    </div>
+                    <h3 class="service-name">Coloracao</h3>
+                    <p class="service-desc">Coloracao profissional com tonalidades vibrantes e duradouras, respeitando a saude dos fios.</p>
+                    <span class="service-price">R$ 150 <small>/ a partir de</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 3z"/><path d="M17 4a2 2 0 0 0 0 4z"/><path d="M20 8a2 2 0 0 0 0 4z"/><path d="M19 12a2 2 0 0 1 0 4"/></svg>
+                    </div>
+                    <h3 class="service-name">Mechas e Balayage</h3>
+                    <p class="service-desc">Tecnicas de mechas e balayage para um efeito natural e luminoso, sob medida.</p>
+                    <span class="service-price">R$ 200 <small>/ a partir de</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M7 17h10"/><path d="M7 21h10"/><path d="M5 13h2a1 1 0 0 0 1-1V8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2"/><path d="M12 2v5"/></svg>
+                    </div>
+                    <h3 class="service-name">Hidratacao</h3>
+                    <p class="service-desc">Tratamentos profundos de hidratacao e nutricao para devolver brilho e maciez aos fios.</p>
+                    <span class="service-price">R$ 90 <small>/ a partir de</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="6">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3 class="service-name">Escova Progressiva</h3>
+                    <p class="service-desc">Alisamento profissional com produtos de alta performance para cabelos lisos e sedosos.</p>
+                    <span class="service-price">R$ 350 <small>/ a partir de</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <span class="section-label" style="text-align: left;">Sobre Nos</span>
+                        <h2 class="section-title">Tradicacao e <em>paixao</em><br>pela beleza</h2>
+                    </div>
+                    <p class="about-text wow-fade-up" data-delay="1">
+                        Há mais de uma década no bairro Jardim Interlagos, a Vize Beauty Hair nasceu do sonho de oferecer um espaco acolhedor onde cada cliente se sente especial. Nossa equipe acredita que a beleza vai alem da aparencia — e sobre autoestima e bem-estar.
+                    </p>
+                    <p class="about-text wow-fade-up" data-delay="2">
+                        Utilizamos produtos das melhores marcas do mercado e estamos sempre em atualizacao com as ultimas tecnicas e tendencias do mundo da beleza. Aqui, seu cabelo esta em boas maos.
+                    </p>
+                    <div class="about-stats wow-fade-up" data-delay="3">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="5000">0</div>
+                            <div class="stat-label">Clientes atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="100">0</div>
+                            <div class="stat-label">% satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a <em>diferenca</em></h2>
+                <p class="section-desc">Conhca os talentos por tras de cada transformacao. Experientes, criativos e dedicados a voce.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="1">
+                    <div class="team-photo">
+                        <svg class="team-photo-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="team-name">Vivian Oliveira</h3>
+                    <p class="team-role">Fundadora e Hair Stylist</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="2">
+                    <div class="team-photo">
+                        <svg class="team-photo-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="team-name">Isabela Santos</h3>
+                    <p class="team-role">Colorista Especialista</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="3">
+                    <div class="team-photo">
+                        <svg class="team-photo-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="team-name">Amanda Ferreira</h3>
+                    <p class="team-role">Hair Stylist Senior</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Nossas <em>transformacoes</em></h2>
+                <p class="section-desc">Cada cliente e uma nova obra de arte. Confira alguns dos nossos trabalhos recentes.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="1">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="2">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="3">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="4">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="5">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="6">
+                    <div class="gallery-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossas <em>clientes</em> dizem</h2>
+                <p class="section-desc">A satisfacao de quem confia no nosso trabalho e a nossa maior recompensa.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="1">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">A Vize Beauty mudou a forma como eu vejo meu cabelo. A Vivian entendeu exatamente o que eu queria e o resultado ficou incrivel. Recomendo de olhos fechados!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">C</div>
+                        <div>
+                            <div class="testimonial-name">Camila Ribeiro</div>
+                            <div class="testimonial-service">Balayage e Corte</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="2">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Ambiente agradavel, atendimento nota 10 e profissionais super atenciosas. Faco escova progressiva la ha dois anos e nunca me arrependi.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">F</div>
+                        <div>
+                            <div class="testimonial-name">Fernanda Costa</div>
+                            <div class="testimonial-service">Escova Progressiva</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="3">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="testimonial-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Descobri a Vize Beauty por indicacao e hoje nao vou em outro lugar. As mechas ficaram perfeitas e a coloracao durou muito mais do que eu esperava.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">J</div>
+                        <div>
+                            <div class="testimonial-name">Juliana Martins</div>
+                            <div class="testimonial-service">Mechas e Coloracao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Venha nos <em>visitar</em></h2>
+                <p class="section-desc">Estamos prontas para transformar seu visual. Entre em contato e agende seu horario.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" data-delay="1">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">Endereco</div>
+                            <div class="contact-value">Rua Francisco Torrecilhas, 205<br>Jardim Interlagos, Ribeirao Preto - SP<br>CEP: 14093-008</div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="2">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">Telefone</div>
+                            <div class="contact-value"><a href="tel:+551636298528">(16) 3629-8528</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="3">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">Horario de Funcionamento</div>
+                            <div class="contact-hours">
+                                <div class="contact-hours-row"><span>Segunda a Sexta</span><span>09h as 19h</span></div>
+                                <div class="contact-hours-row"><span>Sabado</span><span>08h as 17h</span></div>
+                                <div class="contact-hours-row"><span>Domingo</span><span>Fechado</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" data-delay="3">
+                    <h3 class="contact-form-title">Agende seu horario</h3>
+                    <p class="contact-form-subtitle">Preencha o formulario ou entre em contato direto pelo WhatsApp.</p>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Nome</label>
+                                <input type="text" id="name" class="form-input" placeholder="Seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Telefone</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="(16) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Servico desejado</label>
+                            <select id="service" class="form-select">
+                                <option value="">Selecione um servico</option>
+                                <option value="corte-feminino">Corte Feminino</option>
+                                <option value="corte-masculino">Corte Masculino</option>
+                                <option value="coloracao">Coloracao</option>
+                                <option value="mechas">Mechas / Balayage</option>
+                                <option value="hidratacao">Hidratacao</option>
+                                <option value="escova">Escova Progressiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem</label>
+                            <textarea id="message" class="form-textarea" placeholder="Conte-nos mais sobre o que deseja..."></textarea>
+                        </div>
+                        <a href="https://wa.me/551636298528" class="btn-whatsapp" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Enviar via WhatsApp
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">Vize <span>Beauty</span> Hair</div>
+        <div class="footer-links">
+            <a href="#servicos" class="footer-link">Servicos</a>
+            <a href="#sobre" class="footer-link">Sobre</a>
+            <a href="#equipe" class="footer-link">Equipe</a>
+            <a href="#galeria" class="footer-link">Galeria</a>
+            <a href="#contato" class="footer-link">Contato</a>
+        </div>
+        <p class="footer-text">2025 Vize Beauty Hair. Todos os direitos reservados.<br>Ribeirao Preto, SP - Brasil</p>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/551636298528" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVIGATION SCROLL ===== */
+        (function() {
+            var nav = document.getElementById('nav');
+            var lastScroll = 0;
+            var ticking = false;
+
+            function updateNav() {
+                var scroll = window.pageYOffset;
+                if (scroll > 80) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                lastScroll = scroll;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateNav);
+                    ticking = true;
+                }
+            });
+        })();
+
+        /* ===== HAMBURGER MENU ===== */
+        (function() {
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var mobileLinks = document.querySelectorAll('.mobile-link');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
+        /* ===== INTERSECTION OBSERVER ===== */
+        (function() {
+            var elements = document.querySelectorAll('.wow-fade-up, .wow-fade-in');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                elements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                elements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ===== COUNTER ANIMATION ===== */
+        (function() {
+            var counters = document.querySelectorAll('.stat-number[data-target]');
+            var animated = new Set();
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'));
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+
+                    if (target >= 1000) {
+                        el.textContent = current.toLocaleString('pt-BR') + '+';
+                    } else {
+                        el.textContent = current + (target === 100 ? '%' : '+');
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !animated.has(entry.target)) {
+                            animated.add(entry.target);
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(function(counter) {
+                    observer.observe(counter);
+                });
+            }
+        })();
+
+        /* ===== SMOOTH SCROLL ===== */
+        (function() {
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        var offset = 80;
+                        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+
+        /* ===== FORM TO WHATSAPP ===== */
+        (function() {
+            var form = document.getElementById('contactForm');
+            var whatsappBtn = form.querySelector('.btn-whatsapp');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                sendToWhatsApp();
+            });
+
+            function sendToWhatsApp() {
+                var name = document.getElementById('name').value.trim();
+                var phone = document.getElementById('phone').value.trim();
+                var service = document.getElementById('service');
+                var serviceText = service.options[service.selectedIndex].text;
+                var message = document.getElementById('message').value.trim();
+
+                var text = 'Ola! Gostaria de agendar um horario.';
+                if (name) text += '\nNome: ' + name;
+                if (phone) text += '\nTelefone: ' + phone;
+                if (service.value) text += '\nServico: ' + serviceText;
+                if (message) text += '\nMensagem: ' + message;
+
+                var url = 'https://wa.me/551636298528?text=' + encodeURIComponent(text);
+                window.open(url, '_blank');
+            }
+        })();
+    </script>
+</body>
+</html>
