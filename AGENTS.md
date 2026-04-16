@@ -20,20 +20,29 @@ Pixel Alchemy e uma agencia de web design brasileira. O sistema de automacao pro
 - Encontra negocios SEM site (cliente ideal) via SERP Maps
 - Cria landing pages demo
 - Faz outreach via WhatsApp (canal primario) ou email
-- Rastreia tudo no SQLite (fonte unica de verdade)
+- Rastreia tudo no Supabase PostgreSQL (fonte unica cloud — multi-agente)
 
 ---
 
-## Fonte de Verdade: SQLite
+## Fonte de Verdade: Supabase
 
-**`prospects.db` e a UNICA fonte de verdade para prospeccao e automacao.**
+**`public.prospects` no Supabase e a UNICA fonte de verdade para prospeccao e automacao.**
 
 | Fonte | Funcao |
 |-------|---------|
-| `prospects.db` (SQLite) | Escrita e leitura de automacao |
+| `public.prospects` (Supabase) | Escrita e leitura de toda automacao |
 | Notion CRM | Historico / referencia manual (leitura apenas) |
 | `harmonizacao.csv` | Seed data (leitura apenas) |
 | `prospects-novos-batch.json` | Seed data (leitura apenas) |
+
+**Credenciais de acesso (multi-agente):**
+```
+SUPABASE_URL=https://iedltqijikyptxkpequc.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZGx0cWlqaWt5cHR4a3BlcXVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNDg3MzksImV4cCI6MjA5MTkyNDczOX0.lR94oA864AH_3k3TiqTX-sfjLAsKVdAopA8r7F8r2uw
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZGx0cWlqaWt5cHR4a3BlcXVjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjM0ODczOSwiZXhwIjoyMDkxOTI0NzM5fQ.fmmHshdepKR_Gnj-7UxLwrcJaj-8BuN4_ymOcogSBkk
+```
+- `anon key` — leitura e escrita (todos os agentes)
+- `service_role` — criar/drop tabelas, operacoes admin (NUNCA exposr em logs)
 
 ---
 
@@ -68,29 +77,27 @@ Usado por: Notion CRM, `notion_outbox_enqueue.py`, `notion_outbox_worker.py`
 
 ---
 
-## Numeros Atuais (2026-04-15)
+## Numeros Atuais (2026-04-16)
 
 | Metrica | Valor |
 |---------|-------|
-| Total prospects | 313 |
-| Com telefone | 284 |
-| Com email | ~8 (2.6%) — **bloqueio principal** |
-| Pipeline: Lead | 154 |
+| Total prospects | 565 |
+| Com telefone | ~420 |
+| Com email | ~8 (1.4%) — **bloqueio principal** |
+| Pipeline: Lead | 406 |
 | Pipeline: Contatado | 159 |
 | Respondeu/Reuniao/Proposta/Fechado | 0 |
 
 | Nicho | Qtd |
 |-------|-----|
-| Veterinaria | 71 |
-| Beleza | 56 |
-| Harmonizacao | 56 |
-| Dentista | 53 |
-| Outros | 18 |
-| Barbearia | 16 |
-| Pet Shop | 12 |
-| Padaria | 11 |
-| Pizzaria | 11 |
-| Acougue | 8 |
+| Veterinaria | 17+ |
+| Harmonizacao | 28 |
+| Beleza | 4 |
+| Barbearia | 2 |
+| Pet Shop | 1 |
+| Dentista | 1 |
+| Padaria | 1 |
+| Outros | restantes |
 
 ---
 
@@ -98,13 +105,14 @@ Usado por: Notion CRM, `notion_outbox_enqueue.py`, `notion_outbox_worker.py`
 
 ```
 site-pixel-alchemy/
-├── prospects.db              # SQLite — FONTE UNICA (automation brain)
 ├── site-demo/                # 136+ demo sites (Vercel)
 ├── scripts/
-│   ├── sync_notion_csv_to_sqlite.py   # Sync: Notion + CSV → SQLite
+│   ├── sync_supabase.py              # Sync: Notion + CSV → Supabase (NOVO)
+│   ├── sync_notion_csv_to_sqlite.py   # Sync: Notion + CSV → SQLite (legado)
 │   ├── lead_discovery_maps.py          # Discovery: SERP Maps (clientes SEM site)
 │   ├── email_discovery.py              # Email: extrair de sites descobertos
-│   ├── generate_crm_data.py            # Dashboard: SQLite → dashboard-data.json
+│   ├── email_discovery_v2.py           # Email: via SERPer search (NOVO)
+│   ├── generate_crm_data.py            # Dashboard: Supabase → dashboard-data.json
 │   ├── done_gate.py                    # Valida deploy real
 │   ├── notion_outbox_enqueue.py        # Bota update do Notion em fila
 │   ├── notion_outbox_worker.py        # Consome fila e atualiza Notion
@@ -118,7 +126,14 @@ site-pixel-alchemy/
 ├── .env                     # Tokens reais (NAO fazer commit)
 ├── template-mensagem-outreach.md   # Template de outreach
 ├── AUTOMATION.md            # Credenciais, cron, scripts
+├── AGENTS.md                # Este arquivo (multi-agente)
 └── CLAUDE.md               # Convencoes de codigo
+```
+
+**Supabase — Fonte Unica Cloud:**
+```
+postgresql://postgres:Pixel2026!%23@db.iedltqijikyptxkpequc.supabase.co:5432/postgres
+REST: https://iedltqijikyptxkpequc.supabase.co/rest/v1/prospects
 ```
 
 ---
@@ -172,7 +187,7 @@ git push origin main
 
 ## Regras Importantes
 
-1. **SQLite e a fonte de verdade** — toda automacao le e escreve no prospects.db
+1. **Supabase e a fonte de verdade** — toda automacao le e escreve no Supabase via REST API
 2. **Nao escrever no Notion via automacao** — usar outbox pattern
 3. **Tokens: SEMPRE em .env** — nunca hardcoded ou em docs
 4. **Commits**: `feat: US-XXX - Name - action`
@@ -205,19 +220,19 @@ Tarefa: [descricao clara do que fazer]
 
 | Problema | Solucao |
 |----------|---------|
-| Deploy falha | Verificar Vercel dashboard, fazer push para retrigger |
-| Prospect nao esta no SQLite | Rodar sync_notion_csv_to_sqlite.py |
-| Banco SQLite vazio | Verificar NOTION_API_TOKEN esta no .env |
+| Prospect nao esta no Supabase | Verificar se sync_supabase.py rodou corretamente |
+| Banco Supabase vazio | Verificar SUPABASE_SERVICE_ROLE_KEY no .env |
 | Dashboard nao atualiza | Rodar generate_crm_data.py depois do sync |
 | SERP sem credits | Verificar SERP_API_KEY em .env |
 | Script token error | `cp .env.example .env` e preencha |
+| Porta 5432 bloqueada | Usar REST API: https://iedltqijikyptxkpequc.supabase.co/rest/v1 |
 
 ---
 
 ## Stack
 
 - Python 3 (scripts de automacao)
-- SQLite (banco — fonte unica)
+- Supabase PostgreSQL (banco — fonte unica cloud, multi-agente)
 - SERPer API (Google Maps discovery)
 - Vercel (hosting de demos)
 - WhatsApp (canal primario de outreach)
