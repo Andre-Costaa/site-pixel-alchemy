@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lamoa Beauty Spa Salon - Studio de beleza em Ribeirao Preto. Cortes, coloracao, mechas, hidratacao e escova progressiva. Agende pelo WhatsApp.">
+    <meta name="keywords" content="salao de beleza, ribeirao preto, cabelo, coloracao, mechas, hidratacao, escova progressiva, corte feminino, corte masculino">
+    <meta property="og:title" content="Lamoa Beauty Spa Salon | Studio de Beleza - Ribeirao Preto">
+    <meta property="og:description" content="Transforme seu visual no studio de beleza mais exclusivo de Ribeirao Preto. Agende sua transformacao.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Lamoa Beauty Spa Salon | Studio de Beleza - Ribeirao Preto</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF5E8;
+            --cream-dark: #F0E8D5;
+            --brown: #9B7E5A;
+            --brown-light: #B89B74;
+            --brown-dark: #7A6347;
+            --terracotta: #C17050;
+            --terracotta-light: #D4896D;
+            --terracotta-dark: #A85C40;
+            --gold: #C9A45C;
+            --gold-light: #D9BB80;
+            --gold-dark: #A88940;
+            --dark: #1E110A;
+            --dark-light: #2D1E14;
+            --dark-medium: #3A2A1E;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(30, 17, 10, 0.08);
+            --shadow-md: 0 8px 30px rgba(30, 17, 10, 0.12);
+            --shadow-lg: 0 20px 60px rgba(30, 17, 10, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Georgia', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(30, 17, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform 0.4s ease, box-shadow var(--transition);
+            border-bottom: 1px solid rgba(201, 164, 92, 0.1);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--cream-dark);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            transition: all var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(30, 17, 10, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(193, 112, 80, 0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 20%, rgba(201, 164, 92, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 100% 100% at 50% 50%, rgba(30, 17, 10, 1) 0%, rgba(45, 30, 20, 1) 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: blobFloat 18s ease-in-out infinite;
+        }
+
+        .hero-blob--1 {
+            width: 500px;
+            height: 500px;
+            background: var(--terracotta);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob--2 {
+            width: 400px;
+            height: 400px;
+            background: var(--gold);
+            bottom: -15%;
+            left: -10%;
+            animation-delay: -6s;
+            animation-duration: 22s;
+        }
+
+        .hero-blob--3 {
+            width: 300px;
+            height: 300px;
+            background: var(--brown);
+            top: 40%;
+            left: 50%;
+            animation-delay: -12s;
+            animation-duration: 20s;
+            opacity: 0.2;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(30px, -40px) rotate(5deg) scale(1.05); }
+            50% { transform: translate(-20px, 20px) rotate(-3deg) scale(0.95); }
+            75% { transform: translate(15px, 30px) rotate(4deg) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 164, 92, 0.3);
+            padding: 8px 24px;
+            border-radius: 100px;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.05;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--brown-light);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.8s ease forwards 0.7s;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.8s ease forwards 0.9s;
+        }
+
+        @keyframes heroFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 164, 92, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cream);
+            border: 1.5px solid rgba(250, 245, 232, 0.25);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 1.2s;
+        }
+
+        .hero-scroll span {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--brown-light);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--dark);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--brown);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), var(--terracotta));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--terracotta));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(201, 164, 92, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .service-icon--1 { background: rgba(193, 112, 80, 0.1); color: var(--terracotta); }
+        .service-icon--2 { background: rgba(155, 126, 90, 0.1); color: var(--brown); }
+        .service-icon--3 { background: rgba(201, 164, 92, 0.1); color: var(--gold-dark); }
+        .service-icon--4 { background: rgba(193, 112, 80, 0.1); color: var(--terracotta); }
+        .service-icon--5 { background: rgba(155, 126, 90, 0.1); color: var(--brown); }
+        .service-icon--6 { background: rgba(201, 164, 92, 0.1); color: var(--gold-dark); }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--brown);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--terracotta);
+            font-weight: 400;
+        }
+
+        .service-price small {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--brown);
+            font-weight: 400;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            background:
+                linear-gradient(135deg, var(--brown) 0%, var(--terracotta-dark) 40%, var(--terracotta) 70%, var(--gold-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: 'Lamoa Beauty';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: rgba(250, 245, 232, 0.25);
+            letter-spacing: 0.08em;
+            font-style: italic;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(201, 164, 92, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 160px;
+            height: 160px;
+            border: 3px solid var(--gold);
+            border-radius: var(--radius-md);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .about-text h3 em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: var(--brown);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 36px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(155, 126, 90, 0.15);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            color: var(--terracotta);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--brown);
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--dark);
+        }
+
+        .team .section-label {
+            color: var(--gold);
+        }
+
+        .team .section-title {
+            color: var(--cream);
+        }
+
+        .team .section-desc {
+            color: var(--brown-light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo--1 {
+            background: linear-gradient(160deg, #3A2A1E 0%, var(--terracotta-dark) 50%, var(--brown-dark) 100%);
+        }
+
+        .team-photo--2 {
+            background: linear-gradient(160deg, var(--dark-medium) 0%, var(--brown-dark) 50%, var(--gold-dark) 100%);
+        }
+
+        .team-photo--3 {
+            background: linear-gradient(160deg, #3A2A1E 0%, var(--terracotta) 50%, var(--brown) 100%);
+        }
+
+        .team-photo::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: rgba(250, 245, 232, 0.2);
+            letter-spacing: 0.05em;
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 16 / 9;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+            aspect-ratio: 16 / 9;
+        }
+
+        .gallery-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 17, 10, 0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 16px;
+            left: 20px;
+            z-index: 2;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--cream);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all var(--transition);
+        }
+
+        .gallery-item:hover .gallery-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-bg--1 { background: linear-gradient(135deg, var(--terracotta) 0%, var(--gold-dark) 60%, var(--brown) 100%); }
+        .gallery-bg--2 { background: linear-gradient(135deg, var(--brown) 0%, var(--terracotta-dark) 100%); }
+        .gallery-bg--3 { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--terracotta) 100%); }
+        .gallery-bg--4 { background: linear-gradient(135deg, var(--terracotta-dark) 0%, var(--brown-dark) 60%, var(--gold) 100%); }
+        .gallery-bg--5 { background: linear-gradient(135deg, var(--brown-dark) 0%, var(--terracotta) 100%); }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: rgba(201, 164, 92, 0.12);
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--dark);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar--1 { background: linear-gradient(135deg, var(--terracotta-light), var(--gold)); }
+        .testimonial-avatar--2 { background: linear-gradient(135deg, var(--brown-light), var(--terracotta)); }
+        .testimonial-avatar--3 { background: linear-gradient(135deg, var(--gold-light), var(--brown)); }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--brown);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(193, 112, 80, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--terracotta);
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--terracotta);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--brown);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        .contact-value a {
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-value a:hover {
+            color: var(--terracotta-dark);
+        }
+
+        .contact-hours {
+            margin-top: 8px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(155, 126, 90, 0.15);
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .hours-day {
+            color: var(--brown);
+        }
+
+        .hours-time {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(155, 126, 90, 0.06);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--brown);
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--dark);
+            background: var(--cream);
+            border: 1.5px solid rgba(155, 126, 90, 0.15);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            background: var(--gold);
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .form-submit:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 164, 92, 0.35);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            padding: 48px 24px;
+            border-top: 1px solid rgba(201, 164, 92, 0.08);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+        }
+
+        .footer-logo span {
+            color: var(--cream);
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--brown-light);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(250, 245, 232, 0.06);
+            font-size: 0.8rem;
+            color: var(--brown);
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.2);
+            animation: whatsappPulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 0; }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .wow {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-delay-1 { transition-delay: 0.1s; }
+        .wow-delay-2 { transition-delay: 0.2s; }
+        .wow-delay-3 { transition-delay: 0.3s; }
+        .wow-delay-4 { transition-delay: 0.4s; }
+        .wow-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow { opacity: 1; transform: none; transition: none; }
+            .hero-tag, .hero-title, .hero-subtitle, .hero-actions { opacity: 1; transform: none; animation: none; }
+            .hero-blob { animation: none; }
+            .scroll-line { animation: none; }
+            .whatsapp-float::before { animation: none; }
+            .service-card, .team-card, .testimonial-card { transition: none; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 48px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .section {
+                padding: 72px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .service-card {
+                padding: 32px 24px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-accent {
+                display: none;
+            }
+
+            .about-stats {
+                gap: 28px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .team-name {
+                font-size: 1rem;
+            }
+
+            .team-role {
+                font-size: 0.75rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 2;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+                aspect-ratio: 4 / 3;
+            }
+
+            .gallery-item {
+                aspect-ratio: 4 / 3;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stat-item {
+                text-align: center;
+            }
+
+            .contact-form-wrapper {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo"><span>Lamoa</span> Beauty</a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob hero-blob--1"></div>
+        <div class="hero-blob hero-blob--2"></div>
+        <div class="hero-blob hero-blob--3"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Studio de Beleza</div>
+            <h1 class="hero-title">Lamoa <em>Beauty</em><br>Spa Salon</h1>
+            <p class="hero-subtitle">Ribeirao Preto, SP</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/551639166816" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Agendar horario
+                </a>
+                <a href="#servicos" class="btn btn-outline">Nossos servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Descubra</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="servicos">
+        <div class="section-inner">
+            <div class="section-header wow">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidados que <em>transformam</em></h2>
+                <p class="section-desc">Cada servico e pensado para valorizar a sua beleza natural com tecnicas modernas e produtos de alta performance.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon service-icon--1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Feminino</h3>
+                    <p class="service-desc">Corte personalizado que valoriza o formato do rosto e o estilo pessoal de cada cliente.</p>
+                    <div class="service-price">R$ 80<small>a partir de</small></div>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon service-icon--2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Masculino</h3>
+                    <p class="service-desc">Barba e cabelo com acabamento impecavel, usando tecnicas modernas de degrede e texturizacao.</p>
+                    <div class="service-price">R$ 50<small>a partir de</small></div>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon service-icon--3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 class="service-name">Coloracao</h3>
+                    <p class="service-desc">Tintas de alta qualidade com amplo espectro de cores. Mechas, luzes e coloracao total.</p>
+                    <div class="service-price">R$ 150<small>a partir de</small></div>
+                </div>
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon service-icon--4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3 class="service-name">Mechas / Balayage</h3>
+                    <p class="service-desc">Tecnicas de iluminacao que criam movimentos naturais e efeitos sun-kissed no cabelo.</p>
+                    <div class="service-price">R$ 250<small>a partir de</small></div>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon service-icon--5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3 class="service-name">Hidratacao</h3>
+                    <p class="service-desc">Tratamento profundo que devolve a maciez, o brilho e a saude dos fios danificados.</p>
+                    <div class="service-price">R$ 90<small>a partir de</small></div>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon service-icon--6">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h3 class="service-name">Escova Progressiva</h3>
+                    <p class="service-desc">Alisamento duradouro com produtos que preservam a fibra capilar e garantem brilho intenso.</p>
+                    <div class="service-price">R$ 300<small>a partir de</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="sobre">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-visual wow">
+                    <div class="about-image"></div>
+                    <div class="about-accent"></div>
+                </div>
+                <div class="about-text">
+                    <div class="section-header" style="text-align: left;">
+                        <span class="section-label">Nossa Historia</span>
+                        <h2 class="section-title" style="text-align: left;">Onde a <em>beleza</em> encontra o cuidado</h2>
+                    </div>
+                    <p class="wow">O Lamoa Beauty Spa Salon nasceu de um sonho: criar um espaco onde cada cliente pudesse se sentir unica. Localizado no coracao do Jardim Botanico, em Ribeirao Preto, nosso studio combina tecnicas de ponta com um atendimento caloroso e personalizado.</p>
+                    <p class="wow wow-delay-1">Nossa equipe e formada por profissionais apaixonados que se atualizam constantemente para oferecer os melhores tratamentos do mercado. Aqui, cada detalhe importa, desde a escolha dos produtos ate o cafe servido enquanto voce relaxa.</p>
+                    <div class="about-stats wow wow-delay-2">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="8">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="3500">0</div>
+                            <div class="stat-label">Clientes atendidas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="12">0</div>
+                            <div class="stat-label">Profissionais</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section team" id="equipe">
+        <div class="section-inner">
+            <div class="section-header wow">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a <em>diferenca</em></h2>
+                <p class="section-desc">Conhca os talentos por tras de cada transformacao.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow wow-delay-1">
+                    <div class="team-photo team-photo--1" data-name="Lamoa"></div>
+                    <h3 class="team-name">Lamoa</h3>
+                    <p class="team-role">Fundadora e Diretora Criativa</p>
+                </div>
+                <div class="team-card wow wow-delay-2">
+                    <div class="team-photo team-photo--2" data-name="Camila"></div>
+                    <h3 class="team-name">Camila Santos</h3>
+                    <p class="team-role">Colorista Especialista</p>
+                </div>
+                <div class="team-card wow wow-delay-3">
+                    <div class="team-photo team-photo--3" data-name="Rafaela"></div>
+                    <h3 class="team-name">Rafaela Oliveira</h3>
+                    <p class="team-role">Hair Stylist Senior</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery" id="galeria">
+        <div class="section-inner">
+            <div class="section-header wow">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Trabalhos que <em>inspiram</em></h2>
+                <p class="section-desc">Uma selecao das nossas transformacoes mais recentes.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-bg gallery-bg--1"></div>
+                    <span class="gallery-label">Balayage Natural</span>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-bg gallery-bg--2"></div>
+                    <span class="gallery-label">Corte Degradê</span>
+                </div>
+                <div class="gallery-item wow wow-delay-3">
+                    <div class="gallery-bg gallery-bg--3"></div>
+                    <span class="gallery-label">Coloracao Ruiva</span>
+                </div>
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-bg gallery-bg--4"></div>
+                    <span class="gallery-label">Mechas Loiras</span>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-bg gallery-bg--5"></div>
+                    <span class="gallery-label">Progressiva Lisa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-inner">
+            <div class="section-header wow">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossas <em>clientes</em> dizem</h2>
+                <p class="section-desc">A satisfacao de quem confia no nosso trabalho e a nossa maior recompensa.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow wow-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Melhor salao de Ribeirao Preto! A Lamoa entendeu exatamente o que eu queria e o resultado ficou incrivel. Meu cabelo nunca esteve tao bonito e saudavel.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar--1"></div>
+                        <div>
+                            <div class="testimonial-name">Fernanda Lima</div>
+                            <div class="testimonial-detail">Cliente ha 3 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Fiz minha progressiva com a Camila e superou todas as minhas expectativas. O ambiente e super aconchegante e a equipe toda muito atenciosa. Recomendo demais!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar--2"></div>
+                        <div>
+                            <div class="testimonial-name">Juliana Costa</div>
+                            <div class="testimonial-detail">Cliente ha 1 ano</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Experimentei fazer mechas pela primeira vez e a Rafaela me deixou super confiante. O resultado ficou muito natural e elegante. Virei cliente fiel!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar--3"></div>
+                        <div>
+                            <div class="testimonial-name">Patricia Almeida</div>
+                            <div class="testimonial-detail">Cliente ha 2 anos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contato">
+        <div class="section-inner">
+            <div class="section-header wow">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende seu <em>horario</em></h2>
+                <p class="section-desc">Entre em contato e venha conhecer nosso espaco. Esperamos voce!</p>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">Endereco</div>
+                            <div class="contact-value">R. Paschoal Bardaro, 2106<br>Jardim Botanico, Ribeirao Preto - SP<br>CEP 14021-655</div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow wow-delay-1">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">Telefone</div>
+                            <div class="contact-value"><a href="tel:+551639166816">(16) 3916-6816</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow wow-delay-2">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-label">WhatsApp</div>
+                            <div class="contact-value"><a href="https://wa.me/551639166816" target="_blank" rel="noopener">(16) 3916-6816</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-hours wow wow-delay-3">
+                        <h4>Horario de Funcionamento</h4>
+                        <div class="hours-row">
+                            <span class="hours-day">Segunda a Sexta</span>
+                            <span class="hours-time">09:00 - 20:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Sabado</span>
+                            <span class="hours-time">08:00 - 18:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Domingo</span>
+                            <span class="hours-time">Fechado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper wow">
+                    <h3>Envie uma mensagem</h3>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico desejado</label>
+                            <select id="service" name="service">
+                                <option value="">Selecione um servico</option>
+                                <option value="corte-feminino">Corte Feminino</option>
+                                <option value="corte-masculino">Corte Masculino</option>
+                                <option value="coloracao">Coloracao</option>
+                                <option value="mechas">Mechas / Balayage</option>
+                                <option value="hidratacao">Hidratacao</option>
+                                <option value="progressiva">Escova Progressiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos o que deseja..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo"><span>Lamoa</span> Beauty</div>
+            <ul class="footer-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="footer-copy">Lamoa Beauty Spa Salon. Todos os direitos reservados 2025.</div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/551639166816" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVIGATION ===== */
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        var observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ===== COUNTER ANIMATION ===== */
+        var countersAnimated = false;
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        var statsSection = document.querySelector('.about-stats');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(function(counter) {
+                var target = parseInt(counter.getAttribute('data-count'));
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.floor(eased * target).toLocaleString('pt-BR');
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        counter.textContent = target.toLocaleString('pt-BR') + '+';
+                    }
+                }
+
+                requestAnimationFrame(step);
+            });
+        }
+
+        /* ===== FORM SUBMIT ===== */
+        var contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('name').value;
+                var phone = document.getElementById('phone').value;
+                var service = document.getElementById('service').value;
+                var message = document.getElementById('message').value;
+
+                var text = 'Ola! Meu nome e ' + name + '.';
+                if (phone) text += ' Meu telefone: ' + phone + '.';
+                if (service) text += ' Tenho interesse em: ' + service + '.';
+                if (message) text += ' ' + message;
+
+                var encoded = encodeURIComponent(text);
+                window.open('https://wa.me/551639166816?text=' + encoded, '_blank');
+            });
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                var target = document.querySelector(targetId);
+                if (target) {
+                    var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 72;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
