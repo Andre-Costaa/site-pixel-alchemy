@@ -102,49 +102,54 @@ def normalize_phone(raw):
 
 # -- Email from Google (business name search) -----------------------
 
-def try_find_email_via_google(business_name, address=''):
+def try_find_email_via_google(business_name, address='', call_counter=None):
     """
     Para negocios SEM site: tenta achar email via Google search.
-    Busca "business_name contato email" ou "business_name sobre".
+    MAX 1 busca + 1 extracao site = 2 chamadas.
     """
+    if call_counter is None:
+        call_counter = {'calls': 0}
+
     cidade = address.split(' - ')[-1] if address else ''
 
-    queries = [
-        f'"{business_name}" {cidade} email',
-        f'"{business_name}" {cidade} contato',
-        f'"{business_name}" {cidade} whatsapp',
-    ]
+    # MAX 1 query de busca (chamada 1)
+    query = f'"{business_name}" {cidade} contato'
+    if call_counter['calls'] >= 2:
+        return None
 
-    for q in queries[:2]:
-        time.sleep(random.uniform(1.0, 2.0))
-        data = normal_search(q, num=5)
-        organic = data.get('organic', [])
+    time.sleep(random.uniform(1.0, 2.0))
+    data = normal_search(query, num=5)
+    call_counter['calls'] += 1
+    organic = data.get('organic', [])
 
-        for r in organic:
-            link = r.get('link', '')
-            snippet = r.get('snippet', '') or ''
-            title = r.get('title', '') or ''
+    for r in organic:
+        link = r.get('link', '')
+        snippet = r.get('snippet', '') or ''
+        title = r.get('title', '') or ''
 
-            # Pula agregadores e maps
-            skip = ['pixelalchemy', 'google.com/maps', 'instagram.com', 'facebook.com',
-                    'wa.me', 'whatsapp', 'linkedin.com', 'twitter.com', 'tiktok',
-                    'booking', 'agende', 'schedule', 'yelp']
-            if any(s in link.lower() for s in skip):
-                continue
+        # Pula agregadores e maps
+        skip = ['pixelalchemy', 'google.com/maps', 'instagram.com', 'facebook.com',
+                'wa.me', 'whatsapp', 'linkedin.com', 'twitter.com', 'tiktok',
+                'booking', 'agende', 'schedule', 'yelp']
+        if any(s in link.lower() for s in skip):
+            continue
 
-            # Procura email no snippet ou busca no site
-            emails = re.findall(
-                r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}',
-                snippet + ' ' + title
-            )
-            if emails:
-                return emails[0].lower()
+        # Procura email no snippet
+        emails = re.findall(
+            r'[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}',
+            snippet + ' ' + title
+        )
+        if emails:
+            return emails[0].lower()
 
-            # Se parece site real, tenta extrair email do site
-            if link and not any(s in link for s in skip):
-                email = try_email_from_site(link)
-                if email:
-                    return email
+        # Se parece site real, tenta extrair email (chamada 2)
+        if link and not any(s in link for s in skip):
+            if call_counter['calls'] >= 2:
+                break
+            email = try_email_from_site(link)
+            call_counter['calls'] += 1
+            if email:
+                return email
 
     return None
 
@@ -430,22 +435,25 @@ def discover_for_niche(nicho, cidade='Ribeirão Preto', limit_per_run=30):
         print(f"    Telefone: {phone_raw} | Score: {score}")
         print(f"    Rating: {rating} ({reviews} reviews)")
 
-        # Tenta descobrir email
+        # Tenta descobrir email (MAX 2 chamadas alem do Maps)
         email = None
+        call_counter = {'calls': 0}  # Maps ja foi chamado (nao conta por lead)
         if not has_website:
-            # Cliente sem site = tenta mais agressivamente
-            email = try_find_email_via_google(nome, endereco)
+            # Cliente sem site = 1 busca Google + 1 extracao site
+            email = try_find_email_via_google(nome, endereco, call_counter)
             time.sleep(random.uniform(1.0, 2.0))
         else:
-            # Tem site = extrai email do site
+            # Tem site = 1 extracao email do site
             if site_url:
-                email = try_email_from_site(site_url)
+                if call_counter['calls'] < 3:
+                    email = try_email_from_site(site_url)
+                    call_counter['calls'] += 1
 
         if email:
-            print(f"    ✓ EMAIL: {email}")
+            print(f"    ✓ EMAIL: {email} (calls: {call_counter['calls']})")
             stats['email_found'] += 1
         else:
-            print(f"    ✗ Sem email")
+            print(f"    ✗ Sem email (limite: {call_counter['calls']} chamadas)")
 
         # Salva no banco
         new_id = insert_prospect({

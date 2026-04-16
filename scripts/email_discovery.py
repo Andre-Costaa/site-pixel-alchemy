@@ -97,13 +97,15 @@ def extract_emails(text):
     return list(filtered)
 
 
-def extract_contact_url(base_url):
-    """Tenta achar URL da pagina de contato."""
-    paths_to_try = ['/contact', '/contato', '/about', '/sobre', '/fale-conosco',
-                    '/fale', '/contatos', '/contact-us', '/contactus']
+def extract_contact_url(base_url, call_counter):
+    """Tenta achar URL da pagina de contato. MAX 1 chamada adicional."""
+    paths_to_try = ['/contato', '/contact', '/sobre', '/about', '/fale-conosco']
     for path in paths_to_try:
+        if call_counter['calls'] >= 3:
+            return None, []
         contact_url = base_url.rstrip('/') + path
         text = fetch_website_text(contact_url, timeout=5)
+        call_counter['calls'] += 1
         if text and len(text) > 100:
             emails = extract_emails(text)
             if emails:
@@ -111,9 +113,13 @@ def extract_contact_url(base_url):
     return None, []
 
 
-def discover_email_for_url(url):
-    """Dado um site_url, tenta descobrir email. Retorna email ou None."""
+def discover_email_for_url(url, call_counter):
+    """Dado um site_url, tenta descobrir email. MAX 2 chamadas (principal + 1 contato)."""
+    if call_counter['calls'] >= 3:
+        return None
+
     text = fetch_website_text(url)
+    call_counter['calls'] += 1
     if not text:
         return None
 
@@ -121,8 +127,8 @@ def discover_email_for_url(url):
     if emails:
         return emails[0]
 
-    # Tenta pagina de contato
-    contact_url, contact_emails = extract_contact_url(url)
+    # Tenta pagina de contato (1 chamada extra, já consome o call 3)
+    contact_url, contact_emails = extract_contact_url(url, call_counter)
     if contact_emails:
         return contact_emails[0]
 
@@ -196,17 +202,19 @@ def build_search_query(prospect):
 
 
 def process_prospect(prospect, conn, stats):
-    """Processa um prospect: busca Google → extrai site → extrai email."""
+    """Processa um prospect: busca Google → extrai site → extrai email. MAX 3 chamadas."""
     search_query = build_search_query(prospect)
     print(f"\n[{stats['n']}/{stats['total']}] {prospect['nome'][:45]}")
     print(f"  Query: {search_query}")
 
-    # Delay antip	block
+    call_counter = {'calls': 0}
+
+    # ── Step 1: Google search (chamada 1) ─────────────────────────────────────
     delay = random.uniform(1.5, 4.0)
     time.sleep(delay)
 
-    # ── Step 1: Google search ─────────────────────────────────────────
     serp_data = serp_search(search_query, num=5)
+    call_counter['calls'] += 1
     site_url = extract_website_from_serp(serp_data)
 
     if not site_url:
@@ -220,7 +228,6 @@ def process_prospect(prospect, conn, stats):
     # Ja temos esse site_url e e nosso demo? Pula
     if 'pixelalchemy' in site_url:
         print(f"  → E nosso demo, tentando outro resultado...")
-        # Tenta segundo resultado
         organic = serp_data.get('organic', [])
         for r in organic[1:]:
             link = r.get('link', '')
@@ -228,19 +235,25 @@ def process_prospect(prospect, conn, stats):
                 site_url = link
                 break
 
-    # ── Step 2: Extract email from site ──────────────────────────────
+    if call_counter['calls'] >= 3:
+        print(f"  LIMITE CHAMADAS ATINGIDO (3) - sem extrair email")
+        update_prospect_email(conn, prospect['id'], '', site_url)
+        mark_as_not_found(conn, prospect['id'], f'limite chamadas, site={site_url}')
+        stats['no_email'] += 1
+        return
+
+    # ── Step 2: Extract email from site (chamadas 2-3) ───────────────────────
     delay2 = random.uniform(1.0, 2.5)
     time.sleep(delay2)
 
-    email = discover_email_for_url(site_url)
+    email = discover_email_for_url(site_url, call_counter)
 
     if email:
-        print(f"  ✓ EMAIL: {email}")
+        print(f"  ✓ EMAIL: {email} (calls: {call_counter['calls']})")
         update_prospect_email(conn, prospect['id'], email, site_url)
         stats['found'] += 1
     else:
-        print(f"  SEM EMAIL no site {site_url}")
-        # Salva o site_url mesmo assim (mesmo sem email)
+        print(f"  SEM EMAIL no site {site_url} (calls: {call_counter['calls']})")
         update_prospect_email(conn, prospect['id'], '', site_url)
         mark_as_not_found(conn, prospect['id'], f'site={site_url} mas sem email')
         stats['no_email'] += 1
