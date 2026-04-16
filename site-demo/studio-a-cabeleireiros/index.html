@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Studio A Cabeleireiros - Salao de beleza em Ribeirao Preto. Cortes, coloracao, mechas, hidratacao e escova progressiva. Agende pelo WhatsApp.">
+    <meta name="keywords" content="cabeleireiro, salao de beleza, Ribeirao Preto, corte feminino, mechas, balayage, escova progressiva, coloracao">
+    <meta property="og:title" content="Studio A Cabeleireiros | Ribeirao Preto - SP">
+    <meta property="og:description" content="Transforme seu visual com quem entende de beleza. Agende pelo WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="theme-color" content="#1E110A">
+    <title>Studio A Cabeleireiros | Ribeirao Preto - SP</title>
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-cream: #FAF5E8;
+            --color-cream-dark: #F0E8D5;
+            --color-brown: #9B7E5A;
+            --color-brown-light: #B8A080;
+            --color-brown-dark: #7A6348;
+            --color-terracotta: #C17050;
+            --color-terracotta-light: #D4896C;
+            --color-terracotta-dark: #A85D42;
+            --color-gold: #C9A45C;
+            --color-gold-light: #D9BA7E;
+            --color-gold-dark: #A88A42;
+            --color-dark: #1E110A;
+            --color-dark-mid: #3A2A1E;
+            --color-dark-light: #5A4A3A;
+            --color-white: #FFFDF8;
+            --font-display: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 32px;
+            --shadow-soft: 0 4px 24px rgba(30, 17, 10, 0.08);
+            --shadow-md: 0 8px 32px rgba(30, 17, 10, 0.12);
+            --shadow-lg: 0 16px 48px rgba(30, 17, 10, 0.16);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-dark-mid);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-blob, .gallery-item img, .service-card { animation: none !important; }
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(30, 17, 10, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201, 164, 92, 0.15);
+            transition: transform var(--transition), background var(--transition);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-cream);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-brown-light);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--color-gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-cream);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-terracotta) !important;
+            color: var(--color-cream) !important;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8125rem !important;
+            font-weight: 600 !important;
+            transition: background var(--transition), transform var(--transition) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--color-terracotta-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            width: 28px;
+            padding: 4px 0;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--color-cream);
+            border-radius: 2px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 17, 10, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-cream);
+            letter-spacing: 0.02em;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--color-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(193, 112, 80, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 50% at 80% 20%, rgba(201, 164, 92, 0.2) 0%, transparent 60%),
+                radial-gradient(ellipse 90% 70% at 50% 50%, rgba(58, 42, 30, 0.9) 0%, var(--color-dark) 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: blobFloat 20s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--color-terracotta);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-gold);
+            bottom: -10%;
+            left: -5%;
+            animation-delay: -7s;
+        }
+
+        .hero-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-brown);
+            top: 40%;
+            left: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -40px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(40px, 30px) scale(1.03); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            border: 1px solid rgba(201, 164, 92, 0.4);
+            padding: 8px 24px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: heroFadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 400;
+            color: var(--color-cream);
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: heroFadeUp 0.8s 0.4s forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            color: var(--color-brown-light);
+            line-height: 1.7;
+            max-width: 560px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            animation: heroFadeUp 0.8s 0.6s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroFadeUp 0.8s 0.8s forwards;
+        }
+
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            padding: 14px 32px;
+            border-radius: 100px;
+            transition: all var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--color-terracotta);
+            color: var(--color-cream);
+            box-shadow: 0 4px 20px rgba(193, 112, 80, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(193, 112, 80, 0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-cream);
+            border: 1.5px solid rgba(250, 245, 232, 0.25);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-brown-light);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: heroFadeUp 0.8s 1.2s forwards;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.7); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ========== SECTION COMMON ========== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-terracotta);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 400;
+            color: var(--color-dark);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--color-brown);
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--color-dark-light);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-slow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(193, 112, 80, 0.1), rgba(201, 164, 92, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--color-terracotta);
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-terracotta);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            font-size: 0.875rem;
+            color: var(--color-dark-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-terracotta);
+            font-weight: 600;
+        }
+
+        .service-price small {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--color-brown-light);
+            font-weight: 400;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 28px 24px; }
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 164, 92, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background:
+                linear-gradient(135deg, rgba(193, 112, 80, 0.6) 0%, rgba(155, 126, 90, 0.4) 50%, rgba(201, 164, 92, 0.5) 100%),
+                var(--color-cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-cream);
+            text-align: center;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+            padding: 20px;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 160px;
+            height: 160px;
+            border: 2px solid var(--color-gold);
+            border-radius: var(--radius-xl);
+            opacity: 0.3;
+        }
+
+        .about-content {
+            padding: 20px 0;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--color-dark-light);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(155, 126, 90, 0.12);
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-terracotta);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .about-stat-label {
+            font-size: 0.75rem;
+            color: var(--color-brown);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { max-width: 400px; margin: 0 auto; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            background: var(--color-cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .team-photo-bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: rgba(250, 245, 232, 0.7);
+            letter-spacing: 0.05em;
+            transition: transform var(--transition-slow);
+        }
+
+        .team-card:hover .team-photo-bg {
+            transform: scale(1.05);
+        }
+
+        .team-photo-1 { background: linear-gradient(160deg, #8B6F55 0%, #6B4F35 50%, #A88A42 100%); }
+        .team-photo-2 { background: linear-gradient(160deg, #9B7E5A 0%, #7A5E40 50%, #C17050 100%); }
+        .team-photo-3 { background: linear-gradient(160deg, #7A6348 0%, #5A4A3A 50%, #C9A45C 100%); }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--color-dark);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--color-brown);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            background: var(--color-dark);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery .section-label {
+            color: var(--color-gold);
+        }
+
+        .gallery .section-title {
+            color: var(--color-cream);
+        }
+
+        .gallery .section-title em {
+            color: var(--color-gold);
+        }
+
+        .gallery .section-desc {
+            color: var(--color-brown-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 17, 10, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-cream);
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg {
+            background: linear-gradient(135deg, #C17050 0%, #8B5E3C 50%, #6B4226 100%);
+        }
+        .gallery-item:nth-child(2) .gallery-item-bg {
+            background: linear-gradient(135deg, #C9A45C 0%, #9B7E5A 50%, #7A5E40 100%);
+        }
+        .gallery-item:nth-child(3) .gallery-item-bg {
+            background: linear-gradient(135deg, #9B7E5A 0%, #C17050 50%, #A85D42 100%);
+        }
+        .gallery-item:nth-child(4) .gallery-item-bg {
+            background: linear-gradient(135deg, #7A6348 0%, #C9A45C 50%, #9B7E5A 100%);
+        }
+        .gallery-item:nth-child(5) .gallery-item-bg {
+            background: linear-gradient(135deg, #A85D42 0%, #7A6348 50%, #C17050 100%);
+        }
+        .gallery-item:nth-child(6) .gallery-item-bg {
+            background: linear-gradient(135deg, #C17050 0%, #C9A45C 50%, #9B7E5A 100%);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            position: relative;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--color-gold);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: -8px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--color-dark-mid);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-gold);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-cream);
+            font-weight: 600;
+        }
+
+        .testimonial-avatar-1 { background: var(--color-terracotta); }
+        .testimonial-avatar-2 { background: var(--color-brown); }
+        .testimonial-avatar-3 { background: var(--color-gold-dark); }
+
+        .testimonial-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            font-weight: 600;
+        }
+
+        .testimonial-service {
+            font-size: 0.75rem;
+            color: var(--color-brown);
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: var(--color-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(193, 112, 80, 0.1), rgba(201, 164, 92, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-terracotta);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-detail h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-dark);
+            margin-bottom: 4px;
+        }
+
+        .contact-detail p, .contact-detail a {
+            font-size: 0.875rem;
+            color: var(--color-dark-light);
+            line-height: 1.6;
+            transition: color var(--transition);
+        }
+
+        .contact-detail a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .contact-hours {
+            margin-top: 12px;
+            padding: 24px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(155, 126, 90, 0.1);
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-dark);
+            margin-bottom: 12px;
+        }
+
+        .contact-hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contact-hours-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--color-dark-light);
+        }
+
+        .contact-hours-item span:last-child {
+            color: var(--color-brown);
+            font-weight: 500;
+        }
+
+        .contact-form-wrap {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            border: 1px solid rgba(155, 126, 90, 0.1);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-form-wrap h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--color-dark);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-brown-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            background: var(--color-cream);
+            border: 1.5px solid rgba(155, 126, 90, 0.15);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-terracotta);
+            color: var(--color-cream);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: var(--color-terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(193, 112, 80, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form-wrap { padding: 28px; }
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--color-dark);
+            padding: 48px 0;
+            border-top: 1px solid rgba(201, 164, 92, 0.1);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-cream);
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--color-dark-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: var(--color-brown-light);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        @media (max-width: 600px) {
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ========== WHATSAPP FLOAT ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ========== CTA BANNER ========== */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-terracotta-dark) 50%, var(--color-brown-dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 164, 92, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-banner h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--color-cream);
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            font-size: 1.05rem;
+            color: rgba(250, 245, 232, 0.8);
+            margin-bottom: 32px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: var(--color-cream);
+            color: var(--color-dark);
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-white:hover {
+            background: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">Studio <span>A</span></a>
+            <div class="nav-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato" class="nav-cta">Agendar</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Ribeirao Preto - SP</span>
+            <h1 class="hero-title">Studio <em>A</em><br>Cabeleireiros</h1>
+            <p class="hero-subtitle">Transformacao que começa no espelho e se reflete na sua confianca. Cuidado personalizado para cada tipo de cabelo.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/551639113784" target="_blank" rel="noopener" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Descobrir</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidado <em>artesanal</em><br>para seu cabelo</h2>
+                <p class="section-desc">Cada fio merece atencao. Conhemos as melhores tecnicas do mercado para realcar sua beleza natural.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="6" cy="4" r="2"/><circle cx="18" cy="4" r="2"/><path d="M4 7h16a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 12v11"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Feminino</h3>
+                    <p class="service-desc">Cortes modernos e personalizados que valorizam seu rosto e estilo pessoal. Inclui lavagem e finalizacao.</p>
+                    <p class="service-price">R$ 85 <small>/ a partir de</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                    </div>
+                    <h3 class="service-name">Corte Masculino</h3>
+                    <p class="service-desc">Barba e cabelo com acabamento impecavel. Estilos classicos e modernos com precisao artesanal.</p>
+                    <p class="service-price">R$ 55 <small>/ a partir de</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3 class="service-name">Coloracao</h3>
+                    <p class="service-desc">Tintas de alta performance que garantem cor vibrante e duradoura. Amplas opcoes de tons e nuanceamento.</p>
+                    <p class="service-price">R$ 150 <small>/ a partir de</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5.5 6.5C7 4 9 3 12 3s5 1 6.5 3.5"/><path d="M5.5 17.5C7 20 9 21 12 21s5-1 6.5-3.5"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3 class="service-name">Mechas e Balayage</h3>
+                    <p class="service-desc">Tecnicas de iluminacao que criam movimento e profundidade. Balayage, luzes e mechas personalizadas.</p>
+                    <p class="service-price">R$ 200 <small>/ a partir de</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 2v6a6 6 0 0 0 12 0V2"/><path d="M6 2h12"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M12 14v6"/><path d="M8 20h8"/></svg>
+                    </div>
+                    <h3 class="service-name">Hidratacao</h3>
+                    <p class="service-desc">Tratamentos profundos que devolvem brilho, maciez e vida aos fios. Produtos de primeira linha.</p>
+                    <p class="service-price">R$ 90 <small>/ a partir de</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3 class="service-name">Escova Progressiva</h3>
+                    <p class="service-desc">Alisamento duradouro com produtos que preservam a saude capilar. Efeito liso e natural por semanas.</p>
+                    <p class="service-price">R$ 350 <small>/ a partir de</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-text">Foto do Ambiente<br>do Salao</div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="section-header reveal" style="text-align: left; margin-bottom: 28px;">
+                        <span class="section-label">Nossa Historia</span>
+                        <h2 class="section-title">Onde a beleza encontra <em>autenticidade</em></h2>
+                    </div>
+                    <p class="about-text reveal">
+                        Ha mais de uma decada, o Studio A nasceu do sonho de criar um espaco acolhedor em Ribeirao Preto, onde cada pessoa pudesse se sentir especial. Nosso salao nao e apenas um lugar de beleza, e um refugio de autocuidado e transformacao.
+                    </p>
+                    <p class="about-text reveal">
+                        Cada profissional da nossa equipe foi cuidadosamente escolhido nao apenas pela tecnica impecavel, mas pela paixao genuina pela arte capilar. Acreditamos que um bom corte, uma cor bem feita ou um tratamento capilar podem transformar nao apenas o visual, mas a autoestima de quem confia em nos.
+                    </p>
+                    <p class="about-text reveal">
+                        Localizados no Alto da Boa Vista, nosso espaco foi pensado para proporcionar conforto, tranquilidade e uma experiencia completa de bem-estar. Aqui, voce nao e apenas mais um cliente, e parte da familia Studio A.
+                    </p>
+                    <div class="about-stats reveal">
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="12">0</div>
+                            <div class="about-stat-label">Anos de mercado</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="8500">0</div>
+                            <div class="about-stat-label">Clientes atendidos</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="5">0</div>
+                            <div class="about-stat-label">Profissionais</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a <em>diferenca</em></h2>
+                <p class="section-desc">Talentosos, atualizados e apaixonados pelo que fazem. Conhca os artistas por tras de cada transformacao.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-1">Foto<br>Profissional</div>
+                    </div>
+                    <h3 class="team-name">Ana Paula Ribeiro</h3>
+                    <p class="team-role">Diretora Criativa</p>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-2">Foto<br>Profissional</div>
+                    </div>
+                    <h3 class="team-name">Lucas Ferreira</h3>
+                    <p class="team-role">Colorista Especialista</p>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-3">Foto<br>Profissional</div>
+                    </div>
+                    <h3 class="team-name">Camila Santos</h3>
+                    <p class="team-role">Especialista em Cortes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="container cta-banner-content reveal">
+            <h2>Pronta para se transformar?</h2>
+            <p>Agende agora pelo WhatsApp e garanta o horario ideal para o seu proximo visual.</p>
+            <a href="https://wa.me/551639113784" target="_blank" rel="noopener" class="btn btn-white">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Agendar Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Nosso Trabalho</span>
+                <h2 class="section-title">Galeria de <em>transformacoes</em></h2>
+                <p class="section-desc">Cada cliente e uma nova obra de arte. Confira alguns dos nossos resultados mais recentes.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Balayage Natural</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Corte Bob Moderno</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Mechas Embraco</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Coloracao Ruiva</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Escova Progressiva</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Corte Degradê Masculino</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossas <em>clientes</em> dizem</h2>
+                <p class="section-desc">A satisfacao de quem confia no nosso trabalho e a nossa maior recompensa.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Melhor salao de Ribeirao Preto, sem exagero. A Ana Paula entendeu exatamente o que eu queria e o resultado ficou incrivel. Meu cabelo nunca esteve tao bonito e saudavel.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-1">MF</div>
+                        <div class="testimonial-info">
+                            <span class="testimonial-name">Mariana Ferreira</span>
+                            <span class="testimonial-service">Balayage + Corte</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Fiz a progressiva e fiquei impressionada com o resultado. O cabelo ficou lisinho, brilhante e com aspecto muito natural. O ambiente do salao e super agradavel e a equipe toda muito atenciosa.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-2">JO</div>
+                        <div class="testimonial-info">
+                            <span class="testimonial-name">Juliana Oliveira</span>
+                            <span class="testimonial-service">Escova Progressiva</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Sou cliente ha mais de 5 anos e nao troco por nada. A Camila sempre acerta no corte e o Lucas faz uma coloracao impecavel. Recomendo de olhos fechados para quem busca qualidade e profissionalismo.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-3">RC</div>
+                        <div class="testimonial-info">
+                            <span class="testimonial-name">Renata Costa</span>
+                            <span class="testimonial-service">Coloracao + Corte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Venha nos <em>visitar</em></h2>
+                <p class="section-desc">Estamos te esperando com um cafezinho e toda atencao que voce merece.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Endereco</h4>
+                            <p>R. Mantiqueira, 947 - Alto da Boa Vista<br>Ribeirao Preto - SP, 14025-600</p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Telefone e WhatsApp</h4>
+                            <a href="tel:+551639113784">(16) 3911-3784</a><br>
+                            <a href="https://wa.me/551639113784" target="_blank" rel="noopener">Enviar mensagem no WhatsApp</a>
+                        </div>
+                    </div>
+                    <div class="contact-hours reveal">
+                        <h4>Horario de Funcionamento</h4>
+                        <div class="contact-hours-list">
+                            <div class="contact-hours-item">
+                                <span>Segunda a Sexta</span>
+                                <span>09:00 - 20:00</span>
+                            </div>
+                            <div class="contact-hours-item">
+                                <span>Sabado</span>
+                                <span>08:00 - 18:00</span>
+                            </div>
+                            <div class="contact-hours-item">
+                                <span>Domingo</span>
+                                <span>Fechado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrap reveal">
+                    <h3>Envie uma mensagem</h3>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="corte-feminino">Corte Feminino</option>
+                                <option value="corte-masculino">Corte Masculino</option>
+                                <option value="coloracao">Coloracao</option>
+                                <option value="mechas">Mechas / Balayage</option>
+                                <option value="hidratacao">Hidratacao</option>
+                                <option value="progressiva">Escova Progressiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos mais sobre o que deseja..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">Studio <span>A</span> Cabeleireiros</div>
+            <p class="footer-copy">&copy; 2025 Studio A Cabeleireiros. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://wa.me/551639113784" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/551639113784" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Agendar pelo WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ========== NAV SCROLL HIDE/SHOW ========== */
+        const nav = document.getElementById('nav');
+        let lastScrollY = 0;
+        let ticking = false;
+
+        function updateNav() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateNav);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        /* ========== MOBILE MENU ========== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ========== SCROLL REVEAL (Intersection Observer) ========== */
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        /* ========== COUNTER ANIMATION ========== */
+        const statNumbers = document.querySelectorAll('.about-stat-number[data-count]');
+        let countersStarted = false;
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    statNumbers.forEach(function(el) {
+                        const target = parseInt(el.getAttribute('data-count'), 10);
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function animateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(eased * target);
+
+                            if (target >= 1000) {
+                                el.textContent = (current / 1000).toFixed(current >= target ? 0 : 1).replace('.0', '') + 'k+';
+                            } else {
+                                el.textContent = current + (current >= target ? '+' : '');
+                            }
+
+                            if (progress < 1) {
+                                requestAnimationFrame(animateCounter);
+                            }
+                        }
+
+                        requestAnimationFrame(animateCounter);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statNumbers.forEach(function(el) {
+            counterObserver.observe(el);
+        });
+
+        /* ========== PHONE MASK ========== */
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.slice(0, 11);
+
+                if (value.length > 6) {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
+                } else if (value.length > 2) {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+                } else if (value.length > 0) {
+                    value = '(' + value;
+                }
+
+                e.target.value = value;
+            });
+        }
+
+        /* ========== CONTACT FORM (WhatsApp redirect) ========== */
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service');
+                const serviceText = service.options[service.selectedIndex].text;
+                const message = document.getElementById('message').value.trim();
+
+                let text = 'Ola! Gostaria de agendar um horario.%0A%0A';
+                text += 'Nome: ' + encodeURIComponent(name) + '%0A';
+                text += 'Telefone: ' + encodeURIComponent(phone) + '%0A';
+                text += 'Servico: ' + encodeURIComponent(serviceText) + '%0A';
+                if (message) {
+                    text += 'Mensagem: ' + encodeURIComponent(message) + '%0A';
+                }
+
+                window.open('https://wa.me/551639113784?text=' + text, '_blank');
+            });
+        }
+
+        /* ========== SMOOTH SCROLL FOR NAV LINKS ========== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
