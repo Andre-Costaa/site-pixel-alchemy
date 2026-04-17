@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube04 Pet Store | Veterinaria em Ribeirao Preto</title>
+    <meta name="description" content="Clube04 Pet Store - Clinica veterinaria completa em Ribeirao Preto. Consultas, vacinacao, cirurgias, emergencia 24h, exames e banho e tosa. Cuidado profissional para seu pet.">
+    <meta name="keywords" content="veterinaria ribeirao preto, pet shop, clinica veterinaria, banho e tosa, vacinacao pet, emergencia veterinaria">
+    <meta property="og:title" content="Clube04 Pet Store | Veterinaria em Ribeirao Preto">
+    <meta property="og:description" content="Clinica veterinaria completa com consulta, vacinacao, cirurgia, emergencia e banho e tosa. Ribeirao Preto, SP.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/clube04-pet-store/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.pixelalchemy.com.br/site-demo/clube04-pet-store/">
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-dark: #8B5A2B;
+            --bronze-light: #D4A574;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3A28;
+            --white: #FFFFFF;
+            --gold-accent: #C9A96E;
+            --gold-border: rgba(201, 169, 110, 0.4);
+            --shadow-soft: 0 4px 24px rgba(60, 36, 21, 0.08);
+            --shadow-medium: 0 8px 40px rgba(60, 36, 21, 0.12);
+            --shadow-hover: 0 12px 48px rgba(60, 36, 21, 0.18);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --font-display: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            --font-body: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--espresso);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gold-border);
+            transition: transform 0.4s var(--transition-smooth), box-shadow 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(60, 36, 21, 0.06);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--espresso);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--bronze);
+            transition: width 0.3s var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            border-radius: 2px;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 248, 240, 0.98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--espresso);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--bronze);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(170deg, var(--cream) 0%, var(--champagne) 50%, #E8D5B8 100%);
+            padding: 120px 20px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80vw;
+            height: 80vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -20%;
+            width: 60vw;
+            height: 60vw;
+            max-width: 600px;
+            max-height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 10s ease-in-out 2s infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            border: 1px solid var(--gold-border);
+            padding: 8px 24px;
+            border-radius: 100px;
+            margin-bottom: 32px;
+            animation: fadeUp 1s var(--transition-smooth) 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--espresso);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            animation: fadeUp 1s var(--transition-smooth) 0.4s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--espresso-light);
+            line-height: 1.8;
+            max-width: 560px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+            animation: fadeUp 1s var(--transition-smooth) 0.6s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 1s var(--transition-smooth) 0.8s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 16px 36px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s var(--transition-smooth);
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: var(--bronze);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(184, 115, 51, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--espresso);
+            border: 1px solid var(--gold-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--bronze);
+            color: var(--bronze);
+            transform: translateY(-2px);
+        }
+
+        .hero-ornament {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: fadeUp 1s var(--transition-smooth) 1.2s both;
+        }
+
+        .hero-ornament svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--bronze-light);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== SECTION COMMON ========== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--espresso-light);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .divider {
+            width: 48px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 20px auto 0;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--cream);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 36px 32px;
+            transition: all 0.4s var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--bronze);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--bronze-light);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), #E8D5B8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--bronze);
+            font-style: italic;
+        }
+
+        .service-price small {
+            font-size: 0.78rem;
+            color: var(--espresso-light);
+            font-style: normal;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--bronze-light) 50%, var(--bronze) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-lg);
+            pointer-events: none;
+        }
+
+        .about-image-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 2px;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .about-text h3 em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+            padding-top: 36px;
+            border-top: 1px solid var(--gold-border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            color: var(--bronze);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--espresso-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            text-align: center;
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 40px 28px 32px;
+            background: var(--cream);
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            border: 2px solid var(--gold-border);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--bronze-light) 100%);
+            position: relative;
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .team-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .team-card .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            border: 1px solid var(--gold-border);
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg {
+            background: linear-gradient(135deg, #F7E7CE 0%, #D4A574 60%, #B87333 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-item-bg {
+            background: linear-gradient(135deg, #E8D5B8 0%, #C9A96E 60%, #8B5A2B 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-item-bg {
+            background: linear-gradient(135deg, #FFF8F0 0%, #F7E7CE 50%, #D4A574 100%);
+        }
+
+        .gallery-item:nth-child(4) .gallery-item-bg {
+            background: linear-gradient(135deg, #B87333 0%, #C9A96E 60%, #F7E7CE 100%);
+        }
+
+        .gallery-item:nth-child(5) .gallery-item-bg {
+            background: linear-gradient(135deg, #D4A574 0%, #8B5A2B 60%, #3C2415 100%);
+        }
+
+        .gallery-item:nth-child(6) .gallery-item-bg {
+            background: linear-gradient(135deg, #F7E7CE 0%, #B87333 50%, #5A3A28 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 36px 32px;
+            background: var(--cream);
+            position: relative;
+            transition: all 0.4s var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 16px;
+            left: 28px;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--bronze-light);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--bronze);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--espresso);
+        }
+
+        .testimonial-pet {
+            font-size: 0.82rem;
+            color: var(--bronze);
+            margin-top: 2px;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid var(--gold-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.6;
+        }
+
+        .contact-item a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-hours {
+            list-style: none;
+            font-size: 0.88rem;
+            color: var(--espresso-light);
+        }
+
+        .contact-hours li {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+        }
+
+        .contact-hours li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 36px 32px;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--espresso-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--espresso);
+            background: var(--cream);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--bronze);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .btn-whatsapp-hero {
+            background: #25D366;
+            color: var(--white);
+        }
+
+        .btn-whatsapp-hero:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--espresso);
+            padding: 48px 0 32px;
+            color: rgba(255, 248, 240, 0.6);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--champagne);
+        }
+
+        .footer-logo span {
+            color: var(--bronze-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 248, 240, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--champagne);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 248, 240, 0.08);
+            width: 100%;
+        }
+
+        /* ========== FLOATING WHATSAPP ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .wow {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-delay-1 { transition-delay: 0.1s; }
+        .wow-delay-2 { transition-delay: 0.2s; }
+        .wow-delay-3 { transition-delay: 0.3s; }
+        .wow-delay-4 { transition-delay: 0.4s; }
+        .wow-delay-5 { transition-delay: 0.5s; }
+        .wow-delay-6 { transition-delay: 0.6s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero::before,
+            .hero::after {
+                animation: none;
+            }
+            .hero-ornament svg {
+                animation: none;
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-hamburger {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            section {
+                padding: 120px 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">Clube<span>04</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-badge">Veterinaria &amp; Pet Shop</div>
+            <h1>Cuidado que o seu pet <em>merece</em></h1>
+            <p class="hero-subtitle">Na Clube04 Pet Store, cada animal e tratado com carinho, respeito e excelencia medica. Mais de uma decada dedicada a saude e bem-estar dos seus melhores amigos.</p>
+            <div class="hero-actions">
+                <a href="#contato" class="btn btn-primary">Agendar Consulta</a>
+                <a href="https://wa.me/5516997025261" target="_blank" rel="noopener" class="btn btn-whatsapp-hero">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="hero-ornament">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Nossos Servicos</span>
+                <h2>Excelencia em <em>saude animal</em></h2>
+                <p class="section-desc">Oferecemos uma gama completa de servicos veterinarios e esteticos para garantir o bem-estar do seu pet.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Consulta Veterinaria</h3>
+                    <p>Avaliacao clinica completa com veterinarios experientes. Diagnostico preciso e orientacao personalizada para cada paciente.</p>
+                    <div class="service-price">R$ 150<small>Consulta presencial</small></div>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Vacinacao</h3>
+                    <p>Protocolo completo de vacinacao para caes e gatos. Vacinas importadas e nacionais, com carteirinha atualizada.</p>
+                    <div class="service-price">A partir de R$ 85<small>Variavel por tipo de vacina</small></div>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-7 7m7-7l-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Cirurgia</h3>
+                    <p>Procedimentos cirurgicos com tecnica avancada, anestesia segura e acompanhamento pos-operatorio completo.</p>
+                    <div class="service-price">A partir de R$ 450<small>Consulte valores especificos</small></div>
+                </div>
+                <div class="service-card wow wow-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Emergencia</h3>
+                    <p>Atendimento emergencial disponivel para situacoes urgentes. Equipe preparada para agir rapido quando seu pet mais precisa.</p>
+                    <div class="service-price">R$ 250<small>Consulta emergencial</small></div>
+                </div>
+                <div class="service-card wow wow-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Exames Laboratoriais</h3>
+                    <p>Hemograma, bioquimica, urinalise e mais. Laboratorio proprio com resultados rapidos e confiaveis.</p>
+                    <div class="service-price">A partir de R$ 95<small>Hemograma completo</small></div>
+                </div>
+                <div class="service-card wow wow-delay-6">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Banho e Tosa</h3>
+                    <p>Banho terapeutico, tosa higiênica e estetica. Produtos de alta qualidade e profissionais treinados para cada raca.</p>
+                    <div class="service-price">A partir de R$ 60<small>Varia por porte e raca</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Sobre Nos</span>
+                <h2>Uma historia de <em>amor</em> pelos animais</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image wow wow-delay-1">
+                    <div class="about-image-inner">Clube04</div>
+                </div>
+                <div class="about-text wow wow-delay-2">
+                    <h3>Onde a <em>paixao</em> encontra a ciencia</h3>
+                    <p>Fundada com o proposito de oferecer atendimento veterinario de excelencia em Ribeirao Preto, a Clube04 Pet Store nasceu do sonho de profissionais que veem nos animais muito mais do que pacientes - veem membros da familia.</p>
+                    <p>Nossa clinica foi pensada para proporcionar conforto tanto para os pets quanto para seus tutores. Com uma estrutura moderna e acolhedora, contamos com equipamentos de ultima geracao e uma equipe multidisciplinar dedicada a saude e ao bem-estar animal.</p>
+                    <p>Alem dos servicos veterinarios, oferecemos um espaco completo de pet shop com produtos selecionados e servicos de estetica, porque acreditamos que cuidar vai muito alem da medicina.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="8500">0</div>
+                            <div class="stat-label">Pets atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">% Satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Nossa Equipe</span>
+                <h2>Profissionais que <em>fazem a diferenca</em></h2>
+                <p class="section-desc">Conhca os medicos veterinarios e especialistas que cuidam do seu pet com dedicacao e carinho.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow wow-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">VM</div>
+                    </div>
+                    <h3>Dra. Viviane Martins</h3>
+                    <div class="team-role">Medica Veterinaria - CRMV-SP 12345</div>
+                    <p>Especialista em clinica geral e medicina interna de pequenos animais, com mais de 12 anos de experiencia. Formada pela UNESP de Jaboticabal.</p>
+                </div>
+                <div class="team-card wow wow-delay-2">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">RC</div>
+                    </div>
+                    <h3>Dr. Ricardo Cardoso</h3>
+                    <div class="team-role">Cirurgiao Veterinario - CRMV-SP 23456</div>
+                    <p>Especialista em cirurgia veterinaria com pos-graduacao pela USP. Referencia em procedimentos ortopedicos e tecnicas minimamente invasivas.</p>
+                </div>
+                <div class="team-card wow wow-delay-3">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">AS</div>
+                    </div>
+                    <h3>Dra. Ana Souza</h3>
+                    <div class="team-role">Dermatologista Veterinaria</div>
+                    <p>Expert em dermatologia veterinaria e alergias. Possui residencia medica em clinica veterinaria e atuacao em clinicas de referencia em Sao Paulo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Galeria</span>
+                <h2>Momentos <em>inesqueciveis</em></h2>
+                <p class="section-desc">Cada pet que passa pela Clube04 carrega uma historia especial. Veja alguns dos nossos momentos.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Ambiente</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Consulta</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Banho e Tosa</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-4">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Nossos Pacientes</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-5">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Equipe</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-6">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Estrutura</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Depoimentos</span>
+                <h2>O que dizem nossos <em>clientes</em></h2>
+                <p class="section-desc">A confianca dos tutores e o nosso maior premio. Veja o que eles tem a dizer sobre a Clube04.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow wow-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">A Dra. Viviane e simplesmente incrivel. Meu cachorro estava muito doente e ela diagnosticou rapidamente. O tratamento foi impecavel e hoje ele esta otimo. Recomendo de olhos fechados!</p>
+                    <div class="testimonial-author">Fernanda Oliveira</div>
+                    <div class="testimonial-pet">Tutora do Thor (Golden Retriever)</div>
+                </div>
+                <div class="testimonial-card wow wow-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Faco o banho e tosa da minha gata na Clube04 desde filhote. A equipe e muito cuidadosa e atenciosa. Ela sempre volta cheirosa e feliz. O atendimento e nota 10!</p>
+                    <div class="testimonial-author">Marcos Santos</div>
+                    <div class="testimonial-pet">Tutor da Mel (Persa)</div>
+                </div>
+                <div class="testimonial-card wow wow-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Dr. Ricardo fez a cirurgia do meu dog e foi tudo perfeito. Apos-operatorio muito bem acompanhado e a equipe sempre disponivel para tirar duvidas. Profissionais de verdade!</p>
+                    <div class="testimonial-author">Juliana Pereira</div>
+                    <div class="testimonial-pet">Tutora do Bob (Bulldog Frances)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-label">Contato</span>
+                <h2>Agende sua <em>visita</em></h2>
+                <p class="section-desc">Estamos prontos para receber voce e seu pet. Entre em contato e agende sua consulta.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info wow wow-delay-1">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>Av. Prof. Joao Fiusa, 91<br>Ribeirao Preto - SP</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5516997025261">(16) 99702-5261</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Horario de Funcionamento</h4>
+                            <ul class="contact-hours">
+                                <li><span>Segunda a Sexta</span><span>08:00 - 18:00</span></li>
+                                <li><span>Sabado</span><span>08:00 - 13:00</span></li>
+                                <li><span>Domingo</span><span>Emergencia apenas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p><a href="mailto:contato@clube04pet.com.br">contato@clube04pet.com.br</a></p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5516997025261" target="_blank" rel="noopener" class="btn btn-whatsapp-hero" style="margin-top: 8px; justify-content: center;">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Fale pelo WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form-wrapper wow wow-delay-2">
+                    <h3>Envie uma mensagem</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com.br">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Servico desejado</label>
+                            <select id="servico" name="servico" required>
+                                <option value="">Selecione um servico</option>
+                                <option value="consulta">Consulta Veterinaria</option>
+                                <option value="vacinacao">Vacinacao</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="emergencia">Emergencia</option>
+                                <option value="exames">Exames Laboratoriais</option>
+                                <option value="banho-tosa">Banho e Tosa</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajudar seu pet..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Clube<span>04</span> Pet Store</div>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicos">Servicos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div class="footer-copy">
+                    &copy; 2025 Clube04 Pet Store. Todos os direitos reservados. Ribeirao Preto, SP.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/5516997025261" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ========== NAVIGATION ========== */
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ========== SCROLL ANIMATIONS (Intersection Observer) ========== */
+        var observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ========== STATS COUNTER ========== */
+        var statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var counters = entry.target.querySelectorAll('[data-target]');
+                    counters.forEach(function(counter) {
+                        var target = parseInt(counter.getAttribute('data-target'));
+                        var duration = 2000;
+                        var start = 0;
+                        var startTime = null;
+
+                        function animateCounter(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            var progress = Math.min((timestamp - startTime) / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            var current = Math.floor(eased * target);
+                            counter.textContent = current.toLocaleString('pt-BR');
+                            if (progress < 1) {
+                                requestAnimationFrame(animateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString('pt-BR');
+                                if (target === 98) {
+                                    counter.textContent = '98%';
+                                }
+                            }
+                        }
+                        requestAnimationFrame(animateCounter);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        var statsSection = document.querySelector('.about-stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        /* ========== CONTACT FORM ========== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            var form = e.target;
+            var nome = form.querySelector('#nome').value;
+            var telefone = form.querySelector('#telefone').value;
+            var servico = form.querySelector('#servico').value;
+            var mensagem = form.querySelector('#mensagem').value;
+            var text = 'Ola! Sou ' + nome + '. Telefone: ' + telefone + '. Servico: ' + servico + '. ' + mensagem;
+            var encoded = encodeURIComponent(text);
+            window.open('https://wa.me/5516997025261?text=' + encoded, '_blank');
+        }
+    </script>
+</body>
+</html>
