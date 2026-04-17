@@ -23,6 +23,7 @@
     --green: #5cbe7c;
     --gray: #888;
     --gray-light: #aaa;
+    --gold: #d4a76a;
 
     --font: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -76,15 +77,17 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
     display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
 }
-.header-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
-.header-sub { font-size: 0.75rem; color: #aaa; }
+.header-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+.header-brand-icon { width: 28px; height: 28px; background: var(--terracotta); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+.header-sub { font-size: 0.72rem; color: #aaa; margin-top: 0.15rem; }
 .header-right { font-size: 0.72rem; color: #888; text-align: right; }
+.header-right strong { color: #ccc; }
 
-.main { flex: 1; padding: 1.5rem 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+.main { flex: 1; padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; width: 100%; }
 
 .section { margin-bottom: 2.5rem; }
 .section-title {
-    font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+    font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
     margin-bottom: 1rem; padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--border);
 }
@@ -92,8 +95,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
 /* ── KPIs ── */
 .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
 }
 .kpi {
     background: var(--card); border-radius: var(--r);
@@ -102,73 +105,113 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
     border: 1px solid var(--border);
     text-align: center;
 }
-.kpi-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 0.4rem; }
-.kpi-value { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1; }
-.kpi-sub { font-size: 0.68rem; color: var(--gray-light); margin-top: 0.3rem; }
+.kpi-label { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 0.35rem; }
+.kpi-value { font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; line-height: 1; }
+.kpi-sub { font-size: 0.65rem; color: var(--gray-light); margin-top: 0.25rem; }
+.kpi-pct { font-size: 0.7rem; font-weight: 600; color: var(--sage); margin-top: 0.2rem; }
 
 /* ── FUNNEL ── */
 .card { background: var(--card); border-radius: var(--r); padding: 1.2rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
-.card-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; color: var(--charcoal-light); }
+.card-title { font-family: var(--font-display); font-size: 0.92rem; font-weight: 700; margin-bottom: 1rem; color: var(--charcoal-light); display: flex; align-items: center; gap: 0.4rem; }
 
-.funnel-stage { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
-.funnel-label { font-size: 0.78rem; font-weight: 500; width: 110px; flex-shrink: 0; }
+.funnel-stage { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.45rem; }
+.funnel-label { font-size: 0.75rem; font-weight: 500; width: 100px; flex-shrink: 0; }
 .funnel-bar-wrap { flex: 1; height: 26px; background: var(--border); border-radius: 6px; overflow: hidden; }
 .funnel-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; transition: width 1.2s ease; min-width: 36px; }
-.funnel-bar span { font-size: 0.72rem; font-weight: 700; color: #fff; }
-.funnel-count { font-size: 0.78rem; font-weight: 600; width: 35px; text-align: right; flex-shrink: 0; }
+.funnel-bar span { font-size: 0.7rem; font-weight: 700; color: #fff; }
+.funnel-count { font-size: 0.75rem; font-weight: 600; width: 38px; text-align: right; flex-shrink: 0; }
+.funnel-pct { font-size: 0.65rem; color: var(--gray); width: 50px; text-align: right; flex-shrink: 0; }
 
 .note-box {
     background: #fef8f0; border: 1px solid #f5d9a8;
     border-radius: 8px; padding: 0.7rem 1rem;
-    font-size: 0.78rem; color: #7a4a10; margin-top: 1rem; line-height: 1.5;
+    font-size: 0.75rem; color: #7a4a10; margin-top: 1rem; line-height: 1.5;
 }
 
 /* ── TWO COL ── */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .three-col { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .three-col { grid-template-columns: 1fr; } }
+
+/* ── SOURCE BARS (horizontal) ── */
+.source-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.source-name { font-size: 0.72rem; width: 140px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.source-bar-wrap { flex: 1; height: 20px; background: var(--border); border-radius: 5px; overflow: hidden; }
+.source-bar-fill { height: 100%; border-radius: 5px; display: flex; align-items: center; padding: 0 6px; min-width: 30px; }
+.source-bar-fill span { font-size: 0.65rem; font-weight: 700; color: #fff; }
+.source-count { font-size: 0.72rem; font-weight: 600; width: 35px; text-align: right; flex-shrink: 0; }
+.source-pct { font-size: 0.65rem; color: var(--gray); width: 40px; text-align: right; flex-shrink: 0; }
 
 /* ── NICHE ── */
-.niche-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
-.niche-name { font-size: 0.75rem; width: 110px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.niche-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.niche-name { font-size: 0.72rem; width: 130px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .niche-bar-wrap { flex: 1; height: 18px; background: var(--border); border-radius: 4px; overflow: hidden; }
 .niche-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 6px; }
-.niche-bar-fill span { font-size: 0.68rem; font-weight: 700; color: #fff; }
-.niche-count { font-size: 0.75rem; font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
+.niche-bar-fill span { font-size: 0.65rem; font-weight: 700; color: #fff; }
+.niche-count { font-size: 0.72rem; font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
 
 /* ── MONTHLY ── */
 .monthly-bars { display: flex; align-items: flex-end; gap: 1rem; height: 110px; padding-top: 0.5rem; }
 .month-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
 .month-bar-wrap { width: 100%; height: 80px; background: var(--border); border-radius: 6px 6px 0 0; overflow: hidden; display: flex; align-items: flex-end; }
 .month-bar { width: 100%; background: var(--charcoal); border-radius: 6px 6px 0 0; transition: height 1s ease; min-height: 4px; }
-.month-label { font-size: 0.7rem; font-weight: 600; color: var(--gray); }
-.month-count-label { font-size: 0.8rem; font-weight: 700; }
+.month-label { font-size: 0.68rem; font-weight: 600; color: var(--gray); }
+.month-count-label { font-size: 0.78rem; font-weight: 700; }
 
 /* ── NOTION STATUS ── */
-.status-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
-.status-name { font-size: 0.75rem; width: 130px; flex-shrink: 0; font-weight: 500; }
+.status-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem; }
+.status-name { font-size: 0.72rem; width: 130px; flex-shrink: 0; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .status-bar-wrap { flex: 1; height: 16px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.status-bar { height: 100%; border-radius: 4px; background: var(--lavender); }
-.status-count { font-size: 0.75rem; font-weight: 600; width: 30px; text-align: right; }
+.status-bar { height: 100%; border-radius: 4px; }
+.status-count { font-size: 0.72rem; font-weight: 600; width: 55px; text-align: right; flex-shrink: 0; }
+
+/* ── CONTACT METRICS ── */
+.contact-metric { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.contact-metric-label { font-size: 0.72rem; width: 130px; flex-shrink: 0; font-weight: 500; }
+.contact-bar-wrap { flex: 1; height: 14px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.contact-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+.contact-metric-value { font-size: 0.72rem; font-weight: 600; width: 55px; text-align: right; flex-shrink: 0; }
+
+/* ── PENDING ACTIONS ── */
+.pending-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.pending-item:last-child { border-bottom: none; }
+.pending-badge { padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.badge-lead { background: #ede8f5; color: var(--lavender); }
+.badge-contatado { background: #fce8e2; color: var(--terracotta); }
+.badge-count { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); }
+.badge-desc { font-size: 0.72rem; color: var(--gray); line-height: 1.3; }
+.pending-empty { text-align: center; padding: 1.5rem; color: var(--gray); font-size: 0.78rem; }
 
 /* ── ACTIVITY ── */
-.activity-list { max-height: 350px; overflow-y: auto; }
-.activity-item { display: flex; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
+.activity-list { max-height: 300px; overflow-y: auto; }
+.activity-item { display: flex; gap: 0.7rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.75rem; }
 .activity-item:last-child { border-bottom: none; }
 .activity-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
 .dot-green { background: var(--green); }
 .dot-terracotta { background: var(--terracotta); }
 .dot-sage { background: var(--sage); }
 .dot-clay { background: var(--clay); }
+.dot-lavender { background: var(--lavender); }
 .activity-msg { flex: 1; line-height: 1.4; color: var(--charcoal); }
-.activity-date { color: var(--gray-light); font-size: 0.7rem; white-space: nowrap; }
+.activity-date { color: var(--gray-light); font-size: 0.68rem; white-space: nowrap; }
 
-/* ── PRD ── */
-.prd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.8rem; }
-.prd-stat { background: var(--card); border-radius: var(--r); padding: 1rem; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; }
-.prd-stat-value { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; }
-.prd-stat-label { font-size: 0.68rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+/* ── DEMO SITES ── */
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.8rem; }
+.demo-stat { background: var(--card); border-radius: var(--r); padding: 1rem; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; }
+.demo-stat-value { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--charcoal); }
+.demo-stat-label { font-size: 0.65rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-.footer { text-align: center; padding: 1.2rem; font-size: 0.72rem; color: var(--gray-light); border-top: 1px solid var(--border); }
+.footer { text-align: center; padding: 1.2rem; font-size: 0.7rem; color: var(--gray-light); border-top: 1px solid var(--border); }
+
+/* ── SECTION DIVIDER ── */
+.section-divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* ── COVERAGE BADGE ── */
+.coverage-badge { display: inline-block; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.6rem; font-weight: 700; margin-left: 0.3rem; }
+.coverage-ok { background: #e8f5ec; color: #2d7a47; }
+.coverage-warn { background: #fdf3e0; color: #8a5a10; }
+.coverage-bad { background: #fde8e8; color: #a02020; }
     </style>
 </head>
 <body>
@@ -188,8 +231,11 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
 <div class="layout" id="layout">
     <header class="header">
         <div>
-            <div class="header-brand">Pixel Alchemy</div>
-            <div class="header-sub">CRM de Prospeccao</div>
+            <div class="header-brand">
+                <div class="header-brand-icon">PA</div>
+                Pixel Alchemy
+            </div>
+            <div class="header-sub">CRM de Prospeccao — Pipeline de Vendas</div>
         </div>
         <div class="header-right" id="updatedAt"></div>
     </header>
@@ -207,35 +253,83 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
             <h2 class="section-title">Funil de Prospeccao</h2>
             <div class="two-col">
                 <div class="card">
-                    <div class="card-title">Pipeline (SQLite)</div>
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+                        Pipeline (SQLite)
+                    </div>
                     <div id="funnelChart"></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Status Original (Notion)</div>
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        Status Original (Notion)
+                    </div>
                     <div id="notionStatusChart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOURCE + CONTACT METRICS -->
+        <div class="section">
+            <h2 class="section-title">Origem dos Leads e Cobertura de Contato</h2>
+            <div class="two-col">
+                <div class="card">
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Source Breakdown
+                    </div>
+                    <div id="sourceChart"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15z"/></svg>
+                        Metricas de Contato
+                    </div>
+                    <div id="contactMetrics"></div>
                 </div>
             </div>
         </div>
 
         <!-- NICHO + PRODUCAO -->
         <div class="section">
-            <h2 class="section-title">Leads por Nicho e Producao</h2>
+            <h2 class="section-title">Top Nichos e Producao Mensal</h2>
             <div class="two-col">
                 <div class="card">
-                    <div class="card-title">Distribuicao por Nicho</div>
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        Top 10 Nichos
+                    </div>
                     <div id="nicheChart"></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Sites Criados por Mes (Git)</div>
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Sites Criados por Mes (Git)
+                    </div>
                     <div id="monthlyChart"></div>
                 </div>
             </div>
         </div>
 
-        <!-- PRD -->
+        <!-- PENDENCIAS -->
         <div class="section">
-            <h2 class="section-title">User Stories & Sites</h2>
-            <div class="prd-grid" id="prdGrid"></div>
+            <h2 class="section-title">Acoes Pendentes</h2>
+            <div class="two-col">
+                <div class="card">
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        Pendencias de Contato
+                    </div>
+                    <div id="pendingActions"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Demo Sites Criados
+                    </div>
+                    <div id="demoStats"></div>
+                </div>
+            </div>
         </div>
 
         <!-- ATIVIDADE -->
@@ -292,61 +386,162 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
         }
     }
 
+    function fmtPct(val, total) {
+        if (!total || !val) return '0%';
+        return ((val / total) * 100).toFixed(1) + '%';
+    }
+
+    function fmtNum(n) {
+        if (!n && n !== 0) return '0';
+        return n.toLocaleString('pt-BR');
+    }
+
+    function coverageClass(pct) {
+        if (pct >= 80) return 'coverage-ok';
+        if (pct >= 40) return 'coverage-warn';
+        return 'coverage-bad';
+    }
+
     function render(DATA) {
         if (!DATA || !DATA.crm) return;
         const crm = DATA.crm;
         const updated = new Date(DATA.generated_at).toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'});
-        $('#updatedAt').textContent = 'Atualizado: ' + updated;
-        $('#footer').textContent = 'Pixel Alchemy CRM | Dados de ' + updated;
+        const updatedDate = new Date(DATA.generated_at);
+        const dateStr = updatedDate.toLocaleDateString('pt-BR', {timeZone: 'America/Sao_Paulo'});
+        const timeStr = updatedDate.toLocaleTimeString('pt-BR', {timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit'});
+
+        $('#updatedAt').innerHTML = `<strong>Atualizado</strong><br>${dateStr} ${timeStr}`;
+        $('#footer').textContent = `Pixel Alchemy CRM | Dados gerados em ${updated} | Fonte: SQLite prospects.db`;
 
         renderKPIs(crm);
-        renderFunnel(crm.funnel);
+        renderFunnel(crm.funnel, crm.leads_summary);
         renderNotionStatus(crm.outreach_stats);
+        renderSources(crm.leads_summary);
+        renderContactMetrics(crm.leads_summary);
         renderNiches(crm.niche_distribution, crm.leads_summary);
         renderMonthly(crm.monthly_production);
-        renderPRD(crm.prd, crm.leads_summary);
+        renderPendingActions(crm.pending_actions, crm.leads_summary);
+        renderDemoStats(crm.leads_summary);
         renderActivity(crm.recent_activity);
     }
 
     function renderKPIs(c) {
-        const ls = c.leads_summary;
-        const os = c.outreach_stats;
-        const fc = c.funnel.counts;
+        const ls = c.leads_summary || {};
+        const pa = c.pending_actions || {};
+        const total = ls.total_leads || 0;
+        const phone = ls.with_phone || 0;
+        const email = ls.with_email || 0;
+        const whatsapp = ls.whatsapp_ready || 0;
+        const inPipeline = ls.in_pipeline || 0;
+        const contacted = ls.contacted || 0;
+        const convRate = fmtPct(contacted, total);
+
+        const phonePct = fmtPct(phone, total);
+        const emailPct = fmtPct(email, total);
+        const whatsappPct = fmtPct(whatsapp, total);
+        const pendingContact = pa.leads_pending_contact || 0;
+        const pendingResponse = pa.contacted_no_response || 0;
+
         const items = [
-            { label: 'Total Leads', value: ls.total_leads, sub: 'no banco SQLite', color: '#1a1f2e' },
-            { label: 'Com Telefone', value: ls.with_phone, sub: 'tem como contatar', color: '#5cbe7c' },
-            { label: 'Lead', value: fc.Lead, sub: 'sem contato ainda', color: '#b5a6c8' },
-            { label: 'Contatado', value: fc.Contatado, sub: 'msg/enviado', color: '#e07856' },
-            { label: 'Respondeu', value: os.currently_respondeu, sub: '0 por enquanto', color: '#c4a68a' },
-            { label: 'Proposta', value: os.currently_proposta, sub: 'enviadas ate agora', color: '#8ba888' },
+            {
+                label: 'Total Leads',
+                value: fmtNum(total),
+                sub: 'no banco SQLite',
+                color: '#1a1f2e',
+                extra: ''
+            },
+            {
+                label: 'Com Telefone',
+                value: fmtNum(phone),
+                sub: phonePct + ' do total',
+                color: '#5cbe7c',
+                extra: `<span class="coverage-badge ${coverageClass((phone/total)*100)}">${phonePct}</span>`
+            },
+            {
+                label: 'Com Email',
+                value: fmtNum(email),
+                sub: emailPct + ' do total',
+                color: email > 0 ? '#d4a76a' : '#e05c5c',
+                extra: `<span class="coverage-badge ${coverageClass((email/total)*100)}">${emailPct}</span>`
+            },
+            {
+                label: 'WhatsApp OK',
+                value: fmtNum(whatsapp),
+                sub: whatsappPct + ' identificavel',
+                color: '#8ba888',
+                extra: `<span class="coverage-badge ${coverageClass((whatsapp/total)*100)}">${whatsappPct}</span>`
+            },
+            {
+                label: 'No Pipeline',
+                value: fmtNum(inPipeline),
+                sub: 'Lead atual',
+                color: '#b5a6c8',
+                extra: ''
+            },
+            {
+                label: 'Ja Contatados',
+                value: fmtNum(contacted),
+                sub: convRate + ' do total',
+                color: '#e07856',
+                extra: ''
+            },
+            {
+                label: 'Conversion Rate',
+                value: convRate,
+                sub: 'Contatado / Total',
+                color: '#5cbe7c',
+                extra: ''
+            },
+            {
+                label: 'Sem Contato',
+                value: fmtNum(pendingContact),
+                sub: 'precisam contato',
+                color: '#e05c5c',
+                extra: ''
+            },
         ];
+
         $('#kpiGrid').innerHTML = items.map(i => `
             <div class="kpi">
                 <div class="kpi-label">${i.label}</div>
                 <div class="kpi-value" style="color:${i.color}">${i.value}</div>
                 <div class="kpi-sub">${i.sub}</div>
+                ${i.extra ? `<div style="margin-top:0.25rem">${i.extra}</div>` : ''}
             </div>`).join('');
     }
 
-    function renderFunnel(funnel) {
-        const stages = funnel.stages;
-        const counts = funnel.counts;
+    function renderFunnel(funnel, ls) {
+        const stages = funnel.stages || [];
+        const counts = funnel.counts || {};
+        const total = ls.total_leads || 1;
         const max = Math.max(...stages.map(s => counts[s] || 0), 1);
-        const colors = ['#5cbe7c','#7dc95e','#a8c4a5','#d4c48a','#e0b87a','#e07060'];
+        const colors = ['#b5a6c8','#e07856','#d4a76a','#8ba888','#65a3b8','#1a1f2e'];
+        const descMap = {
+            'Lead': 'Identificados, sem contato',
+            'Contatado': 'WhatsApp/email enviado',
+            'Respondeu': 'Prospect respondeu',
+            'Reuniao': 'Reuniao agendada/concluida',
+            'Proposta': 'Proposta comercial enviada',
+            'Fechado': 'Contrato fechado'
+        };
+
         $('#funnelChart').innerHTML = stages.map((stage, i) => {
             const count = counts[stage] || 0;
-            const pct = (count / max) * 100;
-            const w = Math.max(10, pct);
-            return `<div class="funnel-stage">
+            const pctOfTotal = fmtPct(count, total);
+            const pctOfMax = (count / max) * 100;
+            const w = Math.max(8, pctOfMax);
+            const desc = descMap[stage] || '';
+            return `<div class="funnel-stage" title="${desc}">
                 <span class="funnel-label">${stage}</span>
                 <div class="funnel-bar-wrap">
                     <div class="funnel-bar" style="width:${w}%;background:${colors[i]||'#888'}">
-                        <span>${count}</span>
+                        <span>${fmtNum(count)}</span>
                     </div>
                 </div>
-                <span class="funnel-count">${count}</span>
+                <span class="funnel-count">${fmtNum(count)}</span>
+                <span class="funnel-pct">${pctOfTotal}</span>
             </div>`;
-        }).join('') + `<div class="note-box"><strong>Origem:</strong> ${funnel.note}</div>`;
+        }).join('') + `<div class="note-box"><strong>Conversao:</strong> ${fmtPct(counts['Contatado'], total)} dos leads ja foram contatados. ${fmtPct(counts['Respondeu'], counts['Contatado'])} de conversao sobre os contatados.</div>`;
     }
 
     function renderNotionStatus(os) {
@@ -355,37 +550,126 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
         const total = vals.reduce((a, b) => a + b, 0) || 1;
         const max = Math.max(...vals, 1);
         const colorMap = {
-            'Lead':'#b5a6c8','Mensagem Pronta':'#e07856','Enviado':'#e05c5c',
-            'Respondeu':'#5cbe7c','Reunião':'#8ba888','Proposta':'#c4a68a',
-            'Fechado':'#1a1f2e','Site em Criação':'#65a3b8','Perdido':'#999'
+            'Lead':'#b5a6c8','Qualificado':'#9b8bb8','Site em Criacao':'#65a3b8',
+            'Mensagem Pronta':'#e07856','Enviado':'#d4543b',
+            'Respondeu':'#5cbe7c','Reuniao':'#8ba888','Proposta':'#c4a68a',
+            'Fechado':'#1a1f2e','Perdido':'#999','Descartado':'#aaa'
         };
+
+        if (Object.keys(nb).length === 0) {
+            $('#notionStatusChart').innerHTML = '<div class="pending-empty">Sem dados de status do Notion</div>';
+            return;
+        }
+
         $('#notionStatusChart').innerHTML = Object.entries(nb).sort((a,b)=>b[1]-a[1]).map(([s,c]) => {
             const pct = (c / max) * 100;
             const color = colorMap[s] || '#aaa';
-            const pct2 = ((c / total) * 100).toFixed(1);
+            const pct2 = fmtPct(c, total);
             return `<div class="status-row">
-                <span class="status-name">${s}</span>
+                <span class="status-name" title="${s}">${s}</span>
                 <div class="status-bar-wrap">
                     <div class="status-bar" style="width:${pct}%;background:${color}"></div>
                 </div>
-                <span class="status-count">${c} (${pct2}%)</span>
+                <span class="status-count">${fmtNum(c)} (${pct2})</span>
             </div>`;
         }).join('');
     }
 
+    function renderSources(ls) {
+        const sources = ls.sources || {};
+        const total = ls.total_leads || 1;
+        const sourceNames = {
+            'notion': 'Notion CRM',
+            'harmonizacao_csv': 'Harmonizacao CSV',
+            'prospects_novos': 'Prospects Novos',
+            'serp_maps': 'SERPs Maps',
+            'serp_pool': 'SERP Pool'
+        };
+        const sourceColors = {
+            'notion': '#b5a6c8',
+            'harmonizacao_csv': '#c4a68a',
+            'prospects_novos': '#8ba888',
+            'serp_maps': '#e07856',
+            'serp_pool': '#1a1f2e'
+        };
+
+        const entries = Object.entries(sources).sort((a,b)=>b[1]-a[1]);
+        if (entries.length === 0) {
+            $('#sourceChart').innerHTML = '<div class="pending-empty">Sem dados de origem</div>';
+            return;
+        }
+
+        const max = Math.max(...entries.map(e=>e[1]), 1);
+        $('#sourceChart').innerHTML = entries.map(([src, count]) => {
+            const name = sourceNames[src] || src;
+            const color = sourceColors[src] || '#888';
+            const pct = (count / max) * 100;
+            const pctTotal = fmtPct(count, total);
+            return `<div class="source-row">
+                <span class="source-name" title="${name}">${name}</span>
+                <div class="source-bar-wrap">
+                    <div class="source-bar-fill" style="width:${pct}%;background:${color}">
+                        <span>${pctTotal}</span>
+                    </div>
+                </div>
+                <span class="source-count">${fmtNum(count)}</span>
+                <span class="source-pct">${pctTotal}</span>
+            </div>`;
+        }).join('');
+    }
+
+    function renderContactMetrics(ls) {
+        const total = ls.total_leads || 1;
+        const phone = ls.with_phone || 0;
+        const email = ls.with_email || 0;
+        const whatsapp = ls.whatsapp_ready || 0;
+
+        const metrics = [
+            { label: 'Cobertura Telefone', value: phone, total: total, color: '#5cbe7c' },
+            { label: 'Cobertura Email', value: email, total: total, color: email > 0 ? '#d4a76a' : '#e05c5c' },
+            { label: 'WhatsApp Identificavel', value: whatsapp, total: total, color: '#8ba888' },
+        ];
+
+        const rows = metrics.map(m => {
+            const pct = (m.value / m.total) * 100;
+            const pctStr = fmtPct(m.value, m.total);
+            const cls = coverageClass(pct);
+            return `<div class="contact-metric">
+                <span class="contact-metric-label">${m.label}</span>
+                <div class="contact-bar-wrap">
+                    <div class="contact-bar-fill" style="width:${pct}%;background:${m.color}"></div>
+                </div>
+                <span class="contact-metric-value"><span class="coverage-badge ${cls}">${pctStr}</span></span>
+            </div>`;
+        }).join('');
+
+        const note = email === 0
+            ? '<div class="note-box" style="margin-top:0.8rem"><strong>Alerta:</strong> 97% dos leads nao tem email. Isso e o principal bloqueio para outreach via email.</div>'
+            : '';
+        $('#contactMetrics').innerHTML = rows + note;
+    }
+
     function renderNiches(niches, ls) {
         const total = ls.total_leads || 1;
-        const max = Math.max(...Object.values(niches),1);
+        const entries = Object.entries(niches || {}).sort((a,b)=>b[1]-a[1]).slice(0, 10);
+        const max = Math.max(...entries.map(e=>e[1]), 1);
         const colorMap = {
-            'Veterinária':'#8ba888','Beleza':'#c4a68a','Harmonização':'#b5a6c8',
+            'Veterinaria':'#8ba888','Beleza':'#c4a68a','Harmonizacao':'#b5a6c8',
             'Dentista':'#e07856','Pet Shop':'#65a3b8','Barbearia':'#1a1f2e',
-            'Padaria':'#d4a76a','Pizzaria':'#d4543b','Açougue':'#8b2500','Outros':'#aaa'
+            'Padaria':'#d4a76a','Pizzaria':'#d4543b','Acougue':'#8b2500',
+            'Clinica de Harmonizacao':'#9b8bb8','Farmacia':'#5c9e7c','Cafe':'#b89060',
+            'Restaurante':'#c87050','Outros':'#aaa'
         };
-        const sorted = Object.entries(niches).sort((a,b)=>b[1]-a[1]);
-        $('#nicheChart').innerHTML = sorted.map(([n,c]) => {
+
+        if (entries.length === 0) {
+            $('#nicheChart').innerHTML = '<div class="pending-empty">Sem dados de nichos</div>';
+            return;
+        }
+
+        $('#nicheChart').innerHTML = entries.map(([n,c]) => {
             const pct = (c / max) * 100;
             const color = colorMap[n] || '#aaa';
-            const pct2 = ((c/total)*100).toFixed(1)+'%';
+            const pct2 = fmtPct(c, total);
             return `<div class="niche-row">
                 <span class="niche-name" title="${n}">${n}</span>
                 <div class="niche-bar-wrap">
@@ -393,14 +677,14 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
                         <span>${pct2}</span>
                     </div>
                 </div>
-                <span class="niche-count">${c}</span>
+                <span class="niche-count">${fmtNum(c)}</span>
             </div>`;
         }).join('');
     }
 
     function renderMonthly(monthly) {
         if (!monthly || monthly.length === 0) {
-            $('#monthlyChart').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa;font-size:0.82rem">Sem dados de producao</div>';
+            $('#monthlyChart').innerHTML = '<div class="pending-empty">Sem dados de producao mensal</div>';
             return;
         }
         const max = Math.max(...monthly.map(m=>m.count),1);
@@ -419,28 +703,77 @@ body { font-family: var(--font); background: var(--bg); color: var(--charcoal); 
             }).join('')+`</div>`;
     }
 
-    function renderPRD(prd, ls) {
+    function renderPendingActions(pa, ls) {
+        const pendingContact = pa?.leads_pending_contact || 0;
+        const noResponse = pa?.contacted_no_response || 0;
+
+        if (pendingContact === 0 && noResponse === 0) {
+            $('#pendingActions').innerHTML = '<div class="pending-empty">Nenhuma pendencia no momento</div>';
+            return;
+        }
+
+        let html = '';
+
+        if (pendingContact > 0) {
+            html += `<div class="pending-item">
+                <span class="badge-count">${fmtNum(pendingContact)}</span>
+                <div>
+                    <span class="pending-badge badge-lead">Leads</span>
+                    <div class="badge-desc" style="margin-top:0.3rem">Leads identificados, sem nenhum contato ainda. Prioridade alta.</div>
+                </div>
+            </div>`;
+        }
+
+        if (noResponse > 0) {
+            html += `<div class="pending-item">
+                <span class="badge-count">${fmtNum(noResponse)}</span>
+                <div>
+                    <span class="pending-badge badge-contatado">Contatados</span>
+                    <div class="badge-desc" style="margin-top:0.3rem">Ja receberam mensagem mas ainda nao responderam. Seguir up.</div>
+                </div>
+            </div>`;
+        }
+
+        $('#pendingActions').innerHTML = html;
+    }
+
+    function renderDemoStats(ls) {
+        const demoTotal = ls.demo_sites_total || 0;
+        const demoWithSite = ls.demo_sites_with_url || 0;
+        const demoPending = ls.demo_sites_pending || 0;
+
         const items = [
-            { label: 'Stories Feitas', value: prd.stories_done, sub: `de ${prd.stories_total} totais`, color: '#5cbe7c' },
-            { label: 'Stories Pendentes', value: prd.stories_pending, sub: 'restantes', color: '#e07856' },
-            { label: 'Reviews Feitos', value: prd.reviews_done, sub: `de ${prd.reviews_total} totais`, color: '#8ba888' },
-            { label: 'Demo Sites', value: ls.demo_sites_total, sub: 'pastas em site-demo/', color: '#1a1f2e' },
+            { label: 'Total Demo Sites', value: fmtNum(demoTotal), sub: 'pastas em site-demo/' },
+            { label: 'Com URL Publica', value: fmtNum(demoWithSite), sub: 'deployados na Vercel' },
+            { label: 'Pendentes', value: fmtNum(demoPending), sub: 'aguardando deploy' },
         ];
-        $('#prdGrid').innerHTML = items.map(i => `
-            <div class="prd-stat">
-                <div class="prd-stat-value" style="color:${i.color}">${i.value}</div>
-                <div class="prd-stat-label">${i.label} <span style="font-weight:400;font-size:0.62rem">${i.sub}</span></div>
-            </div>`).join('');
+
+        if (demoTotal === 0) {
+            $('#demoStats').innerHTML = '<div class="pending-empty">Sem demo sites criados</div>';
+            return;
+        }
+
+        $('#demoStats').innerHTML = `<div class="demo-grid">` +
+            items.map(i => `
+                <div class="demo-stat">
+                    <div class="demo-stat-value">${i.value}</div>
+                    <div class="demo-stat-label">${i.label} <span style="font-weight:400;font-size:0.6rem">${i.sub}</span></div>
+                </div>`).join('')
+            + `</div>`;
     }
 
     function renderActivity(activities) {
         if (!activities || !Array.isArray(activities) || activities.length === 0) {
-            $('#activityList').innerHTML = '<div style="text-align:center;padding:2rem;color:#aaa">Nenhuma atividade</div>';
+            $('#activityList').innerHTML = '<div class="pending-empty">Nenhuma atividade</div>';
             return;
         }
-        const dotMap = {'feat':'dot-green','fix':'dot-terracotta','chore':'dot-clay','docs':'dot-sage','refactor':'dot-clay'};
+        const dotMap = {
+            'feat':'dot-green','fix':'dot-terracotta','chore':'dot-clay',
+            'docs':'dot-sage','refactor':'dot-clay','data':'dot-lavender',
+            'test':'dot-sage','remove':'dot-terracotta'
+        };
         const list = document.createDocumentFragment();
-        activities.forEach(a => {
+        activities.slice(0, 20).forEach(a => {
             const msg = a.message || '';
             const prefix = msg.split(':')[0].toLowerCase();
             const color = dotMap[prefix] || 'dot-clay';

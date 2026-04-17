@@ -1,24 +1,77 @@
 #!/usr/bin/env python3
 """
-Pixel Alchemy - CRM Data Generator (SQLite source)
-==================================================
-Le do SQLite (unica fonte de verdade) e gera dashboard-data.json.
-
-ANTES DE RODAR: rode sync_notion_csv_to_sqlite.py para garantir dados atualizados.
+Pixel Alchemy - CRM Data Generator (Supabase source)
+=====================================================
+Lê do Supabase (UNICA fonte de verdade) e gera dashboard-data.json.
 """
 
-import json, sqlite3, subprocess, os
+import json, subprocess, os, re
 from datetime import datetime
+from collections import Counter
 
 BASE = '/opt/data/home/site-pixel-alchemy'
-DB = f'{BASE}/prospects.db'
 OUTPUT = f'{BASE}/admin/dashboard/dashboard-data.json'
+
+SUPABASE_URL = 'https://iedltqijikyptxkpequc.supabase.co/rest/v1/prospects'
+SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZGx0cWlqaWt5cHR4a3BlcXVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNDg3MzksImV4cCI6MjA5MTkyNDczOX0.lR94oA864AH_3k3TiqTX-sfjLAsKVdAopA8r7F8r2uw'
+
+HEADERS = {
+    'apikey': SUPABASE_KEY,
+    'Authorization': f'Bearer {SUPABASE_KEY}',
+    'Content-Type': 'application/json'
+}
+
+
+def fetch_supabase(query=""):
+    """Fetch all prospects from Supabase. Returns list of dicts."""
+    import urllib.request
+
+    url = SUPABASE_URL + query
+    req = urllib.request.Request(url, headers=HEADERS)
+    with urllib.request.urlopen(req) as resp:
+        return json.loads(resp.read())
+
+
+def count_supabase(filter_query=""):
+    """Count prospects with optional filter."""
+    data = fetch_supabase(f'?select=id{filter_query}')
+    return len(data)
+
+
+def has_valid_phone(telefone):
+    """Telefone válido: 10+ dígitos."""
+    if not telefone:
+        return False
+    digits = re.sub(r'\D', '', telefone)
+    return len(digits) >= 10
+
+
+def is_whatsapp_ready(telefone):
+    """WhatsApp pronto: DDD brasileiro (11-99) + número."""
+    if not telefone:
+        return False
+    digits = re.sub(r'\D', '', telefone)
+    if len(digits) < 10:
+        return False
+    # DDD brasileiro: 11-99
+    try:
+        ddd = int(digits[:2])
+        return 11 <= ddd <= 99
+    except:
+        return False
+
+
+def has_email(email):
+    """Tem email válido."""
+    if not email:
+        return False
+    return '@' in str(email) and '.' in str(email)
 
 
 def get_git_log_commits():
     """Extrai commits do git log."""
     result = subprocess.run(
-        ['git', 'log', '--pretty=format:%h|%s|%ai|%ae', '--all'],
+        ['git', 'log', '--pretty=format:%h|%s|%ai|%ae', '--all', '--name-status'],
         cwd=BASE, capture_output=True, text=True
     )
     lines = result.stdout.strip().split('\n')
@@ -35,56 +88,91 @@ def get_git_log_commits():
     return commits
 
 
-def query_db(sql, params=None):
-    conn = sqlite3.connect(DB)
-    conn.row_factory = sqlite3.Row
-    try:
-        cur = conn.execute(sql, params or ())
-        rows = cur.fetchall()
-        return [dict(r) for r in rows]
-    finally:
-        conn.close()
-
-
 def build_crm_data():
-    # ── Funnel do SQLite ──────────────────────────────────────────────────
-    pipeline = {}
-    for row in query_db('SELECT pipeline_status, COUNT(*) as c FROM prospects GROUP BY pipeline_status'):
-        pipeline[row['pipeline_status']] = row['c']
+    import urllib.request
 
-    total_leads = sum(pipeline.values())
+    print(f"[{datetime.now().isoformat()}] Fetching data from Supabase...")
 
+    # Fetch ALL prospects (Supabase returns max 1000 per page, use paginate if needed)
+    all_prospects = fetch_supabase('?select=*')
+
+    # Handle pagination if total >= 1000
+    if len(all_prospects) >= 1000:
+        req = urllib.request.Request(SUPABASE_URL + '?select=id', headers=HEADERS)
+        with urllib.request.urlopen(req) as resp:
+            count_data = json.loads(resp.read())
+            total = len(count_data)
+            if total >= 1000:
+                all_prospects = []
+                for offset in range(0, total, 1000):
+                    page = fetch_supabase(f'?select=*&offset={offset}&limit=1000')
+                    all_prospects.extend(page)
+                    if len(page) < 1000:
+                        break
+
+    print(f"  Total fetched: {len(all_prospects)}")
+
+    # ── Funil ──────────────────────────────────────────────────────────────
+    pipeline_counter = Counter(p['pipeline_status'] for p in all_prospects)
     funnel_stages = ['Lead', 'Contatado', 'Respondeu', 'Reuniao', 'Proposta', 'Fechado']
-    funnel_counts = {s: pipeline.get(s, 0) for s in funnel_stages}
+    funnel_counts = {s: pipeline_counter.get(s, 0) for s in funnel_stages}
 
-    # ── Nichos ───────────────────────────────────────────────────────────
-    niches = {}
-    for row in query_db("SELECT nicho, COUNT(*) as c FROM prospects WHERE nicho != '' AND nicho IS NOT NULL GROUP BY nicho ORDER BY c DESC"):
-        niches[row['nicho']] = row['c']
+    total_leads = len(all_prospects)
 
-    # ── Telefone coverage ────────────────────────────────────────────────
-    with_phone = query_db("SELECT COUNT(*) as c FROM prospects WHERE telefone IS NOT NULL AND telefone != ''")[0]['c']
+    # ── Phone / Email / WhatsApp coverage ──────────────────────────────────
+    with_phone = sum(1 for p in all_prospects if has_valid_phone(p.get('telefone')))
+    with_email = sum(1 for p in all_prospects if has_email(p.get('email')))
+    whatsapp_ready = sum(1 for p in all_prospects if is_whatsapp_ready(p.get('telefone')))
 
-    # ── Notion status (referencia) ───────────────────────────────────────
-    notion_statuses = {}
-    for row in query_db("SELECT notion_status, COUNT(*) as c FROM prospects WHERE notion_status != '' GROUP BY notion_status"):
-        notion_statuses[row['notion_status']] = row['c']
+    # ── Sources ─────────────────────────────────────────────────────────────
+    source_counter = Counter(p.get('source') or 'unknown' for p in all_prospects)
 
-    # ── Demo sites criados (site-demo/) ─────────────────────────────────
-    demo_count = len([d for d in os.listdir(f'{BASE}/site-demo')
-                      if os.path.isdir(os.path.join(f'{BASE}/site-demo', d))])
+    # ── Nichos ───────────────────────────────────────────────────────────────
+    nicho_counter = Counter(
+        p.get('nicho') for p in all_prospects
+        if p.get('nicho') and p.get('nicho').strip()
+    )
 
-    # ── Producao mensal via git (feat: US-XXX ... Site Completo) ────────
+    # ── Notion Status ───────────────────────────────────────────────────────
+    notion_counter = Counter(
+        p.get('notion_status') for p in all_prospects
+        if p.get('notion_status') and p.get('notion_status').strip()
+    )
+
+    # ── Demo sites ──────────────────────────────────────────────────────────
+    demo_sites_total = sum(1 for p in all_prospects if p.get('url_demo'))
+    with_url_demo = sum(1 for p in all_prospects if p.get('url_demo'))
+    site_criado_em_count = sum(1 for p in all_prospects if p.get('site_criado_em'))
+
+    # ── Conversion rates ────────────────────────────────────────────────────
+    contacted = funnel_counts.get('Contatado', 0)
+    respondido = funnel_counts.get('Respondeu', 0)
+    reuniao = funnel_counts.get('Reuniao', 0)
+    proposta = funnel_counts.get('Proposta', 0)
+    fechado = funnel_counts.get('Fechado', 0)
+
+    conversion_rates = {
+        'total_to_contacted': round(contacted / total_leads * 100, 1) if total_leads > 0 else 0,
+        'contacted_to_responded': round(respondido / contacted * 100, 1) if contacted > 0 else 0,
+        'responded_to_reuniao': round(reuniao / respondido * 100, 1) if respondido > 0 else 0,
+        'reuniao_to_proposta': round(proposta / reuniao * 100, 1) if reuniao > 0 else 0,
+        'proposta_to_fechado': round(fechado / proposta * 100, 1) if proposta > 0 else 0,
+    }
+
+    # ── Pending actions ─────────────────────────────────────────────────────
+    in_pipeline = pipeline_counter.get('Lead', 0)
+    contacted_no_response = contacted  # Contatado mas não Respondeu
+
+    # ── Git production ───────────────────────────────────────────────────────
     commits = get_git_log_commits()
     monthly = {}
     for c in commits:
         msg = c['message'].lower()
-        if 'site completo' in msg:
+        if 'site completo' in msg or 'demo site creation' in msg:
             date_part = c['date'][:7]
             monthly[date_part] = monthly.get(date_part, 0) + 1
     monthly_list = [{'month': m, 'count': c} for m, c in sorted(monthly.items())]
 
-    # ── Ultimos 20 commits ───────────────────────────────────────────────
     recent = [{
         'hash': c['hash'],
         'message': c['message'],
@@ -92,18 +180,7 @@ def build_crm_data():
         'author': c['author']
     } for c in commits[:20]]
 
-    # ── Source breakdown ─────────────────────────────────────────────────
-    sources = {}
-    for row in query_db("SELECT source, COUNT(*) as c FROM prospects GROUP BY source"):
-        sources[row['source']] = row['c']
-
-    # ── Contatados stats ────────────────────────────────────────────────
-    contatados = pipeline.get('Contatado', 0)
-    respondido = pipeline.get('Respondeu', 0)
-    reuniao = pipeline.get('Reuniao', 0)
-    proposta = pipeline.get('Proposta', 0)
-    fechado = pipeline.get('Fechado', 0)
-
+    # ── Build output ────────────────────────────────────────────────────────
     data = {
         'generated_at': datetime.now().isoformat(),
         'crm': {
@@ -112,39 +189,43 @@ def build_crm_data():
             'leads_summary': {
                 'total_leads': total_leads,
                 'with_phone': with_phone,
-                'demo_sites_total': demo_count,
-                'sources': sources,
+                'with_email': with_email,
+                'whatsapp_ready': whatsapp_ready,
+                'in_pipeline': in_pipeline,
+                'contacted': contacted,
+                'demo_sites_total': demo_sites_total,
+                'demo_sites_with_url': with_url_demo,
+                'demo_sites_creation_tracked': site_criado_em_count,
+                'sources': dict(source_counter),
             },
 
             'funnel': {
                 'stages': funnel_stages,
                 'counts': funnel_counts,
-                'note': f'{total_leads} leads no banco. Pipeline Lead={funnel_counts["Lead"]}, Contatado={funnel_counts["Contatado"]}. Outreach ativo: 0.'
+                'conversion_rates': conversion_rates,
+                'note': f'{total_leads} leads no Supabase. Pipeline Lead={funnel_counts["Lead"]}, Contatado={funnel_counts["Contatado"]}.'
             },
 
             'outreach_stats': {
-                'currently_contatados': contatados,
+                'currently_contatados': contacted,
                 'currently_respondeu': respondido,
                 'currently_reuniao': reuniao,
                 'currently_proposta': proposta,
                 'currently_fechado': fechado,
-                'notion_status_breakdown': notion_statuses,
-                'note': 'Dados do SQLite prospects.db. Pipeline gerenciado via agentes.'
+                'notion_status_breakdown': dict(notion_counter),
+                'note': 'Dados do Supabase prospects. Fonte unica de verdade.'
             },
 
-            'niche_distribution': niches,
+            'pending_actions': {
+                'leads_pending_contact': in_pipeline,
+                'contacted_no_response': contacted_no_response,
+            },
+
+            'niche_distribution': dict(nicho_counter.most_common(15)),
 
             'monthly_production': monthly_list,
 
             'recent_activity': recent,
-
-            'prd': {
-                'stories_total': 123,
-                'stories_done': 118,
-                'stories_pending': 5,
-                'reviews_done': 47,
-                'reviews_total': 47
-            }
         }
     }
 
@@ -152,11 +233,6 @@ def build_crm_data():
 
 
 def main():
-    # Garantir que sync rodou
-    if not os.path.exists(DB) or os.path.getsize(DB) == 0:
-        print("ERRO: prospects.db vazio. Rode sync_notion_csv_to_sqlite.py primeiro.")
-        return
-
     data = build_crm_data()
     crm = data['crm']
 
@@ -164,11 +240,14 @@ def main():
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     ls = crm['leads_summary']
-    print(f"[{datetime.now().isoformat()}] CRM data atualizado")
+    print(f"[{datetime.now().isoformat()}] Dashboard data updated")
     print(f"  Total leads: {ls['total_leads']}")
-    print(f"  Com telefone: {ls['with_phone']}")
+    print(f"  Com telefone: {ls['with_phone']} ({ls['with_phone']/ls['total_leads']*100:.1f}%)")
+    print(f"  Com email: {ls['with_email']} ({ls['with_email']/ls['total_leads']*100:.1f}%)")
+    print(f"  WhatsApp pronto: {ls['whatsapp_ready']} ({ls['whatsapp_ready']/ls['total_leads']*100:.1f}%)")
     print(f"  Funnel: {crm['funnel']['counts']}")
-    print(f"  Nichos: {crm['niche_distribution']}")
+    print(f"  Pendencias: {crm['pending_actions']}")
+    print(f"  Nichos: {dict(list(crm['niche_distribution'].items())[:5])}")
     print(f"  Demo sites: {ls['demo_sites_total']}")
 
 
