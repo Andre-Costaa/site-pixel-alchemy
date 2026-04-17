@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Casa de Carnes Portugal - CCP. Cuidado com a saude em Ribeirao Preto. Consultas, exames e tratamentos personalizados.">
+    <meta name="keywords" content="saude, clinica, consulta, exame, tratamento, Ribeirao Preto">
+    <meta property="og:title" content="Casa de Carnes Portugal - CCP">
+    <meta property="og:description" content="Cuidado com a saude em Ribeirao Preto. Agende sua consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/casa-de-carnes-portugal-ccp/">
+    <meta property="og:image" content="https://www.pixelalchemy.com.br/site-demo/casa-de-carnes-portugal-ccp/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Casa de Carnes Portugal - CCP | Saude em Ribeirao Preto</title>
+    <style>
+        :root {
+            --blush: #F5E6E0;
+            --rose-gold: #C4868A;
+            --rose-gold-light: #D9A5A8;
+            --sage: #A3B18A;
+            --sage-light: #C5D1B5;
+            --charcoal: #2D2D2D;
+            --champagne: #F7E7CE;
+            --white: #FFFFFF;
+            --cream: #FDF8F5;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 10rem;
+            --font-primary: 'Avenir Next', 'Avenir', 'Montserrat', 'Trebuchet MS', sans-serif;
+            --font-accent: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Playfair Display', 'Georgia', serif;
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-soft: 0 4px 30px rgba(196, 134, 138, 0.12);
+            --shadow-elevated: 0 12px 50px rgba(45, 45, 45, 0.08);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-weight: 200;
+            color: var(--charcoal);
+            background-color: var(--cream);
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+        }
+
+        .section-label {
+            font-weight: 100;
+            font-size: 0.7rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-subtitle {
+            font-weight: 200;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--charcoal);
+            opacity: 0.7;
+            max-width: 540px;
+            line-height: 1.8;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--rose-gold);
+            margin: var(--spacing-md) 0;
+        }
+
+        .divider--center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* ===================== NAVIGATION ===================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(253, 248, 245, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.6rem 0;
+            box-shadow: 0 1px 30px rgba(45, 45, 45, 0.04);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--charcoal);
+        }
+
+        .nav-logo span {
+            color: var(--rose-gold);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--rose-gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border: 1px solid var(--rose-gold);
+            font-size: 0.68rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            transition: all var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--charcoal);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--cream);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 0.85rem;
+            font-weight: 100;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            padding: 0.8rem;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--rose-gold);
+        }
+
+        /* ===================== HERO ===================== */
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--blush);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 70%;
+            height: 140%;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--rose-gold-light) 50%, var(--sage-light) 100%);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .hero::before {
+                clip-path: polygon(35% 0, 100% 0, 100% 100%, 5% 100%);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero::before {
+                width: 55%;
+                clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -5%;
+            right: 15%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.15), transparent 70%);
+            z-index: 2;
+            animation: pulse-soft 8s ease-in-out infinite;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 3;
+            padding-top: 6rem;
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-label {
+            font-weight: 100;
+            font-size: 0.65rem;
+            letter-spacing: 0.6em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-title {
+            font-family: var(--font-accent);
+            font-weight: 400;
+            font-size: clamp(2.4rem, 7vw, 4.5rem);
+            line-height: 1.1;
+            color: var(--charcoal);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--rose-gold);
+        }
+
+        .hero-tagline {
+            font-weight: 100;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            letter-spacing: 0.15em;
+            color: var(--charcoal);
+            opacity: 0.65;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: var(--rose-gold);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--charcoal);
+            font-size: 0.7rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            border: 1px solid var(--charcoal);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-scroll span {
+            font-size: 0.6rem;
+            font-weight: 100;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            opacity: 0.4;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--rose-gold), transparent);
+            animation: scroll-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-pulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.15); opacity: 0.25; }
+        }
+
+        /* ===================== SERVICES ===================== */
+
+        .services {
+            padding: var(--spacing-2xl) 0;
+            background: var(--white);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid rgba(196, 134, 138, 0.08);
+            padding: var(--spacing-lg) var(--spacing-md);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--rose-gold);
+            transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-soft);
+            border-color: rgba(196, 134, 138, 0.15);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(135deg, var(--blush), var(--champagne));
+        }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--rose-gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-name {
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .service-desc {
+            font-weight: 200;
+            font-size: 0.9rem;
+            opacity: 0.65;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-price {
+            font-weight: 100;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--rose-gold);
+        }
+
+        .service-price small {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+        }
+
+        /* ===================== ABOUT ===================== */
+
+        .about {
+            padding: var(--spacing-2xl) 0;
+            background: var(--blush);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(163, 177, 138, 0.12), transparent 70%);
+            z-index: 0;
+        }
+
+        .about .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-xl);
+            }
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(160deg, var(--champagne) 0%, var(--blush) 40%, var(--rose-gold-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(45, 45, 45, 0.15), transparent);
+        }
+
+        .about-text .section-subtitle {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(196, 134, 138, 0.15);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-accent);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--rose-gold);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* ===================== TEAM ===================== */
+
+        .team {
+            padding: var(--spacing-2xl) 0;
+            background: var(--white);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        @media (min-width: 640px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-photo-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .team-card:hover .team-photo-bg {
+            transform: scale(1.03);
+        }
+
+        .team-photo-1 {
+            background: linear-gradient(160deg, var(--champagne) 0%, var(--rose-gold-light) 100%);
+        }
+
+        .team-photo-2 {
+            background: linear-gradient(160deg, var(--blush) 0%, var(--sage-light) 100%);
+        }
+
+        .team-photo-3 {
+            background: linear-gradient(160deg, var(--sage-light) 0%, var(--champagne) 100%);
+        }
+
+        .team-name {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.72rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+        }
+
+        /* ===================== GALLERY ===================== */
+
+        .gallery {
+            padding: var(--spacing-2xl) 0;
+            background: var(--cream);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-md);
+            }
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 1;
+        }
+
+        .gallery-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 45, 45, 0.5), transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: var(--spacing-sm);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-weight: 100;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .gallery-bg-1 { background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 100%); }
+        .gallery-bg-2 { background: linear-gradient(135deg, var(--champagne) 0%, var(--sage-light) 100%); }
+        .gallery-bg-3 { background: linear-gradient(135deg, var(--sage-light) 0%, var(--blush) 100%); }
+        .gallery-bg-4 { background: linear-gradient(135deg, var(--rose-gold-light) 0%, var(--champagne) 100%); }
+        .gallery-bg-5 { background: linear-gradient(135deg, var(--blush) 0%, var(--rose-gold-light) 100%); }
+        .gallery-bg-6 { background: linear-gradient(135deg, var(--champagne) 0%, var(--blush) 100%); }
+
+        /* ===================== TESTIMONIALS ===================== */
+
+        .testimonials {
+            padding: var(--spacing-2xl) 0;
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.08), transparent 70%);
+        }
+
+        .testimonials .section-label {
+            color: var(--rose-gold-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: var(--spacing-lg) var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--champagne);
+        }
+
+        .testimonial-text {
+            font-weight: 200;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 100;
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--rose-gold-light);
+        }
+
+        /* ===================== CONTACT ===================== */
+
+        .contact {
+            padding: var(--spacing-2xl) 0;
+            background: var(--blush);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-info-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--rose-gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-info-label {
+            font-size: 0.65rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-info-value {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .contact-info-value a:hover {
+            color: var(--rose-gold);
+        }
+
+        .contact-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: #25D366;
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: var(--spacing-sm);
+        }
+
+        .contact-whatsapp:hover {
+            background: #1DA851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--white);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid rgba(196, 134, 138, 0.2);
+            background: var(--cream);
+            font-family: var(--font-primary);
+            font-weight: 200;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            transition: border-color var(--transition);
+            outline: none;
+            border-radius: var(--radius-sm);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--rose-gold);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C4868A' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.2rem center;
+            padding-right: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        @media (min-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--rose-gold);
+            color: var(--white);
+            font-family: var(--font-primary);
+            font-size: 0.72rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            border-radius: var(--radius-sm);
+            margin-top: var(--spacing-xs);
+        }
+
+        .form-submit:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .contact-hours {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(196, 134, 138, 0.15);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.85rem;
+            font-weight: 200;
+        }
+
+        .hours-day {
+            opacity: 0.6;
+        }
+
+        /* ===================== FOOTER ===================== */
+
+        footer {
+            padding: var(--spacing-lg) 0;
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-accent);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-logo span {
+            color: var(--rose-gold);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            font-size: 0.68rem;
+            font-weight: 200;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--rose-gold-light);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            font-weight: 100;
+            letter-spacing: 0.15em;
+        }
+
+        /* ===================== WHATSAPP FLOAT ===================== */
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            animation: wa-ping 2s ease-out infinite;
+        }
+
+        @keyframes wa-ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#hero" class="nav-logo">CCP <span>|</span> Ribeirao Preto</a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-label reveal">Casa de Carnes Portugal</p>
+                <h1 class="hero-title reveal reveal-delay-1">Cuidado que <em>transforma</em></h1>
+                <p class="hero-tagline reveal reveal-delay-2">Saude com excelencia e acolhimento no coracao de Ribeirao Preto. Cada atendimento e pensado para voce.</p>
+                <div class="hero-actions reveal reveal-delay-3">
+                    <a href="https://wa.me/5516993961562" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        Agendar Consulta
+                    </a>
+                    <a href="#servicos" class="btn-secondary">Conheca Servicos</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="services-header">
+                <p class="section-label reveal">Nossos servicos</p>
+                <h2 class="section-title reveal reveal-delay-1">Excelencia em cada detalhe</h2>
+                <div class="divider divider--center reveal reveal-delay-2"></div>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">Oferecemos atendimento completo e personalizado para o seu bem-estar.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta</h3>
+                    <p class="service-desc">Avaliacao completa com profissional qualificado. Diagnostico preciso e plano de cuidado individualizado.</p>
+                    <p class="service-price">R$ 180<small> / sessao</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Acompanhamento continuo do seu progresso. Ajustes no plano de tratamento conforme sua evolucao.</p>
+                    <p class="service-price">R$ 120<small> / sessao</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Exames detalhados para complementar o diagnostico. Resultados rapidos e confiaveis.</p>
+                    <p class="service-price">R$ 250<small> / exame</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Procedimentos realizados com tecnologia de ponta e total seguranca. Conforto em cada etapa.</p>
+                    <p class="service-price">R$ 450<small> / procedimento</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Primeira consulta para entender suas necessidades. Triagem completa e orientacao personalizada.</p>
+                    <p class="service-price">R$ 90<small> / avaliacao</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento</h3>
+                    <p class="service-desc">Programa terapeutico completo com acompanhamento multidisciplinar. Foco na sua recuperacao.</p>
+                    <p class="service-price">R$ 320<small> / sessao</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal"></div>
+                <div class="about-text">
+                    <p class="section-label reveal">Sobre nos</p>
+                    <h2 class="section-title reveal reveal-delay-1">Tradicao e dedicacao ao seu bem-estar</h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <p class="section-subtitle reveal reveal-delay-2">
+                        A Casa de Carnes Portugal nasceu da paixao por cuidar das pessoas. Localizada na Av. Portugal, no coracao de Ribeirao Preto, nossa clinica combina tradicao familiar com tecnologia de ponta para oferecer o melhor em saude e bem-estar.
+                    </p>
+                    <p class="section-subtitle reveal reveal-delay-3" style="margin-top:var(--spacing-sm);">
+                        Cada membro da nossa equipe e selecionado pela dedicacao e experiencia. Acreditamos que o verdadeiro cuidado comeca com escuta, respeito e atencao aos detalhes. Aqui, voce nao e apenas um paciente — e parte da nossa familia.
+                    </p>
+                    <div class="about-stats reveal reveal-delay-4">
+                        <div class="stat-item">
+                            <p class="stat-number" data-target="10">0</p>
+                            <p class="stat-label">Anos</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number" data-target="3500">0</p>
+                            <p class="stat-label">Pacientes</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number" data-target="98">0</p>
+                            <p class="stat-label">% Satisfacao</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TEAM ==================== -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="team-header">
+                <p class="section-label reveal">Nossa equipe</p>
+                <h2 class="section-title reveal reveal-delay-1">Profissionais que fazem a diferenca</h2>
+                <div class="divider divider--center reveal reveal-delay-2"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-1"></div>
+                    </div>
+                    <h3 class="team-name">Dr. Ricardo Portugal</h3>
+                    <p class="team-role">Diretor Clinico</p>
+                </div>
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-2"></div>
+                    </div>
+                    <h3 class="team-name">Dra. Ana Beatriz</h3>
+                    <p class="team-role">Especialista em Diagnostico</p>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-3"></div>
+                    </div>
+                    <h3 class="team-name">Dr. Lucas Mendes</h3>
+                    <p class="team-role">Coordenador de Tratamentos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="gallery-header">
+                <p class="section-label reveal">Ambiente</p>
+                <h2 class="section-title reveal reveal-delay-1">Conheca nosso espaco</h2>
+                <div class="divider divider--center reveal reveal-delay-2"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <div class="gallery-bg gallery-bg-1"></div>
+                    <div class="gallery-overlay"><span>Recepcao</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-bg gallery-bg-2"></div>
+                    <div class="gallery-overlay"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-bg gallery-bg-3"></div>
+                    <div class="gallery-overlay"><span>Consultorio 01</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-bg gallery-bg-4"></div>
+                    <div class="gallery-overlay"><span>Consultorio 02</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-4">
+                    <div class="gallery-bg gallery-bg-5"></div>
+                    <div class="gallery-overlay"><span>Area de Exames</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-5">
+                    <div class="gallery-bg gallery-bg-6"></div>
+                    <div class="gallery-overlay"><span>Entrada Principal</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header">
+                <p class="section-label reveal">Depoimentos</p>
+                <h2 class="section-title reveal reveal-delay-1">O que dizem nossos pacientes</h2>
+                <div class="divider divider--center reveal reveal-delay-2"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Atendimento impecavel. Desde a recepcao ate a consulta, me senti acolhida em todos os momentos. Recomendo de olhos fechados para toda a familia."</p>
+                    <p class="testimonial-author">Maria Fernanda S.</p>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O Dr. Ricardo e um profissional excepcional. Me ajudou a entender meu quadro e o tratamento foi muito eficaz. Ambiente limpo e organizado."</p>
+                    <p class="testimonial-author">Carlos Eduardo R.</p>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Levo toda minha familia la ha 3 anos. A Dra. Ana Beatriz e atenciosa e cuidadosa. Os retornos sao faceis de agendar pelo WhatsApp."</p>
+                    <p class="testimonial-author">Patricia M.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <p class="section-label reveal">Contato</p>
+                    <h2 class="section-title reveal reveal-delay-1">Agende seu horario</h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <p class="section-subtitle reveal reveal-delay-2" style="margin-bottom:var(--spacing-md);">Entre em contato conosco. Estamos prontos para atender voce.</p>
+
+                    <div class="reveal reveal-delay-3">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-info-label">Endereco</p>
+                                <p class="contact-info-value">Av. Portugal, 1962<br>Ribeirao Preto - SP</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-info-label">Telefone</p>
+                                <p class="contact-info-value"><a href="tel:+5516993961562">(16) 99396-1562</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-info-label">Horario de funcionamento</p>
+                                <p class="contact-info-value">Seg a Sex: 08:00 - 18:00<br>Sab: 08:00 - 12:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5516993961562" class="contact-whatsapp reveal reveal-delay-4" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-form reveal reveal-delay-3">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="nome">Nome</label>
+                                <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telefone">Telefone</label>
+                                <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="servico">Servico desejado</label>
+                            <select class="form-select" id="servico" name="servico" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento</option>
+                                <option value="avaliacao">Avaliacao Inicial</option>
+                                <option value="tratamento">Tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="mensagem">Mensagem</label>
+                            <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajudar..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <p class="footer-logo">Casa de Carnes Portugal <span>|</span> CCP</p>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 Casa de Carnes Portugal - CCP. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== WHATSAPP FLOAT ==================== -->
+    <a href="https://wa.me/5516993961562" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===================== NAVIGATION ===================== */
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===================== SCROLL REVEAL ===================== */
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        /* ===================== COUNTER ANIMATION ===================== */
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        let countersAnimated = false;
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    statNumbers.forEach(function(counter) {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(eased * target);
+                            counter.textContent = current.toLocaleString('pt-BR');
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString('pt-BR');
+                            }
+                        }
+                        requestAnimationFrame(updateCounter);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statNumbers.length > 0) {
+            counterObserver.observe(statNumbers[0].closest('.about-stats'));
+        }
+
+        /* ===================== CONTACT FORM ===================== */
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var nome = formData.get('nome');
+            var telefone = formData.get('telefone');
+            var servico = formData.get('servico');
+            var mensagem = formData.get('mensagem');
+
+            var waMessage = encodeURIComponent(
+                'Ola! Meu nome e ' + nome + '.\n' +
+                'Telefone: ' + telefone + '\n' +
+                'Servico desejado: ' + servico + '\n' +
+                (mensagem ? 'Mensagem: ' + mensagem : '')
+            );
+
+            window.open('https://wa.me/5516993961562?text=' + waMessage, '_blank');
+        });
+
+        /* ===================== SMOOTH SCROLL (fallback) ===================== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
