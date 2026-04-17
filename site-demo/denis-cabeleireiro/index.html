@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Denis Cabeleireiro - Salao de beleza em Ribeirao Preto, SP. Cortes, coloracao, mechas, hidratacao e escova progressiva. Agende pelo WhatsApp.">
+    <meta name="keywords" content="cabeleireiro, salao beleza, Ribeirao Preto, corte feminino, corte masculino, coloracao, mechas, balayage, hidratacao, escova progressiva">
+    <meta name="author" content="Denis Cabeleireiro">
+
+    <meta property="og:title" content="Denis Cabeleireiro - Salao de Beleza em Ribeirao Preto">
+    <meta property="og:description" content="Transforme seu visual com servicos de alta qualidade. Cortes, coloracao, mechas e tratamentos capilares.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <title>Denis Cabeleireiro | Salao de Beleza - Ribeirao Preto, SP</title>
+
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-dark: #8B5A2B;
+            --bronze-light: #D4956B;
+            --cream: #FFF8F0;
+            --cream-dark: #F5EDE3;
+            --espresso: #3C2415;
+            --espresso-light: #5C3D2E;
+            --espresso-lighter: #7A5A4A;
+            --gold: #C9A84C;
+            --gold-light: #E8D48B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(60, 36, 21, 0.08);
+            --shadow-md: 0 4px 20px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 8px 40px rgba(60, 36, 21, 0.16);
+            --shadow-glow: 0 0 30px rgba(184, 115, 51, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--espresso);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--bronze-light); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--bronze); }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--espresso-light);
+            font-size: 0.85rem;
+            font-family: Georgia, serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 4px 0;
+            transition: color var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--bronze);
+            color: var(--white) !important;
+            border-radius: 50px;
+            font-size: 0.8rem !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background var(--transition), transform var(--transition);
+            text-decoration: none;
+            font-family: Georgia, serif;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--bronze-dark);
+            color: var(--white) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-cta svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 240, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--espresso);
+            font-family: Georgia, serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--bronze);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(160deg, var(--espresso) 0%, var(--espresso-light) 40%, var(--bronze-dark) 100%);
+            overflow: hidden;
+            padding: 120px 24px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(184, 115, 51, 0.15) 0%, transparent 70%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -20%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            100% { transform: translate(30px, -20px) scale(1.1); opacity: 1; }
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.3; }
+            100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .hero-ornament-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .hero-ornament-line:last-child {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .hero-ornament-diamond {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--champagne);
+        }
+
+        .hero-subtitle {
+            font-family: Georgia, serif;
+            font-size: clamp(0.9rem, 2vw, 1.15rem);
+            color: rgba(247, 231, 206, 0.7);
+            font-weight: 400;
+            margin-bottom: 48px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: var(--bronze);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: 0 4px 20px rgba(184, 115, 51, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(184, 115, 51, 0.5);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: transparent;
+            color: var(--champagne);
+            border: 1.5px solid rgba(247, 231, 206, 0.3);
+            border-radius: 50px;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--champagne);
+            background: rgba(247, 231, 206, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(247, 231, 206, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 16px;
+            font-family: Georgia, serif;
+        }
+
+        .section-title {
+            font-family: Georgia, serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .section-divider-line {
+            width: 40px;
+            height: 1px;
+            background: var(--bronze-light);
+        }
+
+        .section-divider-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--bronze);
+            border-radius: 50%;
+        }
+
+        .section-description {
+            max-width: 560px;
+            margin: 16px auto 0;
+            color: var(--espresso-lighter);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: all var(--transition-slow);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bronze), var(--gold), var(--bronze-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-slow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.15));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .service-card h3 {
+            font-family: Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--espresso-lighter);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--bronze);
+            font-weight: 700;
+            padding: 6px 16px;
+            background: rgba(184, 115, 51, 0.08);
+            border-radius: 50px;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--bronze-light);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: linear-gradient(145deg, var(--champagne) 0%, var(--cream-dark) 50%, rgba(184, 115, 51, 0.2) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: var(--radius-lg);
+            pointer-events: none;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            width: 60%;
+            height: 40%;
+            border: 2px solid var(--bronze);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .about-content {
+            max-width: 560px;
+        }
+
+        .about-content .section-label {
+            text-align: left;
+        }
+
+        .about-content .section-title {
+            text-align: left;
+        }
+
+        .about-text {
+            color: var(--espresso-lighter);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--bronze);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--espresso-lighter);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 40px 24px;
+            transition: all var(--transition-slow);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.25);
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            background: linear-gradient(145deg, var(--champagne), var(--cream-dark), rgba(184, 115, 51, 0.15));
+            border: 3px solid rgba(184, 115, 51, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, transparent 60%, rgba(184, 115, 51, 0.1));
+        }
+
+        .team-card h3 {
+            font-family: Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--espresso-lighter);
+            line-height: 1.6;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(6) {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--cream-dark) 40%, rgba(184, 115, 51, 0.15) 100%);
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.6) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--champagne);
+            font-family: Georgia, serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--espresso);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(184, 115, 51, 0.1) 0%, transparent 70%);
+        }
+
+        .testimonials .section-label {
+            color: var(--gold-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--cream);
+        }
+
+        .testimonials .section-divider-line {
+            background: rgba(201, 168, 76, 0.3);
+        }
+
+        .testimonials .section-divider-dot {
+            background: var(--gold);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 248, 240, 0.05);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 248, 240, 0.08);
+            border-color: rgba(184, 115, 51, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold);
+        }
+
+        .testimonial-text {
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            color: rgba(255, 248, 240, 0.85);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bronze), var(--gold));
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            color: var(--champagne);
+            font-weight: 400;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: rgba(247, 231, 206, 0.5);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.12));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-item-label {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 4px;
+            font-family: Georgia, serif;
+        }
+
+        .contact-item-value {
+            font-family: Georgia, serif;
+            color: var(--espresso);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .contact-item-value a {
+            color: var(--espresso);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-hours {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+
+        .contact-hours h4 {
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 16px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(184, 115, 51, 0.08);
+            font-size: 0.9rem;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            color: var(--espresso-lighter);
+        }
+
+        .hours-time {
+            color: var(--espresso);
+            font-family: Georgia, serif;
+        }
+
+        .contact-form-wrapper {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--espresso-lighter);
+            margin-bottom: 8px;
+            font-family: Georgia, serif;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            color: var(--espresso);
+            transition: border-color var(--transition), box-shadow var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--bronze);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(184, 115, 51, 0.3);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            margin-top: 12px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+            color: var(--white);
+        }
+
+        .whatsapp-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--espresso);
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .footer-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo span {
+            color: var(--bronze);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 248, 240, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: Georgia, serif;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--champagne);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(255, 248, 240, 0.3);
+            font-family: Georgia, serif;
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            transition: all var(--transition);
+            animation: floatPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(6) {
+                grid-column: span 1;
+                aspect-ratio: 1;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 120px 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 64px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+                aspect-ratio: 16/9;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 64px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+
+            .service-card {
+                padding: 48px 36px;
+            }
+
+            .section {
+                padding: 140px 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 100svh;
+                padding: 100px 20px 60px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .hero-scroll {
+                display: none;
+            }
+
+            .about-content .section-label,
+            .about-content .section-title {
+                text-align: center;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(6) {
+                grid-column: span 2;
+                aspect-ratio: 16/9;
+            }
+
+            .gallery-overlay span {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Denis <span>Cabeleireiro</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">
+                    <svg viewBox="0 0 24 24"><path d="M20 21.35l-1.45-1.32C15.24 18.13 13 15.29 13 12c0-3.29 2.24-6.13 5.55-8.03L20 2.65 18.35 1l-2.82 2.56C13.78 2.56 11.95 2 10 2 5.03 2 1 6.03 1 11c0 2.58 1.24 4.87 3.15 6.32L2 21.35 3.65 23l2.82-2.56C7.85 21.44 8.89 22 10 22c4.97 0 9-4.03 9-9 0-1.16-.24-2.27-.66-3.28L21.35 7 23 5.65l-1.32-1.45L20 5.56"/></svg>
+                    Agendar
+                </a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-content">
+            <div class="hero-ornament wow-fade-up">
+                <div class="hero-ornament-line"></div>
+                <div class="hero-ornament-diamond"></div>
+                <div class="hero-ornament-line"></div>
+            </div>
+            <div class="hero-badge wow-fade-up" style="transition-delay: 0.1s">Ribeirao Preto, SP</div>
+            <h1 class="wow-fade-up" style="transition-delay: 0.2s">Denis <em>Cabeleireiro</em></h1>
+            <p class="hero-subtitle wow-fade-up" style="transition-delay: 0.3s">Transformamos seu visual com arte e dedicacao</p>
+            <div class="hero-actions wow-fade-up" style="transition-delay: 0.4s">
+                <a href="https://wa.me/551636368850" class="btn-primary" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn-secondary">Conheca Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidado e Exclusividade para Cada Fio</h2>
+                <div class="section-divider">
+                    <div class="section-divider-line"></div>
+                    <div class="section-divider-dot"></div>
+                    <div class="section-divider-line"></div>
+                </div>
+                <p class="section-description">Oferecemos servicos completos de beleza capilar, com produtos de alta qualidade e tecnicas atualizadas.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="6" cy="4" r="2"/><circle cx="18" cy="4" r="2"/><path d="M4 6v2a8 8 0 0016 0V6"/><line x1="12" y1="2" x2="12" y2="8"/><path d="M8 22h8"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
+                    </div>
+                    <h3>Corte Feminino</h3>
+                    <p>Cortes modernos e personalizados que valorizam seu rosto e seu estilo pessoal, com finalizacao impecavel.</p>
+                    <div class="service-price">R$ 80 <small>a partir</small></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5-3 4-3 4 3 4 3-1.5 3-4 3-4-3-4-3z"/></svg>
+                    </div>
+                    <h3>Corte Masculino</h3>
+                    <p>Degradê, social, Undercut e mais. Tendencias e classicos com precisao e atencao aos detalhes.</p>
+                    <div class="service-price">R$ 50 <small>a partir</small></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v12"/><path d="M6 12h12"/></svg>
+                    </div>
+                    <h3>Coloracao</h3>
+                    <p>Coloracao profissional com ammonia ou sem ammonia, tons personalizados e cobertura total de fios brancos.</p>
+                    <div class="service-price">R$ 120 <small>a partir</small></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <h3>Mechas e Balayage</h3>
+                    <p>Luminosidade natural com mechas tradicionais ou balayage francês. Efeito sol com fios multidimensionais.</p>
+                    <div class="service-price">R$ 180 <small>a partir</small></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M7 10.5c0-1.657 2.239-3 5-3s5 1.343 5 3"/><path d="M7 14c0 1.657 2.239 3 5 3s5-1.343 5-3"/></svg>
+                    </div>
+                    <h3>Hidratacao</h3>
+                    <p>Tratamentos profundos com cronograma capilar personalizado. Reposicao de nutrientes e brilho intenso.</p>
+                    <div class="service-price">R$ 60 <small>a partir</small></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M2 12l4-4"/><path d="M2 12l4 4"/><path d="M22 12l-4-4"/><path d="M22 12l-4 4"/><path d="M6 20h12"/></svg>
+                    </div>
+                    <h3>Escova Progressiva</h3>
+                    <p>Alisamento duradouro com produtos de primeira linha. Fios lisos, macios e com brilho por semanas.</p>
+                    <div class="service-price">R$ 250 <small>a partir</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label wow-fade-up">Nossa Historia</span>
+                    <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">Tradicão e Paixão pela Beleza desde 1998</h2>
+                    <p class="about-text wow-fade-up" style="transition-delay: 0.2s">
+                        Ha mais de 25 anos, Denis Cabeleireiro se consolidou como referencia em beleza capilar em Ribeirao Preto. O que comecou como um pequeno espaco com uma grande paixao pela arte de transformar fios, hoje e um salon acolhedor onde cada cliente e recebido com carinho e atencao personalizada.
+                    </p>
+                    <p class="about-text wow-fade-up" style="transition-delay: 0.25s">
+                        Nossa filosofia e simples: acreditar que cada pessoa carrega uma beleza unica, e nosso trabalho e revela-la. Utilizamos produtos de alta performance e investimos constantemente em atualizacao para oferecer as melhores tecnicas do mercado.
+                    </p>
+                    <div class="about-stats wow-fade-up" style="transition-delay: 0.3s">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="25">0</div>
+                            <div class="stat-label">Anos de Experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Mil Clientes Atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="6">0</div>
+                            <div class="stat-label">Profissionais</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">% Satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section team" id="equipe">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Profissionais que Fazem a Diferenca</h2>
+                <div class="section-divider">
+                    <div class="section-divider-line"></div>
+                    <div class="section-divider-dot"></div>
+                    <div class="section-divider-line"></div>
+                </div>
+                <p class="section-description">Nossa equipe e formada por profissionais apaixonados e em constante atualizacao.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="team-photo"></div>
+                    <h3>Denis Oliveira</h3>
+                    <p class="team-role">Fundador e Diretor Criativo</p>
+                    <p class="team-bio">Mais de 25 anos de experiencia, especialista em coloracao e cortes personalizados. Referencia em tendencias capilares.</p>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="team-photo"></div>
+                    <h3>Amanda Ribeiro</h3>
+                    <p class="team-role">Colorista Especialista</p>
+                    <p class="team-bio">Expert em mechas, balayage e ombré hair. Formada pela Wella Professionals com especializacao em tecnicas avancadas.</p>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="team-photo"></div>
+                    <h3>Lucas Mendes</h3>
+                    <p class="team-role">Barbeiro e Estilista</p>
+                    <p class="team-bio">Especialista em cortes masculinos, barba e finalizacoes. Domina degrades modernos e classicos com precisao cirurgica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Nossos Trabalhos em Destaque</h2>
+                <div class="section-divider">
+                    <div class="section-divider-line"></div>
+                    <div class="section-divider-dot"></div>
+                    <div class="section-divider-line"></div>
+                </div>
+                <p class="section-description">Cada transformacao conta uma historia. Confira alguns dos nossos resultados.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Balayage com mechas iluminadas</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Corte feminino moderno</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Coloracao ruivo intenso</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Degradê masculino</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Escova progressiva</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay"><span>Hidratacao profunda e brilho</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+                <div class="section-divider">
+                    <div class="section-divider-line"></div>
+                    <div class="section-divider-dot"></div>
+                    <div class="section-divider-line"></div>
+                </div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Frequento o Denis Cabeleireiro ha 8 anos e nunca me decepcionei. A equipe e atenciosa, o ambiente e agradavel e sempre saio satisfeita. Os produtos sao de primeira qualidade."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Carla Ferreira</div>
+                            <div class="testimonial-detail">Cliente ha 8 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Fiz minha primeira escova progressiva aqui e o resultado ficou incrivel. Denis explicou cada etapa do processo e o resultado superou minhas expectativas. Indico de olhos fechados!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Mariana Costa</div>
+                            <div class="testimonial-detail">Cliente ha 3 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Lucas e o melhor barbeiro de Ribeirao Preto. Meu degradê fica sempre perfeito e a barba impecavel. O atendimento e rapido mas sem pressa. Ambiente muito bem cuidado."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Rafael Almeida</div>
+                            <div class="testimonial-detail">Cliente ha 5 anos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende Seu Horario</h2>
+                <div class="section-divider">
+                    <div class="section-divider-line"></div>
+                    <div class="section-divider-dot"></div>
+                    <div class="section-divider-line"></div>
+                </div>
+                <p class="section-description">Entre em contato pelo WhatsApp para um atendimento rapido e personalizado.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.05s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Endereco</div>
+                            <div class="contact-item-value">Av. Aurea Aparecida Bragheto Machado, 682<br>Ribeirao Preto, SP</div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.1s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Telefone</div>
+                            <div class="contact-item-value"><a href="tel:+551636368850">(16) 3636-8850</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.15s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">WhatsApp</div>
+                            <div class="contact-item-value"><a href="https://wa.me/551636368850" target="_blank" rel="noopener">(16) 99368-8850</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-hours wow-fade-up" style="transition-delay: 0.2s">
+                        <h4>Horario de Funcionamento</h4>
+                        <div class="hours-row">
+                            <span class="hours-day">Segunda a Sexta</span>
+                            <span class="hours-time">09:00 - 19:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Sabado</span>
+                            <span class="hours-time">08:00 - 17:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Domingo</span>
+                            <span class="hours-time">Fechado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" style="transition-delay: 0.15s">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" placeholder="(16) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico</label>
+                            <select id="service">
+                                <option value="">Selecione um servico</option>
+                                <option value="feminino">Corte Feminino</option>
+                                <option value="masculino">Corte Masculino</option>
+                                <option value="coloracao">Coloracao</option>
+                                <option value="mechas">Mechas / Balayage</option>
+                                <option value="hidratacao">Hidratacao</option>
+                                <option value="progressiva">Escova Progressiva</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" placeholder="Como podemos ajudar voce?"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                        <a href="https://wa.me/551636368850" class="whatsapp-btn" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Prefere o WhatsApp? Clique aqui
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">Denis <span>Cabeleireiro</span></div>
+        <div class="footer-links">
+            <a href="#servicos">Servicos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <p class="footer-copy">2025 Denis Cabeleireiro. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/551636368850" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            /* ===== HERO PARTICLES ===== */
+            var particlesContainer = document.getElementById('heroParticles');
+            if (particlesContainer) {
+                for (var i = 0; i < 20; i++) {
+                    var p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.width = (Math.random() * 3 + 1) + 'px';
+                    p.style.height = p.style.width;
+                    p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                    p.style.animationDelay = (Math.random() * 10) + 's';
+                    particlesContainer.appendChild(p);
+                }
+            }
+
+            /* ===== NAVBAR SCROLL ===== */
+            var navbar = document.getElementById('navbar');
+            var lastScroll = 0;
+            var navThreshold = 80;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+                if (currentScroll > navThreshold) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                if (currentScroll > lastScroll && currentScroll > navThreshold) {
+                    navbar.classList.add('hidden');
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+
+            /* ===== MOBILE MENU ===== */
+            var mobileToggle = document.getElementById('mobileToggle');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            mobileToggle.addEventListener('click', function() {
+                mobileToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            /* ===== INTERSECTION OBSERVER ===== */
+            var observerOptions = {
+                threshold: 0.1,
+                rootMargin: '-50px 0px'
+            };
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = entry.target.style.transitionDelay;
+                        if (delay) {
+                            var ms = parseFloat(delay) * 1000;
+                            setTimeout(function() {
+                                entry.target.classList.add('visible');
+                            }, ms);
+                        } else {
+                            entry.target.classList.add('visible');
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            /* ===== COUNTER ANIMATION ===== */
+            var statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            var counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var el = entry.target;
+                        var target = parseInt(el.getAttribute('data-target'), 10);
+                        var duration = 2000;
+                        var startTime = null;
+
+                        function animate(currentTime) {
+                            if (!startTime) startTime = currentTime;
+                            var elapsed = currentTime - startTime;
+                            var progress = Math.min(elapsed / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            var current = Math.floor(eased * target);
+                            el.textContent = current + (target === 98 ? '%' : target === 15 ? ' mil+' : '+');
+                            if (progress < 1) {
+                                requestAnimationFrame(animate);
+                            }
+                        }
+                        requestAnimationFrame(animate);
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statNumbers.forEach(function(el) {
+                counterObserver.observe(el);
+            });
+
+            /* ===== CONTACT FORM ===== */
+            var contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var name = document.getElementById('name').value.trim();
+                    var phone = document.getElementById('phone').value.trim();
+                    var service = document.getElementById('service').value;
+                    var message = document.getElementById('message').value.trim();
+
+                    if (!name) return;
+
+                    var whatsappMessage = 'Ola! Meu nome e ' + encodeURIComponent(name);
+                    if (phone) whatsappMessage += '. Telefone: ' + encodeURIComponent(phone);
+                    if (service) whatsappMessage += '. Servico: ' + encodeURIComponent(service);
+                    if (message) whatsappMessage += '. ' + encodeURIComponent(message);
+
+                    window.open('https://wa.me/551636368850?text=' + whatsappMessage, '_blank');
+                });
+            }
+
+            /* ===== SMOOTH SCROLL ===== */
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href === '#') return;
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        var navHeight = navbar.offsetHeight;
+                        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
