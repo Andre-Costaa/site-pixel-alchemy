@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cantarelli Pizzaria - Tradição italiana no coração de Ribeirão Preto. Pizzas artesanais, massas frescas e sabores inesquecíveis.">
+    <meta name="keywords" content="pizzaria, Ribeirão Preto, pizza artesanal, massa fresca, restaurante italiano">
+    <meta property="og:title" content="Cantarelli Pizzaria - Tradição Italiana em Ribeirão Preto">
+    <meta property="og:description" content="Pizzas artesanais, massas frescas e sabores que contam histórias. Venha viver uma experiência gastronômica única.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Cantarelli Pizzaria | Tradição Italiana em Ribeirão Preto</title>
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4956B;
+            --bronze-dark: #8B5A2B;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5C3D2E;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(60,36,21,0.08);
+            --shadow-md: 0 8px 24px rgba(60,36,21,0.12);
+            --shadow-lg: 0 16px 48px rgba(60,36,21,0.16);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', 'Noto Serif', serif;
+            color: var(--espresso);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ============ NAVIGATION ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color var(--transition);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--espresso);
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color var(--transition), opacity var(--transition);
+            position: relative;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--espresso-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform var(--transition), opacity var(--transition);
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--espresso);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(60, 36, 21, 0.97);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--champagne);
+            font-size: 1.4rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--bronze);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .hamburger { display: none; }
+            .mobile-menu { display: none; }
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--espresso) 0%, var(--espresso-light) 40%, #4A2C1A 70%, var(--bronze-dark) 100%);
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: floatBlob 20s ease-in-out infinite;
+        }
+
+        .hero-bg-shape:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: var(--bronze);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .hero-bg-shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--champagne);
+            bottom: -5%;
+            left: -5%;
+            animation-delay: -7s;
+        }
+
+        .hero-bg-shape:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--bronze-light);
+            top: 40%;
+            left: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--bronze);
+            color: var(--champagne);
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero-title .accent {
+            color: var(--bronze);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--champagne);
+            font-weight: 400;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.7s;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.9s;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--bronze);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 2px solid var(--bronze);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--bronze);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--champagne);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid rgba(247, 231, 206, 0.3);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--champagne);
+            color: var(--white);
+        }
+
+        @media (min-width: 480px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.6s;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 1.2s;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--bronze), transparent);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ SECTIONS COMMON ============ */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-line {
+            width: 50px;
+            height: 2px;
+            background: var(--bronze);
+            margin: 0 auto;
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .section { padding: 7rem 2rem; }
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 480px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            padding: 2rem 1.8rem;
+            transition: all var(--transition);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--bronze);
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 0.6rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--bronze);
+            letter-spacing: 0.02em;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--espresso-light);
+        }
+
+        /* ============ ABOUT ============ */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            background: linear-gradient(135deg, var(--bronze-dark) 0%, var(--espresso) 50%, var(--bronze) 100%);
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(247, 231, 206, 0.3);
+            z-index: 1;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--bronze);
+            z-index: 0;
+        }
+
+        .about-text .section-label {
+            text-align: left;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bronze);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--espresso-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ============ TEAM ============ */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 480px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            .team-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--espresso-light), var(--bronze-dark));
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(60,36,21,0.3), transparent);
+        }
+
+        .team-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-bio {
+            font-size: 0.88rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+        }
+
+        /* ============ GALLERY ============ */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 480px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { background: linear-gradient(135deg, #5C3D2E, var(--bronze), var(--champagne)); }
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, var(--bronze-dark), var(--espresso), #6B4423); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--champagne), var(--bronze-light), var(--espresso-light)); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, var(--espresso), #4A2C1A, var(--bronze)); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--bronze-light), var(--champagne), var(--bronze-dark)); }
+        .gallery-item:nth-child(6) { background: linear-gradient(135deg, #4A2C1A, var(--bronze), var(--champagne)); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--champagne);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transform: translateY(10px);
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(247, 231, 206, 0);
+            transition: border-color var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            border-color: rgba(247, 231, 206, 0.4);
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials {
+            background: var(--espresso);
+            color: var(--cream);
+        }
+
+        .testimonials .section-label {
+            color: var(--bronze-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--cream);
+        }
+
+        .testimonials .section-line {
+            background: var(--bronze);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            padding: 2rem;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(184, 115, 51, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--bronze);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--champagne);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--bronze-light);
+            letter-spacing: 0.04em;
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .contact-info-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-info-label {
+            font-size: 0.75rem;
+            color: var(--bronze);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info-value {
+            font-size: 1rem;
+            color: var(--espresso);
+            line-height: 1.6;
+        }
+
+        .contact-info-value a {
+            color: var(--espresso);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-info-value a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-hours {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .contact-hours h3 {
+            font-size: 1.1rem;
+            color: var(--espresso);
+            margin-bottom: 1rem;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+        }
+
+        .hours-row span:last-child {
+            font-weight: 700;
+            color: var(--espresso);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--espresso-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            color: var(--espresso);
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            outline: none;
+            transition: border-color var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--bronze);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        @media (min-width: 480px) {
+            .form-row { grid-template-columns: 1fr 1fr; }
+        }
+
+        .btn-submit {
+            display: inline-block;
+            background: var(--bronze);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 2px solid var(--bronze);
+            cursor: pointer;
+            transition: all var(--transition);
+            align-self: flex-start;
+        }
+
+        .btn-submit:hover {
+            background: transparent;
+            color: var(--bronze);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--espresso);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--bronze);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--champagne);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bronze);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(247, 231, 206, 0.5);
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        /* ============ WHATSAPP FLOAT ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            transition: transform var(--transition), box-shadow var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        /* ============ UTILITIES ============ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#hero" class="nav-logo">Cantarelli<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#cardapio">Cardapio</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#cardapio">Cardapio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Desde 1998 em Ribeirao Preto</span>
+            <h1 class="hero-title">Tradicacao <span class="accent">Italiana</span> em Cada Fatia</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-subtitle">Massas artesanais, ingredientes selecionados e o calor de um jantar em familia. Bem-vindo a Cantarelli Pizzaria.</p>
+            <div class="hero-actions">
+                <a href="#cardapio" class="btn-primary">Ver Cardapio</a>
+                <a href="https://wa.me/551639002422" class="btn-secondary" target="_blank" rel="noopener">Fazer Reserva</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Services / Cardapio -->
+    <section class="section services" id="cardapio">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nosso Cardapio</span>
+                <h2 class="section-title">Sabores que Contam Historias</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+                    </div>
+                    <h3 class="service-name">Prato Executivo</h3>
+                    <p class="service-desc">Refeicao completa com entrada, prato principal, acompanhamento e sobremesa do dia. Sabor caseiro com toque profissional.</p>
+                    <span class="service-price">R$ 42,90 <small>/ pessoa</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" opacity="0.3"/></svg>
+                    </div>
+                    <h3 class="service-name">Pizza Especial</h3>
+                    <p class="service-desc">Massa fermentada por 72 horas com ingredientes premium. Margherita, Quatro Queijos, Calabresa e nossas criacoes da casa.</p>
+                    <span class="service-price">R$ 59,90 <small>/ grande</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M8 12c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4-4 1.79-4 4zm4-2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>
+                    </div>
+                    <h3 class="service-name">Massa Artesanal</h3>
+                    <p class="service-desc">Fettuccine, Linguine, Ravioli e Gnocchi feitos diariamente. Molhos que resgatam o autentico sabor da Italia.</p>
+                    <span class="service-price">R$ 48,90 <small>/ porcao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17.66 8L12 2.35 6.34 8A8.02 8.02 0 004 13.64c0 2 .78 4.11 2.34 5.67a7.99 7.99 0 0011.32 0c1.56-1.56 2.34-3.67 2.34-5.67C20 10.64 19.22 9.56 17.66 8zM6 14c.01-2 .62-3.27 1.76-4.4L12 5.27l4.24 4.38C17.38 10.77 17.99 12 18 14H6z"/></svg>
+                    </div>
+                    <h3 class="service-name">Salada Gourmet</h3>
+                    <p class="service-desc">Folhas frescas, queijos finos, nozes e molhos exclusivos. Opcoes com rucula, parmesao e vinagrete balsamico.</p>
+                    <span class="service-price">R$ 34,90 <small>/ porcao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+                    </div>
+                    <h3 class="service-name">Sobremesa</h3>
+                    <p class="service-desc">Tiramisu classico, Panna Cotta com frutas vermelhas e Canolli siciliano. O doce final perfeito para sua refeicao.</p>
+                    <span class="service-price">R$ 24,90 <small>/ unidade</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V4l8 5 8-5v2z"/></svg>
+                    </div>
+                    <h3 class="service-name">Bebida Autoral</h3>
+                    <p class="service-desc">Drinks exclusivos criados pelo nosso barman. Limoncello, Aperol Spritz e combinacoes com vinhos selecionados.</p>
+                    <span class="service-price">R$ 22,90 <small>/ drink</small></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="sobre">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-text wow-fade-up" data-delay="200">
+                    <span class="section-label">Nossa Historia</span>
+                    <h2>Tres Geracoes de Paixao pela Culinaria Italiana</h2>
+                    <p>A Cantarelli nasceu em 1998, quando a familia Cantarelli trocou as cozinhas de Parma pela cidade de Ribeirao Preto. O que comecou como uma pequena pizzaria de bairro rapidamente se tornou referencia gastronomica na regiao.</p>
+                    <p>Cada receita carrega a heranca de avos italianos: a massa que fermenta com paciencia, o molho de tomate que cozinha por horas, e a selecao rigorosa de ingredientes que fazem a diferenca em cada prato.</p>
+                    <p>Hoje, somos mais que uma pizzaria. Somos um lugar onde familias se reencontram, amigos celebram e cada refeicao se torna uma experiencia memoravel.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="27">0</span>
+                            <span class="stat-label">Anos de Tradição</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="150">0</span>
+                            <span class="stat-label">Receitas Unicas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="50000">0</span>
+                            <span class="stat-label">Clientes Felizes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section team" id="equipe">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">As Maos Atras dos Sabores</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo"></div>
+                    <h3 class="team-name">Marco Cantarelli</h3>
+                    <span class="team-role">Chef Executivo</span>
+                    <p class="team-bio">Formado na Accademia Italiana della Cucina, Marco trouxe da Italia as tecnicas que definem o cardapio da Cantarelli.</p>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo"></div>
+                    <h3 class="team-name">Ana Beatriz Cantarelli</h3>
+                    <span class="team-role">Sous Chef e Confeitaria</span>
+                    <p class="team-bio">Responsavel pelas sobremesas e massa fresca diaria, Ana combina tradicao familiar com innovacao gastronomica.</p>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo"></div>
+                    <h3 class="team-name">Lucas Ferreira</h3>
+                    <span class="team-role">Barman e Sommelier</span>
+                    <p class="team-bio">Com certificacao internacional em vinhos, Lucas cria harmonizacoes que elevam cada refeicao a uma experiencia completa.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery" id="galeria">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Ambiente</span>
+                <h2 class="section-title">Onde a Magia Acontece</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <div class="gallery-overlay"><span>Salao Principal</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-overlay"><span>Pizza no Forno</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-overlay"><span>Area Externa</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-overlay"><span>Massas Frescas</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-overlay"><span>Bar e Drinks</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-overlay"><span>Detalhes da Casa</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A melhor pizza de Ribeirao Preto, sem discussao. A massa e perfeita, os ingredientes sao frescos e o atendimento e impecavel. Viramos clientes frequentes ha cinco anos."</p>
+                    <p class="testimonial-author">Roberto Mendes</p>
+                    <span class="testimonial-detail">Cliente desde 2020</span>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Celebramos nosso aniversario de casamento na Cantarelli e foi espetacular. O ambiente e acolhedor, a comida de altissima qualidade e a equipe nos tratou como familia."</p>
+                    <p class="testimonial-author">Fernanda Oliveira</p>
+                    <span class="testimonial-detail">Cliente desde 2019</span>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O tiramisu da Cantarelli e o melhor que ja comi fora da Italia. As massas artesanais sao outra coisa completamente diferente de qualquer pizzaria comum. Recomendo de olhos fechados."</p>
+                    <p class="testimonial-author">Carlos Eduardo Ramos</p>
+                    <span class="testimonial-detail">Cliente desde 2021</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contato">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Venha Nos Visitar</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+
+                <div class="wow-fade-up">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-info-label">Endereco</p>
+                            <p class="contact-info-value">R. Jose Barilari, 281<br>Ribeirao Preto - SP</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-info-label">Telefone</p>
+                            <p class="contact-info-value"><a href="tel:+551639002422">(16) 3900-2422</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-info-label">WhatsApp</p>
+                            <p class="contact-info-value"><a href="https://wa.me/551639002422" target="_blank" rel="noopener">(16) 3900-2422</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h3>Horario de Funcionamento</h3>
+                        <div class="hours-row">
+                            <span>Segunda a Quinta</span>
+                            <span>18h as 23h</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Sexta e Sabado</span>
+                            <span>18h as 00h</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Domingo</span>
+                            <span>18h as 22h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wow-fade-up" data-delay="200">
+                    <form class="contact-form" onsubmit="event.preventDefault();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" placeholder="Seu nome completo">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(16) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Assunto</label>
+                            <select id="servico">
+                                <option value="">Selecione uma opcao</option>
+                                <option value="reserva">Reserva de Mesa</option>
+                                <option value="delivery">Delivery</option>
+                                <option value="evento">Evento Especial</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" placeholder="Conte-nos como podemos ajudar..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p class="footer-logo">Cantarelli<span>.</span></p>
+            <div class="footer-links">
+                <a href="#cardapio">Cardapio</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p class="footer-copy">2025 Cantarelli Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/551639002422" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            /* ---- Navbar scroll behavior ---- */
+            var navbar = document.getElementById('navbar');
+            var lastScrollY = 0;
+            var ticking = false;
+
+            function onScroll() {
+                if (window.scrollY > 60) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                lastScrollY = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(onScroll);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            /* ---- Mobile menu ---- */
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            for (var i = 0; i < mobileLinks.length; i++) {
+                mobileLinks[i].addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            /* ---- Intersection Observer for fade-in animations ---- */
+            var animatedElements = document.querySelectorAll('.wow-fade-up');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    for (var i = 0; i < entries.length; i++) {
+                        var entry = entries[i];
+                        if (entry.isIntersecting) {
+                            var delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
+                            (function(el, d) {
+                                setTimeout(function() {
+                                    el.classList.add('visible');
+                                }, d);
+                            })(entry.target, delay);
+                            observer.unobserve(entry.target);
+                        }
+                    }
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px'
+                });
+
+                for (var j = 0; j < animatedElements.length; j++) {
+                    observer.observe(animatedElements[j]);
+                }
+            } else {
+                for (var k = 0; k < animatedElements.length; k++) {
+                    animatedElements[k].classList.add('visible');
+                }
+            }
+
+            /* ---- Counter animation ---- */
+            var counters = document.querySelectorAll('[data-count]');
+            var counterObserver = null;
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-count'));
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function easeOut(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
+                function formatNumber(n) {
+                    if (n >= 1000) {
+                        return (n / 1000).toFixed(0) + 'k+';
+                    }
+                    return n.toString() + '+';
+                }
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var current = Math.floor(easeOut(progress) * target);
+                    el.textContent = formatNumber(current);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        el.textContent = formatNumber(target);
+                    }
+                }
+
+                window.requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window && counters.length > 0) {
+                counterObserver = new IntersectionObserver(function(entries) {
+                    for (var i = 0; i < entries.length; i++) {
+                        if (entries[i].isIntersecting) {
+                            animateCounter(entries[i].target);
+                            counterObserver.unobserve(entries[i].target);
+                        }
+                    }
+                }, { threshold: 0.5 });
+
+                for (var m = 0; m < counters.length; m++) {
+                    counterObserver.observe(counters[m]);
+                }
+            }
+
+        })();
+    </script>
+</body>
+</html>
