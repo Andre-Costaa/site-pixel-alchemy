@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Steak Store Restaurante - Gastronomia de excelencia em Ribeirao Preto. Pratos executivos, pizzas especiais, massas artesanais e muito mais.">
+<meta name="keywords" content="restaurante, ribeirao preto, steak, carne, pizza, massa, gourmet, gastronomia">
+<meta property="og:title" content="Steak Store Restaurante | Ribeirao Preto">
+<meta property="og:description" content="Experiencia gastrononomica unica. Sabores que marcam momentos especiais.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/steak-store-restaurante/">
+<meta property="og:locale" content="pt_BR">
+<title>Steak Store Restaurante | Ribeirao Preto</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--off-white:#F9F6F2;
+--taupe:#8B7E74;
+--olive:#6B705C;
+--black:#1A1A1A;
+--warm-gray:#D4CFC9;
+--light-olive:#A8A594;
+--cream:#EDE8E0;
+--accent-dark:#3D3A35;
+--transition-smooth:cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+font-family:'Trebuchet MS','Lucida Grande','Lucida Sans',Verdana,sans-serif;
+color:var(--black);
+background:var(--off-white);
+line-height:1.7;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--olive);color:var(--off-white)}
+
+/* === TYPOGRAPHY === */
+.font-display{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+letter-spacing:.12em;
+text-transform:uppercase;
+line-height:.95;
+}
+.font-editorial{
+font-family:'Trebuchet MS','Lucida Grande',Verdana,sans-serif;
+letter-spacing:.06em;
+text-transform:uppercase;
+line-height:1.1;
+}
+.text-muted{color:var(--taupe)}
+.text-olive{color:var(--olive)}
+.text-small{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+
+/* === UTILITY === */
+.container{width:90%;max-width:1200px;margin:0 auto}
+.section-pad{padding:100px 0}
+.section-label{
+font-size:.65rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--taupe);
+margin-bottom:1.5rem;
+display:inline-block;
+position:relative;
+padding-left:2.5rem;
+}
+.section-label::before{
+content:'';
+position:absolute;
+left:0;
+top:50%;
+width:1.8rem;
+height:1px;
+background:var(--taupe);
+}
+.divider{
+width:60px;
+height:1px;
+background:var(--olive);
+margin:2rem 0;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+@keyframes slideRight{
+from{opacity:0;transform:translateX(-30px)}
+to{opacity:1;transform:translateX(0)}
+}
+@keyframes scaleIn{
+from{opacity:0;transform:scale(.92)}
+to{opacity:1;transform:scale(1)}
+}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+}
+@keyframes grain{
+0%,100%{transform:translate(0,0)}
+10%{transform:translate(-2%,-2%)}
+30%{transform:translate(2%,1%)}
+50%{transform:translate(-1%,2%)}
+70%{transform:translate(1%,-1%)}
+90%{transform:translate(-2%,2%)}
+}
+.anim-target{opacity:0}
+.anim-target.visible{animation:fadeUp .8s var(--transition-smooth) forwards}
+.anim-target.visible.delay-1{animation-delay:.1s}
+.anim-target.visible.delay-2{animation-delay:.2s}
+.anim-target.visible.delay-3{animation-delay:.3s}
+.anim-target.visible.delay-4{animation-delay:.4s}
+.anim-target.visible.delay-5{animation-delay:.5s}
+.anim-target.visible.delay-6{animation-delay:.6s}
+@media(prefers-reduced-motion:reduce){
+.anim-target{opacity:1;animation:none!important;transform:none!important}
+}
+
+/* === NAVIGATION === */
+.nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:1000;
+padding:1.2rem 0;
+transition:all .4s var(--transition-smooth);
+}
+.nav.scrolled{
+background:rgba(249,246,242,.95);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+padding:.8rem 0;
+box-shadow:0 1px 0 rgba(139,126,116,.15);
+}
+.nav-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+width:90%;
+max-width:1200px;
+margin:0 auto;
+}
+.nav-logo{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:1.1rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--black);
+text-decoration:none;
+transition:color .3s;
+}
+.nav-logo span{color:var(--olive)}
+.nav-links{display:none;list-style:none;gap:2.5rem}
+.nav-links a{
+text-decoration:none;
+color:var(--black);
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+position:relative;
+padding-bottom:4px;
+transition:color .3s;
+}
+.nav-links a::after{
+content:'';
+position:absolute;
+bottom:0;
+left:0;
+width:0;
+height:1px;
+background:var(--olive);
+transition:width .3s var(--transition-smooth);
+}
+.nav-links a:hover{color:var(--olive)}
+.nav-links a:hover::after{width:100%}
+.hamburger{
+display:flex;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+background:none;
+border:none;
+padding:5px;
+z-index:1001;
+}
+.hamburger span{
+display:block;
+width:24px;
+height:1.5px;
+background:var(--black);
+transition:all .3s var(--transition-smooth);
+transform-origin:center;
+}
+.hamburger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+height:100vh;
+background:var(--off-white);
+z-index:999;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+transition:right .5s var(--transition-smooth);
+}
+.mobile-menu.open{right:0}
+.mobile-menu a{
+text-decoration:none;
+color:var(--black);
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:2rem;
+letter-spacing:.12em;
+text-transform:uppercase;
+padding:.5rem 0;
+display:block;
+transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--olive)}
+
+/* === HERO === */
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr;
+position:relative;
+overflow:hidden;
+}
+.hero-visual{
+position:relative;
+height:60vh;
+min-height:400px;
+overflow:hidden;
+}
+.hero-gradient{
+position:absolute;
+inset:0;
+background:
+linear-gradient(135deg,#3D3A35 0%,#5C5449 25%,#6B705C 50%,#8B7E74 75%,#A8A594 100%);
+}
+.hero-grain{
+position:absolute;
+inset:0;
+opacity:.08;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+animation:grain 8s steps(10) infinite;
+}
+.hero-visual-content{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:2rem;
+}
+.hero-badge{
+border:1px solid rgba(249,246,242,.3);
+padding:.6rem 1.8rem;
+font-size:.6rem;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(--off-white);
+backdrop-filter:blur(10px);
+}
+.hero-content{
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:3rem 8% 4rem;
+background:var(--off-white);
+}
+.hero-overline{
+font-size:.6rem;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(--taupe);
+margin-bottom:1.2rem;
+}
+.hero-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(2.8rem,8vw,5.5rem);
+letter-spacing:.06em;
+text-transform:uppercase;
+line-height:.92;
+color:var(--black);
+margin-bottom:1.5rem;
+}
+.hero-title em{
+font-style:normal;
+color:var(--olive);
+}
+.hero-desc{
+font-size:.95rem;
+color:var(--taupe);
+max-width:420px;
+line-height:1.8;
+margin-bottom:2rem;
+}
+.hero-cta{
+display:inline-flex;
+align-items:center;
+gap:.8rem;
+text-decoration:none;
+color:var(--off-white);
+background:var(--black);
+padding:1rem 2.5rem;
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+transition:all .4s var(--transition-smooth);
+position:relative;
+overflow:hidden;
+align-self:flex-start;
+}
+.hero-cta::before{
+content:'';
+position:absolute;
+inset:0;
+background:var(--olive);
+transform:translateX(-101%);
+transition:transform .4s var(--transition-smooth);
+}
+.hero-cta:hover::before{transform:translateX(0)}
+.hero-cta span{position:relative;z-index:1}
+.hero-cta svg{position:relative;z-index:1;width:16px;height:16px;transition:transform .3s}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+/* === SERVICES === */
+.services{background:var(--off-white)}
+.services-header{
+display:flex;
+flex-direction:column;
+gap:.5rem;
+margin-bottom:4rem;
+}
+.services-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(2rem,5vw,3.2rem);
+letter-spacing:.08em;
+text-transform:uppercase;
+line-height:.95;
+}
+.services-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:1.5rem;
+}
+.service-card{
+background:var(--off-white);
+border:1px solid var(--warm-gray);
+padding:2.5rem 2rem;
+position:relative;
+overflow:hidden;
+transition:all .5s var(--transition-smooth);
+cursor:default;
+}
+.service-card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:3px;
+background:var(--olive);
+transform:scaleX(0);
+transform-origin:left;
+transition:transform .5s var(--transition-smooth);
+}
+.service-card:hover{
+transform:translateY(-4px);
+box-shadow:0 20px 60px rgba(26,26,26,.06);
+border-color:var(--taupe);
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-number{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:.7rem;
+letter-spacing:.2em;
+color:var(--warm-gray);
+margin-bottom:1.2rem;
+display:block;
+}
+.service-name{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:1.3rem;
+letter-spacing:.08em;
+text-transform:uppercase;
+margin-bottom:.8rem;
+line-height:1.1;
+}
+.service-desc{
+font-size:.85rem;
+color:var(--taupe);
+line-height:1.7;
+margin-bottom:1.5rem;
+}
+.service-price{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:1.6rem;
+letter-spacing:.05em;
+color:var(--olive);
+}
+.service-price small{
+font-size:.65rem;
+letter-spacing:.15em;
+color:var(--taupe);
+font-family:'Trebuchet MS','Lucida Grande',Verdana,sans-serif;
+}
+
+/* === ABOUT === */
+.about{
+background:var(--black);
+color:var(--off-white);
+overflow:hidden;
+}
+.about-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:4rem;
+align-items:center;
+}
+.about-image{
+position:relative;
+aspect-ratio:4/5;
+overflow:hidden;
+}
+.about-image-gradient{
+position:absolute;
+inset:0;
+background:
+linear-gradient(160deg,#3D3A35 0%,#6B705C 40%,#8B7E74 70%,#A8A594 100%);
+}
+.about-image-label{
+position:absolute;
+bottom:2rem;
+left:2rem;
+font-size:.6rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--off-white);
+border:1px solid rgba(249,246,242,.25);
+padding:.5rem 1.2rem;
+}
+.about-text .section-label{color:var(--light-olive)}
+.about-text .section-label::before{background:var(--light-olive)}
+.about-text .divider{background:var(--light-olive)}
+.about-heading{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(1.8rem,4.5vw,2.8rem);
+letter-spacing:.06em;
+text-transform:uppercase;
+line-height:.95;
+margin-bottom:2rem;
+}
+.about-heading em{font-style:normal;color:var(--taupe)}
+.about-body{
+font-size:.95rem;
+color:var(--light-olive);
+line-height:1.9;
+margin-bottom:2.5rem;
+}
+.about-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:2rem;
+padding-top:2rem;
+border-top:1px solid rgba(168,165,148,.2);
+}
+.stat-number{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:2rem;
+letter-spacing:.05em;
+color:var(--off-white);
+}
+.stat-label{
+font-size:.65rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--taupe);
+margin-top:.3rem;
+}
+
+/* === TEAM === */
+.team{background:var(--cream)}
+.team-header{margin-bottom:4rem}
+.team-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(2rem,5vw,3.2rem);
+letter-spacing:.08em;
+text-transform:uppercase;
+line-height:.95;
+}
+.team-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:3rem;
+}
+.team-card{text-align:center}
+.team-photo{
+width:100%;
+aspect-ratio:3/4;
+position:relative;
+overflow:hidden;
+margin-bottom:1.5rem;
+}
+.team-photo-gradient{
+position:absolute;
+inset:0;
+transition:transform .6s var(--transition-smooth);
+}
+.team-card:nth-child(1) .team-photo-gradient{
+background:linear-gradient(180deg,#3D3A35 0%,#6B705C 50%,#8B7E74 100%);
+}
+.team-card:nth-child(2) .team-photo-gradient{
+background:linear-gradient(180deg,#5C5449 0%,#8B7E74 50%,#A8A594 100%);
+}
+.team-card:nth-child(3) .team-photo-gradient{
+background:linear-gradient(180deg,#6B705C 0%,#A8A594 50%,#D4CFC9 100%);
+}
+.team-card:hover .team-photo-gradient{transform:scale(1.05)}
+.team-name{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:1.2rem;
+letter-spacing:.1em;
+text-transform:uppercase;
+margin-bottom:.3rem;
+}
+.team-role{
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--taupe);
+}
+
+/* === GALLERY === */
+.gallery{background:var(--off-white)}
+.gallery-header{margin-bottom:3rem}
+.gallery-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(2rem,5vw,3.2rem);
+letter-spacing:.08em;
+text-transform:uppercase;
+line-height:.95;
+}
+.gallery-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:1rem;
+}
+.gallery-item{
+position:relative;
+aspect-ratio:4/3;
+overflow:hidden;
+cursor:pointer;
+}
+.gallery-item:first-child{aspect-ratio:16/9}
+.gallery-gradient{
+position:absolute;
+inset:0;
+transition:transform .7s var(--transition-smooth);
+}
+.gallery-item:nth-child(1) .gallery-gradient{background:linear-gradient(135deg,#3D3A35,#6B705C)}
+.gallery-item:nth-child(2) .gallery-gradient{background:linear-gradient(135deg,#6B705C,#A8A594)}
+.gallery-item:nth-child(3) .gallery-gradient{background:linear-gradient(135deg,#8B7E74,#D4CFC9)}
+.gallery-item:nth-child(4) .gallery-gradient{background:linear-gradient(135deg,#5C5449,#8B7E74)}
+.gallery-item:nth-child(5) .gallery-gradient{background:linear-gradient(135deg,#3D3A35,#8B7E74)}
+.gallery-item:nth-child(6) .gallery-gradient{background:linear-gradient(135deg,#6B705C,#D4CFC9)}
+.gallery-item:hover .gallery-gradient{transform:scale(1.08)}
+.gallery-overlay{
+position:absolute;
+inset:0;
+background:rgba(26,26,26,0);
+display:flex;
+align-items:center;
+justify-content:center;
+transition:background .4s;
+}
+.gallery-item:hover .gallery-overlay{background:rgba(26,26,26,.3)}
+.gallery-label{
+font-size:.6rem;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(--off-white);
+opacity:0;
+transform:translateY(10px);
+transition:all .4s var(--transition-smooth);
+}
+.gallery-item:hover .gallery-label{opacity:1;transform:translateY(0)}
+
+/* === TESTIMONIALS === */
+.testimonials{background:var(--black);color:var(--off-white)}
+.testimonials-header{margin-bottom:4rem}
+.testimonials-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(2rem,5vw,3.2rem);
+letter-spacing:.08em;
+text-transform:uppercase;
+line-height:.95;
+}
+.testimonials-title em{font-style:normal;color:var(--taupe)}
+.testimonials-slider{position:relative;overflow:hidden}
+.testimonials-track{
+display:flex;
+transition:transform .6s var(--transition-smooth);
+}
+.testimonial-slide{
+min-width:100%;
+padding:0 1rem;
+}
+.testimonial-card{
+border:1px solid rgba(168,165,148,.2);
+padding:3rem 2rem;
+position:relative;
+}
+.testimonial-quote-mark{
+font-family:Georgia,'Times New Roman',serif;
+font-size:4rem;
+line-height:1;
+color:var(--olive);
+opacity:.5;
+margin-bottom:1rem;
+}
+.testimonial-text{
+font-size:1.05rem;
+line-height:1.9;
+color:var(--light-olive);
+margin-bottom:2rem;
+font-style:italic;
+}
+.testimonial-stars{
+display:flex;
+gap:4px;
+margin-bottom:1.2rem;
+}
+.star{
+width:16px;
+height:16px;
+display:inline-block;
+}
+.star svg{width:100%;height:100%}
+.star-filled svg path{fill:var(--olive)}
+.star-empty svg path{fill:none;stroke:var(--olive);stroke-width:1.5}
+.testimonial-author{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:.9rem;
+letter-spacing:.1em;
+text-transform:uppercase;
+}
+.testimonial-role{
+font-size:.65rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--taupe);
+margin-top:.2rem;
+}
+.testimonials-nav{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:1.5rem;
+margin-top:2.5rem;
+}
+.testimonial-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:var(--taupe);
+cursor:pointer;
+transition:all .3s;
+border:none;
+padding:0;
+}
+.testimonial-dot.active{
+background:var(--off-white);
+width:24px;
+border-radius:4px;
+}
+
+/* === CONTACT === */
+.contact{background:var(--off-white)}
+.contact-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:4rem;
+}
+.contact-info{display:flex;flex-direction:column;gap:2.5rem}
+.contact-title{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:clamp(1.8rem,4.5vw,2.8rem);
+letter-spacing:.06em;
+text-transform:uppercase;
+line-height:.95;
+}
+.contact-item{display:flex;flex-direction:column;gap:.3rem}
+.contact-item-label{
+font-size:.6rem;
+letter-spacing:.25em;
+text-transform:uppercase;
+color:var(--taupe);
+}
+.contact-item-value{
+font-size:.95rem;
+color:var(--black);
+line-height:1.6;
+}
+.contact-item-value a{
+color:var(--black);
+text-decoration:none;
+border-bottom:1px solid var(--warm-gray);
+transition:border-color .3s;
+}
+.contact-item-value a:hover{border-color:var(--olive)}
+.contact-hours{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:.6rem 2rem;
+margin-top:.5rem;
+}
+.contact-hours span{
+font-size:.85rem;
+color:var(--black);
+}
+.contact-hours span:last-child{
+color:var(--taupe);
+font-size:.8rem;
+}
+.whatsapp-btn{
+display:inline-flex;
+align-items:center;
+gap:.8rem;
+background:var(--olive);
+color:var(--off-white);
+text-decoration:none;
+padding:1.1rem 2.5rem;
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+transition:all .4s var(--transition-smooth);
+align-self:flex-start;
+margin-top:1rem;
+}
+.whatsapp-btn:hover{
+background:var(--black);
+transform:translateY(-2px);
+}
+.whatsapp-btn svg{width:18px;height:18px;flex-shrink:0}
+.contact-form{display:flex;flex-direction:column;gap:1.5rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem}
+.form-label{
+font-size:.6rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--taupe);
+}
+.form-input,.form-textarea,.form-select{
+padding:.9rem 1rem;
+border:1px solid var(--warm-gray);
+background:transparent;
+font-family:'Trebuchet MS','Lucida Grande',Verdana,sans-serif;
+font-size:.9rem;
+color:var(--black);
+transition:border-color .3s;
+outline:none;
+-webkit-appearance:none;
+appearance:none;
+}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--olive)}
+.form-textarea{resize:vertical;min-height:120px}
+.form-select{
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B7E74' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-position:right 1rem center;
+padding-right:2.5rem;
+}
+.form-submit{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:.8rem;
+background:var(--black);
+color:var(--off-white);
+border:none;
+padding:1.1rem 2.5rem;
+font-family:'Trebuchet MS','Lucida Grande',Verdana,sans-serif;
+font-size:.65rem;
+letter-spacing:.2em;
+text-transform:uppercase;
+cursor:pointer;
+transition:all .4s var(--transition-smooth);
+align-self:flex-start;
+}
+.form-submit:hover{
+background:var(--olive);
+transform:translateY(-2px);
+}
+.form-submit svg{width:16px;height:16px}
+
+/* === FOOTER === */
+.footer{
+background:var(--black);
+color:var(--light-olive);
+padding:3rem 0;
+}
+.footer-inner{
+display:flex;
+flex-direction:column;
+gap:2rem;
+align-items:center;
+text-align:center;
+}
+.footer-logo{
+font-family:'Impact','Haettenschweiler','Arial Narrow Bold',sans-serif;
+font-size:1rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--off-white);
+}
+.footer-logo span{color:var(--olive)}
+.footer-copy{
+font-size:.7rem;
+letter-spacing:.1em;
+color:var(--taupe);
+}
+.footer-links{
+display:flex;
+gap:2rem;
+list-style:none;
+}
+.footer-links a{
+font-size:.65rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--taupe);
+text-decoration:none;
+transition:color .3s;
+}
+.footer-links a:hover{color:var(--off-white)}
+
+/* === FLOATING WHATSAPP === */
+.float-whatsapp{
+position:fixed;
+bottom:2rem;
+right:2rem;
+width:56px;
+height:56px;
+background:var(--olive);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 20px rgba(107,112,92,.4);
+z-index:900;
+text-decoration:none;
+transition:all .3s var(--transition-smooth);
+animation:float 3s ease-in-out infinite;
+}
+.float-whatsapp:hover{
+background:var(--black);
+transform:scale(1.1);
+}
+.float-whatsapp svg{width:26px;height:26px;fill:var(--off-white)}
+
+/* === RESPONSIVE === */
+@media(min-width:480px){
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.team-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-item:first-child{grid-column:1/-1}
+}
+
+@media(min-width:768px){
+.nav-links{display:flex}
+.hamburger{display:none}
+.hero{
+grid-template-columns:1fr 1fr;
+min-height:100vh;
+}
+.hero-visual{height:auto}
+.hero-content{padding:4rem 6% 4rem 8%}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.about-grid{grid-template-columns:1fr 1fr;gap:6rem}
+.team-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-item:first-child{grid-column:1/-1}
+.contact-grid{grid-template-columns:1fr 1fr;gap:6rem}
+}
+
+@media(min-width:1024px){
+.section-pad{padding:120px 0}
+.services-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-item:first-child{grid-column:1/-1;aspect-ratio:21/9}
+.testimonial-card{padding:4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a href="#hero" class="nav-logo">Steak <span>Store</span></a>
+<ul class="nav-links">
+<li><a href="#cardapio">Cardapio</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#equipe">Equipe</a></li>
+<li><a href="#galeria">Galeria</a></li>
+<li><a href="#depoimentos">Depoimentos</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#cardapio">Cardapio</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-visual">
+<div class="hero-gradient"></div>
+<div class="hero-grain"></div>
+<div class="hero-visual-content">
+<div class="hero-badge">Desde 2018 em Ribeirao Preto</div>
+</div>
+</div>
+<div class="hero-content">
+<p class="hero-overline anim-target">Restaurante e Pizzaria</p>
+<h1 class="hero-title anim-target delay-1">Steak<br><em>Store</em></h1>
+<p class="hero-desc anim-target delay-2">Onde cada corte conta uma historia. Gastronomia de excelencia com ingredientes selecionados e receitas que celebram o melhor da culinaria brasileira.</p>
+<a href="#cardapio" class="hero-cta anim-target delay-3">
+<span>Conheca nosso cardapio</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services section-pad" id="cardapio">
+<div class="container">
+<div class="services-header">
+<span class="section-label anim-target">Nosso Cardapio</span>
+<h2 class="services-title anim-target delay-1">Sabores que<br>marcam momentos</h2>
+</div>
+<div class="services-grid">
+<div class="service-card anim-target">
+<span class="service-number">01</span>
+<h3 class="service-name">Prato Executivo</h3>
+<p class="service-desc">Arroz, feijao tropeiro, farofa crocante, vinagrete artesanal e sua escolha de proteina grelhada na brasa. Servido com suco natural.</p>
+<div class="service-price">R$ 42<small>,90</small></div>
+</div>
+<div class="service-card anim-target delay-1">
+<span class="service-number">02</span>
+<h3 class="service-name">Pizza Especial</h3>
+<p class="service-desc">Massa fermentada por 72 horas com molho de tomates pelados, mussarela de bufala e cobertura de sua preferencia no forno a lenha.</p>
+<div class="service-price">R$ 54<small>,00</small></div>
+</div>
+<div class="service-card anim-target delay-2">
+<span class="service-number">03</span>
+<h3 class="service-name">Massa Artesanal</h3>
+<p class="service-desc">Pasta fresca feita diariamente. Sugestao do chef: tagliatelle ao ragu de costela com parmesao 24 meses e rucula selvagem.</p>
+<div class="service-price">R$ 48<small>,50</small></div>
+</div>
+<div class="service-card anim-target delay-3">
+<span class="service-number">04</span>
+<h3 class="service-name">Salada Gourmet</h3>
+<p class="service-desc">Mix de folhas organicas, tomate cereja, queijo coalho grelhado, nozes caramelizadas e vinagrete balsamico com reducao de mel.</p>
+<div class="service-price">R$ 34<small>,00</small></div>
+</div>
+<div class="service-card anim-target delay-4">
+<span class="service-number">05</span>
+<h3 class="service-name">Sobremesa</h3>
+<p class="service-desc">Petit gateau de chocolate belga 70% com sorvete de baunilha de Madagascar e calda de frutas vermelhas da estacao.</p>
+<div class="service-price">R$ 28<small>,00</small></div>
+</div>
+<div class="service-card anim-target delay-5">
+<span class="service-number">06</span>
+<h3 class="service-name">Bebida Autoral</h3>
+<p class="service-desc">Drink exclusivo do house com cachaca artesanal, frutas frescas da estacao e toques de especiarias selecionadas pelo mixologista.</p>
+<div class="service-price">R$ 24<small>,00</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about section-pad" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-image anim-target">
+<div class="about-image-gradient"></div>
+<div class="about-image-label">Ribeirao Preto, SP</div>
+</div>
+<div class="about-text">
+<span class="section-label anim-target">Nossa Historia</span>
+<div class="divider anim-target delay-1"></div>
+<h2 class="about-heading anim-target delay-1">Nascemos da <em>paixao</em> pela boa mesa</h2>
+<p class="about-body anim-target delay-2">O Steak Store nasceu em 2018 com uma missao clara: oferecer a Ribeirao Preto uma experiencia gastronomica que une tradicao e inovacao. Nosso espaco foi pensado para ser mais do que um restaurante -- e um lugar de encontro, celebracao e memorias.</p>
+<p class="about-body anim-target delay-3">Cada prato que sai da nossa cozinha carrega o cuidado de ingredientes selecionados de produtores locais, tecnicas aprimoradas ao longo de anos e o respeito profundo pela culinaria brasileira. Da brasa ao prato, cada detalhe importa.</p>
+<div class="about-stats anim-target delay-4">
+<div>
+<div class="stat-number" data-target="7">0</div>
+<div class="stat-label">Anos de experiencia</div>
+</div>
+<div>
+<div class="stat-number" data-target="45">0</div>
+<div class="stat-label">Mil clientes atendidos</div>
+</div>
+<div>
+<div class="stat-number" data-target="12">0</div>
+<div class="stat-label">Itens no cardapio</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="team section-pad" id="equipe">
+<div class="container">
+<div class="team-header">
+<span class="section-label anim-target">Nossa Equipe</span>
+<h2 class="team-title anim-target delay-1">As maos por tras<br>dos sabores</h2>
+</div>
+<div class="team-grid">
+<div class="team-card anim-target">
+<div class="team-photo">
+<div class="team-photo-gradient"></div>
+</div>
+<h3 class="team-name">Ricardo Almeida</h3>
+<p class="team-role">Chef Executivo</p>
+</div>
+<div class="team-card anim-target delay-2">
+<div class="team-photo">
+<div class="team-photo-gradient"></div>
+</div>
+<h3 class="team-name">Camila Ferreira</h3>
+<p class="team-role">Sous Chef</p>
+</div>
+<div class="team-card anim-target delay-4">
+<div class="team-photo">
+<div class="team-photo-gradient"></div>
+</div>
+<h3 class="team-name">Lucas Mendes</h3>
+<p class="team-role">Mixologista</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery section-pad" id="galeria">
+<div class="container">
+<div class="gallery-header">
+<span class="section-label anim-target">Galeria</span>
+<h2 class="gallery-title anim-target delay-1">Momentos<br>que inspiram</h2>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item anim-target">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Ambiente Principal</span></div>
+</div>
+<div class="gallery-item anim-target delay-1">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Brasa Artesanal</span></div>
+</div>
+<div class="gallery-item anim-target delay-2">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Drinks Autorais</span></div>
+</div>
+<div class="gallery-item anim-target delay-3">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Area Externa</span></div>
+</div>
+<div class="gallery-item anim-target delay-4">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Detalhes da Cozinha</span></div>
+</div>
+<div class="gallery-item anim-target delay-5">
+<div class="gallery-gradient"></div>
+<div class="gallery-overlay"><span class="gallery-label">Noite Especial</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials section-pad" id="depoimentos">
+<div class="container">
+<div class="testimonials-header">
+<span class="section-label anim-target" style="color:var(--light-olive)">Depoimentos</span>
+<h2 class="testimonials-title anim-target delay-1">O que nossos <em>clientes</em> dizem</h2>
+</div>
+<div class="testimonials-slider anim-target delay-2">
+<div class="testimonials-track" id="testimonialsTrack">
+<div class="testimonial-slide">
+<div class="testimonial-card">
+<div class="testimonial-quote-mark">"</div>
+<p class="testimonial-text">Melhor restaurante de Ribeirao Preto, sem duvida. O ambiente e incrivel, o atendimento impecavel e a comida simplesmente perfeita. O contra-file ao molho madeira e divino. Voltamos toda semana.</p>
+<div class="testimonial-stars">
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+</div>
+<div class="testimonial-author">Mariana Oliveira</div>
+<div class="testimonial-role">Cliente desde 2020</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-card">
+<div class="testimonial-quote-mark">"</div>
+<p class="testimonial-text">Celebrei meu aniversario no Steak Store e foi uma experiencia inesquecivel. A equipe preparou tudo com um carinho enorme. A pizza de quatro queijos e a melhor que ja comi na vida. Recomendo de olhos fechados.</p>
+<div class="testimonial-stars">
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+</div>
+<div class="testimonial-author">Fernando Costa</div>
+<div class="testimonial-role">Cliente desde 2019</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-card">
+<div class="testimonial-quote-mark">"</div>
+<p class="testimonial-text">Sou vegetariano e sempre encontrei opcoes maravilhosas no cardapio. A salada gourmet com queijo coalho grelhado e sensacional. O ambiente e acolhedor e a equipe sempre muito atenciosa com restricoes alimentares.</p>
+<div class="testimonial-stars">
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-filled"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+<span class="star star-empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+</div>
+<div class="testimonial-author">Juliana Martins</div>
+<div class="testimonial-role">Cliente desde 2021</div>
+</div>
+</div>
+</div>
+</div>
+<div class="testimonials-nav" id="testimonialsNav">
+<button class="testimonial-dot active" data-index="0" aria-label="Depoimento 1"></button>
+<button class="testimonial-dot" data-index="1" aria-label="Depoimento 2"></button>
+<button class="testimonial-dot" data-index="2" aria-label="Depoimento 3"></button>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section-pad" id="contato">
+<div class="container">
+<div class="contact-grid">
+<div class="contact-info">
+<span class="section-label anim-target">Contato</span>
+<h2 class="contact-title anim-target delay-1">Venha nos visitar</h2>
+<div class="divider anim-target delay-1"></div>
+<div class="contact-item anim-target delay-2">
+<span class="contact-item-label">Endereco</span>
+<span class="contact-item-value">Av. Pres. Vargas, 2181<br>Ribeirao Preto - SP</span>
+</div>
+<div class="contact-item anim-target delay-3">
+<span class="contact-item-label">Telefone</span>
+<span class="contact-item-value"><a href="tel:+5516996494109">(16) 99649-4109</a></span>
+</div>
+<div class="contact-item anim-target delay-4">
+<span class="contact-item-label">Horario de Funcionamento</span>
+<div class="contact-hours">
+<span>Seg a Qui</span><span>11h30 - 14h30 / 18h - 23h</span>
+<span>Sex a Sab</span><span>11h30 - 15h / 18h - 00h</span>
+<span>Domingo</span><span>11h30 - 16h</span>
+</div>
+</div>
+<a href="https://wa.me/5516996494109" class="whatsapp-btn anim-target delay-5" target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<span>Fale pelo WhatsApp</span>
+</a>
+</div>
+<form class="contact-form anim-target delay-2" id="contactForm" onsubmit="return false;">
+<div class="form-group">
+<label class="form-label" for="name">Nome</label>
+<input class="form-input" type="text" id="name" placeholder="Seu nome completo" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="phone">Telefone</label>
+<input class="form-input" type="tel" id="phone" placeholder="(16) 99999-9999">
+</div>
+<div class="form-group">
+<label class="form-label" for="service">Assunto</label>
+<select class="form-select" id="service">
+<option value="">Selecione um assunto</option>
+<option value="reserva">Fazer reserva</option>
+<option value="evento">Evento especial</option>
+<option value="cardapio">Informacoes sobre o cardapio</option>
+<option value="outro">Outro</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="message">Mensagem</label>
+<textarea class="form-textarea" id="message" placeholder="Como podemos ajudar?" required></textarea>
+</div>
+<button class="form-submit" type="submit">
+<span>Enviar mensagem</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div class="footer-logo">Steak <span>Store</span></div>
+<ul class="footer-links">
+<li><a href="#cardapio">Cardapio</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+<p class="footer-copy">2025 Steak Store Restaurante. Todos os direitos reservados.</p>
+</div>
+</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5516996494109" class="float-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+/* === NAV SCROLL === */
+var nav=document.getElementById('nav');
+var lastScroll=0;
+window.addEventListener('scroll',function(){
+var st=window.pageYOffset;
+if(st>80){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
+lastScroll=st;
+},{passive:true});
+
+/* === MOBILE MENU === */
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+var mobileLinks=mobileMenu.querySelectorAll('a');
+
+hamburger.addEventListener('click',function(){
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+mobileLinks.forEach(function(link){
+link.addEventListener('click',function(){
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('open');
+document.body.style.overflow='';
+});
+});
+
+/* === INTERSECTION OBSERVER === */
+var animTargets=document.querySelectorAll('.anim-target');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.1,rootMargin:'-50px'});
+animTargets.forEach(function(el){observer.observe(el)});
+
+/* === STATS COUNTER === */
+var statNumbers=document.querySelectorAll('.stat-number[data-target]');
+var statObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var el=entry.target;
+var target=parseInt(el.getAttribute('data-target'),10);
+var duration=2000;
+var start=0;
+var startTime=null;
+function animate(ts){
+if(!startTime)startTime=ts;
+var progress=Math.min((ts-startTime)/duration,1);
+var eased=1-Math.pow(1-progress,3);
+el.textContent=Math.floor(eased*target);
+if(progress<1){requestAnimationFrame(animate)}else{el.textContent=target+'+'}
+}
+requestAnimationFrame(animate);
+statObserver.unobserve(el);
+}
+});
+},{threshold:0.5});
+statNumbers.forEach(function(el){statObserver.observe(el)});
+
+/* === TESTIMONIALS SLIDER === */
+var track=document.getElementById('testimonialsTrack');
+var dots=document.querySelectorAll('.testimonial-dot');
+var currentSlide=0;
+var totalSlides=3;
+var autoplayTimer;
+
+function goToSlide(index){
+currentSlide=index;
+track.style.transform='translateX(-'+currentSlide*100+'%)';
+dots.forEach(function(d,i){
+d.classList.toggle('active',i===currentSlide);
+});
+}
+dots.forEach(function(dot){
+dot.addEventListener('click',function(){
+goToSlide(parseInt(dot.getAttribute('data-index'),10));
+resetAutoplay();
+});
+});
+function nextSlide(){
+goToSlide((currentSlide+1)%totalSlides);
+}
+function resetAutoplay(){
+clearInterval(autoplayTimer);
+autoplayTimer=setInterval(nextSlide,5000);
+}
+resetAutoplay();
+
+/* === TOUCH SWIPE FOR TESTIMONIALS === */
+var touchStartX=0;
+var touchEndX=0;
+var slider=document.querySelector('.testimonials-slider');
+slider.addEventListener('touchstart',function(e){
+touchStartX=e.changedTouches[0].screenX;
+},{passive:true});
+slider.addEventListener('touchend',function(e){
+touchEndX=e.changedTouches[0].screenX;
+var diff=touchStartX-touchEndX;
+if(Math.abs(diff)>50){
+if(diff>0&&currentSlide<totalSlides-1){goToSlide(currentSlide+1)}
+else if(diff<0&&currentSlide>0){goToSlide(currentSlide-1)}
+resetAutoplay();
+}
+},{passive:true});
+
+/* === CONTACT FORM === */
+var form=document.getElementById('contactForm');
+form.addEventListener('submit',function(e){
+e.preventDefault();
+var name=document.getElementById('name').value.trim();
+var message=document.getElementById('message').value.trim();
+if(!name||!message)return;
+var waMessage=encodeURIComponent('Ola! Meu nome e '+name+'. '+message);
+window.open('https://wa.me/5516996494109?text='+waMessage,'_blank');
+form.reset();
+});
+
+/* === SMOOTH SCROLL FOR NAV LINKS === */
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+anchor.addEventListener('click',function(e){
+var targetId=this.getAttribute('href');
+if(targetId==='#')return;
+var target=document.querySelector(targetId);
+if(target){
+e.preventDefault();
+var navHeight=nav.offsetHeight;
+var targetPos=target.getBoundingClientRect().top+window.pageYOffset-navHeight;
+window.scrollTo({top:targetPos,behavior:'smooth'});
+}
+});
+});
+
+})();
+</script>
+</body>
+</html>
