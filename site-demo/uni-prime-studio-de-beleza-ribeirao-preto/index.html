@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Uni Prime Studio de Beleza - Transforme seu visual em Ribeirao Preto. Cortes, coloracao, mechas, hidratacao e escova progressiva. Agende pelo WhatsApp.">
+<meta name="keywords" content="salao de beleza, cabelereiro, corte feminino, corte masculino, coloracao, mechas, balayage, hidratacao, escova progressiva, Ribeirao Preto">
+<meta property="og:title" content="Uni Prime Studio de Beleza | Ribeirao Preto">
+<meta property="og:description" content="Transforme seu visual com profissionais que entendem de beleza. Agende pelo WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Uni Prime Studio de Beleza | Ribeirao Preto</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--cream:#F9F6F2;
+--taupe:#8B7E74;
+--olive:#6B705C;
+--black:#1A1A1A;
+--white:#FFFFFF;
+--taupe-light:#A89E94;
+--olive-light:#8A8F7A;
+--cream-dark:#EDE8E1;
+--gradient-1:linear-gradient(135deg,#8B7E74 0%,#6B705C 100%);
+--gradient-2:linear-gradient(160deg,#A89E94 0%,#8B7E74 50%,#6B705C 100%);
+--gradient-3:linear-gradient(135deg,#EDE8E1 0%,#D4CCC3 100%);
+--gradient-4:linear-gradient(180deg,#C4B8AC 0%,#8B7E74 100%);
+--gradient-5:linear-gradient(135deg,#6B705C 0%,#4A4E3A 100%);
+--gradient-6:linear-gradient(200deg,#A89E94 0%,#6B705C 100%);
+--gradient-warm:linear-gradient(135deg,#8B7E74,#6B705C);
+--gradient-cool:linear-gradient(135deg,#A89E94,#8B7E74);
+--font-display:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+--font-body:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+--spacing-xs:0.5rem;
+--spacing-sm:1rem;
+--spacing-md:2rem;
+--spacing-lg:3rem;
+--spacing-xl:5rem;
+--spacing-2xl:8rem;
+--radius-sm:4px;
+--radius-md:8px;
+--radius-lg:16px;
+--radius-xl:24px;
+--shadow-sm:0 2px 8px rgba(26,26,26,0.06);
+--shadow-md:0 4px 24px rgba(26,26,26,0.08);
+--shadow-lg:0 8px 48px rgba(26,26,26,0.12);
+--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--cream);color:var(--black);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+.font-display{font-family:var(--font-display);font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+.font-body{font-family:var(--font-body);letter-spacing:0.02em}
+.label{font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--taupe);font-weight:600}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:var(--transition)}
+.nav.scrolled{background:rgba(249,246,242,0.95);backdrop-filter:blur(20px);box-shadow:var(--shadow-sm)}
+.nav-logo{font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--black)}
+.nav-links{display:none;gap:2rem;align-items:center}
+.nav-links a{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;color:var(--black);transition:var(--transition);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--olive);transition:var(--transition)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:none;padding:0.6rem 1.4rem;border:1.5px solid var(--olive);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;color:var(--olive);transition:var(--transition)}
+.nav-cta:hover{background:var(--olive);color:var(--white)}
+.nav-toggle{display:flex;flex-direction:column;gap:5px;padding:4px;z-index:1001}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--black);transition:var(--transition)}
+.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
+.mobile-menu{position:fixed;inset:0;background:var(--cream);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:var(--transition)}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--black);transition:var(--transition)}
+.mobile-menu a:hover{color:var(--olive)}
+
+@media(min-width:768px){
+.nav-links{display:flex}
+.nav-cta{display:block}
+.nav-toggle{display:none}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr;position:relative;overflow:hidden}
+.hero-visual{position:relative;min-height:55vh;background:var(--gradient-2);overflow:hidden}
+.hero-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(249,246,242,0.3) 100%)}
+.hero-blob{position:absolute;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;filter:blur(60px);opacity:0.4}
+.hero-blob-1{width:300px;height:300px;background:rgba(255,255,255,0.15);top:-50px;right:-80px;animation:blobFloat 12s ease-in-out infinite}
+.hero-blob-2{width:200px;height:200px;background:rgba(107,112,92,0.3);bottom:20%;left:-60px;animation:blobFloat 16s ease-in-out infinite reverse}
+.hero-blob-3{width:150px;height:150px;background:rgba(255,255,255,0.1);top:40%;right:20%;animation:blobFloat 20s ease-in-out infinite 2s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(30px,-20px) rotate(5deg)}50%{transform:translate(-20px,30px) rotate(-3deg)}75%{transform:translate(20px,20px) rotate(3deg)}}
+.hero-visual-label{position:absolute;bottom:2rem;left:2rem;font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:600}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:2.5rem 2rem;position:relative}
+.hero-content .label{margin-bottom:1rem;display:block}
+.hero-title{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.5rem);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;line-height:1.1;margin-bottom:0.5rem;color:var(--black)}
+.hero-title span{display:block;font-size:clamp(0.85rem,2vw,1.1rem);font-weight:400;letter-spacing:0.18em;color:var(--taupe);margin-bottom:0.3rem}
+.hero-subtitle{font-size:0.95rem;color:var(--taupe);line-height:1.8;margin-bottom:2rem;max-width:420px;letter-spacing:0.02em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;background:var(--olive);color:var(--white);font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;transition:var(--transition);border-radius:0}
+.btn-primary:hover{background:var(--black);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border:1.5px solid var(--taupe);color:var(--black);font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;transition:var(--transition);border-radius:0}
+.btn-outline:hover{border-color:var(--black);background:var(--black);color:var(--white)}
+.hero-stats{display:flex;gap:2rem;padding-top:2rem;border-top:1px solid rgba(139,126,116,0.2)}
+.hero-stat-number{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--olive);letter-spacing:0.04em}
+.hero-stat-label{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);font-weight:500}
+
+@media(min-width:768px){
+.hero{grid-template-columns:1fr 1fr}
+.hero-visual{min-height:auto}
+.hero-content{padding:3rem 4rem}
+}
+@media(min-width:1024px){
+.hero{min-height:100vh}
+.hero-content{padding:4rem 6rem}
+}
+
+/* SECTION COMMONS */
+section{padding:var(--spacing-xl) 2rem}
+.section-header{text-align:center;margin-bottom:var(--spacing-lg)}
+.section-header .label{margin-bottom:0.8rem;display:block}
+.section-title{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;line-height:1.2;margin-bottom:0.8rem}
+.section-desc{font-size:0.9rem;color:var(--taupe);max-width:500px;margin:0 auto;letter-spacing:0.02em}
+.section-divider{width:40px;height:2px;background:var(--olive);margin:1.2rem auto 0}
+
+/* SERVICES */
+.services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:1100px;margin:0 auto}
+.service-card{position:relative;padding:2rem;background:var(--cream);border:1px solid rgba(139,126,116,0.1);transition:var(--transition);overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--olive);transition:var(--transition)}
+.service-card:hover::before{height:100%}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.service-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.service-card-icon{width:48px;height:48px;border-radius:var(--radius-md);background:var(--gradient-3);flex-shrink:0}
+.service-card-price{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--olive);letter-spacing:0.04em;white-space:nowrap}
+.service-card-title{font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.5rem}
+.service-card-desc{font-size:0.85rem;color:var(--taupe);line-height:1.7;letter-spacing:0.01em}
+
+@media(min-width:480px){
+.services-grid{grid-template-columns:1fr 1fr}
+}
+@media(min-width:768px){
+.services-grid{grid-template-columns:repeat(3,1fr)}
+.service-card{padding:2.2rem}
+}
+
+/* ABOUT */
+.about{background:var(--cream)}
+.about-layout{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1100px;margin:0 auto;align-items:center}
+.about-image{position:relative;aspect-ratio:4/5;background:var(--gradient-2);overflow:hidden}
+.about-image::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(26,26,26,0.15))}
+.about-image-label{position:absolute;bottom:1.5rem;left:1.5rem;font-family:var(--font-display);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:600;z-index:1}
+.about-content .label{margin-bottom:1rem;display:block}
+.about-content-title{font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;line-height:1.2;margin-bottom:1.2rem}
+.about-content p{font-size:0.9rem;color:var(--taupe);line-height:1.9;margin-bottom:1rem;letter-spacing:0.01em}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.about-feature{display:flex;align-items:center;gap:0.7rem}
+.about-feature-icon{width:36px;height:36px;border-radius:50%;background:var(--cream-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.about-feature-icon svg{width:16px;height:16px;stroke:var(--olive);fill:none;stroke-width:2}
+.about-feature span{font-size:0.8rem;font-weight:500;letter-spacing:0.04em}
+
+@media(min-width:768px){
+.about-layout{grid-template-columns:1fr 1fr;gap:4rem}
+.about-image{aspect-ratio:3/4}
+}
+
+/* TEAM */
+.team{background:var(--white)}
+.team-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin:0 auto}
+.team-card{text-align:center;transition:var(--transition)}
+.team-card:hover{transform:translateY(-6px)}
+.team-photo{position:relative;aspect-ratio:3/4;background:var(--gradient-3);margin-bottom:1.2rem;overflow:hidden}
+.team-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(transparent,rgba(139,126,116,0.2))}
+.team-name{font-family:var(--font-display);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.team-role{font-size:0.78rem;color:var(--taupe);letter-spacing:0.08em}
+
+@media(min-width:480px){
+.team-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* GALLERY */
+.gallery{background:var(--cream);overflow:hidden}
+.gallery-grid{display:grid;grid-template-columns:1fr;gap:0.8rem;max-width:1100px;margin:0 auto}
+.gallery-item{position:relative;aspect-ratio:1;background:var(--gradient-2);overflow:hidden;cursor:pointer}
+.gallery-item:nth-child(2),.gallery-item:nth-child(5){background:var(--gradient-6)}
+.gallery-item:nth-child(3),.gallery-item:nth-child(6){background:var(--gradient-5)}
+.gallery-item:nth-child(4){background:var(--gradient-4)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:rgba(26,26,26,0);transition:var(--transition)}
+.gallery-item:hover::after{background:rgba(26,26,26,0.25)}
+.gallery-item-label{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:600;z-index:1;transform:translateY(100%);transition:var(--transition)}
+.gallery-item:hover .gallery-item-label{transform:translateY(0)}
+
+@media(min-width:480px){
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:768px){
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin:0 auto}
+.testimonial-card{padding:2rem;background:var(--cream);border:1px solid rgba(139,126,116,0.08);transition:var(--transition)}
+.testimonial-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.testimonial-stars{display:flex;gap:2px;margin-bottom:1rem}
+.testimonial-stars svg{width:14px;height:14px;fill:var(--olive)}
+.testimonial-text{font-size:0.9rem;color:var(--taupe);line-height:1.9;font-style:italic;margin-bottom:1.2rem;letter-spacing:0.01em}
+.testimonial-author{display:flex;align-items:center;gap:1rem}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--gradient-warm);flex-shrink:0}
+.testimonial-name{font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.testimonial-detail{font-size:0.72rem;color:var(--taupe);letter-spacing:0.04em}
+
+@media(min-width:480px){
+.testimonials-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* CONTACT */
+.contact{background:var(--cream)}
+.contact-layout{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1000px;margin:0 auto}
+.contact-info{display:flex;flex-direction:column;gap:2rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-item-icon{width:44px;height:44px;border-radius:var(--radius-md);background:var(--gradient-3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item-icon svg{width:18px;height:18px;stroke:var(--olive);fill:none;stroke-width:1.8}
+.contact-item-label{font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--taupe);font-weight:600;margin-bottom:0.2rem}
+.contact-item-value{font-size:0.9rem;color:var(--black);letter-spacing:0.02em;line-height:1.6}
+.contact-item-value a{transition:var(--transition)}
+.contact-item-value a:hover{color:var(--olive)}
+.contact-hours{margin-top:0.5rem}
+.contact-hours-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid rgba(139,126,116,0.1);font-size:0.82rem}
+.contact-hours-row span:first-child{color:var(--taupe);letter-spacing:0.04em}
+.contact-hours-row span:last-child{font-weight:600;letter-spacing:0.02em}
+.contact-form-wrapper{background:var(--white);padding:2rem;border:1px solid rgba(139,126,116,0.08)}
+.contact-form-wrapper .label{margin-bottom:1.2rem;display:block}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group label{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--taupe)}
+.form-group input,.form-group select,.form-group textarea{padding:0.9rem 1rem;border:1.5px solid rgba(139,126,116,0.2);background:var(--cream);font-family:var(--font-body);font-size:0.88rem;color:var(--black);letter-spacing:0.02em;transition:var(--transition);outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--olive)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.btn-submit{width:100%;padding:1.1rem;background:var(--olive);color:var(--white);font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;transition:var(--transition);margin-top:0.5rem}
+.btn-submit:hover{background:var(--black);transform:translateY(-2px)}
+
+@media(min-width:768px){
+.contact-layout{grid-template-columns:1fr 1fr;gap:4rem}
+.form-row{grid-template-columns:1fr 1fr}
+}
+
+/* FOOTER */
+.footer{background:var(--black);padding:var(--spacing-lg) 2rem;text-align:center}
+.footer-brand{font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--white);margin-bottom:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.footer-links a{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);transition:var(--transition)}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:999;transition:var(--transition);animation:whatsappPulse 2s ease-in-out infinite}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:var(--white)}
+@keyframes whatsappPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.6)}}
+
+/* ANIMATIONS */
+.wow{opacity:0;transform:translateY(30px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.wow.visible{opacity:1;transform:translateY(0)}
+.wow-delay-1{transition-delay:0.1s}
+.wow-delay-2{transition-delay:0.2s}
+.wow-delay-3{transition-delay:0.3s}
+.wow-delay-4{transition-delay:0.4s}
+.wow-delay-5{transition-delay:0.5s}
+
+@media(prefers-reduced-motion:reduce){
+.wow{opacity:1;transform:none;transition:none}
+.hero-blob{animation:none}
+.whatsapp-float{animation:none}
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--taupe);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--olive)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<a href="#hero" class="nav-logo">Uni Prime</a>
+<div class="nav-links">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+<a href="https://wa.me/551560066984" class="nav-cta" target="_blank" rel="noopener">Agendar</a>
+<button class="nav-toggle" id="navToggle" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+<a href="https://wa.me/551560066984" class="btn-primary" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-visual">
+<div class="hero-blob hero-blob-1"></div>
+<div class="hero-blob hero-blob-2"></div>
+<div class="hero-blob hero-blob-3"></div>
+<span class="hero-visual-label">Estudio de Beleza</span>
+</div>
+<div class="hero-content">
+<span class="label">Ribeirao Preto - SP</span>
+<h1 class="hero-title">
+<span>Uni Prime</span>
+Studio de Beleza
+</h1>
+<p class="hero-subtitle">Transforme seu visual com profissionais que entendem de beleza. Cortes, coloracao, mechas e tratamentos capilares que realcam a sua essencia.</p>
+<div class="hero-actions">
+<a href="https://wa.me/551560066984?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." class="btn-primary" target="_blank" rel="noopener">
+Agendar Horario
+</a>
+<a href="#servicos" class="btn-outline">Nossos Servicos</a>
+</div>
+<div class="hero-stats">
+<div>
+<div class="hero-stat-number" data-count="8">0</div>
+<div class="hero-stat-label">Anos de experiencia</div>
+</div>
+<div>
+<div class="hero-stat-number" data-count="2500">0</div>
+<div class="hero-stat-label">Clientes atendidas</div>
+</div>
+<div>
+<div class="hero-stat-number" data-count="100">0</div>
+<div class="hero-stat-label">% Satisfacao</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+<div class="section-header wow">
+<span class="label">O que fazemos</span>
+<h2 class="section-title">Nossos Servicos</h2>
+<p class="section-desc">Cada servico e pensado para valorizar o seu estilo pessoal com tecnica e dedicacao.</p>
+<div class="section-divider"></div>
+</div>
+<div class="services-grid">
+<div class="service-card wow wow-delay-1">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+</div>
+<div class="service-card-price">R$ 80</div>
+</div>
+<h3 class="service-card-title">Corte Feminino</h3>
+<p class="service-card-desc">Cortes modernos e personalizados que valorizam seu rosto e estilo. Inclui lavagem e finalizacao.</p>
+</div>
+<div class="service-card wow wow-delay-2">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+</div>
+<div class="service-card-price">R$ 50</div>
+</div>
+<h3 class="service-card-title">Corte Masculino</h3>
+<p class="service-card-desc">Degradê, social ou moderno. Acabamento impecavel com maquina e tesoura de precisao.</p>
+</div>
+<div class="service-card wow wow-delay-3">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+</div>
+<div class="service-card-price">R$ 180</div>
+</div>
+<h3 class="service-card-title">Coloracao</h3>
+<p class="service-card-desc">Tintura profissional com produtos de alta performance. Cobertura total de fios brancos e mudanca de tom.</p>
+</div>
+<div class="service-card wow wow-delay-4">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</div>
+<div class="service-card-price">R$ 250</div>
+</div>
+<h3 class="service-card-title">Mechas e Balayage</h3>
+<p class="service-card-desc">Tecnicas de luzes que criam movimento e profundidade. Resultado natural e luminoso nos fios.</p>
+</div>
+<div class="service-card wow wow-delay-5">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+</div>
+<div class="service-card-price">R$ 90</div>
+</div>
+<h3 class="service-card-title">Hidratacao</h3>
+<p class="service-card-desc">Tratamento profundo para fios ressecados e danificados. Devolve brilho, maciez e vitalidade.</p>
+</div>
+<div class="service-card wow wow-delay-5">
+<div class="service-card-header">
+<div class="service-card-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B705C" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+</div>
+<div class="service-card-price">R$ 300</div>
+</div>
+<h3 class="service-card-title">Escova Progressiva</h3>
+<p class="service-card-desc">Alisamento duradouro com produtos de primeira linha. Fios lisos, brilhantes e com movimento natural.</p>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+<div class="about-layout">
+<div class="about-image wow">
+<span class="about-image-label">Desde 2017</span>
+</div>
+<div class="about-content">
+<span class="label wow">Nossa Historia</span>
+<h2 class="about-content-title wow">Onde a beleza encontra a arte</h2>
+<p class="wow">O Uni Prime Studio de Beleza nasceu em 2017 no coracao de Ribeirao Preto, com a missao de oferecer muito mais do que servicos de beleza. Aqui, cada cliente e recebida com carinho e tratada com a atencao que merece.</p>
+<p class="wow">Nossa equipe e formada por profissionais apaixonados que se atualizam constantemente sobre as tendencias e tecnicas mais modernas do mercado capilar. Acreditamos que um bom corte ou uma coloracao bem feita tem o poder de transformar nao so o visual, mas a autoestima de cada pessoa.</p>
+<p class="wow">Com um ambiente acolhedor e planejado para o seu conforto, o Uni Prime e o lugar ideal para quem busca qualidade, pontualidade e resultados que fazem a diferenca no dia a dia.</p>
+<div class="about-features wow">
+<div class="about-feature">
+<div class="about-feature-icon">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<span>Produtos premium</span>
+</div>
+<div class="about-feature">
+<div class="about-feature-icon">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<span>Ambiente climatizado</span>
+</div>
+<div class="about-feature">
+<div class="about-feature-icon">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<span>Profissionais certificados</span>
+</div>
+<div class="about-feature">
+<div class="about-feature-icon">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<span>Agendamento facil</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipe">
+<div class="section-header wow">
+<span class="label">Conheca a equipe</span>
+<h2 class="section-title">Profissionais que fazem a diferenca</h2>
+<p class="section-desc">Talentos dedicados a realcar a beleza de cada cliente com tecnica e carinho.</p>
+<div class="section-divider"></div>
+</div>
+<div class="team-grid">
+<div class="team-card wow wow-delay-1">
+<div class="team-photo"></div>
+<h3 class="team-name">Camila Oliveira</h3>
+<p class="team-role">Colorista Especialista</p>
+</div>
+<div class="team-card wow wow-delay-2">
+<div class="team-photo"></div>
+<h3 class="team-name">Rafael Santos</h3>
+<p class="team-role">Corte e Barba</p>
+</div>
+<div class="team-card wow wow-delay-3">
+<div class="team-photo"></div>
+<h3 class="team-name">Juliana Lima</h3>
+<p class="team-role">Mechas e Balayage</p>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+<div class="section-header wow">
+<span class="label">Nosso trabalho</span>
+<h2 class="section-title">Galeria de Transformacoes</h2>
+<p class="section-desc">Cada cliente e uma nova oportunidade de criar algo unico e especial.</p>
+<div class="section-divider"></div>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item wow wow-delay-1">
+<span class="gallery-item-label">Coloracao</span>
+</div>
+<div class="gallery-item wow wow-delay-2">
+<span class="gallery-item-label">Balayage</span>
+</div>
+<div class="gallery-item wow wow-delay-3">
+<span class="gallery-item-label">Corte Feminino</span>
+</div>
+<div class="gallery-item wow wow-delay-4">
+<span class="gallery-item-label">Escova Progressiva</span>
+</div>
+<div class="gallery-item wow wow-delay-5">
+<span class="gallery-item-label">Mechas</span>
+</div>
+<div class="gallery-item wow wow-delay-5">
+<span class="gallery-item-label">Hidratacao</span>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+<div class="section-header wow">
+<span class="label">Depoimentos</span>
+<h2 class="section-title">O que dizem nossas clientes</h2>
+<p class="section-desc">A satisfacao de quem confia no nosso trabalho e a nossa maior conquista.</p>
+<div class="section-divider"></div>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card wow wow-delay-1">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</div>
+<p class="testimonial-text">"Melhor estudio de Ribeirao Preto! A Camila entendeu exatamente o que eu queria e a coloracao ficou perfeita. Ambiente super agradavel e atendimento nota 10."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-name">Fernanda Costa</div>
+<div class="testimonial-detail">Coloracao e Corte</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card wow wow-delay-2">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</div>
+<p class="testimonial-text">"Fiz balayage com a Juliana e amei o resultado! Ficou super natural e luminoso. Ja indiquei pra todas as amigas. Voltarei com certeza!"</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-name">Mariana Alves</div>
+<div class="testimonial-detail">Balayage</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card wow wow-delay-3">
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+</div>
+<p class="testimonial-text">"Sou cliente ha 3 anos e nao troco por nada. O Rafael faz o melhor degrade da cidade e a escova progressiva dura meses. Profissionalismo de verdade."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-name">Patricia Mendes</div>
+<div class="testimonial-detail">Degradê e Progressiva</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+<div class="section-header wow">
+<span class="label">Fale conosco</span>
+<h2 class="section-title">Agende seu Horario</h2>
+<p class="section-desc">Estamos prontas para transformar o seu visual. Entre em contato e marque sua visita.</p>
+<div class="section-divider"></div>
+</div>
+<div class="contact-layout">
+<div class="contact-info">
+<div class="contact-item wow">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<div class="contact-item-label">Endereco</div>
+<div class="contact-item-value">R. Barao do Amazonas, 1627<br>Jardim Sumare, Ribeirao Preto - SP<br>CEP: 14025-110</div>
+</div>
+</div>
+<div class="contact-item wow">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+</div>
+<div>
+<div class="contact-item-label">Telefone / WhatsApp</div>
+<div class="contact-item-value"><a href="https://wa.me/551560066984" target="_blank" rel="noopener">(15) 6006-6984</a></div>
+</div>
+</div>
+<div class="contact-item wow">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<div>
+<div class="contact-item-label">Horario de Funcionamento</div>
+<div class="contact-hours">
+<div class="contact-hours-row"><span>Segunda a Sexta</span><span>09:00 - 20:00</span></div>
+<div class="contact-hours-row"><span>Sabado</span><span>08:00 - 18:00</span></div>
+<div class="contact-hours-row"><span>Domingo</span><span>Fechado</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="contact-form-wrapper wow">
+<span class="label">Envie uma mensagem</span>
+<form class="contact-form" id="contactForm" onsubmit="return false;">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Nome</label>
+<input type="text" id="name" name="name" placeholder="Seu nome" required>
+</div>
+<div class="form-group">
+<label for="phone">Telefone</label>
+<input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+</div>
+</div>
+<div class="form-group">
+<label for="service">Servico desejado</label>
+<select id="service" name="service" required>
+<option value="" disabled selected>Selecione um servico</option>
+<option value="corte-feminino">Corte Feminino</option>
+<option value="corte-masculino">Corte Masculino</option>
+<option value="coloracao">Coloracao</option>
+<option value="mechas">Mechas / Balayage</option>
+<option value="hidratacao">Hidratacao</option>
+<option value="progressiva">Escova Progressiva</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message">Mensagem</label>
+<textarea id="message" name="message" placeholder="Conte-nos mais sobre o que deseja..."></textarea>
+</div>
+<button type="submit" class="btn-submit">Enviar Mensagem</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-brand">Uni Prime Studio de Beleza</div>
+<div class="footer-links">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+<p class="footer-copy">2025 Uni Prime Studio de Beleza. Todos os direitos reservados.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/551560066984?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<svg viewBox="0 0 32 32"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.132 6.744 3.054 9.378L1.056 31.17l5.976-1.968A15.902 15.902 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.31 22.602c-.39 1.1-1.932 2.014-3.168 2.28-.846.18-1.95.324-5.668-1.218-4.758-1.97-7.826-6.81-8.064-7.126-.23-.316-1.934-2.576-1.934-4.916s1.226-3.488 1.66-3.968c.39-.436.926-.576 1.226-.576.156 0 .296.008.422.014.39.016.586.038.842.652.316.752 1.078 2.63 1.172 2.822.094.194.188.454.064.728-.118.282-.222.408-.416.648-.194.24-.384.424-.578.684-.182.224-.388.466-.16.878.228.408.998 1.644 2.142 2.664 1.472 1.31 2.714 1.716 3.122 1.908.408.192.646.16.884-.102.238-.262 1.022-1.19 1.294-1.6.272-.408.544-.34.918-.204.374.136 2.376 1.12 2.784 1.324.408.204.68.306.78.474.1.168.1.968-.29 2.07z"/></svg>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+// NAV SCROLL
+const nav=document.getElementById('nav');
+let lastScroll=0;
+window.addEventListener('scroll',function(){
+const st=window.scrollY;
+if(st>60){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
+lastScroll=st;
+},{passive:true});
+
+// MOBILE MENU
+const toggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+const mobileLinks=mobileMenu.querySelectorAll('a');
+toggle.addEventListener('click',function(){
+toggle.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+mobileLinks.forEach(function(link){
+link.addEventListener('click',function(){
+toggle.classList.remove('active');
+mobileMenu.classList.remove('open');
+document.body.style.overflow='';
+});
+});
+
+// INTERSECTION OBSERVER
+const observerOptions={threshold:0.1,rootMargin:'-50px'};
+const observer=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+},observerOptions);
+document.querySelectorAll('.wow').forEach(function(el){observer.observe(el)});
+
+// COUNTER ANIMATION
+const counters=document.querySelectorAll('.hero-stat-number[data-count]');
+const counterObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+const el=entry.target;
+const target=parseInt(el.getAttribute('data-count'));
+const duration=2000;
+const start=performance.now();
+function update(now){
+const elapsed=now-start;
+const progress=Math.min(elapsed/duration,1);
+const eased=1-Math.pow(1-progress,3);
+const current=Math.floor(eased*target);
+el.textContent=current.toLocaleString('pt-BR');
+if(progress<1){requestAnimationFrame(update)}
+else{el.textContent=target.toLocaleString('pt-BR')}
+}
+requestAnimationFrame(update);
+counterObserver.unobserve(el);
+}
+});
+},{threshold:0.5});
+counters.forEach(function(c){counterObserver.observe(c)});
+
+// CONTACT FORM -> WHATSAPP
+var form=document.getElementById('contactForm');
+if(form){
+form.addEventListener('submit',function(e){
+e.preventDefault();
+var name=document.getElementById('name').value.trim();
+var phone=document.getElementById('phone').value.trim();
+var service=document.getElementById('service');
+var serviceText=service.options[service.selectedIndex].text;
+var message=document.getElementById('message').value.trim();
+if(!name||!phone||!service.value){return}
+var waMessage='Ola! Meu nome e '+name+'. Meu telefone e '+phone+'. Gostaria de agendar '+serviceText+'.';
+if(message){waMessage+=' '+message}
+var url='https://wa.me/551560066984?text='+encodeURIComponent(waMessage);
+window.open(url,'_blank');
+form.reset();
+});
+}
+
+// SMOOTH SCROLL (fallback)
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+anchor.addEventListener('click',function(e){
+var target=document.querySelector(this.getAttribute('href'));
+if(target){
+e.preventDefault();
+var top=target.getBoundingClientRect().top+window.pageYOffset-60;
+window.scrollTo({top:top,behavior:'smooth'});
+}
+});
+});
+
+})();
+</script>
+</body>
+</html>
