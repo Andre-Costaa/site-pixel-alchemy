@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snoopy Veterinary Clinic | Clinica Veterinaria em Ribeirao Preto - SP</title>
+    <meta name="description" content="Clinica Veterinaria Snoopy em Ribeirao Preto - SP. Consultas, vacinacao, cirurgias, emergencia 24h, exames laboratoriais e banho e tosa. Agende agora!">
+    <meta property="og:title" content="Snoopy Veterinary Clinic | Clinica Veterinaria em Ribeirao Preto">
+    <meta property="og:description" content="Cuidado veterinario completo para seu pet em Ribeirao Preto. Consultas, vacinacao, cirurgias, emergencia 24h e muito mais.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --coral: #E8907A;
+            --coral-dark: #D47A64;
+            --coral-light: #F2B5A5;
+            --teal: #5F9EA0;
+            --teal-dark: #4A8587;
+            --teal-light: #8FBFC1;
+            --sand: #F4E4C1;
+            --sand-dark: #E8D4A8;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --slate-dark: #2D3748;
+            --white: #FFFFFF;
+            --off-white: #FDFBF7;
+            --cream: #FAF6F0;
+            --shadow-sm: 0 2px 8px rgba(74,85,104,0.08);
+            --shadow-md: 0 4px 20px rgba(74,85,104,0.12);
+            --shadow-lg: 0 8px 40px rgba(74,85,104,0.16);
+            --shadow-xl: 0 16px 60px rgba(74,85,104,0.2);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            color: var(--slate);
+            background: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--slate-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 251, 247, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 85, 104, 0.06);
+            transition: transform 0.4s ease, box-shadow var(--transition);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            font-size: 1.15rem;
+            color: var(--slate-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-logo-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .nav-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            transition: color var(--transition);
+            letter-spacing: 0.2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--coral-dark);
+        }
+
+        .nav-cta {
+            display: none;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            color: var(--white) !important;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 15px rgba(232, 144, 122, 0.35);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 144, 122, 0.45);
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--slate-dark);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--slate-dark);
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--coral);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 16px;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 25px rgba(232, 144, 122, 0.35);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 20px 80px;
+            background: linear-gradient(160deg, var(--sand) 0%, var(--cream) 40%, var(--off-white) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image:
+                radial-gradient(circle at 20% 30%, var(--coral) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 60% 70%, var(--teal) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, var(--coral) 2px, transparent 2px),
+                radial-gradient(circle at 40% 80%, var(--teal) 1.5px, transparent 1.5px);
+            background-size: 60px 60px, 45px 45px, 80px 80px, 55px 55px;
+            animation: patternFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes patternFloat {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-10px, 10px); }
+            66% { transform: translate(10px, -5px); }
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 350px;
+            height: 350px;
+            background: var(--coral-light);
+            top: 10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 280px;
+            height: 280px;
+            background: var(--teal-light);
+            bottom: 15%;
+            left: -5%;
+            animation-delay: -4s;
+        }
+
+        .hero-blob-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--sand-dark);
+            top: 50%;
+            left: 40%;
+            animation-delay: -8s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -20px) scale(1.05); }
+            66% { transform: translate(-15px, 15px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--teal-dark);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 4.2rem);
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--slate-light);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            color: var(--white);
+            box-shadow: 0 6px 25px rgba(232, 144, 122, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(232, 144, 122, 0.45);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--slate-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--coral-dark);
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--slate-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ SECTION COMMON ============ */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--teal);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--slate-light);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(74, 85, 104, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--teal));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .service-card:nth-child(1) .service-icon { background: rgba(232, 144, 122, 0.15); }
+        .service-card:nth-child(1) .service-icon svg { fill: var(--coral); }
+        .service-card:nth-child(2) .service-icon { background: rgba(95, 158, 160, 0.15); }
+        .service-card:nth-child(2) .service-icon svg { fill: var(--teal); }
+        .service-card:nth-child(3) .service-icon { background: rgba(232, 144, 122, 0.15); }
+        .service-card:nth-child(3) .service-icon svg { fill: var(--coral); }
+        .service-card:nth-child(4) .service-icon { background: rgba(95, 158, 160, 0.15); }
+        .service-card:nth-child(4) .service-icon svg { fill: var(--teal); }
+        .service-card:nth-child(5) .service-icon { background: rgba(232, 144, 122, 0.15); }
+        .service-card:nth-child(5) .service-icon svg { fill: var(--coral); }
+        .service-card:nth-child(6) .service-icon { background: rgba(95, 158, 160, 0.15); }
+        .service-card:nth-child(6) .service-icon svg { fill: var(--teal); }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--teal-dark);
+        }
+
+        .service-price span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--slate-light);
+        }
+
+        /* ============ ABOUT ============ */
+        .about {
+            background: linear-gradient(160deg, var(--sand) 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--coral-light);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--coral-light), var(--teal-light));
+        }
+
+        .about-image-inner {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .about-image-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--slate-light);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-highlight {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-highlight-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-highlight-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--white);
+        }
+
+        .about-highlight span {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-dark);
+        }
+
+        /* ============ TEAM ============ */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .team-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            text-align: center;
+            transition: all var(--transition);
+            border: 1px solid rgba(74, 85, 104, 0.04);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            max-width: 200px;
+            margin: 28px auto 0;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-photo-bg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .team-card:nth-child(1) .team-photo-bg {
+            background: linear-gradient(135deg, var(--coral-light), var(--sand));
+        }
+        .team-card:nth-child(2) .team-photo-bg {
+            background: linear-gradient(135deg, var(--teal-light), var(--sand));
+        }
+        .team-card:nth-child(3) .team-photo-bg {
+            background: linear-gradient(135deg, var(--sand-dark), var(--coral-light));
+        }
+
+        .team-photo svg {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            fill: var(--white);
+            opacity: 0.8;
+        }
+
+        .team-info {
+            padding: 20px 24px 28px;
+        }
+
+        .team-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .team-info .role {
+            font-size: 0.85rem;
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .team-info p {
+            font-size: 0.85rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+        }
+
+        /* ============ GALLERY ============ */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg { background: linear-gradient(135deg, var(--coral-light), var(--teal-light)); }
+        .gallery-item:nth-child(2) .gallery-item-bg { background: linear-gradient(135deg, var(--sand-dark), var(--coral-light)); }
+        .gallery-item:nth-child(3) .gallery-item-bg { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
+        .gallery-item:nth-child(4) .gallery-item-bg { background: linear-gradient(135deg, var(--coral), var(--sand)); }
+        .gallery-item:nth-child(5) .gallery-item-bg { background: linear-gradient(135deg, var(--sand), var(--teal)); }
+        .gallery-item:nth-child(6) .gallery-item-bg { background: linear-gradient(135deg, var(--coral-dark), var(--teal-dark)); }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 55, 72, 0.7), transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            position: relative;
+            border: 1px solid rgba(74, 85, 104, 0.04);
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-quote-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--white);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--sand-dark);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card:nth-child(1) .testimonial-avatar { background: linear-gradient(135deg, var(--coral-light), var(--coral)); }
+        .testimonial-card:nth-child(2) .testimonial-avatar { background: linear-gradient(135deg, var(--teal-light), var(--teal)); }
+        .testimonial-card:nth-child(3) .testimonial-avatar { background: linear-gradient(135deg, var(--sand-dark), var(--coral-light)); }
+
+        .testimonial-name {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--slate-dark);
+        }
+
+        .testimonial-pet {
+            font-size: 0.78rem;
+            color: var(--slate-light);
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            background: linear-gradient(160deg, var(--slate-dark) 0%, var(--slate) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: var(--coral);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+        }
+
+        .contact::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: var(--teal);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+        }
+
+        .contact .section-label {
+            color: var(--coral-light);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact .section-desc {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--coral-light);
+        }
+
+        .contact-item-text h4 {
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            transition: color var(--transition);
+        }
+
+        .contact-item-text a:hover {
+            color: var(--white);
+        }
+
+        .contact-hours {
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-hours h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--coral-light);
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.9rem;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .hours-time {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .contact-form-wrapper {
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            outline: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--coral);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .form-group select option {
+            background: var(--slate-dark);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: all var(--transition);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--slate-dark);
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .footer-text {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--coral-light);
+        }
+
+        /* ============ FLOATING WHATSAPP ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            animation: waPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes waPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0; }
+        }
+
+        /* ============ SCROLL ANIMATIONS ============ */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow-fade-up, .wow-fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-blob, .hero-pattern, .about-image-inner {
+                animation: none;
+            }
+            .whatsapp-float::before {
+                animation: none;
+            }
+            .hero-badge-dot {
+                animation: none;
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-item:nth-child(1) {
+                grid-column: span 3;
+            }
+            .hero-actions {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 100px 0;
+            }
+            .nav-links {
+                display: flex;
+            }
+            .nav-cta {
+                display: inline-flex;
+            }
+            .nav-toggle {
+                display: none;
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-stats {
+                gap: 48px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .about-highlights {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#hero" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                Snoopy Vet
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos" class="mobile-nav-link">Servicos</a>
+        <a href="#sobre" class="mobile-nav-link">Sobre</a>
+        <a href="#equipe" class="mobile-nav-link">Equipe</a>
+        <a href="#galeria" class="mobile-nav-link">Galeria</a>
+        <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+        <a href="#contato" class="mobile-menu-cta mobile-nav-link">Agendar Consulta</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge wow-fade-up">
+                <div class="hero-badge-dot"></div>
+                Ribeirao Preto, SP
+            </div>
+            <h1 class="wow-fade-up" style="transition-delay: 0.1s">
+                Clinica Veterinaria<br><span class="highlight">Snoopy</span>
+            </h1>
+            <p class="hero-subtitle wow-fade-up" style="transition-delay: 0.2s">
+                Cuidado completo e carinhoso para o seu melhor amigo. Mais de 15 anos dedicados a saude e bem-estar animal em Ribeirao Preto.
+            </p>
+            <div class="hero-actions wow-fade-up" style="transition-delay: 0.3s">
+                <a href="https://wa.me/55551636250602" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-secondary">Nossos Servicos</a>
+            </div>
+            <div class="hero-stats wow-fade-up" style="transition-delay: 0.4s">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">15+</div>
+                    <div class="hero-stat-label">Anos de Experiencia</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5.000+</div>
+                    <div class="hero-stat-label">Pets Atendidos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">4.9</div>
+                    <div class="hero-stat-label">Avaliacao Google</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label wow-fade-up">Nossos Servicos</span>
+                <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">Tudo que seu pet precisa</h2>
+                <p class="section-desc wow-fade-up" style="transition-delay: 0.2s">Oferecemos uma gama completa de servicos veterinarios com excelencia e dedicacao.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                    </div>
+                    <h3>Consulta Veterinaria</h3>
+                    <p>Avaliacao clinica completa com medico veterinario especializado. Diagnostico preciso e orientacao personalizada.</p>
+                    <div class="service-price">R$ 150 <span>/ consulta</span></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Vacinacao</h3>
+                    <p>Protocolo de vacinacao completo para caes e gatos, incluindo vacinas V10, V4, antirrabica e mais.</p>
+                    <div class="service-price">R$ 95 <span>/ dose</span></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                    </div>
+                    <h3>Cirurgia</h3>
+                    <p>Procedimentos cirurgicos com equipamentos modernos e equipe qualificada. Castracao, correcoes e emergencias.</p>
+                    <div class="service-price">R$ 450 <span>/ a partir de</span></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.4s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <h3>Emergencia 24h</h3>
+                    <p>Atendimento emergencial disponivel 24 horas por dia, 7 dias por semana. Seu pet nunca ficara desamparado.</p>
+                    <div class="service-price">R$ 200 <span>/ consulta</span></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.5s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 8h-1V6c0-2.76-2.24-5-5-5S8 3.24 8 6v2H7c-1.66 0-3 1.34-3 3v6c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3v-6c0-1.66-1.34-3-3-3zM12 3c1.66 0 3 1.34 3 3v2H9V6c0-1.66 1.34-3 3-3zm7 14c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v6z"/></svg>
+                    </div>
+                    <h3>Exames Laboratoriais</h3>
+                    <p>Hemograma, bioquimica, urinalise e outros exames com resultados rapidos e laudos detalhados.</p>
+                    <div class="service-price">R$ 120 <span>/ a partir de</span></div>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.6s">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/></svg>
+                    </div>
+                    <h3>Banho e Tosa</h3>
+                    <p>Hidratacao, corte de unhas, limpeza auricular e tosa higiênica com produtos de alta qualidade.</p>
+                    <div class="service-price">R$ 70 <span>/ a partir de</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-inner"></div>
+                    <div class="about-image-text">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="margin-bottom:8px"><path d="M4.5 9.5c-1 0-1.5.67-1.5 1.5 0 .83.67 1.5 1.5 1.5S6 11.83 6 11c0-.83-.67-1.5-1.5-1.5zm0-4C3.5 5.5 3 6.17 3 7c0 .83.67 1.5 1.5 1.5S6 7.83 6 7c0-.83-.67-1.5-1.5-1.5zM4.5 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM8 19h12v-2H8v2zm0-6h12v-2H8v2zm0-8v2h12V5H8z"/></svg>
+                        Desde 2009<br>cuidando do seu pet
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label wow-fade-up">Nossa Historia</span>
+                    <h2 class="wow-fade-up" style="transition-delay: 0.1s">Mais de 15 anos de amor e dedicacao aos animais</h2>
+                    <p class="wow-fade-up" style="transition-delay: 0.2s">
+                        A Clinica Veterinaria Snoopy nasceu em 2009, no coracao da Vila Tibério em Ribeirao Preto, com um proposito simples e claro: oferecer atendimento veterinario de excelencia com muito carinho e respeito a cada paciente.
+                    </p>
+                    <p class="wow-fade-up" style="transition-delay: 0.3s">
+                        Fundada por profissionais apaixonados por animais, nossa clinica se tornou referencia na regiao pela qualidade dos servicos e pelo atendimento humanizado. Acreditamos que cada pet e unico e merece um cuidado personalizado.
+                    </p>
+                    <div class="about-highlights wow-fade-up" style="transition-delay: 0.4s">
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <span>Equipe Especializada</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <span>Equipamentos Modernos</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <span>Ambiente Acolhedor</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <span>Atendimento 24h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label wow-fade-up">Nossa Equipe</span>
+                <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">Profissionais que fazem a diferenca</h2>
+                <p class="section-desc wow-fade-up" style="transition-delay: 0.2s">Conhea a equipe dedicada que cuida da saude do seu pet com carinho e profissionalismo.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="team-photo">
+                        <div class="team-photo-bg"></div>
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Ricardo Mendes</h3>
+                        <p class="role">Medico Veterinario - CRMV-SP 12345</p>
+                        <p>Graduado pela UNESP de Jaboticabal com especializacao em cirurgia de pequenos animais. Mais de 18 anos de experiencia.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="team-photo">
+                        <div class="team-photo-bg"></div>
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dra. Ana Paula Oliveira</h3>
+                        <p class="role">Medica Veterinaria - CRMV-SP 23456</p>
+                        <p>Especialista em dermatologia e clinica geral de caes e gatos. Paixao por medicina preventiva e bem-estar animal.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="team-photo">
+                        <div class="team-photo-bg"></div>
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Lucas Ferreira</h3>
+                        <p class="role">Tosador e Auxiliar Veterinario</p>
+                        <p>Expert em tosa higiênica e estetica animal. Cuida de cada pet com paciencia e carinho, garantindo conforto e seguranca.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label wow-fade-up">Galeria</span>
+                <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">Momentos especiais</h2>
+                <p class="section-desc wow-fade-up" style="transition-delay: 0.2s">Confira alguns dos lindos momentos que vivemos na nossa clinica.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Recepcao acolhedora da Snoopy Vet</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Sala de consultas</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Centro cirurgico</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.4s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Area de banho e tosa</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.5s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Nossos pacientes felizes</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.6s">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Equipe em acao</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label wow-fade-up">Depoimentos</span>
+                <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">O que dizem nossos clientes</h2>
+                <p class="section-desc wow-fade-up" style="transition-delay: 0.2s">A satisfacao dos tutores e a nossa maior recompensa.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Atendimento incrivel! O Dr. Ricardo cuidou do meu dog Rex com muito carinho durante toda a cirurgia. A equipe e super atenciosa e o ambiente e muito limpo e organizado. Recomendo de olhos fechados!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Camila Santos</div>
+                            <div class="testimonial-pet">Tutora de Rex (Golden Retriever)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Levo minha gata Mimi na Snoopy ha 3 anos e nunca tive problema. A Dra. Ana Paula e maravilhosa, sempre muito prestativa e cuidadosa. A clinica e top de linha em Ribeirao Preto!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Fernando Costa</div>
+                            <div class="testimonial-pet">Tutor de Mimi (Siamês)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Meu dog passou mal de madrugada e a Snoopy me atendeu de emergencia. Fiquei muito impressionado com a agilidade e o profissionalismo da equipe. O Thor saiu de la novinho em folha. Obrigado de coracao!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Patricia Almeida</div>
+                            <div class="testimonial-pet">Tutora de Thor (Bulldog Frances)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label wow-fade-up">Contato</span>
+                <h2 class="section-title wow-fade-up" style="transition-delay: 0.1s">Agende sua consulta</h2>
+                <p class="section-desc wow-fade-up" style="transition-delay: 0.2s">Entre em contato conosco e marque um horario para o seu pet.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.1s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Endereco</h4>
+                            <p>R. Goncalves Dias, 491<br>Vila Tiberio, Ribeirao Preto - SP<br>CEP: 14050-380</p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.2s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Telefone</h4>
+                            <a href="tel:+55551636250602">(16) 3625-0602</a>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.3s">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/55551636250602" target="_blank" rel="noopener">(16) 3625-0602</a>
+                        </div>
+                    </div>
+                    <div class="contact-hours wow-fade-up" style="transition-delay: 0.4s">
+                        <h4>Horario de Funcionamento</h4>
+                        <div class="hours-row">
+                            <span class="hours-day">Segunda a Sexta</span>
+                            <span class="hours-time">08:00 - 18:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Sabado</span>
+                            <span class="hours-time">08:00 - 12:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Domingo</span>
+                            <span class="hours-time">Fechado</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Emergencia</span>
+                            <span class="hours-time">24 horas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" style="transition-delay: 0.3s">
+                    <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Mensagem Enviada!'; this.querySelector('button').style.background='linear-gradient(135deg, #5F9EA0, #4A8587)';">
+                        <div class="form-group">
+                            <label for="name">Seu Nome</label>
+                            <input type="text" id="name" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" placeholder="(16) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet">Nome do Pet</label>
+                            <input type="text" id="pet" placeholder="Nome do seu pet">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico Desejado</label>
+                            <select id="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta Veterinaria</option>
+                                <option value="vacinacao">Vacinacao</option>
+                                <option value="cirurgia">Cirurgia</option>
+                                <option value="emergencia">Emergencia</option>
+                                <option value="exames">Exames Laboratoriais</option>
+                                <option value="banho-tosa">Banho e Tosa</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" placeholder="Conte-nos como podemos ajudar" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-whatsapp">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Enviar Mensagem pelo WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">Snoopy Veterinary Clinic</div>
+            <div class="footer-text">Clinica Veterinaria em Ribeirao Preto, SP</div>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-text">2025 Snoopy Veterinary Clinic. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/55551636250602" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* NAVBAR SCROLL BEHAVIOR */
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateNavbar() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            if (currentScrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        /* MOBILE MENU TOGGLE */
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* INTERSECTION OBSERVER - SCROLL ANIMATIONS */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* SMOOTH SCROLL FOR ANCHOR LINKS */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                var target = document.querySelector(targetId);
+                if (target) {
+                    var navHeight = navbar.offsetHeight;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        /* CONTACT FORM - WHATSAPP REDIRECT */
+        var contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var pet = document.getElementById('pet').value;
+            var service = document.getElementById('service');
+            var serviceText = service.options[service.selectedIndex].text;
+            var message = document.getElementById('message').value;
+
+            var whatsappMessage = 'Ola! Meu nome e ' + name + '.\n';
+            if (pet) whatsappMessage += 'Tenho um pet chamado ' + pet + '.\n';
+            whatsappMessage += 'Gostaria de agendar: ' + serviceText + '.\n';
+            if (message) whatsappMessage += 'Observacao: ' + message + '\n';
+            whatsappMessage += 'Meu telefone: ' + phone;
+
+            var encodedMessage = encodeURIComponent(whatsappMessage);
+            window.open('https://wa.me/55551636250602?text=' + encodedMessage, '_blank');
+
+            var btn = contactForm.querySelector('button[type="submit"]');
+            btn.textContent = 'Mensagem Enviada!';
+            btn.style.background = 'linear-gradient(135deg, #5F9EA0, #4A8587)';
+            setTimeout(function() {
+                btn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Enviar Mensagem pelo WhatsApp';
+                btn.style.background = '';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
