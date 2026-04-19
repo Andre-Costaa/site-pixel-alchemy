@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agbara Gym - Treino de Alta Performance com Acompanhamento Personalizado em Brasilia DF. Transforme seu corpo com profissionais qualificados na Asa Norte.">
+    <meta name="keywords" content="academia brasilia, personal trainer, treino personalizado, alta performance, asa norte, DF">
+    <meta name="author" content="Agbara Gym">
+
+    <meta property="og:title" content="Agbara Gym | Alta Performance em Brasilia">
+    <meta property="og:description" content="Treino de Alta Performance com Acompanhamento Personalizado na Asa Norte, Brasilia DF.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/agbara-gym/">
+    <meta property="og:locale" content="pt_BR">
+
+    <title>Agbara Gym | Treino de Alta Performance com Acompanhamento Personalizado em Brasilia DF</title>
+
+    <style>
+        :root {
+            --coral: #E8907A;
+            --coral-dark: #D4725C;
+            --coral-light: #F2B8AA;
+            --teal: #5F9EA0;
+            --teal-dark: #4A7F81;
+            --teal-light: #8BC4C6;
+            --sand: #F4E4C1;
+            --sand-light: #FAF3E3;
+            --sand-dark: #E6D1A0;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --slate-dark: #2D3748;
+            --white: #FFFFFF;
+            --black: #1A202C;
+
+            --font-display: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Gill Sans', sans-serif;
+            --font-body: 'Verdana', 'Geneva', 'Tahoma', sans-serif;
+
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+            --shadow-sm: 0 2px 8px rgba(74, 85, 104, 0.08);
+            --shadow-md: 0 8px 24px rgba(74, 85, 104, 0.12);
+            --shadow-lg: 0 16px 48px rgba(74, 85, 104, 0.16);
+            --shadow-glow: 0 0 40px rgba(232, 144, 122, 0.3);
+
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--slate-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--slate-dark);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 85, 104, 0.06);
+            transition: transform 0.4s ease, box-shadow var(--transition);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 4px 20px rgba(74, 85, 104, 0.08);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--slate-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--slate-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral);
+            border-radius: 1px;
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--coral);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--coral);
+            color: var(--white) !important;
+            padding: 10px 24px !important;
+            border-radius: 50px;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.06em;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dark);
+            color: var(--white) !important;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--slate-dark);
+            border-radius: 2px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--slate-dark);
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--coral);
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--slate-dark);
+            padding-top: 72px;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image:
+                radial-gradient(circle at 20% 50%, var(--coral) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, var(--teal) 1px, transparent 1px),
+                radial-gradient(circle at 50% 80%, var(--coral) 1px, transparent 1px);
+            background-size: 60px 60px, 80px 80px, 40px 40px;
+            background-position: 0 0, 30px 30px, 15px 60px;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--coral);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--teal);
+            bottom: -5%;
+            left: -5%;
+            animation-delay: -4s;
+        }
+
+        .hero-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--sand);
+            top: 40%;
+            left: 30%;
+            opacity: 0.3;
+            animation-delay: -8s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            25% { transform: translate(30px, -40px) scale(1.05) rotate(5deg); }
+            50% { transform: translate(-20px, 20px) scale(0.95) rotate(-3deg); }
+            75% { transform: translate(15px, 30px) scale(1.02) rotate(4deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(232, 144, 122, 0.15);
+            color: var(--coral-light);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(232, 144, 122, 0.25);
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            color: var(--white);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out 0.15s both;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--coral), var(--coral-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.45s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background: var(--coral);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(232, 144, 122, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 144, 122, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--white);
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        .hero-scroll-line {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--coral), transparent);
+            margin: 0 auto 8px;
+            border-radius: 1px;
+        }
+
+        .hero-scroll-text {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===================== SECTIONS COMMON ===================== */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--sand-light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--coral);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--slate-light);
+            line-height: 1.8;
+        }
+
+        /* ===================== SERVICES ===================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            transition: all var(--transition);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--teal));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .service-icon-1 { background: rgba(232, 144, 122, 0.12); }
+        .service-icon-2 { background: rgba(95, 158, 160, 0.12); }
+        .service-icon-3 { background: rgba(244, 228, 193, 0.5); }
+        .service-icon-4 { background: rgba(232, 144, 122, 0.12); }
+        .service-icon-5 { background: rgba(95, 158, 160, 0.12); }
+        .service-icon-6 { background: rgba(244, 228, 193, 0.5); }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--teal-dark);
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-light);
+        }
+
+        /* ===================== ABOUT ===================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--coral) 0%, var(--teal) 50%, var(--sand) 100%);
+            border-radius: var(--radius-xl);
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image-badge-number {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--coral);
+            display: block;
+            line-height: 1;
+        }
+
+        .about-image-badge-text {
+            font-size: 0.75rem;
+            color: var(--slate-light);
+            font-weight: 600;
+        }
+
+        .about-content .section-tag {
+            display: block;
+            text-align: left;
+        }
+
+        .about-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--slate-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: rgba(95, 158, 160, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-feature-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .about-feature-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--slate-dark);
+        }
+
+        /* ===================== TEAM ===================== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            aspect-ratio: 3/4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-slow);
+        }
+
+        .team-card:hover .team-photo-placeholder {
+            transform: scale(1.05);
+        }
+
+        .team-photo-1 .team-photo-placeholder {
+            background: linear-gradient(160deg, var(--coral) 0%, var(--sand) 60%, var(--teal-light) 100%);
+        }
+
+        .team-photo-2 .team-photo-placeholder {
+            background: linear-gradient(160deg, var(--teal) 0%, var(--sand) 60%, var(--coral-light) 100%);
+        }
+
+        .team-photo-3 .team-photo-placeholder {
+            background: linear-gradient(160deg, var(--sand-dark) 0%, var(--teal-light) 60%, var(--coral) 100%);
+        }
+
+        .team-info {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--coral);
+            font-weight: 600;
+            font-family: var(--font-display);
+            margin-bottom: 8px;
+        }
+
+        .team-credentials {
+            font-size: 0.78rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+        }
+
+        /* ===================== GALLERY ===================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { aspect-ratio: 16/9; }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--slate-dark) 0%, var(--coral) 50%, var(--teal) 100%);
+        }
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-light) 100%);
+        }
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--sand) 100%);
+        }
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--sand-dark) 0%, var(--teal) 100%);
+        }
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--coral-dark) 0%, var(--coral-light) 100%);
+        }
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--slate-dark) 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 32, 44, 0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        /* ===================== TESTIMONIALS ===================== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            position: relative;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            opacity: 0.08;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--sand-dark);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar-placeholder {
+            width: 100%;
+            height: 100%;
+        }
+
+        .testimonial-card:nth-child(1) .testimonial-avatar-placeholder {
+            background: linear-gradient(135deg, var(--coral), var(--coral-light));
+        }
+        .testimonial-card:nth-child(2) .testimonial-avatar-placeholder {
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+        }
+        .testimonial-card:nth-child(3) .testimonial-avatar-placeholder {
+            background: linear-gradient(135deg, var(--sand-dark), var(--sand));
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--slate-dark);
+        }
+
+        .testimonial-detail {
+            font-size: 0.78rem;
+            color: var(--slate-light);
+        }
+
+        /* ===================== CONTACT ===================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            transition: all var(--transition);
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(232, 144, 122, 0.2);
+        }
+
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(232, 144, 122, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .contact-card-label {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--coral);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .contact-card-value {
+            font-size: 0.92rem;
+            color: var(--slate-dark);
+            line-height: 1.6;
+        }
+
+        .contact-card-value a {
+            color: var(--teal-dark);
+            font-weight: 600;
+        }
+
+        .contact-card-value a:hover {
+            color: var(--coral);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+        }
+
+        .contact-form-title {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--slate);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(74, 85, 104, 0.1);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--slate-dark);
+            background: var(--sand-light);
+            transition: all var(--transition);
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--coral);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(232, 144, 122, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--coral);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition);
+            letter-spacing: 0.02em;
+        }
+
+        .form-submit:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 144, 122, 0.35);
+        }
+
+        .contact-whatsapp {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            transition: all var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1EBE57;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--slate-dark);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 64px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .footer-brand span {
+            color: var(--coral);
+        }
+
+        .footer-text {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--coral);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.4);
+            transition: color var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--coral);
+        }
+
+        /* ===================== WHATSAPP FLOAT ===================== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0; }
+        }
+
+        /* ===================== SCROLL ANIMATIONS ===================== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s ease-out;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-stats {
+                gap: 64px;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* ===================== REDUCED MOTION ===================== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#hero" class="nav-logo">Agbara<span>Gym</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agende Agora</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Alta Performance em Brasilia</span>
+            <h1 class="hero-title">Transforme Seu Corpo. <span class="highlight">Supere Seus Limites.</span></h1>
+            <p class="hero-subtitle">Treino de alta performance com acompanhamento personalizado. Sua evolucao comeca aqui na Asa Norte.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/555561996078014" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Fale pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-secondary">Conheca os Servicos</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="500">0</span>
+                    <span class="hero-stat-label">Alunos Ativos</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="8">0</span>
+                    <span class="hero-stat-label">Anos de Experiencia</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="12">0</span>
+                    <span class="hero-stat-label">Profissionais</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+            <span class="hero-scroll-text">Saiba Mais</span>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-alt" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Nossos Servicos</span>
+                <h2 class="section-title">Tudo que Voce Precisa Para Evoluir</h2>
+                <p class="section-desc">Programas desenvolvidos por profissionais qualificados, focados nos seus objetivos reais.</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="service-icon service-icon-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <h3 class="service-title">Consulta Inicial</h3>
+                    <p class="service-desc">Avaliacao completa do seu perfil: historico de treinos, limitacoes, objetivos e exames. Definimos juntos o melhor caminho para sua evolucao.</p>
+                    <span class="service-price">R$ 120<small> / sessao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="service-icon service-icon-2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    </div>
+                    <h3 class="service-title">Retorno e Reavaliacao</h3>
+                    <p class="service-desc">Monitoramento constante dos seus resultados. Ajustamos cargas, exercicios e estrategias a cada fase para garantir evolucao continua.</p>
+                    <span class="service-price">R$ 90<small> / sessao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="service-icon service-icon-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#D4725C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3 class="service-title">Exame Complementar</h3>
+                    <p class="service-desc">Testes fisicos detalhados: composicao corporal, flexibilidade, fora maxima e resistencia. Dados precisos para prescrever o treino ideal.</p>
+                    <span class="service-price">R$ 180<small> / avaliacao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.4s">
+                    <div class="service-icon service-icon-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3 class="service-title">Procedimento Esportivo</h3>
+                    <p class="service-desc">Protocolos avancados para recuperacao e performance: liberacao miofascial, bandagem funcional e tecnicas de mobilidade articular.</p>
+                    <span class="service-price">R$ 150<small> / sessao</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.5s">
+                    <div class="service-icon service-icon-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 class="service-title">Avaliacao Inicial</h3>
+                    <p class="service-desc">Primeiro passo para sua transformacao. Anamnese completa, testes posturais e definicao de metas individuais com periodizacao estruturada.</p>
+                    <span class="service-price">Gratuito<small> na primeira visita</small></span>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.6s">
+                    <div class="service-icon service-icon-6">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#D4725C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3 class="service-title">Tratamento Personalizado</h3>
+                    <p class="service-desc">Programa exclusivo montado sob medida: treino periodizado, acompanhamento nutricional e suporte continuo para resultados duradouros.</p>
+                    <span class="service-price">R$ 280<small> / mes</small></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-placeholder"></div>
+                    <div class="about-image-badge">
+                        <span class="about-image-badge-number" data-target="8">0</span>
+                        <span class="about-image-badge-text">Anos transformando vidas em Brasilia</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag wow-fade-up">Sobre Nos</span>
+                    <h2 class="about-title wow-fade-up">Mais Que Uma Academia, Um Estilo de Vida</h2>
+                    <p class="about-text wow-fade-up">A Agbara Gym nasceu em 2017 na Asa Norte com uma missao clara: oferecer treino de alta performance com acompanhamento verdadeiramente personalizado. Acreditamos que cada corpo e unico e merece um programa construido sob medida.</p>
+                    <p class="about-text wow-fade-up">Nosso espaco foi pensado para proporcionar a melhor experiencia de treino em Brasilia. Equipamentos de primeira linha, ambiente acolhedor e uma equipe apaixonada por resultados reais fazem da Agbara Gym o lugar certo para quem quer evoluir.</p>
+                    <div class="about-features">
+                        <div class="about-feature wow-fade-up" style="transition-delay: 0.1s">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Profissionais certificados e atualizados</span>
+                        </div>
+                        <div class="about-feature wow-fade-up" style="transition-delay: 0.2s">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Equipamentos premium e espaco amplo</span>
+                        </div>
+                        <div class="about-feature wow-fade-up" style="transition-delay: 0.3s">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Periodizacao cientifica e acompanhamento continuo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section section-alt" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais Que Fazem Acontecer</h2>
+                <p class="section-desc">Cada membro da nossa equipe e apaixonado por transformar vidas atraves do exercicio fisico.</p>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="team-photo team-photo-1">
+                        <div class="team-photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Rafael Agbara</h3>
+                        <p class="team-role">Fundador e Personal Trainer</p>
+                        <p class="team-credentials">CREF 009876-G/DF<br>Especialista em Musculacao e Hipertrofia<br>8 anos de experiencia</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="team-photo team-photo-2">
+                        <div class="team-photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Camila Ferreira</h3>
+                        <p class="team-role">Personal Trainer e Nutricionista</p>
+                        <p class="team-credentials">CREF 008543-G/DF<br>CRN 45678<br>Pos-graduada em Nutricao Esportiva</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="team-photo team-photo-3">
+                        <div class="team-photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Lucas Mendes</h3>
+                        <p class="team-role">Fisioterapeuta Esportivo</p>
+                        <p class="team-credentials">CREFITO 67890-DF<br>Especialista em Reabilitacao<br>Prevencao e tratamento de lesoes</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Galeria</span>
+                <h2 class="section-title">Conheca Nosso Espaco</h2>
+                <p class="section-desc">Um ambiente pensado para inspirar e motivar sua evolucao diaria.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Area de Musculacao</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Espaco de Treinamento Funcional</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de Avaliacao Fisica</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Area de Alongamento e Recuperacao</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Recepcao e Lounge</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Vista Panoramica do Espaco</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-alt" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Alunos Dizem</h2>
+                <p class="section-desc">Resultados reais de pessoas reais que transformaram suas vidas conosco.</p>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s">
+                    <svg class="testimonial-quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Em 6 meses na Agbara, perdi 18kg e ganhei uma disposicao que nao tinha ha anos. O acompanhamento personalizado faz toda a diferenca. Rafael entende exatamente os meus limites e sempre me motiva a ir alem."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="testimonial-avatar-placeholder"></div>
+                        </div>
+                        <div>
+                            <p class="testimonial-name">Fernanda Oliveira</p>
+                            <p class="testimonial-detail">Aluna ha 1 ano - Perda de 18kg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.2s">
+                    <svg class="testimonial-quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Sou atleta amador de corrida e procurei a Agbara para melhorar meu desempenho. Os resultados foram impressionantes: quebrei meu recorde pessoal na meia maratona apos 3 meses de treinamento. Equipe nota 10."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="testimonial-avatar-placeholder"></div>
+                        </div>
+                        <div>
+                            <p class="testimonial-name">Bruno Santos</p>
+                            <p class="testimonial-detail">Aluno ha 8 meses - Corredor amador</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.3s">
+                    <svg class="testimonial-quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Apos uma lesao no joelho, achei que nunca mais voltaria a treinar pesado. Lucas me ajudou com a reabilitacao e hoje estou mais forte do que antes. A Agbara cuida de voce de verdade."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="testimonial-avatar-placeholder"></div>
+                        </div>
+                        <div>
+                            <p class="testimonial-name">Mariana Costa</p>
+                            <p class="testimonial-detail">Aluna ha 2 anos - Reabilitacao completa</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Contato</span>
+                <h2 class="section-title">Vem Treinar Com a Gente</h2>
+                <p class="section-desc">Agende sua avaliacao inicial gratuita e conheca de perto tudo que preparamos para voce.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-info-cards">
+
+                        <div class="contact-card wow-fade-up" style="transition-delay: 0.05s">
+                            <div class="contact-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-card-label">Endereco</p>
+                                <p class="contact-card-value">Asa Norte CLN 307 BLOCO E Sala 201<br>Plano Piloto, Brasilia - DF<br>CEP 70746-550</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card wow-fade-up" style="transition-delay: 0.1s">
+                            <div class="contact-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-card-label">Telefone</p>
+                                <p class="contact-card-value"><a href="tel:+5561996078014">(61) 99607-8014</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card wow-fade-up" style="transition-delay: 0.15s">
+                            <div class="contact-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <p class="contact-card-label">Horario de Funcionamento</p>
+                                <p class="contact-card-value">Segunda a Sexta: 6h as 22h<br>Sabado: 7h as 14h<br>Domingo e Feriados: Fechado</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-whatsapp wow-fade-up">
+                        <a href="https://wa.me/555561996078014" class="btn-whatsapp" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Agendar pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form wow-fade-up">
+                    <h3 class="contact-form-title">Envie Sua Mensagem</h3>
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="nome">Seu Nome</label>
+                                <input type="text" id="nome" name="nome" class="form-input" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telefone">Telefone / WhatsApp</label>
+                                <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="(61) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="servico">Servico de Interesse</label>
+                            <select id="servico" name="servico" class="form-select" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta Inicial</option>
+                                <option value="retorno">Retorno e Reavaliacao</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento Esportivo</option>
+                                <option value="avaliacao">Avaliacao Inicial (Gratuita)</option>
+                                <option value="tratamento">Tratamento Personalizado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" class="form-textarea" placeholder="Conte-nos um pouco sobre seus objetivos..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-brand">Agbara<span>Gym</span></p>
+                    <p class="footer-text">Treino de alta performance com acompanhamento personalizado na Asa Norte, Brasilia. Sua evolucao e nossa missao.</p>
+                </div>
+                <div>
+                    <p class="footer-heading">Navegacao</p>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Servicos</a></li>
+                        <li><a href="#sobre">Sobre Nos</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contato</p>
+                    <ul class="footer-links">
+                        <li><a href="tel:+5561996078014">(61) 99607-8014</a></li>
+                        <li><a href="https://wa.me/555561996078014" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="#">CLN 307 BLOCO E Sala 201, Asa Norte</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">2025 Agbara Gym. Todos os direitos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Politica de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/555561996078014" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+        <span class="whatsapp-float-pulse"></span>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===================== NAVIGATION ===================== */
+        (function() {
+            var nav = document.getElementById('nav');
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var lastScrollY = 0;
+            var navHeight = 72;
+            var ticking = false;
+
+            function onScroll() {
+                var currentScrollY = window.scrollY;
+                if (currentScrollY > navHeight) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                if (currentScrollY > lastScrollY && currentScrollY > navHeight * 2) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+                lastScrollY = currentScrollY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(onScroll);
+                    ticking = true;
+                }
+            });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            });
+
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            for (var i = 0; i < mobileLinks.length; i++) {
+                mobileLinks[i].addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        })();
+
+        /* ===================== SCROLL ANIMATIONS ===================== */
+        (function() {
+            var animatedElements = document.querySelectorAll('.wow-fade-up, .wow-fade-in');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var delay = entry.target.style.transitionDelay;
+                            var delayMs = delay ? parseFloat(delay) * 1000 : 0;
+                            setTimeout(function() {
+                                entry.target.classList.add('visible');
+                            }, delayMs);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px'
+                });
+
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ===================== COUNTER ANIMATION ===================== */
+        (function() {
+            var counters = document.querySelectorAll('[data-target]');
+            var animated = new Set();
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                var duration = 2000;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+                    el.textContent = current + (target >= 100 ? '+' : '+');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target + '+';
+                    }
+                }
+
+                window.requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !animated.has(entry.target)) {
+                            animated.add(entry.target);
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                counters.forEach(function(el) {
+                    el.textContent = el.getAttribute('data-target') + '+';
+                });
+            }
+        })();
+
+        /* ===================== CONTACT FORM ===================== */
+        (function() {
+            var form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var nome = document.getElementById('nome').value.trim();
+                    var telefone = document.getElementById('telefone').value.trim();
+                    var servico = document.getElementById('servico').value;
+                    var mensagem = document.getElementById('mensagem').value.trim();
+
+                    var whatsappMsg = 'Ola! Meu nome e ' + nome + '.';
+                    whatsappMsg += ' Telefone: ' + telefone + '.';
+                    whatsappMsg += ' Tenho interesse em: ' + servico + '.';
+                    if (mensagem) {
+                        whatsappMsg += ' Mensagem: ' + mensagem;
+                    }
+
+                    var encodedMsg = encodeURIComponent(whatsappMsg);
+                    window.open('https://wa.me/555561996078014?text=' + encodedMsg, '_blank');
+                });
+            }
+        })();
+
+        /* ===================== SMOOTH SCROLL ===================== */
+        (function() {
+            var anchors = document.querySelectorAll('a[href^="#"]');
+            for (var i = 0; i < anchors.length; i++) {
+                anchors[i].addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href === '#') return;
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        var offsetTop = target.getBoundingClientRect().top + window.scrollY - 72;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
