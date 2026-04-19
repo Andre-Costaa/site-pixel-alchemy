@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lorenna - Personal Trainer em Brasilia. Treinamento personalizado para resultados reais. Transforme seu corpo e sua saude com acompanhamento profissional.">
+    <meta name="keywords" content="personal trainer, brasilia, treinamento personalizado, academia, fitness, saude, emagrecimento">
+    <meta name="author" content="Lorenna Personal Trainer">
+    <title>Lorenna | Personal Trainer em Brasilia</title>
+
+    <meta property="og:title" content="Lorenna | Personal Trainer em Brasilia">
+    <meta property="og:description" content="Treinamento personalizado para resultados reais. Transforme seu corpo e sua saude com acompanhamento profissional.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-dark: #8B5A2B;
+            --bronze-light: #D4956A;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2E;
+            --white: #FFFFFF;
+            --text-primary: #2C1810;
+            --text-secondary: #6B5244;
+            --text-light: #8B7264;
+            --shadow-soft: 0 4px 20px rgba(60, 36, 21, 0.08);
+            --shadow-medium: 0 8px 40px rgba(60, 36, 21, 0.12);
+            --shadow-strong: 0 12px 60px rgba(60, 36, 21, 0.18);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: var(--text-primary);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-soft);
+        }
+
+        nav .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--espresso);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--bronze);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.82rem !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--bronze-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(184, 115, 51, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--espresso) 0%, var(--espresso-light) 40%, var(--bronze-dark) 100%);
+            padding: 120px 24px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(184, 115, 51, 0.15) 0%, transparent 70%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -20%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(247, 231, 206, 0.08) 0%, transparent 60%);
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(247, 231, 206, 0.3);
+            color: var(--champagne);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 32px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--champagne);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--bronze-light);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(247, 231, 206, 0.7);
+            max-width: 560px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--bronze);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--bronze);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--bronze-light);
+            border-color: var(--bronze-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(184, 115, 51, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--champagne);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(247, 231, 206, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--champagne);
+            background: rgba(247, 231, 206, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.2rem;
+            color: var(--bronze-light);
+            font-weight: bold;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(247, 231, 206, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION COMMONS ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            color: var(--espresso);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 16px auto 0;
+            font-size: 1.05rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--bronze), var(--bronze-light));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bronze), var(--bronze-light));
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(184, 115, 51, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            border: 1px solid rgba(184, 115, 51, 0.12);
+        }
+
+        .service-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: var(--espresso);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            color: var(--bronze);
+            font-weight: 600;
+        }
+
+        .service-price span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: linear-gradient(145deg, var(--bronze-light) 0%, var(--bronze) 50%, var(--bronze-dark) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.3) 0%, transparent 50%);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            width: 50%;
+            height: 40%;
+            border: 2px solid var(--bronze);
+            border-radius: var(--radius-md);
+            z-index: -1;
+        }
+
+        .about-content .section-tag {
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--espresso);
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 36px;
+        }
+
+        .about-highlight {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .about-highlight-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.12), rgba(184, 115, 51, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-highlight-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .about-highlight span {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+            border: 2px solid rgba(184, 115, 51, 0.12);
+            transition: var(--transition-smooth);
+            background: linear-gradient(145deg, var(--champagne) 0%, var(--bronze-light) 50%, var(--bronze) 100%);
+            position: relative;
+        }
+
+        .team-card:hover .team-photo {
+            border-color: var(--bronze);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.15) 0%, transparent 40%);
+        }
+
+        .team-card h3 {
+            font-size: 1.15rem;
+            color: var(--espresso);
+            margin-bottom: 6px;
+        }
+
+        .team-card .role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .team-card .bio {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+        }
+
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(135deg, #D4956A 0%, #B87333 50%, #8B5A2B 100%);
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, #F7E7CE 0%, #D4956A 50%, #B87333 100%);
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, #B87333 0%, #3C2415 50%, #5A3D2E 100%);
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, #8B5A2B 0%, #D4956A 50%, #F7E7CE 100%);
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, #3C2415 0%, #8B5A2B 50%, #B87333 100%);
+        }
+
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, #D4956A 0%, #F7E7CE 50%, #B87333 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-overlay svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--champagne);
+            fill: none;
+            stroke-width: 1.5;
+            transform: scale(0.8);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay svg {
+            transform: scale(1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--espresso);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials .section-tag {
+            color: var(--bronze-light);
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--champagne);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(247, 231, 206, 0.6);
+        }
+
+        .testimonials .section-divider {
+            background: linear-gradient(90deg, var(--bronze-light), var(--champagne));
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 248, 240, 0.05);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 248, 240, 0.08);
+            border-color: rgba(184, 115, 51, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--bronze);
+            stroke: var(--bronze);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: rgba(247, 231, 206, 0.8);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            flex-shrink: 0;
+            border: 2px solid rgba(184, 115, 51, 0.3);
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 0.95rem;
+            color: var(--champagne);
+            font-weight: 600;
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.8rem;
+            color: rgba(247, 231, 206, 0.45);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            color: var(--espresso);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .contact-info > p {
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(184, 115, 51, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-item-text strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--espresso);
+            margin-bottom: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .contact-item-text span,
+        .contact-item-text a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.5;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--bronze);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: var(--transition-smooth);
+            margin-top: 16px;
+            font-weight: 500;
+        }
+
+        .whatsapp-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        .whatsapp-btn:hover {
+            background: #1DA851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-form-wrapper {
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            padding: 44px;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.3rem;
+            color: var(--espresso);
+            font-weight: 400;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-sm);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--white);
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--bronze);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .form-submit:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(184, 115, 51, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--espresso);
+            padding: 60px 0 32px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(247, 231, 206, 0.08);
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            color: var(--champagne);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .footer-logo span {
+            color: var(--bronze-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            background: var(--bronze);
+            border-color: var(--bronze);
+        }
+
+        .footer-social a svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--champagne);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 28px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: rgba(247, 231, 206, 0.35);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .footer-bottom a {
+            color: rgba(247, 231, 206, 0.35);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--bronze-light);
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+            z-index: 999;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            animation: pulse 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 48px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid .team-card:last-child {
+                grid-column: span 2;
+                max-width: 340px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid .gallery-item:last-child {
+                grid-column: span 2;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 2;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 360px;
+                height: 100vh;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                box-shadow: var(--shadow-strong);
+                transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 998;
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 999;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                gap: 28px;
+            }
+
+            .hero-stat-number {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid .team-card:last-child {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid .gallery-item:last-child {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Lorenna<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="https://wa.me/555561992143200" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu de navegacao">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Personal Trainer em Brasilia</div>
+            <h1>Transforme seu corpo.<br>Eleve sua <em>saude</em>.</h1>
+            <p class="hero-subtitle">Treinamento personalizado com acompanhamento profissional dedicado. Resultados reais para quem busca a melhor versao de si mesmo.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/555561992143200" class="btn-primary">Agendar Avaliacao</a>
+                <a href="#servicos" class="btn-secondary">Conhecer Servicos</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="8">0</span>
+                    <span class="hero-stat-label">Anos de Experiencia</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="500">0</span>
+                    <span class="hero-stat-label">Alunos Transformados</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="98">0</span>
+                    <span class="hero-stat-label">% Satisfacao</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Servicos</span>
+                <h2>Programas Personalizados</h2>
+                <div class="section-divider"></div>
+                <p>Cada treino e desenhado exclusivamente para suas necessidades, objetivos e condicao fisica atual.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Consulta Inicial</h3>
+                    <p>Avaliacao completa de composicao corporal, historico de saude e definicao de objetivos pessoais com acompanhamento individualizado.</p>
+                    <div class="service-price">R$ 150 <span>/ sessao</span></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M23 18v1a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8"/><path d="M16 3l5 5"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Reavaliacao periodica para ajuste de treinos, acompanhamento de evolucao e adequacao de metas conforme seu progresso.</p>
+                    <div class="service-price">R$ 120 <span>/ sessao</span></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Analise detalhada de exames laboratoriais e fisicos para criar um programa de treinamento seguro e eficaz para voce.</p>
+                    <div class="service-price">R$ 200 <span>/ avaliacao</span></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Procedimento Especial</h3>
+                    <p>Sessoes especializadas com tecnicas avancadas como treino funcional, HIIT, musculacao e preparacao fisica especifica.</p>
+                    <div class="service-price">R$ 180 <span>/ sessao</span></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Avaliacao Fisica</h3>
+                    <p>Bateria completa de testes fisicos incluindo flexibilidade, resistencia, forca e composicao corporal com emissao de laudo.</p>
+                    <div class="service-price">R$ 250 <span>/ avaliacao</span></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="600">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Pacote Tratamento</h3>
+                    <p>Programa completo com acompanhamento semanal, plano alimentar orientado, treinos progressivos e suporte constante.</p>
+                    <div class="service-price">R$ 590 <span>/ mes</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content wow-fade-up" data-delay="200">
+                    <span class="section-tag">Sobre</span>
+                    <h2>Mais do que treinos, uma transformacao completa</h2>
+                    <p>Há oito anos dedicando minha vida ao universo do treinamento personalizado, encontrei na cidade de Brasilia o cenario perfeito para ajudar pessoas a alcancarem seus melhores resultados.</p>
+                    <p>Minha filosofia e simples: cada corpo e unico, cada historico e diferente, e por isso cada programa precisa ser pensado de forma individualizada. Nao acredito em formulas genericas, mas em ciencia aplicada com carinho e dedicacao.</p>
+                    <p>Formada em Educacao Fisica com especializacao em Fisiologia do Exercicio, combino conhecimento tecnico com uma abordagem acolhedora que torna cada sessao um momento de cuidado consigo mesmo.</p>
+                    <div class="about-highlights">
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <span>CREF Ativo</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <span>Pos-Graduacao</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <span>Primeiros Socorros</span>
+                        </div>
+                        <div class="about-highlight">
+                            <div class="about-highlight-icon">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <span>Nutricao Esportiva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Equipe</span>
+                <h2>Profissionais dedicados ao seu bem-estar</h2>
+                <div class="section-divider"></div>
+                <p>Uma equipe qualificada e apaixonada por transformar vidas atraves do exercicio fisico.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="100">
+                    <div class="team-photo"></div>
+                    <h3>Lorenna Costa</h3>
+                    <p class="role">Personal Trainer Fundadora</p>
+                    <p class="bio">Especialista em treinamento personalizado com foco em emagrecimento saudavel e hipertrofia. Mais de 8 anos de experiencia.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="200">
+                    <div class="team-photo" style="background: linear-gradient(145deg, #F7E7CE 0%, #B87333 60%, #3C2415 100%);"></div>
+                    <h3>Dr. Rafael Mendes</h3>
+                    <p class="role">Nutricionista Esportivo</p>
+                    <p class="bio">Nutricionista com pos-graduacao em nutricao esportiva, responsavel pelos planos alimentares personalizados dos alunos.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo" style="background: linear-gradient(145deg, #8B5A2B 0%, #D4956A 50%, #F7E7CE 100%);"></div>
+                    <h3>Carla Ferreira</h3>
+                    <p class="role">Fisioterapeuta</p>
+                    <p class="bio">Especialista em fisioterapia ortopedica e preventiva, garante seguranca e saude em cada etapa do treinamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Galeria</span>
+                <h2>Nosso espaco de treinamento</h2>
+                <div class="section-divider"></div>
+                <p>Conheca o ambiente onde transformacoes acontecem todos os dias.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="600">
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Depoimentos</span>
+                <h2>O que nossos alunos dizem</h2>
+                <div class="section-divider"></div>
+                <p>Historias reais de pessoas que transformaram suas vidas conosco.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Em seis meses de treino com a Lorenna, perdi 18 quilos e ganhei uma qualidade de vida que nao imaginava ser possivel. O atendimento e impecavel e a dedicacao dela com cada aluno e inspiradora."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Mariana Alves</h4>
+                            <span>Aluna ha 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Apos uma cirurgia no joelho, precisei de um profissional que entendesse minhas limitacoes. A Carla e a Lorenna montaram um programa seguro que me devolveu a confianca para treinar sem dor."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--bronze-dark), var(--espresso));"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Carlos Eduardo</h4>
+                            <span>Aluno ha 8 meses</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O pacote de tratamento vale cada centavo. Alem dos treinos incriveis, o suporte com nutricao faz toda a diferenca. Ja indiquei para todas as amigas. Melhor investimento que fiz no ano."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--bronze-light), var(--bronze-dark));"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Fernanda Rocha</h4>
+                            <span>Aluna ha 6 meses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Contato</span>
+                <h2>Vamos comecar sua transformacao</h2>
+                <div class="section-divider"></div>
+                <p>Entre em contato e agende sua avaliacao inicial completamente sem compromisso.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up">
+                    <h3>Informacoes de Contato</h3>
+                    <p>Estamos prontos para atender voce. Escolha a forma de contato que preferir e retornaremos o mais breve possivel.</p>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <strong>Endereco</strong>
+                            <span>SHCNW - Brasilia, Brasilia - DF<br>70686-700</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <strong>Telefone</strong>
+                            <a href="tel:+5561992143200">+55 61 99214-3200</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <strong>Horario de Atendimento</strong>
+                            <span>Segunda a Sexta: 6h as 21h<br>Sabado: 7h as 14h</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555561992143200" class="whatsapp-btn">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Fale pelo WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" data-delay="200">
+                    <h3>Envie sua mensagem</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(61) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Servico de Interesse</label>
+                            <select id="servico" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta Inicial</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento Especial</option>
+                                <option value="avaliacao">Avaliacao Fisica</option>
+                                <option value="tratamento">Pacote Tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" placeholder="Conte-nos um pouco sobre seus objetivos..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">Lorenna<span>.</span></div>
+                <div class="footer-social">
+                    <a href="https://wa.me/555561992143200" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 Lorenna Personal Trainer. Todos os direitos reservados.</p>
+                <p>Brasilia, DF - Brasil</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/555561992143200" class="whatsapp-float" aria-label="WhatsApp">
+        <span class="whatsapp-float-pulse"></span>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVIGATION ===== */
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        });
+
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== INTERSECTION OBSERVER - FADE IN ===== */
+        var observerOptions = {
+            root: null,
+            rootMargin: '-50px',
+            threshold: 0.1
+        };
+
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(function() {
+                        entry.target.classList.add('visible');
+                    }, parseInt(delay));
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(function(el) {
+            fadeObserver.observe(el);
+        });
+
+        /* ===== COUNTER ANIMATION ===== */
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(function(counter) {
+                        var target = parseInt(counter.getAttribute('data-count'));
+                        var duration = 2000;
+                        var start = 0;
+                        var startTime = null;
+
+                        function animateCount(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            var progress = Math.min((timestamp - startTime) / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            var current = Math.floor(eased * target);
+                            counter.textContent = current + (target === 98 ? '%' : '+');
+                            if (progress < 1) {
+                                requestAnimationFrame(animateCount);
+                            }
+                        }
+
+                        requestAnimationFrame(animateCount);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        var statsContainer = document.querySelector('.hero-stats');
+        if (statsContainer) {
+            counterObserver.observe(statsContainer);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var nome = document.getElementById('nome').value;
+            var telefone = document.getElementById('telefone').value;
+            var email = document.getElementById('email').value;
+            var servico = document.getElementById('servico').value;
+            var mensagem = document.getElementById('mensagem').value;
+
+            var text = 'Ola! Sou ' + nome + '.\n';
+            text += 'Telefone: ' + telefone + '\n';
+            if (email) text += 'Email: ' + email + '\n';
+            text += 'Servico: ' + servico + '\n';
+            if (mensagem) text += 'Mensagem: ' + mensagem;
+
+            var encoded = encodeURIComponent(text);
+            window.open('https://wa.me/555561992143200?text=' + encoded, '_blank');
+        }
+
+        /* ===== SMOOTH SCROLL (fallback) ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    var offsetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
