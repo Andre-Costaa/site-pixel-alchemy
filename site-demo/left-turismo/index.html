@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Left Turismo - Cuidado e excelencia em saude em Belem do Para. Consultas, exames e tratamentos com profissionais qualificados.">
+    <meta name="keywords" content="clinica, saude, consultas, exames, tratamentos, Belem, Para">
+    <meta property="og:title" content="Left Turismo - Clinica de Saude em Belem">
+    <meta property="og:description" content="Cuidado e excelencia em saude. Agende sua consulta e descubra atendimento diferenciado.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Left Turismo | Clinica de Saude - Belem, Para</title>
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4956B;
+            --bronze-dark: #8F5A28;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2A;
+            --white: #FFFFFF;
+            --gray-light: #F5F0EB;
+            --gray-medium: #C4B5A5;
+            --gray-dark: #7A6B5D;
+            --shadow-sm: 0 2px 8px rgba(60, 36, 21, 0.08);
+            --shadow-md: 0 4px 20px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 8px 40px rgba(60, 36, 21, 0.16);
+            --shadow-gold: 0 4px 20px rgba(184, 115, 51, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--espresso);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: var(--champagne);
+            color: var(--espresso);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 30px rgba(60, 36, 21, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--espresso);
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+            position: relative;
+            font-family: Georgia, serif;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--espresso);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--bronze) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--bronze-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav.scrolled .nav-hamburger span {
+            background: var(--espresso);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(60, 36, 21, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--champagne);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(160deg, var(--espresso) 0%, var(--espresso-light) 40%, #6B4433 70%, var(--bronze-dark) 100%);
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .hero-bg-shape-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--bronze);
+            top: -150px;
+            right: -100px;
+            animation: heroFloat 12s ease-in-out infinite;
+        }
+
+        .hero-bg-shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--champagne);
+            bottom: -100px;
+            left: -100px;
+            animation: heroFloat 15s ease-in-out infinite reverse;
+        }
+
+        .hero-bg-shape-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--bronze-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heroFloat 10s ease-in-out infinite 3s;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(247, 231, 206, 0.08) 1px, transparent 0);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(247, 231, 206, 0.3);
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--champagne);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            background: rgba(247, 231, 206, 0.05);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: var(--white);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-title span {
+            color: var(--champagne);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray-medium);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bronze);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-sm);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+            border: 2px solid var(--bronze);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-dark);
+            border-color: var(--bronze-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--champagne);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-sm);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+            border: 1px solid rgba(247, 231, 206, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--champagne);
+            background: rgba(247, 231, 206, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--champagne), transparent);
+            margin: 0 auto;
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: var(--bronze);
+        }
+
+        .section-label::before { left: -30px; }
+        .section-label::after { right: -30px; }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--espresso);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-dark);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, var(--bronze), var(--champagne));
+            margin: 1.5rem auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--bronze), var(--champagne));
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--bronze);
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            color: var(--bronze);
+            font-weight: 700;
+        }
+
+        .service-price small {
+            font-size: 0.8rem;
+            color: var(--gray-medium);
+            font-weight: 400;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--bronze-dark) 50%, var(--bronze) 100%);
+        }
+
+        .about-image-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-text {
+            color: rgba(247, 231, 206, 0.4);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--champagne);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--espresso);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2 span {
+            color: var(--bronze);
+            font-style: italic;
+        }
+
+        .about-content p {
+            color: var(--gray-dark);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat-number {
+            font-size: 2rem;
+            color: var(--bronze);
+            font-weight: 700;
+            display: block;
+        }
+
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+            border-radius: var(--radius-md);
+            background: var(--cream);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(184, 115, 51, 0.25);
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--champagne);
+            background: linear-gradient(160deg, var(--espresso-light), var(--bronze-dark));
+            position: relative;
+        }
+
+        .team-photo-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-photo-icon {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+        }
+
+        .team-name {
+            font-size: 1.15rem;
+            color: var(--espresso);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            letter-spacing: 0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            font-size: 0.88rem;
+            color: var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--espresso);
+            overflow: hidden;
+        }
+
+        .gallery .section-label {
+            color: var(--champagne);
+        }
+
+        .gallery .section-label::before,
+        .gallery .section-label::after {
+            background: var(--champagne);
+        }
+
+        .gallery .section-title {
+            color: var(--white);
+        }
+
+        .gallery .section-subtitle {
+            color: var(--gray-medium);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg { background: linear-gradient(135deg, #5A3D2A, var(--bronze), #8F5A28); }
+        .gallery-item:nth-child(2) .gallery-item-bg { background: linear-gradient(135deg, var(--bronze-dark), var(--champagne), var(--bronze)); }
+        .gallery-item:nth-child(3) .gallery-item-bg { background: linear-gradient(135deg, #3C2415, var(--bronze-light), var(--espresso-light)); }
+        .gallery-item:nth-child(4) .gallery-item-bg { background: linear-gradient(135deg, var(--bronze), #6B4433, var(--champagne)); }
+        .gallery-item:nth-child(5) .gallery-item-bg { background: linear-gradient(135deg, #4A3020, var(--bronze-dark), var(--bronze)); }
+        .gallery-item:nth-child(6) .gallery-item-bg { background: linear-gradient(135deg, var(--bronze-light), var(--espresso), var(--champagne)); }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: var(--white);
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.25);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-quote-icon {
+            position: absolute;
+            top: 1.75rem;
+            left: 2rem;
+            font-size: 1.5rem;
+            color: var(--bronze);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+            padding-top: 0.5rem;
+        }
+
+        .testimonial-star {
+            color: var(--bronze);
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bronze-light), var(--champagne));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar svg {
+            width: 20px;
+            height: 20px;
+            color: var(--white);
+        }
+
+        .testimonial-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-author-name {
+            font-size: 0.9rem;
+            color: var(--espresso);
+            font-weight: 700;
+        }
+
+        .testimonial-author-detail {
+            font-size: 0.8rem;
+            color: var(--gray-medium);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--bronze);
+        }
+
+        .contact-item-label {
+            font-size: 0.8rem;
+            color: var(--gray-medium);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--espresso);
+            line-height: 1.6;
+        }
+
+        .contact-item-value a {
+            color: var(--espresso);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-hours {
+            margin-top: 0.5rem;
+        }
+
+        .contact-hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(184, 115, 51, 0.08);
+            font-size: 0.9rem;
+        }
+
+        .contact-hours-day {
+            color: var(--gray-dark);
+        }
+
+        .contact-hours-time {
+            color: var(--espresso);
+        }
+
+        .contact-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25D366;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-sm);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+            width: fit-content;
+        }
+
+        .contact-whatsapp:hover {
+            background: #1DA851;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-whatsapp svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .contact-form-wrapper {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.1);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+        }
+
+        .contact-form-title {
+            font-size: 1.4rem;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .contact-form-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            color: var(--espresso);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--bronze);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--espresso);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.3rem;
+            color: var(--white);
+            font-family: Georgia, serif;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand span {
+            color: var(--bronze);
+        }
+
+        .footer-desc {
+            font-size: 0.88rem;
+            color: var(--gray-medium);
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--champagne);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(247, 231, 206, 0.1);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--gray-dark);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s ease-out;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 7rem 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: auto;
+                max-width: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 2fr 1fr;
+                text-align: left;
+            }
+
+            .footer-desc {
+                margin: 0;
+            }
+
+            .footer-links {
+                justify-content: flex-end;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex !important;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-row: span 1;
+            }
+
+            .section {
+                padding: 8rem 3rem;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Left <span>Turismo</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <div class="nav-hamburger" id="navHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero" onclick="closeMobileMenu()">Inicio</a>
+        <a href="#servicos" onclick="closeMobileMenu()">Servicos</a>
+        <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+        <a href="#equipe" onclick="closeMobileMenu()">Equipe</a>
+        <a href="#galeria" onclick="closeMobileMenu()">Galeria</a>
+        <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
+        <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shape hero-bg-shape-1"></div>
+        <div class="hero-bg-shape hero-bg-shape-2"></div>
+        <div class="hero-bg-shape hero-bg-shape-3"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Cuidado com excelencia desde 2015</div>
+            <h1 class="hero-title">Sua saude merece<br><span>atencao dedicada</span></h1>
+            <p class="hero-subtitle">Na Left Turismo, cada paciente e unico. Oferecemos atendimento humanizado com profissionais qualificados em um ambiente acolhedor em Belem do Para.</p>
+            <div class="hero-ctas">
+                <a href="https://wa.me/555591996152686" class="btn-primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Agendar Horario
+                </a>
+                <a href="#servicos" class="btn-secondary">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <div class="section-label">Servicos</div>
+                <h2 class="section-title">Cuidado completo para<br>sua saude</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Conheca nossos servicos e encontre o atendimento ideal para suas necessidades.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta</h3>
+                    <p class="service-desc">Avaliacao clinica completa com historico detalhado, exame fisico e orientacoes personalizadas para o seu bem-estar.</p>
+                    <div class="service-price">R$ 180<small> / consulta</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Acompanhamento da evolucao do tratamento, ajustes na conduta e verificacao dos resultados obtidos.</p>
+                    <div class="service-price">R$ 120<small> / retorno</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Realizacao de exames laboratoriais e de imagem para diagnostico preciso e acompanhamento adequado.</p>
+                    <div class="service-price">R$ 95<small> / exame</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Procedimentos minimamente invasivos realizados com seguranca, tecnologia e todo o conforto que voce merece.</p>
+                    <div class="service-price">R$ 350<small> / procedimento</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Triagem e avaliacao preliminar para identificar necessidades e encaminhar ao profissional mais adequado.</p>
+                    <div class="service-price">R$ 80<small> / avaliacao</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento</h3>
+                    <p class="service-desc">Plano terapeutico personalizado com acompanhamento continuo para melhores resultados na sua recuperacao.</p>
+                    <div class="service-price">A partir de R$ 250<small> / sessao</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-inner">
+                        <span class="about-image-text">Left Turismo</span>
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="section-label" style="text-align:left; padding:0;">Sobre nos</div>
+                    <h2 class="wow-fade-up">Tradição e cuidado em cada <span>atendimento</span></h2>
+                    <div class="divider" style="margin: 1.5rem 0;"></div>
+                    <p class="wow-fade-up">A Left Turismo nasceu em 2015 com a missao de transformar o atendimento em saude na regiao de Belem. Nosso espaco foi pensado para proporcionar conforto e seguranca desde o momento em que voce entra.</p>
+                    <p class="wow-fade-up">Acreditamos que a relacao entre profissional e paciente deve ser baseada em confianca, respeito e transparencia. Por isso, cada consulta e um momento de escuta ativa e cuidado genuino.</p>
+                    <p class="wow-fade-up">Com uma equipe multidisciplinar e infraestrutura moderna, oferecemos servicos que vao desde consultas de rotina ate procedimentos especializados, sempre com foco na excelencia e no bem-estar dos nossos pacientes.</p>
+                    <div class="about-stats">
+                        <div class="about-stat wow-fade-up" data-delay="0">
+                            <span class="about-stat-number" data-count="10">0</span>
+                            <span class="about-stat-label">Anos de experiencia</span>
+                        </div>
+                        <div class="about-stat wow-fade-up" data-delay="100">
+                            <span class="about-stat-number" data-count="3500">0</span>
+                            <span class="about-stat-label">Pacientes atendidos</span>
+                        </div>
+                        <div class="about-stat wow-fade-up" data-delay="200">
+                            <span class="about-stat-number" data-count="98">0</span>
+                            <span class="about-stat-label">% Satisfacao</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <div class="section-label">Equipe</div>
+                <h2 class="section-title">Profissionais que fazem<br>a diferenca</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Conheca os profissionais dedicados que cuidam da sua saude com carinho e competencia.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            <svg class="team-photo-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,231,206,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dr. Ricardo Almeida</h3>
+                    <p class="team-role">Medico Clinico Geral</p>
+                    <p class="team-bio">Especialista em clinica medica com mais de 15 anos de experiencia. Formado pela UFPA com residencia em Medicina Interna.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="100">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            <svg class="team-photo-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,231,206,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dra. Camila Ferreira</h3>
+                    <p class="team-role">Enfermeira Coordenadora</p>
+                    <p class="team-bio">Coordenadora de enfermagem responsavel pela gestao do cuidado e pela qualidade do atendimento prestado aos pacientes.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="200">
+                    <div class="team-photo">
+                        <div class="team-photo-inner">
+                            <svg class="team-photo-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(247,231,206,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dr. Paulo Henrique</h3>
+                    <p class="team-role">Fisioterapeuta</p>
+                    <p class="team-bio">Especialista em fisioterapia ortopedica e traumatologica. Amplo conhecimento em reabilitacao e tratamento de doencas musculoesqueleticas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <div class="section-label">Galeria</div>
+                <h2 class="section-title">Conheca nosso espaco</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Um ambiente preparado para oferecer o melhor em conforto e bem-estar.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Recepcao e espera</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de consultas</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Area de procedimentos</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Equipamentos</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de recuperacao</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Fachada externa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <div class="section-label">Depoimentos</div>
+                <h2 class="section-title">O que nossos pacientes<br>dizem sobre nos</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">A satisfacao dos nossos pacientes e a maior confirmacao do nosso trabalho.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-stars">
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Atendimento impecavel desde a recepcao ate a consulta. O Dr. Ricardo foi extremamente atencioso e explicou cada detalhe do meu quadro. Me senti verdadeiramente cuidada.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Ana Beatriz Sousa</span>
+                            <span class="testimonial-author-detail">Paciente ha 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-stars">
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Depois de procurar varios profissionais, encontrei na Left Turismo o tratamento que realmente precisava. Ambiente limpo, organizado e uma equipe muito qualificada. Recomendo.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Carlos Eduardo Lima</span>
+                            <span class="testimonial-author-detail">Paciente ha 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-stars">
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                        <span class="testimonial-star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Levei minha mae para uma avaliacao e fomos muito bem recebidas. A Dra. Camila e toda a equipe demonstraram muita paciencia e cuidado. O local e de facil acesso e estacionamento amplo.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">Marcia Oliveira</span>
+                            <span class="testimonial-author-detail">Paciente ha 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <div class="section-label">Contato</div>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Entre em contato conosco e marque seu horario. Estamos prontos para recebe-lo.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" data-delay="0">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Endereco</div>
+                            <div class="contact-item-value">R. Vinte e Seis A, 77 - Maracangalha<br>Belem - PA, 66110-018</div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="100">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Telefone</div>
+                            <div class="contact-item-value"><a href="tel:+5591996152686">(91) 99615-2686</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="200">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Horario de funcionamento</div>
+                            <div class="contact-hours">
+                                <div class="contact-hours-row">
+                                    <span class="contact-hours-day">Segunda a Sexta</span>
+                                    <span class="contact-hours-time">08:00 - 18:00</span>
+                                </div>
+                                <div class="contact-hours-row">
+                                    <span class="contact-hours-day">Sabado</span>
+                                    <span class="contact-hours-time">08:00 - 12:00</span>
+                                </div>
+                                <div class="contact-hours-row">
+                                    <span class="contact-hours-day">Domingo</span>
+                                    <span class="contact-hours-time">Fechado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555591996152686" class="contact-whatsapp wow-fade-up" data-delay="300" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Fale pelo WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form-wrapper wow-fade-up" data-delay="200">
+                    <h3 class="contact-form-title">Envie uma mensagem</h3>
+                    <p class="contact-form-subtitle">Preencha o formulario abaixo e entraremos em contato.</p>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="formName">Nome completo</label>
+                            <input class="form-input" type="text" id="formName" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="formPhone">Telefone</label>
+                            <input class="form-input" type="tel" id="formPhone" placeholder="(91) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="formService">Servico desejado</label>
+                            <select class="form-select" id="formService" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta - R$ 180</option>
+                                <option value="retorno">Retorno - R$ 120</option>
+                                <option value="exame">Exame Complementar - R$ 95</option>
+                                <option value="procedimento">Procedimento - R$ 350</option>
+                                <option value="avaliacao">Avaliacao Inicial - R$ 80</option>
+                                <option value="tratamento">Tratamento - A partir de R$ 250</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="formMessage">Mensagem</label>
+                            <textarea class="form-textarea" id="formMessage" placeholder="Descreva brevemente como podemos ajuda-lo..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">Left <span>Turismo</span></div>
+                <p class="footer-desc">Cuidado e excelencia em saude para voce e sua familia. Atendimento humanizado em Belem do Para.</p>
+            </div>
+            <div>
+                <div class="footer-links">
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            2025 Left Turismo. Todos os direitos reservados. R. Vinte e Seis A, 77 - Maracangalha, Belem - PA.
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/555591996152686" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // NAVIGATION SCROLL
+            var nav = document.getElementById('nav');
+            var lastScroll = 0;
+            var navVisible = true;
+
+            function handleNavScroll() {
+                var currentScroll = window.pageYOffset;
+                if (currentScroll > 80) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+
+                if (currentScroll > lastScroll && currentScroll > 200 && navVisible) {
+                    nav.style.transform = 'translateY(-100%)';
+                    navVisible = false;
+                } else if (currentScroll < lastScroll && !navVisible) {
+                    nav.style.transform = 'translateY(0)';
+                    navVisible = true;
+                }
+                lastScroll = currentScroll;
+            }
+
+            window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+            // MOBILE MENU
+            var hamburger = document.getElementById('navHamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            window.closeMobileMenu = function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            // INTERSECTION OBSERVER - SCROLL ANIMATIONS
+            var animatedElements = document.querySelectorAll('.wow-fade-up, .wow-fade-in');
+            var observerOptions = {
+                threshold: 0.1,
+                rootMargin: '-50px'
+            };
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = entry.target.getAttribute('data-delay') || 0;
+                        setTimeout(function() {
+                            entry.target.classList.add('visible');
+                        }, parseInt(delay));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(function(el) {
+                observer.observe(el);
+            });
+
+            // COUNTER ANIMATION
+            var counters = document.querySelectorAll('[data-count]');
+            var counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var target = entry.target;
+                        var end = parseInt(target.getAttribute('data-count'));
+                        var duration = 2000;
+                        var start = 0;
+                        var startTime = null;
+
+                        function animateCount(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            var progress = Math.min((timestamp - startTime) / duration, 1);
+                            var eased = 1 - Math.pow(1 - progress, 3);
+                            var current = Math.floor(eased * end);
+                            target.textContent = current.toLocaleString('pt-BR');
+                            if (progress < 1) {
+                                requestAnimationFrame(animateCount);
+                            } else {
+                                target.textContent = end.toLocaleString('pt-BR');
+                            }
+                        }
+
+                        requestAnimationFrame(animateCount);
+                        counterObserver.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(function(counter) {
+                counterObserver.observe(counter);
+            });
+
+            // CONTACT FORM
+            window.handleSubmit = function(e) {
+                e.preventDefault();
+                var name = document.getElementById('formName').value;
+                var phone = document.getElementById('formPhone').value;
+                var service = document.getElementById('formService');
+                var serviceText = service.options[service.selectedIndex].text;
+                var message = document.getElementById('formMessage').value;
+
+                var whatsappMessage = 'Olá! Meu nome é ' + name + '. Telefone: ' + phone +
+                    '. Tenho interesse em: ' + serviceText +
+                    (message ? '. Mensagem: ' + message : '');
+
+                var encodedMessage = encodeURIComponent(whatsappMessage);
+                window.open('https://wa.me/555591996152686?text=' + encodedMessage, '_blank');
+            };
+
+            // SMOOTH SCROLL FOR ANCHOR LINKS
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    var targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        var navHeight = nav.offsetHeight;
+                        var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
