@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Studio Hewerton Dias - Personal Trainer e Treinamento Integrado em Brasilia. Transforme seu corpo e sua mente com acompanhamento profissional personalizado.">
+    <meta name="keywords" content="personal trainer, treinamento integrado, musculacao, emagrecimento, condicionamento fisico, Brasilia">
+    <meta name="author" content="Studio Hewerton Dias">
+    <title>Studio Hewerton Dias | Personal Trainer e Treinamento Integrado</title>
+    <meta property="og:title" content="Studio Hewerton Dias | Personal Trainer e Treinamento Integrado">
+    <meta property="og:description" content="Transforme seu corpo com acompanhamento profissional. Personal Trainer em Brasilia - Asa Norte.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <style>
+        :root {
+            --terracotta: #C65D3E;
+            --terracotta-dark: #A84D33;
+            --terracotta-light: #D4795E;
+            --navy: #2C3E50;
+            --navy-light: #3D566E;
+            --navy-dark: #1A2634;
+            --ivory: #FFFFF0;
+            --ivory-warm: #FAF8F0;
+            --copper: #B87333;
+            --copper-light: #D4915A;
+            --sage: #7A8B6F;
+            --sage-light: #9BAF8D;
+            --sage-dark: #5E6D55;
+            --charcoal: #2A2A2A;
+            --charcoal-light: #3A3A3A;
+            --white: #FFFFFF;
+            --border-subtle: rgba(44, 62, 80, 0.1);
+            --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.08);
+            --shadow-md: 0 4px 20px rgba(44, 62, 80, 0.12);
+            --shadow-lg: 0 8px 40px rgba(44, 62, 80, 0.16);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --font-display: Georgia, 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============ NAVIGATION ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(44, 62, 80, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform var(--transition-base), background var(--transition-base);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--ivory);
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+        }
+
+        .nav-logo span {
+            display: block;
+            font-size: 0.65rem;
+            font-family: var(--font-body);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--terracotta-light);
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.02em;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width var(--transition-base);
+        }
+
+        .nav-links a:hover {
+            color: var(--ivory);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--terracotta);
+            color: var(--ivory) !important;
+            padding: 10px 22px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.03em;
+            transition: background var(--transition-fast), transform var(--transition-fast) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ivory);
+            border-radius: 2px;
+            transition: var(--transition-base);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--navy-dark);
+            z-index: 999;
+            padding: 40px 20px;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .mobile-menu .nav-cta {
+            display: inline-block;
+            text-align: center;
+            margin-top: 16px;
+            border-bottom: none;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--navy-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, rgba(44, 62, 80, 0.7) 40%, rgba(198, 93, 62, 0.3) 100%);
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(198, 93, 62, 0.15) 0%, transparent 70%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: -100px;
+            right: -150px;
+            animation: blobFloat 20s ease-in-out infinite;
+            filter: blur(60px);
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.12) 0%, transparent 70%);
+            border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+            bottom: -80px;
+            left: -100px;
+            animation: blobFloat 16s ease-in-out infinite reverse;
+            filter: blur(50px);
+        }
+
+        .hero-blob-3 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(122, 139, 111, 0.1) 0%, transparent 70%);
+            border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%;
+            top: 40%;
+            left: 30%;
+            animation: blobFloat 22s ease-in-out infinite 3s;
+            filter: blur(40px);
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(30px, -40px) rotate(5deg) scale(1.05); }
+            50% { transform: translate(-20px, 20px) rotate(-3deg) scale(0.95); }
+            75% { transform: translate(15px, 30px) rotate(4deg) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            padding: 140px 0 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(198, 93, 62, 0.15);
+            border: 1px solid rgba(198, 93, 62, 0.3);
+            color: var(--terracotta-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-weight: 700;
+            color: var(--ivory);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--terracotta-light);
+            position: relative;
+        }
+
+        .hero h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--terracotta);
+            opacity: 0.4;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: rgba(255, 255, 240, 0.65);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--terracotta);
+            color: var(--ivory);
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: var(--transition-base);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(198, 93, 62, 0.3);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--ivory);
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(255, 255, 240, 0.2);
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 240, 0.05);
+            border-color: rgba(255, 255, 240, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 240, 0.08);
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ivory);
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 240, 0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -40px;
+            bottom: 0;
+            width: 45%;
+            height: 85%;
+            z-index: 1;
+        }
+
+        .hero-image-block {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--terracotta) 0%, var(--copper) 40%, var(--navy) 100%);
+            border-radius: 24px 0 0 0;
+            opacity: 0.3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-block::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(255, 255, 240, 0.1);
+            border-radius: 16px 0 0 0;
+        }
+
+        .hero-image-block::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid rgba(198, 93, 62, 0.3);
+            border-radius: 50%;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+
+        /* ============ SECTION COMMON ============ */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        .section-label::before { right: calc(100% + 14px); }
+        .section-label::after { left: calc(100% + 14px); }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: rgba(44, 62, 80, 0.55);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ============ SERVICES ============ */
+        .services {
+            background: var(--ivory);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--terracotta);
+            transition: height var(--transition-base);
+            border-radius: 0 0 4px 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(198, 93, 62, 0.15);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .service-icon.terracotta { background: rgba(198, 93, 62, 0.1); color: var(--terracotta); }
+        .service-icon.navy { background: rgba(44, 62, 80, 0.08); color: var(--navy); }
+        .service-icon.copper { background: rgba(184, 115, 51, 0.1); color: var(--copper); }
+        .service-icon.sage { background: rgba(122, 139, 111, 0.1); color: var(--sage); }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: rgba(44, 62, 80, 0.55);
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(198, 93, 62, 0.06);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(198, 93, 62, 0.1);
+        }
+
+        .service-price .currency {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--terracotta);
+        }
+
+        .service-price .amount {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            letter-spacing: 0.02em;
+        }
+
+        .service-price .period {
+            font-size: 0.75rem;
+            color: rgba(44, 62, 80, 0.4);
+        }
+
+        /* ============ ABOUT ============ */
+        .about {
+            background: var(--navy-dark);
+            color: var(--ivory);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(198, 93, 62, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--copper) 50%, var(--sage) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 160px;
+            height: 160px;
+            border: 3px solid var(--terracotta);
+            border-radius: var(--radius-lg);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .about-content .section-label {
+            color: var(--terracotta-light);
+        }
+
+        .about-content .section-title {
+            color: var(--ivory);
+            text-align: left;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 240, 0.6);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .about-text strong {
+            color: var(--ivory);
+            font-weight: 600;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(198, 93, 62, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--terracotta-light);
+        }
+
+        .about-feature span {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 240, 0.75);
+            font-weight: 500;
+        }
+
+        /* ============ TEAM ============ */
+        .team {
+            background: var(--ivory-warm);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            aspect-ratio: 3 / 4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-photo-placeholder svg {
+            width: 60px;
+            height: 60px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .team-photo-gradient-1 { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%); }
+        .team-photo-gradient-2 { background: linear-gradient(160deg, var(--terracotta) 0%, var(--copper) 100%); }
+        .team-photo-gradient-3 { background: linear-gradient(160deg, var(--sage-dark) 0%, var(--sage) 100%); }
+
+        .team-info {
+            padding: 24px;
+        }
+
+        .team-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        .team-info p {
+            font-size: 0.88rem;
+            color: rgba(44, 62, 80, 0.5);
+            line-height: 1.6;
+        }
+
+        /* ============ GALLERY ============ */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4 / 3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { aspect-ratio: 16 / 9; }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(44, 62, 80, 0.7) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.88rem;
+            color: var(--ivory);
+            font-weight: 500;
+        }
+
+        .gallery-gradient-1 { background: linear-gradient(135deg, var(--navy-dark), var(--terracotta)); }
+        .gallery-gradient-2 { background: linear-gradient(135deg, var(--copper), var(--sage)); }
+        .gallery-gradient-3 { background: linear-gradient(135deg, var(--sage-dark), var(--navy-light)); }
+        .gallery-gradient-4 { background: linear-gradient(135deg, var(--terracotta-dark), var(--copper)); }
+        .gallery-gradient-5 { background: linear-gradient(135deg, var(--navy), var(--sage)); }
+        .gallery-gradient-6 { background: linear-gradient(135deg, var(--copper-light), var(--terracotta)); }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials {
+            background: var(--ivory);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            position: relative;
+            transition: var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(198, 93, 62, 0.12);
+        }
+
+        .testimonial-quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: rgba(198, 93, 62, 0.06);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--copper);
+            color: var(--copper);
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: rgba(44, 62, 80, 0.65);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar-1 { background: linear-gradient(135deg, var(--terracotta), var(--copper)); }
+        .testimonial-avatar-2 { background: linear-gradient(135deg, var(--navy), var(--sage)); }
+        .testimonial-avatar-3 { background: linear-gradient(135deg, var(--sage), var(--copper)); }
+
+        .testimonial-author-info h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.78rem;
+            color: rgba(44, 62, 80, 0.4);
+        }
+
+        /* ============ CONTACT ============ */
+        .contact {
+            background: var(--navy-dark);
+            color: var(--ivory);
+        }
+
+        .contact .section-label {
+            color: var(--terracotta-light);
+        }
+
+        .contact .section-title {
+            color: var(--ivory);
+        }
+
+        .contact .section-subtitle {
+            color: rgba(255, 255, 240, 0.5);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(198, 93, 62, 0.12);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--terracotta-light);
+        }
+
+        .contact-item h4 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(255, 255, 240, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 0.95rem;
+            color: var(--ivory);
+            line-height: 1.6;
+        }
+
+        .contact-item a:hover {
+            color: var(--terracotta-light);
+        }
+
+        .contact-hours {
+            margin-top: 12px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 240, 0.06);
+            border-radius: var(--radius-md);
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 16px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.88rem;
+            border-bottom: 1px solid rgba(255, 255, 240, 0.04);
+        }
+
+        .hours-row:last-child { border-bottom: none; }
+        .hours-row span:first-child { color: rgba(255, 255, 240, 0.55); }
+        .hours-row span:last-child { color: var(--ivory); font-weight: 500; }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 240, 0.06);
+            border-radius: var(--radius-md);
+            padding: 32px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 240, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 240, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--ivory);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            transition: var(--transition-fast);
+            outline: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 240, 0.25);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--terracotta);
+            background: rgba(198, 93, 62, 0.05);
+        }
+
+        .form-group select option {
+            background: var(--navy-dark);
+            color: var(--ivory);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--terracotta);
+            color: var(--ivory);
+            padding: 16px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(198, 93, 62, 0.3);
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 240, 0.4);
+            padding: 48px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 240, 0.06);
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ivory);
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--terracotta-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            padding-top: 24px;
+            font-size: 0.8rem;
+        }
+
+        /* ============ WHATSAPP FLOAT ============ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 900;
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0; }
+        }
+
+        /* ============ SCROLL ANIMATIONS ============ */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-blob-1, .hero-blob-2, .hero-blob-3,
+            .whatsapp-float::before, .hero-badge::before {
+                animation: none;
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 480px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (min-width: 768px) {
+            section { padding: 120px 0; }
+
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+            .about-grid { grid-template-columns: 1fr 1fr; }
+            .footer-content { grid-template-columns: 2fr 1fr 1fr; }
+            .footer-bottom { flex-direction: row; justify-content: space-between; }
+
+            .gallery-item:nth-child(1) {
+                grid-column: 1 / -1;
+            }
+
+            .about-features { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (min-width: 1024px) {
+            .hamburger { display: none; }
+            .nav-links { display: flex; }
+
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .team-grid { grid-template-columns: repeat(3, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .hero-visual { display: block; }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; }
+            .hero-visual { display: none; }
+        }
+
+        @media (max-width: 767px) {
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .hero-stat-number { font-size: 1.6rem; }
+            .hero-content { padding: 120px 0 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="nav-logo">
+                Hewerton Dias
+                <span>Personal Trainer</span>
+            </a>
+            <div class="nav-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato" class="nav-cta">Agendar Horario</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato" class="nav-cta">Agendar Horario</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-blob-1"></div>
+            <div class="hero-blob-2"></div>
+            <div class="hero-blob-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Matriculas Abertas</div>
+                <h1>Transforme seu corpo com <em>treinamento integrado</em></h1>
+                <p class="hero-desc">Metodologia personalizada que une musculacao, funcional e acompanhamento nutricional para resultados reais e duradouros no Studio Hewerton Dias.</p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/555561998171011" class="btn-primary" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Fale pelo WhatsApp
+                    </a>
+                    <a href="#servicos" class="btn-secondary">
+                        Conheca os Servicos
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">500+</div>
+                        <div class="hero-stat-label">Alunos Transformados</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">12</div>
+                        <div class="hero-stat-label">Anos de Experiencia</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">98%</div>
+                        <div class="hero-stat-label">Satisfacao</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-block"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Servicos</span>
+                <h2 class="section-title">Programas Personalizados para Seus Objetivos</h2>
+                <p class="section-subtitle">Cada treino e desenhado sob medida, respeitando seus limites e potencializando seus resultados.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-icon terracotta">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+                    </div>
+                    <h3>Avaliacao Fisica Inicial</h3>
+                    <p>Diagnostico completo do seu condicionamento atual com testes de forca, flexibilidade, composicao corporal e postural. Base para todo o programa.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">150</span>
+                        <span class="period">/ avaliacao</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="service-icon navy">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Treino Personalizado Individual</h3>
+                    <p>Sessoes exclusivas com acompanhamento direto do professor. Programa montado para suas necessidades especificas, com correcao em tempo real.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">250</span>
+                        <span class="period">/ sessao</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="service-icon copper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    </div>
+                    <h3>Treinamento Funcional</h3>
+                    <p>Exercicios que replicam movimentos do dia a dia, melhorando equilibrio, coordinacao e resistencia. Ideal para quem busca qualidade de vida.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">200</span>
+                        <span class="period">/ sessao</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.4s;">
+                    <div class="service-icon sage">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M3 10h2M3 14h2M19 10h2M19 14h2M6 3v2M6 19v2M18 3v2M18 19v2M8 8v8M12 7v10M16 9v6"/></svg>
+                    </div>
+                    <h3>Musculacao e Hipertrofia</h3>
+                    <p>Programa periodizado para ganho de massa muscular com tecnicas avancadas de sobrecarga progressiva e periodizacao.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">220</span>
+                        <span class="period">/ sessao</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.5s;">
+                    <div class="service-icon terracotta">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <h3>Emagrecimento e Condicionamento</h3>
+                    <p>Combinacao estrategica de treinos aerobicos e anaerobicos com orientacao alimentar para perda de gordura de forma saudavel e sustentavel.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">200</span>
+                        <span class="period">/ sessao</span>
+                    </div>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.6s;">
+                    <div class="service-icon navy">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Acompanhamento Online</h3>
+                    <p>Planilha personalizada, check-ins semanais, suporte via WhatsApp e ajustes mensais na programacao. Ideal para quem treina em outro espaco.</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">180</span>
+                        <span class="period">/ mes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="wow-fade-up">
+                        <span class="section-label">Sobre Nos</span>
+                        <h2 class="section-title">Uma filosofia de treinamento que transforma vidas</h2>
+                    </div>
+                    <p class="about-text wow-fade-up" style="transition-delay: 0.1s;">
+                        O <strong>Studio Hewerton Dias</strong> nasceu da paixao por ajudar pessoas a alcancarem a melhor versao de si mesmas. Com mais de 12 anos de experiencia no treinamento personalizado, Hewerton desenvolveu uma metodologia propria que integra musculacao, funcional e orientacao nutricional.
+                    </p>
+                    <p class="about-text wow-fade-up" style="transition-delay: 0.2s;">
+                        Localizado na <strong>Asa Norte, Brasilia</strong>, nosso espaco foi pensado para oferecer um ambiente acolhedor e motivador, onde cada aluno recebe atencao individualizada. Acreditamos que resultados consistentes vem da combinacao entre ciencia, dedicacao e respeito aos limites de cada corpo.
+                    </p>
+                    <div class="about-features wow-fade-up" style="transition-delay: 0.3s;">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Metodologia cientificamente validada</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Acompanhamento individualizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Ambiente exclusivo e acolhedor</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Resultados mensuraveis e duradouros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Profissionais Dedicados ao Seu Resultado</h2>
+                <p class="section-subtitle">Nossa equipe e formada por especialistas comprometidos com sua evolucao.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder team-photo-gradient-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Hewerton Dias</h3>
+                        <div class="team-role">Personal Trainer - Fundador</div>
+                        <p>CREF certificado com especializacao em musculacao e treinamento funcional. Mais de 12 anos transformando vidas em Brasilia.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder team-photo-gradient-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Camila Rodrigues</h3>
+                        <div class="team-role">Nutricionista Esportiva</div>
+                        <p>Responsavel pela orientacao alimentar integrada ao treinamento. Pos-graduada em nutricao clinica funcional.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder team-photo-gradient-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Rafael Costa</h3>
+                        <div class="team-role">Fisioterapeuta</div>
+                        <p>Especialista em reabilitacao e prevencao de lesoes. Atua na avaliacao postural e no acompanhamento de alunos em recuperacao.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Nosso Espaco e Nossas Transformacoes</h2>
+                <p class="section-subtitle">Conheca o ambiente exclusivo do studio e os resultados dos nossos alunos.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="gallery-placeholder gallery-gradient-1"></div>
+                    <div class="gallery-overlay"><span>Ambiente principal do studio</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="gallery-placeholder gallery-gradient-2"></div>
+                    <div class="gallery-overlay"><span>Area de treinamento funcional</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="gallery-placeholder gallery-gradient-3"></div>
+                    <div class="gallery-overlay"><span>Equipamentos de musculacao</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.4s;">
+                    <div class="gallery-placeholder gallery-gradient-4"></div>
+                    <div class="gallery-overlay"><span>Sessao de treinamento personalizado</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.5s;">
+                    <div class="gallery-placeholder gallery-gradient-5"></div>
+                    <div class="gallery-overlay"><span>Avaliacao fisica completa</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.6s;">
+                    <div class="gallery-placeholder gallery-gradient-6"></div>
+                    <div class="gallery-overlay"><span>Resultados reais dos nossos alunos</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Nossos Alunos Dizem</h2>
+                <p class="section-subtitle">Historias reais de transformacao de quem confiou no nosso trabalho.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <blockquote>Em 6 meses de treinamento com o Hewerton, perdi 14kg e ganhei uma disposicao que nao tinha ha anos. A metodologia integrada faz toda a diferenca. Cada treino e um passo a mais rumo aos meus objetivos.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-1"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Mariana Silva</h4>
+                            <span>Aluna ha 8 meses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <blockquote>Ja tinha tentado varias academias sem resultados. O que diferencia o Studio Hewerton e a atencao pessoal e a constante adaptacao do treino. Consegui ganhar massa muscular de forma saudavel e sustentavel.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-2"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Carlos Eduardo</h4>
+                            <span>Aluno ha 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="testimonial-quote-icon">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <blockquote>Sou atleta amadora e precisava de um acompanhamento que respeitasse meu ritmo e meus objetivos competitivos. A equipe do studio entendeu perfeitamente e hoje estou com os melhores resultados da minha carreira.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-3"></div>
+                        <div class="testimonial-author-info">
+                            <h4>Fernanda Oliveira</h4>
+                            <span>Aluna ha 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Comece Sua Transformacao Hoje</h2>
+                <p class="section-subtitle">Entre em contato e agende sua avaliacao fisica inicial gratuita.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.1s;">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>CLN 403 Norte Bloco A, Sala 105<br>Asa Norte, Brasilia - DF<br>CEP: 70835-510</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.2s;">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <a href="tel:+5561998171011">(61) 99817-1011</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item wow-fade-up" style="transition-delay: 0.3s;">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/555561998171011" target="_blank" rel="noopener">Enviar mensagem</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours wow-fade-up" style="transition-delay: 0.4s;">
+                        <h4>Horario de Funcionamento</h4>
+                        <div class="hours-row">
+                            <span>Segunda a Sexta</span>
+                            <span>06:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Sabado</span>
+                            <span>07:00 - 14:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Domingo</span>
+                            <span>Fechado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form wow-fade-up" style="transition-delay: 0.3s;">
+                    <h3>Agende Sua Avaliacao</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome Completo</label>
+                                <input type="text" id="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" placeholder="(61) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico de Interesse</label>
+                            <select id="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="avaliacao">Avaliacao Fisica Inicial</option>
+                                <option value="personal">Treino Personalizado Individual</option>
+                                <option value="funcional">Treinamento Funcional</option>
+                                <option value="musculacao">Musculacao e Hipertrofia</option>
+                                <option value="emagrecimento">Emagrecimento e Condicionamento</option>
+                                <option value="online">Acompanhamento Online</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" placeholder="Conte um pouco sobre seus objetivos..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo">
+                        Hewerton Dias
+                        <span>Personal Trainer</span>
+                    </a>
+                    <p>Studio de treinamento personalizado e integrado em Brasilia. Transformando vidas atraves do exercicio fisico com ciencia e dedicacao.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegacao</h4>
+                    <ul>
+                        <li><a href="#servicos">Servicos</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+5561998171011">(61) 99817-1011</a></li>
+                        <li><a href="https://wa.me/555561998171011" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="#contato">Agendar Horario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>2025 Studio Hewerton Dias. Todos os direitos reservados.</span>
+                <span>Brasilia - DF</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/555561998171011" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVBAR SCROLL BEHAVIOR ===== */
+        (function() {
+            var navbar = document.getElementById('navbar');
+            var lastScroll = 0;
+            var ticking = false;
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        var currentScroll = window.pageYOffset;
+                        if (currentScroll > lastScroll && currentScroll > 100) {
+                            navbar.classList.add('hidden');
+                        } else {
+                            navbar.classList.remove('hidden');
+                        }
+                        lastScroll = currentScroll;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        })();
+
+        /* ===== HAMBURGER MENU ===== */
+        (function() {
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            var links = mobileMenu.querySelectorAll('a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
+        /* ===== INTERSECTION OBSERVER - SCROLL ANIMATIONS ===== */
+        (function() {
+            var elements = document.querySelectorAll('.wow-fade-up, .wow-fade-in');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var delay = entry.target.style.transitionDelay || '0s';
+                            entry.target.style.transitionDelay = delay;
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                elements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                elements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ===== CONTACT FORM ===== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var service = document.getElementById('service');
+            var serviceText = service.options[service.selectedIndex].text;
+            var message = document.getElementById('message').value;
+
+            var whatsappMsg = 'Ola! Meu nome e ' + name + '. Gostaria de agendar uma avaliacao para: ' + serviceText + '.';
+            if (phone) whatsappMsg += ' Telefone: ' + phone;
+            if (message) whatsappMsg += ' Mensagem: ' + message;
+
+            var encodedMsg = encodeURIComponent(whatsappMsg);
+            window.open('https://wa.me/555561998171011?text=' + encodedMsg, '_blank');
+        }
+
+        /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 72;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
