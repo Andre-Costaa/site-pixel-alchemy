@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Colégio Nossa Senhora da Piedade — Cuidado médico humanizado com excelência no Lago Sul, Brasília. Consultas, exames e tratamentos personalizados.">
+<meta name="keywords" content="clínica médica, saúde, Brasília, Lago Sul, consulta médica, exames, tratamento">
+<meta property="og:title" content="Colégio Nossa Senhora da Piedade — Saúde e Bem-Estar">
+<meta property="og:description" content="Cuidado médico humanizado com excelência no Lago Sul, Brasília.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Colégio Nossa Senhora da Piedade — Saúde e Bem-Estar</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F9F6F2;
+  --bg-alt:#F0EDE8;
+  --bg-dark:#1A1A1A;
+  --text:#1A1A1A;
+  --text-secondary:#8B7E74;
+  --accent:#6B705C;
+  --accent-dark:#4A4E3E;
+  --accent-light:#8B9A7E;
+  --taupe:#8B7E74;
+  --taupe-light:#A89F91;
+  --border:rgba(139,126,116,0.15);
+  --white:#FFFFFF;
+  --gold:#C4A962;
+  --font-display:"Trebuchet MS","Lucida Grande","Lucida Sans","Arial Narrow",sans-serif;
+  --font-body:"Segoe UI","Verdana","Tahoma","Geneva",sans-serif;
+  --font-serif:"Georgia","Palatino Linotype","Palatino","Book Antiqua",serif;
+  --max-w:1200px;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+  --ease-out:cubic-bezier(0.0,0,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── Utility ── */
+.container{width:90%;max-width:var(--max-w);margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.section-label{font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1rem;display:inline-block;position:relative;padding-left:2.5rem}
+.section-label::before{content:'';position:absolute;left:0;top:50%;width:1.8rem;height:1px;background:var(--text-secondary)}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1.5rem}
+.section-title em{font-family:var(--font-serif);font-weight:400;font-style:italic;color:var(--accent);letter-spacing:0}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2.2rem;border-radius:0;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+.btn-primary{background:var(--accent);color:var(--white)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(107,112,92,0.3)}
+.btn-outline{border:1.5px solid var(--text);color:var(--text)}
+.btn-outline:hover{background:var(--text);color:var(--bg)}
+.btn-whatsapp{background:#25D366;color:var(--white);border-radius:4px;padding:1.1rem 2.5rem;font-weight:700}
+.btn-whatsapp:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,0.3)}
+
+/* ── Animations ── */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.9s var(--ease-out),transform 0.9s var(--ease-out)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up[data-delay="1"]{transition-delay:0.1s}
+.fade-up[data-delay="2"]{transition-delay:0.2s}
+.fade-up[data-delay="3"]{transition-delay:0.3s}
+.fade-up[data-delay="4"]{transition-delay:0.4s}
+.fade-up[data-delay="5"]{transition-delay:0.5s}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity 0.9s var(--ease-out),transform 0.9s var(--ease-out)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity 0.9s var(--ease-out),transform 0.9s var(--ease-out)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+.scale-in{opacity:0;transform:scale(0.92);transition:opacity 0.8s var(--ease-out),transform 0.8s var(--ease-out)}
+.scale-in.visible{opacity:1;transform:scale(1)}
+@media(prefers-reduced-motion:reduce){
+  .fade-up,.fade-left,.fade-right,.scale-in{opacity:1;transform:none;transition:none}
+  .hero-shape{animation:none!important}
+}
+
+/* ── Navigation ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.5rem 0;transition:all 0.4s var(--ease)}
+nav.scrolled{background:rgba(249,246,242,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1rem 0;box-shadow:0 1px 0 var(--border)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);line-height:1.2;max-width:180px}
+.nav-logo span{display:block;font-size:0.6rem;font-weight:400;letter-spacing:0.2em;color:var(--text-secondary);text-transform:uppercase;margin-top:0.2rem}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-family:var(--font-display);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-secondary);position:relative;transition:color 0.3s}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--accent);transition:width 0.4s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:0.65rem 1.4rem;font-size:0.68rem!important;letter-spacing:0.15em!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--accent-dark)!important}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:6px;padding:4px;z-index:1001}
+.hamburger span{display:block;width:26px;height:2px;background:var(--text);transition:all 0.35s var(--ease);transform-origin:center}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+/* Mobile menu overlay */
+.mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;height:100dvh;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;transition:right 0.5s var(--ease)}
+.mobile-menu.open{right:0}
+.mobile-menu a{font-family:var(--font-display);font-size:1.4rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);transition:color 0.3s}
+.mobile-menu a:hover{color:var(--accent)}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:8rem 5vw 4rem 6vw;position:relative;z-index:2}
+.hero-label{font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hero-label::before{content:'';width:3rem;height:1.5px;background:var(--accent)}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;color:var(--text);margin-bottom:1.8rem}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line-inner{display:block;transform:translateY(110%);animation:slideUp 1s var(--ease-out) forwards}
+.hero-title .line:nth-child(2) .line-inner{animation-delay:0.15s}
+.hero-title .line:nth-child(3) .line-inner{animation-delay:0.3s}
+@keyframes slideUp{to{transform:translateY(0)}}
+.hero-subtitle{font-family:var(--font-serif);font-size:clamp(1rem,1.8vw,1.25rem);color:var(--text-secondary);line-height:1.8;max-width:440px;margin-bottom:2.5rem;opacity:0;animation:fadeIn 1s 0.5s var(--ease-out) forwards}
+@keyframes fadeIn{to{opacity:1}}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeIn 1s 0.7s var(--ease-out) forwards}
+.hero-visual{position:relative;overflow:hidden}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(135deg,#6B705C 0%,#8B7E74 40%,#A89F91 70%,#C4B5A5 100%)}
+.hero-shape{position:absolute;border-radius:50%;opacity:0.15}
+.hero-shape-1{width:80%;height:80%;top:-20%;right:-20%;background:radial-gradient(circle,rgba(255,255,255,0.4),transparent 70%);animation:float1 8s ease-in-out infinite}
+.hero-shape-2{width:50%;height:50%;bottom:-10%;left:10%;background:radial-gradient(circle,rgba(255,255,255,0.3),transparent 70%);animation:float2 10s ease-in-out infinite}
+.hero-shape-3{width:30%;height:30%;top:30%;right:20%;border:1px solid rgba(255,255,255,0.2);animation:float1 12s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.05)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-15px,20px) scale(0.95)}}
+.hero-visual-overlay{position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 30%)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:6vw;display:flex;align-items:center;gap:0.8rem;font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-secondary);opacity:0;animation:fadeIn 1s 1.2s var(--ease-out) forwards}
+.hero-scroll-line{width:2rem;height:1px;background:var(--text-secondary);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:0.4;transform:scaleX(0.6)}}
+
+/* ── Services ── */
+.services{padding:7rem 0;background:var(--bg)}
+.services-header{text-align:center;margin-bottom:4rem}
+.services-header .section-label{padding-left:0}
+.services-header .section-label::before{display:none}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.service-card{background:var(--white);padding:2.5rem 2rem;border:1px solid var(--border);transition:all 0.5s var(--ease);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.5s var(--ease)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(139,126,116,0.12);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:48px;height:48px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center}
+.service-icon svg{width:100%;height:100%}
+.service-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:800;letter-spacing:0.02em;margin-bottom:0.8rem;color:var(--text)}
+.service-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem}
+.service-price{font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--accent);letter-spacing:-0.01em}
+.service-price small{font-size:0.75rem;font-weight:400;color:var(--text-secondary);letter-spacing:0}
+
+/* ── About ── */
+.about{padding:7rem 0;background:var(--bg-alt)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text .section-title{margin-bottom:1.5rem}
+.about-text p{color:var(--text-secondary);font-size:0.98rem;line-height:1.8;margin-bottom:1.2rem}
+.about-quote{font-family:var(--font-serif);font-size:1.3rem;font-style:italic;color:var(--accent);line-height:1.6;margin:2rem 0;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-visual{position:relative;height:500px}
+.about-visual-main{width:100%;height:70%;background:linear-gradient(160deg,#6B705C 0%,#8B7E74 50%,#A89F91 100%);position:relative;overflow:hidden}
+.about-visual-accent{position:absolute;bottom:0;right:0;width:65%;height:55%;background:linear-gradient(135deg,#A89F91 0%,#C4B5A5 100%);z-index:1;border:4px solid var(--bg-alt)}
+.about-badge{position:absolute;top:2rem;right:2rem;z-index:2;background:var(--white);padding:1.5rem 2rem;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.08)}
+.about-badge .number{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--accent);line-height:1}
+.about-badge .label{font-family:var(--font-display);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-secondary);margin-top:0.3rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border)}
+.about-stat{text-align:center}
+.about-stat .stat-number{font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--text);line-height:1}
+.about-stat .stat-label{font-size:0.8rem;color:var(--text-secondary);margin-top:0.3rem;letter-spacing:0.05em}
+
+/* ── Team ── */
+.team{padding:7rem 0;background:var(--bg)}
+.team-header{text-align:center;margin-bottom:4rem}
+.team-header .section-label{padding-left:0}
+.team-header .section-label::before{display:none}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.team-card{position:relative;text-align:center}
+.team-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#8B7E74 0%,#6B705C 60%,#4A4E3E 100%);margin-bottom:1.5rem;position:relative;overflow:hidden;transition:transform 0.5s var(--ease)}
+.team-card:hover .team-photo{transform:scale(1.02)}
+.team-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(26,26,26,0.3) 100%)}
+.team-name{font-family:var(--font-display);font-size:1.15rem;font-weight:800;letter-spacing:0.02em;margin-bottom:0.3rem}
+.team-role{font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem}
+.team-bio{font-size:0.9rem;color:var(--text-secondary);line-height:1.7}
+
+/* ── Gallery ── */
+.gallery{padding:7rem 0;background:var(--bg-alt)}
+.gallery-header{display:flex;justify-content:space-between;align-items:end;margin-bottom:3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;gap:1.2rem}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer}
+.gallery-item:nth-child(1){grid-column:span 2}
+.gallery-item:nth-child(4){grid-column:span 2}
+.gallery-item-bg{position:absolute;inset:0;transition:transform 0.7s var(--ease)}
+.gallery-item:hover .gallery-item-bg{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:rgba(26,26,26,0);transition:background 0.4s var(--ease)}
+.gallery-item:hover::after{background:rgba(26,26,26,0.25)}
+.gallery-item-label{position:absolute;bottom:1.2rem;left:1.5rem;z-index:2;font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 0.4s var(--ease)}
+.gallery-item:hover .gallery-item-label{opacity:1;transform:translateY(0)}
+
+/* ── Testimonials ── */
+.testimonials{padding:7rem 0;background:var(--bg)}
+.testimonials-header{text-align:center;margin-bottom:4rem}
+.testimonials-header .section-label{padding-left:0}
+.testimonials-header .section-label::before{display:none}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.testimonial-card{background:var(--white);padding:2.5rem 2rem;border:1px solid var(--border);transition:all 0.4s var(--ease);display:flex;flex-direction:column}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(139,126,116,0.1)}
+.testimonial-stars{color:var(--gold);font-size:0.9rem;letter-spacing:0.15em;margin-bottom:1.2rem}
+.testimonial-text{font-family:var(--font-serif);font-size:1rem;font-style:italic;color:var(--text);line-height:1.8;flex:1;margin-bottom:1.5rem}
+.testimonial-author{font-family:var(--font-display);font-weight:800;font-size:0.9rem;color:var(--text)}
+.testimonial-service{font-size:0.78rem;color:var(--text-secondary);margin-top:0.2rem}
+
+/* ── Contact ── */
+.contact{padding:7rem 0;background:var(--bg-alt)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info h2{font-family:var(--font-display);font-size:2rem;font-weight:800;margin-bottom:1.5rem;letter-spacing:-0.01em}
+.contact-intro{color:var(--text-secondary);font-size:0.95rem;line-height:1.7;margin-bottom:2.5rem}
+.contact-detail{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-detail-icon{width:40px;height:40px;min-width:40px;display:flex;align-items:center;justify-content:center;background:var(--accent);border-radius:0;transition:background 0.3s}
+.contact-detail:hover .contact-detail-icon{background:var(--accent-dark)}
+.contact-detail-icon svg{width:18px;height:18px;stroke:var(--white);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact-detail-text h4{font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.3rem}
+.contact-detail-text p{font-size:0.95rem;color:var(--text);line-height:1.6}
+.contact-detail-text a{color:var(--accent);transition:color 0.3s}
+.contact-detail-text a:hover{color:var(--accent-dark)}
+.contact-hours{margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.contact-hours h4{font-family:var(--font-display);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.8rem}
+.contact-hours p{font-size:0.92rem;color:var(--text);line-height:1.8}
+.contact-form{background:var(--white);padding:3rem;border:1px solid var(--border)}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.9rem 1rem;border:1.5px solid var(--border);background:var(--bg);font-family:var(--font-body);font-size:0.95rem;color:var(--text);transition:border-color 0.3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B7E74' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* ── Footer ── */
+footer{background:var(--bg-dark);color:rgba(255,255,255,0.6);padding:3rem 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:var(--font-display);font-size:0.85rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--white)}
+.footer-copy{font-size:0.8rem}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.5);transition:color 0.3s;letter-spacing:0.05em}
+.footer-links a:hover{color:var(--white)}
+
+/* ── WhatsApp Float ── */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:998;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s var(--ease)}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:var(--white)}
+.whatsapp-float::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:waPulse 2s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.4);opacity:0}}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-content{padding:8rem 6vw 3rem}
+  .hero-visual{height:45vh;order:-1}
+  .hero-visual-overlay{background:linear-gradient(180deg,var(--bg) 0%,transparent 40%)}
+  .hero-scroll{left:6vw;bottom:1.5rem}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-visual{height:350px}
+  .gallery-grid{grid-auto-rows:200px}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials-grid .testimonial-card:last-child{grid-column:span 2}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-title{font-size:clamp(2rem,7vw,3rem)}
+  .services-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .gallery-item:nth-child(1),.gallery-item:nth-child(4){grid-column:span 1}
+  .testimonials-grid{grid-template-columns:1fr}
+  .testimonials-grid .testimonial-card:last-child{grid-column:span 1}
+  .form-row{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:repeat(3,1fr);gap:1rem}
+  .footer-inner{flex-direction:column;gap:1.5rem;text-align:center}
+  .contact-hours p{font-size:0.85rem}
+}
+@media(max-width:480px){
+  .hero-content{padding:7rem 5vw 2rem}
+  .hero-buttons{flex-direction:column}
+  .hero-buttons .btn{width:100%;justify-content:center}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .about-visual{height:280px}
+  .about-visual-accent{width:55%;height:45%}
+  .about-badge{top:1rem;right:1rem;padding:1rem 1.2rem}
+  .about-badge .number{font-size:2rem}
+  .about-stat .stat-number{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">CNSP<span>Clínica Médica</span></a>
+    <div class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a href="https://wa.me/55556132481520" class="nav-cta" target="_blank" rel="noopener">Agendar</a>
+    </div>
+    <button class="hamburger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <a href="#servicos">Serviços</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#equipe">Equipe</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#contato">Contato</a>
+  <a href="https://wa.me/55556132481520" class="btn btn-whatsapp" target="_blank" rel="noopener">Agendar Consulta</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-label fade-up">Saúde e Bem-Estar</div>
+    <h1 class="hero-title">
+      <span class="line"><span class="line-inner">Colégio Nossa</span></span>
+      <span class="line"><span class="line-inner">Senhora da</span></span>
+      <span class="line"><span class="line-inner"><em>Piedade</em></span></span>
+    </h1>
+    <p class="hero-subtitle">Cuidado médico humanizado com excelência clínica. Há mais de uma década cuidando da sua saúde no Lago Sul, Brasília.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/55556132481520" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar Consulta
+      </a>
+      <a href="#servicos" class="btn btn-outline">Nossos Serviços</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-gradient"></div>
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+    <div class="hero-shape hero-shape-3"></div>
+    <div class="hero-visual-overlay"></div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-line"></span>
+    Scroll
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="services-header fade-up">
+      <span class="section-label">Nossos Serviços</span>
+      <h2 class="section-title">Cuidado completo<br>para sua <em>saúde</em></h2>
+    </div>
+    <div class="services-grid">
+      <!-- Consulta -->
+      <div class="service-card fade-up" data-delay="1">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="20" stroke="#6B705C" stroke-width="2"/>
+            <path d="M24 14v20M14 24h20" stroke="#6B705C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Consulta Médica</h3>
+        <p>Avaliação clínica completa com anamnese detalhada e exame físico. Atendimento individualizado com foco na prevenção e no bem-estar do paciente.</p>
+        <div class="service-price">R$ 180,00 <small>/ sessão</small></div>
+      </div>
+      <!-- Retorno -->
+      <div class="service-card fade-up" data-delay="2">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="20" stroke="#6B705C" stroke-width="2"/>
+            <path d="M16 24a8 8 0 1 1 3 6.25" stroke="#6B705C" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M15 30l1 3 3-1" stroke="#6B705C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Retorno</h3>
+        <p>Acompanhamento da evolução do quadro clínico, ajuste de condutas e verificação dos resultados dos exames solicitados.</p>
+        <div class="service-price">R$ 120,00 <small>/ sessão</small></div>
+      </div>
+      <!-- Exame Complementar -->
+      <div class="service-card fade-up" data-delay="3">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="6" width="28" height="36" rx="3" stroke="#6B705C" stroke-width="2"/>
+            <path d="M16 16h16M16 22h16M16 28h10" stroke="#6B705C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Exame Complementar</h3>
+        <p>Realização de exames laboratoriais e de imagem para diagnóstico preciso. Solicitação e interpretação com agilidade e clareza.</p>
+        <div class="service-price">R$ 95,00 <small>/ exame</small></div>
+      </div>
+      <!-- Procedimento -->
+      <div class="service-card fade-up" data-delay="1">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6l6 12h12l-10 8 4 14-12-8-12 8 4-14L6 18h12z" stroke="#6B705C" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Procedimento</h3>
+        <p>Procedimentos clínicos ambulatoriais realizados com segurança e técnica apurada. Infecções, curativos, punções e pequenas intervenções.</p>
+        <div class="service-price">R$ 250,00 <small>/ procedimento</small></div>
+      </div>
+      <!-- Avaliação Inicial -->
+      <div class="service-card fade-up" data-delay="2">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="4" width="32" height="40" rx="3" stroke="#6B705C" stroke-width="2"/>
+            <path d="M16 14h16M16 22h16" stroke="#6B705C" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="32" r="2" fill="#6B705C"/>
+            <circle cx="24" cy="32" r="2" fill="#6B705C"/>
+            <circle cx="32" cy="32" r="2" fill="#6B705C"/>
+          </svg>
+        </div>
+        <h3>Avaliação Inicial</h3>
+        <p>Triagem e avaliação inicial para novos pacientes. Mapeamento completo do histórico de saúde e definição do plano de cuidado personalizado.</p>
+        <div class="service-price">R$ 150,00 <small>/ avaliação</small></div>
+      </div>
+      <!-- Tratamento -->
+      <div class="service-card fade-up" data-delay="3">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 40C14 33 8 26 8 19 8 12 14 6 21 8c1.5.5 2.3 1.5 3 3 .7-1.5 1.5-2.5 3-3 7-2 13 4 13 11 0 7-6 14-16 21z" stroke="#6B705C" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Tratamento</h3>
+        <p>Plano terapêutico contínuo com acompanhamento regular. Tratamentos clínicos, nutricionais e preventivos para diversas condições.</p>
+        <div class="service-price">R$ 300,00 <small>/ sessão</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-left">
+        <span class="section-label">Sobre Nós</span>
+        <h2 class="section-title">Tradição e cuidado<br>desde <em>2012</em></h2>
+        <p>O Colégio Nossa Senhora da Piedade nasceu da convicção de que a medicina deve ser exercida com respeito, empatia e dedicação integral a cada paciente.</p>
+        <p>Localizada no coração do Lago Sul, em Brasília, nossa clínica oferece um ambiente acolhedor onde a relação médico-paciente é o centro de tudo. Acreditamos que o melhor tratamento começa com uma escuta atenta.</p>
+        <p class="about-quote">"Cada paciente é uma história única, e merece um cuidado que respeite sua individualidade e suas necessidades."</p>
+      </div>
+      <div class="about-visual fade-right">
+        <div class="about-visual-main"></div>
+        <div class="about-visual-accent"></div>
+        <div class="about-badge">
+          <div class="number">12+</div>
+          <div class="label">Anos de<br>Atendimento</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat fade-up" data-delay="1">
+        <div class="stat-number" data-count="8500">0</div>
+        <div class="stat-label">Pacientes Atendidos</div>
+      </div>
+      <div class="about-stat fade-up" data-delay="2">
+        <div class="stat-number" data-count="15">0</div>
+        <div class="stat-label">Profissionais</div>
+      </div>
+      <div class="about-stat fade-up" data-delay="3">
+        <div class="stat-number" data-count="98">0</div>
+        <div class="stat-label">Satisfação (%)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="equipe">
+  <div class="container">
+    <div class="team-header fade-up">
+      <span class="section-label">Nossa Equipe</span>
+      <h2 class="section-title">Profissionais dedicados<br>ao seu <em>bem-estar</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-up" data-delay="1">
+        <div class="team-photo" style="background:linear-gradient(160deg,#8B7E74 0%,#6B705C 50%,#4A4E3E 100%)"></div>
+        <h3 class="team-name">Dra. Maria Fernanda Costa</h3>
+        <p class="team-role">Clínica Geral</p>
+        <p class="team-bio">Graduada pela UnB com residência em Clínica Médica. Especialista em medicina preventiva com mais de 15 anos de experiência.</p>
+      </div>
+      <div class="team-card fade-up" data-delay="2">
+        <div class="team-photo" style="background:linear-gradient(160deg,#6B705C 0%,#4A4E3E 50%,#3A3E2E 100%)"></div>
+        <h3 class="team-name">Dr. Ricardo Almeida</h3>
+        <p class="team-role">Medicina Interna</p>
+        <p class="team-bio">Especialista em Medicina Interna pelo Hospital de Base do DF. Atuação focada em doenças crônicas e cuidado integrado ao paciente.</p>
+      </div>
+      <div class="team-card fade-up" data-delay="3">
+        <div class="team-photo" style="background:linear-gradient(160deg,#A89F91 0%,#8B7E74 50%,#6B705C 100%)"></div>
+        <h3 class="team-name">Dra. Ana Paula Souza</h3>
+        <p class="team-role">Nutricionista</p>
+        <p class="team-bio">Pós-graduada em Nutrição Clínica Funcional. Abordagem integrativa que conecta alimentação, estilo de vida e saúde plena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <div>
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title">Nossos <em>espaços</em></h2>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up" data-delay="1">
+        <div class="gallery-item-bg" style="background:linear-gradient(135deg,#6B705C 0%,#8B7E74 60%,#A89F91 100%)"></div>
+        <span class="gallery-item-label">Recepção</span>
+      </div>
+      <div class="gallery-item fade-up" data-delay="2">
+        <div class="gallery-item-bg" style="background:linear-gradient(160deg,#8B7E74 0%,#A89F91 50%,#C4B5A5 100%)"></div>
+        <span class="gallery-item-label">Sala de Espera</span>
+      </div>
+      <div class="gallery-item fade-up" data-delay="3">
+        <div class="gallery-item-bg" style="background:linear-gradient(180deg,#4A4E3E 0%,#6B705C 50%,#8B7E74 100%)"></div>
+        <span class="gallery-item-label">Consultório 1</span>
+      </div>
+      <div class="gallery-item fade-up" data-delay="1">
+        <div class="gallery-item-bg" style="background:linear-gradient(135deg,#A89F91 0%,#C4B5A5 50%,#D4C9BC 100%)"></div>
+        <span class="gallery-item-label">Consultório 2</span>
+      </div>
+      <div class="gallery-item fade-up" data-delay="2">
+        <div class="gallery-item-bg" style="background:linear-gradient(200deg,#6B705C 0%,#8B9A7E 50%,#A89F91 100%)"></div>
+        <span class="gallery-item-label">Corredor</span>
+      </div>
+      <div class="gallery-item fade-up" data-delay="3">
+        <div class="gallery-item-bg" style="background:linear-gradient(150deg,#8B7E74 0%,#6B705C 60%,#4A4E3E 100%)"></div>
+        <span class="gallery-item-label">Entrada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <span class="section-label">Depoimentos</span>
+      <h2 class="section-title">O que nossos pacientes<br><em>dizem</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up" data-delay="1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Atendimento excepcional desde o primeiro contato. A Dra. Maria Fernanda é extremamente atenciosa e cuidadosa. Me senti verdadeiramente acolhido em cada consulta."</p>
+        <div class="testimonial-author">Carlos Mendonça</div>
+        <div class="testimonial-service">Consulta Médica</div>
+      </div>
+      <div class="testimonial-card fade-up" data-delay="2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Ambiente acolhedor e profissionais altamente qualificados. O tratamento que recebi foi personalizado e os resultados superaram minhas expectativas."</p>
+        <div class="testimonial-author">Patricia Siqueira</div>
+        <div class="testimonial-service">Tratamento Clínico</div>
+      </div>
+      <div class="testimonial-card fade-up" data-delay="3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Recomendo de olhos fechados. A equipe toda é muito profissional e humana. Há anos sou paciente e nunca pensei em procurar outro lugar."</p>
+        <div class="testimonial-author">Roberto Lima</div>
+        <div class="testimonial-service">Avaliação Inicial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-left">
+        <span class="section-label">Contato</span>
+        <h2>Agende sua<br>consulta</h2>
+        <p class="contact-intro">Entre em contato conosco para marcar sua consulta ou tirar suas dúvidas. Estamos prontos para cuidar de você.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>Endereço</h4>
+            <p>SHIS QI 5, Lateral ao Espaço Saúde Stadium<br>Lago Sul, Brasília - DF, 71600-520</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>Telefone</h4>
+            <p><a href="tel:+556132481520">(61) 3248-1520</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/><path d="M12 2v4M12 18v4M2 10h4M18 10h4" opacity="0.5"/></svg>
+          </div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/55556132481520" target="_blank" rel="noopener">Enviar mensagem</a></p>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <h4>Horário de Atendimento</h4>
+          <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+        </div>
+      </div>
+      <div class="contact-form fade-right">
+        <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(61) 99999-9999" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="servico">Serviço desejado</label>
+            <select id="servico" name="servico" required>
+              <option value="" disabled selected>Selecione um serviço</option>
+              <option value="consulta">Consulta Médica</option>
+              <option value="retorno">Retorno</option>
+              <option value="exame">Exame Complementar</option>
+              <option value="procedimento">Procedimento</option>
+              <option value="avaliacao">Avaliação Inicial</option>
+              <option value="tratamento">Tratamento</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajudar..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">CNSP</div>
+        <p class="footer-copy" style="margin-top:0.5rem">Colégio Nossa Senhora da Piedade — Clínica Médica</p>
+      </div>
+      <p class="footer-copy">2025 Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/55556132481520" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Navigation scroll ── */
+  var nav = document.querySelector('nav');
+  var lastScroll = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if(y > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastScroll = y;
+  }, {passive:true});
+
+  /* ── Mobile menu ── */
+  var hamburger = document.querySelector('.hamburger');
+  var mobileMenu = document.querySelector('.mobile-menu');
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ── Intersection Observer animations ── */
+  var animatedEls = document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'-40px'});
+
+  animatedEls.forEach(function(el){ observer.observe(el); });
+
+  /* ── Counter animation ── */
+  var counters = document.querySelectorAll('[data-count]');
+  var counterObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-count'),10);
+        var duration = 2000;
+        var start = 0;
+        var startTime = null;
+
+        function animate(timestamp){
+          if(!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime)/duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.floor(eased * target);
+          el.textContent = current.toLocaleString('pt-BR');
+          if(progress < 1) requestAnimationFrame(animate);
+          else el.textContent = target.toLocaleString('pt-BR');
+        }
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+
+  counters.forEach(function(el){ counterObserver.observe(el); });
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if(href === '#') return;
+      e.preventDefault();
+      var target = document.querySelector(href);
+      if(target){
+        var offset = nav.offsetHeight + 20;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({top:top, behavior:'smooth'});
+      }
+    });
+  });
+
+  /* ── Form handler ── */
+  window.handleFormSubmit = function(e){
+    e.preventDefault();
+    var form = e.target;
+    var nome = form.querySelector('#nome').value;
+    var servico = form.querySelector('#servico').value;
+    var telefone = form.querySelector('#telefone').value;
+    var msg = form.querySelector('#mensagem').value || 'Gostaria de agendar uma consulta.';
+
+    var waText = encodeURIComponent(
+      'Olá! Meu nome é ' + nome + '.\n' +
+      'Telefone: ' + telefone + '\n' +
+      'Serviço: ' + servico + '\n' +
+      msg
+    );
+
+    window.open('https://wa.me/55556132481520?text=' + waText, '_blank');
+    return false;
+  };
+
+})();
+</script>
+</body>
+</html>
