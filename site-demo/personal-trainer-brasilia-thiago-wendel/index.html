@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thiago Wendel - Personal Trainer em Brasilia. Treinamento personalizado para resultados reais. Transforme seu corpo e sua saude com acompanhamento profissional.">
+    <meta name="keywords" content="personal trainer brasilia, treinamento personalizado, academia, fitness, emagrecimento, hipertrofia, saude">
+    <meta name="author" content="Thiago Wendel Personal Trainer">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Thiago Wendel | Personal Trainer em Brasilia">
+    <meta property="og:description" content="Treinamento personalizado para resultados reais. Agende sua avaliacao inicial e comece sua transformacao.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/personal-trainer-brasilia-thiago-wendel/">
+
+    <title>Thiago Wendel | Personal Trainer em Brasilia</title>
+
+    <style>
+        :root {
+            --color-cream: #FAF5E8;
+            --color-cream-dark: #F0E8D4;
+            --color-brown: #9B7E5A;
+            --color-brown-light: #B89B73;
+            --color-terracotta: #C17050;
+            --color-terracotta-dark: #A85D42;
+            --color-gold: #C9A45C;
+            --color-gold-light: #D9BA7A;
+            --color-dark: #1E110A;
+            --color-dark-soft: #3A2A1E;
+            --color-white: #FFFFFF;
+            --color-gray: #8A8078;
+            --color-gray-light: #C4B9AD;
+
+            --font-heading: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Georgia', 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+            --shadow-sm: 0 2px 8px rgba(30, 17, 10, 0.06);
+            --shadow-md: 0 4px 20px rgba(30, 17, 10, 0.1);
+            --shadow-lg: 0 8px 40px rgba(30, 17, 10, 0.14);
+            --shadow-xl: 0 16px 60px rgba(30, 17, 10, 0.18);
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 245, 232, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.7rem 2rem;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--color-dark);
+        }
+
+        .nav.scrolled .nav-link {
+            color: var(--color-dark-soft);
+        }
+
+        .nav.scrolled .nav-link:hover {
+            color: var(--color-terracotta);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--color-gold-light);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--color-white);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav.scrolled .nav-hamburger span {
+            background: var(--color-dark);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(30, 17, 10, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .nav-mobile.active {
+            display: flex;
+        }
+
+        .nav-mobile a {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-cream);
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+        }
+
+        .nav-mobile a:hover {
+            color: var(--color-gold);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(165deg, var(--color-dark) 0%, #2A1810 30%, var(--color-dark-soft) 60%, var(--color-terracotta-dark) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201, 164, 92, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(193, 112, 80, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 860px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(201, 164, 92, 0.4);
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gold-light);
+            margin-bottom: 2rem;
+            animation: fadeUp 1s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--color-cream);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 1s ease 0.4s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(250, 245, 232, 0.7);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            animation: fadeUp 1s ease 0.6s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            border-radius: 50px;
+            transition: var(--transition);
+            animation: fadeUp 1s ease 0.8s both;
+        }
+
+        .hero-cta:hover {
+            background: var(--color-terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(193, 112, 80, 0.35);
+        }
+
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(250, 245, 232, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: fadeUp 1s ease 1.2s both;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(250, 245, 232, 0.4), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        .hero-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-line {
+            position: absolute;
+            background: linear-gradient(to bottom, transparent, rgba(201, 164, 92, 0.06), transparent);
+            width: 1px;
+            height: 100%;
+        }
+
+        .hero-line:nth-child(1) { left: 15%; animation: lineDrift 12s ease-in-out infinite; }
+        .hero-line:nth-child(2) { left: 35%; animation: lineDrift 15s ease-in-out infinite 2s; }
+        .hero-line:nth-child(3) { right: 25%; animation: lineDrift 13s ease-in-out infinite 4s; }
+        .hero-line:nth-child(4) { right: 10%; animation: lineDrift 14s ease-in-out infinite 1s; }
+
+        @keyframes lineDrift {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* ============================================
+           SECTION COMMON
+           ============================================ */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-terracotta);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--color-terracotta);
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--color-gray);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-gold), var(--color-terracotta));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           SERVICES
+           ============================================ */
+        .services {
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(155, 126, 90, 0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--color-gold), var(--color-terracotta));
+            transition: var(--transition);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(155, 126, 90, 0.15);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--color-cream), var(--color-cream-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-terracotta);
+        }
+
+        .service-name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            font-size: 0.92rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-price {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+        }
+
+        .service-price span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--color-gray-light);
+            font-family: var(--font-body);
+        }
+
+        /* ============================================
+           ABOUT
+           ============================================ */
+        .about {
+            background: var(--color-dark);
+            color: var(--color-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 164, 92, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: linear-gradient(145deg, var(--color-dark-soft), var(--color-terracotta-dark));
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(30, 17, 10, 0.6) 100%);
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2A1810 0%, var(--color-terracotta-dark) 50%, var(--color-brown) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            color: rgba(250, 245, 232, 0.15);
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            z-index: 2;
+            background: rgba(30, 17, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(201, 164, 92, 0.2);
+        }
+
+        .about-experience strong {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-gold);
+            display: block;
+        }
+
+        .about-experience span {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .about-text .section-label {
+            color: var(--color-gold);
+        }
+
+        .about-text .section-title {
+            color: var(--color-cream);
+        }
+
+        .about-text .section-desc {
+            color: rgba(250, 245, 232, 0.6);
+            text-align: left;
+            margin: 0 0 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat strong {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-gold);
+            display: block;
+        }
+
+        .about-stat span {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ============================================
+           TEAM
+           ============================================ */
+        .team {
+            background: var(--color-cream-dark);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(155, 126, 90, 0.06);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .team-card:nth-child(1) .team-photo-placeholder {
+            background: linear-gradient(135deg, #2A1810 0%, var(--color-terracotta) 50%, var(--color-gold) 100%);
+        }
+
+        .team-card:nth-child(2) .team-photo-placeholder {
+            background: linear-gradient(135deg, var(--color-dark-soft) 0%, var(--color-brown) 50%, var(--color-terracotta) 100%);
+        }
+
+        .team-card:nth-child(3) .team-photo-placeholder {
+            background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-gold) 50%, var(--color-cream-dark) 100%);
+        }
+
+        .team-photo-placeholder svg {
+            width: 60px;
+            height: 60px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .team-card:hover .team-photo-placeholder {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--color-terracotta);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            font-size: 0.88rem;
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           GALLERY
+           ============================================ */
+        .gallery {
+            background: var(--color-cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, #1E110A 0%, var(--color-terracotta-dark) 40%, var(--color-gold) 100%);
+        }
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--color-dark-soft) 0%, var(--color-brown) 60%, var(--color-terracotta) 100%);
+        }
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-terracotta) 50%, var(--color-cream-dark) 100%);
+        }
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-dark-soft) 50%, var(--color-gold) 100%);
+        }
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-brown) 50%, var(--color-dark) 100%);
+        }
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-terracotta) 40%, var(--color-gold-light) 100%);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .gallery-placeholder svg {
+            width: 40px;
+            height: 40px;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(30, 17, 10, 0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-overlay span {
+            color: var(--color-cream);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.08);
+        }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials {
+            background: var(--color-dark);
+            color: var(--color-cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(193, 112, 80, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials .section-label {
+            color: var(--color-gold);
+        }
+
+        .testimonials .section-title {
+            color: var(--color-cream);
+        }
+
+        .testimonials .section-desc {
+            color: rgba(250, 245, 232, 0.5);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(201, 164, 92, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-gold);
+            fill: var(--color-gold);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: rgba(250, 245, 232, 0.75);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-terracotta), var(--color-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-white);
+            flex-shrink: 0;
+        }
+
+        .testimonial-author-info strong {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--color-cream);
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.4);
+        }
+
+        /* ============================================
+           CONTACT
+           ============================================ */
+        .contact {
+            background: var(--color-cream);
+        }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--color-cream-dark), var(--color-cream));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-terracotta);
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--color-terracotta);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--color-terracotta-dark);
+        }
+
+        .contact-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.2rem;
+            background: #25D366;
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .contact-whatsapp:hover {
+            background: #1EB954;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-whatsapp svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(155, 126, 90, 0.06);
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--color-dark-soft);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--color-dark);
+            background: var(--color-cream);
+            border: 1px solid rgba(155, 126, 90, 0.12);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--color-terracotta);
+            box-shadow: 0 0 0 3px rgba(193, 112, 80, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.02em;
+        }
+
+        .form-submit:hover {
+            background: var(--color-terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(193, 112, 80, 0.3);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-dark);
+            color: rgba(250, 245, 232, 0.5);
+            padding: 2.5rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-cream);
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: rgba(250, 245, 232, 0.5);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(250, 245, 232, 0.3);
+        }
+
+        /* ============================================
+           WHATSAPP FLOATING
+           ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            color: var(--color-white);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.2);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0; }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 2rem;
+            }
+            .about-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+            .contact-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-hamburger {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">Thiago <span>Wendel</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos" class="nav-link">Servicos</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#equipe" class="nav-link">Equipe</a></li>
+                <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="nav-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="nav-mobile" id="mobileNav">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-lines">
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Personal Trainer em Brasilia</div>
+            <h1>Transforme seu corpo,<br>transforme sua <em>vida</em></h1>
+            <p class="hero-sub">Treinamento personalizado com acompanhamento profissional para quem busca resultados reais e duradouros.</p>
+            <a href="https://wa.me/555561992934843" class="hero-cta" target="_blank" rel="noopener">
+                Agende sua avaliacao
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Servicos</span>
+                <h2 class="section-title">Conheca nossos <em>servicos</em></h2>
+                <p class="section-desc">Programas personalizados para cada fase da sua jornada fitness, com acompanhamento individual e foco total nos seus objetivos.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow-fade-up">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta</h3>
+                    <p class="service-desc">Avaliacao completa do seu condicionamento fisico, historico de saude e definicao de objetivos personalizados para o seu treino.</p>
+                    <p class="service-price">R$ 150 <span>/ sessao</span></p>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Reavaliacao periodica para acompanhar sua evolucao, ajustar cargas e garantir progresso continuo no treinamento.</p>
+                    <p class="service-price">R$ 120 <span>/ sessao</span></p>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Analise detalhada de composicao corporal, testes de flexibilidade e avaliacao postural para prescricao precisa do treino.</p>
+                    <p class="service-price">R$ 200 <span>/ avaliacao</span></p>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Sessoes de treino intensivo com tecnica avancada, periodizacao cientifica e correcao de movimento em tempo real.</p>
+                    <p class="service-price">R$ 180 <span>/ sessao</span></p>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Primeiro passo para sua transformacao. Mapeamento completo de forca, resistencia, mobilidade e metas individuais.</p>
+                    <p class="service-price">R$ 90 <span>/ avaliacao</span></p>
+                </div>
+
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento</h3>
+                    <p class="service-desc">Programa completo de treinamento com acompanhamento nutricional, plano periodizado e suporte continuo durante toda a jornada.</p>
+                    <p class="service-price">R$ 350 <span>/ mes</span></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="section-inner">
+            <div class="about-inner">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="about-experience">
+                        <strong>+8</strong>
+                        <span>Anos de experiencia</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="wow-fade-up">
+                        <span class="section-label">Sobre</span>
+                        <h2 class="section-title">Uma paixao por <em>transformar</em> vidas</h2>
+                    </div>
+                    <p class="section-desc wow-fade-up" style="transition-delay: 0.1s;">
+                        Nascido em Brasilia, Thiago Wendel encontrou no treinamento personalizado a sua vocacao. Com mais de 8 anos de experiencia, ja ajudou centenas de pessoas a alcancarem seus objetivos fitness, desde emagrecimento ate ganho de massa muscular.
+                    </p>
+                    <p class="section-desc wow-fade-up" style="transition-delay: 0.2s;">
+                        Sua abordagem combina ciencia do esporte com atencao individual, criando programas que respeitam o ritmo e as limitacoes de cada aluno. Acredita que resultados duradouros vem da constancia e de um acompanhamento genuinamente personalizado.
+                    </p>
+                    <div class="about-stats wow-fade-up" style="transition-delay: 0.3s;">
+                        <div class="about-stat">
+                            <strong data-count="500">0</strong>
+                            <span>Alunos</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong data-count="8">0</strong>
+                            <span>Anos</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong data-count="98">0</strong>
+                            <span>% Satisfacao</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Profissionais dedicados <em>ao seu resultado</em></h2>
+                <p class="section-desc">Uma equipe qualificada e comprometida com a sua evolucao, pronta para acompanhar cada etapa da sua jornada.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow-fade-up">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Thiago Wendel</h3>
+                        <p class="team-role">Personal Trainer - Fundador</p>
+                        <p class="team-bio">CREF-DF 012345-G/DF. Especialista em treinamento personalizado com foco em resultados e qualidade de vida.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Camila Rodrigues</h3>
+                        <p class="team-role">Nutricionista Esportiva</p>
+                        <p class="team-bio">CRN-3 45678. Especialista em nutricao esportiva e reeducacao alimentar para acompanhamento integrado ao treino.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Rafael Lima</h3>
+                        <p class="team-role">Fisioterapeuta</p>
+                        <p class="team-bio">CREFITO-3 78901. Especialista em reabilitacao e prevencao de lesoes, garantindo seguranca em cada exercicio.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Nossos <em>espacos</em> e resultados</h2>
+                <p class="section-desc">Conheca o ambiente onde acontece a transformacao e veja os resultados dos nossos alunos.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-grid">
+
+                <div class="gallery-item wow-fade-up">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Area de Musculacao</span></div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Area de Funcional</span></div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Sessao de Treino Individual</span></div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Avaliacao Fisica</span></div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Treino em Grupo</span></div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                    <div class="gallery-overlay"><span>Resultados dos Alunos</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos <em>alunos</em> dizem</h2>
+                <p class="section-desc">Histories reais de transformacao de quem confiou no nosso trabalho.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow-fade-up">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Em 6 meses com o Thiago, perdi 18kg e ganhei uma disposicao que nao tinha ha anos. O acompanhamento individual faz toda a diferenca. Recomendo de olhos fechados."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FL</div>
+                        <div class="testimonial-author-info">
+                            <strong>Fernanda Lima</strong>
+                            <span>Aluna ha 8 meses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Procurava um personal que levasse a serio o meu treinamento. O Thiago montou um programa perfeito para o meu objetivo de hipertrofia. Resultado: 8kg de massa magra em 5 meses."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MS</div>
+                        <div class="testimonial-author-info">
+                            <strong>Marcos Souza</strong>
+                            <span>Aluno ha 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Apos duas cirurgias no joelho, achava que nunca mais ia treinar. O Thiago, junto com a equipe de fisioterapia, montou um programa seguro. Hoje treino 4 vezes por semana sem dor."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AC</div>
+                        <div class="testimonial-author-info">
+                            <strong>Ana Carolina</strong>
+                            <span>Aluna ha 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="section-inner">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Comece sua <em>transformacao</em> hoje</h2>
+                <p class="section-desc">Entre em contato e agende sua avaliacao inicial. Sem compromisso.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-inner">
+                <div class="contact-info wow-fade-up">
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>Sudoeste Q. Res. Sudoeste 2<br>Sudoeste, Brasilia - DF<br>CEP: 70675-110</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5561992934843">(61) 99293-4843</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <h4>Horario de Atendimento</h4>
+                            <p>Segunda a Sexta: 6h as 21h<br>Sabado: 7h as 14h<br>Domingo: Fechado</p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/555561992934843" class="contact-whatsapp" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Fale pelo WhatsApp
+                    </a>
+
+                </div>
+
+                <div class="contact-form wow-fade-up" style="transition-delay: 0.1s;">
+                    <h3>Envie uma mensagem</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(61) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico de interesse</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento</option>
+                                <option value="avaliacao">Avaliacao Inicial</option>
+                                <option value="tratamento">Tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte um pouco sobre seus objetivos..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Thiago <span>Wendel</span></div>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p class="footer-copy">2025 Thiago Wendel Personal Trainer. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/555561992934843" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ============================================
+           NAVIGATION - Scroll behavior
+           ============================================ */
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        /* ============================================
+           MOBILE MENU
+           ============================================ */
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.nav-mobile a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ============================================
+           INTERSECTION OBSERVER - Scroll animations
+           ============================================ */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ============================================
+           COUNTER ANIMATION
+           ============================================ */
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(function(counter) {
+                        var target = parseInt(counter.getAttribute('data-count'), 10);
+                        var duration = 2000;
+                        var step = target / (duration / 16);
+                        var current = 0;
+
+                        function updateCounter() {
+                            current += step;
+                            if (current >= target) {
+                                counter.textContent = target + '+';
+                                return;
+                            }
+                            counter.textContent = Math.floor(current) + '+';
+                            requestAnimationFrame(updateCounter);
+                        }
+
+                        updateCounter();
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        var statsSection = document.querySelector('.about-stats');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        /* ============================================
+           CONTACT FORM
+           ============================================ */
+        function handleSubmit(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var service = document.getElementById('service').value;
+            var message = document.getElementById('message').value;
+
+            var waMessage = 'Ola! Meu nome e ' + name +
+                '. Tenho interesse no servico de ' + service +
+                '. Telefone: ' + phone +
+                (message ? '. Mensagem: ' + message : '') +
+                '. Gostaria de agendar uma avaliacao.';
+
+            var waUrl = 'https://wa.me/555561992934843?text=' + encodeURIComponent(waMessage);
+            window.open(waUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
