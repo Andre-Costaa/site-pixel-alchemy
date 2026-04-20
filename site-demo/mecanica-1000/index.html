@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mecanica 1000 - Clinica de saude em Nova Iguacu, RJ. Cuidado humano e personalizado para voce e sua familia.">
+    <meta name="keywords" content="clinica, saude, consulta, exame, tratamento, Nova Iguacu, RJ">
+    <title>Mecanica 1000 | Clinica de Saude - Nova Iguacu, RJ</title>
+    <meta property="og:title" content="Mecanica 1000 | Clinica de Saude">
+    <meta property="og:description" content="Cuidado humano e personalizado para voce e sua familia. Agende sua consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/mecanica-1000/">
+    <meta property="og:image" content="https://www.pixelalchemy.com.br/site-demo/mecanica-1000/og-image.jpg">
+    <link rel="canonical" href="https://www.pixelalchemy.com.br/site-demo/mecanica-1000/">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush: #F5E6E0;
+            --rose-gold: #C4868A;
+            --rose-gold-light: #D9A3A6;
+            --sage: #A3B18A;
+            --sage-light: #C5D1B5;
+            --charcoal: #2D2D2D;
+            --charcoal-light: #4A4A4A;
+            --champagne: #F7E7CE;
+            --white: #FEFEFE;
+            --off-white: #FAF6F3;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 10rem;
+            --font-display: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-body: 'Helvetica Neue', 'Segoe UI', 'Fira Sans', 'Ubuntu', 'Cantarell', sans-serif;
+            --font-thin: 100;
+            --font-extralight: 200;
+            --font-light: 300;
+            --font-regular: 400;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-soft: 0 4px 30px rgba(45, 45, 45, 0.06);
+            --shadow-medium: 0 8px 40px rgba(45, 45, 45, 0.10);
+            --shadow-lift: 0 16px 60px rgba(45, 45, 45, 0.12);
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: var(--font-light);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        .section-label {
+            font-family: var(--font-body);
+            font-weight: var(--font-thin);
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 0.08em;
+            color: var(--charcoal);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-subtitle {
+            font-weight: var(--font-extralight);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--charcoal-light);
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.2rem var(--spacing-md);
+            transition: all var(--transition-smooth);
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(254, 254, 254, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.8rem var(--spacing-md);
+            box-shadow: 0 1px 0 rgba(45, 45, 45, 0.06);
+        }
+
+        nav .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            color: var(--charcoal);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--rose-gold);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: var(--font-extralight);
+            font-size: 0.78rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--charcoal-light);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--rose-gold);
+            transition: width var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-weight: var(--font-light) !important;
+            padding: 0.5rem 1.4rem;
+            border: 1px solid var(--rose-gold) !important;
+            border-radius: 100px;
+            color: var(--rose-gold) !important;
+            transition: all var(--transition-smooth) !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--rose-gold) !important;
+            color: var(--white) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--charcoal);
+            transition: all var(--transition-smooth);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4.5px, 4.5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.5px, -4.5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(254, 254, 254, 0.97);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: 1.6rem;
+            letter-spacing: 0.15em;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--rose-gold);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .hero-diagonal {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-diagonal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 100%);
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
+        }
+
+        .hero-diagonal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--off-white) 0%, var(--white) 100%);
+            clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            top: 10%;
+            right: 15%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.15) 0%, transparent 70%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: blobFloat1 18s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 10%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(163, 177, 138, 0.12) 0%, transparent 70%);
+            border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
+            animation: blobFloat2 22s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .hero-blob-3 {
+            position: absolute;
+            top: 40%;
+            left: 45%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(247, 231, 206, 0.25) 0%, transparent 70%);
+            border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+            animation: blobFloat3 15s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-15px, 15px) scale(0.95); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-20px, 25px) scale(1.08); }
+            66% { transform: translate(25px, -10px) scale(0.96); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(15px, -20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem var(--spacing-md) var(--spacing-lg);
+            width: 100%;
+        }
+
+        .hero-label {
+            font-family: var(--font-body);
+            font-weight: var(--font-thin);
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            letter-spacing: 0.06em;
+            color: var(--charcoal);
+            line-height: 1.05;
+            margin-bottom: var(--spacing-md);
+            max-width: 600px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--rose-gold);
+        }
+
+        .hero-tagline {
+            font-weight: var(--font-extralight);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--charcoal-light);
+            max-width: 440px;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-body);
+            font-weight: var(--font-light);
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.9rem 2rem;
+            border-radius: 100px;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid rgba(45, 45, 45, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--rose-gold);
+            color: var(--rose-gold);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-scroll span {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--charcoal-light);
+            font-weight: var(--font-extralight);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--rose-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* SERVICES */
+        .services {
+            background: var(--off-white);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .services-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--rose-gold), var(--sage));
+            transition: height var(--transition-smooth);
+            border-radius: 0 0 4px 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .service-icon.rose { background: rgba(196, 134, 138, 0.12); color: var(--rose-gold); }
+        .service-icon.sage { background: rgba(163, 177, 138, 0.15); color: var(--sage); }
+        .service-icon.champagne { background: rgba(247, 231, 206, 0.4); color: #C4956A; }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-weight: var(--font-extralight);
+            font-size: 1.2rem;
+            letter-spacing: 0.06em;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            font-weight: var(--font-extralight);
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-weight: var(--font-light);
+            font-size: 1.1rem;
+            color: var(--rose-gold);
+            letter-spacing: 0.04em;
+        }
+
+        .service-price small {
+            font-family: var(--font-body);
+            font-weight: var(--font-extralight);
+            font-size: 0.72rem;
+            color: var(--charcoal-light);
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--white);
+            padding-top: var(--spacing-2xl);
+            padding-bottom: var(--spacing-2xl);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 50%, var(--sage-light) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(196, 134, 138, 0.15);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -1rem;
+            right: -1rem;
+            width: 60%;
+            height: 60%;
+            background: var(--rose-gold);
+            opacity: 0.06;
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+
+        .about-content .section-label {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-text {
+            font-weight: var(--font-extralight);
+            font-size: 1rem;
+            color: var(--charcoal-light);
+            line-height: 1.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(45, 45, 45, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--rose-gold);
+            letter-spacing: 0.04em;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-weight: var(--font-extralight);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--charcoal-light);
+        }
+
+        /* TEAM */
+        .team {
+            background: var(--off-white);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .team-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all var(--transition-smooth);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .team-photo {
+            aspect-ratio: 3 / 4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-smooth);
+        }
+
+        .team-card:hover .team-photo-bg {
+            transform: scale(1.05);
+        }
+
+        .team-photo-1 {
+            background: linear-gradient(145deg, var(--blush) 0%, var(--rose-gold-light) 60%, var(--champagne) 100%);
+        }
+
+        .team-photo-2 {
+            background: linear-gradient(145deg, var(--champagne) 0%, var(--sage-light) 60%, var(--blush) 100%);
+        }
+
+        .team-photo-3 {
+            background: linear-gradient(145deg, var(--sage-light) 0%, var(--champagne) 60%, var(--rose-gold-light) 100%);
+        }
+
+        .team-info {
+            padding: 1.5rem 1.5rem 1.8rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-weight: var(--font-extralight);
+            font-size: 1.15rem;
+            letter-spacing: 0.06em;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-weight: var(--font-extralight);
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .team-bio {
+            font-weight: var(--font-extralight);
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+        }
+
+        /* GALLERY */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .gallery-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 45, 45, 0.5) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-label {
+            font-family: var(--font-body);
+            font-weight: var(--font-extralight);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .gallery-1 { background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 100%); }
+        .gallery-2 { background: linear-gradient(135deg, var(--sage-light) 0%, var(--blush) 100%); }
+        .gallery-3 { background: linear-gradient(135deg, var(--champagne) 0%, var(--rose-gold-light) 100%); }
+        .gallery-4 { background: linear-gradient(135deg, var(--rose-gold-light) 0%, var(--sage-light) 100%); }
+        .gallery-5 { background: linear-gradient(135deg, var(--blush) 0%, var(--sage-light) 100%); }
+        .gallery-6 { background: linear-gradient(135deg, var(--champagne) 0%, var(--blush) 100%); }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .testimonials .section-label {
+            color: var(--rose-gold-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .testimonials-header .section-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--champagne);
+        }
+
+        .testimonial-text {
+            font-weight: var(--font-extralight);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: var(--font-light);
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .testimonial-avatar-1 { background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light)); }
+        .testimonial-avatar-2 { background: linear-gradient(135deg, var(--sage), var(--sage-light)); }
+        .testimonial-avatar-3 { background: linear-gradient(135deg, var(--champagne), #E8C99B); }
+
+        .testimonial-name {
+            font-weight: var(--font-light);
+            font-size: 0.9rem;
+            color: var(--white);
+            letter-spacing: 0.04em;
+        }
+
+        .testimonial-detail {
+            font-weight: var(--font-extralight);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--off-white);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .faq-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: box-shadow var(--transition-smooth);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.3rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-display);
+            font-weight: var(--font-extralight);
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            color: var(--charcoal);
+            transition: color var(--transition-smooth);
+        }
+
+        .faq-question:hover {
+            color: var(--rose-gold);
+        }
+
+        .faq-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--rose-gold);
+            border-radius: 2px;
+            transition: transform var(--transition-smooth);
+        }
+
+        .faq-icon::before {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            transform: translateY(-50%);
+        }
+
+        .faq-icon::after {
+            left: 50%;
+            top: 0;
+            width: 1.5px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.active .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.3rem;
+            font-weight: var(--font-extralight);
+            font-size: 0.9rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item-icon.rose {
+            background: rgba(196, 134, 138, 0.1);
+            color: var(--rose-gold);
+        }
+
+        .contact-item-icon.sage {
+            background: rgba(163, 177, 138, 0.12);
+            color: var(--sage);
+        }
+
+        .contact-item-icon.champagne {
+            background: rgba(247, 231, 206, 0.35);
+            color: #B8860B;
+        }
+
+        .contact-item-label {
+            font-weight: var(--font-extralight);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item-value {
+            font-weight: var(--font-light);
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .contact-item-value a {
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--rose-gold);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-weight: var(--font-extralight);
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--charcoal-light);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            font-family: var(--font-body);
+            font-weight: var(--font-light);
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            background: var(--off-white);
+            border: 1px solid rgba(45, 45, 45, 0.08);
+            border-radius: var(--radius-md);
+            padding: 0.9rem 1.2rem;
+            transition: all var(--transition-smooth);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--rose-gold);
+            box-shadow: 0 0 0 3px rgba(196, 134, 138, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-submit {
+            align-self: flex-start;
+            background: var(--rose-gold);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-weight: var(--font-light);
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+        }
+
+        .btn-submit:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.5);
+            padding: var(--spacing-lg) var(--spacing-md);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-weight: var(--font-thin);
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+        }
+
+        .footer-logo span {
+            color: var(--rose-gold-light);
+        }
+
+        .footer-text {
+            font-weight: var(--font-extralight);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-weight: var(--font-extralight);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--rose-gold-light);
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: var(--spacing-md) auto;
+        }
+
+        .footer-copy {
+            font-weight: var(--font-extralight);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 480px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-row { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            section { padding: var(--spacing-xl) var(--spacing-lg); }
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .team-grid { grid-template-columns: repeat(3, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+            .about-grid { grid-template-columns: 1fr 1fr; gap: var(--spacing-2xl); }
+            .nav-links { display: flex; }
+            .hamburger { display: none; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content { padding: 10rem var(--spacing-lg) var(--spacing-xl); }
+            .hero-title { max-width: 700px; }
+        }
+
+        @media (min-width: 1440px) {
+            .container, .container-narrow { max-width: 1320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" role="navigation" aria-label="Navegacao principal">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Mecanica <span>1000</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="https://wa.me/555521994825790" class="nav-cta" target="_blank" rel="noopener">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+        <a href="https://wa.me/555521994825790" target="_blank" rel="noopener">Agendar Consulta</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-diagonal"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="hero-blob-3"></div>
+        <div class="hero-content">
+            <span class="hero-label">Clinica de Saude</span>
+            <h1 class="hero-title">Cuidado que faz a <em>diferenca</em></h1>
+            <p class="hero-tagline">Na Mecanica 1000, cada consulta e um passo em direcao ao seu bem-estar. Atendimento humanizado e tecnologia de ponta em Nova Iguacu.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/555521994825790" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidado completo para sua saude</h2>
+                <p class="section-subtitle">Oferecemos uma gama de servicos para acompanhar cada etapa do seu tratamento com excelencia.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon rose">
+                        <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta</h3>
+                    <p class="service-desc">Avaliacao clinica completa com anamnese detalhada, exame fisico e orientacao personalizada para o seu caso.</p>
+                    <p class="service-price">R$ 250,00 <small>Primeira consulta</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon sage">
+                        <svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><polyline points="4 16 8 12 12 14 20 6"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Acompanhamento da evolucao do seu tratamento com revisao de resultados e ajustes necessarios.</p>
+                    <p class="service-price">R$ 180,00 <small>Consulta de retorno</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon champagne">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Realizacao e analise de exames laboratoriais e de imagem para diagnostico preciso e completo.</p>
+                    <p class="service-price">A partir de R$ 120,00 <small>Valor varia conforme exame</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon rose">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Procedimentos minimamente invasivos realizados com seguranca, tecnologia avancada e todo o conforto.</p>
+                    <p class="service-price">A partir de R$ 450,00 <small>Conforme procedimento</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon sage">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Triagem e avaliacao inicial para identificar suas necessidades e direcionar o melhor caminho terapeutico.</p>
+                    <p class="service-price">R$ 80,00 <small>Triagem inicial</small></p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon champagne">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento</h3>
+                    <p class="service-desc">Planos terapeuticos personalizados com acompanhamento continuo ate a completa recuperacao.</p>
+                    <p class="service-price">A partir de R$ 350,00 <small>Sessao individual</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label reveal">Nossa Historia</span>
+                    <h2 class="section-title reveal">Tradiccao e confianca em cada atendimento</h2>
+                    <p class="about-text reveal">
+                        A Mecanica 1000 nasceu com um proposito claro: oferecer atendimento de saude de qualidade, acessivel e humanizado para a comunidade de Nova Iguacu e regiao.
+                    </p>
+                    <p class="about-text reveal">
+                        Nossa equipe e formada por profissionais dedicados que acreditam que o cuidado com a saude vai alem do consulta medica. Aqui, cada paciente e recebido com acolhimento, respeito e atencao individualizada. Investimos constantemente em tecnologia e capacitacao para garantir os melhores resultados.
+                    </p>
+                    <p class="about-text reveal">
+                        Nosso espaco foi pensado para proporcionar conforto e seguranca, com ambiente climatizado e equipamentos modernos, para que voce se sinta em casa desde o momento em que entra.
+                    </p>
+                    <div class="about-stats reveal">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="8">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="5200">0</div>
+                            <div class="stat-label">Pacientes atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">Satisfacao (%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="team-header reveal">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Profissionais que cuidam de voce</h2>
+                <p class="section-subtitle">Conheca os especialistas dedicados ao seu bem-estar.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-1"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dra. Camila Ferreira</h3>
+                        <p class="team-role">Clinica Geral</p>
+                        <p class="team-bio">Graduada pela UFF com especializacao em Clinica Medica. Atua ha 12 anos com foco em medicina preventiva e atendimento humanizado.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-2"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Rafael Mendes</h3>
+                        <p class="team-role">Ortopedia</p>
+                        <p class="team-bio">Especialista em Ortopedia e Traumatologia pela UERJ. Experiencia em procedimentos minimamente invasivos e reabilitacao musculoesqueletica.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo">
+                        <div class="team-photo-bg team-photo-3"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dra. Isabela Costa</h3>
+                        <p class="team-role">Nutricionista</p>
+                        <p class="team-bio">Pos-graduada em Nutricao Clinica Funcional. Ajuda pacientes a alcancarem melhor qualidade de vida atraves de alimentacao equilibrada e personalizada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="gallery-header reveal">
+                <span class="section-label">Nossas Instalacoes</span>
+                <h2 class="section-title">Um espaco feito para voce</h2>
+                <p class="section-subtitle">Ambiente acolhedor e equipamentos modernos para o seu conforto.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg gallery-1"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Recepcao</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg gallery-2"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Sala de Espera</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg gallery-3"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Consultorio 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg gallery-4"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Consultorio 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg gallery-5"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Sala de Procedimentos</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg gallery-6"></div>
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-label">Area de Exames</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-subtitle">A confianca dos nossos pacientes e a nossa maior conquista.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Fui muito bem atendida pela Dra. Camila. Ela foi super atenciosa, explicou tudo sobre o meu exame e me passou toda a tranquilidade que eu precisava. Recomendo de olhos fechados!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-1">PS</div>
+                        <div>
+                            <p class="testimonial-name">Patricia Souza</p>
+                            <p class="testimonial-detail">Paciente desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O Dr. Rafael resolveu um problema no meu ombro que me incomodava ha meses. Profissional extremamente competente e o consultorio e muito bem equipado. Nota 10!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-2">MA</div>
+                        <div>
+                            <p class="testimonial-name">Marcos Almeida</p>
+                            <p class="testimonial-detail">Paciente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A Dra. Isabela mudou minha relacao com a comida. Com o acompanhamento nutricional dela, consegui resultados incriveis de forma saudavel e sustentavel. Amei!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar testimonial-avatar-3">JL</div>
+                        <div>
+                            <p class="testimonial-name">Juliana Lima</p>
+                            <p class="testimonial-detail">Paciente desde 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="faq-header reveal">
+                <span class="section-label">Perguntas Frequentes</span>
+                <h2 class="section-title">Tire suas duvidas</h2>
+                <p class="section-subtitle">Encontre respostas para as perguntas mais comuns sobre nossos servicos.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" aria-expanded="false">
+                        Como funciona o agendamento?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">O agendamento pode ser feito pelo WhatsApp, telefone ou presencialmente em nossa recepcao. Basta entrar em contato pelo numero +55 21 99482-5790 e nossa equipe ira encontrar o melhor horario para voce.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" aria-expanded="false">
+                        A clinica aceita convenios?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim, aceitamos diversos planos de saude. Entre em contato com nossa equipe para verificar se seu convenio e atendido. Tambem oferecemos opcoes de pagamento particular com condicoes especiais.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question" aria-expanded="false">
+                        Qual o horario de funcionamento?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Funcionamos de segunda a sexta-feira, das 8h as 18h, e aos sabados das 8h as 13h. Aos domingos e feriados estamos fechados. Recomendamos o agendamento previo para garantir seu atendimento.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-4">
+                    <button class="faq-question" aria-expanded="false">
+                        Preciso levar algo para a primeira consulta?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Recomendamos que traga seus documentos pessoais, carteirinha do convenio (se possuir), exames anteriores relacionados ao seu caso e a lista de medicamentos que utiliza atualmente.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-5">
+                    <button class="faq-question" aria-expanded="false">
+                        Existe estacionamento proximo?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sim, ha opcoes de estacionamento nas proximidades da clinica. Estamos localizados no Centro de Nova Iguacu, com facil acesso de transporte publico e boa infraestrutura no entorno.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-header reveal">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Fale conosco</h2>
+                <p class="section-subtitle">Estamos prontos para receber voce. Entre em contato e agende sua consulta.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-item-icon rose">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Endereco</p>
+                            <p class="contact-item-value">Av. Dr. Luiz Guimaraes, 1311<br>Centro, Nova Iguacu - RJ<br>CEP 26215-531</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon sage">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Telefone / WhatsApp</p>
+                            <p class="contact-item-value"><a href="tel:+5521994825790">+55 21 99482-5790</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon champagne">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Horario de Funcionamento</p>
+                            <p class="contact-item-value">Seg a Sex: 08:00 - 18:00<br>Sabado: 08:00 - 13:00<br>Domingo e Feriados: Fechado</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555521994825790" class="btn btn-primary" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: 0.5rem;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                </div>
+                <form class="contact-form reveal" id="contactForm" onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome completo</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(21) 99999-9999" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Servico desejado</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Selecione um servico</option>
+                            <option value="consulta">Consulta - R$ 250,00</option>
+                            <option value="retorno">Retorno - R$ 180,00</option>
+                            <option value="exame">Exame Complementar</option>
+                            <option value="procedimento">Procedimento</option>
+                            <option value="avaliacao">Avaliacao Inicial - R$ 80,00</option>
+                            <option value="tratamento">Tratamento</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" placeholder="Conte-nos como podemos ajudar..." rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p class="footer-logo">Mecanica <span>1000</span></p>
+            <p class="footer-text">Clinica de Saude - Nova Iguacu, RJ</p>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">2025 Mecanica 1000. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/555521994825790" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            var navbar = document.getElementById('navbar');
+            var lastScrollY = 0;
+            var ticking = false;
+
+            function updateNavbar() {
+                var scrollY = window.scrollY;
+                if (scrollY > 80) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScrollY = scrollY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateNavbar);
+                    ticking = true;
+                }
+            });
+
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', function() {
+                var isOpen = mobileMenu.classList.contains('open');
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileMenu.classList.add('open');
+                    hamburger.classList.add('active');
+                    hamburger.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            var revealElements = document.querySelectorAll('.reveal');
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '-50px' });
+
+            revealElements.forEach(function(el) {
+                revealObserver.observe(el);
+            });
+
+            var statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            var statsAnimated = false;
+
+            function animateCounters() {
+                statNumbers.forEach(function(el) {
+                    var target = parseInt(el.getAttribute('data-target'), 10);
+                    var duration = 2000;
+                    var startTime = null;
+
+                    function step(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = Math.floor(eased * target);
+                        el.textContent = current.toLocaleString('pt-BR');
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            el.textContent = target.toLocaleString('pt-BR');
+                            if (target === 98) el.textContent += '%';
+                        }
+                    }
+
+                    requestAnimationFrame(step);
+                });
+            }
+
+            var statsSection = document.querySelector('.about-stats');
+            if (statsSection) {
+                var statsObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !statsAnimated) {
+                            statsAnimated = true;
+                            animateCounters();
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                statsObserver.observe(statsSection);
+            }
+
+            var faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(function(item) {
+                var question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    var isActive = item.classList.contains('active');
+
+                    faqItems.forEach(function(otherItem) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            var contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('name').value.trim();
+                var phone = document.getElementById('phone').value.trim();
+                var service = document.getElementById('service').value;
+                var message = document.getElementById('message').value.trim();
+
+                if (!name || !phone || !service) return;
+
+                var text = 'Ola! Meu nome e ' + encodeURIComponent(name) + '.';
+                text += ' Telefone: ' + encodeURIComponent(phone) + '.';
+                text += ' Gostaria de agendar: ' + encodeURIComponent(service) + '.';
+                if (message) {
+                    text += ' Mensagem: ' + encodeURIComponent(message);
+                }
+
+                window.open('https://wa.me/555521994825790?text=' + text, '_blank');
+            });
+
+        })();
+    </script>
+</body>
+</html>
