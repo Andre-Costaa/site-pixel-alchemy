@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ideia em Movimento - Videomaker Mobile especializado em arquitetura e imobiliarias. Videos profissionais para projetos, imoveis e empreendimentos em Campinas e regiao.">
+<meta name="keywords" content="videomaker, video arquitetura, video imobiliario, tour virtual, drone, Campinas, SP">
+<meta property="og:title" content="Ideia em Movimento | Videomaker Mobile para Arquitetos e Imobiliarias">
+<meta property="og:description" content="Transformamos espacos em experiencias visuais. Videos profissionais para arquitetos e imobiliarias.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Ideia em Movimento | Videomaker Mobile para Arquitetos e Imobiliarias</title>
+<style>
+:root {
+  --color-navy: #1B3A5C;
+  --color-navy-dark: #122740;
+  --color-gold: #D4A843;
+  --color-gold-light: #E8C76A;
+  --color-white: #FFFFFF;
+  --color-slate: #4A5568;
+  --color-slate-light: #718096;
+  --color-cream: #FFF8F0;
+  --color-cream-dark: #F5EDE0;
+  --color-border: #E2D8C8;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+  --font-serif: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --font-body: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --shadow-sm: 0 2px 8px rgba(27,58,92,0.08);
+  --shadow-md: 0 8px 30px rgba(27,58,92,0.12);
+  --shadow-lg: 0 20px 60px rgba(27,58,92,0.15);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-slate);
+  background: var(--color-cream);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-navy);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* NAVIGATION */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(27,58,92,0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nav.hidden {
+  transform: translateY(-100%);
+}
+
+.nav.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.nav-brand span {
+  color: var(--color-gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--color-navy);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-navy);
+  transition: all 0.3s ease;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+.mobile-menu a {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-navy);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--color-navy-dark);
+  overflow: hidden;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: heroFloat 15s ease-in-out infinite;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: heroFloat 20s ease-in-out infinite reverse;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+.hero-line {
+  position: absolute;
+  background: linear-gradient(180deg, transparent, rgba(212,168,67,0.2), transparent);
+  width: 1px;
+  height: 100%;
+  top: 0;
+}
+
+.hero-line:nth-child(1) { left: 15%; }
+.hero-line:nth-child(2) { left: 35%; opacity: 0.5; }
+.hero-line:nth-child(3) { right: 35%; opacity: 0.5; }
+.hero-line:nth-child(4) { right: 15%; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.3s;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-white);
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  margin-bottom: var(--spacing-md);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.5s;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--color-gold);
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.7s;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 0.9s;
+}
+
+.hero-cta:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212,168,67,0.3);
+}
+
+.hero-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta:hover svg {
+  transform: translateX(3px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 1.2s;
+}
+
+.hero-scroll span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.4);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--color-gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTION COMMON */
+.section {
+  padding: var(--spacing-2xl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-desc {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--color-slate-light);
+  font-size: 0.95rem;
+}
+
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: var(--spacing-md) auto 0;
+}
+
+/* SERVICES */
+.services {
+  background: var(--color-white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.service-card {
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg) var(--spacing-md);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--color-gold);
+  transition: height var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(212,168,67,0.3);
+}
+
+.service-card:hover::before {
+  height: 100%;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--color-gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.service-card h3 {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--color-slate-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-price {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.service-price small {
+  font-size: 0.75rem;
+  color: var(--color-slate-light);
+  letter-spacing: 0.08em;
+}
+
+/* ABOUT */
+.about {
+  background: var(--color-navy-dark);
+  color: rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #2a5080 50%, var(--color-navy-dark) 100%);
+  overflow: hidden;
+}
+
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(212,168,67,0.3);
+}
+
+.about-image-accent {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 60%;
+  height: 60%;
+  background: rgba(212,168,67,0.1);
+  border: 1px solid rgba(212,168,67,0.15);
+  z-index: -1;
+}
+
+.about-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about h2 {
+  color: var(--color-white);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-text {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.45);
+}
+
+/* TEAM */
+.team {
+  background: var(--color-white);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.team-card {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition);
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.team-photo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto var(--spacing-md);
+  background: linear-gradient(135deg, #2a5080 0%, var(--color-navy-dark) 100%);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-photo::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,168,67,0.3);
+}
+
+.team-card h3 {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.team-card .role {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.team-card p {
+  font-size: 0.85rem;
+  color: var(--color-slate-light);
+  line-height: 1.7;
+}
+
+/* GALLERY */
+.gallery {
+  background: var(--color-cream);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:nth-child(1) .gallery-item-bg {
+  background: linear-gradient(135deg, #2a5080 0%, #1B3A5C 40%, #122740 100%);
+}
+
+.gallery-item:nth-child(2) .gallery-item-bg {
+  background: linear-gradient(135deg, #D4A843 0%, #b8922e 50%, #8a6d20 100%);
+}
+
+.gallery-item:nth-child(3) .gallery-item-bg {
+  background: linear-gradient(135deg, #4A5568 0%, #2D3748 50%, #1a202c 100%);
+}
+
+.gallery-item:nth-child(4) .gallery-item-bg {
+  background: linear-gradient(135deg, #1B3A5C 0%, #D4A843 100%);
+}
+
+.gallery-item:nth-child(5) .gallery-item-bg {
+  background: linear-gradient(135deg, #2D3748 0%, #4A5568 60%, #718096 100%);
+}
+
+.gallery-item:nth-child(6) .gallery-item-bg {
+  background: linear-gradient(135deg, #D4A843 0%, #1B3A5C 100%);
+}
+
+.gallery-item:hover .gallery-item-bg {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(27,58,92,0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-md);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay span {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--color-white);
+  letter-spacing: 0.1em;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--color-white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.testimonial-card {
+  padding: var(--spacing-lg);
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+  position: relative;
+  transition: all var(--transition);
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  color: var(--color-gold);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-gold);
+}
+
+.testimonial-text {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--color-slate);
+  margin-bottom: var(--spacing-md);
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.testimonial-author-info h4 {
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.testimonial-author-info span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate-light);
+}
+
+/* CONTACT */
+.contact {
+  background: var(--color-cream);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contact-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+}
+
+.contact-item-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(212,168,67,0.1);
+  border: 1px solid rgba(212,168,67,0.2);
+}
+
+.contact-item-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.contact-item h4 {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  font-weight: 400;
+}
+
+.contact-item p,
+.contact-item a {
+  font-size: 0.9rem;
+  color: var(--color-slate-light);
+  line-height: 1.6;
+}
+
+.contact-item a:hover {
+  color: var(--color-gold);
+}
+
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: #25D366;
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-top: var(--spacing-sm);
+  width: fit-content;
+}
+
+.contact-whatsapp:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+  color: var(--color-white);
+}
+
+.contact-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
+.contact-form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+}
+
+.contact-form h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate-light);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-slate);
+  transition: border-color var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-gold);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.form-submit:hover {
+  background: var(--color-navy-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--color-navy-dark);
+  color: rgba(255,255,255,0.5);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+
+.footer-brand span {
+  color: var(--color-gold);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+}
+
+.footer-links a:hover {
+  color: var(--color-gold);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37,211,102,0.5);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-white);
+}
+
+/* SCROLL ANIMATIONS */
+.wow-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wow-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE 480px */
+@media (min-width: 480px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonial-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    justify-self: center;
+  }
+}
+
+/* RESPONSIVE 768px */
+@media (min-width: 768px) {
+  .nav-hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .testimonial-card:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* RESPONSIVE 1024px */
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 2.5rem;
+  }
+
+  .section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-card {
+    padding: var(--spacing-lg);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* MOBILE NAV */
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xs);
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .wow-fade-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">Ideia em <span>Movimento</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Servicos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#equipe">Equipe</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-label">Videomaker Mobile</p>
+    <h1 class="hero-title">Ideia em <em>Movimento</em></h1>
+    <p class="hero-subtitle">Videomaker mobile especializado em arquitetura e imobiliarias. Transformamos espacos em experiencias visuais que encantam e vendem.</p>
+    <a href="https://wa.me/555519987167937" class="hero-cta" target="_blank" rel="noopener">
+      Solicitar Orcamento
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+  <div class="container">
+    <div class="section-header wow-fade-up">
+      <p class="section-label">O que fazemos</p>
+      <h2 class="section-title">Nossos Servicos</h2>
+      <p class="section-desc">Solucoes audiovisuais completas para valorizar seu imovel ou projeto arquitetonico.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Video Institucional</h3>
+        <p>Video profissional para apresentacao da sua empresa, marca ou empreendimento. Roteiro, filmagem e edicao completos.</p>
+        <p class="service-price">R$ 1.800 <small>/ video</small></p>
+      </div>
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Tour Virtual 360</h3>
+        <p>Tour imersivo com imagens 360 graus. Permita que clientes visitem seu imovel sem sair de casa.</p>
+        <p class="service-price">R$ 2.500 <small>/ tour</small></p>
+      </div>
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Drone Aereo</h3>
+        <p>Imagens aereas de alta resolucao para mostras a area, localizacao e entorno do seu imovel ou projeto.</p>
+        <p class="service-price">R$ 1.200 <small>/ voo</small></p>
+      </div>
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Video de Vendas</h3>
+        <p>Producao audiovisual focada em conversao. Destaque os diferenciais do seu imovel e acelere a venda.</p>
+        <p class="service-price">R$ 1.500 <small>/ video</small></p>
+      </div>
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3>Photobook Imobiliario</h3>
+        <p>Registro fotografico profissional de ambientes internos e externos com tratamento de imagem completo.</p>
+        <p class="service-price">R$ 980 <small>/ sessao</small></p>
+      </div>
+      <div class="service-card wow-fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Time-lapse de Obra</h3>
+        <p>Acompanhamento cinematografico do seu canteiro de obras. Registre cada etapa da evolucao do projeto.</p>
+        <p class="service-price">R$ 3.500 <small>/ mes</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image wow-fade-up">
+        <div class="about-image-accent"></div>
+      </div>
+      <div class="wow-fade-up">
+        <p class="about-label">Quem somos</p>
+        <h2>Transformamos espacos em experiencias visuais</h2>
+        <p class="about-text">A Ideia em Movimento nasceu da paixao por contar historias atraves de imagens. Somos um estudio mobile especializado em producao audiovisual para o mercado imobiliario e de arquitetura, atuando em Campinas e regiao.</p>
+        <p class="about-text">Com equipamentos de ultima geracao e um olhar artistico apurado, capturamos a essencia de cada projeto. Acreditamos que um bom video nao apenas mostra um espaco, mas transmite a sensacao de nele estar.</p>
+        <p class="about-text">Nossa abordagem combina tecnica cinematografica com narrativa envolvente, criando conteudo que gera engajamento, confianca e, acima de tudo, resultados para nossos clientes.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-target="320">0</span>
+            <span class="stat-label">Projetos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="85">0</span>
+            <span class="stat-label">Clientes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="7">0</span>
+            <span class="stat-label">Anos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="equipe">
+  <div class="container">
+    <div class="section-header wow-fade-up">
+      <p class="section-label">Profissionais</p>
+      <h2 class="section-title">Nossa Equipe</h2>
+      <p class="section-desc">Talentos dedicados a transformar sua visao em imagem.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card wow-fade-up">
+        <div class="team-photo"></div>
+        <h3>Ricardo Monteiro</h3>
+        <p class="role">Diretor Criativo</p>
+        <p>Cineasta com mais de 12 anos de experiencia em producao audiovisual. Especialista em videos imobiliarios e arquitetonicos.</p>
+      </div>
+      <div class="team-card wow-fade-up">
+        <div class="team-photo"></div>
+        <h3>Camila Ferreira</h3>
+        <p class="role">Produtora Executiva</p>
+        <p>Responsavel pelo planejamento e execucao de cada projeto. Garante que cada entrega supere as expectativas.</p>
+      </div>
+      <div class="team-card wow-fade-up">
+        <div class="team-photo"></div>
+        <h3>Felipe Augusto</h3>
+        <p class="role">Piloto de Drone e Editor</p>
+        <p>Piloto licenciado e editor sênior. Especialista em capturas aereas e pos-producao cinematografica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY / PORTFOLIO -->
+<section class="section gallery" id="portfolio">
+  <div class="container">
+    <div class="section-header wow-fade-up">
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Trabalhos Selecionados</h2>
+      <p class="section-desc">Uma curadoria dos nossos melhores projetos audiovisuais.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Edificio Horizonte - Campinas</span></div>
+      </div>
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Casa Terravista - Vinhedo</span></div>
+      </div>
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Residencial Bosque - Jundiai</span></div>
+      </div>
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Condominio Vila Nova - Valinhos</span></div>
+      </div>
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Projeto Luminar - Arquitetura</span></div>
+      </div>
+      <div class="gallery-item wow-fade-up">
+        <div class="gallery-item-bg"></div>
+        <div class="gallery-overlay"><span>Showroom Design House - SP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-header wow-fade-up">
+      <p class="section-label">Depoimentos</p>
+      <h2 class="section-title">O que dizem nossos clientes</h2>
+      <p class="section-desc">A satisfacao dos nossos clientes e o nosso maior indicador de qualidade.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card wow-fade-up">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">O video que a Ideia em Movimento produziu para nosso empreendimento superou todas as expectativas. As vendas aumentaram 40% no primeiro mes apos a publicacao. Recomendo sem nenhuma hesitacao.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <h4>Marcos Oliveira</h4>
+            <span>Diretor - Oliveira Empreendimentos</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card wow-fade-up">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Profissionalismo de ponta a ponta. As imagens aereas do drone deram um destaque incrivel ao nosso loteamento. O resultado cinematografico impressionou ate nossos clientes mais exigentes.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <h4>Dra. Ana Beatriz Costa</h4>
+            <span>Arquiteta - Costa Arquitetura</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card wow-fade-up">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Ja trabalhamos com diversos profissionais de video, mas a equipe da Ideia em Movimento esta em outro nivel. A edicao, a trilha sonora e o ritmo do video sao perfeitos. Parceiros de confianca.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <h4>Rodrigo Santoro</h4>
+            <span>Corretor - Santoro Imoveis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+  <div class="container">
+    <div class="section-header wow-fade-up">
+      <p class="section-label">Fale conosco</p>
+      <h2 class="section-title">Entre em Contato</h2>
+      <p class="section-desc">Solicite um orcamento gratuito e sem compromisso para o seu proximo projeto.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info wow-fade-up">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Endereco</h4>
+            <p>Rua Professor Alcíno de Almeida Maudonet, 793 - Sala 2<br>Campinas - SP, 13075-470</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Telefone</h4>
+            <p><a href="tel:+5519987167937">(19) 98716-7937</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Horario de Atendimento</h4>
+            <p>Segunda a Sexta: 08:00 - 18:00<br>Sabado: 09:00 - 13:00</p>
+          </div>
+        </div>
+        <a href="https://wa.me/555519987167937" target="_blank" rel="noopener" class="contact-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Fale pelo WhatsApp
+        </a>
+      </div>
+      <div class="contact-form wow-fade-up">
+        <h3>Solicite seu Orcamento</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Servico desejado</label>
+            <select id="service" name="service" required>
+              <option value="">Selecione um servico</option>
+              <option value="video-institucional">Video Institucional</option>
+              <option value="tour-virtual">Tour Virtual 360</option>
+              <option value="drone">Drone Aereo</option>
+              <option value="video-vendas">Video de Vendas</option>
+              <option value="photobook">Photobook Imobiliario</option>
+              <option value="timelapse">Time-lapse de Obra</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Conte-nos sobre o seu projeto..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-brand">Ideia em <span>Movimento</span></p>
+      <ul class="footer-links">
+        <li><a href="#servicos">Servicos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <p class="footer-copy">2025 Ideia em Movimento. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/555519987167937" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function() {
+  'use strict';
+
+  /* NAVIGATION - Scroll hide/show */
+  var nav = document.getElementById('nav');
+  var lastScroll = 0;
+  var navHeight = 72;
+
+  function handleNavScroll() {
+    var currentScroll = window.pageYOffset;
+    if (currentScroll > navHeight) {
+      nav.classList.add('scrolled');
+      if (currentScroll > lastScroll && currentScroll > navHeight * 2) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+    } else {
+      nav.classList.remove('scrolled');
+      nav.classList.remove('hidden');
+    }
+    lastScroll = currentScroll;
+  }
+
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+  /* MOBILE MENU */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+  for (var i = 0; i < mobileLinks.length; i++) {
+    mobileLinks[i].addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+
+  /* SCROLL ANIMATIONS - Intersection Observer */
+  var animatedElements = document.querySelectorAll('.wow-fade-up');
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var delay = entry.target.getAttribute('data-delay') || 0;
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, parseInt(delay));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '-50px'
+    });
+
+    animatedElements.forEach(function(el, index) {
+      el.setAttribute('data-delay', (index % 6) * 100);
+      observer.observe(el);
+    });
+  } else {
+    animatedElements.forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* COUNTER ANIMATION */
+  var statNumbers = document.querySelectorAll('.stat-number[data-target]');
+
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-target'));
+    var duration = 2000;
+    var start = 0;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + '+';
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window && statNumbers.length > 0) {
+    var statsContainer = statNumbers[0].closest('.about-stats');
+    var statsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          statNumbers.forEach(function(num) {
+            animateCounter(num);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(statsContainer);
+  }
+
+  /* SMOOTH SCROLL for anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* CONTACT FORM */
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var service = document.getElementById('service').value;
+      var message = document.getElementById('message').value;
+      var waMessage = encodeURIComponent(
+        'Ola! Sou ' + name + '.\n\n' +
+        'Tenho interesse no servico: ' + service + '.\n\n' +
+        message
+      );
+      window.open('https://wa.me/555519987167937?text=' + waMessage, '_blank');
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
