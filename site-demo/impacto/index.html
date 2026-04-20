@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impacto - Clinica de saude em Santo Andre, SP. Atendimento humanizado com profissionais qualificados. Consultas, exames e procedimentos.">
+    <meta name="keywords" content="clinica, saude, Santo Andre, consulta, exame, procedimento, medico">
+    <meta property="og:title" content="Impacto - Clinica de Saude em Santo Andre">
+    <meta property="og:description" content="Atendimento humanizado com profissionais qualificados. Agende sua consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/impacto/">
+    <meta property="og:image" content="https://www.pixelalchemy.com.br/site-demo/impacto/og-image.jpg">
+    <title>Impacto - Clinica de Saude | Santo Andre - SP</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4955A;
+            --bronze-dark: #8F5A2A;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2A;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(60, 36, 21, 0.08);
+            --shadow-md: 0 4px 20px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 8px 40px rgba(60, 36, 21, 0.16);
+            --shadow-gold: 0 4px 20px rgba(184, 115, 51, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            color: var(--espresso);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.75rem 2rem;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--espresso);
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            position: relative;
+            transition: var(--transition);
+            font-family: Georgia, serif;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bronze);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--bronze);
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem !important;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            transition: var(--transition);
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 248, 240, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--espresso);
+            font-size: 1.3rem;
+            letter-spacing: 0.03em;
+            transition: var(--transition);
+            font-family: Georgia, serif;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--bronze);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--champagne) 50%, #EDD5B7 100%);
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-bg-shape:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: var(--bronze);
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-bg-shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--champagne);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .hero-bg-shape:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--bronze-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(15px, 15px) scale(1.02); }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--bronze);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--bronze-dark);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--espresso);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero-title span {
+            display: block;
+            color: var(--bronze);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--espresso-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.7s;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.9s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--bronze);
+            color: var(--white);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(184, 115, 51, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--espresso);
+            border: 1.5px solid var(--bronze);
+        }
+
+        .btn-outline:hover {
+            background: var(--bronze);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--bronze);
+            margin: 3rem auto 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 1.1s;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bronze);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 1.3s;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: var(--bronze);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 2px;
+            background: var(--bronze);
+            margin: 0 auto;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--bronze), var(--bronze-light));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--champagne), #EDD5B7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--bronze);
+        }
+
+        .service-price small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--espresso-light);
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 350px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--bronze) 0%, var(--bronze-light) 50%, var(--champagne) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.3), transparent);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--bronze);
+            border-radius: var(--radius-md);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-content h2 span {
+            color: var(--bronze);
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--espresso-light);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bronze);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--espresso-light);
+            letter-spacing: 0.03em;
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--bronze-light) 60%, var(--bronze) 100%);
+            position: relative;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.15), transparent);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .team-desc {
+            font-size: 0.85rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: 1 / -1;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--bronze-light) 100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, var(--bronze) 0%, var(--bronze-light) 40%, var(--champagne) 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(45deg, var(--champagne) 0%, #EDD5B7 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(225deg, var(--bronze-light) 0%, var(--champagne) 100%);
+        }
+
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(315deg, var(--bronze) 0%, var(--bronze-light) 100%);
+        }
+
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(160deg, #EDD5B7 0%, var(--bronze) 100%);
+        }
+
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(90deg, var(--bronze-light) 0%, var(--champagne) 50%, var(--bronze) 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            color: var(--champagne);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: var(--bronze);
+            font-size: 1rem;
+        }
+
+        .star.empty {
+            color: #DDD;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-light));
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--espresso);
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--bronze);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--espresso-light) 100%);
+            color: var(--cream);
+        }
+
+        .contact .section-label {
+            color: var(--bronze-light);
+        }
+
+        .contact .section-title {
+            color: var(--cream);
+        }
+
+        .contact .section-line {
+            background: var(--bronze);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(184, 115, 51, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item-label {
+            font-size: 0.75rem;
+            color: var(--bronze-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        .contact-item-value a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--bronze-light);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--bronze-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--cream);
+            font-family: Georgia, serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(247, 231, 206, 0.4);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--bronze);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: var(--espresso);
+            color: var(--cream);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25D366;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: var(--transition);
+            width: 100%;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BD5A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--espresso);
+            color: rgba(247, 231, 206, 0.5);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand span {
+            color: var(--bronze);
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(247, 231, 206, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bronze-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* ========== FLOATING WHATSAPP ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .wow {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-delay-1 { transition-delay: 0.1s; }
+        .wow-delay-2 { transition-delay: 0.2s; }
+        .wow-delay-3 { transition-delay: 0.3s; }
+        .wow-delay-4 { transition-delay: 0.4s; }
+        .wow-delay-5 { transition-delay: 0.5s; }
+        .wow-delay-6 { transition-delay: 0.6s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-bg-shape {
+                animation: none;
+            }
+            .whatsapp-float {
+                animation: none;
+            }
+            .scroll-line::after {
+                animation: none;
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: 1 / 3;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 2fr 1fr;
+                text-align: left;
+            }
+
+            .footer-links {
+                justify-content: flex-end;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: 1 / 2;
+                grid-row: 1 / 3;
+                aspect-ratio: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">Impacto<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Cuidado com excelencia desde 2008</div>
+            <h1 class="hero-title">
+                Impacto
+                <span>Clinica de Saude</span>
+            </h1>
+            <p class="hero-subtitle">
+                Atendimento humanizado com profissionais qualificados. Seu bem-estar e a nossa prioridade, em cada consulta, cada detalhe.
+            </p>
+            <div class="hero-actions">
+                <a href="https://wa.me/55551144014200" class="btn btn-primary" target="_blank" rel="noopener">
+                    Agendar Consulta
+                </a>
+                <a href="#servicos" class="btn btn-outline">Conhecer Servicos</a>
+            </div>
+            <div class="hero-divider"></div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label wow">Nossos servicos</span>
+                <h2 class="section-title wow wow-delay-1">Cuidado completo<br>para sua saude</h2>
+                <div class="section-line wow wow-delay-2"></div>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta Medica</h3>
+                    <p class="service-desc">Avaliacao clinica completa com anamnese detalhada, exame fisico e orientacao personalizada para o seu caso.</p>
+                    <div class="service-price">R$ 250,00 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Consulta de acompanhamento para avaliar evolucao do tratamento, ajustar condutas e tirar duvidas.</p>
+                    <div class="service-price">R$ 180,00 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Realizacao de exames laboratoriais e de imagem para diagnostico preciso e acompanhamento terapeutico.</p>
+                    <div class="service-price">R$ 120,00 <small>/ exame</small></div>
+                </div>
+
+                <div class="service-card wow wow-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Procedimentos minimamente invasivos realizados por especialistas com tecnologia de ponta e seguranca.</p>
+                    <div class="service-price">R$ 450,00 <small>/ procedimento</small></div>
+                </div>
+
+                <div class="service-card wow wow-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Triagem e avaliacao inicial para novos pacientes, com mapeamento de necessidades e encaminhamento adequado.</p>
+                    <div class="service-price">R$ 150,00 <small>/ avaliacao</small></div>
+                </div>
+
+                <div class="service-card wow wow-delay-6">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento Continuo</h3>
+                    <p class="service-desc">Plano terapeutico personalizado com acompanhamento regular para resultados duradouros e qualidade de vida.</p>
+                    <div class="service-price">R$ 350,00 <small>/ sessao</small></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image wow" style="position: relative;">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label wow">Sobre nos</span>
+                    <h2 class="wow wow-delay-1">Mais de 15 anos cuidando da sua <span>saude</span></h2>
+                    <p class="about-text wow wow-delay-2">
+                        A Clinica Impacto nasceu em 2008 com um proposito claro: oferecer atendimento medico de excelencia com acolhimento genuino. No bairro Parque Joao Ramalho, em Santo Andre, construiomos uma historia de confianca e dedicacao a cada paciente que cruza nossas portas.
+                    </p>
+                    <p class="about-text wow wow-delay-3">
+                        Nossa equipe multidisciplinar trabalha de forma integrada para garantir diagnosticos precisos e tratamentos eficazes. Acreditamos que cada pessoa e unica e merece um plano de cuidado feito sob medida.
+                    </p>
+                    <div class="about-stats wow wow-delay-4">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15000">0</div>
+                            <div class="stat-label">Pacientes atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">% Satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label wow">Nossa equipe</span>
+                <h2 class="section-title wow wow-delay-1">Profissionais que fazem a <span>diferenca</span></h2>
+                <div class="section-line wow wow-delay-2"></div>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow wow-delay-1">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Ricardo Almeida</h3>
+                        <p class="team-role">Clinico Geral - CRM-SP 123456</p>
+                        <p class="team-desc">Especialista em medicina interna com mais de 18 anos de experiencia. Dedicado ao diagnostico preciso e ao tratamento humanizado.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow wow-delay-2">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dra. Camila Ferreira</h3>
+                        <p class="team-role">Medica de Familia - CRM-SP 789012</p>
+                        <p class="team-desc">Especialista em saude da familia e comunidade. Sua abordagem integral e acolhedora faz de cada consulta um momento de cuidado.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow wow-delay-3">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Fernando Costa</h3>
+                        <p class="team-role">Ortopedista - CRM-SP 345678</p>
+                        <p class="team-desc">Especialista em ortopedia e traumatologia com foco em procedimentos minimamente invasivos e reabilitacao esportiva.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label wow">Conheca nosso espaco</span>
+                <h2 class="section-title wow wow-delay-1">Ambiente acolhedor<br>e moderno</h2>
+                <div class="section-line wow wow-delay-2"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow wow-delay-3">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow wow-delay-4">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow wow-delay-5">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+                <div class="gallery-item wow wow-delay-6">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label wow">Depoimentos</span>
+                <h2 class="section-title wow wow-delay-1">O que nossos pacientes<br>dizem sobre nos</h2>
+                <div class="section-line wow wow-delay-2"></div>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow wow-delay-1">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Sou paciente da Clinica Impacto ha 5 anos e so tenho elogios. O Dr. Ricardo e extremamente atencioso e sempre me sinto acolhida em cada consulta. Recomendo de olhos fechados.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Maria Oliveira</div>
+                            <div class="testimonial-detail">Paciente ha 5 anos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow wow-delay-2">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">A Dra. Camila mudou minha forma de cuidar da saude. A abordagem dela e integral e o tratamento que recebi resolveu um problema que eu carregava ha anos. Ambiente impecavel.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Carlos Mendes</div>
+                            <div class="testimonial-detail">Paciente ha 2 anos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow wow-delay-3">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star empty">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Fiz um procedimento com o Dr. Fernando e a experiencia foi excelente. Profissionalismo, clareza nas explicacoes e um cuidado que vai alem do procedimento em si. Muito grata.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Ana Beatriz Santos</div>
+                            <div class="testimonial-detail">Paciente ha 1 ano</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label wow">Contato</span>
+                <h2 class="section-title wow wow-delay-1">Agende sua consulta</h2>
+                <div class="section-line wow wow-delay-2"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="wow">Entre em contato</h3>
+
+                    <div class="contact-item wow wow-delay-1">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Endereco</div>
+                            <div class="contact-item-value">R. Quixada, 71 - Parque Joao Ramalho<br>Santo Andre - SP, 09290-180</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item wow wow-delay-2">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Telefone</div>
+                            <div class="contact-item-value"><a href="tel:+551144014200">(11) 4401-4200</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item wow wow-delay-3">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-item-label">Horario de atendimento</div>
+                            <div class="contact-item-value">Seg a Sex: 08:00 - 18:00<br>Sab: 08:00 - 12:00</div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/55551144014200" target="_blank" rel="noopener" class="btn-whatsapp wow wow-delay-4">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Agendar via WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-form wow wow-delay-3">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Nome completo</label>
+                                <input class="form-input" type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Telefone</label>
+                                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input class="form-input" type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Servico desejado</label>
+                            <select class="form-select" id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta Medica - R$ 250,00</option>
+                                <option value="retorno">Retorno - R$ 180,00</option>
+                                <option value="exame">Exame Complementar - R$ 120,00</option>
+                                <option value="procedimento">Procedimento - R$ 450,00</option>
+                                <option value="avaliacao">Avaliacao Inicial - R$ 150,00</option>
+                                <option value="tratamento">Tratamento Continuo - R$ 350,00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Mensagem</label>
+                            <textarea class="form-textarea" id="message" name="message" placeholder="Conte-nos como podemos ajudar..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">Impacto<span>.</span></div>
+                <p class="footer-desc">Clinica de saude em Santo Andre, SP. Atendimento humanizado com profissionais qualificados para cuidar de voce e da sua familia.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Clinica Impacto. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/55551144014200" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ========== NAVBAR SCROLL ========== */
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = 0;
+        let ticking = false;
+
+        function handleScroll() {
+            const scrollY = window.scrollY;
+
+            if (scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (scrollY > lastScrollY && scrollY > 200) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+
+            lastScrollY = scrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(handleScroll);
+                ticking = true;
+            }
+        });
+
+        /* ========== HAMBURGER MENU ========== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ========== INTERSECTION OBSERVER ========== */
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ========== COUNTER ANIMATION ========== */
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        let countersStarted = false;
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    statNumbers.forEach(function(counter) {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        function updateCounter() {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current).toLocaleString('pt-BR');
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString('pt-BR');
+                                if (counter.closest('.stat-item').querySelector('.stat-label').textContent.includes('%')) {
+                                    counter.textContent = target + '%';
+                                } else if (target >= 1000) {
+                                    counter.textContent = (target / 1000).toFixed(0) + ' mil+';
+                                }
+                            }
+                        }
+
+                        updateCounter();
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statNumbers.forEach(function(el) {
+            counterObserver.observe(el.closest('.about-stats'));
+        });
+
+        /* ========== PHONE MASK ========== */
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) value = value.slice(0, 11);
+
+                if (value.length > 6) {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
+                } else if (value.length > 2) {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+                } else if (value.length > 0) {
+                    value = '(' + value;
+                }
+
+                e.target.value = value;
+            });
+        }
+
+        /* ========== CONTACT FORM ========== */
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = e.target;
+            var name = form.querySelector('#name').value.trim();
+            var phone = form.querySelector('#phone').value.trim();
+            var service = form.querySelector('#service').value;
+            var message = form.querySelector('#message').value.trim();
+
+            var whatsappText = 'Ola! Meu nome e ' + name + '. Gostaria de agendar ' + service;
+            if (message) {
+                whatsappText += '. ' + message;
+            }
+            whatsappText += '. Telefone: ' + phone;
+
+            var encodedText = encodeURIComponent(whatsappText);
+            window.open('https://wa.me/55551144014200?text=' + encodedText, '_blank');
+        });
+
+        /* ========== SMOOTH SCROLL (fallback) ========== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    var navHeight = navbar.offsetHeight;
+                    var targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
