@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Russo Auto Center - Centro automotivo especializado em manutencao, reparo e diagnostico de veiculos em Nova Iguacu, RJ. Atendimento de qualidade e confianca.">
+    <meta name="keywords" content="auto centro, mecanica, diagnostico automotivo, revisao, Nova Iguacu, RJ">
+    <meta name="author" content="Russo Auto Center">
+    <meta property="og:title" content="Russo Auto Center - Centro Automotivo de Confianca">
+    <meta property="og:description" content="Especialistas em manutencao e reparo automotivo. Atendimento personalizado e tecnologia de ponta em Nova Iguacu, RJ.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Russo Auto Center | Centro Automotivo Especializado</title>
+    <style>
+        :root {
+            --color-cream: #FAF5E8;
+            --color-brown: #9B7E5A;
+            --color-terracotta: #C17050;
+            --color-gold: #C9A45C;
+            --color-dark: #1E110A;
+            --color-dark-soft: #2C1E14;
+            --color-cream-dark: #F0E8D6;
+            --color-cream-darker: #E8DCC6;
+            --color-brown-light: #B8976A;
+            --color-terracotta-light: #D4896B;
+            --color-gold-light: #D9B77A;
+            --color-white: #FEFCF8;
+            --color-overlay: rgba(30, 17, 10, 0.65);
+            --font-heading: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-2xl: 6rem;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 8px rgba(30, 17, 10, 0.08);
+            --shadow-md: 0 4px 20px rgba(30, 17, 10, 0.12);
+            --shadow-lg: 0 8px 40px rgba(30, 17, 10, 0.16);
+            --shadow-card: 0 2px 16px rgba(30, 17, 10, 0.06);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(250, 245, 232, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.7rem 2rem;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--color-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--color-dark);
+        }
+
+        .nav-cta {
+            background: var(--color-terracotta);
+            color: var(--color-white) !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-terracotta-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--color-white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--color-dark);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-dark);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            color: var(--color-cream);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--color-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(30,17,10,0.92) 0%, rgba(44,30,20,0.85) 40%, rgba(155,126,90,0.4) 70%, rgba(193,112,80,0.3) 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(201,164,92,0.03) 80px,
+                    rgba(201,164,92,0.03) 160px
+                );
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--color-terracotta);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-gold);
+            bottom: -15%;
+            left: -5%;
+            animation-delay: -4s;
+        }
+
+        .hero-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-brown);
+            top: 40%;
+            left: 30%;
+            animation-delay: -8s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.05); }
+            50% { transform: translate(-20px, 30px) scale(0.95); }
+            75% { transform: translate(20px, 20px) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 164, 92, 0.15);
+            border: 1px solid rgba(201, 164, 92, 0.3);
+            color: var(--color-gold-light);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.45rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            color: var(--color-cream);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(250, 245, 232, 0.75);
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-terracotta-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(193, 112, 80, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-cream);
+            border: 1.5px solid rgba(250, 245, 232, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(250, 245, 232, 0.4);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: var(--spacing-2xl) 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-terracotta);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--color-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--color-brown);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-terracotta), var(--color-gold));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--color-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(155, 126, 90, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-terracotta), var(--color-gold));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(155, 126, 90, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .service-icon-1 { background: rgba(193, 112, 80, 0.1); color: var(--color-terracotta); }
+        .service-icon-2 { background: rgba(201, 164, 92, 0.1); color: var(--color-gold); }
+        .service-icon-3 { background: rgba(155, 126, 90, 0.1); color: var(--color-brown); }
+        .service-icon-4 { background: rgba(193, 112, 80, 0.1); color: var(--color-terracotta); }
+        .service-icon-5 { background: rgba(201, 164, 92, 0.1); color: var(--color-gold); }
+        .service-icon-6 { background: rgba(155, 126, 90, 0.1); color: var(--color-brown); }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--color-brown);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+        }
+
+        .service-price small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--color-brown-light);
+            font-family: var(--font-body);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--color-cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-terracotta) 50%, var(--color-gold) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(250, 245, 232, 0.04) 40px,
+                    rgba(250, 245, 232, 0.04) 41px
+                );
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            z-index: 2;
+            background: rgba(30, 17, 10, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            color: var(--color-cream);
+            text-align: center;
+        }
+
+        .about-image-badge strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-gold);
+        }
+
+        .about-image-badge span {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: var(--color-brown);
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-cream-darker);
+        }
+
+        .about-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: var(--radius-sm);
+        }
+
+        .about-stat strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-terracotta);
+        }
+
+        .about-stat span {
+            font-size: 0.78rem;
+            color: var(--color-brown);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--color-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(193, 112, 80, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 164, 92, 0.06) 0%, transparent 50%);
+        }
+
+        .team .section-label {
+            color: var(--color-gold);
+        }
+
+        .team .section-header h2 {
+            color: var(--color-cream);
+        }
+
+        .team .section-header p {
+            color: rgba(250, 245, 232, 0.6);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-card {
+            background: rgba(250, 245, 232, 0.04);
+            border: 1px solid rgba(250, 245, 232, 0.08);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            background: rgba(250, 245, 232, 0.07);
+            transform: translateY(-4px);
+            border-color: rgba(201, 164, 92, 0.2);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-terracotta) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(250, 245, 232, 0.15);
+        }
+
+        .team-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-cream);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-card .team-role {
+            font-size: 0.82rem;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-card p {
+            font-size: 0.88rem;
+            color: rgba(250, 245, 232, 0.55);
+            line-height: 1.7;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--color-cream-dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 16 / 7;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, #8B6F4E 0%, #C17050 40%, #C9A45C 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(135deg, #9B7E5A 0%, #D4896B 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(135deg, #C9A45C 0%, #9B7E5A 100%);
+        }
+
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(135deg, #C17050 0%, #8B6F4E 100%);
+        }
+
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(135deg, #B8976A 0%, #C17050 100%);
+        }
+
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(135deg, #D4896B 0%, #C9A45C 100%);
+        }
+
+        .gallery-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(250, 245, 232, 0.03) 30px,
+                    rgba(250, 245, 232, 0.03) 31px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(250, 245, 232, 0.03) 30px,
+                    rgba(250, 245, 232, 0.03) 31px
+                );
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--color-overlay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay span {
+            color: var(--color-cream);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            padding: 0.6rem 1.4rem;
+            border: 1.5px solid rgba(250, 245, 232, 0.3);
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(155, 126, 90, 0.08);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--color-dark-soft);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            width: 18px;
+            height: 18px;
+            position: relative;
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .star::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            transform: translate(-50%, -50%) rotate(45deg);
+            box-shadow:
+                -5px 0 0 var(--color-gold),
+                5px 0 0 var(--color-gold),
+                0 -5px 0 var(--color-gold),
+                0 5px 0 var(--color-gold);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-brown), var(--color-terracotta));
+            flex-shrink: 0;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: var(--color-dark);
+        }
+
+        .testimonial-author span {
+            font-size: 0.78rem;
+            color: var(--color-brown-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--color-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: rgba(193, 112, 80, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--color-terracotta);
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p, .contact-item a {
+            font-size: 0.9rem;
+            color: var(--color-brown);
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .contact-hours {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(155, 126, 90, 0.1);
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--color-brown);
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(155, 126, 90, 0.08);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hours-list li span {
+            font-weight: 600;
+            color: var(--color-dark-soft);
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            border: 1px solid rgba(155, 126, 90, 0.1);
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--color-dark-soft);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--color-cream-darker);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            background: var(--color-cream);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-terracotta);
+            box-shadow: 0 0 0 3px rgba(193, 112, 80, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-body);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit:hover {
+            background: var(--color-terracotta-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(193, 112, 80, 0.25);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--color-dark);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer p {
+            font-size: 0.82rem;
+            color: rgba(250, 245, 232, 0.4);
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(250, 245, 232, 0.5);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .wow-fade-up, .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex !important;
+            }
+
+            .hamburger {
+                display: none !important;
+            }
+
+            section {
+                padding: var(--spacing-2xl) 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Russo <span>Auto Center</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Centro Automotivo Especializado</div>
+            <h1>Confianca e Qualidade para o <em>Seu Veiculo</em></h1>
+            <p>Diagnostico preciso, reparo profissional e atendimento transparente. Cuidamos do seu carro com a dedicacao que ele merece.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/555521964317484" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">O que fazemos</span>
+                <h2>Servicos Automotivos</h2>
+                <p>Solucoes completas para manutencao, reparo e diagnostico do seu veiculo com tecnologia e experiencia.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon service-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </div>
+                    <h3>Diagnostico Eletronico</h3>
+                    <p>Leitura de codigos de falha e analise completa dos sistemas eletronicos do veiculo com equipamentos de ultima geracao.</p>
+                    <div class="service-price">R$ 180,00 <small>/ avaliacao</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon service-icon-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Revisao Preventiva</h3>
+                    <p>Manutencao periodica para evitar problemas futuros. Verificacao de oleo, filtros, freios, suspensao e fluidos.</p>
+                    <div class="service-price">R$ 250,00 <small>/ revisao</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon service-icon-3">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Alinhamento e Balanceamento</h3>
+                    <p>Servico preciso para garantir estabilidade, seguranca e maior durabilidade dos pneus e componentes da suspensao.</p>
+                    <div class="service-price">R$ 120,00 <small>/ servico</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon service-icon-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Troca de Oleo e Filtros</h3>
+                    <p>Substituicao de oleo do motor e filtros com produtos de qualidade compativel com a especificacao do fabricante.</p>
+                    <div class="service-price">R$ 95,00 <small>/ servico</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon service-icon-5">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3>Sistema de Freios</h3>
+                    <p>Inspecao, reparo e substituicao de pastilhas, discos, cilindros e fluido de freio para sua seguranca total.</p>
+                    <div class="service-price">R$ 320,00 <small>/ eixo</small></div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon service-icon-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3>Preparacao para Laudo</h3>
+                    <p>Avaliacao tecnica completa para veiculos que precisam de laudo de inspecao, vistoria ou regularizacao.</p>
+                    <div class="service-price">R$ 200,00 <small>/ avaliacao</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-badge">
+                        <strong>15+</strong>
+                        <span>Anos de experiencia</span>
+                    </div>
+                </div>
+                <div class="about-text wow-fade-up" data-delay="150">
+                    <span class="section-label">Nossa historia</span>
+                    <h3>Tradicacao e confianca em cada servico realizado</h3>
+                    <p>O Russo Auto Center nasceu da paixao por automoveis e do compromisso com a excelencia. Fundado em Nova Iguacu, nos tornamos referencia na regiao pela qualidade dos nossos servicos e pela transparencia no atendimento.</p>
+                    <p>Nossa equipe e formada por tecnicos qualificados que utilizam equipamentos modernos e pecas de qualidade para garantir a seguranca e o melhor desempenho do seu veiculo. Cada cliente e tratado com respeito e dedicacao, porque sabemos que o seu carro e parte importante da sua vida.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <strong class="counter" data-target="8500">0</strong>
+                            <span>Veiculos atendidos</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong class="counter" data-target="15">0</strong>
+                            <span>Anos no mercado</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong class="counter" data-target="98">0</strong>
+                            <span>% Satisfacao</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong class="counter" data-target="12">0</strong>
+                            <span>Tecnicos especialistas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Profissionais</span>
+                <h2>Nossa Equipe</h2>
+                <p>Tecnicos experientes e dedicados que fazem a diferenca na qualidade do servico.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo"></div>
+                    <h3>Ricardo Russo</h3>
+                    <span class="team-role">Fundador e Diretor Tecnico</span>
+                    <p>Mais de 20 anos de experiencia em mecanica automotiva. Especialista em diagnostico eletronico e motores.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo"></div>
+                    <h3>Marcos Ferreira</h3>
+                    <span class="team-role">Chefe de Mecanica</span>
+                    <p>Especialista em sistemas de freios, suspensao e transmissao. Formacao pela SENAI com certificacao internacional.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo"></div>
+                    <h3>Luciana Santos</h3>
+                    <span class="team-role">Gerente de Atendimento</span>
+                    <p>Responsavel por garantir a melhor experiencia do cliente, do agendamento ate a entrega do veiculo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nosso espaco</span>
+                <h2>Galeria</h2>
+                <p>Conheca nossas instalacoes e veja a qualidade do nosso trabalho de perto.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Area de Atendimento</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Oficina Principal</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Diagnostico Eletronico</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Equipamentos</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Estacionamento</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2>O que Nossos Clientes Dizem</h2>
+                <p>A satisfacao dos nossos clientes e a nossa maior conquista.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <blockquote>Excelente atendimento e servico de qualidade. Levei meu carro com um problema na suspensao e saiu como novo. Recomendo de olhos fechados!</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <strong>Carlos Eduardo</strong>
+                            <span>Cliente desde 2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-stars">
+                        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <blockquote>Finalmente encontrei uma oficina confiavel em Nova Iguacu. O diagnostico foi preciso e o preco justo. Equipe muito profissional.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <strong>Fernanda Oliveira</strong>
+                            <span>Cliente desde 2021</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+                    </div>
+                    <div class="testimonial-quote">"</div>
+                    <blockquote>Faco todas as revisoes do meu carro aqui. A Luciana sempre me mantem informada sobre cada etapa do servico. Confianca total.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <strong>Roberto Almeida</strong>
+                            <span>Cliente desde 2020</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Fale Conosco</span>
+                <h2>Entre em Contato</h2>
+                <p>Agende seu atendimento ou tire suas duvidas. Estamos prontos para ajudar.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>Estr. Dep. Darcilio Ayres Raunheitti, 1520<br>Vila Pedro, Nova Iguacu - RJ<br>CEP: 26015-100</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <a href="tel:+5521964317484">(21) 96431-7484</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/555521964317484" target="_blank" rel="noopener">(21) 96431-7484</a>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4>Horario de Funcionamento</h4>
+                        <ul class="hours-list">
+                            <li>Segunda a Sexta <span>08:00 - 18:00</span></li>
+                            <li>Sabado <span>08:00 - 13:00</span></li>
+                            <li>Domingo <span>Fechado</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form wow-fade-up" data-delay="200">
+                    <h3>Envie sua Mensagem</h3>
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome completo</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Servico desejado</label>
+                            <select id="servico" name="servico">
+                                <option value="">Selecione um servico</option>
+                                <option value="diagnostico">Diagnostico Eletronico</option>
+                                <option value="revisao">Revisao Preventiva</option>
+                                <option value="alinhamento">Alinhamento e Balanceamento</option>
+                                <option value="oleo">Troca de Oleo e Filtros</option>
+                                <option value="freios">Sistema de Freios</option>
+                                <option value="laudo">Preparacao para Laudo</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Descreva como podemos ajudar..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Russo <span>Auto Center</span></div>
+            <p>Centro automotivo especializado em manutencao e reparo de veiculos.</p>
+            <p>Estr. Dep. Darcilio Ayres Raunheitti, 1520 - Vila Pedro, Nova Iguacu - RJ | (21) 96431-7484</p>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p style="margin-top: 1.5rem;">&copy; 2025 Russo Auto Center. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/555521964317484" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVBAR SCROLL BEHAVIOR ===== */
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        /* ===== HAMBURGER MENU ===== */
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== INTERSECTION OBSERVER ANIMATIONS ===== */
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
+                    setTimeout(function() {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ===== COUNTER ANIMATION ===== */
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(eased * target);
+
+                        counter.textContent = current.toLocaleString('pt-BR');
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toLocaleString('pt-BR');
+                            if (counter.closest('.about-stat').querySelector('span').textContent.includes('%')) {
+                                counter.textContent = target + '%';
+                            }
+                            if (target >= 1000) {
+                                counter.textContent = target.toLocaleString('pt-BR') + '+';
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(updateCounter);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(function(el) {
+            counterObserver.observe(el);
+        });
+
+        /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        /* ===== CONTACT FORM HANDLER ===== */
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var nome = document.getElementById('nome').value;
+            var telefone = document.getElementById('telefone').value;
+            var servico = document.getElementById('servico').value;
+            var mensagem = document.getElementById('mensagem').value;
+
+            var whatsappMsg = 'Ola! Meu nome e ' + nome + '.';
+            if (telefone) whatsappMsg += ' Telefone: ' + telefone + '.';
+            if (servico) whatsappMsg += ' Tenho interesse em: ' + servico + '.';
+            if (mensagem) whatsappMsg += ' ' + mensagem;
+
+            var encoded = encodeURIComponent(whatsappMsg);
+            window.open('https://wa.me/555521964317484?text=' + encoded, '_blank');
+        });
+    </script>
+</body>
+</html>
