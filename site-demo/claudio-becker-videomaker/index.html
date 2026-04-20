@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claudio Becker - VideoMaker em Ribeirao Preto, SP. Cuidado com saude e bem-estar com profissionais qualificados. Agende sua consulta.">
+    <meta name="keywords" content="clinica saude, Ribeirao Preto, consultas, exames, tratamento, bem-estar">
+    <meta name="author" content="Claudio Becker VideoMaker">
+    <meta property="og:title" content="Claudio Becker VideoMaker - Cuidado com a sua saude">
+    <meta property="og:description" content="Clinica de saude em Ribeirao Preto, SP. Consultas, exames e tratamentos com profissionais qualificados.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Claudio Becker VideoMaker | Saude e Bem-Estar - Ribeirao Preto, SP</title>
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4A574;
+            --bronze-dark: #8B5A2B;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5C3A28;
+            --white: #FFFFFF;
+            --gray-light: #F5F0EB;
+            --gray-medium: #A89888;
+            --gray-dark: #6B5B4E;
+            --shadow-sm: 0 2px 8px rgba(60, 36, 21, 0.08);
+            --shadow-md: 0 4px 20px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 8px 40px rgba(60, 36, 21, 0.16);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            --font-body: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--espresso);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--champagne);
+            color: var(--espresso);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+            transition: transform 0.4s ease, box-shadow var(--transition);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--espresso-light);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            transition: color var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--bronze);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--cream) 0%, var(--champagne) 40%, var(--cream) 100%);
+            padding: 120px 24px 80px;
+        }
+
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: heroFloat 20s ease-in-out infinite;
+        }
+
+        .hero-bg-shape:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: var(--champagne);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-bg-shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: rgba(184, 115, 51, 0.15);
+            bottom: -10%;
+            left: -5%;
+            animation-delay: -7s;
+        }
+
+        .hero-bg-shape:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: var(--champagne);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            border: 1px solid var(--bronze-light);
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--espresso);
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray-dark);
+            max-width: 560px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: var(--bronze);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(184, 115, 51, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--espresso);
+            border: 1px solid var(--espresso);
+        }
+
+        .btn-outline:hover {
+            background: var(--espresso);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 40px auto 0;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--gray-dark);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .gold-line {
+            width: 40px;
+            height: 1px;
+            background: var(--bronze);
+            margin: 24px auto 0;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bronze-light), var(--bronze), var(--bronze-light));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.12));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--bronze);
+            font-weight: 400;
+            padding-top: 16px;
+            border-top: 1px solid rgba(184, 115, 51, 0.12);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: linear-gradient(160deg, var(--cream) 0%, var(--champagne) 50%, var(--cream) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius-md);
+            background: linear-gradient(145deg, var(--champagne) 0%, rgba(184, 115, 51, 0.2) 50%, var(--bronze-light) 100%);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-sm);
+        }
+
+        .about-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--gray-dark);
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--bronze);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: var(--radius-md);
+            background: linear-gradient(145deg, var(--gray-light) 0%, var(--champagne) 50%, var(--bronze-light) 100%);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60, 36, 21, 0.15) 0%, transparent 50%);
+        }
+
+        .team-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .team-card .role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            font-size: 0.875rem;
+            color: var(--gray-dark);
+            line-height: 1.7;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--champagne) 0%, rgba(184, 115, 51, 0.15) 50%, var(--gray-light) 100%);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+            transition: all var(--transition);
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0);
+            transition: background var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item:hover::after {
+            background: rgba(60, 36, 21, 0.08);
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            z-index: 2;
+            font-size: 0.8rem;
+            color: var(--white);
+            background: rgba(60, 36, 21, 0.7);
+            padding: 6px 14px;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            position: relative;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--bronze-light);
+            line-height: 1;
+            opacity: 0.4;
+            margin-bottom: -8px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--bronze);
+        }
+
+        .testimonial-author {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--espresso);
+            font-weight: 400;
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+            margin-top: 4px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: linear-gradient(160deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.12));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(184, 115, 51, 0.15);
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--bronze);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--bronze-dark);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+
+        .contact-form > p {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gray-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--espresso);
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 36px;
+            background: #25D366;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all var(--transition);
+            font-weight: 400;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1DA851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--espresso);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 48px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .footer-logo span {
+            color: var(--bronze-light);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bronze-light);
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .wow-fade-up, .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 48px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(2) {
+                grid-row: span 1;
+                aspect-ratio: 4/3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 72px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 248, 240, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                padding: 32px 0;
+                gap: 24px;
+                border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+                transform: translateY(-120%);
+                transition: transform 0.4s ease;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 100px 16px 60px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .service-card {
+                padding: 32px 24px;
+            }
+
+            .contact-form {
+                padding: 28px 24px;
+            }
+
+            .about-stats {
+                gap: 16px;
+            }
+
+            .about-stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">Claudio Becker <span>VideoMaker</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape"></div>
+        <div class="hero-content">
+            <span class="hero-badge wow-fade-up">Saude e Bem-Estar</span>
+            <h1 class="wow-fade-up" data-delay="100">Cuidado que faz a <em>diferenca</em></h1>
+            <p class="hero-subtitle wow-fade-up" data-delay="200">Na Claudio Becker VideoMaker, cada atendimento e pensado para oferecer o melhor em saude, conforto e confianca para voce e sua familia.</p>
+            <div class="hero-ctas wow-fade-up" data-delay="300">
+                <a href="https://wa.me/555519987209918" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Agendar via WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Conhecer Servicos</a>
+            </div>
+            <div class="hero-divider wow-fade-in" data-delay="500"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Atendimento completo para a sua saude</h2>
+                <p class="section-desc">Oferecemos uma gama completa de servicos para cuidar de voce com excelencia e dedicacao.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Consulta</h3>
+                    <p>Avaliacao clinica completa com profissional qualificado, incluindo anamnese detalhada e exame fisico.</p>
+                    <div class="service-price">R$ 250,00</div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Consulta de retorno para acompanhamento do seu tratamento, ajustes e verificacao de evolucao.</p>
+                    <div class="service-price">R$ 180,00</div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Exames laboratoriais e de imagem para diagnostico preciso e acompanhamento adequado.</p>
+                    <div class="service-price">R$ 150,00</div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Procedimento</h3>
+                    <p>Procedimentos realizados com tecnologia de ponta e equipe especializada para maior seguranca.</p>
+                    <div class="service-price">R$ 450,00</div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Avaliacao Inicial</h3>
+                    <p>Primeira avaliacao para conhecer seu historico, queixas e definir o melhor plano de cuidado.</p>
+                    <div class="service-price">R$ 120,00</div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3>Tratamento</h3>
+                    <p>Sessoes de tratamento continuo com acompanhamento personalizado e suporte dedicado.</p>
+                    <div class="service-price">R$ 380,00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up"></div>
+                <div class="about-content">
+                    <span class="section-label wow-fade-up">Sobre Nos</span>
+                    <h2 class="wow-fade-up" data-delay="100">Tradicacao e confianca em cada atendimento</h2>
+                    <p class="wow-fade-up" data-delay="200">A Claudio Becker VideoMaker nasceu com o proposito de oferecer atendimento de excelencia em saude para a comunidade de Ribeirao Preto e regiao. Acreditamos que cada paciente merece cuidado individualizado e respeito.</p>
+                    <p class="wow-fade-up" data-delay="300">Nossa equipe e formada por profissionais comprometidos com a saude e o bem-estar, que buscam constantemente atualizacao e aprimoramento para oferecer o melhor diagnostico e tratamento.</p>
+                    <div class="about-stats wow-fade-up" data-delay="400">
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="15">0</div>
+                            <div class="about-stat-label">Anos de experiencia</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="8">0</div>
+                            <div class="about-stat-label">Profissionais</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number" data-count="12">0</div>
+                            <div class="about-stat-label">Mil pacientes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais dedicados ao seu bem-estar</h2>
+                <p class="section-desc">Conhca os especialistas que cuidam da sua saude com carinho e competencia.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo"></div>
+                    <h3>Dr. Claudio Becker</h3>
+                    <div class="role">Diretor Clinico</div>
+                    <p>Especialista com mais de 15 anos de experiencia em clinica geral, dedicado ao cuidado integral do paciente.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo"></div>
+                    <h3>Dra. Mariana Costa</h3>
+                    <div class="role">Medica Assistente</div>
+                    <p>Formada pela USP com residencia em clinica medica, focada em atendimento humanizado e preventivo.</p>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo"></div>
+                    <h3>Dr. Ricardo Almeida</h3>
+                    <div class="role">Especialista em Diagnostico</div>
+                    <p>Com ampla experiencia em exames complementares, garante precisao e agilidade nos resultados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Nossos espacos e estrutura</h2>
+                <p class="section-desc">Ambiente acolhedor e equipamentos modernos para o seu conforto e seguranca.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <span class="gallery-item-label">Recepcao</span>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <span class="gallery-item-label">Sala de Espera</span>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <span class="gallery-item-label">Consultorio 1</span>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <span class="gallery-item-label">Area de Exames</span>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <span class="gallery-item-label">Consultorio 2</span>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <span class="gallery-item-label">Entrada Principal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-desc">A satisfacao dos nossos pacientes e a nossa maior conquista.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Atendimento impecavel desde o momento em que entrei. O Dr. Claudio e muito atencioso e a equipe toda e muito prestativa. Me senti verdadeiramente cuidada.</p>
+                    <div class="testimonial-author">Ana Beatriz Ferreira</div>
+                    <div class="testimonial-role">Paciente ha 3 anos</div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Muito ambiente agradavel e organizado. Os exames foram realizados com rapidez e o resultado saiu antes do previsto. Recomendo a todos!</p>
+                    <div class="testimonial-author">Carlos Eduardo Santos</div>
+                    <div class="testimonial-role">Paciente ha 5 anos</div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Levo toda minha familia aqui. A Dra. Mariana e fantástica com criancas e idosos. O atendimento e sempre caloroso e profissional.</p>
+                    <div class="testimonial-author">Patricia Rocha Mendes</div>
+                    <div class="testimonial-role">Paciente ha 2 anos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-desc">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" data-delay="0">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>Ribeirao Preto, SP</p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="100">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5519987209918">+55 19 98720-9918</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="200">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <h4>Horario de Atendimento</h4>
+                            <p>Segunda a Sexta: 08h as 18h<br>Sabado: 08h as 12h</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555519987209918" target="_blank" rel="noopener noreferrer" class="btn-whatsapp wow-fade-up" data-delay="300">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Falar com a clinica via WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form wow-fade-up" data-delay="200">
+                    <h3>Envie uma mensagem</h3>
+                    <p>Preencha o formulario abaixo e entraremos em contato.</p>
+                    <form id="contactForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento</option>
+                                <option value="avaliacao">Avaliacao Inicial</option>
+                                <option value="tratamento">Tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Como podemos ajuda-lo?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">Claudio Becker <span>VideoMaker</span></div>
+            <div class="footer-copy">&copy; 2025 Claudio Becker VideoMaker. Todos os direitos reservados.</div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/555519987209918" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVBAR SCROLL BEHAVIOR ===== */
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.scrollY;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            if (currentScroll > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        /* ===== MOBILE MENU ===== */
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        /* ===== INTERSECTION OBSERVER ANIMATIONS ===== */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(function() {
+                        entry.target.classList.add('visible');
+                    }, parseInt(delay));
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ===== COUNTER ANIMATION ===== */
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var el = entry.target;
+                    var target = parseInt(el.getAttribute('data-count'));
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+
+                    function animateCounter(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.floor(eased * target);
+                        if (progress < 1) {
+                            requestAnimationFrame(animateCounter);
+                        } else {
+                            el.textContent = target + '+';
+                        }
+                    }
+
+                    requestAnimationFrame(animateCounter);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('[data-count]').forEach(function(el) {
+            counterObserver.observe(el);
+        });
+
+        /* ===== CONTACT FORM ===== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var service = document.getElementById('service').value;
+            var message = document.getElementById('message').value;
+            var text = 'Ola! Meu nome e ' + name + '. Telefone: ' + phone + '. Servico desejado: ' + service + '. Mensagem: ' + message;
+            var url = 'https://wa.me/555519987209918?text=' + encodeURIComponent(text);
+            window.open(url, '_blank');
+            return false;
+        }
+
+        /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    var offset = navbar.offsetHeight;
+                    var top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
