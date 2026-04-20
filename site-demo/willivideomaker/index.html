@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Willivideomaker - Clinica de saude em Campinas, SP. Consultas, exames e tratamentos com profissionais qualificados. Agende pelo WhatsApp.">
+    <meta name="keywords" content="clinica saude, campinas, consulta, exame, tratamento, medico">
+    <meta name="author" content="Willivideomaker">
+    <meta property="og:title" content="Willivideomaker - Clinica de Saude em Campinas">
+    <meta property="og:description" content="Cuidado com a sua saude em um ambiente acolhedor e moderno. Agende sua consulta pelo WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="theme-color" content="#5F9EA0">
+    <title>Willivideomaker | Clinica de Saude em Campinas - SP</title>
+    <style>
+        :root {
+            --coral: #E8907A;
+            --coral-dark: #d47362;
+            --coral-light: #f0b0a0;
+            --teal: #5F9EA0;
+            --teal-dark: #4a7f81;
+            --teal-light: #8dc4c6;
+            --sand: #F4E4C1;
+            --sand-light: #faf3e3;
+            --sand-dark: #e8d4a5;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --slate-dark: #2D3748;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --shadow-sm: 0 2px 8px rgba(74, 85, 104, 0.08);
+            --shadow-md: 0 4px 20px rgba(74, 85, 104, 0.12);
+            --shadow-lg: 0 8px 40px rgba(74, 85, 104, 0.16);
+            --shadow-xl: 0 16px 60px rgba(74, 85, 104, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            --font-primary: 'Trebuchet MS', 'Avenir Next', 'Avenir', 'Gill Sans', 'Segoe UI', sans-serif;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--slate);
+            background: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 85, 104, 0.06);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--teal);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate);
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral);
+            border-radius: 2px;
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--coral);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--coral);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            transition: all var(--transition);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(232, 144, 122, 0.4);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--slate);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--slate-dark);
+            padding: 120px 24px 80px;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image:
+                radial-gradient(circle at 25% 25%, var(--coral) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, var(--teal) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--coral);
+            opacity: 0.15;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: -200px;
+            right: -100px;
+            filter: blur(80px);
+            animation: blobFloat1 20s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--teal);
+            opacity: 0.12;
+            border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+            bottom: -150px;
+            left: -100px;
+            filter: blur(80px);
+            animation: blobFloat2 25s ease-in-out infinite;
+        }
+
+        .hero-blob-3 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--sand);
+            opacity: 0.1;
+            border-radius: 50% 50% 30% 70% / 60% 40% 70% 40%;
+            top: 40%;
+            left: 50%;
+            filter: blur(60px);
+            animation: blobFloat3 18s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-3deg); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-40px, 20px) rotate(-5deg); }
+            66% { transform: translate(30px, -30px) rotate(3deg); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.3); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-full);
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sand);
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--coral), var(--coral-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--coral);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(232, 144, 122, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232, 144, 122, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--coral);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--slate-dark);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--slate-light);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--teal));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(232, 144, 122, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .service-icon-1 { background: rgba(232, 144, 122, 0.12); color: var(--coral); }
+        .service-icon-2 { background: rgba(95, 158, 160, 0.12); color: var(--teal); }
+        .service-icon-3 { background: rgba(244, 228, 193, 0.5); color: #c4a055; }
+        .service-icon-4 { background: rgba(232, 144, 122, 0.12); color: var(--coral-dark); }
+        .service-icon-5 { background: rgba(95, 158, 160, 0.12); color: var(--teal-dark); }
+        .service-icon-6 { background: rgba(74, 85, 104, 0.08); color: var(--slate); }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--slate-dark);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
+            font-weight: 800;
+            color: var(--teal);
+            font-size: 1.35rem;
+        }
+
+        .service-price small {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--slate-light);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: linear-gradient(180deg, var(--sand-light) 0%, var(--white) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--teal-light), var(--sand), var(--coral-light));
+        }
+
+        .about-image-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-text {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            text-align: center;
+            padding: 24px;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image-badge strong {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--teal);
+        }
+
+        .about-image-badge span {
+            font-size: 0.8rem;
+            color: var(--slate-light);
+            font-weight: 500;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--slate-dark);
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            color: var(--coral);
+        }
+
+        .about-text p {
+            color: var(--slate-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: var(--radius-sm);
+            background: rgba(95, 158, 160, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            font-weight: 900;
+            font-size: 0.9rem;
+        }
+
+        .about-feature span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--slate-dark);
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .team-card {
+            background: var(--off-white);
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-photo {
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, var(--sand), var(--teal-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-photo-placeholder {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .team-info {
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--slate-dark);
+            margin-bottom: 4px;
+        }
+
+        .team-info .role {
+            font-size: 0.88rem;
+            color: var(--coral);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .team-info p {
+            font-size: 0.88rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--slate-dark);
+            padding: 100px 24px;
+        }
+
+        .gallery .section-tag {
+            color: var(--coral-light);
+        }
+
+        .gallery .section-title {
+            color: var(--white);
+        }
+
+        .gallery .section-desc {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { background: linear-gradient(135deg, var(--coral), var(--sand)); }
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, var(--teal), var(--teal-dark)); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--sand), var(--coral-light)); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, var(--teal-dark), var(--slate)); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--coral-dark), var(--coral)); }
+        .gallery-item:nth-child(6) { background: linear-gradient(135deg, var(--sand-dark), var(--teal)); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 55, 72, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transform: translateY(10px);
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay-text {
+            transform: translateY(0);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--sand-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            border-radius: var(--radius-xl);
+            padding: 36px 32px;
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-quote-icon {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--coral);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: 8px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            color: #f0b429;
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+
+        .star.empty {
+            color: var(--sand-dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal-light), var(--coral-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .testimonial-author-info strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--slate-dark);
+            font-weight: 700;
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.82rem;
+            color: var(--slate-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.1), rgba(95, 158, 160, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .contact-item h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--slate-dark);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--coral);
+        }
+
+        .contact-card {
+            background: var(--slate-dark);
+            border-radius: var(--radius-xl);
+            padding: 48px 36px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: #25D366;
+            color: var(--white);
+            border-radius: var(--radius-full);
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        .contact-hours {
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .contact-hours h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.9rem;
+        }
+
+        .hours-row span:first-child {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hours-row span:last-child {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--slate-dark);
+            padding: 48px 24px 32px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .footer-logo span {
+            color: var(--coral);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--coral);
+        }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.25);
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 32px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4), 0 0 0 12px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stats {
+                gap: 64px;
+            }
+
+            .section {
+                padding: 120px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 140px 40px 100px;
+            }
+
+            .section {
+                padding: 140px 48px;
+            }
+
+            .hero-stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ===== MOBILE NAV ===== */
+        @media (max-width: 767px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 0;
+                border-bottom: 1px solid rgba(74, 85, 104, 0.06);
+                box-shadow: var(--shadow-md);
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                pointer-events: none;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 0;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(74, 85, 104, 0.04);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-cta {
+                text-align: center;
+                margin-top: 8px;
+                border-bottom: none !important;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Willi<span>video</span>maker</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="hero-blob-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge reveal">
+                <div class="hero-badge-dot"></div>
+                Agendamento disponivel
+            </div>
+            <h1 class="hero-title reveal reveal-delay-1">
+                Cuidado que voce<br><span>pode confiar</span>
+            </h1>
+            <p class="hero-subtitle reveal reveal-delay-2">
+                Clinica especializada em Campinas com atendimento humanizado, tecnologia de ponta e profissionais dedicados ao seu bem-estar.
+            </p>
+            <div class="hero-actions reveal reveal-delay-3">
+                <a href="https://wa.me/555514998502678" class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 01-5.391-1.587l-.377-.227-2.795.938.938-2.795-.227-.377A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#servicos" class="btn btn-outline">Ver Servicos</a>
+            </div>
+            <div class="hero-stats reveal reveal-delay-4">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="2500">0</div>
+                    <div class="hero-stat-label">Pacientes atendidos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="15">0</div>
+                    <div class="hero-stat-label">Anos de experiencia</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="98">0</div>
+                    <div class="hero-stat-label">% Satisfacao</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Servicos</span>
+                <h2 class="section-title">Cuidado completo para a sua saude</h2>
+                <p class="section-desc">Oferecemos uma gama completa de servicos medicos com profissionais qualificados e infraestrutura moderna.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon service-icon-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Consulta Medica</h3>
+                    <p>Consulta clinica completa com anamnese detalhada, exame fisico e orientacao personalizada para o seu caso.</p>
+                    <div class="service-price">R$ 250,00 <small>/ consulta</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon service-icon-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Consulta de retorno para acompanhamento do seu tratamento, ajuste de condutas e verificacao de evolucao.</p>
+                    <div class="service-price">R$ 150,00 <small>/ retorno</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon service-icon-3">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Realizacao de exames laboratoriais e de imagem para diagnostico preciso e acompanhamento clinico.</p>
+                    <div class="service-price">R$ 180,00 <small>/ exame</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon service-icon-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                    </div>
+                    <h3>Procedimento</h3>
+                    <p>Procedimentos medicos realizados com seguranca e tecnologia, desde pequenas intervencoes ate procedimentos especializados.</p>
+                    <div class="service-price">R$ 450,00 <small>/ procedimento</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon service-icon-5">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Avaliacao Inicial</h3>
+                    <p>Triagem e avaliacao inicial completa para novos pacientes, com historico medico e definicao do plano de cuidado.</p>
+                    <div class="service-price">R$ 120,00 <small>/ avaliacao</small></div>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon service-icon-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Tratamento</h3>
+                    <p>Programas de tratamento personalizados com acompanhamento continuo para melhores resultados na sua saude.</p>
+                    <div class="service-price">R$ 380,00 <small>/ sessao</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-inner">
+                        <div class="about-image-text">Willivideomaker</div>
+                    </div>
+                    <div class="about-image-badge">
+                        <strong>15+</strong>
+                        <span>Anos cuidando de voce</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="reveal">
+                        <span class="section-tag">Sobre nos</span>
+                        <h2>Saude com <span>carinho e dedicacao</span> desde 2010</h2>
+                    </div>
+                    <p class="reveal reveal-delay-1">
+                        A Willivideomaker nasceu com a missao de oferecer atendimento medico de excelencia em Campinas. Nossa clinica foi fundada com o proposito de unir tecnologia avancada a um cuidado genuinamente humano.
+                    </p>
+                    <p class="reveal reveal-delay-2">
+                        Ao longo de mais de uma decada, construiamos uma relacao de confianca com milhares de pacientes e familias. Cada consulta e uma oportunidade de fazer a diferenca na vida de quem nos procura.
+                    </p>
+                    <div class="about-features reveal reveal-delay-3">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Equipe especializada</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Infraestrutura moderna</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Atendimento humanizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Agendamento facil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Nossa equipe</span>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-desc">Conhca os especialistas dedicados a proporcionar o melhor cuidado para voce e sua familia.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo">
+                        <div class="team-photo-placeholder">Dr. A</div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Andre Oliveira</h3>
+                        <p class="role">Clinico Geral</p>
+                        <p>Medico com mais de 20 anos de experiencia em clinica geral, especialista em atendimento preventivo e diagnostico preciso.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo" style="background: linear-gradient(135deg, var(--coral-light), var(--sand));">
+                        <div class="team-photo-placeholder">Dra. M</div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dra. Mariana Costa</h3>
+                        <p class="role">Nutricionista</p>
+                        <p>Especialista em nutricao clinica funcional, dedica-se a promover saude atraves de alimentacao equilibrada e personalizada.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo" style="background: linear-gradient(135deg, var(--teal), var(--sand));">
+                        <div class="team-photo-placeholder">Dr. R</div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Ricardo Mendes</h3>
+                        <p class="role">Fisioterapeuta</p>
+                        <p>Especialista em fisioterapia ortopedica e reabilitacao, com abordagem moderna e foco na recuperacao completa do paciente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Galeria</span>
+                <h2 class="section-title">Conheca nosso espaco</h2>
+                <p class="section-desc">Ambientes preparados para o seu conforto e bem-estar durante todo o atendimento.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Recepcao</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de espera</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Consultorio</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Area de exames</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de procedimentos</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Estacionamento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-desc">A satisfacao dos nossos pacientes e a maior prova da qualidade do nosso trabalho.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Atendimento impecavel! O Dr. Andre e extremamente atencioso e cuidadoso. Me senti muito a vontade durante toda a consulta. Recomendo de olhos fechados.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CS</div>
+                        <div class="testimonial-author-info">
+                            <strong>Carla Silva</strong>
+                            <span>Paciente ha 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">A Dra. Mariana mudou minha relacao com a alimentacao. O acompanhamento nutricional foi fundamental para minha recuperacao. Equipe maravilhosa!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div class="testimonial-author-info">
+                            <strong>Roberto Ferreira</strong>
+                            <span>Paciente ha 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-quote-icon">&ldquo;</div>
+                    <div class="testimonial-stars">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star empty">&#9733;</span>
+                    </div>
+                    <p class="testimonial-text">Fiz fisioterapia com o Dr. Ricardo apos uma lesao no joelho e a recuperacao foi incrivel. Profissional dedicado e clinica muito bem equipada.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AP</div>
+                        <div class="testimonial-author-info">
+                            <strong>Ana Paula Martins</strong>
+                            <span>Paciente ha 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Contato</span>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-desc">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item reveal reveal-delay-1">
+                        <div class="contact-item-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>R. Prof. Orestes Carlos Segallio, 160<br>Parque Industrial, Campinas - SP<br>13031-540</p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal reveal-delay-2">
+                        <div class="contact-item-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5514998502678">(14) 99850-2678</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal reveal-delay-3">
+                        <div class="contact-item-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 01-5.391-1.587l-.377-.227-2.795.938.938-2.795-.227-.377A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/555514998502678" target="_blank" rel="noopener">Enviar mensagem</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-card reveal reveal-delay-2">
+                    <h3>Pronto para agendar?</h3>
+                    <p>Fale diretamente conosco pelo WhatsApp e agende sua consulta de forma rapida e pratica.</p>
+                    <a href="https://wa.me/555514998502678" class="btn-whatsapp" target="_blank" rel="noopener">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 01-5.391-1.587l-.377-.227-2.795.938.938-2.795-.227-.377A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        Chamar no WhatsApp
+                    </a>
+                    <div class="contact-hours">
+                        <h4>Horario de funcionamento</h4>
+                        <div class="hours-row">
+                            <span>Segunda a Sexta</span>
+                            <span>08:00 - 18:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Sabado</span>
+                            <span>08:00 - 12:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Domingo</span>
+                            <span>Fechado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Willi<span>video</span>maker</div>
+            <ul class="footer-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <p class="footer-copy">2025 Willivideomaker. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/555514998502678" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 01-5.391-1.587l-.377-.227-2.795.938.938-2.795-.227-.377A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVBAR SCROLL BEHAVIOR ===== */
+        const navbar = document.getElementById('navbar');
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        let lastScroll = 0;
+        let navOpen = false;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            navbar.classList.toggle('scrolled', currentScroll > 50);
+
+            if (currentScroll > lastScroll && currentScroll > 200 && !navOpen) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        navToggle.addEventListener('click', () => {
+            navOpen = !navOpen;
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navOpen = false;
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* ===== COUNTER ANIMATION ===== */
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.count);
+                    const duration = 2000;
+                    const start = performance.now();
+
+                    function animate(now) {
+                        const elapsed = now - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.round(target * eased).toLocaleString('pt-BR');
+                        if (progress < 1) requestAnimationFrame(animate);
+                    }
+
+                    requestAnimationFrame(animate);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+        /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
