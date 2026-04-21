@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arte em Retoque - Funilaria e Pintura especializada em pequenos reparos. Qualidade profissional com atencao aos detalhes em Santo Andre, SP.">
+    <meta name="keywords" content="funilaria, pintura, retoque, pequenos reparos, Santo Andre, SP, automotivo">
+    <meta name="author" content="Arte em Retoque">
+
+    <meta property="og:title" content="Arte em Retoque | Funilaria e Pintura - Pequenos Reparos">
+    <meta property="og:description" content="Especialistas em funilaria, pintura e pequenos reparos automotivos. Qualidade premium em Santo Andre, SP.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Arte em Retoque">
+
+    <title>Arte em Retoque | Funilaria e Pintura - Pequenos Reparos</title>
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1B3A5C;
+            --navy-dark: #122844;
+            --navy-light: #2A5080;
+            --gold: #D4A843;
+            --gold-light: #E8C76A;
+            --gold-dark: #B08A2E;
+            --white: #FFFFFF;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --cream: #FFF8F0;
+            --cream-dark: #F5EDDF;
+            --shadow-sm: 0 2px 8px rgba(27, 58, 92, 0.08);
+            --shadow-md: 0 4px 20px rgba(27, 58, 92, 0.12);
+            --shadow-lg: 0 8px 40px rgba(27, 58, 92, 0.16);
+            --shadow-gold: 0 4px 20px rgba(212, 168, 67, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --font-display: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-body: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --letter-wide: 0.1em;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--slate);
+            background-color: var(--white);
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            color: var(--navy);
+            letter-spacing: var(--letter-wide);
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: all var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(27, 58, 92, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 12px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            font-weight: 400;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            margin: 16px 0;
+            font-family: var(--font-display);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu.active a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80vw;
+            height: 80vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 60vw;
+            height: 60vw;
+            max-width: 600px;
+            max-height: 600px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 20px 80px;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 28px;
+            border: 1px solid rgba(212, 168, 67, 0.4);
+            color: var(--gold);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
+            color: var(--white);
+            margin-bottom: 12px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+        }
+
+        .hero h1 .accent {
+            color: var(--gold);
+            display: block;
+            font-size: 0.55em;
+            font-weight: 400;
+            margin-top: 8px;
+            letter-spacing: 0.15em;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 28px auto 44px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.7s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.9s;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy-dark);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: transparent;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 1.2s;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto 8px;
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        .hero-scroll small {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.3; }
+        }
+
+        /* ============================================
+           SECTION COMMON
+           ============================================ */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-overline {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            margin: 0 auto 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--slate-light);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           SERVICES
+           ============================================ */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(27, 58, 92, 0.06);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: var(--letter-wide);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--navy);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            color: var(--slate-light);
+        }
+
+        /* ============================================
+           ABOUT
+           ============================================ */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-dark) 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--gold);
+            border-radius: var(--radius-sm);
+            opacity: 0.4;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -16px;
+            left: -16px;
+            width: 120px;
+            height: 120px;
+            background: var(--gold);
+            opacity: 0.1;
+            border-radius: var(--radius-sm);
+        }
+
+        .about-text h3 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 36px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(27, 58, 92, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 400;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            color: var(--slate-light);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           TEAM
+           ============================================ */
+        .team {
+            background: var(--cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--transition);
+            border: 1px solid rgba(27, 58, 92, 0.06);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--gold) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .team-info {
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: var(--letter-wide);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .team-info .team-role {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        .team-info p {
+            font-size: 0.85rem;
+            color: var(--slate-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           GALLERY
+           ============================================ */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--gold-dark) 100%);
+        }
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--navy) 100%);
+        }
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--gold) 100%);
+        }
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--gold) 50%, var(--navy) 100%);
+        }
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27, 58, 92, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials {
+            background: linear-gradient(165deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials .section-overline {
+            color: var(--gold-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .testimonials .section-divider {
+            background: linear-gradient(90deg, var(--gold), rgba(212, 168, 67, 0.3));
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            color: var(--navy-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--white);
+            letter-spacing: 0.05em;
+        }
+
+        .testimonial-detail {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           CONTACT
+           ============================================ */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 28px;
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--navy);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--slate-light);
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            font-size: 0.9rem;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--gold);
+        }
+
+        .contact-hours {
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(27, 58, 92, 0.08);
+        }
+
+        .contact-hours h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--slate-light);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            color: var(--slate);
+            border-bottom: 1px solid rgba(27, 58, 92, 0.04);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list li span {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(27, 58, 92, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--slate);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(27, 58, 92, 0.12);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--navy);
+            background: var(--cream);
+            transition: all var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .whatsapp-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            border-radius: var(--radius-sm);
+            margin-top: 32px;
+            transition: all var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-cta svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--navy-dark);
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--white);
+            letter-spacing: var(--letter-wide);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(212, 168, 67, 0.3);
+            margin: 20px auto;
+        }
+
+        /* ============================================
+           FLOATING WHATSAPP
+           ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .wow {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-delay-1 { transition-delay: 0.1s; }
+        .wow-delay-2 { transition-delay: 0.2s; }
+        .wow-delay-3 { transition-delay: 0.3s; }
+        .wow-delay-4 { transition-delay: 0.4s; }
+        .wow-delay-5 { transition-delay: 0.5s; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (min-width: 480px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 120px 0;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">Arte em <span>Retoque</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-badge">Funilaria &amp; Pintura</span>
+            <h1>
+                Arte em Retoque
+                <span class="accent">Funilaria e Pintura &mdash; Pequenos Reparos</span>
+            </h1>
+            <p class="hero-tagline">
+                Transformamos arranhões e amassados em perfeicao.
+                Qualidade artesanal com atencao a cada detalhe do seu veiculo.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/555511980338973" class="btn-primary" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Fale Conosco
+                </a>
+                <a href="#servicos" class="btn-secondary">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span></span>
+            <small>Scroll</small>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES
+         ============================================ -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-overline">O que fazemos</span>
+                <h2 class="section-title">Nossos Servicos</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Solucoes completas em funilaria e pintura automotiva,
+                    com foco em pequenos reparos e acabamento impecavel.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    </div>
+                    <h3>Retoque de Pintura</h3>
+                    <p>Reparo preciso de arranhoes, marcas e descascados com acabamento invisivel e cores perfeitamente iguais.</p>
+                    <div class="service-price">A partir de R$ 150 <small>/ ponto</small></div>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Funilaria</h3>
+                    <p>Correcao de amassados, dentes e deformacoes com tecnicas de martelamento e massinha de alta performance.</p>
+                    <div class="service-price">A partir de R$ 300 <small>/ reparo</small></div>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3l1.912 5.813h6.112l-4.958 3.534 1.912 5.813L12 14.626l-4.978 3.534 1.912-5.813L3.976 8.813h6.112z"/></svg>
+                    </div>
+                    <h3>Polimento</h3>
+                    <p>Polimento profissional e cristalizacao de pintura, removendo marcas de uso e devolvendo o brilho original.</p>
+                    <div class="service-price">A partir de R$ 250 <small>/ veiculo</small></div>
+                </div>
+                <div class="service-card wow wow-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+                    </div>
+                    <h3>Pintura Completa</h3>
+                    <p>Repintura total ou parcial com tinta automotiva de primeira linha e preparacao completa da superficie.</p>
+                    <div class="service-price">A partir de R$ 1.500 <small>/ panel</small></div>
+                </div>
+                <div class="service-card wow wow-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Pequenos Reparos</h3>
+                    <p>Reparos rapidos e eficientes para parachoques, farois, retrovisores e pecas plasticas do veiculo.</p>
+                    <div class="service-price">A partir de R$ 100 <small>/ servico</small></div>
+                </div>
+                <div class="service-card wow wow-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Avaliacao Gratuita</h3>
+                    <p>Orcamento sem compromisso com avaliacao detalhada dos danos e melhor solucao para cada caso.</p>
+                    <div class="service-price">Gratuito</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT
+         ============================================ -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-text">
+                    <span class="section-overline wow">Nossa historia</span>
+                    <h3 class="wow wow-delay-1">Tradicao e dedicacao em cada detalhe</h3>
+                    <p class="wow wow-delay-2">
+                        A Arte em Retoque nasceu da paixao por transformar veiculos danificados em verdadeiras obras-primas. Desde o inicio, nosso compromisso tem sido entregar qualidade superior em cada reparo, por menor que seja.
+                    </p>
+                    <p class="wow wow-delay-3">
+                        Localizados em Santo Andre, no ABC Paulista, atendemos com excelencia e atencao personalizada. Acreditamos que cada veiculo merece um acabamento impecavel, e e por isso que investimos nas melhores tecnicas e materiais do mercado.
+                    </p>
+                    <p class="wow wow-delay-4">
+                        Nossa equipe qualificada trabalha com precisao artesanal, garantindo que cada retoque fique invisivel e cada reparo supere suas expectativas.
+                    </p>
+                    <div class="about-stats wow wow-delay-5">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="8">0</span>
+                            <span class="stat-label">Anos de experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2500">0</span>
+                            <span class="stat-label">Veiculos atendidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span>
+                            <span class="stat-label">% Satisfacao</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TEAM
+         ============================================ -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-overline">Profissionais</span>
+                <h2 class="section-title">Nossa Equipe</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Profissionais experientes e dedicados que transformam cada servico em arte.
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow wow-delay-1">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3>Carlos Eduardo</h3>
+                        <span class="team-role">Funileiro Senior</span>
+                        <p>Mais de 12 anos de experiencia em funilaria automotiva. Especialista em reparos de panelas e estruturas.</p>
+                    </div>
+                </div>
+                <div class="team-card wow wow-delay-2">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3>Ricardo Santos</h3>
+                        <span class="team-role">Pintor Especialista</span>
+                        <p>Referencia em blending e retoque de pintura. Trabalha com as melhores marcas de tinta automotiva.</p>
+                    </div>
+                </div>
+                <div class="team-card wow wow-delay-3">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3>Fernanda Oliveira</h3>
+                        <span class="team-role">Atendimento e Qualidade</span>
+                        <p>Responsavel pelo atendimento ao cliente e controle de qualidade, garantindo a satisfacao em cada entrega.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GALLERY
+         ============================================ -->
+    <section class="section gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-overline">Portfolio</span>
+                <h2 class="section-title">Galeria de Trabalhos</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Confira alguns dos nossos trabalhos realizados com precisao e dedicacao.
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-overlay"><span>Retoque de Para-choque</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-overlay"><span>Pintura Completa SUV</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-3">
+                    <div class="gallery-overlay"><span>Reparo em Farol</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-1">
+                    <div class="gallery-overlay"><span>Polimento e Cristalizacao</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-2">
+                    <div class="gallery-overlay"><span>Funilaria em Porta</span></div>
+                </div>
+                <div class="gallery-item wow wow-delay-3">
+                    <div class="gallery-overlay"><span>Reparo em Capo</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TESTIMONIALS
+         ============================================ -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-overline">Depoimentos</span>
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    A satisfacao dos nossos clientes e a nossa maior conquista.
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow wow-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Levei meu Civic com varios arranhoes no para-choque e saiu parecendo que saiu da fabrica. Servico impecavel e prazo cumprido. Super recomendo!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <div class="testimonial-name">Marcos Lima</div>
+                            <div class="testimonial-detail">Honda Civic 2023</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Fiz o polimento cristal na minha Corolla e ficou incrivel. O atendimento da Fernanda e excelente, explicou tudo direitinho. Voltarei com certeza."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AP</div>
+                        <div>
+                            <div class="testimonial-name">Ana Paula Ribeiro</div>
+                            <div class="testimonial-detail">Toyota Corolla 2022</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow wow-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "Amassei a porta do meu Onix no estacionamento. O Carlos fez um trabalho fantastico, ficou imperceptivel. Preco justo e servico rapido."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div>
+                            <div class="testimonial-name">Roberto Ferreira</div>
+                            <div class="testimonial-detail">Chevrolet Onix 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT
+         ============================================ -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header wow">
+                <span class="section-overline">Fale conosco</span>
+                <h2 class="section-title">Contato</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Entre em contato para solicitar um orcamento gratuito ou agendar seu atendimento.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="wow">Informacoes de Contato</h3>
+                    <div class="contact-item wow wow-delay-1">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Endereco</h4>
+                            <p>R. Itatiaia, 405B<br>Vila Alto de Santo Andre<br>Santo Andre - SP, 09240-470</p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow wow-delay-2">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Telefone</h4>
+                            <a href="tel:+5511980338973">(11) 98033-8973</a>
+                        </div>
+                    </div>
+                    <div class="contact-item wow wow-delay-3">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Horario de Funcionamento</h4>
+                            <div class="contact-hours">
+                                <ul class="hours-list">
+                                    <li>Segunda a Sexta <span>08:00 - 18:00</span></li>
+                                    <li>Sabado <span>08:00 - 12:00</span></li>
+                                    <li>Domingo <span>Fechado</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555511980338973" class="whatsapp-cta wow wow-delay-4" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form wow">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome completo</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="retoque">Retoque de Pintura</option>
+                                <option value="funilaria">Funilaria</option>
+                                <option value="polimento">Polimento</option>
+                                <option value="pintura-completa">Pintura Completa</option>
+                                <option value="pequenos-reparos">Pequenos Reparos</option>
+                                <option value="avaliacao">Avaliacao Gratuita</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Descreva o servico necessario..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Arte em <span>Retoque</span></div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">2025 Arte em Retoque - Funilaria e Pintura. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         FLOATING WHATSAPP BUTTON
+         ============================================ -->
+    <a href="https://wa.me/555511980338973" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            /* ============================================
+               NAVBAR SCROLL BEHAVIOR
+               ============================================ */
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+
+            function handleNavbarScroll() {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 60) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            }
+
+            window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+
+            /* ============================================
+               MOBILE MENU
+               ============================================ */
+            const navToggle = document.getElementById('navToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            function toggleMenu() {
+                navToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+
+            navToggle.addEventListener('click', toggleMenu);
+
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (mobileMenu.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            /* ============================================
+               INTERSECTION OBSERVER - SCROLL ANIMATIONS
+               ============================================ */
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '-50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.wow').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            /* ============================================
+               COUNTER ANIMATION
+               ============================================ */
+            function animateCounter(element) {
+                var target = parseInt(element.getAttribute('data-target'), 10);
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+                    element.textContent = current.toLocaleString('pt-BR');
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        element.textContent = target.toLocaleString('pt-BR');
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            var statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            var statObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        statObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statNumbers.forEach(function(el) {
+                statObserver.observe(el);
+            });
+
+            /* ============================================
+               CONTACT FORM
+               ============================================ */
+            var contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var nameField = document.getElementById('name');
+                var phoneField = document.getElementById('phone');
+                var serviceField = document.getElementById('service');
+                var messageField = document.getElementById('message');
+
+                var text = 'Ola! Me chamo ' + encodeURIComponent(nameField.value) +
+                    '. Telefone: ' + encodeURIComponent(phoneField.value) +
+                    '. Servico: ' + encodeURIComponent(serviceField.options[serviceField.selectedIndex].text) +
+                    '. Mensagem: ' + encodeURIComponent(messageField.value);
+
+                var whatsappUrl = 'https://wa.me/555511980338973?text=' + text;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            /* ============================================
+               SMOOTH SCROLL (fallback for older browsers)
+               ============================================ */
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        var offset = navbar.offsetHeight + 10;
+                        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
