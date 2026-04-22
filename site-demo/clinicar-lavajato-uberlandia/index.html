@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clinicar Lavajato - Clinica de saude em Uberlandia MG. Consultas, exames e tratamentos com profissionais qualificados.">
+    <meta name="keywords" content="clinica, saude, Uberlandia, consulta, exame, tratamento, medico">
+    <meta property="og:title" content="Clinicar Lavajato | Clinica de Saude - Uberlandia MG">
+    <meta property="og:description" content="Cuidado com a sua saude em um ambiente acolhedor e moderno. Agende sua consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/clinicar-lavajato-uberlandia/">
+    <meta property="og:locale" content="pt_BR">
+    <title>Clinicar Lavajato | Clinica de Saude - Uberlandia MG</title>
+    <style>
+        :root {
+            --blush: #F5E6E0;
+            --rose-gold: #C4868A;
+            --rose-gold-light: #D4A6A9;
+            --sage: #A3B18A;
+            --sage-light: #C2CCB3;
+            --charcoal: #2D2D2D;
+            --champagne: #F7E7CE;
+            --white: #FDFCFA;
+            --cream: #FAF6F2;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-xxl: 10rem;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Trebuchet MS', 'Verdana', 'Geneva', sans-serif;
+            background: var(--white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .font-accent {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 100;
+            letter-spacing: 0.15em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 252, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            box-shadow: 0 1px 0 rgba(45, 45, 45, 0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 1.1rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: var(--charcoal);
+            position: relative;
+            padding-bottom: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--rose-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--charcoal);
+            transition: var(--transition);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(253, 252, 250, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu nav {
+            text-align: center;
+        }
+
+        .mobile-menu nav a {
+            display: block;
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 1.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu nav a:hover {
+            color: var(--rose-gold);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream);
+        }
+
+        .hero-diagonal {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 50%, var(--blush) 100%);
+            clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.15) 0%, transparent 70%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: floatBlob 12s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            bottom: 15%;
+            right: 20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(163, 177, 138, 0.2) 0%, transparent 70%);
+            border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
+            animation: floatBlob 15s ease-in-out infinite reverse;
+            z-index: 2;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -30px) scale(1.05); }
+            66% { transform: translate(-15px, 15px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: var(--rose-gold);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 2rem;
+            height: 1px;
+            background: var(--rose-gold);
+        }
+
+        .hero h1 {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            letter-spacing: 0.08em;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--rose-gold);
+            font-weight: 100;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(45, 45, 45, 0.65);
+            max-width: 400px;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: var(--white);
+            background: var(--rose-gold);
+            padding: 1.1rem 2.5rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hero-cta:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(45, 45, 45, 0.15);
+        }
+
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+
+        .hero-scroll span {
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(45, 45, 45, 0.4);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(45, 45, 45, 0.3), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1; transform: scaleY(1); }
+            50% { opacity: 0.3; transform: scaleY(0.6); }
+        }
+
+        /* ===== SECTION SHARED ===== */
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: var(--rose-gold);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .section-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 2rem;
+            height: 1px;
+            background: var(--rose-gold);
+        }
+
+        .section-title {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            letter-spacing: 0.06em;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: rgba(45, 45, 45, 0.55);
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--rose-gold);
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 30px rgba(196, 134, 138, 0.08);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--rose-gold);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 0;
+            right: 2rem;
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 100;
+            font-size: 3rem;
+            color: rgba(45, 45, 45, 0.04);
+            line-height: 1;
+        }
+
+        .service-name {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 1.15rem;
+            letter-spacing: 0.1em;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(45, 45, 45, 0.55);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-price {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 1.3rem;
+            color: var(--rose-gold);
+            letter-spacing: 0.05em;
+        }
+
+        .service-price small {
+            font-size: 0.7rem;
+            font-family: 'Segoe UI', 'Trebuchet MS', 'Verdana', sans-serif;
+            letter-spacing: 0.1em;
+            color: rgba(45, 45, 45, 0.4);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-deco {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 60%, var(--sage-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to top, rgba(45, 45, 45, 0.15), transparent);
+        }
+
+        .about-image-label {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            z-index: 1;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: rgba(45, 45, 45, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(45, 45, 45, 0.7);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(45, 45, 45, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 100;
+            font-size: 2.2rem;
+            color: var(--rose-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(45, 45, 45, 0.5);
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(180deg, var(--blush) 0%, var(--champagne) 100%);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(45, 45, 45, 0.08) 100%);
+        }
+
+        .team-photo-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            opacity: 0.25;
+        }
+
+        .team-photo-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--charcoal);
+        }
+
+        .team-name {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 1.2rem;
+            letter-spacing: 0.12em;
+            color: var(--charcoal);
+            margin-bottom: 0.4rem;
+        }
+
+        .team-role {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            font-weight: 300;
+        }
+
+        .team-credentials {
+            font-size: 0.8rem;
+            color: rgba(45, 45, 45, 0.45);
+            margin-top: 0.6rem;
+            font-weight: 300;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .gallery-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg,
+        .gallery-item:nth-child(4) .gallery-item-bg {
+            background: linear-gradient(135deg, var(--blush) 0%, var(--champagne) 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-item-bg,
+        .gallery-item:nth-child(5) .gallery-item-bg {
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--sage-light) 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-item-bg,
+        .gallery-item:nth-child(6) .gallery-item-bg {
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--blush) 100%);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 45, 45, 0);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            transition: background 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(45, 45, 45, 0.2);
+        }
+
+        .gallery-overlay span {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-size: 4rem;
+            font-weight: 100;
+            color: var(--rose-gold);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-stars svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--champagne);
+            stroke: var(--champagne);
+            stroke-width: 1;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(45, 45, 45, 0.7);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blush), var(--rose-gold-light));
+            flex-shrink: 0;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--charcoal);
+        }
+
+        .testimonial-info span {
+            font-size: 0.72rem;
+            color: rgba(45, 45, 45, 0.45);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-deco {
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(196, 134, 138, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact .section-tag {
+            color: var(--rose-gold);
+        }
+
+        .contact .section-tag::before {
+            background: var(--rose-gold);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact .section-subtitle {
+            color: rgba(253, 252, 250, 0.5);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rose-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-value {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(253, 252, 250, 0.75);
+            line-height: 1.7;
+        }
+
+        .contact-info-value a {
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-value a:hover {
+            color: var(--rose-gold);
+        }
+
+        .contact-hours {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .contact-hours span {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(253, 252, 250, 0.6);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(253, 252, 250, 0.15);
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 300;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(253, 252, 250, 0.3);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--rose-gold);
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            padding: 1.1rem 2.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 400;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            align-self: flex-start;
+        }
+
+        .form-submit:hover {
+            background: var(--rose-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--sage);
+            color: var(--white);
+            padding: 1.1rem 2.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--sage-light);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--charcoal);
+            border-top: 1px solid rgba(253, 252, 250, 0.06);
+            padding: 2.5rem 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Didot', 'Bodoni MT', 'Noto Serif Display', 'Georgia', 'Cambria', serif;
+            font-weight: 200;
+            font-size: 0.9rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(253, 252, 250, 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(253, 252, 250, 0.35);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--rose-gold);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: rgba(253, 252, 250, 0.2);
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(163, 177, 138, 0.4);
+            z-index: 900;
+            transition: var(--transition);
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(163, 177, 138, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(163, 177, 138, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(163, 177, 138, 0.6), 0 0 0 8px rgba(163, 177, 138, 0.1); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .nav-hamburger {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 0;
+            }
+
+            .hero h1 {
+                max-width: 600px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .about-image {
+                height: 450px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item {
+                height: 280px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-diagonal {
+                width: 50%;
+                clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            .hero-blob-1 {
+                width: 400px;
+                height: 400px;
+            }
+
+            .hero-blob-2 {
+                width: 280px;
+                height: 280px;
+            }
+
+            .gallery-item {
+                height: 320px;
+            }
+
+            .about-image {
+                height: 520px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1100px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="nav" id="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#hero" class="nav-logo">Clinicar Lavajato</a>
+                <ul class="nav-links">
+                    <li><a href="#servicos">Servicos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <a href="#servicos">Servicos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-diagonal"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="container">
+            <div class="hero-content wow-fade-up">
+                <span class="hero-tag">Clinica de Saude</span>
+                <h1>Cuidado que <em>transforma</em> vidas</h1>
+                <p class="hero-subtitle">Na Clinicar Lavajato, sua saude e tratada com excelencia e acolhimento. Medicina humanizada no coracao de Uberlandia.</p>
+                <a href="https://wa.me/55553432100027" class="hero-cta" target="_blank" rel="noopener noreferrer">
+                    Agende sua consulta
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="services-header wow-fade-up">
+                <span class="section-tag">Nossos Servicos</span>
+                <h2 class="section-title">Atendimento completo para sua saude</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de servicos medicos com profissionais qualificados e infraestrutura moderna.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <span class="service-number">01</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 14v20M14 24h20" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="service-name">Consulta</h3>
+                    <p class="service-desc">Consulta medica completa com avaliacao clinica detalhada e orientacao personalizada para seu tratamento.</p>
+                    <p class="service-price">R$ 250,00 <small>/ sessao</small></p>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <span class="service-number">02</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke-linecap="round"/><circle cx="24" cy="16" r="8"/></svg>
+                    </div>
+                    <h3 class="service-name">Retorno</h3>
+                    <p class="service-desc">Consulta de retorno para acompanhamento do seu tratamento e ajustes necessarios na conduta terapeutica.</p>
+                    <p class="service-price">R$ 150,00 <small>/ sessao</small></p>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <span class="service-number">03</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="4"/><path d="M16 24h16M24 16v16" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="service-name">Exame Complementar</h3>
+                    <p class="service-desc">Exames laboratoriais e de imagem para diagnostico preciso e complemento da avaliacao clinica.</p>
+                    <p class="service-price">R$ 350,00 <small>/ exame</small></p>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.4s;">
+                    <span class="service-number">04</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><path d="M24 8l4 8h8l-6 5 2 8-8-5-8 5 2-8-6-5h8z"/></svg>
+                    </div>
+                    <h3 class="service-name">Procedimento</h3>
+                    <p class="service-desc">Procedimentos medicos minimamente invasivos realizados com seguranca e tecnologia de ponta.</p>
+                    <p class="service-price">R$ 500,00 <small>/ procedimento</small></p>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.5s;">
+                    <span class="service-number">05</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><path d="M14 24l6 6 14-14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-name">Avaliacao Inicial</h3>
+                    <p class="service-desc">Triagem e avaliacao inicial completa para encaminhamento correto e inicio rapido do tratamento.</p>
+                    <p class="service-price">R$ 180,00 <small>/ avaliacao</small></p>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.6s;">
+                    <span class="service-number">06</span>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48"><path d="M24 8v32M8 24h32" stroke-linecap="round"/><circle cx="24" cy="24" r="16"/></svg>
+                    </div>
+                    <h3 class="service-name">Tratamento</h3>
+                    <p class="service-desc">Tratamentos personalizados com acompanhamento continuo ate a sua completa recuperacao.</p>
+                    <p class="service-price">R$ 450,00 <small>/ sessao</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="about-deco"></div>
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-in">
+                    <span class="about-image-label">Clinicar Lavajato</span>
+                </div>
+                <div class="about-text">
+                    <span class="section-tag wow-fade-up">Nossa Historia</span>
+                    <h2 class="section-title wow-fade-up">Cuidado e dedicacao desde o primeiro dia</h2>
+                    <p class="wow-fade-up">Fundada com o proposito de oferecer atendimento medico de excelencia em Uberlandia, a Clinicar Lavajato nasceu da paixao por cuidar das pessoas. Nossa clinica combina tecnologia de ponta com um ambiente acolhedor, onde cada paciente e tratado com respeito e individualidade.</p>
+                    <p class="wow-fade-up">Localizada no bairro Maracana, nossa estrutura foi pensada para proporcionar conforto e seguranca em cada etapa do seu atendimento. Acreditamos que a medicina vai alem do diagnostico: e sobre construir uma relacao de confianca entre medico e paciente.</p>
+                    <div class="about-stats wow-fade-up">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Anos de experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="5000">0</span>
+                            <span class="stat-label">Pacientes atendidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">Especialidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="team-header wow-fade-up">
+                <span class="section-tag">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-subtitle">Uma equipe multidisciplinar dedicada a oferecer o melhor atendimento para voce e sua familia.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dra. Camila Ferreira</h3>
+                    <p class="team-role">Medica Clinica Geral</p>
+                    <p class="team-credentials">CRM-MG 87432</p>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dr. Ricardo Mendes</h3>
+                    <p class="team-role">Medicina Interna</p>
+                    <p class="team-credentials">CRM-MG 65219</p>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="team-name">Dra. Ana Paula Souza</h3>
+                    <p class="team-role">Nutricionista</p>
+                    <p class="team-credentials">CRN-3 45871</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="container">
+            <div class="gallery-header wow-fade-up">
+                <span class="section-tag">Ambiente</span>
+                <h2 class="section-title">Conhca nosso espaco</h2>
+                <p class="section-subtitle">Um ambiente pensado para seu conforto e bem-estar durante todo o atendimento.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.1s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Recepcao</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.2s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.3s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Consultorio</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.4s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Area de Exames</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.5s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Fachada</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" style="transition-delay: 0.6s;">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Estacionamento</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header wow-fade-up">
+                <span class="section-tag">Depoimentos</span>
+                <h2 class="section-title">O que dizem nossos pacientes</h2>
+                <p class="section-subtitle">A satisfacao de nossos pacientes e o nosso maior reconhecimento.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.1s;">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Atendimento impecavel e profissionais extremamente capacitados. Me senti acolhida desde o primeiro momento. Recomendo a todos que buscam qualidade em saude.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <strong>Maria Santos</strong>
+                            <span>Paciente ha 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.2s;">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Ambiente acolhedor e equipe muito atenciosa. O Dr. Ricardo mudou completamente minha qualidade de vida com o tratamento correto. Gratidao eterna.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <strong>Joao Oliveira</strong>
+                            <span>Paciente ha 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.3s;">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">Melhor clinica de Uberlandia, recomendo a todos! A Dra. Camila e uma profissional incrivel, atenciosa e humana. O atendimento e de primeira qualidade.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <strong>Carla Mendes</strong>
+                            <span>Paciente ha 5 anos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="contact-deco"></div>
+        <div class="container">
+            <div class="wow-fade-up" style="margin-bottom: var(--spacing-lg);">
+                <span class="section-tag">Contato</span>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-subtitle">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="wow-fade-up">
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Endereco</p>
+                        <p class="contact-info-value">R. da Carioca, 148 - Maracana<br>Uberlandia - MG, 38400-252</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Telefone</p>
+                        <p class="contact-info-value"><a href="tel:+553432100027">(34) 3210-0027</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p class="contact-info-label">Horario de Funcionamento</p>
+                        <div class="contact-hours">
+                            <span>Segunda a Sexta</span>
+                            <span>08:00 - 18:00</span>
+                            <span>Sabado</span>
+                            <span>08:00 - 12:00</span>
+                            <span>Domingo</span>
+                            <span>Fechado</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/55553432100027" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Falar no WhatsApp
+                    </a>
+                </div>
+                <div class="wow-fade-up" style="transition-delay: 0.2s;">
+                    <form class="contact-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Selecione o servico</option>
+                                <option value="consulta">Consulta</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento</option>
+                                <option value="avaliacao">Avaliacao Inicial</option>
+                                <option value="tratamento">Tratamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Sua mensagem (opcional)" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            Enviar mensagem
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-logo">Clinicar Lavajato</span>
+                <div class="footer-links">
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <p class="footer-copy">2025 Clinicar Lavajato. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/55553432100027" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            /* ===== NAVIGATION ===== */
+            var nav = document.getElementById('nav');
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            var lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+                if (currentScroll > 60) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            /* ===== INTERSECTION OBSERVER ===== */
+            var observerOptions = {
+                threshold: 0.1,
+                rootMargin: '-50px 0px'
+            };
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            /* ===== COUNTER ANIMATION ===== */
+            var counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(function(counter) {
+                            var target = parseInt(counter.getAttribute('data-target'), 10);
+                            var duration = 2000;
+                            var startTime = null;
+
+                            function updateCounter(timestamp) {
+                                if (!startTime) startTime = timestamp;
+                                var progress = Math.min((timestamp - startTime) / duration, 1);
+                                var eased = 1 - Math.pow(1 - progress, 3);
+                                var current = Math.floor(eased * target);
+                                counter.textContent = current.toLocaleString('pt-BR');
+                                if (progress < 1) {
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.textContent = target.toLocaleString('pt-BR') + '+';
+                                }
+                            }
+
+                            requestAnimationFrame(updateCounter);
+                        });
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            var statsSection = document.querySelector('.about-stats');
+            if (statsSection) {
+                counterObserver.observe(statsSection);
+            }
+
+            /* ===== SMOOTH SCROLL FOR ANCHORS ===== */
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        var navHeight = nav.offsetHeight;
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            /* ===== TILT EFFECT ON SERVICE CARDS (desktop only) ===== */
+            if (window.matchMedia('(min-width: 768px)').matches) {
+                document.querySelectorAll('.service-card').forEach(function(card) {
+                    card.addEventListener('mousemove', function(e) {
+                        var rect = card.getBoundingClientRect();
+                        var x = e.clientX - rect.left;
+                        var y = e.clientY - rect.top;
+                        var centerX = rect.width / 2;
+                        var centerY = rect.height / 2;
+                        var rotateX = (y - centerY) / 20;
+                        var rotateY = (centerX - x) / 20;
+                        card.style.transform = 'translateX(8px) perspective(600px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+                    });
+
+                    card.addEventListener('mouseleave', function() {
+                        card.style.transform = '';
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
