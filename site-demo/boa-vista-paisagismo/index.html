@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Boa Vista Paisagismo - Cuidado com a sua saude em Ribeirao Preto, SP. Consultas, exames e procedimentos com profissionais qualificados.">
+    <meta name="keywords" content="clinica saude, Ribeirao Preto, consultas medicas, exames, tratamento">
+    <meta name="author" content="Boa Vista Paisagismo">
+    <meta property="og:title" content="Boa Vista Paisagismo - Cuidado e Saude">
+    <meta property="og:description" content="Clinica de saude completa em Ribeirao Preto, SP. Agende sua consulta.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Boa Vista Paisagismo - Cuidado e Saude</title>
+    <style>
+        :root {
+            --coral: #E8907A;
+            --coral-dark: #D47A64;
+            --coral-light: #F4B8A8;
+            --teal: #5F9EA0;
+            --teal-dark: #4A7F81;
+            --teal-light: #8DC4C6;
+            --sand: #F4E4C1;
+            --sand-light: #FAF3E0;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --white: #FFFFFF;
+            --off-white: #F7FAFC;
+            --dark: #2D3748;
+            --shadow-sm: 0 2px 8px rgba(74, 85, 104, 0.08);
+            --shadow-md: 0 4px 20px rgba(74, 85, 104, 0.12);
+            --shadow-lg: 0 8px 40px rgba(74, 85, 104, 0.16);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--slate);
+            background: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: var(--transition);
+        }
+
+        .nav-logo span {
+            color: var(--coral);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--slate);
+        }
+
+        .nav-links a:hover {
+            color: var(--coral);
+        }
+
+        .nav-cta {
+            background: var(--coral) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(232, 144, 122, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--dark);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(45, 55, 72, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--coral);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 40%, var(--dark) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image:
+                radial-gradient(circle at 20% 50%, var(--coral) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, var(--white) 1px, transparent 1px),
+                radial-gradient(circle at 50% 80%, var(--coral) 1px, transparent 1px);
+            background-size: 60px 60px, 80px 80px, 40px 40px;
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--coral);
+            border-radius: var(--radius-blob);
+            filter: blur(80px);
+            opacity: 0.2;
+            top: -10%;
+            right: -10%;
+            animation: blobFloat1 18s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--teal-light);
+            border-radius: var(--radius-blob);
+            filter: blur(60px);
+            opacity: 0.15;
+            bottom: -5%;
+            left: -5%;
+            animation: blobFloat2 22s ease-in-out infinite;
+        }
+
+        .hero-blob-3 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--sand);
+            border-radius: var(--radius-blob);
+            filter: blur(70px);
+            opacity: 0.12;
+            top: 40%;
+            left: 30%;
+            animation: blobFloat3 15s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(-40px, 30px) rotate(5deg) scale(1.05); }
+            66% { transform: translate(20px, -20px) rotate(-3deg) scale(0.95); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -40px) rotate(-5deg); }
+            66% { transform: translate(-20px, 20px) rotate(3deg); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(232, 144, 122, 0.2);
+            border: 1px solid rgba(232, 144, 122, 0.4);
+            color: var(--coral-light);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--coral);
+            color: var(--white);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 144, 122, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--coral-light);
+        }
+
+        .hero-stat .label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.1), rgba(232, 144, 122, 0.1));
+            color: var(--teal);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: var(--slate-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--coral), var(--teal));
+            border-radius: 4px 0 0 4px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(95, 158, 160, 0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        .service-icon.coral {
+            background: linear-gradient(135deg, rgba(232, 144, 122, 0.15), rgba(232, 144, 122, 0.05));
+            color: var(--coral);
+        }
+
+        .service-icon.teal {
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.15), rgba(95, 158, 160, 0.05));
+            color: var(--teal);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--slate-light);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--teal);
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-light);
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: linear-gradient(180deg, var(--off-white) 0%, var(--sand-light) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 50%, var(--coral) 100%);
+        }
+
+        .about-image-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image:
+                radial-gradient(circle, var(--white) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .about-image-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 4rem;
+            font-weight: 900;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .about-badge .number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--coral);
+            line-height: 1;
+        }
+
+        .about-badge .label {
+            font-size: 0.75rem;
+            color: var(--slate-light);
+            font-weight: 600;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .about-text h2 .highlight {
+            color: var(--teal);
+        }
+
+        .about-text p {
+            color: var(--slate-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.12), rgba(232, 144, 122, 0.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--teal);
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .about-feature span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--off-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(232, 144, 122, 0.15);
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--sand) 0%, var(--coral-light) 50%, var(--teal-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image:
+                radial-gradient(circle, var(--white) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        .team-photo-icon {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-photo-icon svg {
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-info .role {
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info .bio {
+            color: var(--slate-light);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--off-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, var(--sand), var(--coral-light));
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--teal-light), var(--teal));
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--coral-light), var(--sand));
+        }
+
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--teal-dark), var(--dark));
+        }
+
+        .gallery-item-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image:
+                radial-gradient(circle, var(--white) 1px, transparent 1px);
+            background-size: 18px 18px;
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 55, 72, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-item-label {
+            opacity: 0;
+        }
+
+        .gallery-item-overlay span {
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image:
+                radial-gradient(circle, var(--white) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .testimonials .section-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--coral-light);
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--white);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+        }
+
+        .star svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--coral);
+        }
+
+        .testimonial-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral), var(--coral-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 800;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-detail {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .contact-info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--off-white);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon.coral {
+            background: linear-gradient(135deg, rgba(232, 144, 122, 0.15), rgba(232, 144, 122, 0.05));
+        }
+
+        .contact-card-icon.teal {
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.15), rgba(95, 158, 160, 0.05));
+        }
+
+        .contact-card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .contact-card h4 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-card p {
+            color: var(--slate-light);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--coral);
+        }
+
+        .contact-form {
+            background: var(--off-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+        }
+
+        .contact-form h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid rgba(74, 85, 104, 0.12);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--dark);
+            background: var(--white);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(95, 158, 160, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232, 144, 122, 0.35);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--coral);
+        }
+
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--coral);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.8rem;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow-fade-up, .wow-fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .hero-blob-1, .hero-blob-2, .hero-blob-3 {
+                animation: none;
+            }
+
+            .whatsapp-float {
+                animation: none;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-info-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 2fr 1fr;
+                text-align: left;
+            }
+
+            .footer-desc {
+                margin: 0;
+            }
+
+            .footer-links {
+                justify-content: flex-end;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none !important;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat .number {
+                font-size: 1.5rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#inicio" class="nav-logo">Boa <span>Vista</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Agendar Consulta</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="hero-blob-3"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Cuidado com a sua saude</span>
+            <h1>Sua saude merece <span class="highlight">atencao completa</span></h1>
+            <p>Na Boa Vista Paisagismo, combinamos profissionais qualificados e infraestrutura moderna para oferecer o melhor cuidado em saude para voce e sua familia.</p>
+            <div class="hero-buttons">
+                <a href="#contato" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Agendar Consulta
+                </a>
+                <a href="#servicos" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Nossos Servicos
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="number" data-target="2500">0</span>
+                    <span class="label">Pacientes</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="number" data-target="15">0</span>
+                    <span class="label">Anos</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="number" data-target="8">0</span>
+                    <span class="label">Especialistas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Servicos</span>
+                <h2>Cuidado completo para a sua saude</h2>
+                <p>Oferecemos uma gama completa de servicos para atender todas as suas necessidades de saude.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon coral">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Consulta</h3>
+                    <p>Consulta inicial com avaliacao completa do seu estado de saude. Diagnostico preciso e plano de cuidado personalizado.</p>
+                    <span class="service-price">R$ 250 <small>/ sessao</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon teal">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Consulta de retorno para acompanhamento do seu tratamento. Ajustes e evolucao monitorados de perto pelo seu medico.</p>
+                    <span class="service-price">R$ 180 <small>/ sessao</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon coral">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Exames laboratoriais e de imagem para complementar o diagnostico. Resultados rapidos e confiaveis.</p>
+                    <span class="service-price">R$ 120 <small>/ exame</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon teal">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Procedimento</h3>
+                    <p>Procedimentos clinicos realizados com tecnologia de ponta e equipe especializada. Seguranca e conforto em cada etapa.</p>
+                    <span class="service-price">R$ 450 <small>/ procedimento</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon coral">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Avaliacao Inicial</h3>
+                    <p>Avaliacao completa com anamnese detalhada, verificacao de sinais vitais e historico medico. Primeiro passo para o cuidado.</p>
+                    <span class="service-price">R$ 150 <small>/ avaliacao</small></span>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon teal">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3>Tratamento</h3>
+                    <p>Tratamentos continuos e personalizados para diversas condicoes. Acompanhamento constante ate a sua recuperacao completa.</p>
+                    <span class="service-price">R$ 380 <small>/ sessao</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-pattern"></div>
+                    <div class="about-image-text">BOA VISTA</div>
+                    <div class="about-badge">
+                        <span class="number">15+</span>
+                        <span class="label">Anos de experiencia</span>
+                    </div>
+                </div>
+                <div class="about-text wow-fade-up" data-delay="200">
+                    <span class="section-tag">Sobre nos</span>
+                    <h2>Cuidado que faz a <span class="highlight">diferenca</span></h2>
+                    <p>Ha mais de 15 anos, a Boa Vista Paisagismo e referencia em cuidado com a saude em Ribeirao Preto. Nossa clinica nasceu do sonho de oferecer um atendimento humanizado e de alta qualidade para toda a comunidade.</p>
+                    <p>Contamos com uma equipe multidisciplinar dedicada, infraestrutura moderna e um compromisso inabalavel com o bem-estar dos nossos pacientes. Cada pessoa que entra pelas nossas portas recebe atencao individualizada e respeito.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Equipe Especializada</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Infraestrutura Moderna</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Atendimento Humanizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Agendamento Facil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Equipe</span>
+                <h2>Profissionais que cuidam de voce</h2>
+                <p>Conhea a equipe dedicada que faz da Boa Vista Paisagismo um lugar especial.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo">
+                        <div class="team-photo-pattern"></div>
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Ricardo Mendes</h3>
+                        <p class="role">Clinico Geral</p>
+                        <p class="bio">Especialista em medicina interna com mais de 20 anos de experiencia. Dedicado ao diagnostico preciso e cuidado preventivo.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo">
+                        <div class="team-photo-pattern"></div>
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dra. Ana Carolina Ferreira</h3>
+                        <p class="role">Nutricionista</p>
+                        <p class="bio">Mestre em nutricao clinica, ajuda pacientes a alcancarem uma alimentacao equilibrada e saudavel de forma personalizada.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo">
+                        <div class="team-photo-pattern"></div>
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Paulo Henrique Lima</h3>
+                        <p class="role">Fisioterapeuta</p>
+                        <p class="bio">Especialista em reabilitacao e terapia manual, com foco em recuperar a mobilidade e qualidade de vida dos pacientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Galeria</span>
+                <h2>Nossas instalacoes</h2>
+                <p>Conhea o espaco preparado para oferecer o melhor em conforto e cuidado.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Recepcao</div>
+                    <div class="gallery-item-overlay"><span>Recepcao</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Consultorio</div>
+                    <div class="gallery-item-overlay"><span>Consultorio</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Sala de Espera</div>
+                    <div class="gallery-item-overlay"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Laboratorio</div>
+                    <div class="gallery-item-overlay"><span>Laboratorio</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Fisioterapia</div>
+                    <div class="gallery-item-overlay"><span>Fisioterapia</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-item-pattern"></div>
+                    <div class="gallery-item-label">Exames</div>
+                    <div class="gallery-item-overlay"><span>Exames</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="testimonials-pattern"></div>
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Depoimentos</span>
+                <h2>O que nossos pacientes dizem</h2>
+                <p>A satisfacao dos nossos pacientes e a nossa maior conquista.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"Atendimento excepcional desde a recepcao ate a consulta. O Dr. Ricardo e muito atencioso e fez um diagnostico preciso. Recomendo de olhos fechados!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <p class="testimonial-name">Maria Lucia Santos</p>
+                            <p class="testimonial-detail">Paciente ha 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"A Dra. Ana Carolina mudou minha relacao com a alimentacao. Perdi peso de forma saudavel e me sinto com muito mais energia. Ambiente acolhedor e profissional."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JO</div>
+                        <div>
+                            <p class="testimonial-name">Jose Oliveira</p>
+                            <p class="testimonial-detail">Paciente ha 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                        <div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    </div>
+                    <p class="testimonial-text">"Apos uma cirurgia, o Dr. Paulo me ajudou na reabilitacao com muito competencia e paciencia. Voltei a andar normalmente em tempo recorde. Gratidao eterna!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CP</div>
+                        <div>
+                            <p class="testimonial-name">Carla Pereira</p>
+                            <p class="testimonial-detail">Paciente ha 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-tag">Contato</span>
+                <h2>Agende sua consulta</h2>
+                <p>Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="wow-fade-up">
+                    <div class="contact-info-cards">
+                        <div class="contact-card">
+                            <div class="contact-card-icon coral">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <h4>Endereco</h4>
+                                <p>R. Xavantes, 54 - Atiradores<br>Joinville - SC, 89203-100</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-icon teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p><a href="tel:+554734325950">(47) 3432-5950</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-icon coral">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <h4>Horario de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h as 18h<br>Sabado: 8h as 12h</p>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-icon teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/55554734325950" target="_blank" rel="noopener noreferrer">Enviar mensagem</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form wow-fade-up" data-delay="200">
+                    <h3>Envie sua mensagem</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome completo</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta - R$ 250</option>
+                                <option value="retorno">Retorno - R$ 180</option>
+                                <option value="exame">Exame Complementar - R$ 120</option>
+                                <option value="procedimento">Procedimento - R$ 450</option>
+                                <option value="avaliacao">Avaliacao Inicial - R$ 150</option>
+                                <option value="tratamento">Tratamento - R$ 380</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos como podemos ajudar..." rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-logo">Boa <span>Vista</span></div>
+                <p class="footer-desc">Cuidado completo com a sua saude. Mais de 15 anos atendendo a comunidade com excelencia e dedicacao.</p>
+            </div>
+            <div>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>2025 Boa Vista Paisagismo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/55554734325950" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===== NAVBAR SCROLL ===== */
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        /* ===== HAMBURGER MENU ===== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== INTERSECTION OBSERVER - SCROLL ANIMATIONS ===== */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(function() {
+                        entry.target.classList.add('visible');
+                    }, parseInt(delay));
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ===== COUNTER ANIMATION ===== */
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-target]');
+                    counters.forEach(function(counter) {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        function updateCounter() {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current).toLocaleString('pt-BR');
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString('pt-BR') + '+';
+                            }
+                        }
+
+                        updateCounter();
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.hero-stats');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        var contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value;
+                var phone = document.getElementById('phone').value;
+                var service = document.getElementById('service');
+                var serviceText = service.options[service.selectedIndex].text;
+                var message = document.getElementById('message').value;
+
+                var waMessage = encodeURIComponent(
+                    'Ola! Meu nome e ' + name + '.\n' +
+                    'Telefone: ' + phone + '\n' +
+                    'Servico desejado: ' + serviceText + '\n' +
+                    (message ? 'Mensagem: ' + message : '')
+                );
+
+                window.open('https://wa.me/55554734325950?text=' + waMessage, '_blank');
+            });
+        }
+
+        /* ===== SMOOTH SCROLL FOR ANCHOR LINKS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                var targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    var offset = 80;
+                    var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
