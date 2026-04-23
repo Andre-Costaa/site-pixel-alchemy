@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Artcapitonne - Cabeceiras, baús e reforma de estofados em geral. Transformamos seus móveis com arte e qualidade em Ribeirão das Neves, MG.">
+    <meta name="keywords" content="reforma estofados, cabeceiras sob medida, baús artesanais, estofamento, Ribeirão das Neves, MG">
+    <meta name="author" content="Artcapitonne">
+
+    <meta property="og:title" content="Artcapitonne - Cabeceiras, Baús e Reforma de Estofados">
+    <meta property="og:description" content="Transformamos seus móveis com arte e qualidade. Cabeceiras, baús e reforma de estofados em geral.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:image" content="og-image.jpg">
+
+    <title>Artcapitonne | Cabeceiras, Baús e Reforma de Estofados</title>
+
+    <style>
+        :root {
+            --color-navy: #1B3A5C;
+            --color-navy-dark: #122840;
+            --color-navy-light: #2A5280;
+            --color-gold: #D4A843;
+            --color-gold-light: #E8C97A;
+            --color-gold-dark: #B8922E;
+            --color-white: #FFFFFF;
+            --color-slate: #4A5568;
+            --color-slate-light: #718096;
+            --color-cream: #FFF8F0;
+            --color-cream-dark: #F5EDDF;
+            --color-border: #E2D9CA;
+            --font-primary: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            --font-body: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --spacing-xxl: 6rem;
+            --border-radius: 8px;
+            --border-radius-lg: 16px;
+            --shadow-sm: 0 2px 8px rgba(27,58,92,0.08);
+            --shadow-md: 0 4px 20px rgba(27,58,92,0.12);
+            --shadow-lg: 0 8px 40px rgba(27,58,92,0.16);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-slate);
+            background: var(--color-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+            padding: 0.75rem 0;
+        }
+
+        .navbar.scrolled {
+            border-bottom-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-primary);
+            font-size: 1.35rem;
+            color: var(--color-navy);
+            text-decoration: none;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-slate);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-gold);
+            color: var(--color-white) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            letter-spacing: 0.08em;
+            transition: background var(--transition) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-gold-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-navy);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-navy-light) 100%);
+            overflow: hidden;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(212,168,67,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 70%;
+            height: 180%;
+            background: radial-gradient(ellipse, rgba(212,168,67,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-ornament {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(212,168,67,0.1);
+            border-radius: 50%;
+            top: 10%;
+            right: 5%;
+            animation: floatOrnament 20s ease-in-out infinite;
+        }
+
+        .hero-ornament:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            left: 3%;
+            animation-delay: -7s;
+            animation-duration: 25s;
+        }
+
+        .hero-ornament:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 15%;
+            border-style: dashed;
+            animation-delay: -12s;
+            animation-duration: 18s;
+        }
+
+        @keyframes floatOrnament {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+            25% { transform: translate(15px, -20px) rotate(90deg); opacity: 0.7; }
+            50% { transform: translate(-10px, 15px) rotate(180deg); opacity: 0.5; }
+            75% { transform: translate(20px, 10px) rotate(270deg); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(212,168,67,0.4);
+            color: var(--color-gold-light);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            font-family: var(--font-primary);
+        }
+
+        .hero-title {
+            font-family: var(--font-primary);
+            font-size: 3.2rem;
+            color: var(--color-white);
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            color: var(--color-gold);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 0 auto 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-gold);
+            color: var(--color-white);
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: 2px solid var(--color-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-gold-dark);
+            border-color: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,168,67,0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--color-white);
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(212,168,67,0.6), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: var(--spacing-xxl) 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-label {
+            font-family: var(--font-primary);
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.2rem;
+            color: var(--color-navy);
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: 0 auto 1rem;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--color-slate-light);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-title {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--color-slate-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-price {
+            font-family: var(--font-primary);
+            font-size: 1.15rem;
+            color: var(--color-gold-dark);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            color: var(--color-slate-light);
+            font-weight: 400;
+            font-family: var(--font-body);
+        }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 50%, var(--color-navy-light) 100%);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60%;
+            height: 60%;
+            border: 2px solid var(--color-gold);
+            border-radius: var(--border-radius-lg);
+            z-index: -1;
+        }
+
+        .about-image-inner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: linear-gradient(135deg, rgba(27,58,92,0.7) 0%, rgba(42,82,128,0.5) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.3);
+            font-family: var(--font-primary);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .about-image-inner svg {
+            width: 48px;
+            height: 48px;
+            stroke: rgba(212,168,67,0.3);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        .about-content {
+            padding: 1rem 0;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--color-slate);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--color-navy);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--color-slate-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            background: var(--color-cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            height: 260px;
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 60%, var(--color-navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(27,58,92,0.4), transparent);
+        }
+
+        .team-photo-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .team-photo-icon svg {
+            width: 56px;
+            height: 56px;
+            stroke: rgba(212,168,67,0.25);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--color-gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--color-slate-light);
+            line-height: 1.7;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+        }
+
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--color-cream-dark) 0%, var(--color-cream) 50%, var(--color-border) 100%);
+        }
+
+        .gallery-item:nth-child(3),
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-light) 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(27,58,92,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-gold);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            color: var(--color-white);
+            letter-spacing: 0.08em;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .gallery-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-placeholder svg {
+            width: 40px;
+            height: 40px;
+            stroke: rgba(255,255,255,0.2);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--color-navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(212,168,67,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .testimonials .section-title {
+            color: var(--color-white);
+        }
+
+        .testimonials .section-desc {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(212,168,67,0.2);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-gold);
+        }
+
+        .testimonial-text {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: var(--color-white);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-white);
+        }
+
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0.1rem;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: var(--color-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-gold);
+        }
+
+        .contact-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-card-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-slate-light);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .contact-card-value {
+            font-size: 0.95rem;
+            color: var(--color-navy);
+            line-height: 1.5;
+        }
+
+        .contact-card-value a {
+            color: var(--color-navy);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-card-value a:hover {
+            color: var(--color-gold-dark);
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-form-title {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            color: var(--color-navy);
+            letter-spacing: 0.06em;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-slate);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-slate);
+            background: var(--color-cream);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px rgba(212,168,67,0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--color-gold);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212,168,67,0.3);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--color-navy-dark);
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer-tagline {
+            font-family: var(--font-primary);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(212,168,67,0.3);
+            margin: 0 auto 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.05em;
+        }
+
+        /* ========== WHATSAPP FLOAT ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37,211,102,0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37,211,102,0.6); }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow-fade-up {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-ornament {
+                animation: none;
+            }
+            .hero-scroll-line {
+                animation: none;
+            }
+            .whatsapp-float {
+                animation: none;
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section {
+                padding: var(--spacing-xxl) 2rem;
+            }
+            .section-title {
+                font-size: 2.6rem;
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            .hamburger {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--color-border);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Art<span>capitonne</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Contato</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-ornament"></div>
+        <div class="hero-ornament"></div>
+        <div class="hero-ornament"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Artesanato e Qualidade desde 2010</span>
+            <h1 class="hero-title">Cabeceiras, <em>Baus</em><br>e Estofados</h1>
+            <p class="hero-subtitle">Reforma e confeccao sob medida</p>
+            <div class="hero-divider"></div>
+            <p class="hero-description">Transformamos seus moveis com tecidos premium e acabamento impecavel. Cabeceiras personalizadas, baus artesanais e reforma de estofados com a qualidade que voce merece.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/555531986967152" class="btn-primary" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Solicitar Orcamento
+                </a>
+                <a href="#servicos" class="btn-outline">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">O que fazemos</span>
+                <h2 class="section-title">Nossos Servicos</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">Cada peca e tratada com dedicacao artesanal, utilizando tecidos de alta qualidade e tecnicas de acabamento que garantem durabilidade e beleza.</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/><path d="M6 18v2"/><path d="M18 18v2"/></svg>
+                    </div>
+                    <h3 class="service-title">Reforma de Estofados</h3>
+                    <p class="service-desc">Renovacao completa de sofas, poltronas e cadeiras estofadas. Substituicao de espuma, tecido e estrutural com garantia de qualidade.</p>
+                    <p class="service-price">A partir de R$ 350<small> / peca</small></p>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><path d="M3 10h18"/><path d="M7 10v11"/><path d="M17 10v11"/></svg>
+                    </div>
+                    <h3 class="service-title">Cabeceiras Sob Medida</h3>
+                    <p class="service-desc">Cabeceiras personalizadas para camas de todos os tamanhos. Diversos modelos, tecidos e acabamentos para transformar seu quarto.</p>
+                    <p class="service-price">A partir de R$ 280<small> / unidade</small></p>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 class="service-title">Baus Artesanais</h3>
+                    <p class="service-desc">Baus e caixas estofadas confeccionados artesanalmente. Ideais para armazenamento decorativo e organizacao com estilo.</p>
+                    <p class="service-price">A partir de R$ 420<small> / unidade</small></p>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="service-title">Restauracao de Moveis</h3>
+                    <p class="service-desc">Recuperacao de moveis antigos e vintage. Tratamento de madeira, estofamento e acabamento original preservado.</p>
+                    <p class="service-price">A partir de R$ 500<small> / peca</small></p>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h3 class="service-title">Poltronas e Sofas</h3>
+                    <p class="service-desc">Confeccao e reforma de poltronas, sofas e banquetas. Modelos classicos e contemporaneos sob medida para seu espaco.</p>
+                    <p class="service-price">A partir de R$ 600<small> / peca</small></p>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="12" y1="10" x2="12" y2="20"/></svg>
+                    </div>
+                    <h3 class="service-title">Estofamento Automotivo</h3>
+                    <p class="service-desc">Reforma de bancos, forracao de portas e paineis automotivos. Tecidos resistentes e acabamento premium para seu veiculo.</p>
+                    <p class="service-price">A partir de R$ 800<small> / veiculo</small></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-inner">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Foto do Atelier</span>
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content wow-fade-up" data-delay="150">
+                    <span class="section-label">Nossa Historia</span>
+                    <h2 class="section-title" style="text-align:left;">Tradicao e Arte<br>em Cada Ponto</h2>
+                    <div class="section-divider" style="margin:0 0 1.5rem;"></div>
+                    <p class="about-text">A Artcapitonne nasceu da paixao pela arte do estofamento e do design de moveis. Desde 2010, em Ribeirao das Neves, transformamos couro, tecido e madeira em pecas que contam historias e aquecem lares.</p>
+                    <p class="about-text">Cada projeto e unico. Trabalhamos com dedicacao artesanal, ouvindo cada cliente para entregar exatamente o que voce imagina. Dos baus mais delicados as reformas mais complexas, nosso compromisso e com a qualidade e a satisfacao total.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="14">0</div>
+                            <div class="stat-label">Anos de Experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="850">0</div>
+                            <div class="stat-label">Projetos Realizados</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">% Satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Profissionais</span>
+                <h2 class="section-title">Nossa Equipe</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">Artesaos dedicados que transformam cada projeto em uma obra de arte funcional.</p>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Carlos Artcapitonne</h3>
+                        <p class="team-role">Mestre Estofador</p>
+                        <p class="team-bio">Com mais de 20 anos de experiencia, lidera a equipe com precisao artesanal e olho atento aos detalhes.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Ana Luiza</h3>
+                        <p class="team-role">Designer de Interiores</p>
+                        <p class="team-bio">Responsavel pelas escolhas de tecidos, cores e acabamentos que dao personalidade a cada projeto.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo">
+                        <div class="team-photo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Pedro Henrique</h3>
+                        <p class="team-role">Marceneiro</p>
+                        <p class="team-bio">Especialista em estruturas de madeira, garante a base solida e duravel de todas as nossas pecas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Portafolio</span>
+                <h2 class="section-title">Nossos Trabalhos</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">Cada projeto reflete nosso compromisso com a qualidade artesanal e a atencao aos detalhes.</p>
+            </div>
+            <div class="gallery-grid">
+
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Cabeceira Classic</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Sofa Retangular Reformado</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Bau Artisanal de Tecido</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Poltrona Vintage Restaurada</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Cabeceira Capitonê</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-placeholder">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <span class="gallery-label">Estofamento Automotivo Premium</span>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que Dizem Nossos Clientes</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">A satisfacao dos nossos clientes e a maior recompensa pelo nosso trabalho.</p>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A reforma do nosso sofa ficou impecavel. O acabamento e de primeira qualidade e o tecido escolhido pela Ana foi perfeito para nossa sala. Super recomendo a Artcapitonne!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <p class="testimonial-name">Marcia Lima</p>
+                            <p class="testimonial-role">Ribeirao das Neves, MG</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Encomendei uma cabeceira capitone e ficou linda demais! O Carlos tem um cuidado incrivel com cada detalhe. Ja e a segunda vez que faco trabalho com eles."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div>
+                            <p class="testimonial-name">Ricardo Ferreira</p>
+                            <p class="testimonial-role">Belo Horizonte, MG</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Mandei estofar os bancos do carro e ficou melhor do que quando era novo. Profissionalismo e qualidade que sao dificeis de encontrar. Voltarei com certeza!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JS</div>
+                        <div>
+                            <p class="testimonial-name">Juliana Santos</p>
+                            <p class="testimonial-role">Contagem, MG</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Fale Conosco</span>
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">Solicite seu orcamento sem compromisso. Estamos prontos para transformar seus moveis.</p>
+            </div>
+            <div class="contact-grid">
+
+                <div class="contact-info-cards wow-fade-up">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-card-label">Endereco</p>
+                            <p class="contact-card-value">R. Francisco Augusto Vieira, 672<br>Sevilha A, Ribeirao das Neves - MG<br>CEP 33855-320</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-card-label">Telefone / WhatsApp</p>
+                            <p class="contact-card-value"><a href="tel:+5531986967152">(31) 98696-7152</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-card-label">Horario de Funcionamento</p>
+                            <p class="contact-card-value">Segunda a Sexta: 8h as 17h<br>Sabado: 8h as 12h<br>Domingo: Fechado</p>
+                        </div>
+                    </div>
+                    <div class="contact-card" style="background:var(--color-navy);border-color:var(--color-navy);">
+                        <div class="contact-card-icon" style="background:linear-gradient(135deg, var(--color-gold-dark), var(--color-gold));">
+                            <svg viewBox="0 0 24 24" style="stroke:#fff;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-card-label" style="color:rgba(255,255,255,0.5);">WhatsApp</p>
+                            <p class="contact-card-value" style="color:var(--color-white);"><a href="https://wa.me/555531986967152" target="_blank" rel="noopener" style="color:var(--color-gold-light);">Enviar mensagem agora</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper wow-fade-up" data-delay="150">
+                    <h3 class="contact-form-title">Solicite um Orcamento</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="nome">Seu Nome</label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(31) 9XXXX-XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Tipo de Servico</label>
+                            <select id="servico" name="servico" required>
+                                <option value="" disabled selected>Selecione o servico desejado</option>
+                                <option value="reforma-estofados">Reforma de Estofados</option>
+                                <option value="cabeceiras">Cabeceiras Sob Medida</option>
+                                <option value="baus">Baus Artesanais</option>
+                                <option value="restauracao">Restauracao de Moveis</option>
+                                <option value="poltronas-sofas">Poltronas e Sofas</option>
+                                <option value="automotivo">Estofamento Automotivo</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Descreva o que voce precisa..." required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Orcamento</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-logo">Art<span>capitonne</span></div>
+        <p class="footer-tagline">Cabeceiras, Baus e Reforma de Estofados</p>
+        <div class="footer-divider"></div>
+        <div class="footer-links">
+            <a href="#servicos">Servicos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <p class="footer-copy">&copy; 2025 Artcapitonne. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- WHATSAPP FLOAT BUTTON -->
+    <a href="https://wa.me/555531986967152" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            'use strict';
+
+            /* ===== NAVBAR SCROLL BEHAVIOR ===== */
+            var navbar = document.getElementById('navbar');
+            var lastScroll = 0;
+            var scrollThreshold = 80;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+
+                if (currentScroll > scrollThreshold) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                if (currentScroll > lastScroll && currentScroll > 200) {
+                    navbar.classList.add('hidden');
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+
+                lastScroll = currentScroll;
+            }, { passive: true });
+
+            /* ===== HAMBURGER MENU ===== */
+            var hamburger = document.getElementById('hamburger');
+            var navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            /* ===== INTERSECTION OBSERVER - FADE IN ===== */
+            var fadeElements = document.querySelectorAll('.wow-fade-up');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var delay = entry.target.getAttribute('data-delay') || 0;
+                            setTimeout(function() {
+                                entry.target.classList.add('visible');
+                            }, parseInt(delay, 10));
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                fadeElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                fadeElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+
+            /* ===== COUNTER ANIMATION ===== */
+            var counters = document.querySelectorAll('.stat-number[data-target]');
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+                    el.textContent = current.toLocaleString('pt-BR');
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target.toLocaleString('pt-BR');
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window) {
+                var counterObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(function(counter) {
+                    counterObserver.observe(counter);
+                });
+            } else {
+                counters.forEach(function(counter) {
+                    counter.textContent = counter.getAttribute('data-target');
+                });
+            }
+
+            /* ===== SMOOTH SCROLL ===== */
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+
+        })();
+
+        /* ===== FORM SUBMISSION ===== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            var form = e.target;
+            var nome = form.nome.value;
+            var telefone = form.telefone.value;
+            var servico = form.servico.options[form.servico.selectedIndex].text;
+            var mensagem = form.mensagem.value;
+
+            var whatsappMessage = encodeURIComponent(
+                'Ola! Sou ' + nome + '.\n\n' +
+                'Servico desejado: ' + servico + '\n' +
+                'Mensagem: ' + mensagem + '\n\n' +
+                'Aguardo retorno. Obrigado!'
+            );
+
+            window.open('https://wa.me/555531986967152?text=' + whatsappMessage, '_blank');
+        }
+    </script>
+
+</body>
+</html>
