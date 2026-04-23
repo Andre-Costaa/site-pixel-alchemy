@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daal Architecture and Interiors - Clinica de saude em Santos, SP. Consultas, exames e tratamentos com profissionais qualificados. Agende pelo WhatsApp.">
+<meta name="keywords" content="clinica saude Santos, consultas medicas, exames complementares, tratamento Santos SP">
+<meta property="og:title" content="Daal Architecture and Interiors - Clinica de Saude em Santos">
+<meta property="og:description" content="Cuidado personalizado para sua saude. Agende sua consulta pelo WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Daal Architecture and Interiors | Clinica de Saude em Santos - SP</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--coral:#E8907A;--coral-dark:#D47A64;--coral-light:#F2B5A5;--coral-glow:rgba(232,144,122,.25);
+--teal:#5F9EA0;--teal-dark:#4A8586;--teal-light:#8CC5C7;--teal-glow:rgba(95,158,160,.2);
+--sand:#F4E4C1;--sand-light:#FAF3E3;--sand-dark:#E8D5A8;
+--slate:#4A5568;--slate-light:#718096;--slate-dark:#2D3748;
+--white:#FFFFFF;--off-white:#FAFAF8;
+--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--radius-pill:999px;
+--shadow-sm:0 2px 8px rgba(74,85,104,.06);
+--shadow-md:0 8px 30px rgba(74,85,104,.1);
+--shadow-lg:0 20px 60px rgba(74,85,104,.12);
+--shadow-glow-coral:0 8px 40px rgba(232,144,122,.3);
+--shadow-glow-teal:0 8px 40px rgba(95,158,160,.25);
+--font-display:'Trebuchet MS','Lucida Grande','Lucida Sans',sans-serif;
+--font-body:Verdana,'Lucida Grande','Lucida Sans',sans-serif;
+--transition-fast:.2s ease;--transition-med:.4s ease;--transition-slow:.6s cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--slate);background:var(--off-white);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--sand-light)}
+::-webkit-scrollbar-thumb{background:var(--coral-light);border-radius:var(--radius-pill)}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-glow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes slide-up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slide-left{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes blob-morph{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
+
+.animate-on-scroll{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}.delay-6{transition-delay:.6s}
+
+@media(prefers-reduced-motion:reduce){
+.animate-on-scroll{opacity:1;transform:none;transition:none}
+*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ===== PATTERN BACKGROUND ===== */
+.pattern-bg{
+background-color:var(--sand-light);
+background-image:
+radial-gradient(circle at 20% 50%,var(--coral-glow) 0%,transparent 50%),
+radial-gradient(circle at 80% 20%,var(--teal-glow) 0%,transparent 50%),
+radial-gradient(circle at 60% 80%,rgba(244,228,193,.4) 0%,transparent 50%);
+}
+.pattern-dots{
+background-image:radial-gradient(circle,var(--coral-light) 1px,transparent 1px);
+background-size:30px 30px;
+opacity:.15;
+position:absolute;inset:0;pointer-events:none;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 0;transition:all var(--transition-med)}
+.navbar.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:var(--shadow-sm);padding:10px 0}
+.navbar .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-weight:900;font-size:1.3rem;color:var(--teal-dark);letter-spacing:-.5px;transition:color var(--transition-fast)}
+.nav-logo span{color:var(--coral)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--slate);letter-spacing:.3px;position:relative;transition:color var(--transition-fast)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2.5px;background:var(--coral);border-radius:var(--radius-pill);transition:width var(--transition-med)}
+.nav-links a:hover{color:var(--coral-dark)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--coral);color:var(--white)!important;padding:10px 24px;border-radius:var(--radius-pill);font-weight:900;letter-spacing:.3px;transition:all var(--transition-fast);box-shadow:var(--shadow-glow-coral)}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--coral-dark);transform:translateY(-2px);box-shadow:0 12px 30px rgba(232,144,122,.4);color:var(--white)!important}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}
+.hamburger span{width:26px;height:2.5px;background:var(--slate);border-radius:var(--radius-pill);transition:all var(--transition-fast)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity var(--transition-med)}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--slate-dark);letter-spacing:.5px}
+.mobile-menu a:hover{color:var(--coral)}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.mobile-menu{display:flex}
+}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:120px 20px 80px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .blob{position:absolute;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;filter:blur(80px);animation:blob-morph 12s ease-in-out infinite}
+.hero-bg .blob-1{width:500px;height:500px;background:var(--coral-glow);top:-10%;left:-5%;animation-delay:0s}
+.hero-bg .blob-2{width:400px;height:400px;background:var(--teal-glow);bottom:-5%;right:-5%;animation-delay:-4s}
+.hero-bg .blob-3{width:300px;height:300px;background:rgba(244,228,193,.5);top:30%;right:15%;animation-delay:-8s}
+.hero-pattern{position:absolute;inset:0;z-index:1;opacity:.08;
+background-image:
+linear-gradient(var(--teal) 1px,transparent 1px),
+linear-gradient(90deg,var(--teal) 1px,transparent 1px);
+background-size:60px 60px;
+}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;animation:slide-up .8s ease forwards}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);padding:8px 20px;border-radius:var(--radius-pill);font-family:var(--font-display);font-size:.75rem;font-weight:700;color:var(--teal-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;box-shadow:var(--shadow-sm)}
+.hero-badge::before{content:'';width:8px;height:8px;background:var(--coral);border-radius:50%;animation:pulse-glow 2s infinite}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.08;color:var(--slate-dark);margin-bottom:20px;letter-spacing:-1.5px}
+.hero-title .highlight{background:linear-gradient(135deg,var(--coral),var(--coral-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--slate-light);max-width:560px;margin:0 auto 40px;line-height:1.7;font-weight:400}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:900;font-size:.9rem;padding:16px 36px;border-radius:var(--radius-pill);letter-spacing:.3px;transition:all var(--transition-fast);border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--coral),var(--coral-dark));color:var(--white);box-shadow:var(--shadow-glow-coral)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(232,144,122,.45)}
+.btn-secondary{background:var(--white);color:var(--teal-dark);box-shadow:var(--shadow-md)}
+.btn-secondary:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:60px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-number{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--teal-dark);line-height:1}
+.hero-stat-label{font-size:.75rem;color:var(--slate-light);margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+/* ===== SECTION COMMON ===== */
+.section{padding:100px 0;position:relative}
+.section-header{text-align:center;margin-bottom:60px}
+.section-label{display:inline-block;font-family:var(--font-display);font-size:.75rem;font-weight:900;color:var(--coral);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--slate-dark);letter-spacing:-1px;line-height:1.15;margin-bottom:16px}
+.section-desc{font-size:1rem;color:var(--slate-light);max-width:520px;margin:0 auto;line-height:1.7}
+.section-divider{width:60px;height:4px;background:linear-gradient(90deg,var(--coral),var(--teal));border-radius:var(--radius-pill);margin:20px auto 0}
+
+/* ===== SERVICES ===== */
+.services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.service-card{background:var(--off-white);border-radius:var(--radius-lg);padding:36px 30px;transition:all var(--transition-med);position:relative;overflow:hidden;border:1px solid rgba(74,85,104,.06)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--coral),var(--teal));opacity:0;transition:opacity var(--transition-med)}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.5rem}
+.service-icon svg{width:28px;height:28px}
+.service-card:nth-child(1) .service-icon{background:rgba(232,144,122,.12)}
+.service-card:nth-child(2) .service-icon{background:rgba(95,158,160,.12)}
+.service-card:nth-child(3) .service-icon{background:rgba(244,228,193,.4)}
+.service-card:nth-child(4) .service-icon{background:rgba(232,144,122,.12)}
+.service-card:nth-child(5) .service-icon{background:rgba(95,158,160,.12)}
+.service-card:nth-child(6) .service-icon{background:rgba(244,228,193,.4)}
+.service-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:900;color:var(--slate-dark);margin-bottom:10px;letter-spacing:-.3px}
+.service-card p{font-size:.9rem;color:var(--slate-light);line-height:1.65;margin-bottom:18px}
+.service-price{display:inline-flex;align-items:baseline;gap:4px;font-family:var(--font-display);font-weight:900;font-size:1.3rem;color:var(--teal-dark)}
+.service-price small{font-size:.8rem;font-weight:700;color:var(--slate-light)}
+
+/* ===== ABOUT ===== */
+.about{background:var(--sand-light);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{position:relative}
+.about-image-placeholder{width:100%;aspect-ratio:4/5;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--sand),var(--sand-dark));position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-image-placeholder::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,144,122,.2),rgba(95,158,160,.15));animation:shimmer 3s infinite;background-size:200% 100%}
+.about-accent{position:absolute;width:200px;height:200px;border-radius:var(--radius-xl);background:var(--coral);opacity:.08;top:-20px;right:-20px;z-index:-1}
+.about-accent-2{position:absolute;width:150px;height:150px;border-radius:50%;background:var(--teal);opacity:.08;bottom:-30px;left:-30px;z-index:-1}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--slate-dark);letter-spacing:-1px;line-height:1.15;margin-bottom:20px}
+.about-content .highlight-text{color:var(--coral)}
+.about-content p{color:var(--slate-light);line-height:1.8;margin-bottom:16px;font-size:.95rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.about-feature{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:700;font-size:.85rem;color:var(--slate-dark)}
+.about-feature-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.about-feature:nth-child(odd) .about-feature-dot{background:var(--coral)}
+.about-feature:nth-child(even) .about-feature-dot{background:var(--teal)}
+
+@media(max-width:768px){
+.about-grid{grid-template-columns:1fr;gap:40px}
+.about-visual{max-width:400px;margin:0 auto}
+.about-features{grid-template-columns:1fr}
+}
+
+/* ===== TEAM ===== */
+.team{background:var(--white)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.team-card{background:var(--off-white);border-radius:var(--radius-xl);overflow:hidden;transition:all var(--transition-med);border:1px solid rgba(74,85,104,.06)}
+.team-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.team-photo{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden}
+.team-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:3rem;color:var(--white);opacity:.5}
+.team-card:nth-child(1) .team-photo-placeholder{background:linear-gradient(135deg,var(--coral),var(--coral-dark))}
+.team-card:nth-child(2) .team-photo-placeholder{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.team-card:nth-child(3) .team-photo-placeholder{background:linear-gradient(135deg,var(--sand-dark),var(--coral-light))}
+.team-info{padding:24px 24px 28px;text-align:center}
+.team-info h3{font-family:var(--font-display);font-size:1.1rem;font-weight:900;color:var(--slate-dark);margin-bottom:4px}
+.team-info .team-role{font-size:.8rem;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.team-info p{font-size:.85rem;color:var(--slate-light);line-height:1.6}
+
+/* ===== GALLERY ===== */
+.gallery{background:var(--sand-light)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-item{position:relative;aspect-ratio:1;border-radius:var(--radius-lg);overflow:hidden;cursor:pointer}
+.gallery-item:nth-child(1),.gallery-item:nth-child(4){aspect-ratio:auto;grid-row:span 2}
+.gallery-placeholder{width:100%;height:100%;transition:transform var(--transition-slow)}
+.gallery-item:nth-child(1) .gallery-placeholder{background:linear-gradient(135deg,var(--coral-light),var(--sand))}
+.gallery-item:nth-child(2) .gallery-placeholder{background:linear-gradient(135deg,var(--teal-light),var(--sand))}
+.gallery-item:nth-child(3) .gallery-placeholder{background:linear-gradient(135deg,var(--sand-dark),var(--coral-light))}
+.gallery-item:nth-child(4) .gallery-placeholder{background:linear-gradient(135deg,var(--teal),var(--coral-light))}
+.gallery-item:nth-child(5) .gallery-placeholder{background:linear-gradient(135deg,var(--coral),var(--teal-light))}
+.gallery-item:nth-child(6) .gallery-placeholder{background:linear-gradient(135deg,var(--sand),var(--teal-dark))}
+.gallery-overlay{position:absolute;inset:0;background:rgba(74,85,104,.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--transition-med)}
+.gallery-overlay svg{width:40px;height:40px;color:var(--white);transform:scale(.8);transition:transform var(--transition-med)}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-item:hover .gallery-placeholder{transform:scale(1.08)}
+.gallery-item:hover .gallery-overlay svg{transform:scale(1)}
+
+@media(max-width:768px){
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-item:nth-child(1),.gallery-item:nth-child(4){grid-row:auto;aspect-ratio:1}
+}
+@media(max-width:480px){
+.gallery-grid{grid-template-columns:1fr}
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.testimonial-card{background:var(--off-white);border-radius:var(--radius-xl);padding:36px 30px;position:relative;transition:all var(--transition-med);border:1px solid rgba(74,85,104,.06)}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.testimonial-quote{position:absolute;top:20px;right:28px;font-family:var(--font-display);font-size:4rem;font-weight:900;color:var(--coral);opacity:.15;line-height:1}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:16px}
+.testimonial-stars svg{width:18px;height:18px;fill:var(--coral)}
+.testimonial-text{font-size:.95rem;color:var(--slate);line-height:1.75;margin-bottom:22px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;flex-shrink:0}
+.testimonial-card:nth-child(1) .testimonial-avatar{background:linear-gradient(135deg,var(--coral-light),var(--coral))}
+.testimonial-card:nth-child(2) .testimonial-avatar{background:linear-gradient(135deg,var(--teal-light),var(--teal))}
+.testimonial-card:nth-child(3) .testimonial-avatar{background:linear-gradient(135deg,var(--sand-dark),var(--coral-light))}
+.testimonial-author-name{font-family:var(--font-display);font-weight:900;font-size:.9rem;color:var(--slate-dark)}
+.testimonial-author-detail{font-size:.78rem;color:var(--slate-light)}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--sand-light)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
+.contact-info{padding-right:20px}
+.contact-info h3{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--slate-dark);margin-bottom:8px;letter-spacing:-.5px}
+.contact-info>p{color:var(--slate-light);margin-bottom:32px;line-height:1.7;font-size:.95rem}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-detail-icon{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--white);box-shadow:var(--shadow-sm)}
+.contact-detail-icon svg{width:22px;height:22px;color:var(--coral)}
+.contact-detail-text h4{font-family:var(--font-display);font-weight:900;font-size:.85rem;color:var(--slate-dark);margin-bottom:3px}
+.contact-detail-text p,.contact-detail-text a{font-size:.9rem;color:var(--slate-light);line-height:1.6;transition:color var(--transition-fast)}
+.contact-detail-text a:hover{color:var(--coral)}
+.contact-hours{margin-top:32px;padding:24px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+.contact-hours h4{font-family:var(--font-display);font-weight:900;font-size:.9rem;color:var(--slate-dark);margin-bottom:14px}
+.contact-hours-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(74,85,104,.06);font-size:.85rem}
+.contact-hours-row:last-child{border-bottom:none}
+.contact-hours-row span:first-child{color:var(--slate);font-weight:600}
+.contact-hours-row span:last-child{color:var(--teal-dark);font-weight:700}
+.contact-form-card{background:var(--white);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-md)}
+.contact-form-card h3{font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:var(--slate-dark);margin-bottom:6px}
+.contact-form-card>.subtitle{font-size:.9rem;color:var(--slate-light);margin-bottom:28px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-family:var(--font-display);font-size:.8rem;font-weight:700;color:var(--slate-dark);margin-bottom:7px;letter-spacing:.3px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 18px;border:2px solid rgba(74,85,104,.1);border-radius:var(--radius-md);font-family:var(--font-body);font-size:.9rem;color:var(--slate);background:var(--off-white);transition:all var(--transition-fast);outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--coral-light);background:var(--white);box-shadow:0 0 0 4px var(--coral-glow)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--coral),var(--coral-dark));color:var(--white);border:none;border-radius:var(--radius-pill);font-family:var(--font-display);font-size:.95rem;font-weight:900;cursor:pointer;letter-spacing:.3px;transition:all var(--transition-fast);box-shadow:var(--shadow-glow-coral)}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(232,144,122,.4)}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:16px 32px;background:#25D366;color:var(--white);border-radius:var(--radius-pill);font-family:var(--font-display);font-weight:900;font-size:.9rem;transition:all var(--transition-fast);box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.4)}
+.whatsapp-btn svg{width:22px;height:22px;fill:var(--white)}
+
+@media(max-width:768px){
+.contact-wrapper{grid-template-columns:1fr}
+.contact-info{padding-right:0}
+.form-row{grid-template-columns:1fr}
+}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--slate-dark);color:rgba(255,255,255,.6);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand h3{font-family:var(--font-display);font-size:1.2rem;font-weight:900;color:var(--white);margin-bottom:12px;letter-spacing:-.3px}
+.footer-brand h3 span{color:var(--coral-light)}
+.footer-brand p{font-size:.85rem;line-height:1.7;max-width:300px}
+.footer-col h4{font-family:var(--font-display);font-size:.8rem;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+.footer-col a{display:block;font-size:.85rem;color:rgba(255,255,255,.5);padding:6px 0;transition:color var(--transition-fast)}
+.footer-col a:hover{color:var(--coral-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.8rem}
+
+@media(max-width:768px){
+.footer-grid{grid-template-columns:1fr;gap:32px}
+.footer-bottom{flex-direction:column;text-align:center}
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:all var(--transition-fast);cursor:pointer;animation:float 3s ease-in-out infinite}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,.5)}
+.whatsapp-float svg{width:30px;height:30px;fill:var(--white)}
+.whatsapp-float::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:rgba(37,211,102,.2);animation:pulse-glow 2s infinite}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top{position:fixed;bottom:100px;right:32px;z-index:998;width:44px;height:44px;border-radius:50%;background:var(--white);border:2px solid rgba(74,85,104,.1);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);cursor:pointer;opacity:0;pointer-events:none;transition:all var(--transition-med);transform:translateY(20px)}
+.back-to-top.visible{opacity:1;pointer-events:all;transform:translateY(0)}
+.back-to-top:hover{border-color:var(--coral);box-shadow:var(--shadow-glow-coral)}
+.back-to-top svg{width:20px;height:20px;color:var(--slate)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.hero-stats{gap:32px}
+.section{padding:80px 0}
+}
+@media(max-width:480px){
+.container{padding:0 16px}
+.hero{padding:100px 16px 60px}
+.hero-actions{flex-direction:column;align-items:center}
+.hero-stats{gap:24px}
+.hero-stat-number{font-size:1.6rem}
+.section{padding:60px 0}
+.section-header{margin-bottom:40px}
+.services-grid{grid-template-columns:1fr}
+.team-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto}
+.testimonials-grid{grid-template-columns:1fr}
+.contact-form-card{padding:28px 22px}
+.footer{padding:40px 0 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+<div class="container">
+<a href="#inicio" class="nav-logo">Daal <span>.</span></a>
+<ul class="nav-links">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicos">Servicos</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#equipe">Equipe</a></li>
+<li><a href="#galeria">Galeria</a></li>
+<li><a href="#depoimentos">Depoimentos</a></li>
+<li><a href="#contato" class="nav-cta">Agendar</a></li>
+</ul>
+<div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#inicio">Inicio</a>
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Agendar Consulta</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+<div class="hero-bg">
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<div class="hero-pattern"></div>
+</div>
+<div class="hero-content">
+<div class="hero-badge">Clinica de Saude em Santos</div>
+<h1 class="hero-title">Cuidado que transforma a sua <span class="highlight">saude</span></h1>
+<p class="hero-subtitle">Na Daal Architecture and Interiors, combinamos excelencia medica com um ambiente acolhedor para cuidar de voce com toda a atencao que merece.</p>
+<div class="hero-actions">
+<a href="https://wa.me/55551333010117" class="btn btn-primary" target="_blank" rel="noopener">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Agendar pelo WhatsApp
+</a>
+<a href="#servicos" class="btn btn-secondary">Conheca nossos servicos</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-number" data-target="2500">0</div>
+<div class="hero-stat-label">Pacientes atendidos</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number" data-target="15">0</div>
+<div class="hero-stat-label">Anos de experiencia</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number" data-target="98">0</div>
+<div class="hero-stat-label">Satisfacao (%)</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Nossos Servicos</span>
+<h2 class="section-title">Tratamentos personalizados para voce</h2>
+<p class="section-desc">Oferecemos uma gama completa de servicos de saude com profissionais altamente qualificados e infraestrutura moderna.</p>
+<div class="section-divider"></div>
+</div>
+<div class="services-grid">
+<div class="service-card animate-on-scroll delay-1">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</div>
+<h3>Consulta Medica</h3>
+<p>Consulta completa com anamnese detalhada, avaliacao clinica e orientacao personalizada para o seu caso.</p>
+<div class="service-price">R$ 250 <small>/ consulta</small></div>
+</div>
+<div class="service-card animate-on-scroll delay-2">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/><rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none"/></svg>
+</div>
+<h3>Retorno</h3>
+<p>Consulta de retorno para acompanhamento do tratamento, ajustes na conduta e verificacao da evolucao clinica.</p>
+<div class="service-price">R$ 180 <small>/ retorno</small></div>
+</div>
+<div class="service-card animate-on-scroll delay-3">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#D47A64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+</div>
+<h3>Exame Complementar</h3>
+<p>Realizacao de exames laboratoriais e de imagem para diagnostico preciso e acompanhamento detalhado.</p>
+<div class="service-price">R$ 120 <small>/ exame</small></div>
+</div>
+<div class="service-card animate-on-scroll delay-4">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+</div>
+<h3>Procedimento</h3>
+<p>Procedimentos clinicos realizados com seguranca e tecnologia de ponta em ambiente esterilizado e confortavel.</p>
+<div class="service-price">R$ 450 <small>/ procedimento</small></div>
+</div>
+<div class="service-card animate-on-scroll delay-5">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+</div>
+<h3>Avaliacao Inicial</h3>
+<p>Avaliacao completa do estado de saude com exames basicos, verificacao de sinais vitais e historico medico.</p>
+<div class="service-price">R$ 150 <small>/ avaliacao</small></div>
+</div>
+<div class="service-card animate-on-scroll delay-6">
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#D47A64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M20.66 8A10 10 0 0 0 14 2.05V8h6.66z"/></svg>
+</div>
+<h3>Tratamento</h3>
+<p>Plano terapeutico individualizado com acompanhamento continuo e suporte integral durante todo o processo.</p>
+<div class="service-price">R$ 380 <small>/ sessao</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-visual animate-on-scroll">
+<div class="about-image-placeholder"></div>
+<div class="about-accent"></div>
+<div class="about-accent-2"></div>
+</div>
+<div class="about-content animate-on-scroll delay-2">
+<span class="section-label">Sobre Nos</span>
+<h2>Uma clinica pensada para o seu <span class="highlight-text">bem-estar</span></h2>
+<p>A Daal Architecture and Interiors nasceu da vontade de oferecer atendimento medico de excelencia em um ambiente que realmente transmite acolhimento e confianca. Localizada no coracao de Santos, nossa clinica foi projetada para que cada detalhe contribua para a sua experiencia de cuidado.</p>
+<p>Com mais de 15 anos dedicados a saude de nossos pacientes, construímos uma reputacao baseada em respeito, etica profissional e resultados consistentes. Nossa equipe multidisciplinar trabalha de forma integrada para garantir que voce receba o melhor tratamento possivel.</p>
+<div class="about-features">
+<div class="about-feature"><div class="about-feature-dot"></div>Especialistas qualificados</div>
+<div class="about-feature"><div class="about-feature-dot"></div>Infraestrutura moderna</div>
+<div class="about-feature"><div class="about-feature-dot"></div>Atendimento humanizado</div>
+<div class="about-feature"><div class="about-feature-dot"></div>Agendamento facil</div>
+<div class="about-feature"><div class="about-feature-dot"></div>Localizacao privilegiada</div>
+<div class="about-feature"><div class="about-feature-dot"></div>Convenios aceitos</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="equipe">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Nossa Equipe</span>
+<h2 class="section-title">Profissionais que fazem a diferenca</h2>
+<p class="section-desc">Conheca os especialistas dedicados a cuidar da sua saude com competencia e carinho.</p>
+<div class="section-divider"></div>
+</div>
+<div class="team-grid">
+<div class="team-card animate-on-scroll delay-1">
+<div class="team-photo">
+<div class="team-photo-placeholder">
+<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+</div>
+</div>
+<div class="team-info">
+<h3>Dra. Ana Luiza Ferreira</h3>
+<div class="team-role">Clinica Geral</div>
+<p>CRM-SP 123456. Especialista em clinica medica com pos-graduacao em medicina interna. Mais de 12 anos de experiencia.</p>
+</div>
+</div>
+<div class="team-card animate-on-scroll delay-2">
+<div class="team-photo">
+<div class="team-photo-placeholder">
+<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+</div>
+</div>
+<div class="team-info">
+<h3>Dr. Ricardo Mendes</h3>
+<div class="team-role">Ortopedia</div>
+<p>CRM-SP 234567. Especialista em ortopedia e traumatologia com enfase em procedimentos minimamente invasivos.</p>
+</div>
+</div>
+<div class="team-card animate-on-scroll delay-3">
+<div class="team-photo">
+<div class="team-photo-placeholder">
+<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+</div>
+</div>
+<div class="team-info">
+<h3>Dra. Camila Rocha</h3>
+<div class="team-role">Nutricionista</div>
+<p>CRN-3 45678. Especialista em nutricao clinica funcional com abordagem integrativa para reeducacao alimentar.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="galeria">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Nosso Espaco</span>
+<h2 class="section-title">Conheca a nossa clinica</h2>
+<p class="section-desc">Um ambiente projetado para seu conforto, seguranca e bem-estar em cada detalhe.</p>
+<div class="section-divider"></div>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item animate-on-scroll delay-1">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+<div class="gallery-item animate-on-scroll delay-2">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+<div class="gallery-item animate-on-scroll delay-3">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+<div class="gallery-item animate-on-scroll delay-4">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+<div class="gallery-item animate-on-scroll delay-5">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+<div class="gallery-item animate-on-scroll delay-6">
+<div class="gallery-placeholder"></div>
+<div class="gallery-overlay">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Depoimentos</span>
+<h2 class="section-title">O que nossos pacientes dizem</h2>
+<p class="section-desc">A confianca dos nossos pacientes e o nosso maior reconhecimento.</p>
+<div class="section-divider"></div>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card animate-on-scroll delay-1">
+<div class="testimonial-quote">"</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">Fui muito bem atendida desde o agendamento ate a consulta. A Dra. Ana Luiza e extremamente atenciosa e competente. O ambiente da clinica e muito agradavel e acolhedor. Super recomendo!</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-author-name">Maria Fernanda Silva</div>
+<div class="testimonial-author-detail">Paciente ha 2 anos</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card animate-on-scroll delay-2">
+<div class="testimonial-quote">"</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">O Dr. Ricardo resolveu um problema no meu ombro que me acompanhava ha meses. Profissional incrivel, muito didatico na explicacao do procedimento. Apos o tratamento, voltei a fazer minhas atividades sem dor.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-author-name">Carlos Eduardo Santos</div>
+<div class="testimonial-author-detail">Paciente ha 1 ano</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card animate-on-scroll delay-3">
+<div class="testimonial-quote">"</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">A Dra. Camila mudou completamente minha relacao com a alimentacao. Com o acompanhamento nutricional, consegui resultados surpreendentes de forma saudavel. A equipe toda e muito prestativa e simpatica.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar"></div>
+<div>
+<div class="testimonial-author-name">Patricia Almeida</div>
+<div class="testimonial-author-detail">Paciente ha 8 meses</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+<div class="container">
+<div class="section-header">
+<span class="section-label">Contato</span>
+<h2 class="section-title">Agende sua consulta</h2>
+<p class="section-desc">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+<div class="section-divider"></div>
+</div>
+<div class="contact-wrapper">
+<div class="contact-info">
+<h3>Venha nos visitar</h3>
+<p>Estamos localizados no Praiamar Corporate, em Santos, com facil acesso e estacionamento proprio.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div class="contact-detail-text">
+<h4>Endereco</h4>
+<p>Praiamar Corporate - Al. Armenio Mendes, 66<br>Sala 1811 - Aparecida<br>Santos - SP, 11035-260</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div class="contact-detail-text">
+<h4>Telefone</h4>
+<a href="tel:+551333010117">(13) 3301-0117</a>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<div class="contact-detail-text">
+<h4>E-mail</h4>
+<a href="mailto:contato@daalclinica.com.br">contato@daalclinica.com.br</a>
+</div>
+</div>
+<div class="contact-hours">
+<h4>Horario de Atendimento</h4>
+<div class="contact-hours-row">
+<span>Segunda a Sexta</span>
+<span>08:00 - 19:00</span>
+</div>
+<div class="contact-hours-row">
+<span>Sabado</span>
+<span>08:00 - 13:00</span>
+</div>
+<div class="contact-hours-row">
+<span>Domingo</span>
+<span>Fechado</span>
+</div>
+</div>
+<a href="https://wa.me/55551333010117" target="_blank" rel="noopener" class="whatsapp-btn">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Agendar pelo WhatsApp
+</a>
+</div>
+<div class="contact-form-card animate-on-scroll delay-2">
+<h3>Envie uma mensagem</h3>
+<p class="subtitle">Preencha o formulario e entraremos em contato.</p>
+<form id="contactForm" onsubmit="return handleFormSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label for="nome">Nome completo</label>
+<input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+</div>
+<div class="form-group">
+<label for="telefone">Telefone</label>
+<input type="tel" id="telefone" name="telefone" placeholder="(13) 99999-9999" required>
+</div>
+</div>
+<div class="form-group">
+<label for="email">E-mail</label>
+<input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+</div>
+<div class="form-group">
+<label for="servico">Servico desejado</label>
+<select id="servico" name="servico" required>
+<option value="" disabled selected>Selecione um servico</option>
+<option value="consulta">Consulta Medica</option>
+<option value="retorno">Retorno</option>
+<option value="exame">Exame Complementar</option>
+<option value="procedimento">Procedimento</option>
+<option value="avaliacao">Avaliacao Inicial</option>
+<option value="tratamento">Tratamento</option>
+</select>
+</div>
+<div class="form-group">
+<label for="mensagem">Mensagem</label>
+<textarea id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajudar..."></textarea>
+</div>
+<button type="submit" class="form-submit">Enviar Mensagem</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>Daal <span>.</span></h3>
+<p>Clinica de saude em Santos dedicada ao cuidado humanizado e a excelencia no atendimento medico.</p>
+</div>
+<div class="footer-col">
+<h4>Navegacao</h4>
+<a href="#inicio">Inicio</a>
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+</div>
+<div class="footer-col">
+<h4>Contato</h4>
+<a href="tel:+551333010117">(13) 3301-0117</a>
+<a href="https://wa.me/55551333010117" target="_blank" rel="noopener">WhatsApp</a>
+<a href="mailto:contato@daalclinica.com.br">E-mail</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>2025 Daal Architecture and Interiors. Todos os direitos reservados.</span>
+<span>Santos, SP - Brasil</span>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/55551333010117" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function(){
+'use strict';
+
+/* ===== NAVBAR SCROLL ===== */
+var navbar=document.getElementById('navbar');
+var lastScroll=0;
+var navHidden=false;
+
+function handleNavScroll(){
+var currentScroll=window.pageYOffset;
+if(currentScroll>60){
+navbar.classList.add('scrolled');
+}else{
+navbar.classList.remove('scrolled');
+}
+if(currentScroll>lastScroll&&currentScroll>400&&!navHidden){
+navbar.style.transform='translateY(-100%)';
+navHidden=true;
+}else if(currentScroll<lastScroll&&navHidden){
+navbar.style.transform='translateY(0)';
+navHidden=false;
+}
+lastScroll=currentScroll;
+}
+window.addEventListener('scroll',handleNavScroll,{passive:true});
+
+/* ===== MOBILE MENU ===== */
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click',function(){
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+
+var mobileLinks=mobileMenu.querySelectorAll('a');
+for(var i=0;i<mobileLinks.length;i++){
+mobileLinks[i].addEventListener('click',function(){
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('open');
+document.body.style.overflow='';
+});
+}
+
+/* ===== INTERSECTION OBSERVER ===== */
+var animateElements=document.querySelectorAll('.animate-on-scroll');
+
+if('IntersectionObserver' in window){
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.1,rootMargin:'-50px'});
+
+for(var i=0;i<animateElements.length;i++){
+observer.observe(animateElements[i]);
+}
+}else{
+for(var i=0;i<animateElements.length;i++){
+animateElements[i].classList.add('visible');
+}
+}
+
+/* ===== COUNTER ANIMATION ===== */
+var statNumbers=document.querySelectorAll('.hero-stat-number[data-target]');
+var counterStarted=false;
+
+function animateCounters(){
+if(counterStarted)return;
+counterStarted=true;
+
+for(var i=0;i<statNumbers.length;i++){
+(function(el){
+var target=parseInt(el.getAttribute('data-target'),10);
+var duration=2000;
+var start=0;
+var startTime=null;
+
+function step(timestamp){
+if(!startTime)startTime=timestamp;
+var progress=Math.min((timestamp-startTime)/duration,1);
+var eased=1-Math.pow(1-progress,3);
+var current=Math.floor(eased*target);
+el.textContent=current.toLocaleString('pt-BR');
+if(progress<1){
+requestAnimationFrame(step);
+}else{
+el.textContent=target.toLocaleString('pt-BR');
+if(el.parentElement.querySelector('.hero-stat-label').textContent.indexOf('Satisfacao')!==-1){
+el.textContent=target+'%';
+}
+}
+}
+requestAnimationFrame(step);
+})(statNumbers[i]);
+}
+}
+
+if('IntersectionObserver' in window){
+var counterObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+animateCounters();
+counterObserver.disconnect();
+}
+});
+},{threshold:0.5});
+
+var statsContainer=document.querySelector('.hero-stats');
+if(statsContainer){
+counterObserver.observe(statsContainer);
+}
+}else{
+animateCounters();
+}
+
+/* ===== BACK TO TOP ===== */
+var backToTop=document.getElementById('backToTop');
+
+window.addEventListener('scroll',function(){
+if(window.pageYOffset>600){
+backToTop.classList.add('visible');
+}else{
+backToTop.classList.remove('visible');
+}
+},{passive:true});
+
+backToTop.addEventListener('click',function(){
+window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ===== SMOOTH SCROLL ===== */
+var anchors=document.querySelectorAll('a[href^="#"]');
+for(var i=0;i<anchors.length;i++){
+anchors[i].addEventListener('click',function(e){
+var href=this.getAttribute('href');
+if(href==='#')return;
+var target=document.querySelector(href);
+if(target){
+e.preventDefault();
+var offset=navbar.offsetHeight+20;
+var top=target.getBoundingClientRect().top+window.pageYOffset-offset;
+window.scrollTo({top:top,behavior:'smooth'});
+}
+});
+}
+
+/* ===== FORM HANDLING ===== */
+window.handleFormSubmit=function(e){
+e.preventDefault();
+var form=e.target;
+var nome=form.querySelector('#nome').value;
+var telefone=form.querySelector('#telefone').value;
+var servico=form.querySelector('#servico').value;
+var mensagem=form.querySelector('#mensagem').value;
+
+var text='Ola! Meu nome e '+nome+'. Gostaria de agendar '+servico+'.';
+if(mensagem)text+=' '+mensagem;
+if(telefone)text+=' Meu telefone: '+telefone;
+
+var encoded=encodeURIComponent(text);
+window.open('https://wa.me/55551333010117?text='+encoded,'_blank');
+return false;
+};
+
+})();
+</script>
+</body>
+</html>
