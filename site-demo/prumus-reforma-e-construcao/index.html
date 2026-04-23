@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prumus Reforma e Construcao - Clinica de saude em Ribeirao das Neves, MG. Consultas, exames, procedimentos e tratamentos com excelencia e cuidado.">
+    <meta name="keywords" content="clinica, saude, consulta, exame, procedimento, tratamento, Ribeirao das Neves, MG">
+    <meta name="author" content="Prumus Reforma e Construcao">
+    <meta property="og:title" content="Prumus Reforma e Construcao - Clinica de Saude">
+    <meta property="og:description" content="Cuidado com excelencia para sua saude. Consultas, exames e tratamentos personalizados em Ribeirao das Neves, MG.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="theme-color" content="#3C2415">
+    <title>Prumus Reforma e Construcao | Clinica de Saude</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4956A;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2A;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(60, 36, 21, 0.08);
+            --shadow-md: 0 4px 20px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 8px 40px rgba(60, 36, 21, 0.16);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-serif: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            --font-sans: -apple-system, 'Segoe UI', Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--espresso);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--espresso-light);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(184, 115, 51, 0.3); }
+            50% { border-color: rgba(184, 115, 51, 0.7); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes hero-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.1);
+            transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition);
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            color: var(--espresso-light);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bronze);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--bronze);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-size: 0.8rem;
+            color: var(--cream) !important;
+            background: var(--bronze);
+            padding: 10px 24px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-cta:hover {
+            background: var(--espresso);
+            color: var(--cream) !important;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--espresso);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 240, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            transition: opacity 0.3s var(--transition);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--espresso);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--bronze);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--cream) 0%, var(--champagne) 40%, #EEDCC4 70%, var(--cream) 100%);
+            padding: 120px 24px 80px;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-blob-1 {
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.12) 0%, transparent 70%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            position: absolute;
+            bottom: 10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.08) 0%, transparent 70%);
+            border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .hero-blob-3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(247, 231, 206, 0.6) 0%, transparent 60%);
+            border-radius: 50%;
+            animation: hero-glow 6s ease-in-out infinite;
+        }
+
+        .hero-border {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            right: 32px;
+            bottom: 32px;
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-md);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bronze);
+            border: 1px solid var(--bronze);
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+            animation: fade-in-up 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 400;
+            color: var(--espresso);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            animation: fade-in-up 0.8s ease-out 0.2s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--espresso-light);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fade-in-up 0.8s ease-out 0.4s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fade-in-up 0.8s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bronze);
+            color: var(--cream);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: 2px solid var(--bronze);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--espresso);
+            border-color: var(--espresso);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--espresso);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: 2px solid rgba(60, 36, 21, 0.3);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--bronze);
+            color: var(--bronze);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--bronze);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--bronze), transparent);
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+            transition: all var(--transition);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--bronze), var(--bronze-light));
+            border-radius: 4px 0 0 4px;
+            transition: height 0.5s var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--champagne), rgba(184, 115, 51, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--bronze);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--espresso-light);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--champagne) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 2px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .about-image-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--champagne) 0%, #E8D1B3 30%, var(--bronze-light) 70%, var(--bronze) 100%);
+            background-size: 200% 200%;
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        .about-image-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(60, 36, 21, 0.85);
+            color: var(--cream);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .about-content h2 em {
+            font-style: italic;
+            color: var(--bronze);
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bronze);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--espresso-light);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 32px 24px;
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            background: var(--cream);
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            overflow: hidden;
+            border: 3px solid rgba(184, 115, 51, 0.2);
+            transition: border-color var(--transition);
+        }
+
+        .team-card:hover .team-photo {
+            border-color: var(--bronze);
+        }
+
+        .team-photo-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--champagne), var(--bronze-light));
+            background-size: 200% 200%;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        .team-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--bronze);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.7;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(184, 115, 51, 0.1);
+            transition: all var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s var(--transition);
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg {
+            background: linear-gradient(135deg, #F7E7CE 0%, #D4956A 50%, #B87333 100%);
+        }
+        .gallery-item:nth-child(2) .gallery-item-bg {
+            background: linear-gradient(135deg, #E8D1B3 0%, #C4956A 50%, #8B5E3C 100%);
+        }
+        .gallery-item:nth-child(3) .gallery-item-bg {
+            background: linear-gradient(135deg, #FFF8F0 0%, #F7E7CE 50%, #D4956A 100%);
+        }
+        .gallery-item:nth-child(4) .gallery-item-bg {
+            background: linear-gradient(135deg, #B87333 0%, #8B5E3C 50%, #5A3D2A 100%);
+        }
+        .gallery-item:nth-child(5) .gallery-item-bg {
+            background: linear-gradient(135deg, #D4956A 0%, #F7E7CE 50%, #E8D1B3 100%);
+        }
+        .gallery-item:nth-child(6) .gallery-item-bg {
+            background: linear-gradient(135deg, #3C2415 0%, #5A3D2A 50%, #8B5E3C 100%);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(60, 36, 21, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--cream);
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: translateY(10px);
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            padding: 36px 28px;
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            position: relative;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(184, 115, 51, 0.25);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: rgba(184, 115, 51, 0.12);
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--bronze);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--espresso-light);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), var(--bronze-light));
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--espresso);
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--espresso-light);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--champagne) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p, .contact-item a {
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-hours {
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 28px;
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-hours h4 svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bronze);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--espresso-light);
+            padding: 4px 0;
+        }
+
+        .hours-list li span:last-child {
+            color: var(--espresso);
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1px solid rgba(184, 115, 51, 0.12);
+            border-radius: var(--radius-md);
+            padding: 36px 28px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--espresso);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--espresso);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            font-family: var(--font-sans);
+            color: var(--espresso);
+            background: var(--cream);
+            border: 1px solid rgba(184, 115, 51, 0.15);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .btn-form {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: var(--bronze);
+            color: var(--cream);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: 2px solid var(--bronze);
+            transition: all var(--transition);
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .btn-form:hover {
+            background: var(--espresso);
+            border-color: var(--espresso);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--espresso);
+            color: rgba(255, 248, 240, 0.7);
+            padding: 48px 0 32px;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--cream);
+        }
+
+        .footer-logo span {
+            color: var(--bronze-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 248, 240, 0.6);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bronze-light);
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(184, 115, 51, 0.3);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(255, 248, 240, 0.4);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            text-decoration: none;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        .whatsapp-float-tooltip {
+            position: fixed;
+            bottom: 36px;
+            right: 92px;
+            background: var(--white);
+            color: var(--espresso);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: all var(--transition);
+            pointer-events: none;
+            z-index: 901;
+        }
+
+        .whatsapp-float:hover + .whatsapp-float-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hamburger {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">Prumus <span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-decoration">
+            <div class="hero-blob-1"></div>
+            <div class="hero-blob-2"></div>
+            <div class="hero-blob-3"></div>
+            <div class="hero-border"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">Clinica de Saude</span>
+            <h1>Cuidado que <em>transforma</em> vidas</h1>
+            <p class="hero-tagline">Na Prumus Reforma e Construcao, unimos excelencia medica e acolhimento para oferecer o melhor cuidado a sua saude e da sua familia.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/555531992348654" target="_blank" rel="noopener" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Agendar Consulta
+                </a>
+                <a href="#servicos" class="btn-secondary">Nossos Servicos</a>
+            </div>
+        </div>
+        <a href="#servicos" class="hero-scroll">
+            <span>Explorar</span>
+            <div class="hero-scroll-line"></div>
+        </a>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Servicos</span>
+                <h2 class="section-title">Cuidado completo para sua saude</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de servicos medicos com profissionais qualificados e infraestrutura moderna.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Consulta</h3>
+                    <p>Consulta medica completa com avaliacao clinica detalhada, historico e orientacao personalizada para seu tratamento.</p>
+                    <span class="service-price">R$ 180,00<small>Por sessao</small></span>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/><path d="M21 12H9"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Consulta de retorno para acompanhamento do seu quadro, ajustes no tratamento e evolucao do plano terapeutico.</p>
+                    <span class="service-price">R$ 120,00<small>Por sessao</small></span>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Exames laboratoriais e de imagem para diagnostico preciso, com resultados rapidos e laudos detalhados.</p>
+                    <span class="service-price">R$ 90,00<small>A partir de</small></span>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Procedimento</h3>
+                    <p>Procedimentos medicos minimamente invasivos realizados com seguranca, tecnologia avancada e total conforto.</p>
+                    <span class="service-price">R$ 350,00<small>A partir de</small></span>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3>Avaliacao Inicial</h3>
+                    <p>Triagem e avaliacao inicial completa para identificar necessidades e encaminhar ao especialista ideal.</p>
+                    <span class="service-price">R$ 80,00<small>Por avaliacao</small></span>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Tratamento</h3>
+                    <p>Planos terapeuticos personalizados com acompanhamento continuo para resultados eficazes e duradouros.</p>
+                    <span class="service-price">R$ 250,00<small>Por sessao</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-bg"></div>
+                    <span class="about-image-label">Desde 2015</span>
+                </div>
+                <div class="about-content reveal reveal-delay-2">
+                    <span class="section-label">Sobre Nos</span>
+                    <h2>Uma clinica feita com <em>carinho</em> e dedicacao</h2>
+                    <p>A Prumus Reforma e Construcao nasceu da vontade de oferecer atendimento de qualidade a toda a comunidade de Ribeirao das Neves e regiao. Nosso espaco foi pensado para proporcionar conforto e seguranca em cada detalhe.</p>
+                    <p>Contamos com profissionais comprometidos com a excelencia medica e o bem-estar dos nossos pacientes. Acreditamos que um bom atendimento comeca pelo acolhimento, pela escuta ativa e pelo respeito individual de cada pessoa.</p>
+                    <p>Nossa missao e democratizar o acesso a saude de qualidade, unindo tecnologia, conhecimento e humanizacao no cuidado com voce e sua familia.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="8500">0</div>
+                            <div class="stat-label">Pacientes Atendidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">Anos de Experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="98">0</div>
+                            <div class="stat-label">% Satisfacao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-subtitle">Nossa equipe e formada por especialistas dedicados ao seu bem-estar com experiencia comprovada.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo"><div class="team-photo-bg"></div></div>
+                    <h3>Dra. Mariana Oliveira</h3>
+                    <span class="team-role">Clinica Geral</span>
+                    <p>Medica com mais de 12 anos de experiencia em clinica geral, especializada em atendimento humanizado e medicina preventiva.</p>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo"><div class="team-photo-bg"></div></div>
+                    <h3>Dr. Rafael Santos</h3>
+                    <span class="team-role">Ortopedia</span>
+                    <p>Especialista em ortopedia e traumatologia com formacao pela UFMG, dedicado ao tratamento de lesoes musculoesqueleticas.</p>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo"><div class="team-photo-bg"></div></div>
+                    <h3>Dra. Camila Ferreira</h3>
+                    <span class="team-role">Nutricao</span>
+                    <p>Nutricionista clinica especializada em alimentacao funcional e reeducacao alimentar, com abordagem individualizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Conhca nosso espaco</h2>
+                <p class="section-subtitle">Ambiente acolhedor e infraestrutura moderna para o melhor atendimento.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Recepcao</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Consultorio</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Area de Exames</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Enfermaria</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay"><span>Fachada</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-subtitle">A satisfacao dos nossos pacientes e a nossa maior conquista.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Atendimento impecavel! A Dra. Mariana e extremamente atenciosa e cuidadosa. Me senti a vontade durante toda a consulta. Recomendo de olhos fechados.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Ana Carolina Mendes</div>
+                            <div class="testimonial-detail">Paciente desde 2021</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">O Dr. Rafael resolveu um problema de coluna que me acompanhava ha anos. Profissional incrivel e o ambiente da clinica e muito agradavel e organizado.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Carlos Eduardo Lima</div>
+                            <div class="testimonial-detail">Paciente desde 2020</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">Acompanhamento nutricional com a Dra. Camila mudou minha relacao com a comida. Profissional dedicada que realmente se importa com seus pacientes.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Patricia Almeida</div>
+                            <div class="testimonial-detail">Paciente desde 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-subtitle">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>R. Bandeira, 81 - Sevilha (2 Secao)<br>Ribeirao das Neves - MG, 33858-470</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <a href="tel:+5531992348654">(31) 99234-8654</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/555531992348654" target="_blank" rel="noopener">Enviar mensagem</a>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Horario de Funcionamento
+                        </h4>
+                        <ul class="hours-list">
+                            <li><span>Segunda a Sexta</span><span>08:00 - 18:00</span></li>
+                            <li><span>Sabado</span><span>08:00 - 12:00</span></li>
+                            <li><span>Domingo</span><span>Fechado</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form reveal reveal-delay-2">
+                    <h3>Envie sua mensagem</h3>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome Completo</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(31) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico Desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta - R$ 180,00</option>
+                                <option value="retorno">Retorno - R$ 120,00</option>
+                                <option value="exame">Exame Complementar - R$ 90,00</option>
+                                <option value="procedimento">Procedimento - R$ 350,00</option>
+                                <option value="avaliacao">Avaliacao Inicial - R$ 80,00</option>
+                                <option value="tratamento">Tratamento - R$ 250,00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Descreva como podemos ajudar..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-form">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-logo">Prumus <span>.</span></div>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">2025 Prumus Reforma e Construcao. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/555531992348654" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+    <div class="whatsapp-float-tooltip">Agendar pelo WhatsApp</div>
+
+    <script>
+        /* ===== NAVIGATION ===== */
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            if (currentScrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ===== INTERSECTION OBSERVER - REVEAL ===== */
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '-50px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* ===== COUNTER ANIMATION ===== */
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        let countersAnimated = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        const duration = 2000;
+                        const start = performance.now();
+                        const animate = (currentTime) => {
+                            const elapsed = currentTime - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            stat.textContent = Math.floor(target * eased).toLocaleString('pt-BR');
+                            if (progress < 1) {
+                                requestAnimationFrame(animate);
+                            } else {
+                                stat.textContent = target.toLocaleString('pt-BR');
+                                if (stat.closest('.stat-item').querySelector('.stat-label').textContent.includes('%')) {
+                                    stat.textContent = target + '%';
+                                }
+                            }
+                        };
+                        requestAnimationFrame(animate);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => counterObserver.observe(el));
+
+        /* ===== CONTACT FORM ===== */
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.querySelector('#name').value;
+            const phone = form.querySelector('#phone').value;
+            const service = form.querySelector('#service').value;
+            const message = form.querySelector('#message').value;
+            const waMessage = encodeURIComponent(
+                'Ola! Meu nome e ' + name + '.\n' +
+                'Telefone: ' + phone + '\n' +
+                'Servico: ' + service + '\n' +
+                'Mensagem: ' + message
+            );
+            window.open('https://wa.me/555531992348654?text=' + waMessage, '_blank');
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
