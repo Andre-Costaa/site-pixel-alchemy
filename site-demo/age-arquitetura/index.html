@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AGE Arquitetura - Clinica de saude em Santos, SP. Consultas, exames, procedimentos e tratamentos com profissionais qualificados.">
+<meta name="keywords" content="clinica saude Santos, consultas medicas, exames complementares, procedimentos, tratamento, Santos SP">
+<meta property="og:title" content="AGE Arquitetura - Cuidado com a sua saude">
+<meta property="og:description" content="Clinica de saude em Santos, SP. Atendimento humanizado com profissionais qualificados.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>AGE Arquitetura | Cuidado com a sua saude</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--cream:#FAF5E8;
+--brown:#9B7E5A;
+--terracotta:#C17050;
+--gold:#C9A45C;
+--dark:#1E110A;
+--brown-light:#B89A73;
+--terracotta-light:#D4896B;
+--gold-light:#DBBC7E;
+--cream-dark:#EDE5D0;
+--radius:12px;
+--radius-lg:20px;
+--shadow:0 4px 24px rgba(30,17,10,.08);
+--shadow-lg:0 12px 48px rgba(30,17,10,.12);
+--transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+color:var(--dark);
+background:var(--cream);
+line-height:1.7;
+overflow-x:hidden;
+}
+h1,h2,h3,h4,h5,h6{
+font-family:Georgia,'Palatino Linotype','Book Antiqua',Palatino,serif;
+line-height:1.2;
+font-weight:700;
+}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ===== NAVIGATION ===== */
+.nav{
+position:fixed;top:0;left:0;right:0;z-index:1000;
+background:rgba(250,245,232,.92);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(155,126,90,.1);
+transition:transform .4s ease,box-shadow .3s ease;
+}
+.nav.hidden{transform:translateY(-100%)}
+.nav.scrolled{box-shadow:0 2px 20px rgba(30,17,10,.08)}
+.nav-inner{
+display:flex;align-items:center;justify-content:space-between;
+max-width:1200px;margin:0 auto;padding:16px 24px;
+}
+.nav-logo{
+font-family:Georgia,'Palatino Linotype',Palatino,serif;
+font-size:1.5rem;font-weight:700;color:var(--terracotta);
+letter-spacing:-.02em;
+}
+.nav-logo span{color:var(--brown);font-weight:400}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+font-size:.9rem;color:var(--dark);font-weight:500;
+position:relative;padding:4px 0;
+}
+.nav-links a::after{
+content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+background:var(--terracotta);transition:width .3s ease;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+background:var(--terracotta);color:#fff !important;
+padding:10px 24px;border-radius:100px;font-weight:600 !important;
+font-size:.85rem !important;transition:var(--transition);
+}
+.nav-cta::after{display:none !important}
+.nav-cta:hover{background:var(--terracotta-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(193,112,80,.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);transition:var(--transition);border-radius:2px}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ===== HERO ===== */
+.hero{
+position:relative;min-height:100vh;display:flex;align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,var(--dark) 0%,#3A2218 40%,var(--terracotta) 100%);
+}
+.hero::before{
+content:'';position:absolute;inset:0;
+background:
+radial-gradient(ellipse 80% 60% at 20% 80%,rgba(193,112,80,.3),transparent),
+radial-gradient(ellipse 60% 50% at 80% 20%,rgba(201,164,92,.2),transparent);
+pointer-events:none;
+}
+.hero-blob{
+position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;
+pointer-events:none;
+}
+.hero-blob-1{
+width:500px;height:500px;background:var(--terracotta);
+top:-10%;right:-5%;animation:blobFloat 18s ease-in-out infinite;
+}
+.hero-blob-2{
+width:400px;height:400px;background:var(--gold);
+bottom:-10%;left:-5%;animation:blobFloat 22s ease-in-out infinite reverse;
+}
+.hero-blob-3{
+width:300px;height:300px;background:var(--brown);
+top:40%;left:50%;animation:blobFloat 15s ease-in-out infinite 3s;
+}
+@keyframes blobFloat{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-30px) scale(1.05)}
+66%{transform:translate(-20px,20px) scale(.95)}
+}
+.hero-content{
+position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 24px 80px;
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.hero-text{color:#fff}
+.hero-badge{
+display:inline-flex;align-items:center;gap:8px;
+background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
+padding:8px 20px;border-radius:100px;font-size:.8rem;
+color:var(--gold-light);margin-bottom:28px;
+border:1px solid rgba(255,255,255,.08);
+letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+}
+.hero-badge::before{
+content:'';width:8px;height:8px;border-radius:50%;
+background:var(--gold);animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{
+font-size:clamp(2.4rem,5vw,4rem);color:#fff;
+margin-bottom:20px;letter-spacing:-.02em;
+}
+.hero h1 em{
+font-style:normal;
+background:linear-gradient(135deg,var(--gold-light),var(--terracotta-light));
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+background-clip:text;
+}
+.hero p{
+font-size:1.1rem;color:rgba(255,255,255,.75);
+max-width:480px;margin-bottom:36px;line-height:1.8;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 32px;border-radius:100px;font-weight:600;
+font-size:.95rem;transition:var(--transition);cursor:pointer;border:none;
+font-family:inherit;
+}
+.btn-primary{
+background:var(--terracotta);color:#fff;
+box-shadow:0 4px 20px rgba(193,112,80,.35);
+}
+.btn-primary:hover{background:var(--terracotta-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(193,112,80,.4)}
+.btn-outline{
+background:transparent;color:#fff;
+border:2px solid rgba(255,255,255,.25);
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+.hero-visual{
+position:relative;display:flex;justify-content:center;align-items:center;
+}
+.hero-card{
+width:100%;max-width:420px;aspect-ratio:3/4;
+border-radius:var(--radius-lg);overflow:hidden;position:relative;
+background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+}
+.hero-card-img{
+position:absolute;inset:0;
+background:linear-gradient(160deg,#4A2E1F 0%,#6B4433 30%,var(--terracotta) 60%,var(--gold) 100%);
+opacity:.7;
+}
+.hero-card-content{
+position:absolute;bottom:0;left:0;right:0;padding:32px;
+background:linear-gradient(transparent,rgba(30,17,10,.85));
+color:#fff;
+}
+.hero-card-content h3{
+font-size:1.3rem;margin-bottom:8px;
+}
+.hero-card-content p{font-size:.85rem;color:rgba(255,255,255,.7)}
+.hero-stats{
+display:flex;gap:32px;margin-top:40px;
+}
+.hero-stat{text-align:left}
+.hero-stat-num{
+font-family:Georgia,'Palatino Linotype',Palatino,serif;
+font-size:2rem;font-weight:700;color:var(--gold-light);
+}
+.hero-stat-label{font-size:.8rem;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* ===== SECTIONS COMMON ===== */
+.section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:60px}
+.section-label{
+display:inline-block;font-size:.75rem;font-weight:700;
+text-transform:uppercase;letter-spacing:.15em;
+color:var(--terracotta);margin-bottom:16px;
+}
+.section-title{
+font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--dark);
+margin-bottom:16px;
+}
+.section-subtitle{
+font-size:1.05rem;color:var(--brown);max-width:560px;
+margin:0 auto;line-height:1.8;
+}
+.section-divider{
+width:60px;height:3px;border-radius:3px;margin:20px auto 0;
+background:linear-gradient(90deg,var(--terracotta),var(--gold));
+}
+
+/* ===== SERVICES ===== */
+.services{background:var(--cream)}
+.services-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.service-card{
+background:#fff;border-radius:var(--radius-lg);
+padding:36px 28px;position:relative;overflow:hidden;
+border:1px solid rgba(155,126,90,.08);
+transition:var(--transition);
+}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(155,126,90,.15)}
+.service-icon{
+width:56px;height:56px;border-radius:16px;margin-bottom:20px;
+display:flex;align-items:center;justify-content:center;
+font-size:1.5rem;
+}
+.service-card:nth-child(1) .service-icon{background:linear-gradient(135deg,#FDF0E6,#FDE8D8)}
+.service-card:nth-child(2) .service-icon{background:linear-gradient(135deg,#EBF5EE,#D8EDDF)}
+.service-card:nth-child(3) .service-icon{background:linear-gradient(135deg,#EDE8F5,#DDD5ED)}
+.service-card:nth-child(4) .service-icon{background:linear-gradient(135deg,#FEF5E7,#FDEBD0)}
+.service-card:nth-child(5) .service-icon{background:linear-gradient(135deg,#E8F0FE,#D5E3FC)}
+.service-card:nth-child(6) .service-icon{background:linear-gradient(135deg,#FDE8EC,#FBD5DC)}
+.service-card h3{
+font-size:1.15rem;margin-bottom:10px;color:var(--dark);
+}
+.service-card p{font-size:.9rem;color:var(--brown);line-height:1.7;margin-bottom:16px}
+.service-price{
+font-family:Georgia,'Palatino Linotype',Palatino,serif;
+font-size:1.3rem;font-weight:700;color:var(--terracotta);
+}
+.service-price small{font-size:.75rem;font-weight:400;color:var(--brown-light);display:block;margin-top:2px}
+.service-card::after{
+content:'';position:absolute;top:0;left:0;right:0;height:3px;
+border-radius:3px 3px 0 0;opacity:0;transition:opacity .3s ease;
+}
+.service-card:nth-child(1)::after{background:var(--terracotta)}
+.service-card:nth-child(2)::after{background:var(--brown)}
+.service-card:nth-child(3)::after{background:var(--gold)}
+.service-card:nth-child(4)::after{background:var(--terracotta-light)}
+.service-card:nth-child(5)::after{background:var(--brown-light)}
+.service-card:nth-child(6)::after{background:var(--gold-light)}
+.service-card:hover::after{opacity:1}
+
+/* ===== ABOUT ===== */
+.about{background:#fff}
+.about-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about-image{
+position:relative;border-radius:var(--radius-lg);overflow:hidden;
+aspect-ratio:4/3;
+}
+.about-image-bg{
+position:absolute;inset:0;
+background:linear-gradient(135deg,#D4A574,#C17050 40%,#9B7E5A 70%,#C9A45C);
+}
+.about-image-overlay{
+position:absolute;bottom:0;left:0;right:0;
+padding:24px;background:linear-gradient(transparent,rgba(30,17,10,.6));
+color:#fff;font-size:.85rem;text-align:center;
+}
+.about-text h2{
+font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:20px;
+}
+.about-text p{color:var(--brown);margin-bottom:16px;line-height:1.9}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.about-feature{
+display:flex;align-items:flex-start;gap:12px;
+}
+.about-feature-icon{
+width:40px;height:40px;border-radius:10px;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,rgba(193,112,80,.1),rgba(201,164,92,.1));
+color:var(--terracotta);font-weight:700;font-size:1rem;
+}
+.about-feature h4{font-size:.9rem;margin-bottom:2px;font-family:inherit;font-weight:600}
+.about-feature p{font-size:.8rem;margin:0;line-height:1.5}
+
+/* ===== TEAM ===== */
+.team{background:var(--cream)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.team-card{
+background:#fff;border-radius:var(--radius-lg);overflow:hidden;
+border:1px solid rgba(155,126,90,.06);
+transition:var(--transition);
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.team-photo{
+aspect-ratio:3/4;position:relative;overflow:hidden;
+}
+.team-photo-bg{
+position:absolute;inset:0;transition:transform .6s ease;
+}
+.team-card:hover .team-photo-bg{transform:scale(1.05)}
+.team-card:nth-child(1) .team-photo-bg{background:linear-gradient(160deg,#E8D5C0,#C17050,#9B7E5A)}
+.team-card:nth-child(2) .team-photo-bg{background:linear-gradient(160deg,#D5C0E8,#C17050,#C9A45C)}
+.team-card:nth-child(3) .team-photo-bg{background:linear-gradient(160deg,#C0D5E8,#9B7E5A,#C17050)}
+.team-photo-placeholder{
+position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+color:rgba(255,255,255,.6);font-family:Georgia,serif;font-size:3rem;font-weight:700;
+}
+.team-info{padding:24px;text-align:center}
+.team-info h3{font-size:1.1rem;margin-bottom:4px}
+.team-info .team-role{font-size:.85rem;color:var(--terracotta);font-weight:500;margin-bottom:8px}
+.team-info p{font-size:.82rem;color:var(--brown);line-height:1.6}
+
+/* ===== GALLERY ===== */
+.gallery{background:#fff}
+.gallery-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.gallery-item{
+aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;
+position:relative;cursor:pointer;
+}
+.gallery-item-bg{
+position:absolute;inset:0;transition:transform .6s ease;
+}
+.gallery-item:hover .gallery-item-bg{transform:scale(1.08)}
+.gallery-item:nth-child(1) .gallery-item-bg{background:linear-gradient(135deg,#E8D5C0,#C17050)}
+.gallery-item:nth-child(2) .gallery-item-bg{background:linear-gradient(135deg,#D4A574,#C9A45C)}
+.gallery-item:nth-child(3) .gallery-item-bg{background:linear-gradient(135deg,#9B7E5A,#1E110A)}
+.gallery-item:nth-child(4) .gallery-item-bg{background:linear-gradient(135deg,#C9A45C,#FAF5E8)}
+.gallery-item:nth-child(5) .gallery-item-bg{background:linear-gradient(135deg,#C17050,#9B7E5A)}
+.gallery-item:nth-child(6) .gallery-item-bg{background:linear-gradient(135deg,#1E110A,#C17050)}
+.gallery-overlay{
+position:absolute;inset:0;
+background:rgba(30,17,10,0);
+display:flex;align-items:center;justify-content:center;
+transition:background .3s ease;
+}
+.gallery-item:hover .gallery-overlay{background:rgba(30,17,10,.35)}
+.gallery-overlay span{
+color:#fff;font-weight:600;font-size:.9rem;opacity:0;
+transform:translateY(10px);transition:var(--transition);
+}
+.gallery-item:hover .gallery-overlay span{opacity:1;transform:translateY(0)}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:var(--cream)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{
+background:#fff;border-radius:var(--radius-lg);
+padding:32px;position:relative;
+border:1px solid rgba(155,126,90,.06);
+transition:var(--transition);
+}
+.testimonial-card:hover{box-shadow:var(--shadow)}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:16px}
+.testimonial-star{
+width:18px;height:18px;
+background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.testimonial-card blockquote{
+font-size:.92rem;color:var(--dark);line-height:1.8;
+margin-bottom:20px;font-style:italic;
+position:relative;padding-left:20px;
+border-left:3px solid var(--terracotta);
+}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{
+width:44px;height:44px;border-radius:50%;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+font-weight:700;color:#fff;font-size:.9rem;
+}
+.testimonial-card:nth-child(1) .testimonial-avatar{background:linear-gradient(135deg,var(--terracotta),var(--gold))}
+.testimonial-card:nth-child(2) .testimonial-avatar{background:linear-gradient(135deg,var(--brown),var(--terracotta))}
+.testimonial-card:nth-child(3) .testimonial-avatar{background:linear-gradient(135deg,var(--gold),var(--brown))}
+.testimonial-author-info h4{font-size:.9rem;font-family:inherit;font-weight:600}
+.testimonial-author-info p{font-size:.78rem;color:var(--brown-light)}
+
+/* ===== CONTACT ===== */
+.contact{background:#fff}
+.contact-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;
+}
+.contact-info h2{
+font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;
+}
+.contact-info>p{color:var(--brown);line-height:1.8;margin-bottom:32px}
+.contact-details{display:flex;flex-direction:column;gap:20px;margin-bottom:36px}
+.contact-item{display:flex;align-items:flex-start;gap:16px}
+.contact-item-icon{
+width:48px;height:48px;border-radius:12px;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,rgba(193,112,80,.08),rgba(201,164,92,.08));
+}
+.contact-item-icon svg{width:22px;height:22px;stroke:var(--terracotta);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-item h4{font-size:.9rem;font-family:inherit;font-weight:600;margin-bottom:2px}
+.contact-item p{font-size:.88rem;color:var(--brown);line-height:1.6}
+.whatsapp-btn{
+display:inline-flex;align-items:center;gap:12px;
+background:#25D366;color:#fff;
+padding:16px 36px;border-radius:100px;
+font-weight:700;font-size:1rem;
+transition:var(--transition);margin-top:8px;
+}
+.whatsapp-btn:hover{background:#1EBE57;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
+.whatsapp-btn svg{width:22px;height:22px;fill:#fff}
+.contact-form{
+background:var(--cream);border-radius:var(--radius-lg);
+padding:36px;
+}
+.contact-form h3{
+font-size:1.2rem;margin-bottom:24px;text-align:center;
+}
+.form-group{margin-bottom:16px}
+.form-group label{
+display:block;font-size:.82rem;font-weight:600;
+color:var(--dark);margin-bottom:6px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+width:100%;padding:12px 16px;border-radius:var(--radius);
+border:1.5px solid rgba(155,126,90,.15);
+background:#fff;font-family:inherit;font-size:.9rem;
+color:var(--dark);transition:var(--transition);
+outline:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+border-color:var(--terracotta);
+box-shadow:0 0 0 3px rgba(193,112,80,.1);
+}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{
+width:100%;padding:14px;border:none;border-radius:100px;
+background:var(--terracotta);color:#fff;font-weight:700;
+font-size:1rem;cursor:pointer;transition:var(--transition);
+font-family:inherit;margin-top:8px;
+}
+.form-submit:hover{background:var(--terracotta-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(193,112,80,.3)}
+.contact-hours{
+background:var(--cream);border-radius:var(--radius-lg);
+padding:24px;margin-top:24px;
+}
+.contact-hours h4{
+font-size:.95rem;margin-bottom:12px;font-family:Georgia,serif;
+}
+.hours-row{
+display:flex;justify-content:space-between;
+padding:8px 0;border-bottom:1px solid rgba(155,126,90,.08);
+font-size:.88rem;
+}
+.hours-row:last-child{border-bottom:none}
+.hours-row span:first-child{color:var(--dark);font-weight:500}
+.hours-row span:last-child{color:var(--brown)}
+
+/* ===== FOOTER ===== */
+.footer{
+background:var(--dark);color:rgba(255,255,255,.5);
+padding:40px 0;text-align:center;
+}
+.footer-inner{
+max-width:1200px;margin:0 auto;padding:0 24px;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:16px;
+}
+.footer-logo{
+font-family:Georgia,'Palatino Linotype',Palatino,serif;
+font-size:1.2rem;font-weight:700;color:#fff;
+}
+.footer-logo span{color:var(--gold)}
+.footer p{font-size:.82rem}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.82rem;transition:var(--transition)}
+.footer-links a:hover{color:#fff}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{
+position:fixed;bottom:24px;right:24px;z-index:999;
+width:60px;height:60px;border-radius:50%;
+background:#25D366;display:flex;align-items:center;justify-content:center;
+box-shadow:0 4px 20px rgba(37,211,102,.35);
+transition:var(--transition);cursor:pointer;
+}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.45)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+
+/* ===== ANIMATIONS ===== */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{opacity:0;transition:opacity .7s ease}
+.fade-in.visible{opacity:1}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s}
+.delay-5{transition-delay:.5s}
+.delay-6{transition-delay:.6s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.hero-content{grid-template-columns:1fr;text-align:center;padding:140px 24px 80px}
+.hero p{margin:0 auto 36px}
+.hero-actions{justify-content:center}
+.hero-visual{display:none}
+.hero-stats{justify-content:center}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.about-grid{grid-template-columns:1fr;gap:40px}
+.team-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+.testimonials-grid .testimonial-card:last-child{grid-column:1/-1;max-width:500px;margin:0 auto}
+.contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+.section{padding:72px 0}
+.hero{min-height:auto;padding-top:80px}
+.hero-content{padding:100px 24px 60px}
+.hero h1{font-size:clamp(2rem,6vw,3rem)}
+.services-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+.about-features{grid-template-columns:1fr}
+.team-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.testimonials-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+.testimonials-grid .testimonial-card:last-child{max-width:none}
+.nav-links{
+position:fixed;top:0;right:-100%;width:280px;height:100vh;
+background:var(--cream);flex-direction:column;padding:80px 32px 32px;
+box-shadow:-4px 0 24px rgba(30,17,10,.1);
+transition:right .4s cubic-bezier(.4,0,.2,1);
+z-index:999;
+}
+.nav-links.open{right:0}
+.hamburger{display:flex;z-index:1001}
+.form-row{grid-template-columns:1fr}
+.footer-inner{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+.container{padding:0 16px}
+.hero-content{padding:80px 16px 48px}
+.hero-actions{flex-direction:column;align-items:center}
+.btn{width:100%;justify-content:center}
+.gallery-grid{grid-template-columns:1fr}
+.section-header{margin-bottom:40px}
+.contact-form{padding:24px}
+}
+
+/* ===== PREFERS REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+*{animation:none !important;transition-duration:.01ms !important}
+html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a href="#" class="nav-logo">AGE <span>Arquitetura</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#inicio">Inicio</a>
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Galeria</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato" class="nav-cta">Agendar Consulta</a>
+</div>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+<div class="hero-blob hero-blob-1"></div>
+<div class="hero-blob hero-blob-2"></div>
+<div class="hero-blob hero-blob-3"></div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-badge fade-up">Cuidado com a sua saude</div>
+<h1 class="fade-up delay-1">Sua saude merece <em>atencao e dedicacao</em></h1>
+<p class="fade-up delay-2">Na AGE Arquitetura, cada paciente e unico. Oferecemos atendimento humanizado com profissionais qualificados, em um ambiente acolhedor no coracao de Santos.</p>
+<div class="hero-actions fade-up delay-3">
+<a href="#contato" class="btn btn-primary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Agendar Consulta
+</a>
+<a href="#servicos" class="btn btn-outline">Conheca nossos servicos</a>
+</div>
+<div class="hero-stats fade-up delay-4">
+<div class="hero-stat">
+<div class="hero-stat-num">10+</div>
+<div class="hero-stat-label">Anos de experiencia</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">5.000+</div>
+<div class="hero-stat-label">Pacientes atendidos</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">98%</div>
+<div class="hero-stat-label">Satisfacao</div>
+</div>
+</div>
+</div>
+<div class="hero-visual fade-up delay-2">
+<div class="hero-card">
+<div class="hero-card-img"></div>
+<div class="hero-card-content">
+<h3>Atendimento Personalizado</h3>
+<p>Cada plano de cuidado e desenhado exclusivamente para voce</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+<div class="container">
+<div class="section-header">
+<div class="section-label fade-up">Nossos servicos</div>
+<h2 class="section-title fade-up delay-1">Cuidado completo para a sua saude</h2>
+<p class="section-subtitle fade-up delay-2">Oferecemos uma gama completa de servicos medicos e de bem-estar, com precos acessiveis e atendimento de qualidade.</p>
+<div class="section-divider fade-up delay-2"></div>
+</div>
+<div class="services-grid">
+<div class="service-card fade-up delay-1">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C17050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</div>
+<h3>Consulta</h3>
+<p>Consulta completa com avaliacao clinica detalhada, historico medico e orientacoes personalizadas para o seu bem-estar.</p>
+<div class="service-price">R$ 250,00 <small>Primeira consulta</small></div>
+</div>
+<div class="service-card fade-up delay-2">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9B7E5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+</div>
+<h3>Retorno</h3>
+<p>Consulta de retorno para acompanhamento do seu tratamento, ajustes na conduta e verificacao da evolucao clinica.</p>
+<div class="service-price">R$ 180,00 <small>Consulta de retorno</small></div>
+</div>
+<div class="service-card fade-up delay-3">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+</div>
+<h3>Exame Complementar</h3>
+<p>Realizacao de exames laboratoriais e de imagem para complementar o diagnostico e direcionar o melhor tratamento.</p>
+<div class="service-price">R$ 120,00 <small>a partir de</small></div>
+</div>
+<div class="service-card fade-up delay-4">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C17050" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+</div>
+<h3>Procedimento</h3>
+<p>Procedimentos especializados realizados com seguranca e tecnologia de ponta, garantindo conforto ao paciente.</p>
+<div class="service-price">R$ 350,00 <small>a partir de</small></div>
+</div>
+<div class="service-card fade-up delay-5">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5A7E9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</div>
+<h3>Avaliacao Inicial</h3>
+<p>Avaliacao completa com anamnese, exame fisico e verificacao de sinais vitais para triagem e encaminhamento adequado.</p>
+<div class="service-price">R$ 150,00 <small>Avaliacao triagem</small></div>
+</div>
+<div class="service-card fade-up delay-6">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4896B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h3>Tratamento</h3>
+<p>Planos terapeuticos individualizados com acompanhamento continuo para garantir os melhores resultados possiveis.</p>
+<div class="service-price">R$ 280,00 <small>por sessao</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-image fade-up">
+<div class="about-image-bg"></div>
+<div class="about-image-overlay">Ambiente acolhedor no Gonzaga, Santos</div>
+</div>
+<div class="about-text">
+<div class="section-label fade-up">Sobre nos</div>
+<h2 class="fade-up delay-1">Tradicao e cuidado em cada atendimento</h2>
+<p class="fade-up delay-2">A AGE Arquitetura nasceu da paixao por cuidar das pessoas. Localizada no bairro do Gonzaga, em Santos, nossa clinica combina um ambiente acolhedor e sofisticado com profissionais dedicados ao seu bem-estar.</p>
+<p class="fade-up delay-3">Acreditamos que a saude vai alem do tratamento clinico. Por isso, investimos em uma estrutura pensada para proporcionar conforto, seguranca e confianca a cada visita.</p>
+<div class="about-features">
+<div class="about-feature fade-up delay-3">
+<div class="about-feature-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div>
+<h4>Profissionais Qualificados</h4>
+<p>Equipe com certificacoes e experiencia comprovada</p>
+</div>
+</div>
+<div class="about-feature fade-up delay-4">
+<div class="about-feature-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div>
+<h4>Estrutura Moderna</h4>
+<p>Ambiente renovado com equipamentos de ultima geracao</p>
+</div>
+</div>
+<div class="about-feature fade-up delay-5">
+<div class="about-feature-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div>
+<h4>Atendimento Humanizado</h4>
+<p>Cada paciente tratado com respeito e dedicacao</p>
+</div>
+</div>
+<div class="about-feature fade-up delay-6">
+<div class="about-feature-icon">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div>
+<h4>Localizacao Privilegiada</h4>
+<p>No coracao do Gonzaga, com facil acesso e estacionamento</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="equipe">
+<div class="container">
+<div class="section-header">
+<div class="section-label fade-up">Nossa equipe</div>
+<h2 class="section-title fade-up delay-1">Profissionais que fazem a diferenca</h2>
+<p class="section-subtitle fade-up delay-2">Conheca os especialistas dedicados a cuidar da sua saude com competencia e carinho.</p>
+<div class="section-divider fade-up delay-2"></div>
+</div>
+<div class="team-grid">
+<div class="team-card fade-up delay-1">
+<div class="team-photo">
+<div class="team-photo-bg"></div>
+<div class="team-photo-placeholder">DR</div>
+</div>
+<div class="team-info">
+<h3>Dr. Ricardo Almeida</h3>
+<div class="team-role">Clinico Geral</div>
+<p>Especialista em clinica medica com mais de 15 anos de experiencia. Formado pela USP com residencia em clinica geral.</p>
+</div>
+</div>
+<div class="team-card fade-up delay-2">
+<div class="team-photo">
+<div class="team-photo-bg"></div>
+<div class="team-photo-placeholder">DA</div>
+</div>
+<div class="team-info">
+<h3>Dra. Ana Beatriz Costa</h3>
+<div class="team-role">Nutricionista</div>
+<p>Pos-graduada em nutricao clinica funcional. Atua com abordagem integrativa para resultados duradouros.</p>
+</div>
+</div>
+<div class="team-card fade-up delay-3">
+<div class="team-photo">
+<div class="team-photo-bg"></div>
+<div class="team-photo-placeholder">CM</div>
+</div>
+<div class="team-info">
+<h3>Dra. Camila Martins</h3>
+<div class="team-role">Fisioterapeuta</div>
+<p>Especialista em fisioterapia ortopedica e traumato-functional com certificacao em RPG e acupuntura.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="galeria">
+<div class="container">
+<div class="section-header">
+<div class="section-label fade-up">Galeria</div>
+<h2 class="section-title fade-up delay-1">Conheca nosso espaco</h2>
+<p class="section-subtitle fade-up delay-2">Um ambiente pensado para seu conforto e bem-estar em cada detalhe.</p>
+<div class="section-divider fade-up delay-2"></div>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item fade-up delay-1">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Recepcao</span></div>
+</div>
+<div class="gallery-item fade-up delay-2">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Sala de Espera</span></div>
+</div>
+<div class="gallery-item fade-up delay-3">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Consultorio 01</span></div>
+</div>
+<div class="gallery-item fade-up delay-4">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Consultorio 02</span></div>
+</div>
+<div class="gallery-item fade-up delay-5">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Sala de Procedimentos</span></div>
+</div>
+<div class="gallery-item fade-up delay-6">
+<div class="gallery-item-bg"></div>
+<div class="gallery-overlay"><span>Area de Conveniencia</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="container">
+<div class="section-header">
+<div class="section-label fade-up">Depoimentos</div>
+<h2 class="section-title fade-up delay-1">O que nossos pacientes dizem</h2>
+<p class="section-subtitle fade-up delay-2">A satisfacao dos nossos pacientes e a maior motivacao para continuarmos evoluindo.</p>
+<div class="section-divider fade-up delay-2"></div>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card fade-up delay-1">
+<div class="testimonial-stars">
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+</div>
+<blockquote>"Atendimento excepcional desde a recepcao ate a consulta. O Dr. Ricardo e muito atencioso e detalhista. Me senti realmente cuidada em cada momento da visita."</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar">MS</div>
+<div class="testimonial-author-info">
+<h4>Maria Silva</h4>
+<p>Paciente ha 3 anos</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card fade-up delay-2">
+<div class="testimonial-stars">
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+</div>
+<blockquote>"A estrutura da clinica e maravilhosa e a equipe toda muito profissional. A Dra. Camila mudou completamente minha qualidade de vida com o tratamento de fisioterapia."</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar">JO</div>
+<div class="testimonial-author-info">
+<h4>Jose Oliveira</h4>
+<p>Paciente ha 2 anos</p>
+</div>
+</div>
+</div>
+<div class="testimonial-card fade-up delay-3">
+<div class="testimonial-stars">
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+<div class="testimonial-star"></div>
+</div>
+<blockquote>"Recomendo a todos! A Dra. Ana me ajudou muito com meu plano alimentar. O ambiente e super acolhedor e a localizacao e perfeita. Nota 10 sem duvidas."</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar">PF</div>
+<div class="testimonial-author-info">
+<h4>Patricia Ferreira</h4>
+<p>Paciente ha 1 ano</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+<div class="container">
+<div class="section-header">
+<div class="section-label fade-up">Contato</div>
+<h2 class="section-title fade-up delay-1">Agende sua consulta</h2>
+<p class="section-subtitle fade-up delay-2">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+<div class="section-divider fade-up delay-2"></div>
+</div>
+<div class="contact-grid">
+<div class="contact-info fade-up">
+<h2>Venha nos visitar</h2>
+<p>Estamos localizados no coracao do Gonzaga, em Santos. Nosso espaco foi projetado para oferecer conforto e bem-estar durante sua visita.</p>
+<div class="contact-details">
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div>
+<h4>Endereco</h4>
+<p>Av. Ana Costa, 499 - Sala 71<br>Gonzaga, Santos - SP<br>CEP: 11060-003</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div>
+<h4>Telefone</h4>
+<p>(13) 99709-0244</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<div>
+<h4>E-mail</h4>
+<p>contato@agearquitetura.com.br</p>
+</div>
+</div>
+</div>
+<a href="https://wa.me/555513997090244" target="_blank" rel="noopener" class="whatsapp-btn">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+Fale conosco no WhatsApp
+</a>
+<div class="contact-hours">
+<h4>Horario de Funcionamento</h4>
+<div class="hours-row">
+<span>Segunda a Sexta</span>
+<span>08:00 - 19:00</span>
+</div>
+<div class="hours-row">
+<span>Sabado</span>
+<span>08:00 - 13:00</span>
+</div>
+<div class="hours-row">
+<span>Domingo</span>
+<span>Fechado</span>
+</div>
+</div>
+</div>
+<div class="contact-form fade-up delay-2">
+<h3>Envie sua mensagem</h3>
+<form id="contactForm" onsubmit="handleSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label for="name">Nome completo</label>
+<input type="text" id="name" name="name" placeholder="Seu nome" required>
+</div>
+<div class="form-group">
+<label for="phone">Telefone</label>
+<input type="tel" id="phone" name="phone" placeholder="(13) 99999-9999" required>
+</div>
+</div>
+<div class="form-group">
+<label for="email">E-mail</label>
+<input type="email" id="email" name="email" placeholder="seu@email.com" required>
+</div>
+<div class="form-group">
+<label for="service">Servico desejado</label>
+<select id="service" name="service" required>
+<option value="" disabled selected>Selecione um servico</option>
+<option value="consulta">Consulta - R$ 250,00</option>
+<option value="retorno">Retorno - R$ 180,00</option>
+<option value="exame">Exame Complementar - R$ 120,00</option>
+<option value="procedimento">Procedimento - R$ 350,00</option>
+<option value="avaliacao">Avaliacao Inicial - R$ 150,00</option>
+<option value="tratamento">Tratamento - R$ 280,00</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message">Mensagem</label>
+<textarea id="message" name="message" placeholder="Conte-nos como podemos ajudar..." rows="4"></textarea>
+</div>
+<button type="submit" class="form-submit">Enviar Mensagem</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-logo">AGE <span>Arquitetura</span></div>
+<p>2025 AGE Arquitetura. Todos os direitos reservados.</p>
+<div class="footer-links">
+<a href="#inicio">Inicio</a>
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/555513997090244" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function() {
+'use strict';
+
+// --- Navigation scroll behavior ---
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+let lastScroll = 0;
+
+window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 80) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+    if (currentScroll > lastScroll && currentScroll > 200) {
+        nav.classList.add('hidden');
+    } else {
+        nav.classList.remove('hidden');
+    }
+    lastScroll = currentScroll;
+}, { passive: true });
+
+// --- Mobile menu ---
+hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+});
+
+navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+});
+
+// --- Scroll animations (Intersection Observer) ---
+var animElements = document.querySelectorAll('.fade-up, .fade-in');
+var observerOptions = { threshold: 0.1, rootMargin: '-40px' };
+
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+animElements.forEach(function(el) {
+    observer.observe(el);
+});
+
+// --- Smooth scroll for anchor links ---
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            var navHeight = nav.offsetHeight;
+            var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+    });
+});
+
+// --- Contact form ---
+window.handleSubmit = function(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var service = document.getElementById('service').value;
+    var message = document.getElementById('message').value;
+    var waText = 'Ola! Meu nome e ' + name + '. Gostaria de agendar ' + service + '.';
+    if (message) waText += ' Mensagem: ' + message;
+    var waUrl = 'https://wa.me/555513997090244?text=' + encodeURIComponent(waText);
+    window.open(waUrl, '_blank');
+};
+
+// --- Phone mask ---
+var phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', function(e) {
+    var v = e.target.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 6) {
+        e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+    } else if (v.length > 2) {
+        e.target.value = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+    } else if (v.length > 0) {
+        e.target.value = '(' + v;
+    }
+});
+
+})();
+</script>
+</body>
+</html>
