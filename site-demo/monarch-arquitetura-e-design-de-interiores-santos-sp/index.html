@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monarch Arquitetura e Design de Interiores | Santos - SP</title>
+<meta name="description" content="Monarch Arquitetura e Design de Interiores - Projetos residenciais e comerciais em Santos, SP. Transformamos espacos com elegancia e funcionalidade.">
+<meta name="keywords" content="arquitetura, design de interiores, Santos, SP, projetos, reforma, decoracao">
+<meta property="og:title" content="Monarch Arquitetura e Design de Interiores | Santos - SP">
+<meta property="og:description" content="Projetos residenciais e comerciais que transformam espacos com elegancia e funcionalidade.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://www.pixelalchemy.com.br/site-demo/monarch-arquitetura-e-design-de-interiores-santos-sp/">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #1B3A5C;
+  --navy-light: #2A5080;
+  --navy-dark: #0F2540;
+  --gold: #D4A843;
+  --gold-light: #E8C876;
+  --gold-dark: #B8922E;
+  --white: #FFFFFF;
+  --slate: #4A5568;
+  --slate-light: #718096;
+  --cream: #FFF8F0;
+  --cream-dark: #F5EDE0;
+  --border-radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+  --spacing-2xl: 8rem;
+  --font-primary: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-primary);
+  color: var(--slate);
+  background-color: var(--cream);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--navy);
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.3rem 1rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 400;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--navy);
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--slate-light);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: var(--spacing-sm) 0 var(--spacing-md);
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-dark);
+  padding: 0.9rem 2.2rem;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 168, 67, 0.3);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  padding: 0.9rem 2.2rem;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.btn-navy {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.9rem 2.2rem;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-navy:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(27, 58, 92, 0.3);
+}
+
+/* === NAVIGATION === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 0;
+  transition: var(--transition);
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+nav.scrolled .nav-logo { color: var(--navy); }
+nav.scrolled .nav-link { color: var(--slate); }
+nav.scrolled .nav-link:hover { color: var(--gold); }
+nav.scrolled .nav-cta { color: var(--white); background: var(--navy); }
+nav.scrolled .hamburger span { background: var(--navy); }
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  color: var(--white);
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after { width: 100%; }
+.nav-link:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy-dark) !important;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.nav-cta:hover { background: var(--gold-light); }
+.nav-cta::after { display: none !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* === HERO === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
+  overflow: hidden;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255,255,255,0.5) 50px),
+    repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(255,255,255,0.5) 50px);
+  background-size: 50px 50px;
+}
+
+.hero-blob-1 {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+  border-radius: var(--border-radius-blob);
+  animation: blobFloat1 20s ease-in-out infinite;
+}
+
+.hero-blob-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%);
+  border-radius: var(--border-radius-blob);
+  animation: blobFloat2 18s ease-in-out infinite;
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(-30px, 20px) rotate(5deg) scale(1.05); }
+  66% { transform: translate(20px, -15px) rotate(-3deg) scale(0.95); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(25px, -20px) rotate(-5deg) scale(1.05); }
+  66% { transform: translate(-15px, 15px) rotate(3deg) scale(0.95); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.4rem 1.5rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.15;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.4s;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--gold);
+  margin: var(--spacing-md) auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.5s;
+}
+
+.hero-description {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.9;
+  max-width: 560px;
+  margin: 0 auto var(--spacing-lg);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 1.2s;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SERVICES === */
+.services {
+  padding: var(--spacing-2xl) 0;
+  background: var(--white);
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.service-card {
+  background: var(--cream);
+  padding: var(--spacing-lg);
+  border: 1px solid rgba(27, 58, 92, 0.06);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(27, 58, 92, 0.08);
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-number {
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--slate-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-price {
+  font-size: 1rem;
+  color: var(--navy);
+  font-style: italic;
+}
+
+.service-price small {
+  font-size: 0.75rem;
+  color: var(--slate-light);
+  font-style: normal;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* === ABOUT === */
+.about {
+  padding: var(--spacing-2xl) 0;
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(160deg, var(--navy-dark), var(--navy), var(--navy-light));
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(27,58,92,0.4) 0%, transparent 60%);
+}
+
+.about-image-accent {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  color: var(--white);
+}
+
+.about-image-accent p {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.about-image-accent strong {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.about-content .section-label { margin-bottom: var(--spacing-sm); }
+
+.about-text {
+  font-size: 0.95rem;
+  color: var(--slate);
+  line-height: 1.9;
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-sm);
+  border-left: 2px solid var(--gold);
+}
+
+.stat-number {
+  font-size: 2rem;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--slate-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* === TEAM === */
+.team {
+  padding: var(--spacing-2xl) 0;
+  background: var(--white);
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.team-card {
+  text-align: center;
+  transition: var(--transition);
+}
+
+.team-card:hover { transform: translateY(-8px); }
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.team-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(27,58,92,0.5), transparent);
+}
+
+.team-photo-initial {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  font-size: 3rem;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.team-name {
+  font-size: 1.2rem;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.team-bio {
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  line-height: 1.7;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* === GALLERY === */
+.gallery {
+  padding: var(--spacing-2xl) 0;
+  background: var(--cream);
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.gallery-item:nth-child(1) { background: linear-gradient(135deg, var(--navy-dark), var(--navy-light)); }
+.gallery-item:nth-child(2) { background: linear-gradient(135deg, var(--gold-dark), var(--gold-light)); }
+.gallery-item:nth-child(3) { background: linear-gradient(135deg, var(--navy), var(--gold-dark)); }
+.gallery-item:nth-child(4) { background: linear-gradient(135deg, var(--navy-light), var(--gold)); }
+.gallery-item:nth-child(5) { background: linear-gradient(135deg, var(--navy-dark), var(--gold-dark)); }
+.gallery-item:nth-child(6) { background: linear-gradient(135deg, var(--gold-dark), var(--navy-dark)); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 58, 92, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-item:hover { transform: scale(1.02); transition: var(--transition); }
+
+.gallery-overlay h4 {
+  color: var(--white);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-overlay p {
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.gallery-placeholder-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.12);
+}
+
+.gallery-placeholder-icon svg {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* === TESTIMONIALS === */
+.testimonials {
+  padding: var(--spacing-2xl) 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 70%);
+  border-radius: var(--border-radius-blob);
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials-header .section-label { color: var(--gold); border-color: var(--gold); }
+.testimonials-header .section-title { color: var(--white); }
+.testimonials-header .section-subtitle { color: rgba(255,255,255,0.5); }
+.testimonials-header .gold-line { background: var(--gold); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: var(--spacing-lg);
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--gold);
+}
+
+.testimonial-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.9;
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--navy-dark);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.testimonial-info h4 {
+  color: var(--white);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+
+.testimonial-info p {
+  color: var(--gold);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* === CONTACT === */
+.contact {
+  padding: var(--spacing-2xl) 0;
+  background: var(--white);
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contact-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+}
+
+.contact-item-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.contact-item-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-item h4 {
+  font-size: 0.85rem;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.contact-item p {
+  font-size: 0.9rem;
+  color: var(--slate-light);
+  line-height: 1.6;
+}
+
+.contact-item a:hover { color: var(--gold); }
+
+.contact-whatsapp {
+  margin-top: var(--spacing-sm);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.form-group { display: flex; flex-direction: column; }
+
+.form-group label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(27, 58, 92, 0.15);
+  background: var(--cream);
+  color: var(--slate);
+  transition: var(--transition);
+  outline: none;
+  border-radius: 2px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.1);
+}
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.contact-hours {
+  background: var(--cream);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  border-left: 2px solid var(--gold);
+}
+
+.contact-hours h4 {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.contact-hours ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--slate-light);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(27, 58, 92, 0.05);
+}
+
+.contact-hours ul li:last-child { border-bottom: none; }
+
+/* === FOOTER === */
+footer {
+  background: var(--navy-dark);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 1.1rem;
+  color: var(--white);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-logo span { color: var(--gold); }
+
+.footer-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: var(--spacing-sm) auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  transition: var(--transition);
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+/* === WHATSAPP FLOAT === */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+}
+
+/* === SCROLL ANIMATIONS === */
+.wow-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.wow-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 480px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 768px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(2) { grid-column: span 1; }
+
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .nav-links { display: flex; }
+  .hamburger { display: none; }
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1023px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    background: var(--navy-dark);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: right 0.4s ease;
+    z-index: 999;
+  }
+
+  .nav-links.open { right: 0; }
+  .hamburger { display: flex; }
+
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .nav-overlay.open { opacity: 1; pointer-events: auto; }
+}
+
+@media (max-width: 767px) {
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .wow-fade-up { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Monarch <span>&</span> Design</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicos" class="nav-link">Servicos</a>
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#equipe" class="nav-link">Equipe</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#depoimentos" class="nav-link">Depoimentos</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/555513981299408" class="nav-link nav-cta" target="_blank" rel="noopener">Orcamento</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Arquitetura e Design de Interiores</div>
+    <h1 class="hero-title">Monarch<br><em>Arquitetura</em> & Design</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-description">Transformamos espacos em experiencias unicas. Projetos residenciais e comerciais com elegancia, funcionalidade e atencao a cada detalhe em Santos e regiao.</p>
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn-primary">Conheca Nosso Portfolio</a>
+      <a href="#contato" class="btn-outline">Solicitar Orcamento</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="services-header wow-fade-up">
+      <span class="section-label">Nossos Servicos</span>
+      <h2 class="section-title">Solucoes Sob Medida</h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Cada projeto e pensado para refletir a personalidade e necessidades de quem o habita.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card wow-fade-up" data-delay="100">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4M5 21V10.87M19 21V10.87"/></svg>
+        </div>
+        <div class="service-number">01</div>
+        <h3>Projeto Arquitetonico</h3>
+        <p>Desenvolvimento completo de projetos arquitetonicos residenciais e comerciais, do conceito ao projeto executivo.</p>
+        <div class="service-price">A partir de R$ 8.500<small>Valor por projeto</small></div>
+      </div>
+
+      <div class="service-card wow-fade-up" data-delay="200">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        <div class="service-number">02</div>
+        <h3>Design de Interiores</h3>
+        <p>Concepcao de ambientes com selecao de materiais, mobiliario, iluminacao e decoracao personalizada.</p>
+        <div class="service-price">A partir de R$ 5.200<small>Valor por ambiente</small></div>
+      </div>
+
+      <div class="service-card wow-fade-up" data-delay="300">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 17H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </div>
+        <div class="service-number">03</div>
+        <h3>Consultoria</h3>
+        <p>Analise e orientacao profissional para otimizar seu espaco, escolha de materiais e viabilidade de reformas.</p>
+        <div class="service-price">A partir de R$ 350<small>Valor por hora</small></div>
+      </div>
+
+      <div class="service-card wow-fade-up" data-delay="100">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-number">04</div>
+        <h3>Reforma e Construcao</h3>
+        <p>Acompanhamento e execucao de reformas e construcoes com gestao completa de obra e fornecedores.</p>
+        <div class="service-price">A partir de R$ 15.000<small>Valor por reforma</small></div>
+      </div>
+
+      <div class="service-card wow-fade-up" data-delay="200">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+        </div>
+        <div class="service-number">05</div>
+        <h3>Planejamento de Espacos</h3>
+        <p>Otimizacao de layouts para maximizar funcionalidade, conforto e aproveitamento de cada metro quadrado.</p>
+        <div class="service-price">A partir de R$ 2.800<small>Valor por projeto</small></div>
+      </div>
+
+      <div class="service-card wow-fade-up" data-delay="300">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="service-number">06</div>
+        <h3>Projeto 3D e Render</h3>
+        <p>Visualizacao realista do seu projeto com imagens 3D de alta qualidade antes mesmo de iniciar a obra.</p>
+        <div class="service-price">A partir de R$ 1.500<small>Valor por ambiente</small></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image wow-fade-up">
+        <div class="about-image-accent">
+          <p>Desde</p>
+          <strong>2012</strong>
+        </div>
+      </div>
+      <div class="about-content wow-fade-up" data-delay="200">
+        <span class="section-label">Sobre Nos</span>
+        <h2 class="section-title">Tradicao e Inovacao em Cada Projeto</h2>
+        <div class="gold-line"></div>
+        <p class="about-text">A Monarch Arquitetura e Design de Interiores nasceu em Santos com a missao de transformar espacos em experiencias memoraveis. Ao longo de mais de uma decada, construimos uma trajetoria solida no mercado da Baixada Santista, reunindo uma equipe multidisciplinar apaixonada por design e arquitetura.</p>
+        <p class="about-text">Cada projeto que entregamos carrega a assinatura de quem acredita que um bom ambiente vai alem da estetica -- ele transforma a vida de quem o habita. Trabalhamos com escuta ativa, entendendo profundamente os sonhos e necessidades de cada cliente para entregar resultados que superam expectativas.</p>
+        <p class="about-text">Nossa abordagem combina a sofisticacao do design classico com solucoes contemporaneas, utilizando materiais de alta qualidade e tecnicas construtivas que garantem durabilidade e beleza.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-count="180">0</div>
+            <div class="stat-label">Projetos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="12">0</div>
+            <div class="stat-label">Anos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="45">0</div>
+            <div class="stat-label">Premios</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="98">0</div>
+            <div class="stat-label">Satisfacao %</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipe">
+  <div class="container">
+    <div class="team-header wow-fade-up">
+      <span class="section-label">Nossa Equipe</span>
+      <h2 class="section-title">Profissionais Dedicados</h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Talentos que unem criatividade, tecnica e paixao por transformar espacos.</p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card wow-fade-up" data-delay="100">
+        <div class="team-photo">
+          <div class="team-photo-initial">RL</div>
+        </div>
+        <h3 class="team-name">Ricardo Lopes</h3>
+        <p class="team-role">Arquiteto Diretor</p>
+        <p class="team-bio">Com mais de 18 anos de experiencia, Ricardo lidera a Monarch com visao estrategica e olhar atento a cada detalhe dos projetos.</p>
+      </div>
+
+      <div class="team-card wow-fade-up" data-delay="200">
+        <div class="team-photo">
+          <div class="team-photo-initial">AM</div>
+        </div>
+        <h3 class="team-name">Ana Martins</h3>
+        <p class="team-role">Designer de Interiores</p>
+        <p class="team-bio">Especialista em ambientes residenciais, Ana traduz a personalidade de cada cliente em espacos unicos e acolhedores.</p>
+      </div>
+
+      <div class="team-card wow-fade-up" data-delay="300">
+        <div class="team-photo">
+          <div class="team-photo-initial">PS</div>
+        </div>
+        <h3 class="team-name">Pedro Santos</h3>
+        <p class="team-role">Projetista 3D</p>
+        <p class="team-bio">Responsavel pelas visualizacoes e renders que permitem aos clientes visualizar seus projetos antes da execucao.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="portfolio">
+  <div class="container">
+    <div class="gallery-header wow-fade-up">
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Uma selecao dos nossos trabalhos mais recentes que refletem nossa dedicacao ao design de excelencia.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-item wow-fade-up" data-delay="100">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Apartamento Gonzaga</h4>
+          <p>Residencial / 120m2</p>
+        </div>
+      </div>
+
+      <div class="gallery-item wow-fade-up" data-delay="200">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Clinica Odonto Santos</h4>
+          <p>Comercial / 200m2</p>
+        </div>
+      </div>
+
+      <div class="gallery-item wow-fade-up" data-delay="300">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Casa Praia Grande</h4>
+          <p>Residencial / 350m2</p>
+        </div>
+      </div>
+
+      <div class="gallery-item wow-fade-up" data-delay="100">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Restaurante Beira Mar</h4>
+          <p>Comercial / 280m2</p>
+        </div>
+      </div>
+
+      <div class="gallery-item wow-fade-up" data-delay="200">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Loft Industrial</h4>
+          <p>Residencial / 95m2</p>
+        </div>
+      </div>
+
+      <div class="gallery-item wow-fade-up" data-delay="300">
+        <div class="gallery-placeholder-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <h4>Escritorio Corporativo</h4>
+          <p>Comercial / 400m2</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="testimonials-header wow-fade-up">
+      <span class="section-label">Depoimentos</span>
+      <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card wow-fade-up" data-delay="100">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"A Monarch transformou completamente nosso apartamento. O resultado superou todas as expectativas -- cada detalhe foi pensado com carinho e profissionalismo. Recomendo de olhos fechados."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CF</div>
+          <div class="testimonial-info">
+            <h4>Carolina Ferreira</h4>
+            <p>Apartamento no Gonzaga</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card wow-fade-up" data-delay="200">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Profissionais excepcionais. O projeto do nosso restaurante ficou impecavel -- os clientes elogiam o ambiente constantemente. A Monarch entende de verdade o que e design com proposito."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MO</div>
+          <div class="testimonial-info">
+            <h4>Marcos Oliveira</h4>
+            <p>Restaurante Beira Mar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card wow-fade-up" data-delay="300">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Contratamos a Monarch para reformar nossa casa em Praia Grande e foi a melhor decisao que tomamos. O processo foi transparente, o cronograma foi cumprido e o resultado e simplesmente deslumbrante."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RS</div>
+          <div class="testimonial-info">
+            <h4>Renata Silva</h4>
+            <p>Casa em Praia Grande</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="contact-header wow-fade-up">
+      <span class="section-label">Contato</span>
+      <h2 class="section-title">Vamos Conversar</h2>
+      <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Entre em contato para agendar uma consulta e comecar seu projeto.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info wow-fade-up">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Endereco</h4>
+            <p>R. Primeiro de Maio, 58 - Aparecida<br>Santos - SP, 11035-180</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Telefone</h4>
+            <p><a href="tel:+5513981299408">(13) 98129-9408</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:contato@monarcharquitetura.com.br">contato@monarcharquitetura.com.br</a></p>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <h4>Horario de Atendimento</h4>
+          <ul>
+            <li><span>Segunda a Sexta</span><span>08:00 - 18:00</span></li>
+            <li><span>Sabado</span><span>09:00 - 13:00</span></li>
+            <li><span>Domingo</span><span>Fechado</span></li>
+          </ul>
+        </div>
+        <div class="contact-whatsapp">
+          <a href="https://wa.me/555513981299408" class="btn-primary" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Fale pelo WhatsApp</a>
+        </div>
+      </div>
+      <div class="contact-form wow-fade-up" data-delay="200">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(13) 99999-9999">
+            </div>
+            <div class="form-group">
+              <label for="service">Tipo de Servico</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="projeto-arquitetonico">Projeto Arquitetonico</option>
+                <option value="design-interiores">Design de Interiores</option>
+                <option value="consultoria">Consultoria</option>
+                <option value="reforma">Reforma e Construcao</option>
+                <option value="planejamento">Planejamento de Espacos</option>
+                <option value="render">Projeto 3D e Render</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Conte-nos sobre seu projeto..." required></textarea>
+          </div>
+          <button type="submit" class="btn-navy" style="width:100%;text-align:center;">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Monarch <span>&</span> Design</div>
+    <div class="footer-divider"></div>
+    <div class="footer-links">
+      <a href="#servicos">Servicos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <p class="footer-copy">2025 Monarch Arquitetura e Design de Interiores. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/555513981299408" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function() {
+  'use strict';
+
+  /* NAVIGATION */
+  var navbar = document.getElementById('navbar');
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  var navOverlay = document.getElementById('navOverlay');
+  var lastScroll = 0;
+
+  function handleScroll() {
+    var current = window.pageYOffset;
+    if (current > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    lastScroll = current;
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    navOverlay.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+
+  navOverlay.addEventListener('click', function() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    navOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  var navItems = navLinks.querySelectorAll('.nav-link');
+  navItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        var offset = navbar.offsetHeight + 20;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* INTERSECTION OBSERVER - FADE IN */
+  var observerOptions = {
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  };
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var delay = entry.target.getAttribute('data-delay') || 0;
+        setTimeout(function() {
+          entry.target.classList.add('visible');
+        }, parseInt(delay));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.wow-fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  /* COUNTER ANIMATION */
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var counters = entry.target.querySelectorAll('.stat-number[data-count]');
+        counters.forEach(function(counter) {
+          var target = parseInt(counter.getAttribute('data-count'));
+          var duration = 2000;
+          var start = 0;
+          var startTime = null;
+
+          function animate(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.floor(eased * target);
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              counter.textContent = target;
+            }
+          }
+
+          requestAnimationFrame(animate);
+        });
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  var statsSection = document.querySelector('.about-stats');
+  if (statsSection) {
+    counterObserver.observe(statsSection);
+  }
+
+  /* CONTACT FORM */
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value;
+      var service = document.getElementById('service').value;
+      var message = document.getElementById('message').value;
+      var whatsappMsg = 'Ola! Meu nome e ' + encodeURIComponent(name) + '. Tenho interesse em: ' + encodeURIComponent(service) + '. ' + encodeURIComponent(message);
+      window.open('https://wa.me/555513981299408?text=' + whatsappMsg, '_blank');
+    });
+  }
+})();
+</script>
+</body>
+</html>
