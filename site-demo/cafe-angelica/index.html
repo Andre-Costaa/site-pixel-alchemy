@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Angelica - Saude e Cuidado em Porto Alegre</title>
+<meta name="description" content="Clinica Cafe Angelica em Porto Alegre - Cuidado humanizado em consultas, exames e tratamentos. Agende pelo WhatsApp.">
+<meta property="og:title" content="Cafe Angelica - Saude e Cuidado em Porto Alegre">
+<meta property="og:description" content="Clinica Cafe Angelica em Porto Alegre - Cuidado humanizado em consultas, exames e tratamentos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/cafe-angelica/">
+<meta property="og:image" content="https://www.pixelalchemy.com.br/site-demo/cafe-angelica/og-image.jpg">
+<meta name="theme-color" content="#6B705C">
+<link rel="canonical" href="https://www.pixelalchemy.com.br/site-demo/cafe-angelica/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--cream:#F9F6F2;
+--taupe:#8B7E74;
+--olive:#6B705C;
+--black:#1A1A1A;
+--olive-light:#8A917D;
+--taupe-light:#B5ADA5;
+--cream-dark:#EDE8E1;
+--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--black);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--olive);color:var(--cream)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* Typography System */
+h1,h2,h3,h4{font-family:'Arial Narrow','Helvetica Condensed','Franklin Gothic Medium',Impact,sans-serif;font-weight:700;letter-spacing:0.08em;line-height:1.1}
+.section-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--taupe);font-weight:600;margin-bottom:0.75rem}
+.section-title{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1.5rem;color:var(--black)}
+.section-subtitle{font-size:1rem;color:var(--taupe);max-width:540px;line-height:1.8}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+/* Animations */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{opacity:0;transition:opacity 1s ease}
+.fade-in.visible{opacity:1}
+.stagger-1{transition-delay:0.1s}
+.stagger-2{transition-delay:0.2s}
+.stagger-3{transition-delay:0.3s}
+.stagger-4{transition-delay:0.4s}
+.stagger-5{transition-delay:0.5s}
+.stagger-6{transition-delay:0.6s}
+
+@media(prefers-reduced-motion:reduce){
+.fade-up,.fade-in{opacity:1;transform:none;transition:none}
+}
+
+/* Navigation */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.25rem 0;transition:background var(--transition),padding var(--transition),box-shadow var(--transition)}
+.nav.scrolled{background:rgba(249,246,242,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:0.75rem 0;box-shadow:0 1px 0 rgba(0,0,0,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--black)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--taupe);font-weight:600;transition:color var(--transition);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--olive);transition:width var(--transition)}
+.nav-links a:hover{color:var(--black)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--olive);color:var(--cream) !important;padding:0.6rem 1.5rem;font-size:0.7rem !important;letter-spacing:0.15em;border-radius:0;transition:background var(--transition)}
+.nav-cta::after{display:none !important}
+.nav-cta:hover{background:var(--black) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001}
+.hamburger span{display:block;width:24px;height:2px;background:var(--black);transition:all 0.3s ease;transform-origin:center}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--cream);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;opacity:0;transition:opacity 0.4s ease}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu a{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.5rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--black);font-weight:700}
+
+@media(max-width:768px){
+.hamburger{display:flex}
+.nav-links{display:none}
+}
+
+/* Hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-visual{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--olive) 0%,#4A4E3A 40%,var(--taupe) 100%)}
+.hero-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(26,26,26,0.3) 100%)}
+.hero-visual::after{content:'';position:absolute;top:15%;right:10%;width:200px;height:200px;border-radius:50%;border:1px solid rgba(249,246,242,0.15);animation:heroPulse 8s ease-in-out infinite}
+.hero-visual .deco-line{position:absolute;width:1px;height:40%;background:linear-gradient(to bottom,transparent,rgba(249,246,242,0.2),transparent);top:30%;left:25%;animation:heroFloat 12s ease-in-out infinite}
+.hero-visual .deco-line:nth-child(2){left:60%;animation-delay:-4s;height:30%}
+.hero-visual .deco-circle{position:absolute;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(249,246,242,0.08),transparent 70%);bottom:20%;right:20%;animation:heroPulse 10s ease-in-out infinite}
+.hero-visual .photo-placeholder{position:absolute;bottom:0;left:0;right:0;height:65%;background:linear-gradient(to top,rgba(107,112,92,0.9),rgba(107,112,92,0.3),transparent)}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:4rem 4rem 4rem 3rem;position:relative}
+.hero-content::before{content:'';position:absolute;top:0;left:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--taupe-light),transparent)}
+.hero-tag{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.3em;color:var(--taupe);margin-bottom:2rem;font-weight:600}
+.hero-title{font-size:clamp(2.5rem,5vw,4.5rem);line-height:0.95;margin-bottom:1.5rem;color:var(--black)}
+.hero-title em{font-style:normal;color:var(--olive)}
+.hero-desc{font-size:1rem;color:var(--taupe);max-width:380px;line-height:1.8;margin-bottom:2.5rem}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:0.75rem;background:var(--olive);color:var(--cream);padding:1rem 2rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:600;border:none;cursor:pointer;transition:all var(--transition);font-family:inherit}
+.btn-primary:hover{background:var(--black);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,26,26,0.15)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.75rem;background:transparent;color:var(--black);padding:1rem 2rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:600;border:1px solid var(--black);cursor:pointer;transition:all var(--transition);font-family:inherit}
+.btn-outline:hover{background:var(--black);color:var(--cream)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem}
+.hero-scroll span{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--taupe)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--taupe),transparent);animation:scrollPulse 2s ease-in-out infinite}
+
+@keyframes heroPulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes scrollPulse{0%{opacity:1;transform:scaleY(1)}50%{opacity:0.5;transform:scaleY(0.6)}100%{opacity:1;transform:scaleY(1)}}
+
+@media(max-width:1024px){
+.hero{grid-template-columns:1fr}
+.hero-visual{min-height:40vh;order:2}
+.hero-content{padding:3rem 2rem;order:1}
+.hero-content::before{display:none}
+.hero-scroll{display:none}
+}
+@media(max-width:480px){
+.hero-title{font-size:2.2rem}
+.hero-content{padding:2rem 1.25rem}
+.hero-buttons{flex-direction:column}
+.hero-buttons a{width:100%;justify-content:center}
+}
+
+/* Services */
+.services{padding:7rem 0;background:var(--cream)}
+.services-header{text-align:center;margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--cream-dark);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all var(--transition);cursor:default;border:1px solid transparent}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--olive);transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.06);border-color:var(--taupe-light)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-number{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--olive);text-transform:uppercase;font-weight:700;margin-bottom:1.25rem}
+.service-name{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.15rem;letter-spacing:0.05em;margin-bottom:0.75rem;color:var(--black)}
+.service-desc{font-size:0.85rem;color:var(--taupe);line-height:1.7;margin-bottom:1.5rem}
+.service-price{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.5rem;color:var(--olive);letter-spacing:0.02em}
+.service-price small{font-size:0.7rem;color:var(--taupe);letter-spacing:0.1em;display:block;margin-top:0.25rem;font-weight:400}
+
+@media(max-width:1024px){
+.services-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+.services-grid{grid-template-columns:1fr}
+.services{padding:4rem 0}
+}
+
+/* About */
+.about{padding:7rem 0;background:var(--black);color:var(--cream);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-visual{position:relative}
+.about-image{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--olive),#4A4E3A,var(--taupe));position:relative;overflow:hidden}
+.about-image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(26,26,26,0.4) 100%)}
+.about-image .deco{position:absolute;width:100px;height:100px;border:1px solid rgba(249,246,242,0.1);border-radius:50%;top:10%;right:-20px;animation:heroPulse 10s ease-in-out infinite}
+.about-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--olive);color:var(--cream);padding:1.5rem;text-align:center;z-index:2}
+.about-badge strong{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:2.5rem;display:block;letter-spacing:0.02em}
+.about-badge span{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;display:block;margin-top:0.25rem}
+.about-content .section-label{color:var(--olive-light)}
+.about-content .section-title{color:var(--cream)}
+.about-text{font-size:0.95rem;color:rgba(249,246,242,0.7);line-height:1.9;margin-bottom:1.5rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(249,246,242,0.1)}
+.about-stat strong{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.8rem;color:var(--cream);letter-spacing:0.02em;display:block}
+.about-stat span{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,246,242,0.5);display:block;margin-top:0.25rem}
+
+@media(max-width:1024px){
+.about-grid{grid-template-columns:1fr;gap:3rem}
+.about-visual{max-width:400px;margin:0 auto}
+}
+@media(max-width:480px){
+.about{padding:4rem 0}
+.about-stats{grid-template-columns:1fr;text-align:center}
+}
+
+/* Team */
+.team{padding:7rem 0;background:var(--cream)}
+.team-header{text-align:center;margin-bottom:4rem}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.team-card{position:relative;overflow:hidden;cursor:default}
+.team-photo{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden;margin-bottom:1.25rem}
+.team-photo .placeholder{width:100%;height:100%;transition:transform 0.6s ease}
+.team-card:hover .placeholder{transform:scale(1.03)}
+.team-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(26,26,26,0.5),transparent);pointer-events:none}
+.team-name{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1.1rem;letter-spacing:0.06em;margin-bottom:0.25rem}
+.team-role{font-size:0.75rem;color:var(--taupe);text-transform:uppercase;letter-spacing:0.15em;font-weight:600}
+.team-1 .placeholder{background:linear-gradient(160deg,#8B7E74,#6B705C,#A39E93)}
+.team-2 .placeholder{background:linear-gradient(160deg,#6B705C,#8B7E74,#5A5E4E)}
+.team-3 .placeholder{background:linear-gradient(160deg,#A39E93,#8B7E74,#6B705C)}
+
+@media(max-width:768px){
+.team-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+.team-grid{grid-template-columns:1fr;max-width:320px;margin:0 auto}
+.team{padding:4rem 0}
+}
+
+/* Gallery */
+.gallery{padding:7rem 0;background:var(--cream-dark)}
+.gallery-header{text-align:center;margin-bottom:4rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,280px);gap:1rem}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer}
+.gallery-item .placeholder{width:100%;height:100%;transition:transform 0.7s ease}
+.gallery-item:hover .placeholder{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:rgba(26,26,26,0);transition:background 0.5s ease}
+.gallery-item:hover::after{background:rgba(26,26,26,0.25)}
+.gallery-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;color:var(--cream);z-index:2;transform:translateY(100%);transition:transform 0.5s ease}
+.gallery-item:hover .gallery-overlay{transform:translateY(0)}
+.gallery-overlay span{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;opacity:0.8}
+.gallery-overlay p{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:1rem;letter-spacing:0.05em;margin-top:0.25rem}
+.gi-1 .placeholder{background:linear-gradient(135deg,var(--olive),#4A4E3A)}
+.gi-2 .placeholder{background:linear-gradient(135deg,var(--taupe),#6B705C)}
+.gi-3 .placeholder{background:linear-gradient(135deg,#4A4E3A,var(--taupe))}
+.gi-4 .placeholder{background:linear-gradient(135deg,var(--cream-dark),var(--taupe))}
+.gi-5 .placeholder{background:linear-gradient(135deg,var(--olive),var(--taupe))}
+.gi-6 .placeholder{background:linear-gradient(135deg,#6B705C,#4A4E3A)}
+
+@media(max-width:768px){
+.gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+.gallery-item{aspect-ratio:1}
+}
+@media(max-width:480px){
+.gallery-grid{grid-template-columns:1fr}
+.gallery{padding:4rem 0}
+}
+
+/* Testimonials */
+.testimonials{padding:7rem 0;background:var(--cream)}
+.testimonials-header{text-align:center;margin-bottom:4rem}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.testimonial-card{background:var(--cream-dark);padding:2.5rem 2rem;position:relative;transition:all var(--transition)}
+.testimonial-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.05)}
+.testimonial-quote{font-size:2rem;color:var(--olive);font-family:Georgia,serif;line-height:1;margin-bottom:1rem}
+.testimonial-text{font-size:0.9rem;color:var(--taupe);line-height:1.8;margin-bottom:1.5rem;font-style:italic}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:1.25rem}
+.testimonial-stars svg{width:14px;height:14px;fill:var(--olive)}
+.testimonial-author{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:0.85rem;letter-spacing:0.08em;font-weight:700}
+.testimonial-info{font-size:0.72rem;color:var(--taupe);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+
+@media(max-width:768px){
+.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}
+.testimonials{padding:4rem 0}
+}
+
+/* Contact */
+.contact{padding:7rem 0;background:var(--black);color:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info .section-label{color:var(--olive-light)}
+.contact-info .section-title{color:var(--cream)}
+.contact-info .section-subtitle{color:rgba(249,246,242,0.6)}
+.contact-details{margin-top:2.5rem}
+.contact-item{display:flex;gap:1.25rem;margin-bottom:2rem;align-items:flex-start}
+.contact-icon{width:44px;height:44px;min-width:44px;border:1px solid rgba(249,246,242,0.15);display:flex;align-items:center;justify-content:center;transition:border-color var(--transition)}
+.contact-item:hover .contact-icon{border-color:var(--olive)}
+.contact-icon svg{width:18px;height:18px;stroke:var(--cream);fill:none;stroke-width:1.5}
+.contact-item-text strong{display:block;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,246,242,0.5);margin-bottom:0.35rem;font-weight:600}
+.contact-item-text p{font-size:0.95rem;color:var(--cream);line-height:1.6}
+.contact-item-text a{transition:color var(--transition)}
+.contact-item-text a:hover{color:var(--olive-light)}
+.contact-whatsapp{display:inline-flex;align-items:center;gap:0.75rem;background:#25D366;color:#fff;padding:1rem 2rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:600;margin-top:1rem;transition:all var(--transition);font-family:inherit}
+.contact-whatsapp:hover{background:#1da851;transform:translateY(-2px);color:#fff}
+.contact-whatsapp svg{width:18px;height:18px;fill:#fff}
+.contact-form{background:rgba(249,246,242,0.03);padding:3rem;border:1px solid rgba(249,246,242,0.08)}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,246,242,0.5);margin-bottom:0.5rem;font-weight:600}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(249,246,242,0.05);border:1px solid rgba(249,246,242,0.1);color:var(--cream);padding:0.9rem 1rem;font-size:0.9rem;font-family:inherit;transition:border-color var(--transition);outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--olive)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{appearance:none;cursor:pointer}
+.form-group select option{background:var(--black);color:var(--cream)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.btn-submit{width:100%;background:var(--olive);color:var(--cream);padding:1rem 2rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:600;border:none;cursor:pointer;font-family:inherit;transition:all var(--transition)}
+.btn-submit:hover{background:var(--cream-dark);color:var(--black)}
+
+@media(max-width:768px){
+.contact-grid{grid-template-columns:1fr}
+.contact{padding:4rem 0}
+.form-row{grid-template-columns:1fr;gap:0}
+}
+
+/* Footer */
+.footer{padding:3rem 0;background:var(--black);border-top:1px solid rgba(249,246,242,0.08)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Arial Narrow','Helvetica Condensed',Impact,sans-serif;font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream)}
+.footer-copy{font-size:0.72rem;color:rgba(249,246,242,0.4);letter-spacing:0.05em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(249,246,242,0.4);transition:color var(--transition);font-weight:600}
+.footer-links a:hover{color:var(--cream)}
+
+@media(max-width:480px){
+.footer-inner{flex-direction:column;text-align:center}
+.footer-links{gap:1.5rem}
+}
+
+/* WhatsApp Float */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:0;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:999;transition:all var(--transition);cursor:pointer}
+.whatsapp-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 30px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:#fff}
+.whatsapp-float::before{content:'';position:absolute;inset:-4px;border:2px solid rgba(37,211,102,0.3);animation:waPulse 2s ease-in-out infinite}
+
+@keyframes waPulse{0%,100%{opacity:0;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+
+/* Divider */
+.section-divider{width:60px;height:1px;background:var(--taupe-light);margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a href="#" class="nav-logo">Cafe Angelica</a>
+<div class="nav-links">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+<a href="https://wa.me/555551996355185" class="nav-cta">Agendar</a>
+</div>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+<div class="hero-visual">
+<div class="deco-line"></div>
+<div class="deco-line"></div>
+<div class="deco-circle"></div>
+<div class="photo-placeholder"></div>
+</div>
+<div class="hero-content">
+<p class="hero-tag fade-up">Cuidado com a sua saude</p>
+<h1 class="hero-title fade-up stagger-1">Saude que <em>transforma</em> vidas</h1>
+<p class="hero-desc fade-up stagger-2">Atendimento humanizado em Porto Alegre. Consultas, exames e procedimentos com profissionais dedicados ao seu bem-estar.</p>
+<div class="hero-buttons fade-up stagger-3">
+<a href="https://wa.me/555551996355185" class="btn-primary">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+Agendar Consulta
+</a>
+<a href="#servicos" class="btn-outline">Nossos Servicos</a>
+</div>
+</div>
+<div class="hero-scroll">
+<span>Scroll</span>
+<div class="scroll-line"></div>
+</div>
+</section>
+
+<!-- Services -->
+<section class="services" id="servicos">
+<div class="container">
+<div class="services-header">
+<p class="section-label fade-up">O que oferecemos</p>
+<h2 class="section-title fade-up stagger-1">Nossos Servicos</h2>
+<div class="section-divider fade-up stagger-2"></div>
+</div>
+<div class="services-grid">
+<div class="service-card fade-up stagger-1">
+<p class="service-number">01</p>
+<h3 class="service-name">Consulta Inicial</h3>
+<p class="service-desc">Avaliacao completa do seu estado de saude com anamnese detalhada e exame fisico.</p>
+<p class="service-price">R$ 250<small>Por sessao</small></p>
+</div>
+<div class="service-card fade-up stagger-2">
+<p class="service-number">02</p>
+<h3 class="service-name">Retorno Medico</h3>
+<p class="service-desc">Acompanhamento da evolucao do tratamento com ajustes personalizados.</p>
+<p class="service-price">R$ 180<small>Por sessao</small></p>
+</div>
+<div class="service-card fade-up stagger-3">
+<p class="service-number">03</p>
+<h3 class="service-name">Exame Complementar</h3>
+<p class="service-desc">Exames laboratoriais e de imagem para diagnostico preciso e completo.</p>
+<p class="service-price">R$ 120<small>A partir de</small></p>
+</div>
+<div class="service-card fade-up stagger-4">
+<p class="service-number">04</p>
+<h3 class="service-name">Procedimento</h3>
+<p class="service-desc">Procedimentos ambulatoriais realizados com seguranca e tecnologia de ponta.</p>
+<p class="service-price">R$ 400<small>A partir de</small></p>
+</div>
+<div class="service-card fade-up stagger-5">
+<p class="service-number">05</p>
+<h3 class="service-name">Avaliacao Inicial</h3>
+<p class="service-desc">Triagem e avaliacao preliminar para encaminhamento ao especialista ideal.</p>
+<p class="service-price">R$ 90<small>Por avaliacao</small></p>
+</div>
+<div class="service-card fade-up stagger-6">
+<p class="service-number">06</p>
+<h3 class="service-name">Tratamento Continuo</h3>
+<p class="service-desc">Programa de acompanhamento continuo para resultados duradouros e saudaveis.</p>
+<p class="service-price">R$ 350<small>Por sessao</small></p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- About -->
+<section class="about" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-visual fade-up">
+<div class="about-image">
+<div class="deco"></div>
+</div>
+<div class="about-badge">
+<strong>15+</strong>
+<span>Anos de experiencia</span>
+</div>
+</div>
+<div class="about-content">
+<p class="section-label fade-up">Nossa historia</p>
+<h2 class="section-title fade-up stagger-1">Cuidado que faz a diferenca</h2>
+<p class="about-text fade-up stagger-2">A Cafe Angelica nasceu da conviccao de que cada pessoa merece um atendimento de saude verdadeiramente personalizado. Fundada em Porto Alegre, nossa clinica combina excelencia medica com acolhimento genuino.</p>
+<p class="about-text fade-up stagger-3">Nossa equipe multidisciplinar trabalha de forma integrada para oferecer diagnosticos precisos e tratamentos eficazes, sempre priorizando o bem-estar e a seguranca dos nossos pacientes.</p>
+<p class="about-text fade-up stagger-4">Acreditamos que a relacao medico-paciente e a base de qualquer tratamento bem-sucedido. Por isso, cada consulta e um momento de escuta ativa e cuidado individualizado.</p>
+<div class="about-stats fade-up stagger-5">
+<div class="about-stat">
+<strong>5.000+</strong>
+<span>Pacientes atendidos</span>
+</div>
+<div class="about-stat">
+<strong>98%</strong>
+<span>Satisfacao</span>
+</div>
+<div class="about-stat">
+<strong>12</strong>
+<span>Especialidades</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Team -->
+<section class="team" id="equipe">
+<div class="container">
+<div class="team-header">
+<p class="section-label fade-up">Conheca a equipe</p>
+<h2 class="section-title fade-up stagger-1">Profissionais dedicados</h2>
+<div class="section-divider fade-up stagger-2"></div>
+</div>
+<div class="team-grid">
+<div class="team-card team-1 fade-up stagger-1">
+<div class="team-photo">
+<div class="placeholder"></div>
+</div>
+<h3 class="team-name">Dra. Angelica Ferreira</h3>
+<p class="team-role">Clinica Geral / CRM-RS 45821</p>
+</div>
+<div class="team-card team-2 fade-up stagger-2">
+<div class="team-photo">
+<div class="placeholder"></div>
+</div>
+<h3 class="team-name">Dr. Ricardo Mendes</h3>
+<p class="team-role">Medico Internista / CRM-RS 52314</p>
+</div>
+<div class="team-card team-3 fade-up stagger-3">
+<div class="team-photo">
+<div class="placeholder"></div>
+</div>
+<h3 class="team-name">Dra. Camila Santos</h3>
+<p class="team-role">Nutricionista / CRN-3 78956</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery" id="galeria">
+<div class="container">
+<div class="gallery-header">
+<p class="section-label fade-up">Nossos espacos</p>
+<h2 class="section-title fade-up stagger-1">Conheca a clinica</h2>
+<div class="section-divider fade-up stagger-2"></div>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item gi-1 fade-up stagger-1">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Recepcao</span>
+<p>Ambiente acolhedor</p>
+</div>
+</div>
+<div class="gallery-item gi-2 fade-up stagger-2">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Sala de Espera</span>
+<p>Conforto e tranquilidade</p>
+</div>
+</div>
+<div class="gallery-item gi-3 fade-up stagger-3">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Consultorio</span>
+<p>Estrutura completa</p>
+</div>
+</div>
+<div class="gallery-item gi-4 fade-up stagger-4">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Laboratorio</span>
+<p>Tecnologia de ponta</p>
+</div>
+</div>
+<div class="gallery-item gi-5 fade-up stagger-5">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Sala de Procedimentos</span>
+<p>Seguranca em primeiro lugar</p>
+</div>
+</div>
+<div class="gallery-item gi-6 fade-up stagger-6">
+<div class="placeholder"></div>
+<div class="gallery-overlay">
+<span>Area Externa</span>
+<p>Bem-estar ao ar livre</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="depoimentos">
+<div class="container">
+<div class="testimonials-header">
+<p class="section-label fade-up">Depoimentos</p>
+<h2 class="section-title fade-up stagger-1">O que dizem nossos pacientes</h2>
+<div class="section-divider fade-up stagger-2"></div>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card fade-up stagger-1">
+<p class="testimonial-quote">&ldquo;</p>
+<p class="testimonial-text">Sou paciente da Cafe Angelica ha tres anos e so tenho elogios. O atendimento e impecavel e a equipe toda muito atenciosa. Me sinto em casa a cada consulta.</p>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-author">Maria Claudia Oliveira</p>
+<p class="testimonial-info">Paciente ha 3 anos</p>
+</div>
+<div class="testimonial-card fade-up stagger-2">
+<p class="testimonial-quote">&ldquo;</p>
+<p class="testimonial-text">A Dra. Angelica mudou minha relacao com a saude. Pela primeira vez me sinto ouvida e compreendida em um consultorio. Recomendo de olhos fechados.</p>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-author">Joao Pedro Almeida</p>
+<p class="testimonial-info">Paciente ha 1 ano</p>
+</div>
+<div class="testimonial-card fade-up stagger-3">
+<p class="testimonial-quote">&ldquo;</p>
+<p class="testimonial-text">O ambiente e maravilhoso e a equipe toda muito profissional. Fiz exames e procedimentos na clinica e a experiencia foi excelente do inicio ao fim.</p>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-author">Ana Beatriz Costa</p>
+<p class="testimonial-info">Paciente ha 2 anos</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contato">
+<div class="container">
+<div class="contact-grid">
+<div class="contact-info">
+<p class="section-label fade-up">Fale conosco</p>
+<h2 class="section-title fade-up stagger-1">Agende sua consulta</h2>
+<p class="section-subtitle fade-up stagger-2">Estamos prontos para cuidar de voce. Entre em contato e marque seu horario.</p>
+<div class="contact-details fade-up stagger-3">
+<div class="contact-item">
+<div class="contact-icon">
+<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div class="contact-item-text">
+<strong>Endereco</strong>
+<p>Rua General Joao Telles, 301<br>Bom Fim, Porto Alegre - RS<br>90035-121</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">
+<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+</div>
+<div class="contact-item-text">
+<strong>Telefone</strong>
+<p><a href="tel:+5551996355185">(51) 99635-5185</a></p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<div class="contact-item-text">
+<strong>Horario de atendimento</strong>
+<p>Segunda a Sexta: 8h as 18h<br>Sabado: 8h as 12h</p>
+</div>
+</div>
+</div>
+<a href="https://wa.me/555551996355185" class="contact-whatsapp fade-up stagger-4">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Agendar pelo WhatsApp
+</a>
+</div>
+<div class="contact-form fade-up stagger-3">
+<form id="contactForm">
+<div class="form-row">
+<div class="form-group">
+<label for="nome">Nome completo</label>
+<input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+</div>
+<div class="form-group">
+<label for="telefone">Telefone</label>
+<input type="tel" id="telefone" name="telefone" placeholder="(51) 99999-9999" required>
+</div>
+</div>
+<div class="form-group">
+<label for="email">E-mail</label>
+<input type="email" id="email" name="email" placeholder="seu@email.com" required>
+</div>
+<div class="form-group">
+<label for="servico">Servico desejado</label>
+<select id="servico" name="servico" required>
+<option value="" disabled selected>Selecione um servico</option>
+<option value="consulta">Consulta Inicial - R$ 250</option>
+<option value="retorno">Retorno Medico - R$ 180</option>
+<option value="exame">Exame Complementar - R$ 120</option>
+<option value="procedimento">Procedimento - R$ 400</option>
+<option value="avaliacao">Avaliacao Inicial - R$ 90</option>
+<option value="tratamento">Tratamento Continuo - R$ 350</option>
+</select>
+</div>
+<div class="form-group">
+<label for="mensagem">Mensagem</label>
+<textarea id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajuda-lo..." rows="4"></textarea>
+</div>
+<button type="submit" class="btn-submit">Enviar Mensagem</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-inner">
+<p class="footer-logo">Cafe Angelica</p>
+<p class="footer-copy">&copy; 2025 Cafe Angelica. Todos os direitos reservados.</p>
+<div class="footer-links">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+</div>
+</div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/555551996355185" class="whatsapp-float" aria-label="WhatsApp" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+// Intersection Observer for scroll animations
+var observer = new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+},{threshold:0.1,rootMargin:'-50px'});
+
+document.querySelectorAll('.fade-up,.fade-in').forEach(function(el){
+observer.observe(el);
+});
+
+// Navigation scroll behavior
+var nav = document.getElementById('nav');
+var lastScroll = 0;
+var navHidden = false;
+
+window.addEventListener('scroll',function(){
+var currentScroll = window.pageYOffset;
+
+if(currentScroll > 80){
+nav.classList.add('scrolled');
+}else{
+nav.classList.remove('scrolled');
+}
+
+lastScroll = currentScroll;
+},{passive:true});
+
+// Mobile menu
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+var mobileLinks = mobileMenu.querySelectorAll('a');
+
+hamburger.addEventListener('click',function(){
+hamburger.classList.toggle('active');
+mobileMenu.classList.toggle('open');
+document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+mobileLinks.forEach(function(link){
+link.addEventListener('click',function(){
+hamburger.classList.remove('active');
+mobileMenu.classList.remove('open');
+document.body.style.overflow = '';
+});
+});
+
+// Contact form
+var contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit',function(e){
+e.preventDefault();
+
+var nome = document.getElementById('nome').value.trim();
+var telefone = document.getElementById('telefone').value.trim();
+var servico = document.getElementById('servico');
+var servicoText = servico.options[servico.selectedIndex].text;
+var mensagem = document.getElementById('mensagem').value.trim();
+
+var whatsappMessage = 'Ola! Meu nome e ' + nome + '. Gostaria de agendar: ' + servicoText;
+if(mensagem){
+whatsappMessage += '. Mensagem: ' + mensagem;
+}
+if(telefone){
+whatsappMessage += '. Telefone: ' + telefone;
+}
+
+var encoded = encodeURIComponent(whatsappMessage);
+window.open('https://wa.me/555551996355185?text=' + encoded,'_blank');
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+anchor.addEventListener('click',function(e){
+var targetId = this.getAttribute('href');
+if(targetId === '#') return;
+var target = document.querySelector(targetId);
+if(target){
+e.preventDefault();
+var offset = 80;
+var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+window.scrollTo({top:top,behavior:'smooth'});
+}
+});
+});
+
+// Phone mask
+var phoneInput = document.getElementById('telefone');
+phoneInput.addEventListener('input',function(e){
+var value = e.target.value.replace(/\D/g,'');
+if(value.length > 11) value = value.substring(0,11);
+if(value.length > 6){
+value = '(' + value.substring(0,2) + ') ' + value.substring(2,7) + '-' + value.substring(7);
+}else if(value.length > 2){
+value = '(' + value.substring(0,2) + ') ' + value.substring(2);
+}else if(value.length > 0){
+value = '(' + value;
+}
+e.target.value = value;
+});
+
+})();
+</script>
+</body>
+</html>
