@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cafe a Brasileira - Clinica de saude em Porto Alegre. Consultas, exames e tratamentos com profissionais qualificados. Agende pelo WhatsApp.">
+<meta name="keywords" content="clinica saude, Porto Alegre, consulta medica, exames, tratamento, clinica Centro Historico">
+<meta property="og:title" content="Cafe a Brasileira - Clinica de Saude">
+<meta property="og:description" content="Cuidado humanizado com excelencia medica no coracao de Porto Alegre. Agende sua consulta.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="theme-color" content="#3C2415">
+<title>Cafe a Brasileira | Clinica de Saude - Porto Alegre</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--champagne:#F7E7CE;
+--bronze:#B87333;
+--bronze-light:#D4A574;
+--bronze-dark:#8B5E3C;
+--cream:#FFF8F0;
+--espresso:#3C2415;
+--espresso-light:#5A3D2A;
+--cream-dark:#F0E6D6;
+--gold:#C9A96E;
+--gold-light:#E0C992;
+--white:#FFFFFF;
+--shadow-sm:0 2px 8px rgba(60,36,21,.08);
+--shadow-md:0 4px 20px rgba(60,36,21,.12);
+--shadow-lg:0 8px 40px rgba(60,36,21,.16);
+--shadow-xl:0 16px 60px rgba(60,36,21,.2);
+--radius-sm:8px;
+--radius-md:16px;
+--radius-lg:24px;
+--radius-xl:32px;
+--transition:all .4s cubic-bezier(.25,.46,.45,.94);
+--font-serif:Georgia,'Times New Roman',serif;
+--font-sans:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);color:var(--espresso);background:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);font-weight:700;line-height:1.2}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+img{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ===== NAVIGATION ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;transition:var(--transition)}
+.nav.scrolled{background:rgba(255,248,240,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:var(--shadow-sm);padding:.7rem 2rem}
+.nav.scrolled .nav-logo{color:var(--espresso)}
+.nav.scrolled .nav-link{color:var(--espresso-light)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--white);letter-spacing:-.02em}
+.nav-logo span{color:var(--champagne)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-link{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500;letter-spacing:.02em;position:relative;transition:var(--transition)}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--bronze);transition:var(--transition)}
+.nav-link:hover::after{width:100%}
+.nav-cta{background:var(--bronze);color:var(--white) !important;padding:.55rem 1.4rem;border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;letter-spacing:.03em;transition:var(--transition)}
+.nav-cta::after{display:none !important}
+.nav-cta:hover{background:var(--bronze-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(184,115,51,.4)}
+.nav-cta::after{display:none !important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1001}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--white);transition:var(--transition);border-radius:2px}
+.nav.scrolled .nav-toggle span{background:var(--espresso)}
+.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(160deg,#2A1810 0%,#3C2415 30%,#4A2E1C 60%,#2A1810 100%)}
+.hero-bg-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,transparent,transparent 35px,var(--champagne) 35px,var(--champagne) 36px),repeating-linear-gradient(-45deg,transparent,transparent 35px,var(--champagne) 35px,var(--champagne) 36px)}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.15;animation:heroFloat 12s ease-in-out infinite}
+.hero-glow-1{top:-200px;right:-100px;background:var(--bronze)}
+.hero-glow-2{bottom:-200px;left:-100px;background:var(--champagne);animation-delay:-6s}
+@keyframes heroFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:2rem}
+.hero-badge{display:inline-block;padding:.4rem 1.4rem;border:1px solid var(--bronze-light);border-radius:50px;color:var(--champagne);font-size:.8rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .3s forwards}
+.hero-title{font-size:clamp(2.8rem,7vw,5.5rem);color:var(--white);margin-bottom:1rem;letter-spacing:-.03em;opacity:0;animation:fadeUp .8s .5s forwards}
+.hero-title em{font-style:normal;color:var(--champagne)}
+.hero-divider{width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--bronze),transparent);margin:1.5rem auto;opacity:0;animation:fadeUp .8s .7s forwards}
+.hero-subtitle{font-family:var(--font-sans);font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(255,255,255,.7);max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.8;opacity:0;animation:fadeUp .8s .9s forwards}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s 1.1s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:var(--radius-sm);font-size:.95rem;font-weight:600;letter-spacing:.02em;transition:var(--transition);cursor:pointer;border:none}
+.btn-primary{background:var(--bronze);color:var(--white)}
+.btn-primary:hover{background:var(--bronze-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(184,115,51,.4)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:var(--champagne);color:var(--champagne);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:scrollBounce 2s infinite}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ===== SECTIONS COMMON ===== */
+.section{padding:6rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin-bottom:.8rem}
+.section-title{font-size:clamp(2rem,4.5vw,3rem);color:var(--espresso);margin-bottom:1rem;letter-spacing:-.02em}
+.section-line{width:60px;height:2px;background:linear-gradient(90deg,var(--bronze),var(--gold-light));margin:0 auto}
+.section-desc{font-size:1.05rem;color:var(--espresso-light);max-width:600px;margin:1.2rem auto 0;line-height:1.8}
+
+/* ===== SERVICES ===== */
+.services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.service-card{position:relative;background:var(--cream);border:1.5px solid var(--cream-dark);border-radius:var(--radius-md);padding:2.5rem 2rem;transition:var(--transition);overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bronze),var(--gold-light));opacity:0;transition:var(--transition)}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--bronze-light)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--champagne),var(--cream-dark));display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.service-icon svg{width:26px;height:26px;stroke:var(--bronze);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.service-name{font-family:var(--font-serif);font-size:1.2rem;color:var(--espresso);margin-bottom:.6rem}
+.service-desc{font-size:.9rem;color:var(--espresso-light);line-height:1.7;margin-bottom:1.5rem}
+.service-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;border-top:1px solid var(--cream-dark)}
+.service-price{font-family:var(--font-serif);font-size:1.35rem;color:var(--bronze);font-weight:700}
+.service-price small{font-size:.75rem;font-weight:400;color:var(--espresso-light);font-family:var(--font-sans)}
+.service-link{font-size:.85rem;color:var(--bronze);font-weight:600;display:flex;align-items:center;gap:.3rem;transition:var(--transition)}
+.service-link:hover{gap:.6rem;color:var(--bronze-dark)}
+
+/* ===== ABOUT ===== */
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-image{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5}
+.about-image-bg{width:100%;height:100%;background:linear-gradient(145deg,#4A2E1C 0%,#3C2415 40%,#5A3D2A 70%,#6B4C38 100%);position:relative}
+.about-image-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(60,36,21,.4),transparent 60%)}
+.about-image-badge{position:absolute;bottom:2rem;left:2rem;right:2rem;background:rgba(255,248,240,.95);backdrop-filter:blur(10px);border-radius:var(--radius-sm);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.about-image-badge-number{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--bronze);line-height:1}
+.about-image-badge-text{font-size:.8rem;color:var(--espresso-light);line-height:1.4}
+.about-content{padding:1rem 0}
+.about-label{font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin-bottom:.8rem}
+.about-title{font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--espresso);margin-bottom:1.5rem;letter-spacing:-.02em;line-height:1.3}
+.about-text{font-size:1rem;color:var(--espresso-light);line-height:1.9;margin-bottom:1.2rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--cream-dark)}
+.about-stat{text-align:center}
+.about-stat-number{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--bronze)}
+.about-stat-label{font-size:.78rem;color:var(--espresso-light);margin-top:.2rem}
+
+/* ===== TEAM ===== */
+.team{background:var(--white)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem}
+.team-card{text-align:center;transition:var(--transition)}
+.team-card:hover{transform:translateY(-6px)}
+.team-photo{position:relative;width:200px;height:200px;margin:0 auto 1.5rem;border-radius:50%;overflow:hidden;border:3px solid var(--champagne);transition:var(--transition)}
+.team-card:hover .team-photo{border-color:var(--bronze)}
+.team-photo-bg{width:100%;height:100%;background:linear-gradient(145deg,var(--champagne),var(--cream-dark),var(--bronze-light));transition:var(--transition)}
+.team-card:hover .team-photo-bg{transform:scale(1.05)}
+.team-name{font-family:var(--font-serif);font-size:1.2rem;color:var(--espresso);margin-bottom:.3rem}
+.team-role{font-size:.85rem;color:var(--bronze);font-weight:500;margin-bottom:.6rem}
+.team-bio{font-size:.88rem;color:var(--espresso-light);line-height:1.7;max-width:300px;margin:0 auto}
+
+/* ===== GALLERY ===== */
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.gallery-item{position:relative;border-radius:var(--radius-md);overflow:hidden;aspect-ratio:4/3;cursor:pointer;transition:var(--transition)}
+.gallery-item:nth-child(1){grid-row:span 2;aspect-ratio:auto}
+.gallery-item-bg{width:100%;height:100%;transition:var(--transition)}
+.gallery-item:hover .gallery-item-bg{transform:scale(1.08)}
+.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(60,36,21,.6),transparent 50%);opacity:0;transition:var(--transition);display:flex;align-items:flex-end;padding:1.5rem}
+.gallery-item:hover .gallery-item-overlay{opacity:1}
+.gallery-item-label{color:var(--white);font-size:.9rem;font-weight:500}
+.g-1{background:linear-gradient(135deg,#5A3D2A,#3C2415,#8B5E3C)}
+.g-2{background:linear-gradient(135deg,#B87333,#D4A574,#F7E7CE)}
+.g-3{background:linear-gradient(135deg,#3C2415,#5A3D2A,#B87333)}
+.g-4{background:linear-gradient(135deg,#F7E7CE,#D4A574,#B87333)}
+.g-5{background:linear-gradient(135deg,#4A2E1C,#6B4C38,#B87333)}
+.g-6{background:linear-gradient(135deg,#D4A574,#C9A96E,#F7E7CE)}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.testimonial-card{background:var(--cream);border:1px solid var(--cream-dark);border-radius:var(--radius-md);padding:2.5rem 2rem;transition:var(--transition);position:relative}
+.testimonial-card:hover{box-shadow:var(--shadow-md);border-color:var(--bronze-light)}
+.testimonial-quote{position:absolute;top:1.5rem;right:2rem;font-family:var(--font-serif);font-size:4rem;color:var(--champagne);line-height:1}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:1rem}
+.testimonial-stars svg{width:16px;height:16px;fill:var(--bronze)}
+.testimonial-text{font-size:.95rem;color:var(--espresso-light);line-height:1.8;margin-bottom:1.5rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:1rem}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--champagne),var(--bronze-light));display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-weight:700;color:var(--white);font-size:1rem}
+.testimonial-name{font-weight:600;font-size:.9rem;color:var(--espresso)}
+.testimonial-detail{font-size:.8rem;color:var(--espresso-light)}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:2rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-item-icon{width:48px;height:48px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--champagne),var(--cream-dark));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item-icon svg{width:22px;height:22px;stroke:var(--bronze);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-item-content h4{font-family:var(--font-serif);font-size:1rem;color:var(--espresso);margin-bottom:.3rem}
+.contact-item-content p{font-size:.9rem;color:var(--espresso-light);line-height:1.6}
+.contact-item-content a{color:var(--bronze);font-weight:500}
+.contact-item-content a:hover{color:var(--bronze-dark)}
+.contact-hours{margin-top:.5rem}
+.contact-hours-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--espresso-light);padding:.4rem 0;border-bottom:1px solid var(--cream-dark)}
+.contact-hours-row:last-child{border-bottom:none}
+.contact-hours-row span:first-child{font-weight:500;color:var(--espresso)}
+.contact-form-wrap{background:var(--white);border:1px solid var(--cream-dark);border-radius:var(--radius-md);padding:2.5rem}
+.contact-form-title{font-family:var(--font-serif);font-size:1.4rem;color:var(--espresso);margin-bottom:1.5rem}
+.form-group{margin-bottom:1.2rem}
+.form-label{display:block;font-size:.82rem;font-weight:600;color:var(--espresso);margin-bottom:.4rem;letter-spacing:.02em}
+.form-input,.form-select,.form-textarea{width:100%;padding:.75rem 1rem;border:1.5px solid var(--cream-dark);border-radius:var(--radius-sm);font-size:.9rem;font-family:var(--font-sans);color:var(--espresso);background:var(--cream);transition:var(--transition);outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--bronze);box-shadow:0 0 0 3px rgba(184,115,51,.1)}
+.form-textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;padding:.9rem;background:var(--bronze);color:var(--white);border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:600;cursor:pointer;transition:var(--transition);font-family:var(--font-sans)}
+.form-submit:hover{background:var(--bronze-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(184,115,51,.3)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--espresso);padding:3rem 2rem 2rem;color:rgba(255,255,255,.5);text-align:center}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-logo{font-family:var(--font-serif);font-size:1.3rem;color:var(--white);margin-bottom:.5rem}
+.footer-logo span{color:var(--champagne)}
+.footer-links{display:flex;gap:2rem;justify-content:center;margin:1.2rem 0;flex-wrap:wrap}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.5);transition:var(--transition)}
+.footer-links a:hover{color:var(--champagne)}
+.footer-copy{font-size:.8rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:var(--transition);cursor:pointer}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5)}
+.whatsapp-float svg{width:30px;height:30px;fill:white}
+
+/* ===== ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.about-grid{grid-template-columns:1fr;gap:2.5rem}
+.about-image{max-width:400px;margin:0 auto}
+.contact-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-item:nth-child(1){grid-row:span 1}
+}
+@media(max-width:768px){
+.section{padding:4rem 1.5rem}
+.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:rgba(255,248,240,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);flex-direction:column;justify-content:center;padding:2rem;transition:var(--transition);box-shadow:-10px 0 40px rgba(0,0,0,.1)}
+.nav-links.open{right:0}
+.nav-link{color:var(--espresso) !important;font-size:1.1rem}
+.nav-cta{margin-top:1rem;background:var(--bronze);color:var(--white) !important}
+.nav-toggle{display:flex}
+.services-grid{grid-template-columns:1fr}
+.team-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto}
+.gallery-grid{grid-template-columns:1fr 1fr;gap:1rem}
+.testimonials-grid{grid-template-columns:1fr}
+.about-stats{grid-template-columns:repeat(3,1fr);gap:1rem}
+.form-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.nav{padding:.8rem 1rem}
+.hero-title{font-size:2.4rem}
+.section{padding:3rem 1rem}
+.service-card{padding:2rem 1.5rem}
+.gallery-grid{grid-template-columns:1fr}
+.about-image{aspect-ratio:3/4}
+.about-stat-number{font-size:1.5rem}
+.contact-form-wrap{padding:1.5rem}
+.whatsapp-float{width:52px;height:52px;bottom:1.2rem;right:1.2rem}
+.whatsapp-float svg{width:26px;height:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a href="#hero" class="nav-logo">Cafe a <span>Brasileira</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#servicos" class="nav-link">Servicos</a>
+<a href="#sobre" class="nav-link">Sobre</a>
+<a href="#equipe" class="nav-link">Equipe</a>
+<a href="#galeria" class="nav-link">Ambiente</a>
+<a href="#depoimentos" class="nav-link">Depoimentos</a>
+<a href="#contato" class="nav-link">Contato</a>
+<a href="https://wa.me/55555130855549" class="nav-link nav-cta" target="_blank" rel="noopener">Agendar Consulta</a>
+</div>
+<div class="nav-toggle" id="navToggle" aria-label="Menu" role="button" tabindex="0">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-bg-pattern"></div>
+<div class="hero-glow hero-glow-1"></div>
+<div class="hero-glow hero-glow-2"></div>
+<div class="hero-content">
+<div class="hero-badge">Cuidado com excelencia desde 2010</div>
+<h1 class="hero-title">Cafe a <em>Brasileira</em></h1>
+<div class="hero-divider"></div>
+<p class="hero-subtitle">Clinica de saude no coracao de Porto Alegre. Atendimento humanizado com profissionais dedicados ao seu bem-estar.</p>
+<div class="hero-actions">
+<a href="#servicos" class="btn btn-primary">Conheca nossos servicos</a>
+<a href="#contato" class="btn btn-outline">Agendar consulta</a>
+</div>
+</div>
+<div class="hero-scroll">
+<span>Scroll</span>
+<div class="hero-scroll-line"></div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+<div class="section-inner">
+<div class="section-header reveal">
+<div class="section-label">Nossos servicos</div>
+<h2 class="section-title">Cuidado completo para sua saude</h2>
+<div class="section-line"></div>
+<p class="section-desc">Oferecemos uma gama completa de servicos medicos com profissionais qualificados e infraestrutura moderna.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal reveal-delay-1">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+</div>
+<h3 class="service-name">Consulta Medica</h3>
+<p class="service-desc">Avaliacao clinica completa com anamnese detalhada, exame fisico e orientacao personalizada para o seu caso.</p>
+<div class="service-footer">
+<span class="service-price">R$ 280 <small>/ sessao</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+<div class="service-card reveal reveal-delay-2">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+</div>
+<h3 class="service-name">Retorno</h3>
+<p class="service-desc">Consulta de retorno para acompanhamento da evolucao do tratamento, ajustes e nova orientacao terapeutica.</p>
+<div class="service-footer">
+<span class="service-price">R$ 180 <small>/ sessao</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+<div class="service-card reveal reveal-delay-3">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+</div>
+<h3 class="service-name">Exame Complementar</h3>
+<p class="service-desc">Realizacao de exames complementares para diagnostico preciso, incluindo coleta e analise laboratorial.</p>
+<div class="service-footer">
+<span class="service-price">R$ 150 <small>/ exame</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+<div class="service-card reveal reveal-delay-1">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+</div>
+<h3 class="service-name">Procedimento</h3>
+<p class="service-desc">Procedimentos medicos especializados realizados com tecnologia de ponta e total seguranca para o paciente.</p>
+<div class="service-footer">
+<span class="service-price">R$ 450 <small>/ proced.</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+<div class="service-card reveal reveal-delay-2">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3 class="service-name">Avaliacao Inicial</h3>
+<p class="service-desc">Primeira consulta com avaliacao completa do historico de saude, exames preventivos e plano de cuidado.</p>
+<div class="service-footer">
+<span class="service-price">R$ 120 <small>/ avaliacao</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+<div class="service-card reveal reveal-delay-3">
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h3 class="service-name">Tratamento</h3>
+<p class="service-desc">Planos terapeuticos personalizados com acompanhamento continuo ate a completa recuperacao do paciente.</p>
+<div class="service-footer">
+<span class="service-price">R$ 380 <small>/ sessao</small></span>
+<a href="https://wa.me/55555130855549" class="service-link" target="_blank" rel="noopener">Agendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+<div class="section-inner">
+<div class="about-grid">
+<div class="about-image reveal">
+<div class="about-image-bg">
+<div class="about-image-overlay"></div>
+</div>
+<div class="about-image-badge">
+<div class="about-image-badge-number">15+</div>
+<div class="about-image-badge-text">Anos cuidando<br>da sua saude</div>
+</div>
+</div>
+<div class="about-content reveal">
+<div class="about-label">Nossa historia</div>
+<h2 class="about-title">Tradicao e confianca em cada atendimento</h2>
+<p class="about-text">Fundada em 2010 no coracao do Centro Historico de Porto Alegre, a Cafe a Brasileira nasceu com o proposito de oferecer atendimento medico de excelencia com acolhimento genuino.</p>
+<p class="about-text">Nosso espaco foi cuidadosamente projetado para transmitir tranquilidade e conforto, proporcionando uma experiencia unica em cuidados com a saude. Acreditamos que o bem-estar comeca com confianca.</p>
+<div class="about-stats">
+<div class="about-stat">
+<div class="about-stat-number" data-target="15">0</div>
+<div class="about-stat-label">Anos de experiencia</div>
+</div>
+<div class="about-stat">
+<div class="about-stat-number" data-target="8000">0</div>
+<div class="about-stat-label">Pacientes atendidos</div>
+</div>
+<div class="about-stat">
+<div class="about-stat-number" data-target="6">0</div>
+<div class="about-stat-label">Especialidades</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="equipe">
+<div class="section-inner">
+<div class="section-header reveal">
+<div class="section-label">Nossa equipe</div>
+<h2 class="section-title">Profissionais que fazem a diferenca</h2>
+<div class="section-line"></div>
+<p class="section-desc">Conheca os especialistas dedicados ao seu bem-estar, com anos de experiencia e formacao de excelencia.</p>
+</div>
+<div class="team-grid">
+<div class="team-card reveal reveal-delay-1">
+<div class="team-photo">
+<div class="team-photo-bg"></div>
+</div>
+<h3 class="team-name">Dra. Mariana Oliveira</h3>
+<p class="team-role">Clinica Geral</p>
+<p class="team-bio">CRM-RS 45678. Especialista em medicina interna com 12 anos de experiencia em atendimento ambulatorial e preventivo.</p>
+</div>
+<div class="team-card reveal reveal-delay-2">
+<div class="team-photo">
+<div class="team-photo-bg" style="background:linear-gradient(145deg,#D4A574,#B87333,#F7E7CE)"></div>
+</div>
+<h3 class="team-name">Dr. Ricardo Mendes</h3>
+<p class="team-role">Medicina Preventiva</p>
+<p class="team-bio">CRM-RS 39201. Doutor em saude coletiva pela UFRGS com foco em prevencao e promocao da qualidade de vida.</p>
+</div>
+<div class="team-card reveal reveal-delay-3">
+<div class="team-photo">
+<div class="team-photo-bg" style="background:linear-gradient(145deg,#F7E7CE,#C9A96E,#D4A574)"></div>
+</div>
+<h3 class="team-name">Dra. Camila Ferreira</h3>
+<p class="team-role">Nutrologia</p>
+<p class="team-bio">CRM-RS 52134. Pos-graduada em nutrologia com abordagem integrativa para tratamento e prevencao de doencas cronicas.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="galeria">
+<div class="section-inner">
+<div class="section-header reveal">
+<div class="section-label">Nosso ambiente</div>
+<h2 class="section-title">Um espaco feito para voce</h2>
+<div class="section-line"></div>
+<p class="section-desc">Ambiente acolhedor e moderno, projetado para proporcionar conforto em cada momento da sua visita.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item reveal reveal-delay-1">
+<div class="gallery-item-bg g-1"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Sala de Espera</span></div>
+</div>
+<div class="gallery-item reveal reveal-delay-2">
+<div class="gallery-item-bg g-2"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Recepcao</span></div>
+</div>
+<div class="gallery-item reveal reveal-delay-3">
+<div class="gallery-item-bg g-3"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Consultorio</span></div>
+</div>
+<div class="gallery-item reveal reveal-delay-4">
+<div class="gallery-item-bg g-4"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Sala de Procedimentos</span></div>
+</div>
+<div class="gallery-item reveal reveal-delay-5">
+<div class="gallery-item-bg g-5"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Entrada Principal</span></div>
+</div>
+<div class="gallery-item reveal reveal-delay-5">
+<div class="gallery-item-bg g-6"></div>
+<div class="gallery-item-overlay"><span class="gallery-item-label">Area de Convivencia</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="section-inner">
+<div class="section-header reveal">
+<div class="section-label">Depoimentos</div>
+<h2 class="section-title">O que nossos pacientes dizem</h2>
+<div class="section-line"></div>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal reveal-delay-1">
+<div class="testimonial-quote">&ldquo;</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">Atendimento impecavel. A Dra. Mariana e extremamente atenciosa e cuidadosa. O ambiente e muito agradavel, me senti em casa desde a primeira consulta.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">A</div>
+<div>
+<div class="testimonial-name">Ana Paula R.</div>
+<div class="testimonial-detail">Paciente ha 3 anos</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-2">
+<div class="testimonial-quote">&ldquo;</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">Depois de anos procurando um medico de confianca, encontrei na Cafe a Brasileira tudo o que precisava. Dr. Ricardo mudou minha qualidade de vida com o tratamento preventivo.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">C</div>
+<div>
+<div class="testimonial-name">Carlos E. Souza</div>
+<div class="testimonial-detail">Paciente ha 5 anos</div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-3">
+<div class="testimonial-quote">&ldquo;</div>
+<div class="testimonial-stars">
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-text">A Dra. Camila me ajudou a reorganizar minha alimentacao e saude de forma integral. Recomendo de olhos fechados. Equipe nota 10 em todos os sentidos.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">L</div>
+<div>
+<div class="testimonial-name">Lucia M. Torres</div>
+<div class="testimonial-detail">Paciente ha 2 anos</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+<div class="section-inner">
+<div class="section-header reveal">
+<div class="section-label">Contato</div>
+<h2 class="section-title">Agende sua consulta</h2>
+<div class="section-line"></div>
+<p class="section-desc">Entre em contato conosco e marque seu horario. Estamos prontos para cuidar de voce.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-info reveal">
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div class="contact-item-content">
+<h4>Endereco</h4>
+<p>R. Uruguai, 310 - Centro Historico<br>Porto Alegre - RS, 90010-140</p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div class="contact-item-content">
+<h4>Telefone</h4>
+<p><a href="tel:+555130855549">(51) 3085-5549</a></p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+<div class="contact-item-content">
+<h4>WhatsApp</h4>
+<p><a href="https://wa.me/55555130855549" target="_blank" rel="noopener">(51) 3085-5549</a></p>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-item-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+</div>
+<div class="contact-item-content">
+<h4>Horario de Funcionamento</h4>
+<div class="contact-hours">
+<div class="contact-hours-row"><span>Segunda a Sexta</span><span>08:00 - 18:00</span></div>
+<div class="contact-hours-row"><span>Sabado</span><span>08:00 - 12:00</span></div>
+<div class="contact-hours-row"><span>Domingo</span><span>Fechado</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="contact-form-wrap reveal">
+<h3 class="contact-form-title">Envie sua mensagem</h3>
+<form id="contactForm" onsubmit="handleSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label class="form-label" for="nome">Nome completo</label>
+<input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="telefone">Telefone</label>
+<input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(51) 99999-9999" required>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="servico">Servico desejado</label>
+<select class="form-select" id="servico" name="servico" required>
+<option value="">Selecione um servico</option>
+<option value="consulta">Consulta Medica</option>
+<option value="retorno">Retorno</option>
+<option value="exame">Exame Complementar</option>
+<option value="procedimento">Procedimento</option>
+<option value="avaliacao">Avaliacao Inicial</option>
+<option value="tratamento">Tratamento</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="mensagem">Mensagem</label>
+<textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte-nos como podemos ajudar..." rows="4"></textarea>
+</div>
+<button class="form-submit" type="submit">Enviar mensagem</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-logo">Cafe a <span>Brasileira</span></div>
+<div class="footer-links">
+<a href="#servicos">Servicos</a>
+<a href="#sobre">Sobre</a>
+<a href="#equipe">Equipe</a>
+<a href="#galeria">Ambiente</a>
+<a href="#depoimentos">Depoimentos</a>
+<a href="#contato">Contato</a>
+</div>
+<p class="footer-copy">2025 Cafe a Brasileira. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/55555130855549" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+/* NAV SCROLL */
+var nav = document.getElementById('nav');
+var lastScroll = 0;
+window.addEventListener('scroll', function(){
+    var st = window.pageYOffset;
+    if(st > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastScroll = st;
+});
+
+/* MOBILE TOGGLE */
+var toggle = document.getElementById('navToggle');
+var links = document.getElementById('navLinks');
+toggle.addEventListener('click', function(){
+    toggle.classList.toggle('active');
+    links.classList.toggle('open');
+});
+links.querySelectorAll('.nav-link').forEach(function(link){
+    link.addEventListener('click', function(){
+        toggle.classList.remove('active');
+        links.classList.remove('open');
+    });
+});
+
+/* INTERSECTION OBSERVER - REVEAL */
+var reveals = document.querySelectorAll('.reveal');
+var observerOptions = { threshold: 0.1, rootMargin: '-50px' };
+var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+reveals.forEach(function(el){ revealObserver.observe(el); });
+
+/* COUNTER ANIMATION */
+var counters = document.querySelectorAll('[data-target]');
+var counterObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+            var el = entry.target;
+            var target = parseInt(el.getAttribute('data-target'));
+            var duration = 2000;
+            var start = 0;
+            var startTime = null;
+            function animate(timestamp){
+                if(!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                var current = Math.floor(eased * target);
+                el.textContent = current.toLocaleString('pt-BR') + (target >= 1000 ? '+' : '+');
+                if(progress < 1) requestAnimationFrame(animate);
+                else el.textContent = target.toLocaleString('pt-BR') + '+';
+            }
+            requestAnimationFrame(animate);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+counters.forEach(function(c){ counterObserver.observe(c); });
+
+/* CONTACT FORM */
+window.handleSubmit = function(e){
+    e.preventDefault();
+    var nome = document.getElementById('nome').value;
+    var telefone = document.getElementById('telefone').value;
+    var servico = document.getElementById('servico').value;
+    var mensagem = document.getElementById('mensagem').value;
+    var text = 'Ola! Meu nome e ' + encodeURIComponent(nome) + '. Telefone: ' + encodeURIComponent(telefone) + '. Servico: ' + encodeURIComponent(servico) + '. ' + encodeURIComponent(mensagem);
+    window.open('https://wa.me/55555130855549?text=' + text, '_blank');
+};
+
+/* SMOOTH SCROLL FOR ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+        var target = document.querySelector(this.getAttribute('href'));
+        if(target){
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+})();
+</script>
+</body>
+</html>
