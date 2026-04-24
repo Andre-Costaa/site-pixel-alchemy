@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barbearia Lima - Tradição e excelência em cortes masculinos, barbas e cuidados personalizados em Belém, PA. Agende pelo WhatsApp.">
+    <meta name="keywords" content="barbearia, corte masculino, barba, degradê, barbearia Belém, Belém PA, pigmentação barba">
+    <meta name="author" content="Barbearia Lima">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Barbearia Lima - Tradição e Estilo em Belém, PA">
+    <meta property="og:description" content="Cortes masculinos, barbas e cuidados personalizados. Agende pelo WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/barbearia-lima/">
+    <meta property="og:locale" content="pt_BR">
+    <title>Barbearia Lima | Tradição e Estilo em Belém, PA</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-navy: #1B3A5C;
+            --color-navy-dark: #122740;
+            --color-navy-light: #2A5080;
+            --color-gold: #D4A843;
+            --color-gold-light: #E8C97A;
+            --color-gold-dark: #B8912E;
+            --color-white: #FFFFFF;
+            --color-slate: #4A5568;
+            --color-slate-light: #718096;
+            --color-cream: #FFF8F0;
+            --color-cream-dark: #F5EDE0;
+            --color-border: #E2D6C4;
+            --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Georgia', serif;
+            --font-body: Georgia, 'Times New Roman', serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 5rem;
+            --spacing-3xl: 7rem;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(27, 58, 92, 0.08);
+            --shadow-md: 0 4px 20px rgba(27, 58, 92, 0.12);
+            --shadow-lg: 0 8px 40px rgba(27, 58, 92, 0.16);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-slate);
+            background-color: var(--color-white);
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            color: var(--color-navy);
+            letter-spacing: 0.1em;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* ---- ANIMATIONS ---- */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in.visible {
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wow-fade-up, .wow-fade-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .nav-wrapper, .hero-bg, .gallery-item, .service-card, .team-card {
+                transition: none !important;
+            }
+        }
+
+        /* ---- NAVIGATION ---- */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .nav-wrapper.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-wrapper.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-slate);
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: none;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-navy);
+            transition: all var(--transition);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-cream);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-navy);
+            padding: var(--spacing-sm);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        .mobile-menu .mobile-cta {
+            margin-top: var(--spacing-md);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 14px 32px;
+            font-weight: 700;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--color-navy);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(212, 168, 67, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(212, 168, 67, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(27, 58, 92, 0.8) 0%, transparent 70%),
+                linear-gradient(180deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-navy-light) 100%);
+            z-index: 1;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            opacity: 0.04;
+            background-image:
+                repeating-linear-gradient(0deg, var(--color-gold) 0px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, var(--color-gold) 0px, transparent 1px, transparent 40px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: var(--spacing-3xl) var(--spacing-md);
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            border: 1px solid var(--color-gold);
+            padding: 8px 24px;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0;
+            animation: fadeInDown 1s 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            color: var(--color-white);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--color-gold);
+            font-size: 0.5em;
+            letter-spacing: 0.2em;
+            margin-top: var(--spacing-xs);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.06em;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0;
+            animation: fadeInUp 1s 0.7s forwards;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s 0.9s forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: var(--color-gold);
+            color: var(--color-navy-dark);
+            padding: 16px 40px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.35);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: transparent;
+            color: var(--color-white);
+            padding: 14px 36px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-weight: 400;
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            opacity: 0;
+            animation: fadeIn 1s 1.2s forwards;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ---- SECTION HEADER ---- */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-header .section-label {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-gold-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--color-gold);
+            margin: var(--spacing-md) auto;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--color-slate-light);
+            max-width: 560px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--color-gold);
+            transition: height var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--color-gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--color-slate-light);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-navy);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .service-price small {
+            font-size: 0.7rem;
+            color: var(--color-slate-light);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 50%, var(--color-navy-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(212, 168, 67, 0.15) 0%, transparent 60%);
+        }
+
+        .about-image-frame {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: -12px;
+            bottom: -12px;
+            border: 2px solid var(--color-gold);
+            z-index: -1;
+        }
+
+        .about-text h3 {
+            font-size: 1.4rem;
+            letter-spacing: 0.06em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-slate);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-navy);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .about-stat .stat-label {
+            font-size: 0.75rem;
+            color: var(--color-slate-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        /* ---- TEAM ---- */
+        .team {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .team-card {
+            background: var(--color-white);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 168, 67, 0.1) 0%, transparent 70%);
+        }
+
+        .team-photo svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            fill: none;
+            stroke: rgba(212, 168, 67, 0.3);
+            stroke-width: 1;
+        }
+
+        .team-info {
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .team-info .team-role {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--color-gold-dark);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-info p {
+            font-size: 0.9rem;
+            color: var(--color-slate-light);
+            line-height: 1.6;
+        }
+
+        /* ---- GALLERY ---- */
+        .gallery {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 60%, var(--color-navy-light) 100%);
+        }
+
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-gold-dark) 60%, var(--color-gold) 100%);
+        }
+
+        .gallery-item:nth-child(3),
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-gold-dark) 100%);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(27, 58, 92, 0.6);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--spacing-md);
+            background: linear-gradient(to top, rgba(27, 58, 92, 0.9) 0%, transparent 100%);
+            transform: translateY(100%);
+            transition: transform var(--transition);
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--color-white);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ---- TESTIMONIALS ---- */
+        .testimonials {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-border);
+            position: relative;
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            width: 24px;
+            height: 24px;
+            background: var(--color-gold);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.2;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-gold);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-slate);
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar span {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-navy);
+            letter-spacing: 0.06em;
+            font-weight: 700;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--color-slate-light);
+        }
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: var(--spacing-3xl) 0;
+            background: var(--color-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-cream);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--color-navy);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-item h4 {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 0.95rem;
+            color: var(--color-slate);
+            line-height: 1.6;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-navy);
+        }
+
+        .contact-hours {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--color-cream);
+            border: 1px solid var(--color-border);
+        }
+
+        .contact-hours h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-navy);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--color-slate);
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(226, 214, 196, 0.5);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hours-list .day {
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+
+        .contact-map {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-map-inner {
+            text-align: center;
+        }
+
+        .contact-map svg {
+            width: 48px;
+            height: 48px;
+            fill: none;
+            stroke: var(--color-navy);
+            stroke-width: 1;
+            opacity: 0.3;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-map p {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--color-slate-light);
+            letter-spacing: 0.08em;
+        }
+
+        .contact-cta {
+            margin-top: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .contact-cta p {
+            font-size: 1rem;
+            color: var(--color-slate);
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            background: var(--color-navy-dark);
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(212, 168, 67, 0.3);
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 0.04em;
+        }
+
+        /* ---- WHATSAPP FLOAT ---- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: inline-block;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .hero-cta-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 var(--spacing-xl);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <div class="nav-wrapper" id="navWrapper">
+        <div class="container">
+            <nav>
+                <a href="#hero" class="nav-logo">Barbearia <span>Lima</span></a>
+                <ul class="nav-links">
+                    <li><a href="#servicos">Servicos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <a href="https://wa.me/555591981433095" target="_blank" rel="noopener" class="nav-cta">Agendar</a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+        <a href="https://wa.me/555591981433095" target="_blank" rel="noopener" class="mobile-cta">Agendar pelo WhatsApp</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Barbearia Lima</div>
+            <h1>
+                Tradicao e Estilo
+                <span>em cada detalhe</span>
+            </h1>
+            <p class="hero-tagline">Ha mais de uma decada cuidando da sua aparencia com excelencia e dedicacao em Belem, PA</p>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/555591981433095" target="_blank" rel="noopener" class="btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Agendar Horario
+                </a>
+                <a href="#servicos" class="btn-secondary">Nossos Servicos</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">O que oferecemos</span>
+                <h2>Nossos Servicos</h2>
+                <div class="section-divider"></div>
+                <p>Cada servico e pensado para valorizar o seu estilo com precisao e cuidado artesanal</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="6" cy="4" r="2"/><circle cx="18" cy="4" r="2"/><path d="M6 6v6l6 2 6-2V6"/><line x1="12" y1="14" x2="12" y2="18"/></svg>
+                    </div>
+                    <h3>Corte Classico</h3>
+                    <p>Corte personalizado com acabamento impecavel, respeitando o formato do rosto e o estilo individual de cada cliente.</p>
+                    <div class="service-price">R$ 45 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><line x1="12" y1="12" x2="12" y2="20"/><polyline points="8 16 12 20 16 16"/></svg>
+                    </div>
+                    <h3>Corte Degradê</h3>
+                    <p>Degradê moderno e preciso com maquina e tesoura, transicoes suaves e acabamento de alta qualidade.</p>
+                    <div class="service-price">R$ 55 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                    </div>
+                    <h3>Barba Completa</h3>
+                    <p>Modelagem e acabamento de barba com navalha, toalha quente e produtos premium para um resultado sofisticado.</p>
+                    <div class="service-price">R$ 40 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                    </div>
+                    <h3>Pigmentacao</h3>
+                    <p>Pigmentacao capilar para disfarcar fios brancos com resultados naturais e duradouros, valorizando seu visual.</p>
+                    <div class="service-price">R$ 60 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h3>Hidratacao Capilar</h3>
+                    <p>Tratamento profundo para fios ressecados e danificados, devolvendo brilho, maciez e saude aos cabelos.</p>
+                    <div class="service-price">R$ 50 <small>/ sessao</small></div>
+                </div>
+
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3>Combo Corte + Barba</h3>
+                    <p>O pacote completo: corte personalizado e barba feita com todo o capricho por um valor especial.</p>
+                    <div class="service-price">R$ 75 <small>/ sessao</small></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossa historia</span>
+                <h2>Sobre Nos</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image wow-fade-up" data-delay="100">
+                    <div class="about-image-placeholder"></div>
+                    <div class="about-image-frame"></div>
+                </div>
+                <div class="about-text wow-fade-up" data-delay="200">
+                    <h3>Uma Tradicao de Confianca e Qualidade</h3>
+                    <p>
+                        A Barbearia Lima nasceu de uma paixao genuina pela arte da barbearia. Fundada no coracao de Belem do Para, nosso espaco foi cuidadosamente projetado para oferecer muito mais do que um simples corte de cabelo.
+                    </p>
+                    <p>
+                        Aqui, cada cliente e recebido com hospitalidade paraense e tratado com a atencao que merece. Nossa equipe combina tecnicas tradicionais com tendencias contemporaneas, garantindo um resultado que reflete sua personalidade e estilo de vida.
+                    </p>
+                    <p>
+                        Acreditamos que um bom barbeiro faz muito mais do que cortar cabelo: ele ouve, aconselha e ajuda cada homem a se sentir confiante. Essa filosofia nos guia desde o primeiro dia.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Anos de experiencia</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number" data-count="5000">0</span>
+                            <span class="stat-label">Clientes atendidos</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label">% Satisfacao</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Profissionais dedicados</span>
+                <h2>Nossa Equipe</h2>
+                <div class="section-divider"></div>
+                <p>Talentosos profissionais comprometidos com a excelencia em cada servico</p>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Carlos Lima</h3>
+                        <p class="team-role">Barbeiro Master</p>
+                        <p>Fundador da barbearia com mais de 15 anos de experiencia. Especialista em cortes classicos e degradês precisos.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="150">
+                    <div class="team-photo">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Rafael Sousa</h3>
+                        <p class="team-role">Barbeiro Senior</p>
+                        <p>Especialista em barbas e pigmentacao capilar. Formado pela melhor escola de barbearia do norte do Brasil.</p>
+                    </div>
+                </div>
+
+                <div class="team-card wow-fade-up" data-delay="300">
+                    <div class="team-photo">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Lucas Mendes</h3>
+                        <p class="team-role">Barbeiro</p>
+                        <p>Talento jovem apaixonado por tendencias modernas. Especialista em cortes atuais e hidratacao capilar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nosso trabalho</span>
+                <h2>Galeria</h2>
+                <div class="section-divider"></div>
+                <p>Confira alguns dos nossos trabalhos mais recentes e transformacoes</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-in" data-delay="0">
+                    <div class="gallery-overlay"><span>Corte Degradê</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" data-delay="100">
+                    <div class="gallery-overlay"><span>Barba Clássica</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" data-delay="200">
+                    <div class="gallery-overlay"><span>Corte Social</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" data-delay="300">
+                    <div class="gallery-overlay"><span>Pigmentação</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" data-delay="400">
+                    <div class="gallery-overlay"><span>Combo Completo</span></div>
+                </div>
+                <div class="gallery-item wow-fade-in" data-delay="500">
+                    <div class="gallery-overlay"><span>Acabamento Navalha</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2>O que dizem nossos clientes</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Melhor barbearia de Belem, sem duvidas. O Carlos entende exatamente o que a gente pede e o resultado e sempre impecavel. Ambiente agradavel e atendimento de primeira."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><span>F</span></div>
+                        <div>
+                            <div class="testimonial-name">Felipe Cardoso</div>
+                            <div class="testimonial-detail">Cliente ha 3 anos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="150">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Comecei a frequentar a Barbearia Lima por indicacao de um amigo e nunca mais procurei outra. O Rafael faz uma barba incrivel e o ambiente e muito descontraido. Recomendo demais!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><span>M</span></div>
+                        <div>
+                            <div class="testimonial-name">Marcos Oliveira</div>
+                            <div class="testimonial-detail">Cliente ha 1 ano</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card wow-fade-up" data-delay="300">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Fiz a pigmentacao com o Rafael e fiquei impressionado com o resultado. Ficou super natural, ninguem percebeu que era pigmentacao. Profissionalismo nota 10 em todos os sentidos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><span>A</span></div>
+                        <div>
+                            <div class="testimonial-name">Andre Costa</div>
+                            <div class="testimonial-detail">Cliente ha 2 anos</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Venha nos visitar</span>
+                <h2>Contato</h2>
+                <div class="section-divider"></div>
+                <p>Estamos prontos para receber voce. Agende seu horario e venha conferir.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info wow-fade-up" data-delay="100">
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereco</h4>
+                            <p>Passagem Quarubas, 236<br>Pedreira, Belem - PA<br>66080-570</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <a href="tel:+555591981433095">(91) 98143-3095</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/555591981433095" target="_blank" rel="noopener">wa.me/555591981433095</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h4>Horario de Funcionamento</h4>
+                        <ul class="hours-list">
+                            <li>
+                                <span class="day">Segunda a Sexta</span>
+                                <span>08:00 - 20:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Sabado</span>
+                                <span>08:00 - 18:00</span>
+                            </li>
+                            <li>
+                                <span class="day">Domingo</span>
+                                <span>Fechado</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="wow-fade-up" data-delay="200">
+                    <div class="contact-map">
+                        <div class="contact-map-inner">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <p>Passagem Quarubas, 236 - Pedreira, Belem - PA</p>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <p>Agende pelo WhatsApp e garanta seu horario</p>
+                        <a href="https://wa.me/555591981433095" target="_blank" rel="noopener" class="btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Agendar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Barbearia <span>Lima</span></div>
+            <p class="footer-tagline">Tradição e estilo em cada detalhe</p>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">2025 Barbearia Lima. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/555591981433095" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ---- NAVIGATION ---- */
+        (function() {
+            const nav = document.getElementById('navWrapper');
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+                if (currentScroll > lastScroll && currentScroll > 80) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+                if (currentScroll > 20) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            });
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
+        /* ---- INTERSECTION OBSERVER ---- */
+        (function() {
+            var elements = document.querySelectorAll('.wow-fade-up, .wow-fade-in');
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var delay = entry.target.getAttribute('data-delay') || 0;
+                            setTimeout(function() {
+                                entry.target.classList.add('visible');
+                            }, parseInt(delay));
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                elements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                elements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ---- COUNTER ANIMATION ---- */
+        (function() {
+            var counters = document.querySelectorAll('[data-count]');
+            var animated = false;
+
+            function animateCounters() {
+                if (animated) return;
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-count'));
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+
+                    function step(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = Math.floor(eased * target);
+                        counter.textContent = current.toLocaleString('pt-BR');
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            counter.textContent = target.toLocaleString('pt-BR');
+                        }
+                    }
+
+                    requestAnimationFrame(step);
+                });
+                animated = true;
+            }
+
+            if (counters.length > 0 && 'IntersectionObserver' in window) {
+                var statsSection = counters[0].closest('.about-stats');
+                if (statsSection) {
+                    var statsObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                animateCounters();
+                                statsObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+                    statsObserver.observe(statsSection);
+                }
+            }
+        })();
+
+        /* ---- SMOOTH SCROLL ---- */
+        (function() {
+            var anchors = document.querySelectorAll('a[href^="#"]');
+            anchors.forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href === '#') return;
+                    var target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        var offset = 72;
+                        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
