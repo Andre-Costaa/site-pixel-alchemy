@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tapa de Cuadril - Clinica de saude em Recife, PE. Consultas, exames e tratamentos com profissionais qualificados. Agende sua consulta.">
+    <meta name="keywords" content="clinica saude, consulta medica, exames, tratamento, Recife, Pernambuco">
+    <meta name="author" content="Tapa de Cuadril">
+    <meta property="og:title" content="Tapa de Cuadril - Clinica de Saude em Recife">
+    <meta property="og:description" content="Cuidado com a sua saude em maos qualificados. Agende sua consulta hoje.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Tapa de Cuadril | Clinica de Saude - Recife, PE</title>
+    <style>
+        :root {
+            --color-navy: #1B3A5C;
+            --color-navy-dark: #132840;
+            --color-navy-light: #2A5282;
+            --color-gold: #D4A843;
+            --color-gold-light: #E8C97A;
+            --color-gold-dark: #B8912E;
+            --color-white: #FFFFFF;
+            --color-slate: #4A5568;
+            --color-slate-light: #718096;
+            --color-cream: #FFF8F0;
+            --color-cream-dark: #F5EDE0;
+            --color-border: #E2D9CC;
+            --font-serif: Georgia, 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --spacing-2xl: 8rem;
+            --shadow-sm: 0 2px 8px rgba(27, 58, 92, 0.08);
+            --shadow-md: 0 4px 20px rgba(27, 58, 92, 0.12);
+            --shadow-lg: 0 8px 40px rgba(27, 58, 92, 0.16);
+            --shadow-gold: 0 4px 20px rgba(212, 168, 67, 0.25);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-slate);
+            background-color: var(--color-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            color: var(--color-navy);
+            letter-spacing: 0.04em;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-navy);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--color-slate-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+            margin: var(--spacing-sm) auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .hero-decoration {
+                animation: none !important;
+            }
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+            padding: 0.75rem 0;
+        }
+
+        .nav.scrolled {
+            border-bottom-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-slate);
+            letter-spacing: 0.03em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-navy);
+            color: var(--color-white) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-navy-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-navy);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(27, 58, 92, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-white);
+            letter-spacing: 0.06em;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-navy-light) 100%);
+            overflow: hidden;
+            padding: var(--spacing-2xl) var(--spacing-sm);
+        }
+
+        .hero-decoration {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-decoration::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBlob 20s ease-in-out infinite;
+        }
+
+        .hero-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBlob 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            border-radius: 50px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-badge span {
+            font-family: var(--font-serif);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-gold-light);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 400;
+            color: var(--color-white);
+            letter-spacing: 0.06em;
+            line-height: 1.15;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-title strong {
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+            color: var(--color-navy-dark);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212, 168, 67, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--color-gold);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                gap: var(--spacing-sm);
+                flex-wrap: wrap;
+            }
+            .hero-stat {
+                flex: 0 0 calc(50% - 0.5rem);
+            }
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-navy), var(--color-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-gold);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--color-slate-light);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .service-price-from {
+            font-size: 0.75rem;
+            color: var(--color-slate-light);
+        }
+
+        .service-price-value {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-navy);
+        }
+
+        .service-price-note {
+            font-size: 0.7rem;
+            color: var(--color-slate-light);
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-navy-dark), var(--color-navy-light), var(--color-navy));
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.2) 0%, transparent 60%);
+        }
+
+        .about-image-frame {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 60%;
+            height: 60%;
+            border: 2px solid var(--color-gold);
+            border-radius: var(--radius-md);
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-slate-light);
+            font-size: 0.95rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .about-feature-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            background: rgba(212, 168, 67, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-feature-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--color-gold-dark);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .about-feature span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .about-image-frame {
+                bottom: -15px;
+                right: -15px;
+            }
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .team-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 50%, var(--color-gold) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27, 58, 92, 0.3), transparent);
+        }
+
+        .team-info {
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .team-role {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--color-gold-dark);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info p {
+            font-size: 0.85rem;
+            color: var(--color-slate-light);
+            line-height: 1.6;
+        }
+
+        @media (min-width: 480px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg {
+            background: linear-gradient(135deg, #1B3A5C, #2A5282);
+        }
+        .gallery-item:nth-child(2) .gallery-item-bg {
+            background: linear-gradient(135deg, #2A5282, #D4A843);
+        }
+        .gallery-item:nth-child(3) .gallery-item-bg {
+            background: linear-gradient(135deg, #D4A843, #E8C97A);
+        }
+        .gallery-item:nth-child(4) .gallery-item-bg {
+            background: linear-gradient(135deg, #1B3A5C, #4A5568);
+        }
+        .gallery-item:nth-child(5) .gallery-item-bg {
+            background: linear-gradient(135deg, #4A5568, #1B3A5C);
+        }
+        .gallery-item:nth-child(6) .gallery-item-bg {
+            background: linear-gradient(135deg, #D4A843, #1B3A5C);
+        }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(27, 58, 92, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(27, 58, 92, 0.5);
+        }
+
+        .gallery-overlay svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-white);
+            fill: none;
+            stroke-width: 1.5;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item-label span {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--color-white);
+            letter-spacing: 0.06em;
+        }
+
+        @media (min-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: var(--spacing-2xl) 0;
+            background: linear-gradient(160deg, var(--color-navy-dark), var(--color-navy));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials .section-label {
+            color: var(--color-gold-light);
+        }
+
+        .testimonials .section-title {
+            color: var(--color-white);
+        }
+
+        .testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(212, 168, 67, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .testimonial-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-gold);
+        }
+
+        .testimonial-text {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: 0.01em;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-navy-dark);
+        }
+
+        .testimonial-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-white);
+        }
+
+        .testimonial-detail {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--color-gold);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .contact-item-text h4 {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            color: var(--color-navy);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            font-size: 0.9rem;
+            color: var(--color-slate-light);
+            line-height: 1.5;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--color-navy);
+        }
+
+        .contact-hours {
+            margin-top: 0.5rem;
+        }
+
+        .contact-hours table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .contact-hours td {
+            padding: 0.35rem 0;
+            font-size: 0.85rem;
+            color: var(--color-slate-light);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-hours td:last-child {
+            text-align: right;
+            color: var(--color-navy);
+            font-weight: 500;
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.15rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            letter-spacing: 0.04em;
+            margin-bottom: 0.35rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--color-slate);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            background: var(--color-cream);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.85rem;
+            background: #25D366;
+            color: var(--color-white);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: var(--spacing-sm);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-white);
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--color-navy-dark);
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            letter-spacing: 0.06em;
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 900;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-white);
+        }
+
+        .whatsapp-float-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.5);
+            animation: whatsappPulse 2s ease-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 90px;
+            right: 28px;
+            z-index: 900;
+            width: 40px;
+            height: 40px;
+            background: var(--color-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--color-gold);
+        }
+
+        .scroll-top svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--color-white);
+            fill: none;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 8v8"/>
+                        <path d="M8 12h8"/>
+                    </svg>
+                </div>
+                <span class="nav-logo-text">Tapa de Cuadril</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Servicos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-decoration">
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Clinica de Saude em Recife</span>
+            </div>
+            <h1 class="hero-title">
+                Cuidado que voce<br>merece com <strong>excelencia</strong>
+            </h1>
+            <p class="hero-subtitle">
+                Ha mais de uma década cuidando da saude de familias recifenses com atendimento humanizado e infraestrutura de ponta.
+            </p>
+            <div class="hero-actions">
+                <a href="#contato" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Agendar Consulta
+                </a>
+                <a href="#servicos" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                    Nossos Servicos
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="12">0</div>
+                    <div class="hero-stat-label">Anos de Atendimento</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="8500">0</div>
+                    <div class="hero-stat-label">Pacientes Atendidos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="15">0</div>
+                    <div class="hero-stat-label">Especialidades</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="98">0</div>
+                    <div class="hero-stat-label">Satisfacao (%)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Nossos Servicos</p>
+                <h2 class="section-title">Atendimento Completo para sua Saude</h2>
+                <p class="section-subtitle">Oferecemos uma ampla gama de servicos para cuidar de voce e da sua familia com dedicacao.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Consulta Medica</h3>
+                    <p>Consulta completa com avaliacao clinica detalhada, historico e orientacoes personalizadas para o seu caso.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 250</span>
+                    </div>
+                    <span class="service-price-note">Convenio com desconto especial</span>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/><path d="M3 12h18"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3>Retorno</h3>
+                    <p>Consulta de retorno para acompanhamento do tratamento, ajustes e verificacao de evolucao clinica.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 150</span>
+                    </div>
+                    <span class="service-price-note">Ate 30 dias apos a consulta</span>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Exame Complementar</h3>
+                    <p>Realizacao e interpretacao de exames laboratoriais, de imagem e procedimentos diagnosticos avancados.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 180</span>
+                    </div>
+                    <span class="service-price-note">Resultado em ate 48h</span>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Procedimento</h3>
+                    <p>Procedimentos clinicos e ambulatoriais realizados com seguranca, tecnologia e equipe especializada.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 350</span>
+                    </div>
+                    <span class="service-price-note">Anestesia incluida quando necessario</span>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3>Avaliacao Inicial</h3>
+                    <p>Triagem e avaliacao inicial completa para identificar necessidades e encaminhar ao especialista correto.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 120</span>
+                    </div>
+                    <span class="service-price-note">Gratuito para primeira visita</span>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <h3>Tratamento Continuo</h3>
+                    <p>Planos de tratamento personalizados com acompanhamento continuo e suporte multidisciplinar completo.</p>
+                    <div class="service-price">
+                        <span class="service-price-from">A partir de</span>
+                        <span class="service-price-value">R$ 450</span>
+                    </div>
+                    <span class="service-price-note">Parcelamento em ate 3x</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-image-overlay"></div>
+                </div>
+                <div class="about-text">
+                    <div class="reveal">
+                        <p class="section-label">Sobre Nos</p>
+                        <h2>Tradicao e confianca em saude ha mais de uma decada</h2>
+                    </div>
+                    <p class="reveal reveal-delay-1">
+                        Fundada com o proposito de oferecer atendimento medico de qualidade acessivel, a Tapa de Cuadril tornou-se referencia no bairro da Boa Vista e em toda a regiao metropolitana do Recife.
+                    </p>
+                    <p class="reveal reveal-delay-2">
+                        Nossa clinica combina a tradicao do cuidado humano com a modernidade dos recursos diagnosticos e terapeuticos mais avancados. Cada paciente e tratado com atencao individualizada, porque acreditamos que a saude se constroi com respeito e confianca mutua.
+                    </p>
+                    <div class="about-features reveal reveal-delay-3">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Equipe Multidisciplinar</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Infraestrutura Moderna</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Atendimento Humanizado</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Agendamento Facil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Nossa Equipe</p>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-subtitle">Conheca os especialistas dedicados ao seu bem-estar.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3>Dra. Camila Ferreira</h3>
+                        <p class="team-role">Clinica Geral</p>
+                        <p>Graduada pela UFPE com residencia em Clinica Medica. Especialista em atendimento preventivo e acompanhamento de patologias cronicas.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo" style="background: linear-gradient(135deg, #2A5282 0%, #1B3A5C 50%, #D4A843 100%);"></div>
+                    <div class="team-info">
+                        <h3>Dr. Ricardo Mendes</h3>
+                        <p class="team-role">Ortopedia e Traumatologia</p>
+                        <p>Especialista em ortopedia com mais de 15 anos de experiencia. Titulo de especialista pela Sociedade Brasileira de Ortopedia.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo" style="background: linear-gradient(135deg, #D4A843 0%, #B8912E 50%, #1B3A5C 100%);"></div>
+                    <div class="team-info">
+                        <h3>Dra. Ana Beatriz Lins</h3>
+                        <p class="team-role">Nutricionista Clinica</p>
+                        <p>Pos-graduada em Nutricao Funcional. Atua com reeducacao alimentar e acompanhamento nutricional personalizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Nossas Instalacoes</p>
+                <h2 class="section-title">Conheca nosso espaco</h2>
+                <p class="section-subtitle">Ambiente acolhedor e preparado para oferecer o melhor atendimento.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Recepcao Principal</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Sala de Consultas</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Laboratorio</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Sala de Espera</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Area de Procedimentos</span></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div class="gallery-item-label"><span>Entrada da Clinica</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Depoimentos</p>
+                <h2 class="section-title">O que nossos pacientes dizem</h2>
+                <p class="section-subtitle">A confianca dos nossos pacientes e o nosso maior patrimonio.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Sou paciente da clinica ha cinco anos e so tenho elogios. O atendimento e sempre atencioso e a Dra. Camila e uma profissional excepcional. Me sinto em casa a cada visita."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <div class="testimonial-name">Maria Lucia Santos</div>
+                            <div class="testimonial-detail">Paciente ha 5 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O Dr. Ricardo resolveu um problema de coluna que me acompanhava ha anos. Profissional extremamente competente e a clinica e muito bem estruturada. Recomendo de olhos fechados."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JC</div>
+                        <div>
+                            <div class="testimonial-name">Jose Carlos Oliveira</div>
+                            <div class="testimonial-detail">Paciente ha 2 anos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Acompanhamento nutricional com a Dra. Ana Beatriz mudou minha qualidade de vida. Perdi peso de forma saudavel e aprendi a me alimentar melhor. A clinica inteira e muito acolhedora."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FS</div>
+                        <div>
+                            <div class="testimonial-name">Fernanda Silva</div>
+                            <div class="testimonial-detail">Paciente ha 1 ano</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Contato</p>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-subtitle">Estamos prontos para cuidar de voce. Entre em contato e marque seu horario.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item reveal reveal-delay-1">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Endereco</h4>
+                            <p>Av. Republica do Libano, 251<br>Pina, Recife - PE, 51011-160</p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal reveal-delay-2">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5581973268888">(81) 97326-8888</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal reveal-delay-3">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Horario de Funcionamento</h4>
+                            <div class="contact-hours">
+                                <table>
+                                    <tr><td>Segunda a Sexta</td><td>07:00 - 19:00</td></tr>
+                                    <tr><td>Sabado</td><td>08:00 - 13:00</td></tr>
+                                    <tr><td>Domingo</td><td>Fechado</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/555581973268888" target="_blank" rel="noopener" class="btn-whatsapp reveal reveal-delay-4">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agendar pelo WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form-wrapper reveal">
+                    <h3>Envie sua mensagem</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome Completo</label>
+                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(81) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servico Desejado</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Selecione um servico</option>
+                                <option value="consulta">Consulta Medica</option>
+                                <option value="retorno">Retorno</option>
+                                <option value="exame">Exame Complementar</option>
+                                <option value="procedimento">Procedimento</option>
+                                <option value="avaliacao">Avaliacao Inicial</option>
+                                <option value="tratamento">Tratamento Continuo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Conte-nos como podemos ajuda-lo (opcional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Solicitar Agendamento
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">Tapa de <span>Cuadril</span></div>
+                <div class="footer-links">
+                    <a href="#hero">Inicio</a>
+                    <a href="#servicos">Servicos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <p class="footer-copy">2025 Tapa de Cuadril. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/555581973268888" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+        <span class="whatsapp-float-pulse"></span>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Intersection Observer - Reveal on Scroll =====
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '-50px 0px'
+            });
+
+            revealElements.forEach(function(el) {
+                revealObserver.observe(el);
+            });
+
+            // ===== Counter Animation =====
+            const counters = document.querySelectorAll('[data-count]');
+            let countersAnimated = false;
+
+            const counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        animateCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            counters.forEach(function(counter) {
+                counterObserver.observe(counter);
+            });
+
+            function animateCounters() {
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-count'));
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+
+                    function step(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = Math.floor(eased * target);
+
+                        if (target >= 1000) {
+                            counter.textContent = current.toLocaleString('pt-BR') + '+';
+                        } else {
+                            counter.textContent = current + '+';
+                        }
+
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        }
+                    }
+
+                    requestAnimationFrame(step);
+                });
+            }
+
+            // ===== Navigation Scroll Behavior =====
+            var nav = document.getElementById('nav');
+            var lastScroll = 0;
+            var scrollThreshold = 80;
+
+            window.addEventListener('scroll', function() {
+                var currentScroll = window.pageYOffset;
+
+                if (currentScroll > scrollThreshold) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+
+                if (currentScroll > lastScroll && currentScroll > 300) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+
+                lastScroll = currentScroll;
+
+                // Scroll to top button
+                var scrollTopBtn = document.getElementById('scrollTop');
+                if (currentScroll > 600) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            // ===== Mobile Menu =====
+            var hamburger = document.getElementById('hamburger');
+            var mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+                document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            });
+
+            var mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // ===== Scroll to Top =====
+            document.getElementById('scrollTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ===== Contact Form =====
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('name').value;
+                var service = document.getElementById('service').value;
+                var message = document.getElementById('message').value;
+
+                var whatsappText = 'Ola! Meu nome e ' + name + '.';
+                if (service) {
+                    whatsappText += ' Gostaria de agendar: ' + service + '.';
+                }
+                if (message) {
+                    whatsappText += ' ' + message;
+                }
+
+                var whatsappUrl = 'https://wa.me/555581973268888?text=' + encodeURIComponent(whatsappText);
+                window.open(whatsappUrl, '_blank');
+            });
+
+            // ===== Smooth Scroll for Anchor Links =====
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        var offset = 80;
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
