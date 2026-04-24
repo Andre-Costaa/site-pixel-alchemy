@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Skillus Steak House - A melhor churrascaria de Boa Viagem, Recife. Cortes nobres, ambiente acolhedor e o sabor autentico do churrasco gaúcho.">
+    <meta name="keywords" content="churrascaria, steak house, recife, boa viagem, picanha, churrasco gaúcho, rodizio, carne nobre">
+    <meta name="author" content="Skillus Steak House">
+    <meta property="og:title" content="Skillus Steak House - O Sabor do Churrasco Gaúcho em Recife">
+    <meta property="og:description" content="A melhor churrascaria de Boa Viagem. Cortes nobres selecionados, ambiente sofisticado e atendimento impecável.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Skillus Steak House | Churrascaria em Boa Viagem, Recife</title>
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coral: #E8907A;
+            --coral-dark: #D4755F;
+            --coral-light: #F2B5A8;
+            --teal: #5F9EA0;
+            --teal-dark: #4A8284;
+            --teal-light: #8BC4C6;
+            --sand: #F4E4C1;
+            --sand-light: #FAF3E6;
+            --sand-dark: #E8D4A8;
+            --slate: #4A5568;
+            --slate-light: #718096;
+            --slate-dark: #2D3748;
+            --white: #FFFFFF;
+            --off-white: #FDFCFA;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-blob: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            --shadow-sm: 0 2px 8px rgba(74, 85, 104, 0.08);
+            --shadow-md: 0 8px 24px rgba(74, 85, 104, 0.12);
+            --shadow-lg: 0 16px 48px rgba(74, 85, 104, 0.16);
+            --shadow-xl: 0 24px 64px rgba(74, 85, 104, 0.2);
+            --font-display: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans', Tahoma, sans-serif;
+            --font-body: Georgia, 'Times New Roman', Times, serif;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--slate);
+            background-color: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--slate-dark);
+        }
+
+        h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
+
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--coral);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover { color: var(--coral-dark); }
+
+        /* ========== PATTERN BACKGROUND ========== */
+        .pattern-bg {
+            background-color: var(--sand);
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(232, 144, 122, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(95, 158, 160, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 60% 80%, rgba(232, 144, 122, 0.05) 0%, transparent 40%);
+        }
+
+        .pattern-dots {
+            background-image: radial-gradient(circle, rgba(74, 85, 104, 0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0.75rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--teal));
+            border-radius: 2px;
+            margin: 0.75rem auto 0;
+        }
+
+        .section-header p {
+            color: var(--slate-light);
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(253, 252, 250, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.6rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.35rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--slate-dark);
+        }
+
+        .nav-logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color var(--transition);
+            letter-spacing: 0.02em;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--slate);
+        }
+
+        .nav-links a:hover {
+            color: var(--coral);
+        }
+
+        .nav-cta {
+            background: var(--coral);
+            color: var(--white) !important;
+            padding: 0.55rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 800 !important;
+            transition: all var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(232, 144, 122, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--slate-dark);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--slate-dark) 0%, #3A2A28 40%, #2D2020 70%, var(--slate-dark) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 85%, rgba(232, 144, 122, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(95, 158, 160, 0.12) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255, 255, 255, 0.015) 35px, rgba(255, 255, 255, 0.015) 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255, 255, 255, 0.015) 35px, rgba(255, 255, 255, 0.015) 36px);
+            z-index: 1;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: var(--radius-blob);
+            filter: blur(80px);
+            opacity: 0.35;
+            z-index: 1;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--coral);
+            top: -10%;
+            right: -5%;
+            animation: blobFloat1 18s ease-in-out infinite;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--teal);
+            bottom: -10%;
+            left: -5%;
+            animation: blobFloat2 22s ease-in-out infinite;
+        }
+
+        .hero-blob-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--sand);
+            top: 40%;
+            left: 50%;
+            opacity: 0.15;
+            animation: blobFloat3 15s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-40px, 30px) scale(1.05); }
+            66% { transform: translate(20px, -20px) scale(0.95); }
+        }
+
+        @keyframes blobFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.08); }
+            66% { transform: translate(-20px, 20px) scale(0.92); }
+        }
+
+        @keyframes blobFloat3 {
+            0%, 100% { transform: translate(-50%, 0) scale(1); }
+            50% { transform: translate(-50%, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem 1.25rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(232, 144, 122, 0.15);
+            border: 1px solid rgba(232, 144, 122, 0.3);
+            border-radius: 50px;
+            color: var(--coral-light);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--coral), var(--coral-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(232, 144, 122, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(232, 144, 122, 0.5);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--coral);
+            color: var(--coral);
+            transform: translateY(-3px);
+        }
+
+        .btn-dark {
+            background: var(--slate-dark);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background: var(--coral);
+            transform: translateY(-3px);
+            color: var(--white);
+        }
+
+        .btn-teal {
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(95, 158, 160, 0.3);
+        }
+
+        .btn-teal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(95, 158, 160, 0.45);
+            color: var(--white);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--white);
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--teal));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+
+        .service-icon-coral {
+            background: linear-gradient(135deg, rgba(232, 144, 122, 0.15), rgba(232, 144, 122, 0.05));
+        }
+
+        .service-icon-teal {
+            background: linear-gradient(135deg, rgba(95, 158, 160, 0.15), rgba(95, 158, 160, 0.05));
+        }
+
+        .service-icon-sand {
+            background: linear-gradient(135deg, rgba(244, 228, 193, 0.4), rgba(244, 228, 193, 0.15));
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--slate-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-price {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--coral);
+        }
+
+        .service-price small {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--slate-light);
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: var(--sand-light);
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, var(--coral), var(--coral-dark), var(--teal-dark));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image-label {
+            font-family: var(--font-display);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .about-image-accent {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--teal);
+            border-radius: var(--radius-blob);
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.2;
+            filter: blur(20px);
+        }
+
+        .about-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--slate-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .about-feature span {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--slate-dark);
+        }
+
+        /* ========== TEAM ========== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition);
+            border: 1px solid rgba(74, 85, 104, 0.06);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, var(--sand), var(--sand-dark), var(--coral-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-photo-label {
+            font-family: var(--font-display);
+            font-weight: 900;
+            color: rgba(74, 85, 104, 0.2);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            color: var(--coral);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            color: var(--slate-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            background: var(--sand-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(145deg, #8B4513, #A0522D, var(--coral-dark));
+        }
+
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(145deg, var(--teal-dark), var(--teal), var(--slate));
+        }
+
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(145deg, var(--coral), var(--sand-dark), var(--coral-dark));
+        }
+
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(145deg, var(--slate-dark), var(--teal-dark), var(--coral));
+        }
+
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(145deg, var(--sand-dark), var(--coral-light), var(--teal));
+        }
+
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(145deg, var(--teal), var(--coral), var(--slate-dark));
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 55, 72, 0.7), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--white);
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(74, 85, 104, 0.06);
+            transition: all var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-quote-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--coral), var(--teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-quote-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--white);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: #F6AD55;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--slate);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--slate-dark);
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--slate-light);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: var(--slate-dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 90%, rgba(232, 144, 122, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(95, 158, 160, 0.08) 0%, transparent 40%);
+        }
+
+        .contact .section-header h2 {
+            color: var(--white);
+        }
+
+        .contact .section-header p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: blur(8px);
+            transition: all var(--transition);
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-card-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .contact-card h3 {
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .contact-card a {
+            color: var(--coral-light);
+        }
+
+        .contact-card a:hover {
+            color: var(--coral);
+        }
+
+        .contact-whatsapp {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(232, 144, 122, 0.12), rgba(95, 158, 160, 0.08));
+            border-color: rgba(232, 144, 122, 0.2);
+        }
+
+        .contact-whatsapp p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
+            color: var(--white);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--slate-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-logo span {
+            color: var(--coral);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+        }
+
+        .footer-links a:hover {
+            color: var(--coral);
+        }
+
+        /* ========== FLOATING WHATSAPP ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-in {
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .wow-fade-up.visible,
+        .wow-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 3;
+                aspect-ratio: 3/1;
+            }
+
+            .hero-stats {
+                gap: 3.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                aspect-ratio: 2/1;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-whatsapp {
+                grid-column: 1 / -1;
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.75rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 3;
+                aspect-ratio: 3/1;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-whatsapp {
+                grid-column: 1 / -1;
+            }
+
+            section {
+                padding: 7rem 0;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 55, 72, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mobile-menu-links a {
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--coral);
+        }
+
+        /* Prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .wow-fade-up,
+            .wow-fade-in {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="nav-logo">Skillus <span>Steak House</span></a>
+            <ul class="nav-links">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Reservar Mesa</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#servicos">Servicos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Reservar Mesa</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge wow-fade-up">Boa Viagem, Recife</div>
+            <h1 class="wow-fade-up" style="transition-delay: 0.1s">
+                O Sabor Autentico do <span class="highlight">Churrasco Gaúcho</span>
+            </h1>
+            <p class="hero-description wow-fade-up" style="transition-delay: 0.2s">
+                Cortes nobres selecionados, preparados na brasa com tradicao e paixao.
+                Uma experiencia gastronômica inesquecível em Boa Viagem.
+            </p>
+            <div class="hero-buttons wow-fade-up" style="transition-delay: 0.3s">
+                <a href="#contato" class="btn btn-primary">Reservar Mesa</a>
+                <a href="#servicos" class="btn btn-outline">Ver Cardapio</a>
+            </div>
+            <div class="hero-stats wow-fade-up" style="transition-delay: 0.4s">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="12">0</span>
+                    <span class="hero-stat-label">Anos de Tradição</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="50">0</span>
+                    <span class="hero-stat-label">Cortes Nobres</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="15">0</span>
+                    <span class="hero-stat-label">Mil Clientes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wow-fade-up">Nosso Cardapio</h2>
+                <p class="wow-fade-up" style="transition-delay: 0.1s">Cortes selecionados, preparados com maestria na brasa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="service-icon service-icon-coral">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Picanha na Brasa</h3>
+                    <p>O corte mais nobre da carne brasileira, grelhado lentamente na brasa de carvao com sal grosso. Served com farofa crocante e vinagrete artesanal.</p>
+                    <span class="service-price">R$ 89,90 <small>/ porção</small></span>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="service-icon service-icon-teal">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+                    </div>
+                    <h3>Maminha Premium</h3>
+                    <p>Corte suculento com marmoreio perfeito, assado em temperatura controlada. Acompanha arroz de leite, banana da terra e molho chimichurri.</p>
+                    <span class="service-price">R$ 79,90 <small>/ porção</small></span>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="service-icon service-icon-sand">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h3>Costela de Boi</h3>
+                    <p>Costela bovina no osso, assada lentamente por 8 horas na brasa. Carne macia que desmancha, com molho barbecue da casa.</p>
+                    <span class="service-price">R$ 69,90 <small>/ porção</small></span>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="service-icon service-icon-teal">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5F9EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Alcatra Grelhada</h3>
+                    <p>Alcatra inteira na brasa, fatiada na mesa. Served com batatas rústicas assadas, queijo coalho grelhado e salada fresca.</p>
+                    <span class="service-price">R$ 85,90 <small>/ porção</small></span>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="service-icon service-icon-coral">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8907A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z"/><path d="M18 4l-6 6"/><path d="M15 7l3 3"/><path d="M6.3 20.3 18 8.6"/></svg>
+                    </div>
+                    <h3>Fraldinha Assada</h3>
+                    <p>Corte com sabor intenso e textura única, marinado em especiarias selecionadas por 24 horas. Perfeito para compartilhar.</p>
+                    <span class="service-price">R$ 82,90 <small>/ porção</small></span>
+                </div>
+                <div class="service-card wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="service-icon service-icon-sand">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                    </div>
+                    <h3>Cupim Recheado</h3>
+                    <p>Cupim bovino assado lentamente com recheio de bacon, queijo e ervas. O carro-chefe da casa que faz sucesso ha 12 anos.</p>
+                    <span class="service-price">R$ 94,90 <small>/ porção</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up">
+                    <div class="about-image-placeholder">
+                        <span class="about-image-label">Skillus Steak House</span>
+                    </div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <h2 class="wow-fade-up">Nossa Historia</h2>
+                    <p class="wow-fade-up" style="transition-delay: 0.1s">
+                        Ha mais de uma decada, a Skillus Steak House nasceu do sonho de trazer o melhor do churrasco gaúcho para Boa Viagem, no coracao de Recife. O que começou como uma pequena churrascaria familiar se tornou referência em carnes nobres e atendimento caloroso.
+                    </p>
+                    <p class="wow-fade-up" style="transition-delay: 0.15s">
+                        Nosso compromisso é simples: selecionar os melhores cortes, prepará-los com respeito à tradição e servir cada cliente como se fosse um convidado em nossa casa. Cada refeição é uma experiência construída com dedicação, do corte à mesa.
+                    </p>
+                    <div class="about-features wow-fade-up" style="transition-delay: 0.2s">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Carnes selecionadas diariamente</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Brasa de carvao autêntica</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Ambiente climatizado e confortável</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span>Cardapio com mais de 50 cortes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wow-fade-up">Nossa Equipe</h2>
+                <p class="wow-fade-up" style="transition-delay: 0.1s">Profissionais apaixonados pelo que fazem</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="team-photo">
+                        <span class="team-photo-label">Foto</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>Carlos Henrique</h3>
+                        <p class="team-role">Chef Executivo</p>
+                        <p class="team-bio">Mais de 20 anos no preparo de carnes nobres. Formado em gastronomia e especialista em churrasco gaúcho.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="team-photo" style="background: linear-gradient(145deg, var(--teal), var(--teal-dark), var(--slate-dark));">
+                        <span class="team-photo-label">Foto</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>Mariana Oliveira</h3>
+                        <p class="team-role">Gerente Geral</p>
+                        <p class="team-bio">Responsável pela experiencia do cliente. Garante que cada visita à Skillus seja memorável e acolhedora.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="team-photo" style="background: linear-gradient(145deg, var(--slate-dark), var(--coral), var(--sand-dark));">
+                        <span class="team-photo-label">Foto</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>Rafael Santos</h3>
+                        <p class="team-role">Assador Chefe</p>
+                        <p class="team-bio">Mestre na arte da brasa. Controla ponto e temperatura de cada corte com precisão milimétrica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wow-fade-up">Galeria</h2>
+                <p class="wow-fade-up" style="transition-delay: 0.1s">Conheça nosso ambiente e pratos</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Salao Principal</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Picanha na Brasa</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Cupim Recheado</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.2s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Área VIP</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Costela no Osso</span></div>
+                </div>
+                <div class="gallery-item wow-fade-up" style="transition-delay: 0.3s">
+                    <div class="gallery-placeholder"></div>
+                    <div class="gallery-overlay"><span>Entrada Especial</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wow-fade-up">O Que Dizem Nossos Clientes</h2>
+                <p class="wow-fade-up" style="transition-delay: 0.1s">Avaliações reais de quem já experimentou</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A melhor churrascaria de Recife, sem sombra de dúvidas. A picanha é divina, o ambiente é super agradável e o atendimento impecável. Ja vim aqui mais de 10 vezes e nunca me decepcionei."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--coral), var(--coral-dark));">F</div>
+                        <div>
+                            <p class="testimonial-name">Fernanda Lima</p>
+                            <p class="testimonial-detail">Cliente desde 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Celebrei meu aniversário na Skillus e foi perfeito. O cupim recheado é sensacional, e a equipe tratou minha família com muito carinho. Recomendo de olhos fechados para qualquer ocasião especial."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--teal), var(--teal-dark));">R</div>
+                        <div>
+                            <p class="testimonial-name">Roberto Almeida</p>
+                            <p class="testimonial-detail">Cliente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" style="transition-delay: 0.25s">
+                    <div class="testimonial-quote-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Trago toda minha equipe de trabalho para almoçar na Skillus. A costela é de derreter na boca, e o preço justo pela qualidade oferecida. O melhor rodizio de Boa Viagem, ponto final."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--slate-dark), var(--slate));">J</div>
+                        <div>
+                            <p class="testimonial-name">Juliana Cardoso</p>
+                            <p class="testimonial-detail">Cliente desde 2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="wow-fade-up">Venha Nos Visitar</h2>
+                <p class="wow-fade-up" style="transition-delay: 0.1s">Estamos te esperando com a melhor carne da cidade</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card wow-fade-up" style="transition-delay: 0.05s">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Endereço</h3>
+                    <p>R. Padre Carapuceiro, 777 - 389<br>Boa Viagem, Recife - PE<br>51020-900</p>
+                </div>
+                <div class="contact-card wow-fade-up" style="transition-delay: 0.1s">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3>Telefone</h3>
+                    <p><a href="tel:+558134646288">(81) 3464-6288</a></p>
+                </div>
+                <div class="contact-card wow-fade-up" style="transition-delay: 0.15s">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Horarios</h3>
+                    <p>Terça a Quinta: 18h às 23h<br>Sexta e Sábado: 18h às 00h<br>Domingo: 12h às 16h<br>Segunda: Fechado</p>
+                </div>
+                <div class="contact-card contact-whatsapp wow-fade-up" style="transition-delay: 0.2s">
+                    <h3>Faça Sua Reserva pelo WhatsApp</h3>
+                    <p>Reserve sua mesa em segundos. Atendimento rápido e sem complicações.</p>
+                    <a href="https://wa.me/55558134646288" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Reservar pelo WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Skillus <span>Steak House</span></div>
+            <p>R. Padre Carapuceiro, 777 - Boa Viagem, Recife - PE</p>
+            <p>(81) 3464-6288</p>
+            <div class="footer-links">
+                <a href="#servicos">Cardapio</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.75rem;">&copy; 2025 Skillus Steak House. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/55558134646288" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ========== NAVBAR SCROLL ========== */
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        /* ========== MOBILE MENU ========== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        hamburger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburger.click();
+            }
+        });
+
+        /* ========== INTERSECTION OBSERVER ========== */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.wow-fade-up, .wow-fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        /* ========== COUNTER ANIMATION ========== */
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(function(counter) {
+                        const target = parseInt(counter.getAttribute('data-count'), 10);
+                        const duration = 2000;
+                        const start = performance.now();
+
+                        function updateCounter(now) {
+                            const elapsed = now - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            counter.textContent = Math.round(target * eased);
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target + '+';
+                            }
+                        }
+
+                        requestAnimationFrame(updateCounter);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.hero-stats');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        /* ========== SMOOTH SCROLL ========== */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
