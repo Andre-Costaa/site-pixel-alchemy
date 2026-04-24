@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JK Steak Recife - Clinica de saude em Recife, PE. Consultas, exames e tratamentos com profissionais qualificados. Agende agora!">
+    <meta name="keywords" content="clinica saude, Recife, consulta medica, exames, tratamento, Pernambuco">
+    <meta name="author" content="JK Steak Recife">
+
+    <meta property="og:title" content="JK Steak Recife - Cuidado com a sua saude">
+    <meta property="og:description" content="Clinica de saude em Recife, PE. Consultas, exames e tratamentos com profissionais qualificados.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://www.pixelalchemy.com.br/site-demo/jk-steak-recife/">
+
+    <title>JK Steak Recife | Cuidado com a sua saude</title>
+
+    <style>
+        :root {
+            --champagne: #F7E7CE;
+            --bronze: #B87333;
+            --bronze-light: #D4956A;
+            --cream: #FFF8F0;
+            --espresso: #3C2415;
+            --espresso-light: #5A3D2E;
+            --white: #FFFFFF;
+            --gray-100: #F5F0EB;
+            --gray-200: #E8DDD3;
+            --gray-300: #C4B5A5;
+            --gray-400: #9A8A7A;
+            --gray-500: #6B5B4B;
+            --shadow-sm: 0 2px 8px rgba(60,36,21,0.06);
+            --shadow-md: 0 4px 20px rgba(60,36,21,0.10);
+            --shadow-lg: 0 8px 40px rgba(60,36,21,0.14);
+            --shadow-xl: 0 16px 60px rgba(60,36,21,0.18);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: Georgia, 'Times New Roman', serif;
+            --font-body: Georgia, 'Times New Roman', serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--cream);
+            color: var(--espresso);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255,248,240,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            padding: 0.75rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--espresso);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: var(--transition);
+        }
+
+        .nav-logo span {
+            color: var(--bronze);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--espresso);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bronze);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--bronze);
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem !important;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--espresso);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--espresso);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--espresso) 0%, var(--espresso-light) 40%, #6B4226 100%);
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(184,115,51,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(247,231,206,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(184,115,51,0.4);
+            border-radius: 50px;
+            color: var(--champagne);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--champagne);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-title span {
+            color: var(--bronze-light);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: rgba(247,231,206,0.75);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: var(--bronze);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--bronze-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(184,115,51,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--champagne);
+            border: 1.5px solid rgba(247,231,206,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--bronze);
+            color: var(--bronze-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 1s forwards;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--bronze-light);
+            font-weight: 700;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(247,231,206,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-line {
+            position: absolute;
+            background: linear-gradient(to bottom, transparent, rgba(184,115,51,0.1), transparent);
+            width: 1px;
+            height: 100%;
+        }
+
+        .hero-line:nth-child(1) { left: 10%; }
+        .hero-line:nth-child(2) { left: 30%; }
+        .hero-line:nth-child(3) { right: 30%; }
+        .hero-line:nth-child(4) { right: 10%; }
+
+        /* ===================== SECTION COMMON ===================== */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bronze);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--espresso);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-500);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--bronze), var(--champagne));
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===================== SERVICES ===================== */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--bronze), var(--champagne));
+            transition: var(--transition);
+            border-radius: 0 0 4px 0;
+        }
+
+        .service-card:hover {
+            border-color: var(--bronze-light);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--champagne), rgba(184,115,51,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--bronze);
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.35rem;
+        }
+
+        .service-price-currency {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            font-weight: 600;
+        }
+
+        .service-price-value {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--bronze);
+            font-weight: 700;
+        }
+
+        .service-price-info {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-left: 0.25rem;
+        }
+
+        /* ===================== ABOUT ===================== */
+        .about {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--bronze-light) 50%, var(--espresso-light) 100%);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -8px;
+            right: -8px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--bronze);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .about-content {
+            max-width: 560px;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--gray-500);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-feature-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), rgba(184,115,51,0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-feature-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--bronze);
+        }
+
+        .about-feature-text {
+            font-size: 0.85rem;
+            color: var(--espresso);
+            font-weight: 500;
+        }
+
+        /* ===================== TEAM ===================== */
+        .team {
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--cream);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-card:hover {
+            border-color: var(--bronze-light);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .team-photo {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--gray-200) 50%, var(--bronze-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60,36,21,0.2), transparent 50%);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--espresso);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--bronze);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-bio {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* ===================== GALLERY ===================== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item-bg {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .gallery-item:nth-child(1) .gallery-item-bg { background: linear-gradient(135deg, #D4956A 0%, #3C2415 100%); }
+        .gallery-item:nth-child(2) .gallery-item-bg { background: linear-gradient(135deg, #F7E7CE 0%, #B87333 100%); }
+        .gallery-item:nth-child(3) .gallery-item-bg { background: linear-gradient(135deg, #5A3D2E 0%, #F7E7CE 100%); }
+        .gallery-item:nth-child(4) .gallery-item-bg { background: linear-gradient(135deg, #B87333 0%, #3C2415 100%); }
+        .gallery-item:nth-child(5) .gallery-item-bg { background: linear-gradient(135deg, #FFF8F0 0%, #D4956A 100%); }
+        .gallery-item:nth-child(6) .gallery-item-bg { background: linear-gradient(135deg, #6B4226 0%, #F7E7CE 100%); }
+
+        .gallery-item:hover .gallery-item-bg {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(60,36,21,0.7), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-text {
+            color: var(--champagne);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===================== TESTIMONIALS ===================== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 2rem;
+            right: 2rem;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--bronze), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(184,115,51,0.3);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--bronze);
+            color: var(--bronze);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), var(--bronze-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--espresso);
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--espresso);
+            font-weight: 700;
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* ===================== CONTACT ===================== */
+        .contact {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--gray-100) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--champagne), rgba(184,115,51,0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--bronze);
+        }
+
+        .contact-item-label {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--espresso);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .contact-item-value a {
+            color: var(--espresso);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--bronze);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--espresso);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--espresso);
+            background: var(--cream);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 3px rgba(184,115,51,0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bronze);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit:hover {
+            background: var(--espresso);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-whatsapp {
+            margin-top: 2rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: #25D366;
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            font-family: var(--font-body);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1EBE5A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--espresso);
+            color: var(--champagne);
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--champagne);
+        }
+
+        .footer-logo span {
+            color: var(--bronze-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: rgba(247,231,206,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--champagne);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(247,231,206,0.4);
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(184,115,51,0.3);
+        }
+
+        /* ===================== FLOATING WHATSAPP ===================== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37,211,102,0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6), 0 0 0 8px rgba(37,211,102,0.1); }
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wow-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .wow-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: 1 / 3;
+                grid-row: 1;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                padding: 7rem 2rem;
+            }
+
+            .navbar {
+                padding: 1.5rem 3rem;
+            }
+
+            .navbar.scrolled {
+                padding: 1rem 3rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255,248,240,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 998;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+                z-index: 999;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">JK <span>Steak</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicos">Servicos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#equipe">Equipe</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-decoration">
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+            <div class="hero-line"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Cuidado com excelencia desde 2010</div>
+            <h1 class="hero-title">Sua saude merece <span>dedicacao</span> completa</h1>
+            <p class="hero-subtitle">Na JK Steak Recife, combinamos tecnologia de ponta e atendimento humanizado para oferecer o melhor em cuidados com a saude.</p>
+            <div class="hero-buttons">
+                <a href="#contato" class="btn btn-primary">Agendar Consulta</a>
+                <a href="#servicos" class="btn btn-outline">Conheca Nossos Servicos</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="15">0</span>
+                    <span class="hero-stat-label">Anos de experiencia</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="8500">0</span>
+                    <span class="hero-stat-label">Pacientes atendidos</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="98">0</span>
+                    <span class="hero-stat-label">% Satisfacao</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="servicos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">Cuidado completo para voce</h2>
+                <p class="section-subtitle">Oferecemos uma gama completa de servicos para garantir o seu bem-estar em todas as etapas.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card wow-fade-up" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="service-title">Consulta</h3>
+                    <p class="service-description">Avaliacao clinica completa com anamnese detalhada, exame fisico e orientacoes personalizadas para o seu caso.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">280</span>
+                        <span class="service-price-info">/ sessao</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    </div>
+                    <h3 class="service-title">Retorno</h3>
+                    <p class="service-description">Consulta de retorno para acompanhamento do seu tratamento, ajustes e evolucao do quadro clinico.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">180</span>
+                        <span class="service-price-info">/ sessao</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 class="service-title">Exame Complementar</h3>
+                    <p class="service-description">Exames laboratoriais e de imagem com laudos detalhados e integracao ao seu historico de saude.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">150</span>
+                        <span class="service-price-info">a partir</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="service-title">Procedimento</h3>
+                    <p class="service-description">Procedimentos minimamente invasivos realizados por equipe especializada, com seguranca e conforto.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">450</span>
+                        <span class="service-price-info">a partir</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="400">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3 class="service-title">Avaliacao Inicial</h3>
+                    <p class="service-description">Triagem completa com avaliacao de sinais vitais, historico medico e encaminhamento adequado.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">120</span>
+                        <span class="service-price-info">/ sessao</span>
+                    </div>
+                </div>
+                <div class="service-card wow-fade-up" data-delay="500">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="service-title">Tratamento</h3>
+                    <p class="service-description">Plano terapeutico personalizado com acompanhamento continuo ate a sua recuperacao completa.</p>
+                    <div class="service-price">
+                        <span class="service-price-currency">R$</span>
+                        <span class="service-price-value">380</span>
+                        <span class="service-price-info">/ sessao</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image wow-fade-up" data-delay="0">
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content">
+                    <div class="wow-fade-up" data-delay="100">
+                        <span class="section-label">Sobre Nos</span>
+                        <h2 class="section-title">Tradiccao e confianca em cada atendimento</h2>
+                    </div>
+                    <p class="about-text wow-fade-up" data-delay="200">Fundada em 2010, a JK Steak Recife nasceu com o proposito de oferecer atendimento medico de excelencia no coracao de Recife. Ao longo de mais de 15 anos, construimos uma reputacao baseada em confianca, profissionalismo e resultados.</p>
+                    <p class="about-text wow-fade-up" data-delay="300">Nossa equipe e formada por profissionais altamente qualificados que se atualizam constantemente, garantindo que voce receba o melhor cuidado disponivel. Acreditamos que cada paciente e unico e merece um plano de tratamento personalizado.</p>
+                    <div class="about-features wow-fade-up" data-delay="400">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Equipe especializada</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Tecnologia de ponta</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Ambiente acolhedor</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="about-feature-text">Agendamento facil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section team" id="equipe">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Nossa Equipe</span>
+                <h2 class="section-title">Profissionais que fazem a diferenca</h2>
+                <p class="section-subtitle">Conheca os especialistas dedicados ao seu bem-estar.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-card wow-fade-up" data-delay="0">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Ricardo Almeida</h3>
+                        <p class="team-role">Clinico Geral - CRM-PE 12345</p>
+                        <p class="team-bio">Especialista em clinica medica com mais de 20 anos de experiencia. Pos-graduado pela UFPE com foco em medicina preventiva.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="100">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dra. Camila Ferreira</h3>
+                        <p class="team-role">Nutricionista - CRN-PE 67890</p>
+                        <p class="team-bio">Nutricionista clinica especializada em alimentacao funcional e reeducacao alimentar. Mestre em Nutricao pela UFRPE.</p>
+                    </div>
+                </div>
+                <div class="team-card wow-fade-up" data-delay="200">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Paulo Henrique</h3>
+                        <p class="team-role">Fisioterapeuta - CREFITO-PE 54321</p>
+                        <p class="team-bio">Fisioterapeuta com especializacao em reabilitacao ortopedica e terapia manual. Experiencia em atendimento esportivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery" id="galeria">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Galeria</span>
+                <h2 class="section-title">Conheca nosso espaco</h2>
+                <p class="section-subtitle">Um ambiente pensado para o seu conforto e bem-estar.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wow-fade-up" data-delay="0">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Recepcao principal</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="100">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de espera</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="200">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Consultorio</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="300">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Area de exames</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="400">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Fachada externa</span>
+                    </div>
+                </div>
+                <div class="gallery-item wow-fade-up" data-delay="500">
+                    <div class="gallery-item-bg"></div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">Sala de procedimentos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que dizem nossos pacientes</h2>
+                <p class="section-subtitle">A satisfacao dos nossos pacientes e a nossa maior conquista.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card wow-fade-up" data-delay="0">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Atendimento impecavel desde a recepcao ate a consulta. O Dr. Ricardo e extremamente atencioso e cuidadoso. Me senti acolhida em todos os momentos."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MS</div>
+                        <div>
+                            <p class="testimonial-name">Maria Silva</p>
+                            <p class="testimonial-detail">Paciente ha 3 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="100">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"A Dra. Camila mudou minha relacao com a alimentacao. Com o acompanhamento nutricional, consegui resultados que nao obtinha ha anos. Super recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JC</div>
+                        <div>
+                            <p class="testimonial-name">Jose Carlos</p>
+                            <p class="testimonial-detail">Paciente ha 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card wow-fade-up" data-delay="200">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Apos uma lesao no joelho, o Dr. Paulo me ajudou a recuperar completamente a mobilidade. Profissional dedicado e clinica de primeira qualidade."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AO</div>
+                        <div>
+                            <p class="testimonial-name">Ana Oliveira</p>
+                            <p class="testimonial-detail">Paciente ha 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contato">
+        <div class="section-container">
+            <div class="section-header wow-fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Agende sua consulta</h2>
+                <p class="section-subtitle">Entre em contato conosco e marque seu horario com facilidade.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item wow-fade-up" data-delay="0">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Endereco</p>
+                            <p class="contact-item-value">R. Gen. Joaquim Inacio, 515 - Ilha do Leite<br>Recife - PE, 50070-270</p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="100">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Telefone</p>
+                            <p class="contact-item-value"><a href="tel:+558132228632">(81) 3222-8632</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item wow-fade-up" data-delay="200">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <p class="contact-item-label">Horario de Funcionamento</p>
+                            <p class="contact-item-value">Segunda a Sexta: 08:00 - 18:00<br>Sabado: 08:00 - 12:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-whatsapp wow-fade-up" data-delay="300">
+                        <a href="https://wa.me/55558132228632" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                            Fale pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form wow-fade-up" data-delay="200" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nome completo</label>
+                            <input type="text" id="name" class="form-input" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Telefone</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="(81) 99999-9999" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service">Servico desejado</label>
+                        <select id="service" class="form-select" required>
+                            <option value="">Selecione um servico</option>
+                            <option value="consulta">Consulta - R$ 280</option>
+                            <option value="retorno">Retorno - R$ 180</option>
+                            <option value="exame">Exame Complementar - R$ 150</option>
+                            <option value="procedimento">Procedimento - R$ 450</option>
+                            <option value="avaliacao">Avaliacao Inicial - R$ 120</option>
+                            <option value="tratamento">Tratamento - R$ 380</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Mensagem</label>
+                        <textarea id="message" class="form-textarea" placeholder="Conte-nos como podemos ajudar..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">JK <span>Steak</span> Recife</div>
+            <div class="footer-links">
+                <a href="#servicos">Servicos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">2025 JK Steak Recife. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/55558132228632" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        /* ===================== NAVBAR SCROLL ===================== */
+        (function() {
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+        })();
+
+        /* ===================== MOBILE MENU ===================== */
+        (function() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+
+            toggle.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                links.classList.toggle('active');
+                document.body.style.overflow = links.classList.contains('active') ? 'hidden' : '';
+            });
+
+            links.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggle.classList.remove('active');
+                    links.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+
+        /* ===================== INTERSECTION OBSERVER ANIMATIONS ===================== */
+        (function() {
+            const elements = document.querySelectorAll('.wow-fade-up');
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var delay = entry.target.getAttribute('data-delay') || 0;
+                            setTimeout(function() {
+                                entry.target.classList.add('visible');
+                            }, parseInt(delay));
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-50px 0px'
+                });
+
+                elements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                elements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        })();
+
+        /* ===================== COUNTER ANIMATION ===================== */
+        (function() {
+            var counters = document.querySelectorAll('.hero-stat-number[data-count]');
+            var animated = false;
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-count'));
+                var duration = 2000;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.floor(eased * target);
+                    el.textContent = current.toLocaleString('pt-BR');
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target.toLocaleString('pt-BR');
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !animated) {
+                            animated = true;
+                            counters.forEach(function(counter) {
+                                animateCounter(counter);
+                            });
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(function(counter) {
+                    observer.observe(counter);
+                });
+            }
+        })();
+
+        /* ===================== CONTACT FORM ===================== */
+        (function() {
+            var form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value;
+                var phone = document.getElementById('phone').value;
+                var service = document.getElementById('service');
+                var serviceText = service.options[service.selectedIndex].text;
+                var message = document.getElementById('message').value;
+
+                var whatsappMessage = 'Ola! Meu nome e ' + name + '. Telefone: ' + phone + '. Tenho interesse em: ' + serviceText + '. Mensagem: ' + message;
+                var encodedMessage = encodeURIComponent(whatsappMessage);
+
+                window.open('https://wa.me/55558132228632?text=' + encodedMessage, '_blank');
+
+                form.reset();
+            });
+        })();
+
+        /* ===================== SMOOTH SCROLL FOR ANCHOR LINKS ===================== */
+        (function() {
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href');
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        var offset = 80;
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
