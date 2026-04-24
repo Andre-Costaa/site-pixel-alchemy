@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Du Boeuf Premier - Cortes Especiais. Os melhores cortes nobres e carnes maturadas de Recife. Qualidade premium para sua mesa.">
+<meta name="keywords" content="cortes especiais, carne nobre, maturacao seca, churrasco, Recife, aougue premium">
+<meta property="og:title" content="Du Boeuf Premier - Cortes Especiais">
+<meta property="og:description" content="Os melhores cortes nobres e carnes maturadas de Recife. Qualidade premium para sua mesa.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Du Boeuf Premier - Cortes Especiais | Recife - PE</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAF5E8;
+  --brown:#9B7E5A;
+  --terracotta:#C17050;
+  --gold:#C9A45C;
+  --dark:#1E110A;
+  --cream-dark:#F0E8D4;
+  --brown-light:#B8956A;
+  --terracotta-light:#D4896E;
+  --gold-light:#D4B878;
+  --dark-light:#3A2A1E;
+  --shadow:rgba(30,17,10,.12);
+  --shadow-lg:rgba(30,17,10,.2);
+  --radius:12px;
+  --radius-lg:20px;
+  --transition:all .4s cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  background:var(--cream);color:var(--dark);line-height:1.6;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:Georgia,'Palatino Linotype','Book Antiqua',Palatino,serif;font-weight:700;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ========== NAV ========== */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(250,245,232,.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(155,126,90,.1);
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+nav.nav-hidden{transform:translateY(-100%)}
+nav.nav-visible{transform:translateY(0);box-shadow:0 4px 30px var(--shadow)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.3rem;font-weight:700;color:var(--dark)}
+.nav-logo span{color:var(--terracotta)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+  font-size:.88rem;font-weight:500;color:var(--dark-light);letter-spacing:.3px;
+  position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--terracotta);transition:width .3s;
+}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:var(--terracotta);color:#fff !important;padding:10px 24px;
+  border-radius:50px;font-size:.85rem;font-weight:600;letter-spacing:.3px;
+  transition:var(--transition);
+}
+.nav-cta:hover{background:var(--dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(193,112,80,.35)}
+.nav-cta::after{display:none !important}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:8px;z-index:1001;
+}
+.hamburger span{display:block;width:26px;height:2px;background:var(--dark);border-radius:2px;transition:var(--transition)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:120px 20px 80px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--dark) 0%,#3A2218 25%,#4A2E1E 50%,#2A1A10 75%,var(--dark) 100%);
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(193,112,80,.25) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 30%,rgba(201,164,92,.2) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 80%,rgba(155,126,90,.15) 0%,transparent 60%);
+}
+.hero-grain{
+  position:absolute;inset:0;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.hero-blob{
+  position:absolute;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;
+  filter:blur(80px);opacity:.15;animation:blobFloat 20s ease-in-out infinite;
+}
+.hero-blob-1{width:500px;height:500px;background:var(--terracotta);top:-10%;right:-10%;animation-delay:0s}
+.hero-blob-2{width:400px;height:400px;background:var(--gold);bottom:-10%;left:-5%;animation-delay:-7s}
+.hero-blob-3{width:300px;height:300px;background:var(--brown);top:40%;left:50%;animation-delay:-14s}
+@keyframes blobFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(30px,-40px) scale(1.05)}
+  50%{transform:translate(-20px,30px) scale(.95)}
+  75%{transform:translate(40px,20px) scale(1.02)}
+}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px}
+.hero-badge{
+  display:inline-block;padding:8px 24px;border:1px solid rgba(201,164,92,.4);
+  border-radius:50px;color:var(--gold);font-size:.8rem;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:32px;
+  backdrop-filter:blur(8px);background:rgba(201,164,92,.08);
+}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.5rem);color:#fff;margin-bottom:24px;
+  letter-spacing:-.5px;
+}
+.hero h1 em{
+  font-style:italic;color:var(--gold);
+  background:linear-gradient(135deg,var(--gold),var(--terracotta));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-desc{
+  font-size:clamp(1rem,2vw,1.2rem);color:rgba(250,245,232,.75);
+  max-width:560px;margin:0 auto 40px;line-height:1.8;
+}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--terracotta),var(--gold));
+  color:#fff;padding:16px 36px;border-radius:50px;font-size:.95rem;font-weight:600;
+  transition:var(--transition);border:none;cursor:pointer;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(193,112,80,.4)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid rgba(250,245,232,.25);color:var(--cream);
+  padding:14px 36px;border-radius:50px;font-size:.95rem;font-weight:500;
+  transition:var(--transition);background:transparent;cursor:pointer;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,164,92,.08)}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(250,245,232,.4);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+  animation:scrollBounce 2s ease-in-out infinite;
+}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(250,245,232,.4),transparent)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ========== SECTION COMMON ========== */
+.section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:64px}
+.section-tag{
+  display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--dark);margin-bottom:16px}
+.section-title em{font-style:italic;color:var(--terracotta)}
+.section-subtitle{font-size:1.05rem;color:var(--brown);max-width:540px;margin:0 auto;line-height:1.7}
+.section-divider{
+  width:60px;height:3px;margin:20px auto 0;border-radius:2px;
+  background:linear-gradient(90deg,var(--terracotta),var(--gold));
+}
+
+/* ========== SERVICES ========== */
+.services{background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{
+  background:#fff;border-radius:var(--radius-lg);padding:40px 32px;
+  border:1px solid rgba(155,126,90,.08);position:relative;overflow:hidden;
+  transition:var(--transition);cursor:default;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--terracotta),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px var(--shadow-lg)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{
+  width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;font-size:1.5rem;
+}
+.service-icon.s1{background:rgba(193,112,80,.1);color:var(--terracotta)}
+.service-icon.s2{background:rgba(201,164,92,.12);color:var(--gold)}
+.service-icon.s3{background:rgba(155,126,90,.1);color:var(--brown)}
+.service-icon.s4{background:rgba(193,112,80,.08);color:var(--terracotta)}
+.service-icon.s5{background:rgba(201,164,92,.1);color:var(--gold)}
+.service-icon.s6{background:rgba(155,126,90,.08);color:var(--brown)}
+.service-card h3{font-size:1.15rem;margin-bottom:12px;color:var(--dark)}
+.service-card p{font-size:.92rem;color:var(--brown);line-height:1.7;margin-bottom:20px}
+.service-price{
+  font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.3rem;
+  font-weight:700;color:var(--terracotta);
+}
+.service-price small{font-size:.8rem;font-weight:400;color:var(--brown);font-family:-apple-system,sans-serif}
+
+/* ========== ABOUT ========== */
+.about{background:var(--dark);color:var(--cream);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{position:relative}
+.about-img{
+  width:100%;aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#3A2218,#4A2E1E,#5A3E2E);
+}
+.about-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(193,112,80,.3),rgba(201,164,92,.2));
+}
+.about-img-decor{
+  position:absolute;width:180px;height:180px;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;
+  background:linear-gradient(135deg,var(--terracotta),var(--gold));
+  bottom:-30px;right:-30px;z-index:-1;opacity:.15;
+}
+.about-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:24px;color:#fff}
+.about-text h2 em{font-style:italic;color:var(--gold)}
+.about-text p{color:rgba(250,245,232,.7);margin-bottom:16px;line-height:1.8}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:40px;border-top:1px solid rgba(250,245,232,.1)}
+.stat{text-align:center}
+.stat-number{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.stat-label{font-size:.8rem;color:rgba(250,245,232,.5);margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+
+/* ========== TEAM ========== */
+.team{background:var(--cream)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.team-card{
+  text-align:center;background:#fff;border-radius:var(--radius-lg);
+  padding:40px 28px;border:1px solid rgba(155,126,90,.06);
+  transition:var(--transition);overflow:hidden;
+}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px var(--shadow)}
+.team-photo{
+  width:140px;height:140px;border-radius:50%;margin:0 auto 24px;
+  overflow:hidden;position:relative;border:4px solid var(--cream-dark);
+  transition:var(--transition);
+}
+.team-card:hover .team-photo{border-color:var(--gold)}
+.team-photo-bg{
+  width:100%;height:100%;
+}
+.tp1{background:linear-gradient(135deg,#5A3E2E,#7A5E4E,#4A2E1E)}
+.tp2{background:linear-gradient(135deg,#4A3E3E,#6A5E5E,#3A2E2E)}
+.tp3{background:linear-gradient(135deg,#3A2E1E,#5A4E3E,#4A3E2E)}
+.team-card h3{font-size:1.1rem;color:var(--dark);margin-bottom:6px}
+.team-card .role{font-size:.85rem;color:var(--terracotta);font-weight:500;margin-bottom:12px}
+.team-card p{font-size:.88rem;color:var(--brown);line-height:1.6}
+
+/* ========== GALLERY ========== */
+.gallery{background:var(--cream-dark);padding:100px 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-item{
+  aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;
+  position:relative;cursor:pointer;
+}
+.gallery-bg{
+  width:100%;height:100%;transition:transform .6s ease;
+}
+.g1{background:linear-gradient(135deg,#5A3E2E,#7A5E4E)}
+.g2{background:linear-gradient(135deg,#4A2E1E,#6A4E3E)}
+.g3{background:linear-gradient(135deg,#6A4E3E,#8A6E5E)}
+.g4{background:linear-gradient(135deg,#3A2E1E,#5A4E3E)}
+.g5{background:linear-gradient(135deg,#4A3E2E,#7A5E4E)}
+.g6{background:linear-gradient(135deg,#5A3E2E,#3A2218)}
+.gallery-item:hover .gallery-bg{transform:scale(1.08)}
+.gallery-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(30,17,10,.7),transparent 60%);
+  opacity:0;transition:opacity .4s ease;display:flex;align-items:flex-end;padding:24px;
+}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:#fff;font-size:.9rem;font-weight:500;transform:translateY(10px);transition:transform .4s ease}
+.gallery-item:hover .gallery-overlay span{transform:translateY(0)}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials{background:var(--cream)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testimonial-card{
+  background:#fff;border-radius:var(--radius-lg);padding:36px 28px;
+  border:1px solid rgba(155,126,90,.06);position:relative;
+  transition:var(--transition);
+}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--shadow)}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:20px}
+.testimonial-stars svg{width:18px;height:18px;fill:var(--gold)}
+.testimonial-card blockquote{font-size:.95rem;color:var(--dark-light);line-height:1.8;margin-bottom:24px;font-style:italic}
+.testimonial-card blockquote::before{content:'\201C';font-family:Georgia,serif;font-size:3rem;color:var(--terracotta);opacity:.3;line-height:0;position:relative;top:16px}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{
+  width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;
+}
+.ta1{background:linear-gradient(135deg,var(--terracotta),var(--gold))}
+.ta2{background:linear-gradient(135deg,var(--brown),var(--brown-light))}
+.ta3{background:linear-gradient(135deg,var(--gold),var(--terracotta))}
+.testimonial-info h4{font-size:.92rem;color:var(--dark);font-family:-apple-system,sans-serif;font-weight:600}
+.testimonial-info span{font-size:.8rem;color:var(--brown)}
+
+/* ========== CONTACT ========== */
+.contact{background:var(--dark);color:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px;color:#fff}
+.contact-info h2 em{font-style:italic;color:var(--gold)}
+.contact-info>p{color:rgba(250,245,232,.65);line-height:1.8;margin-bottom:32px}
+.contact-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
+.contact-item-icon{
+  width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:rgba(193,112,80,.12);color:var(--terracotta);flex-shrink:0;
+}
+.contact-item-icon svg{width:22px;height:22px;stroke:var(--terracotta);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-item-text h4{font-size:.92rem;color:var(--cream);margin-bottom:4px;font-family:-apple-system,sans-serif;font-weight:600}
+.contact-item-text p{font-size:.9rem;color:rgba(250,245,232,.6);line-height:1.6}
+.contact-item-text a{color:var(--gold);transition:color .3s}
+.contact-item-text a:hover{color:var(--terracotta)}
+.contact-hours{margin-top:36px;padding:28px;border-radius:var(--radius);background:rgba(250,245,232,.04);border:1px solid rgba(250,245,232,.08)}
+.contact-hours h4{font-size:.95rem;color:var(--cream);margin-bottom:16px;font-family:-apple-system,sans-serif;font-weight:600}
+.contact-hours ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(250,245,232,.06);font-size:.88rem;color:rgba(250,245,232,.6)}
+.contact-hours ul li:last-child{border:none}
+.contact-hours ul li span:last-child{color:var(--gold);font-weight:500}
+.contact-form-wrap{background:rgba(250,245,232,.04);border:1px solid rgba(250,245,232,.08);border-radius:var(--radius-lg);padding:40px}
+.contact-form-wrap h3{font-size:1.2rem;color:#fff;margin-bottom:24px;font-family:-apple-system,sans-serif}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.82rem;color:rgba(250,245,232,.6);margin-bottom:8px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:14px 18px;background:rgba(250,245,232,.06);
+  border:1px solid rgba(250,245,232,.1);border-radius:var(--radius);
+  color:var(--cream);font-size:.92rem;font-family:inherit;
+  transition:var(--transition);outline:none;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(250,245,232,.3)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--terracotta);background:rgba(250,245,232,.08)}
+.form-group select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239B7E5A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-group select option{background:var(--dark);color:var(--cream)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{
+  width:100%;padding:16px;background:linear-gradient(135deg,var(--terracotta),var(--gold));
+  color:#fff;border:none;border-radius:var(--radius);font-size:.95rem;font-weight:600;
+  cursor:pointer;transition:var(--transition);font-family:inherit;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(193,112,80,.4)}
+
+/* ========== FOOTER ========== */
+footer{
+  background:var(--dark);color:rgba(250,245,232,.5);
+  border-top:1px solid rgba(250,245,232,.06);padding:40px 0;
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.1rem;color:var(--cream)}
+.footer-logo span{color:var(--terracotta)}
+.footer-copy{font-size:.82rem}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.82rem;color:rgba(250,245,232,.5);transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ========== WHATSAPP ========== */
+.whatsapp-float{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  box-shadow:0 6px 24px rgba(37,211,102,.4);
+  transition:var(--transition);cursor:pointer;
+}
+.whatsapp-float:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 10px 32px rgba(37,211,102,.5)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+
+/* ========== MOBILE MENU ========== */
+.mobile-menu{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(30,17,10,.98);backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:Georgia,'Palatino Linotype',Palatino,serif;font-size:1.8rem;
+  color:var(--cream);padding:12px 0;transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* ========== ANIMATIONS ========== */
+.wow{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.wow.wow-visible{opacity:1;transform:translateY(0)}
+.wow-delay-1{transition-delay:.1s}
+.wow-delay-2{transition-delay:.2s}
+.wow-delay-3{transition-delay:.3s}
+.wow-delay-4{transition-delay:.4s}
+.wow-delay-5{transition-delay:.5s}
+
+@media(prefers-reduced-motion:reduce){
+  .wow{opacity:1;transform:none;transition:none}
+  .hero-blob{animation:none}
+  .hero-scroll{animation:none}
+  .gallery-bg{transition:none}
+  .whatsapp-float{transition:none}
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:1024px){
+  .services-grid,.team-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item:last-child{grid-column:1/-1;max-width:50%;margin:0 auto}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .section{padding:72px 0}
+  .section-header{margin-bottom:48px}
+  .services-grid,.team-grid,.gallery-grid,.testimonials-grid{grid-template-columns:1fr}
+  .gallery-item:last-child{grid-column:auto;max-width:100%}
+  .form-row{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:repeat(3,1fr);gap:16px}
+  .stat-number{font-size:1.5rem}
+  .hero{min-height:90vh;padding:100px 20px 60px}
+  .hero-buttons{flex-direction:column;align-items:center}
+  .btn-primary,.btn-outline{width:100%;max-width:280px;justify-content:center}
+  .footer-inner{flex-direction:column;text-align:center}
+  .contact-form-wrap{padding:28px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2rem}
+  .section-title{font-size:1.6rem}
+  .about-stats{grid-template-columns:1fr;gap:20px;text-align:center}
+  .stat{display:flex;align-items:center;gap:12px;text-align:left}
+  .whatsapp-float{width:52px;height:52px;bottom:20px;right:20px}
+  .whatsapp-float svg{width:26px;height:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Du Boeuf <span>Premier</span></a>
+    <div class="nav-links">
+      <a href="#servicos">Servicos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato" class="nav-cta">Fale Conosco</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicos">Servicos</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#equipe">Equipe</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#contato">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Cortes Especiais</div>
+    <h1>Carnes <em>Premier</em> para Mesas Exclusivas</h1>
+    <p class="hero-desc">Selecao rigorosa dos melhores cortes nobres, maturacao artesanal e a experiencia de sabor que transforma cada refeicao em um momento unico.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/555581981133965" target="_blank" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Fazer Pedido
+      </a>
+      <a href="#servicos" class="btn-outline">Conheca Nossos Cortes</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+  <div class="container">
+    <div class="section-header wow">
+      <span class="section-tag">Nosso Acervo</span>
+      <h2 class="section-title">Cortes <em>Especiais</em></h2>
+      <p class="section-subtitle">Cada peca e selecionada criteriosamente de fornecedores certificados, garantindo procedencia e qualidade excepcional.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card wow wow-delay-1">
+        <div class="service-icon s1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 3h-6"/><path d="M21 3v3a2 2 0 0 1-2 2h-2"/><path d="M3 21h18"/><path d="M12 3v18"/></svg>
+        </div>
+        <h3>Cortes Nobres</h3>
+        <p>Picanha, ancho, bife ancho, tomahawk e outros cortes premium selecionados a dedo para os mais exigentes.</p>
+        <div class="service-price">R$ 89,90 <small>/ kg</small></div>
+      </div>
+      <div class="service-card wow wow-delay-2">
+        <div class="service-icon s2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Carnes Maturadas</h3>
+        <p>Maturacao seca controlada entre 21 e 45 dias para intensificar sabor, textura e suculencia incomparaveis.</p>
+        <div class="service-price">R$ 129,90 <small>/ kg</small></div>
+      </div>
+      <div class="service-card wow wow-delay-3">
+        <div class="service-icon s3">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+        </div>
+        <h3>Embutidos Artesanais</h3>
+        <p>Linguicas, salames e defumados produzidos artesanalmente com temperos selecionados e receitas tradicionais.</p>
+        <div class="service-price">R$ 49,90 <small>/ kg</small></div>
+      </div>
+      <div class="service-card wow wow-delay-1">
+        <div class="service-icon s4">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Selecoes Especiais</h3>
+        <p>Kits exclusivos com curadoria do nosso mestre acougueiro, ideais para ocasioes especiais e jantares premium.</p>
+        <div class="service-price">R$ 159,90 <small>/ kit</small></div>
+      </div>
+      <div class="service-card wow wow-delay-2">
+        <div class="service-icon s5">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Assessoria para Churrasco</h3>
+        <p>Consultoria completa: selecao de cortes, quantidade ideal por pessoa, tempo de preparo e acompanhamento.</p>
+        <div class="service-price">R$ 299,90 <small>/ consulta</small></div>
+      </div>
+      <div class="service-card wow wow-delay-3">
+        <div class="service-icon s6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Entrega Premium</h3>
+        <p>Entrega refrigerada em toda a regiao metropolitana do Recife. Embalagem termica com gelo reutilizavel.</p>
+        <div class="service-price">Gratis <small>acima de R$ 200</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual wow">
+        <div class="about-img">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;z-index:1">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(250,245,232,.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span style="color:rgba(250,245,232,.3);font-size:.85rem;font-style:italic">Du Boeuf Premier</span>
+          </div>
+        </div>
+        <div class="about-img-decor"></div>
+      </div>
+      <div class="about-text wow wow-delay-2">
+        <span class="section-tag" style="color:var(--gold)">Nossa Historia</span>
+        <h2>Tradicao e <em>Excelencia</em> em Cada Corte</h2>
+        <p>Fundada com a missao de elevar o padrao do consumo de carnes no Recife, a Du Boeuf Premier nasceu da paixao por cortes de qualidade excepcional e do compromisso com a procedencia.</p>
+        <p>Cada peca que chega ao nosso balcao passa por rigorosa selecao de fornecedores certificados, garantindo rastreabilidade completa desde a origem ate a sua mesa.</p>
+        <p>Nossa maturacao seca artesanal e realizada em camaras climatizadas com controle preciso de temperatura e umidade, resultando em carnes com concentracao de sabor e maciez incomparaveis.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-number" data-target="8">0</div>
+            <div class="stat-label">Anos de Tradição</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-target="15">0</div>
+            <div class="stat-label">Mil Clientes</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" data-target="30">0</div>
+            <div class="stat-label">Cortes Nobres</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="equipe">
+  <div class="container">
+    <div class="section-header wow">
+      <span class="section-tag">Nossa Equipe</span>
+      <h2 class="section-title">Mestres do <em>Corte</em></h2>
+      <p class="section-subtitle">Profissionais apaixonados pela arte da carne, com anos de experiencia nos melhores aougues do Brasil.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card wow wow-delay-1">
+        <div class="team-photo"><div class="team-photo-bg tp1"></div></div>
+        <h3>Henrique Du Boeuf</h3>
+        <div class="role">Mestre Acougueiro e Fundador</div>
+        <p>Com mais de 20 anos de experiencia, Henrique seleciona pessoalmente cada corte e supervisa o processo de maturacao artesanal.</p>
+      </div>
+      <div class="team-card wow wow-delay-2">
+        <div class="team-photo"><div class="team-photo-bg tp2"></div></div>
+        <h3>Margarida Santos</h3>
+        <div class="role">Gerente de Qualidade</div>
+        <p>Responsavel pela rastreabilidade e certificacao de todos os fornecedores, garantindo os mais altos padroes de procedencia.</p>
+      </div>
+      <div class="team-card wow wow-delay-3">
+        <div class="team-photo"><div class="team-photo-bg tp3"></div></div>
+        <h3>Ricardo Almeida</h3>
+        <div class="role">Chefe de Maturacao</div>
+        <p>Especialista em maturacao seca e controle de camaras climatizadas, Ricardo transforma carnes boas em experiencias extraordinarias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-header wow">
+      <span class="section-tag">Galeria</span>
+      <h2 class="section-title">Nossos <em>Cortes</em></h2>
+      <p class="section-subtitle">Conheca de perto a qualidade e a apresentacao impecavel dos nossos produtos.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wow wow-delay-1">
+        <div class="gallery-bg g1"></div>
+        <div class="gallery-overlay"><span>Picanha Premium</span></div>
+      </div>
+      <div class="gallery-item wow wow-delay-2">
+        <div class="gallery-bg g2"></div>
+        <div class="gallery-overlay"><span>Bife Ancho Maturado</span></div>
+      </div>
+      <div class="gallery-item wow wow-delay-3">
+        <div class="gallery-bg g3"></div>
+        <div class="gallery-overlay"><span>Tomahawk Exclusivo</span></div>
+      </div>
+      <div class="gallery-item wow wow-delay-1">
+        <div class="gallery-bg g4"></div>
+        <div class="gallery-overlay"><span>Linguica Artesanal</span></div>
+      </div>
+      <div class="gallery-item wow wow-delay-2">
+        <div class="gallery-bg g5"></div>
+        <div class="gallery-overlay"><span>Kit Churrasco Especial</span></div>
+      </div>
+      <div class="gallery-item wow wow-delay-3">
+        <div class="gallery-bg g6"></div>
+        <div class="gallery-overlay"><span>Camarao da Secao</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-header wow">
+      <span class="section-tag">Depoimentos</span>
+      <h2 class="section-title">O Que Dizem <em>Nossos Clientes</em></h2>
+      <p class="section-subtitle">A satisfacao de quem prova a diferenca de uma carne verdadeiramente especial.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card wow wow-delay-1">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>A picanha maturada da Du Boeuf e simplesmente perfeita. O sabor concentrado e a maciez sao incomparaveis com qualquer outro aougue que ja frequentei em Recife.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta1"></div>
+          <div class="testimonial-info">
+            <h4>Carlos Eduardo Lima</h4>
+            <span>Cliente desde 2021</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card wow wow-delay-2">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>Pedi o kit churrasco especial para um aniversario e foi o sucesso absoluto. A assessoria do Henrique fez toda a diferenca. Cada convidado elogiou a qualidade da carne.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta2"></div>
+          <div class="testimonial-info">
+            <h4>Fernanda Oliveira</h4>
+            <span>Cliente desde 2022</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card wow wow-delay-3">
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote>Como chef de cozinha, sou muito exigente com ingredientes. A Du Boeuf Premier se tornou meu fornecedor exclusivo. A rastreabilidade e a consistencia da qualidade sao impecaveis.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar ta3"></div>
+          <div class="testimonial-info">
+            <h4>Roberto Mendes</h4>
+            <span>Chef - Restaurante Saara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contato">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info wow">
+        <span class="section-tag" style="color:var(--gold)">Contato</span>
+        <h2>Visite Nossa <em>Loja</em></h2>
+        <p>Estamos prontos para atender voce. Venha conhecer nossos cortes pessoalmente ou faca seu pedido pelo WhatsApp.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <h4>Endereco</h4>
+            <p>R. Maria Carolina, 77 - Boa Viagem<br>Recife - PE, 51020-220</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <h4>Telefone</h4>
+            <p><a href="tel:+5581981133965">(81) 98113-3965</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/555581981133965" target="_blank">Enviar mensagem</a></p>
+          </div>
+        </div>
+        <div class="contact-hours">
+          <h4>Horario de Funcionamento</h4>
+          <ul>
+            <li><span>Segunda a Sexta</span><span>08:00 - 19:00</span></li>
+            <li><span>Sabado</span><span>08:00 - 14:00</span></li>
+            <li><span>Domingo</span><span>Fechado</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="contact-form-wrap wow wow-delay-2">
+        <h3>Envie sua Mensagem</h3>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" placeholder="(81) 99999-9999" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Assunto</label>
+            <select id="service" required>
+              <option value="" disabled selected>Selecione um assunto</option>
+              <option value="cortes">Cortes Nobres</option>
+              <option value="maturacao">Carnes Maturadas</option>
+              <option value="embutidos">Embutidos Artesanais</option>
+              <option value="kits">Kits Especiais</option>
+              <option value="churrasco">Assessoria para Churrasco</option>
+              <option value="entrega">Entrega Premium</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" placeholder="Como podemos ajudar voce?" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">Du Boeuf <span>Premier</span></div>
+    <div class="footer-copy">2025 Du Boeuf Premier Cortes Especiais. Todos os direitos reservados.</div>
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicos">Servicos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/555581981133965" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+  // NAV SCROLL
+  const nav=document.getElementById('navbar');
+  let lastScroll=0;
+  window.addEventListener('scroll',function(){
+    const curr=window.pageYOffset;
+    if(curr>lastScroll&&curr>80){nav.classList.add('nav-hidden');nav.classList.remove('nav-visible')}
+    else{nav.classList.remove('nav-hidden');nav.classList.add('nav-visible')}
+    lastScroll=curr;
+  },{passive:true});
+
+  // HAMBURGER
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  hamburger.addEventListener('click',function(){
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+
+  // INTERSECTION OBSERVER - FADE IN
+  const observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('wow-visible');observer.unobserve(entry.target)}
+    });
+  },{threshold:0.1,rootMargin:'-50px'});
+  document.querySelectorAll('.wow').forEach(function(el){observer.observe(el)});
+
+  // COUNTER ANIMATION
+  const counters=document.querySelectorAll('.stat-number[data-target]');
+  const counterObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        const el=entry.target;
+        const target=parseInt(el.getAttribute('data-target'),10);
+        let current=0;
+        const increment=target/40;
+        const timer=setInterval(function(){
+          current+=increment;
+          if(current>=target){el.textContent=target+'+';clearInterval(timer)}
+          else{el.textContent=Math.floor(current)+'+'}
+        },40);
+        counterObserver.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  counters.forEach(function(c){counterObserver.observe(c)});
+
+  // FORM
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('name').value.trim();
+    const phone=document.getElementById('phone').value.trim();
+    const service=document.getElementById('service').value;
+    const message=document.getElementById('message').value.trim();
+    const text='Ola! Sou '+name+'. '+message+' (Assunto: '+service+' | Tel: '+phone+')';
+    const encoded=encodeURIComponent(text);
+    window.open('https://wa.me/555581981133965?text='+encoded,'_blank');
+    this.reset();
+  });
+
+  // PHONE MASK
+  const phoneInput=document.getElementById('phone');
+  phoneInput.addEventListener('input',function(e){
+    let v=e.target.value.replace(/\D/g,'');
+    if(v.length>11)v=v.slice(0,11);
+    if(v.length>6)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+    else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);
+    else if(v.length>0)v='('+v;
+    e.target.value=v;
+  });
+})();
+</script>
+</body>
+</html>
