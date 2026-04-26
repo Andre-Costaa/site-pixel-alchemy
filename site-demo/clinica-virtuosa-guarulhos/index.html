@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Clinica Virtuosa Guarulhos - Cuidado em saude com excelencia e humanizacao. Consultas, exames e procedimentos no centro de Guarulhos.">
+<meta name="keywords" content="clinica guarulhos, saude guarulhos, consulta medica, exames, procedimentos, clinica virtuosa">
+<meta property="og:title" content="Clinica Virtuosa Guarulhos | Cuidado em Saude com Excelencia">
+<meta property="og:description" content="Clinica Virtuosa oferece consultas, exames complementares e procedimentos com profissionais qualificados no centro de Guarulhos.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<title>Clinica Virtuosa Guarulhos | Cuidado em Saude com Excelencia</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --navy:#1B3A5C;
+  --navy-dark:#122840;
+  --navy-light:#2A5280;
+  --gold:#D4A843;
+  --gold-light:#E2C475;
+  --gold-dark:#B8902E;
+  --white:#FFFFFF;
+  --slate:#4A5568;
+  --slate-light:#718096;
+  --cream:#FFF8F0;
+  --cream-dark:#F5EDE0;
+  --border:#E2D9CC;
+  --shadow:0 4px 24px rgba(27,58,92,.08);
+  --shadow-lg:0 12px 48px rgba(27,58,92,.12);
+  --radius:12px;
+  --radius-sm:8px;
+  --transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+
+body{
+  font-family:Georgia,'Palatino Linotype','Book Antiqua',Palatino,serif;
+  color:var(--slate);
+  background:var(--white);
+  line-height:1.7;
+  letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color:var(--navy);
+  font-weight:700;
+  letter-spacing:.1em;
+  line-height:1.2;
+}
+
+h1{font-size:clamp(2rem,5vw,3.5rem)}
+h2{font-size:clamp(1.6rem,4vw,2.5rem);margin-bottom:1rem}
+h3{font-size:clamp(1.1rem,2.5vw,1.4rem)}
+
+a{color:var(--gold-dark);text-decoration:none;transition:var(--transition)}
+a:hover{color:var(--navy)}
+
+img{max-width:100%;display:block}
+
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(27,58,92,.06);
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+.nav.hidden{transform:translateY(-100%)}
+.nav.scrolled{box-shadow:0 2px 20px rgba(27,58,92,.1)}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1200px;margin:0 auto;padding:1rem 1.5rem;
+}
+.nav-logo{
+  font-size:1.15rem;font-weight:700;color:var(--navy);
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  color:var(--slate);font-size:.85rem;letter-spacing:.08em;
+  text-transform:uppercase;font-weight:600;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;background:var(--gold);
+  transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:var(--gold);color:var(--white)!important;
+  padding:.6rem 1.4rem;border-radius:var(--radius-sm);
+  font-size:.8rem;letter-spacing:.08em;
+}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--gold-dark);color:var(--white)!important}
+
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+}
+.hamburger span{
+  display:block;width:24px;height:2px;background:var(--navy);
+  transition:var(--transition);border-radius:2px;
+}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--navy-dark) 0%,var(--navy) 40%,var(--navy-light) 100%);
+  padding:6rem 1.5rem 4rem;
+}
+.hero::before{
+  content:'';position:absolute;top:-20%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(212,168,67,.15) 0%,transparent 70%);
+  border-radius:50%;animation:heroGlow 8s ease-in-out infinite alternate;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-15%;left:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(212,168,67,.1) 0%,transparent 70%);
+  border-radius:50%;animation:heroGlow 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes heroGlow{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(30px,-20px) scale(1.1)}
+}
+.hero-content{
+  text-align:center;position:relative;z-index:2;max-width:800px;
+}
+.hero-badge{
+  display:inline-block;
+  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(212,168,67,.4);
+  padding:.5rem 1.5rem;border-radius:30px;
+  margin-bottom:2rem;
+}
+.hero h1{
+  color:var(--white);font-size:clamp(2.2rem,6vw,4rem);
+  margin-bottom:1.5rem;letter-spacing:.1em;
+  text-shadow:0 2px 40px rgba(0,0,0,.2);
+}
+.hero h1 em{
+  font-style:normal;color:var(--gold);
+  display:block;font-size:clamp(.9rem,2vw,1.2rem);
+  font-weight:400;letter-spacing:.2em;margin-top:.5rem;
+  text-transform:uppercase;
+}
+.hero p{
+  color:rgba(255,255,255,.8);font-size:clamp(1rem,2vw,1.15rem);
+  max-width:560px;margin:0 auto 2.5rem;line-height:1.8;
+}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 2rem;border-radius:var(--radius-sm);
+  font-family:inherit;font-size:.85rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;border:none;transition:var(--transition);
+}
+.btn-primary{background:var(--gold);color:var(--white)}
+.btn-primary:hover{background:var(--gold-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,168,67,.35)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{
+  display:flex;justify-content:center;gap:3rem;margin-top:4rem;
+  padding-top:3rem;border-top:1px solid rgba(255,255,255,.1);
+}
+.hero-stat{text-align:center}
+.hero-stat strong{
+  display:block;font-size:clamp(1.5rem,3vw,2.2rem);
+  color:var(--gold);letter-spacing:.05em;
+}
+.hero-stat span{
+  font-size:.75rem;color:rgba(255,255,255,.6);
+  text-transform:uppercase;letter-spacing:.15em;
+}
+
+/* ── SECTION SHARED ── */
+.section{padding:5rem 1.5rem}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-header .label{
+  display:inline-block;font-size:.7rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;
+}
+.section-header h2{margin-bottom:1rem}
+.section-header p{
+  color:var(--slate-light);max-width:560px;
+  margin:0 auto;font-size:.95rem;
+}
+.section-alt{background:var(--cream)}
+.divider{
+  width:60px;height:3px;background:var(--gold);
+  margin:1rem auto 0;border-radius:2px;
+}
+
+/* ── SERVICES ── */
+.services-grid{
+  display:grid;grid-template-columns:1fr;gap:1.5rem;
+  max-width:1100px;margin:0 auto;
+}
+.service-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2rem;border:1px solid var(--border);
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{
+  width:52px;height:52px;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--cream),var(--cream-dark));
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.service-icon svg{width:26px;height:26px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.service-card h3{margin-bottom:.6rem;font-size:1.1rem}
+.service-card p{color:var(--slate-light);font-size:.9rem;margin-bottom:1.25rem;line-height:1.7}
+.service-price{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:1rem;border-top:1px solid var(--border);
+}
+.service-price .value{
+  font-size:1.25rem;font-weight:700;color:var(--navy);
+  letter-spacing:.02em;
+}
+.service-price .value small{font-size:.75rem;font-weight:400;color:var(--slate-light)}
+.service-price .book{
+  font-size:.75rem;color:var(--gold-dark);letter-spacing:.08em;
+  text-transform:uppercase;font-weight:600;
+  display:flex;align-items:center;gap:.3rem;
+}
+.service-price .book:hover{color:var(--navy)}
+
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr;gap:3rem;
+  max-width:1000px;margin:0 auto;align-items:center;
+}
+.about-image{
+  border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:4/3;position:relative;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 50%,var(--gold) 100%);
+}
+.about-image::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(27,58,92,.3));
+}
+.about-text h2{text-align:left}
+.about-text .divider{margin:1rem 0 0}
+.about-text p{
+  margin-bottom:1.25rem;font-size:.95rem;color:var(--slate-light);
+  line-height:1.8;
+}
+.about-features{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;
+}
+.about-feature{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:.88rem;color:var(--slate);
+}
+.about-feature .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+
+/* ── TEAM ── */
+.team-grid{
+  display:grid;grid-template-columns:1fr;gap:2rem;
+  max-width:900px;margin:0 auto;
+}
+.team-card{
+  background:var(--white);border-radius:var(--radius);
+  overflow:hidden;border:1px solid var(--border);
+  transition:var(--transition);
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.team-photo{
+  height:240px;position:relative;
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-light) 100%);
+}
+.team-photo::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:linear-gradient(transparent,rgba(255,255,255,.9));
+}
+.team-info{padding:1.5rem;text-align:center}
+.team-info h3{margin-bottom:.25rem}
+.team-info .role{
+  font-size:.8rem;color:var(--gold-dark);
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:.75rem;
+}
+.team-info p{font-size:.85rem;color:var(--slate-light);line-height:1.7}
+
+/* ── GALLERY ── */
+.gallery-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  max-width:1000px;margin:0 auto;
+}
+.gallery-item{
+  border-radius:var(--radius-sm);overflow:hidden;
+  aspect-ratio:1;position:relative;cursor:pointer;
+}
+.gallery-item:nth-child(1){
+  background:linear-gradient(135deg,#2A5280,#1B3A5C,#D4A843);
+}
+.gallery-item:nth-child(2){
+  background:linear-gradient(135deg,#FFF8F0,#E2C475,#D4A843);
+}
+.gallery-item:nth-child(3){
+  background:linear-gradient(135deg,#1B3A5C,#122840,#2A5280);
+}
+.gallery-item:nth-child(4){
+  background:linear-gradient(135deg,#D4A843,#B8902E,#1B3A5C);
+}
+.gallery-item:nth-child(5){
+  background:linear-gradient(135deg,#F5EDE0,#D4A843,#2A5280);
+}
+.gallery-item:nth-child(6){
+  background:linear-gradient(135deg,#122840,#1B3A5C,#D4A843);
+}
+.gallery-overlay{
+  position:absolute;inset:0;background:rgba(27,58,92,.6);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .4s ease;
+}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay svg{
+  width:32px;height:32px;stroke:var(--white);fill:none;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid{
+  display:grid;grid-template-columns:1fr;gap:2rem;
+  max-width:900px;margin:0 auto;
+}
+.testimonial-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2rem;border:1px solid var(--border);
+  position:relative;transition:var(--transition);
+}
+.testimonial-card:hover{box-shadow:var(--shadow)}
+.testimonial-quote{
+  font-size:3rem;color:var(--gold);line-height:1;
+  font-family:Georgia,serif;margin-bottom:.5rem;
+}
+.testimonial-text{
+  font-size:.95rem;color:var(--slate);line-height:1.8;
+  margin-bottom:1.5rem;font-style:italic;
+}
+.testimonial-stars{display:flex;gap:3px;margin-bottom:1rem}
+.testimonial-stars svg{width:16px;height:16px;fill:var(--gold);stroke:none}
+.testimonial-author{display:flex;align-items:center;gap:1rem}
+.testimonial-avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--navy),var(--navy-light));
+}
+.testimonial-author-info strong{
+  display:block;font-size:.9rem;color:var(--navy);
+}
+.testimonial-author-info span{
+  font-size:.78rem;color:var(--slate-light);
+}
+
+/* ── CONTACT ── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr;gap:2rem;
+  max-width:1000px;margin:0 auto;
+}
+.contact-info-card{
+  background:var(--white);border-radius:var(--radius);
+  padding:2rem;border:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:1.25rem;
+  transition:var(--transition);
+}
+.contact-info-card:hover{box-shadow:var(--shadow)}
+.contact-icon{
+  width:48px;height:48px;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--cream),var(--cream-dark));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.contact-icon svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact-details h4{font-size:.95rem;margin-bottom:.35rem;letter-spacing:.05em}
+.contact-details p{font-size:.88rem;color:var(--slate-light);line-height:1.6}
+.contact-details a{color:var(--gold-dark)}
+.contact-cta{
+  grid-column:1/-1;text-align:center;padding:2rem;
+  background:linear-gradient(135deg,var(--navy-dark),var(--navy));
+  border-radius:var(--radius);margin-top:1rem;
+}
+.contact-cta h3{color:var(--white);margin-bottom:.5rem;font-size:1.3rem}
+.contact-cta p{color:rgba(255,255,255,.7);margin-bottom:1.5rem;font-size:.95rem}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:#25D366;color:var(--white);
+  padding:1rem 2.5rem;border-radius:var(--radius-sm);
+  font-family:inherit;font-size:.9rem;font-weight:600;
+  letter-spacing:.05em;cursor:pointer;border:none;
+  transition:var(--transition);
+}
+.btn-whatsapp:hover{background:#1EB954;transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.btn-whatsapp svg{width:20px;height:20px;fill:var(--white)}
+
+/* ── FOOTER ── */
+.footer{
+  background:var(--navy-dark);color:rgba(255,255,255,.5);
+  padding:3rem 1.5rem;text-align:center;
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-logo{
+  font-size:1rem;font-weight:700;color:var(--white);
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;
+}
+.footer-logo span{color:var(--gold)}
+.footer p{font-size:.8rem;line-height:1.8}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.4);letter-spacing:.05em}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:var(--transition);cursor:pointer;border:none;
+}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:var(--white)}
+
+/* ── ANIMATIONS ── */
+.fade-up{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-in{
+  opacity:0;transition:opacity .7s ease;
+}
+.fade-in.visible{opacity:1}
+
+/* ── RESPONSIVE ── */
+@media(min-width:480px){
+  .services-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(min-width:768px){
+  .services-grid{grid-template-columns:1fr 1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .testimonials-grid{grid-template-columns:1fr 1fr 1fr}
+  .about-grid{grid-template-columns:1fr 1fr;gap:4rem}
+  .team-grid{grid-template-columns:1fr 1fr 1fr}
+  .contact-grid{grid-template-columns:1fr 1fr 1fr}
+}
+
+@media(min-width:1024px){
+  .section{padding:7rem 1.5rem}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);gap:1.25rem}
+}
+
+@media(max-width:767px){
+  .nav-links{
+    position:fixed;top:0;right:-100%;width:280px;height:100vh;
+    background:var(--white);flex-direction:column;
+    padding:5rem 2rem 2rem;gap:1.5rem;
+    box-shadow:-4px 0 30px rgba(0,0,0,.1);
+    transition:right .4s ease;z-index:998;
+  }
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1rem}
+  .hamburger{display:flex;z-index:999}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap}
+  .about-features{grid-template-columns:1fr}
+  .contact-cta{grid-column:1}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+  .fade-up,.fade-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Clinica <span>Virtuosa</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicos">Servicos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="https://wa.me/55551123581490" class="nav-cta">Agendar</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content fade-in">
+    <span class="hero-badge">Cuidado em Saude com Excelencia</span>
+    <h1>Clinica Virtuosa<em>Guarulhos</em></h1>
+    <p>Oferecemos atendimento medico humanizado com profissionais qualificados. Sua saude merece cuidado dedicado e confianca.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/55551123581490" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Agendar Consulta
+      </a>
+      <a href="#servicos" class="btn btn-outline">Nossos Servicos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>10+</strong>
+        <span>Anos de Experiencia</span>
+      </div>
+      <div class="hero-stat">
+        <strong>15k+</strong>
+        <span>Pacientes Atendidos</span>
+      </div>
+      <div class="hero-stat">
+        <strong>12</strong>
+        <span>Profissionais</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt" id="servicos">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Nossos Servicos</span>
+      <h2>Cuidado Completo<br>Para Sua Saude</h2>
+      <div class="divider"></div>
+      <p>Conheca nossos servicos medicos e agende sua consulta com profissionais especializados.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Consulta Medica</h3>
+        <p>Consulta clinica geral e especializada com avaliacao completa, historico e orientacoes personalizadas para seu bem-estar.</p>
+        <div class="service-price">
+          <span class="value">R$ 250<small>/consulta</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:.1s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <h3>Retorno</h3>
+        <p>Consulta de retorno para acompanhamento do tratamento, ajuste de condutas e evolucao do quadro clinico.</p>
+        <div class="service-price">
+          <span class="value">R$ 180<small>/retorno</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:.2s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Exame Complementar</h3>
+        <p>Realizacao de exames laboratoriais e complementares para diagnostico preciso e acompanhamento clinico detalhado.</p>
+        <div class="service-price">
+          <span class="value">R$ 120<small>/exame</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:.1s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Procedimento</h3>
+        <p>Procedimentos ambulatoriais realizados com seguranca e tecnologia, minimizando desconforto e otimizando resultados.</p>
+        <div class="service-price">
+          <span class="value">R$ 450<small>/procedimento</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:.2s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Avaliacao Inicial</h3>
+        <p>Avaliacao completa com anamnese detalhada, verificacao de sinais vitais e triagem para encaminhamento adequado.</p>
+        <div class="service-price">
+          <span class="value">R$ 150<small>/avaliacao</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="transition-delay:.3s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Tratamento Continuo</h3>
+        <p>Programas de tratamento continuo com acompanhamento multidisciplinar focado em resultados e qualidade de vida.</p>
+        <div class="service-price">
+          <span class="value">R$ 380<small>/sessao</small></span>
+          <a href="https://wa.me/55551123581490" class="book">Agendar &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image fade-up"></div>
+      <div class="about-text fade-up">
+        <span class="label" style="font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:inline-block;margin-bottom:.75rem">Sobre Nos</span>
+        <h2>Tradicacao e Confianca<br>em Cada Atendimento</h2>
+        <div class="divider"></div>
+        <p>A Clinica Virtuosa nasceu em Guarulhos com o proposito de oferecer atendimento medico de qualidade, unindo tecnologia de ponta ao cuidado humano que cada paciente merece.</p>
+        <p>Nossa equipe e formada por profissionais comprometidos com a excelencia clinica e a humanizacao do atendimento. Acreditamos que a relacao medico-paciente e a base de qualquer tratamento bem-sucedido.</p>
+        <p>Localizados no centro de Guarulhos, oferecemos uma estrutura acolhedora e completa para que voce se sinta confortavel desde o primeiro momento.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <span class="dot"></span>
+            Atendimento Humanizado
+          </div>
+          <div class="about-feature">
+            <span class="dot"></span>
+            Equipe Multidisciplinar
+          </div>
+          <div class="about-feature">
+            <span class="dot"></span>
+            Estrutura Moderna
+          </div>
+          <div class="about-feature">
+            <span class="dot"></span>
+            Agilidade no Atendimento
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section-alt" id="equipe">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Nossa Equipe</span>
+      <h2>Profissionais<br>Dedicados a Voce</h2>
+      <div class="divider"></div>
+      <p>Conheca os especialistas que cuidam da sua saude com dedicacao e competencia.</p>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Dra. Camila Ferreira</h3>
+          <p class="role">Clinica Geral</p>
+          <p>Graduada pela UNIFESP com residencia em Clinica Medica. Atua ha 12 anos com foco em atendimento preventivo e diagnostico precoce.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-up" style="transition-delay:.1s">
+        <div class="team-photo" style="background:linear-gradient(160deg,#2A5280,#122840,#D4A843)"></div>
+        <div class="team-info">
+          <h3>Dr. Ricardo Mendes</h3>
+          <p class="role">Medico Internista</p>
+          <p>Especialista em Medicina Interna pela USP. Experiencia em acompanhamento de pacientes com doencas cronicas e medicina integrativa.</p>
+        </div>
+      </div>
+
+      <div class="team-card fade-up" style="transition-delay:.2s">
+        <div class="team-photo" style="background:linear-gradient(160deg,#1B3A5C,#D4A843,#122840)"></div>
+        <div class="team-info">
+          <h3>Dra. Ana Paula Ribeiro</h3>
+          <p class="role">Nutricionista Clinica</p>
+          <p>Pos-graduada em Nutricao Funcional. Atua de forma integrada com a equipe medica para tratamentos personalizados e resultados duradouros.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="galeria">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Nossas Instalacoes</span>
+      <h2>Conforto e Modernidade<br>Para Voce</h2>
+      <div class="divider"></div>
+      <p>Conheca nossos ambientes preparados para oferecer o melhor atendimento.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item fade-up" style="transition-delay:.05s">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item fade-up" style="transition-delay:.1s">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item fade-up" style="transition-delay:.15s">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item fade-up" style="transition-delay:.2s">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="gallery-item fade-up" style="transition-delay:.25s">
+        <div class="gallery-overlay">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt" id="depoimentos">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Depoimentos</span>
+      <h2>O Que Nossos Pacientes<br>Dizem Sobre Nos</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Excelente atendimento! A Dra. Camila e muito atenciosa e profissional. Me senti muito a vontade durante toda a consulta. Recomendo de olhos fechados.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <strong>Maria Santos</strong>
+            <span>Paciente ha 3 anos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up" style="transition-delay:.1s">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">O Dr. Ricardo me acompanhou durante todo o tratamento. Profissional exemplar, sempre disponivel para tirar duvidas. A clinica e muito bem estruturada.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold))"></div>
+          <div class="testimonial-author-info">
+            <strong>Carlos Oliveira</strong>
+            <span>Paciente ha 5 anos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up" style="transition-delay:.2s">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">Comecei o acompanhamento com a Dra. Ana Paula e os resultados superaram minhas expectativas. Ambiente acolhedor e equipe muito simpatica. Nota 10!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--navy-light),var(--gold))"></div>
+          <div class="testimonial-author-info">
+            <strong>Fernanda Lima</strong>
+            <span>Paciente ha 2 anos</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contato">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label">Contato</span>
+      <h2>Entre em Contato<br>Conosco</h2>
+      <div class="divider"></div>
+      <p>Estamos prontos para atender voce. Agende sua consulta por telefone, WhatsApp ou visite nossa clinica.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-info-card fade-up">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-details">
+          <h4>Endereco</h4>
+          <p>Av. Salgado Filho, 696 - Centro<br>Guarulhos - SP, 07115-000</p>
+        </div>
+      </div>
+
+      <div class="contact-info-card fade-up" style="transition-delay:.1s">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="contact-details">
+          <h4>Telefone</h4>
+          <p><a href="tel:+551123581490">(11) 2358-1490</a></p>
+        </div>
+      </div>
+
+      <div class="contact-info-card fade-up" style="transition-delay:.2s">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="contact-details">
+          <h4>Horario de Atendimento</h4>
+          <p>Segunda a Sexta: 8h as 18h<br>Sabado: 8h as 12h</p>
+        </div>
+      </div>
+
+      <div class="contact-cta fade-up">
+        <h3>Agende sua consulta agora</h3>
+        <p>Fale diretamente com nossa equipe pelo WhatsApp e marque seu horario de forma rapida e pratica.</p>
+        <a href="https://wa.me/55551123581490" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Clinica <span>Virtuosa</span></div>
+    <p>Av. Salgado Filho, 696 - Centro, Guarulhos - SP<br>Telefone: (11) 2358-1490</p>
+    <div class="footer-links">
+      <a href="#servicos">Servicos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.75rem;color:rgba(255,255,255,.3)">&copy; 2025 Clinica Virtuosa Guarulhos. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/55551123581490" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var hamburger=document.getElementById('hamburger');
+  var navLinks=document.getElementById('navLinks');
+  var lastScroll=0;
+
+  hamburger.addEventListener('click',function(){
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click',function(){
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll',function(){
+    var current=window.pageYOffset;
+    if(current>80){
+      nav.classList.add('scrolled');
+    }else{
+      nav.classList.remove('scrolled');
+    }
+    if(current>lastScroll&&current>200){
+      nav.classList.add('hidden');
+    }else{
+      nav.classList.remove('hidden');
+    }
+    lastScroll=current;
+  });
+
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  },{threshold:0.1,rootMargin:'-50px'});
+
+  document.querySelectorAll('.fade-up,.fade-in').forEach(function(el){
+    observer.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
